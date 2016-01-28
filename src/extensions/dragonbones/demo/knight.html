@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.4/seed-min.js"></script>
+    <script src="../../../../build/standalone/hilo-standalone.js"></script>
+    <script src='../../../../build/flash/hilo-flash.js' data-auto='true'></script>
+    <script src="../../../../build/dragonbones/dragonbones.js"></script>
+</head>
+<body onLoad="init();">
+    <div id="canvasHolder">
+        <canvas id="canvas"></canvas>
+        <div>空格换武器 下键换型号 点击攻击</div>
+    </div>
+
+	<script type='text/javascript'>
+		KISSY.config({debug:true});
+
+		function init()
+		{
+			HiloInit();
+		}
+
+		var canvas;
+		var stage;
+
+		var texture;
+		var textureData;
+		var skeletonData;
+
+		function HiloInit()
+		{
+			canvas = document.getElementById("canvas");
+			stage = new Hilo.Stage({
+				canvas:canvas,
+				width:800,
+				height:600
+			});
+
+			texture = new Image();
+			texture.onload = function()
+			{
+				KISSY.use("io", function(S, $){
+					$.getJSON(
+						"assets/knight/texture.json",
+						function(data)
+						{
+							textureData = data;
+							$.getJSON(
+								"assets/knight/skeleton.json",
+								function(data)
+								{
+									skeletonData = data;
+									dragonBonesInit();
+								}
+							)
+						}
+					);
+				});
+			}
+			texture.src = "assets/knight/texture.png";
+		}
+
+		var factory;
+		var armature;
+
+		function dragonBonesInit()
+		{
+			factory = new dragonBones.factorys.HiloFactory();
+			factory.addSkeletonData(dragonBones.objects.DataParser.parseSkeletonData(skeletonData));
+			factory.addTextureAtlas(new dragonBones.textures.HiloTextureAtlas(texture, textureData));
+
+			armature = factory.buildArmature("knight");
+			armature.getDisplay().x = 400;
+			armature.getDisplay().y = 400;
+
+			updateAnimation();
+			dragonBones.animation.WorldClock.clock.add(armature);
+
+			stage.addChild(armature.getDisplay());
+			var ticker = new Hilo.Ticker(60);
+			ticker.addTick(stage);
+			stage.onUpdate = update;
+			ticker.start();
+			document.onkeydown = keyHandler;
+			document.onkeyup = keyHandler;
+
+			canvas.onclick = attack;
+			canvas.ontouchstart = attack;
+
+			_arm = armature.getSlot("armOutside");
+			_arm.getChildArmature().addEventListener(dragonBones.events.AnimationEvent.FADE_IN, armAnimationHandler);
+			_arm.getChildArmature().addEventListener(dragonBones.events.AnimationEvent.COMPLETE, armAnimationHandler);
+			_arm.getChildArmature().addEventListener(dragonBones.events.FrameEvent.ANIMATION_FRAME_EVENT, armFrameEventHandler);
+		}
+
+		function update()
+		{
+			updateSpeed();
+			dragonBones.animation.WorldClock.clock.advanceTime(1/60);
+			updateArrows();
+		}
+
+		var _arm;
+
+		var _left;
+		var _right;
+
+		function keyHandler(e)
+		{
+			e = e || window.event;
+			var currKey = e.keyCode || e.which || e.charCode;
+			var isDown = e.type == "keydown";
+			switch (currKey)
+			{
+				case 37 :
+				case 65 :
+					_left = isDown;
+					updateMove(-1);
+					break;
+				case 39 :
+				case 68 :
+					_right = isDown;
+					updateMove(1);
+					break;
+				case 38 :
+				case 87 :
+					if (isDown)
+					{
+						jump();
+					}
+					break;
+				case 83 :
+				case 40 :
+					if (isDown)
+					{
+						upgradeWeapon();
+					}
+					break;
+				case 32 :
+					if (isDown)
+					{
+						changeWeapon();
+					}
+					break;
+			}
+		}
+
+		function updateMove(dir)
+		{
+			if (_left && _right)
+			{
+				move(dir);
+			}
+			else if (_left)
+			{
+				move(-1);
+			}
+			else if (_right)
+			{
+				move(1);
+			}
+			else
+			{
+				move(0);
+			}
+		}
+
+		var _speedX = 0;
+		var _speedY = 0;
+		var _moveDir = 0;
+		var _face = 0;
+		var _isJumping;
+
+		function move(dir)
+		{
+			if (_moveDir == dir)
+			{
+				return;
+			}
+			_moveDir = dir;
+			updateAnimation();
+		}
+
+		function jump()
+		{
+			if (_isJumping)
+			{
+				return;
+			}
+			_speedY = -24;
+			_isJumping = true;
+			armature.animation.gotoAndPlay("jump");
+		}
+
+		function updateAnimation()
+		{
+			if (_isJumping)
+			{
+				return;
+			}
+
+			if (_moveDir == 0)
+			{
+				_speedX = 0;
+				armature.animation.gotoAndPlay("stand");
+			}
+			else
+			{
+				_speedX = _moveDir * 6;
+				armature.animation.gotoAndPlay("run");
+				armature.getDisplay().scaleX = _moveDir;
+			}
+		}
+
+		function updateSpeed()
+		{
+			if (_isJumping)
+			{
+				var speed = 1;
+				if(_speedY <= 0 && _speedY + speed > 0)
+				{
+					armature.animation.gotoAndPlay("fall");
+				}
+				_speedY += speed;
+			}
+
+			if (_speedX != 0)
+			{
+				armature.getDisplay().x += _speedX;
+				if (armature.getDisplay().x < 0)
+				{
+					armature.getDisplay().x = 0;
+				}
+				else if (armature.getDisplay().x > 800)
+				{
+					armature.getDisplay().x = 800;
+				}
+			}
+
+			if (_speedY != 0)
+			{
+				armature.getDisplay().rotation = _speedY * 0.8 * armature.getDisplay().scaleX;
+				armature.getDisplay().y += _speedY;
+				if (armature.getDisplay().y > 400)
+				{
+					armature.getDisplay().y = 400;
+					_isJumping = false;
+					_speedY = 0;
+					_speedX = 0;
+					armature.getDisplay().rotation = 0;
+					updateAnimation();
+				}
+			}
+		}
+
+		var SWORD = "sword";
+		var PIKE = "pike";
+		var AXE = "axe";
+		var BOW = "bow";
+		var WEAPON_NAMES = [SWORD, PIKE, AXE, BOW];
+		var _weaponID = 0;
+		function changeWeapon()
+		{
+			_weaponID ++;
+			if (_weaponID >= 4)
+			{
+				_weaponID -= 4;
+			}
+
+			var weaponName = WEAPON_NAMES[_weaponID];
+			var animationName = "ready_" + weaponName;
+
+			_arm.getChildArmature().animation.gotoAndPlay(animationName);
+		}
+
+		var _weaponLevels = [0, 0, 0, 0];
+		function upgradeWeapon()
+		{
+			var weaponLevel = _weaponLevels[_weaponID];
+			weaponLevel ++;
+			if (weaponLevel >= 3)
+			{
+				weaponLevel -= 3;
+			}
+			_weaponLevels[_weaponID] = weaponLevel;
+
+			var weaponName = WEAPON_NAMES[_weaponID];
+			switch(weaponName)
+			{
+				case SWORD:
+				case PIKE:
+				case AXE:
+					var weapon = _arm.getChildArmature().getSlot("weapon");
+					weapon.setDisplay(factory.getTextureDisplay("knightFolder/" + weaponName + "_" + (weaponLevel + 1)));
+					break;
+				case BOW:
+					var bow = _arm.getChildArmature().getSlot("bow");
+
+					var bowBA = bow.getChildArmature().getSlot("ba");
+					var bowBB = bow.getChildArmature().getSlot("bb");
+					var bowArrow = bow.getChildArmature().getSlot("arrow");
+					var bowArrowB = bow.getChildArmature().getSlot("arrowBackup");
+
+					bowBA.setDisplay(factory.getTextureDisplay("knightFolder/" + weaponName + "_" + (weaponLevel + 1)));
+					bowBB.setDisplay(factory.getTextureDisplay("knightFolder/" + weaponName + "_" + (weaponLevel + 1)));
+					bowArrow.setDisplay(factory.getTextureDisplay("knightFolder/arrow_" + (weaponLevel + 1)));
+					bowArrowB.setDisplay(factory.getTextureDisplay("knightFolder/arrow_" + (weaponLevel + 1)));
+					break;
+			}
+		}
+
+		var _isAttacking;
+		var _isComboAttack;
+		var _hitCount = 1;
+		function attack()
+		{
+			if (_isAttacking)
+			{
+				return;
+			}
+			_isAttacking = true;
+			var weaponName = WEAPON_NAMES[_weaponID];
+			var animationName = "attack_" + weaponName + "_" + _hitCount;
+			_arm.getChildArmature().animation.gotoAndPlay(animationName);
+		}
+
+		function armAnimationHandler(e)
+		{
+			switch(e.type)
+			{
+				case dragonBones.events.AnimationEvent.FADE_IN:
+					_isComboAttack = false;
+					break;
+				case dragonBones.events.AnimationEvent.COMPLETE:
+					if(_isComboAttack)
+					{
+						var weaponName = WEAPON_NAMES[_weaponID];
+						var animationName = "ready_" + weaponName;
+						_arm.getChildArmature().animation.gotoAndPlay(animationName);
+					}
+					else
+					{
+						_isAttacking = false;
+						_hitCount = 1;
+						_isComboAttack = false;
+					}
+					break;
+			}
+		}
+
+		function armFrameEventHandler(e)
+		{
+			switch(e.frameLabel)
+			{
+				case "fire":
+					var bow = _arm.getChildArmature().getSlot("bow");
+					var matrix = bow.getDisplay().getConcatenatedMatrix();
+
+					var resultPoint = {x:matrix.tx, y:matrix.ty};
+					if (armature.getDisplay().scaleX > 0)
+					{
+						var r = armature.getDisplay().rotation / 180 * Math.PI + bow.global.getRotation();
+					}
+					else
+					{
+						r = armature.getDisplay().rotation / 180 * Math.PI - bow.global.getRotation() + Math.PI;
+					}
+
+					switch(_weaponLevels[_weaponID])
+					{
+						case 0:
+							createArrow(r, resultPoint);
+							break;
+						case 1:
+							createArrow(3 / 180 * Math.PI + r, resultPoint);
+							createArrow(-3 / 180 * Math.PI+ r, resultPoint);
+							break;
+						case 2:
+							createArrow(6 / 180 * Math.PI + r, resultPoint);
+							createArrow(r, resultPoint);
+							createArrow(-6 / 180 * Math.PI + r, resultPoint);
+							break;
+					}
+					break;
+				case "ready":
+					_isAttacking = false;
+					_isComboAttack = true;
+					_hitCount ++;
+					break;
+			}
+		}
+
+		var _arrows = [];
+		function createArrow(r, point)
+		{
+			var image = factory.getTextureDisplay("knightFolder/arrow_1");
+			image.x = point.x;
+			image.y = point.y;
+			image.rotation = r * 180 / Math.PI;
+
+			var vx = Math.cos(r) * 36;
+			var vy = Math.sin(r) * 36;
+			var arrow = { image:image, vx:vx, vy:vy };
+			_arrows.push(arrow);
+			stage.addChild(image);
+		}
+
+		function updateArrows()
+		{
+			var arrow;
+			var length = _arrows.length;
+			for (var i = length - 1; i >= 0; i --)
+			{
+				arrow = _arrows[i];
+				arrow.vy += 1;
+				arrow.image.x += arrow.vx;
+				arrow.image.y += arrow.vy;
+				arrow.image.rotation = Math.atan2(arrow.vy, arrow.vx) * 180 / Math.PI;
+				if (arrow.image.y > 600)
+				{
+					_arrows.splice(i, 1);
+					stage.removeChild(arrow.image);
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>ParticleSystem - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>ParticleSystem</h1>
+        <p>ParticleSystem粒子系统</p>
+    </header>
+    <div id="game-container" style="background:#000"></div>
+    <img src="./images/fire.png" id="texture" style="display:none">
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.addTick(Hilo.Tween);
+            ticker.start();
+
+            var img = document.getElementById("texture");
+            var particleSystem = new Hilo.ParticleSystem({
+                x:0,
+                y:0,
+                emitNum:20,
+                emitTime:1,
+                particle:{
+                    frame:[
+                        [75, 236, 7, 11],
+                        [119, 223, 7, 17],
+                        [90, 223, 22, 17],
+                        [51, 202, 17, 46],
+                        [94, 59, 34, 59],
+                        [60, 160, 34, 42],
+                        [30, 99, 30, 99],
+                        [7, 240, 7, 11],
+                        [119, 206, 7, 17],
+                        [90, 206, 22, 17],
+                        [111, 160, 17, 46],
+                        [60, 59, 34, 59],
+                        [94, 118, 34, 42],
+                        [30, 0, 30, 99],
+                        [68, 236, 7, 11],
+                        [112, 223, 7, 17],
+                        [68, 219, 22, 17],
+                        [94, 160, 17, 46],
+                        [94, 0, 34, 59],
+                        [60, 118, 34, 42],
+                        [0, 99, 30, 99],
+                        [0, 240, 7, 11],
+                        [112, 206, 7, 17],
+                        [68, 202, 22, 17],
+                        [34, 198, 17, 46],
+                        [60, 0, 34, 59],
+                        [0, 198, 34, 42],
+                        [0, 0, 30, 99]
+                    ],
+                    image:img,
+                    life:22,
+                    alphaV:-.01,
+                    vxVar:300,
+                    vyVar:300,
+                    axVar:200,
+                    ayVar:200,
+                    scale:.5,
+                    rotationVar:360,
+                    rotationVVar:4,
+                    pivotX:.5,
+                    pivotY:.5
+                }
+            });
+            stage.addChild(particleSystem);
+            particleSystem.start();
+
+            ticker.addTick({
+                tick:function(){
+                    particleSystem.emitterX = Math.random() * winWidth;
+                    particleSystem.emitterY = Math.random() * winHeight;
+                }
+            })
+        }
+    </script>
+</body>
+</html>

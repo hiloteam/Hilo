@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.4/seed-min.js"></script>
+    <script src="../../../../build/standalone/hilo-standalone.js"></script>
+    <script src='../../../../build/flash/hilo-flash.js' data-auto='true'></script>
+    <script src="../../../../build/dragonbones/dragonbones.js"></script>
+</head>
+<body>
+    <div id="canvasHolder">
+        <canvas id="canvas"></canvas>
+    </div>
+
+	<script type='text/javascript'>
+		KISSY.config({debug:true});
+
+		function init()
+		{
+			HiloInit();
+		}
+
+		var canvas;
+		var stage;
+
+		var skeletonData;
+
+		var texture2x;
+		var texture1x;
+		var texture0_5x;
+		var texture0_3x;
+
+		var textureData2x;
+		var textureData1x;
+		var textureData0_5x;
+		var textureData0_3x;
+		var $;
+
+		KISSY.use("io", function(S, io){
+			$ = io;
+			init();
+		});
+
+		function HiloInit()
+		{
+			canvas = document.getElementById("canvas");
+			stage = new Hilo.Stage({
+				canvas:canvas,
+				width:800,
+				height:600
+			});
+
+			$.getJSON(
+				"assets/warrior/skeleton.json",
+				function(data)
+				{
+					skeletonData = data;
+					dragonBonesInit();
+					loadTexture();
+				}
+			)
+		}
+
+		function loadTexture()
+		{
+			texture2x = new Image();
+			texture2x.onload = function()
+			{
+				$.getJSON(
+					"assets/warrior/texture@2x.json",
+					function(data)
+					{
+						textureData2x = data;
+						buildArmature("warrior2x", texture2x, textureData2x, 2, 150);
+					}
+				);
+			}
+			texture2x.src = "assets/warrior/texture@2x.png";
+
+			texture1x = new Image();
+			texture1x.onload = function()
+			{
+				$.getJSON(
+					"assets/warrior/texture@1x.json",
+					function(data)
+					{
+						textureData1x = data;
+						buildArmature("warrior1x", texture1x, textureData1x, 1, 300);
+					}
+				);
+			}
+			texture1x.src = "assets/warrior/texture@1x.png";
+
+			texture0_5x = new Image();
+			texture0_5x.onload = function()
+			{
+				$.getJSON(
+					"assets/warrior/texture@0.5x.json",
+					function(data)
+					{
+						textureData0_5x = data;
+						buildArmature("warrior0.5x", texture0_5x, textureData0_5x, 0.5, 450);
+					}
+				);
+			}
+			texture0_5x.src = "assets/warrior/texture@0.5x.png";
+
+			texture0_3x = new Image();
+			texture0_3x.onload = function()
+			{
+				$.getJSON(
+					"assets/warrior/texture@0.3x.json",
+					function(data)
+					{
+						textureData0_3x = data;
+						buildArmature("warrior0.3x", texture0_3x, textureData0_3x, 0.3, 600);
+					}
+				);
+			}
+			texture0_3x.src = "assets/warrior/texture@0.3x.png";
+		}
+
+		var factory;
+		var armatures;
+
+		function dragonBonesInit()
+		{
+			factory = new dragonBones.factorys.HiloFactory();
+			factory.addSkeletonData(dragonBones.objects.DataParser.parseSkeletonData(skeletonData), "warriorSkeletonName");
+
+			var ticker = new Hilo.Ticker(60);
+			ticker.addTick(stage);
+			stage.onUpdate = update;
+			ticker.start();
+			canvas.onclick = changeAnimation;
+
+			armatures = [];
+		}
+
+		function buildArmature(textureAtlasName, texture, textureData, scale, x)
+		{
+			factory.addTextureAtlas(new dragonBones.textures.HiloTextureAtlas(texture, textureData, scale), textureAtlasName);
+
+			var armature = factory.buildArmature("warrior", null, "warriorSkeletonName", textureAtlasName);
+			armature.getDisplay().x = x;
+			armature.getDisplay().y = 300;
+
+			dragonBones.animation.WorldClock.clock.add(armature);
+			armatures.push(armature);
+			stage.addChild(armature.getDisplay());
+
+			changeAnimation();
+		}
+
+		function update()
+		{
+			dragonBones.animation.WorldClock.clock.advanceTime(1/60);
+		}
+
+		function changeAnimation()
+		{
+			var armature = armatures[0];
+			if(armature)
+			{
+				do
+				{
+					var animationName = armature.animation.animationNameList[Math.floor(Math.random() * armature.animation.animationNameList.length)];
+				}
+				while (animationName == armature.animation.getLastAnimationName());
+
+				for(var index in armatures)
+				{
+					armature = armatures[index];
+					armature.animation.gotoAndPlay(animationName);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hilo test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mocha.css" />
+    <style>
+        html, body{
+            margin:0px;
+            padding: 0px;
+        }
+        #stage{
+            position: absolute !important;
+            top:0px;
+            left:0px;
+        }
+        canvas{
+            position: absolute;
+            top:0px;
+            left:0px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id='stage'></div>
+    <div id="mocha"></div>
+    <script src="mocha.js"></script>
+    <script src='utils.js'></script>
+    <script src="../../node_modules/should/should.js"></script>
+    <script src="../../build/standalone/hilo-standalone.js"></script>
+    <script src="../../build/flash/hilo-flash.js" data-auto="true"></script>
+    <script>
+    mocha.setup({
+        ui:'bdd',
+        timeout:5000,
+        slow:2000
+    });
+    </script>
+    <script src="../core.js"></script>
+    <script src="../view.js"></script>
+    <script src="../util.js"></script>
+    <script src="../tween.js"></script>
+    <script src="../loader.js"></script>
+    <script src="../geom.js"></script>
+    <script src="../event.js"></script>
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>

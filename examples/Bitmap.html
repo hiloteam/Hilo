@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Bitmap - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>Bitmap</h1>
+        <p>Bitmap是Hilo中最常用的类之一，它表示一个静态位图，对应一个Image或Image的某个矩形区域。</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(20);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //create a bitmap
+            var bmp = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: 75,
+                y: 50
+            }).addTo(stage);
+        }
+    </script>
+</body>
+</html>

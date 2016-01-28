@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>cat</title>
+   	<script src="http://g.tbcdn.cn/kissy/k/1.4.4/seed-min.js"></script>
+    <script src="../../../../build/standalone/hilo-standalone.js"></script>
+    <script src='../../../../build/flash/hilo-flash.js' data-auto='true'></script>
+    <script src="../../../../build/dragonbones/dragonbones.js"></script>
+    <style>
+    	div,body,html{
+    		margin: 0;
+    		padding: 0;
+    	}
+    	body{
+    		background-color: #aaa;
+    	}
+
+    	#container{
+    		background-color: #c40a4b;
+    		height: 300px;
+    	}
+
+    	#game{
+    		width: 700px;
+    		margin:0 auto;
+    	}
+    </style>
+</head>
+<body>
+    <div id="container">
+    	<div id="game"></div>
+    </div>
+	<script type='text/javascript'>
+		KISSY.config({debug:true});
+		var io;
+		KISSY.use("io", function(S, IO){
+			io = IO;
+			init();
+		});
+
+		// $(function(){
+		// 	io = $;
+		// 	init();
+		// })
+
+		function init()
+		{
+			hiloInit();
+		}
+		var Stage = Hilo.Stage;
+		var Container = Hilo.Container;
+		var Bitmap = Hilo.Bitmap;
+		var Ticker = Hilo.Ticker;
+		var Tween = Hilo.Tween;
+		var LoadQueue = Hilo.LoadQueue;
+		var WebSound = Hilo.WebSound;
+
+		var canvas;
+		var stage;
+		var images = {};
+		var gameWidth = 700;
+
+		function hiloInit()
+		{
+			stage = new Stage({
+				container:"game",
+				width:gameWidth,
+				height:300
+			});
+
+			var ticker = new Ticker(60);
+			ticker.addTick(stage);
+			ticker.addTick(Tween);
+			stage.onUpdate = update;
+			ticker.start();
+
+			var audio = WebSound.getAudio({
+	            src: "http://g.tbcdn.cn/tm/khc/1.2.6/mp3/girl.mp3",
+	            loop:true
+	        }).play();
+
+			loadDataArray([
+				{id:"people", path:"./assets/cat"}
+			], function(result){
+				dragonBonesInit(result);
+			})
+
+			var queue = new LoadQueue();
+			var res = [
+				{id:"body", src:"./assets/cat/body.png"},
+				{id:"eye", src:"./assets/cat/eye.png"},
+				{id:"eyeBall", src:"./assets/cat/eye-ball.png"}
+			];
+
+			queue.add(res);
+			queue.on("complete", function(){
+				for(var i = 0;i < res.length;i ++){
+					images[res[i].id] = queue.getContent(res[i].id);
+				}
+				addCat();
+			});
+			queue.start();
+		}
+
+		var factory;
+		var armature;
+		var peopleArr = [];
+		var peopleCfg = [{
+				name:0,
+				x:0,
+				y:0,
+				actions:["stop", "start", "jump"]
+			},{
+				name:1,
+				x:0,
+				y:0,
+				actions:["stop", "start", "jump"]
+			},
+			{
+				name:4,
+				x:0,
+				y:10,
+				actions:["stop", "jump"]
+			},{
+				name:2,
+				x:0,
+				y:25,
+				actions:["stop", "start", "jump"]
+			},{
+				name:3,
+				x:0,
+				y:0,
+				actions:["stop", "start", "jump"]
+			}
+		];
+
+		function addCat(){
+			var cat = window.cc = new Container({
+				y:107,
+				pivotX:300,
+				x:gameWidth * .5
+			});
+			stage.addChildAt(cat, 0);
+
+			var catBody = new Bitmap({
+				image:images.body
+			}).addTo(cat);
+
+
+			var eyeContainer0 = new Container({
+				id:"eyeContainer0",
+				x:80,
+				y:135
+			}).addTo(cat);
+
+			var eye0 = new Bitmap({
+				id:"eye0",
+				image:images.eye
+			}).addTo(eyeContainer0);
+
+			var ballX = 30, ballY = 11, ballToX = 70;
+			var eyeBall0 = new Bitmap({
+				id:"eyeBall0",
+				image:images.eyeBall,
+				x:ballX,
+				y:ballY
+			}).addTo(eyeContainer0);
+
+			var eyeContainer1 = new Container({
+				id:"eyeContainer1",
+				x:375,
+				y:135
+			}).addTo(cat);
+
+			var eye1 = new Bitmap({
+				id:"eye1",
+				image:images.eye
+			}).addTo(eyeContainer1);
+
+			var eyeBall1 = new Bitmap({
+				id:"eyeBall1",
+				image:images.eyeBall,
+				x:ballX,
+				y:ballY
+			}).addTo(eyeContainer1);
+
+			var eyeMask1 = new Bitmap({
+				width:images.eye.width,
+				height:0,
+				background:"#000",
+				y:-2
+			}).addTo(eyeContainer1);
+			eyeMask1.flip = eyeFlip;
+
+			var eyeMask0 = new Bitmap({
+				width:images.eye.width,
+				height:0,
+				background:"#000",
+				y:-2
+			}).addTo(eyeContainer0);
+
+			eyeMask1.flip = eyeFlip;
+			eyeMask0.flip = eyeFlip;
+
+			eyeBall1.move = eyeMove;
+			eyeBall0.move = eyeMove;
+
+			function eyeMove(){
+				var that = this;
+				Tween.to(that, {
+					x:ballToX
+				}, {
+					duration:200,
+					onComplete:function(){
+						Tween.to(that, {
+							x:ballX
+						},{
+							duration:200,
+							delay:1500
+						})
+					}
+				})
+			};
+
+			function eyeFlip(num, first){
+				var that = this;
+				num --;
+
+				Tween.to(this, {
+					height:images.eye.height * .8
+				}, {
+					duration:200,
+					delay:first?1000:0,
+					onComplete:function(){
+						Tween.to(that, {
+							height:0
+						}, {
+							duration:100,
+							onComplete:function(){
+								if(num > 0){
+									that.flip(num)
+								}
+							}
+						})
+					}
+				})
+			};
+
+			var angleV = .05;
+			var angleMax = 1.2;
+			var minRandom = .05;
+			var timeNum = 0;
+
+			cat.onUpdate = function(){
+				var that = this;
+				if(timeNum % 250 == 0){
+					timeNum = 0;
+					eyeMask1.flip(2, true);
+					eyeMask0.flip(2, true);
+
+					eyeBall0.move();
+					eyeBall1.move();
+				}
+				timeNum ++;
+
+				cat.rotation += angleV;
+				if(cat.rotation > angleMax){
+					cat.rotation = angleMax;
+					if(Math.random() < minRandom){
+						angleV *= -1;
+					}
+				}
+				else if(cat.rotation < -angleMax){
+					cat.rotation = -angleMax;
+					if(Math.random() < minRandom){
+						angleV *= -1;
+					}
+				}
+			}
+		}
+
+
+		function dragonBonesInit(result)
+		{
+			window.result = result;
+			var factory = result.people;
+			for(var i = 0;i < peopleCfg.length; i++){
+				var cfg = peopleCfg[i];
+				armature = factory.buildArmature("people" + cfg.name);
+				armature.getDisplay().x = 150 + cfg.x + 80*i;
+				armature.getDisplay().y = 100 + cfg.y;
+
+				dragonBones.animation.WorldClock.clock.add(armature);
+				stage.addChild(armature.getDisplay());
+				peopleArr.push(armature);
+
+				if(cfg.actions.length == 3){
+					armature.animation.gotoAndPlay("start");
+				}
+				else{
+					armature.animation.gotoAndPlay("jump");
+				}
+			}
+		}
+
+		function update()
+		{
+			dragonBones.animation.WorldClock.clock.advanceTime(1/60);
+		}
+
+		function loadData(path, callback){
+			var texture = new Image();
+			var textureData;
+			var skeletonData;
+			texture.onload = function(){
+				io.getJSON(path + "/texture.json", function(data){
+					textureData = data;
+					io.getJSON(path + "/skeleton.json", function(data){
+						skeletonData = data;
+						var factory = new dragonBones.factorys.HiloFactory();
+						factory.addSkeletonData(dragonBones.objects.DataParser.parseSkeletonData(skeletonData));
+						factory.addTextureAtlas(new dragonBones.textures.HiloTextureAtlas(texture, textureData));
+						callback(factory);
+					})
+				})
+			}
+			texture.src = path + "/texture.png";
+		}
+
+		function loadDataArray(arr, callback){
+			var loadNum = 0;
+			var result = {};
+			for(var i = 0;i < arr.length;i ++){
+				var d = arr[i];
+				loadData(arr[i].path, (function(id){
+					return function(d){
+						loadNum ++;
+						result[id] = d;
+						if(loadNum == arr.length){
+							callback(result);
+						}
+					};
+				})(d.id))
+			}
+		}
+	</script>
+</body>
+</html>

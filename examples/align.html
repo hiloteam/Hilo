@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>View.align - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>View.align</h1>
+        <p>View.align可指定可视对象相对于父容器的对齐方式。取值可查看Hilo.align枚举对象。</p>
+    </header>
+    <div id="game-container"></div>
+    <script src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //draw align constants
+            var aligns = Hilo.align;
+            for(var p in aligns){
+                var text = new Hilo.Text({
+                    width: 50,
+                    textAlign: 'center',
+                    background: '#ccc',
+                    font: '24px Arial',
+                    align: aligns[p],
+                    text: aligns[p]
+                }).addTo(stage);
+            }
+        }
+    </script>
+</body>
+</html>

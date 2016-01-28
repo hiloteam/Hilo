@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.4/seed-min.js"></script>
+    <script src="../../../../build/standalone/hilo-standalone.js"></script>
+    <script src='../../../../build/flash/hilo-flash.js' data-auto='true'></script>
+    <script src="../../../../build/dragonbones/dragonbones.js"></script>
+</head>
+<body onLoad="init();">
+    <div id="canvasHolder">
+        <canvas id="canvas"></canvas>
+        <div>点击切换动作</div>
+    </div>
+
+	<script type='text/javascript'>
+		KISSY.config({debug:true});
+
+		function init()
+		{
+			hiloInit();
+		}
+
+		var canvas;
+		var stage;
+
+		var texture;
+		var textureData;
+		var skeletonData;
+
+		function hiloInit()
+		{
+			canvas = document.getElementById("canvas");
+			stage = new Hilo.Stage({
+				canvas:canvas,
+				width:800,
+				height:600
+			});
+
+			texture = new Image();
+			texture.onload = function()
+			{
+				KISSY.use("io", function(S, $){
+					$.getJSON(
+						"assets/robot/texture.json",
+						function(data)
+						{
+							textureData = data;
+							$.getJSON(
+								"assets/robot/skeleton.json",
+								function(data)
+								{
+									skeletonData = data;
+									dragonBonesInit();
+								}
+							)
+						}
+					);
+				});
+			}
+			texture.src = "assets/robot/texture.png";
+		}
+
+		var factory;
+		var armature;
+
+		function dragonBonesInit()
+		{
+			factory = new dragonBones.factorys.HiloFactory();
+			factory.addSkeletonData(dragonBones.objects.DataParser.parseSkeletonData(skeletonData));
+			factory.addTextureAtlas(new dragonBones.textures.HiloTextureAtlas(texture, textureData));
+
+			armature = factory.buildArmature("robot");
+			armature.getDisplay().x = 400;
+			armature.getDisplay().y = 400;
+
+			changeAnimation();
+			dragonBones.animation.WorldClock.clock.add(armature);
+
+			stage.addChild(armature.getDisplay());
+			var ticker = new Hilo.Ticker(60);
+			ticker.addTick(stage);
+			stage.onUpdate = update;
+			ticker.start();
+
+			canvas.onclick = changeAnimation;
+			canvas.ontouchstart = changeAnimation;
+		}
+
+		function update()
+		{
+			dragonBones.animation.WorldClock.clock.advanceTime(1/60);
+		}
+
+		function changeAnimation()
+		{
+			do
+			{
+				var animationName = armature.animation.animationNameList[Math.floor(Math.random() * armature.animation.animationNameList.length)];
+			}
+			while (animationName == armature.animation.getLastAnimationName());
+			armature.animation.gotoAndPlay(animationName);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Tween - Hilo API参考文档</title>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="../../tutorial/index.html">教程文档</a></li>
+        <li><a href="../../examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Tween
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">模块</b> hilo/tween/Tween
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">依赖</b>
+                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">源码</b>
+            <a href="../symbols/src/src_tween_Tween.js.html">Tween.js</a>
+        </span>
+
+        <br>
+        Tween类提供缓动功能。
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">属性概览</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">属性</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#delay">delay</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            缓动延迟时间。单位毫秒。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#duration">duration</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            缓动总时长。单位毫秒。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#ease">ease</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            缓动变化函数。默认为null。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#loop">loop</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            缓动是否循环。默认为false。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#onComplete">onComplete</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            缓动结束回调函数。它接受1个参数：tween。默认值为null。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#onStart">onStart</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            缓动开始回调函数。它接受1个参数：tween。默认值为null。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#onUpdate">onUpdate</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            缓动更新回调函数。它接受2个参数：ratio和tween。默认值为null。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#paused">paused</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            缓动是否暂停。默认为false。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#repeat">repeat</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            缓动重复的次数。默认为0。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#repeatDelay">repeatDelay</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            缓动重复的延迟时长。单位为毫秒。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#reverse">reverse</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            缓动是否反转播放。默认为false。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#target">target</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            缓动目标。只读属性。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#time">time</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            缓动已进行的时长。单位毫秒。只读属性。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('隐藏继承属性');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('显示继承属性');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">方法概览</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">方法</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">Tween</a></b>(target:Object, fromProps:Object, toProps:Object, params:Object)
+                    </div>
+                    <div class="description">构造函数。</div>
+                </td>
+                <td>Tween</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#link">link</a></b>(tween:<a href="../symbols/Tween.html">Tween</a>):Tween
+                        </div>
+                        <div class="description">
+                            
+                            连接下一个Tween变换。其开始时间根据delay值不同而不同。当delay值为字符串且以'+'或'-'开始时，Tween的开始时间从当前变换结束点计算，否则以当前变换起始点计算。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#pause">pause</a></b>():Tween
+                        </div>
+                        <div class="description">
+                            
+                            暂停缓动动画的播放。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#resume">resume</a></b>():Tween
+                        </div>
+                        <div class="description">
+                            
+                            恢复缓动动画的播放。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#seek">seek</a></b>(time:Number, pause:Boolean):Tween
+                        </div>
+                        <div class="description">
+                            
+                            跳转Tween到指定的时间。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#setProps">setProps</a></b>(fromProps:Object, toProps:Object):Tween
+                        </div>
+                        <div class="description">
+                            
+                            设置缓动对象的初始和目标属性。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#start">start</a></b>():Tween
+                        </div>
+                        <div class="description">
+                            
+                            启动缓动动画的播放。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#stop">stop</a></b>():Tween
+                        </div>
+                        <div class="description">
+                            
+                            停止缓动动画的播放。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.tick">tick</a></b>():Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            更新所有Tween实例。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.add">add</a></b>(tween:<a href="../symbols/Tween.html">Tween</a>):Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            添加Tween实例。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.remove">remove</a></b>(tweenOrTarget:<a href="../symbols/Tween.html">Tween</a>|Object|Array):Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            删除Tween实例。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.removeAll">removeAll</a></b>():Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            删除所有Tween实例。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.fromTo">fromTo</a></b>(target:Object|Array, fromProps, toProps, params):Tween|Array
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            创建一个缓动动画，让目标对象从开始属性变换到目标属性。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.to">to</a></b>(target:Object|Array, toProps, params):Tween|Array
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            创建一个缓动动画，让目标对象从当前属性变换到目标属性。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.from">from</a></b>(target:Object|Array, fromProps, params):Tween|Array
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            创建一个缓动动画，让目标对象从指定的起始属性变换到当前属性。
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('隐藏继承方法');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('显示继承方法');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">属性详情</h3>
+    </div>
+    
+        <a class="anchor" name="delay"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>delay</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            缓动延迟时间。单位毫秒。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="duration"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>duration</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            缓动总时长。单位毫秒。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="ease"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>ease</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            缓动变化函数。默认为null。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="loop"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>loop</b><span class="light">:Boolean</span>
+
+        </div>
+        <div class="description">
+            缓动是否循环。默认为false。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="onComplete"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>onComplete</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            缓动结束回调函数。它接受1个参数：tween。默认值为null。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="onStart"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>onStart</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            缓动开始回调函数。它接受1个参数：tween。默认值为null。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="onUpdate"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>onUpdate</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            缓动更新回调函数。它接受2个参数：ratio和tween。默认值为null。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="paused"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>paused</b><span class="light">:Boolean</span>
+
+        </div>
+        <div class="description">
+            缓动是否暂停。默认为false。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="repeat"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>repeat</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            缓动重复的次数。默认为0。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="repeatDelay"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>repeatDelay</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            缓动重复的延迟时长。单位为毫秒。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="reverse"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>reverse</b><span class="light">:Boolean</span>
+
+        </div>
+        <div class="description">
+            缓动是否反转播放。默认为false。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="target"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>target</b><span class="light">:Object</span>
+
+        </div>
+        <div class="description">
+            缓动目标。只读属性。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="time"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>time</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            缓动已进行的时长。单位毫秒。只读属性。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">构造函数</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>Tween</b>(target:Object, fromProps:Object, toProps:Object, params:Object)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object</span> 
+                     — 缓动对象。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fromProps</b>:<span>Object</span> 
+                     — 对象缓动的起始属性集合。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>toProps</b>:<span>Object</span> 
+                     — 对象缓动的目标属性集合。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>params</b>:<span>Object</span> 
+                     — 缓动参数。可包含Tween类所有可写属性。
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">方法详情</h3></div>
+    
+        <a class="anchor" name=".add"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>add</b>(tween:<a href="../symbols/Tween.html">Tween</a>):<span class="light">Object</span>
+        </div>
+        <div class="description">添加Tween实例。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>tween</b>:<span><a href="../symbols/Tween.html">Tween</a></span> 
+                     — 要添加的Tween对象。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Tween。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".from"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>from</b>(target:Object|Array, fromProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
+        </div>
+        <div class="description">创建一个缓动动画，让目标对象从指定的起始属性变换到当前属性。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object|Array</span> 
+                     — 缓动目标对象或缓动目标数组。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fromProps</b>
+                     — 缓动目标对象的目标属性。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>params</b>
+                     — 缓动动画的参数。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a>|Array</span>  — 一个Tween实例对象或Tween实例数组。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".fromTo"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>fromTo</b>(target:Object|Array, fromProps, toProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
+        </div>
+        <div class="description">创建一个缓动动画，让目标对象从开始属性变换到目标属性。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object|Array</span> 
+                     — 缓动目标对象或缓动目标数组。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fromProps</b>
+                     — 缓动目标对象的开始属性。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>toProps</b>
+                     — 缓动目标对象的目标属性。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>params</b>
+                     — 缓动动画的参数。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a>|Array</span>  — 一个Tween实例对象或Tween实例数组。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="link"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>link</b>(tween:<a href="../symbols/Tween.html">Tween</a>):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">连接下一个Tween变换。其开始时间根据delay值不同而不同。当delay值为字符串且以'+'或'-'开始时，Tween的开始时间从当前变换结束点计算，否则以当前变换起始点计算。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>tween</b>:<span><a href="../symbols/Tween.html">Tween</a></span> 
+                     — 要连接的Tween变换。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Tween变换本身。可用于链式调用。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="pause"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>pause</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">暂停缓动动画的播放。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Tween变换本身。可用于链式调用。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".remove"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>remove</b>(tweenOrTarget:<a href="../symbols/Tween.html">Tween</a>|Object|Array):<span class="light">Object</span>
+        </div>
+        <div class="description">删除Tween实例。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>tweenOrTarget</b>:<span><a href="../symbols/Tween.html">Tween</a>|Object|Array</span> 
+                     — 要删除的Tween对象或target对象或要删除的一组对象。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Tween。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".removeAll"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>removeAll</b>():<span class="light">Object</span>
+        </div>
+        <div class="description">删除所有Tween实例。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Tween。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="resume"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>resume</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">恢复缓动动画的播放。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Tween变换本身。可用于链式调用。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="seek"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>seek</b>(time:Number, pause:Boolean):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">跳转Tween到指定的时间。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>time</b>:<span>Number</span> 
+                     — 指定要跳转的时间。取值范围为：0 - duraion。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>pause</b>:<span>Boolean</span> 
+                     — 是否暂停。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Tween变换本身。可用于链式调用。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setProps"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setProps</b>(fromProps:Object, toProps:Object):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">设置缓动对象的初始和目标属性。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fromProps</b>:<span>Object</span> 
+                     — 缓动对象的初始属性。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>toProps</b>:<span>Object</span> 
+                     — 缓动对象的目标属性。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Tween变换本身。可用于链式调用。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="start"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>start</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">启动缓动动画的播放。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Tween变换本身。可用于链式调用。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="stop"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>stop</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">停止缓动动画的播放。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Tween变换本身。可用于链式调用。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".tick"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>tick</b>():<span class="light">Object</span>
+        </div>
+        <div class="description">更新所有Tween实例。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Tween。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".to"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>to</b>(target:Object|Array, toProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
+        </div>
+        <div class="description">创建一个缓动动画，让目标对象从当前属性变换到目标属性。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object|Array</span> 
+                     — 缓动目标对象或缓动目标数组。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>toProps</b>
+                     — 缓动目标对象的目标属性。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>params</b>
+                     — 缓动动画的参数。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a>|Array</span>  — 一个Tween实例对象或Tween实例数组。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

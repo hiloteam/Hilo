@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset={+IO.encoding+}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{! Link.base = ""; /* all generated links will be relative to this */ !}
+<title>Hilo API参考文档</title>
+<meta name="generator" content="JsDoc Toolkit"/>
+<link href="../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+{+include("static/header.html").replace(/%link.base%/g, Link.base)+}
+<div class="container main">
+  <div class="col-md-3">
+    {+publish.classesIndex+}
+  </div>
+
+  <div class="col-md-9">
+    <div class="hilo-header">全部类概览<span class="small">(v{+ JSDOC.opt.D.ver +})</span></div>
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th><h3>类</h3></th>
+          <th><h3>说明</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+
+      <for each="thisClass" in="data">
+      {!
+        if (thisClass.alias != "_global_"){
+          output += "<tr><td><h4>";
+          output += new Link().toSymbol(thisClass.alias);
+          output += "</h4></td><td>";
+          output += resolveLinks(summarize(thisClass.classDesc));
+          output += "</td></tr>";
+        }
+      !}
+      </for>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{+ include("static/footer.html") +}
+
+<script src="../js/jquery.min.js"></script>
+<script src="../bootstrap3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>

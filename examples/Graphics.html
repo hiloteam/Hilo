@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Graphics - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>Graphics</h1>
+        <p>Graphics类包含一组可方便创建各种矢量图形的方法。</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(20);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //rect
+            var g1 = new Hilo.Graphics({width:100, height:100, x:40, y:20});
+            g1.lineStyle(1, "#009898").beginFill("#0ff").drawRect(0.5, 0.5, 99, 99).endFill().addTo(stage);
+
+            //round rect
+            var g2 = new Hilo.Graphics({width:100, height:100, x:180, y:20});
+            g2.lineStyle(10, "#009898").beginFill("#0ff").drawRoundRect(5, 5, 90, 90, 20).endFill().addTo(stage);
+
+            //circle with radial gradient fill
+            var g3 = new Hilo.Graphics({width:100, height:100, x:40, y:150});
+            g3.lineStyle(2, "#009898").beginRadialGradientFill(50, 50, 0, 50, 50, 50, ["#fff", "#4ffcfc"], [0, 1]).drawCircle(2, 2, 48).endFill().addTo(stage);
+
+            //ellipse
+            var g4 = window.g4 = new Hilo.Graphics({width:100, height:60, x:180, y:170});
+            g4.lineStyle(5, "#009898").beginFill("#0ff").drawEllipse(5, 5, 90, 50).endFill().addTo(stage);
+
+            //rect with linear gradient
+            var g5 = new Hilo.Graphics({width:70, height:90, x:55, y:290});
+            g5.lineStyle(2, "#009898").beginLinearGradientFill(0, 0, 60, 0, ["#fff", "#4ffcfc"], [0.3, 1]).drawRect(2, 2, 66, 86).endFill().addTo(stage);
+
+            //svg path
+            var svgPath = "M53 84 C53 84 51 84 51 84 C51 89 53 94 56 94 C64 94 71 89 71 84 C71 72 64 64 56 64 C42 64 31 72 31 84 C31 100 42 114 56 114 C75 114 91 100 91 84 C91 61 75 44 56 44 C31 44 11 61 11 84 C11 111 31 134 56 134 C86 134 111 111 111 84 C111 50 86 24 56 24";
+            var g6 = new Hilo.Graphics({width:120, height:150, x:170, y:250});
+            g6.lineStyle(4, "#02d1d1").drawSVGPath(svgPath).closePath().endFill().addTo(stage);
+        }
+    </script>
+</body>
+</html>

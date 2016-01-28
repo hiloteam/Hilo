@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Camera - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        #game-container{
+            border:solid 1px #000;
+            width: 800px;
+            height: 600px;
+            margin: 20px auto;
+        }
+    </style>
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>Camera</h1>
+        <p>Camera摄像机，鼠标点击切换摄像机跟随对象</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            var Tween = Hilo.Tween;
+            var Camera = Hilo.Camera;
+            stageWidth = 800;
+            stageHeight = 600;
+            gameContainer.style.height = stageHeight + 'px';
+            var mapScale = 1.5;
+            var mapWidth = 1440*mapScale;
+            var mapHeight = 900*mapScale;
+
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //设置deadzone区域
+            var dw = 250, dh = 150;
+            var deadzone = [dw, dh, stageWidth - dw * 2, stageHeight - dh * 2];
+
+            //新建摄像机，设置边界，deadzone
+            var camera = new Camera({
+                width:stageWidth,
+                height:stageHeight,
+                bounds:[0, 0, mapWidth - stageWidth, mapHeight - stageHeight],
+                deadzone:deadzone
+            });
+
+            //创建地图
+            var map = new Hilo.Container().addTo(stage);
+            var bg = window.bg = new Hilo.Bitmap({
+                 image: 'images/map.jpg',
+                 scaleX:mapScale,
+                 scaleY:mapScale
+            }).addTo(map);
+
+
+            //创建一只鱼
+            var fishSpeed = 2;
+            var fish0 = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: 0,
+                y: 300,
+                scaleX:.7,
+                scaleY:.7,
+                pivotX:87,
+                pivotY:63,
+                onUpdate:function(){
+                    this.x +=this.speed;
+                    if(this.x > mapWidth || this.x < 0){
+                        this.speed *= -1;
+                        this.scaleX *= -1;
+                    }
+                }
+            }).addTo(map);
+            fish0.speed = fishSpeed;
+
+            //摄像机跟谁鱼
+            camera.follow(fish0);
+
+
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.addTick(camera);
+            ticker.addTick(Tween);
+
+            //map跟随摄像机滚动
+            ticker.addTick({
+                tick:function(){
+                    map.x = - camera.scroll.x;
+                    map.y = - camera.scroll.y;
+                }
+            });
+
+            //start stage ticker
+            ticker.start();
+
+
+            var fish1 = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: 400,
+                y: 300,
+                scaleX:.7,
+                scaleY:.7,
+                pivotX:87,
+                pivotY:63,
+                rotation:90,
+                onUpdate:function(){
+                    this.y +=this.speed;
+                    if(this.y > mapHeight || this.y < 0){
+                        this.speed *= -1;
+                        this.scaleX *= -1;
+                    }
+                }
+            }).addTo(map);
+            fish1.speed = fishSpeed;
+
+            //显示deadzone区域
+            stage.addChild(new Hilo.View({
+                x:camera.deadzone[0],
+                y:camera.deadzone[1],
+                width:camera.deadzone[2],
+                height:camera.deadzone[3],
+                background:"rgba(255, 0, 0, .3)"
+            }));
+
+            //切换摄像机跟随对象
+            var tween;
+            document.body.onclick = function(){
+                var target = camera.target == fish1?fish0:fish1;
+                var pos = {
+                    x:camera.target.x,
+                    y:camera.target.y
+                };
+                Tween.remove(tween);
+                tween = Tween.to(pos,{
+                    x:target.x,
+                    y:target.y
+                },{
+                    duration:1000,
+                    onComplete:function(){
+                        camera.follow(target, deadzone);
+                    }
+                })
+                camera.follow(pos, null);
+            }
+        }
+    </script>
+</body>
+</html>

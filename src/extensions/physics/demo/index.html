@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <style>
+        #container{
+            margin:0 auto;
+            border:1px solid #000;
+            width: 1100px;
+            height: 400px;
+            position: relative;
+        }
+
+        .info{
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <script src="../../../../build/standalone/hilo-standalone.js"></script>
+    <script src="../../../../build/physics/physics.min.js"></script>
+    <div id="container"></div>
+    <div class="info">移动鼠标到billd上 哈哈哈哈</div>
+    <script>
+        var img = new Image();
+        img.onload = init;
+        img.src = "./img/billd_mc.png";
+
+        var gameWidth = 550;
+        var gameHeight = 400;
+        var stage = new Hilo.Stage({
+            width:gameWidth*2,
+            height:gameHeight,
+            container:"container"
+        });
+        stage.enableDOMEvent("mousemove");
+
+        var ticker = new Hilo.Ticker(60);
+        ticker.start();
+
+        var world = new Hilo.Physics({
+            x:0,
+            y:300
+        });
+        world.createBounds(gameWidth, gameHeight);
+
+        var debugView = new Hilo.PhysicsDebugView({
+            x:gameWidth,
+            y:0,
+            alpha:.3,
+            world:world,
+            showShapes:true,
+            showConstraints:true
+        });
+        var debugText = new Hilo.Text({
+            text:"debug view",
+            x:gameWidth,
+            y:10,
+            width:gameWidth,
+            textAlign:"center",
+            font:"20px arial",
+            color:"#f00"
+        }).addTo(stage);
+
+        ticker.addTick(stage);
+        ticker.addTick(world);
+
+        function init(){
+            var num = 3;
+            while(num --){
+                var billd = createBilld(gameWidth*Math.random(), gameHeight*Math.random()*.7);
+                world.bindView(billd, {
+                    type:Hilo.Physics.SHAPE_CIRCLE
+                });
+                stage.addChild(billd);
+            }
+
+            createCar(400, 250);
+            createCar(130, 250);
+
+            var poly = new Hilo.Graphics({
+                y:gameHeight - 20,
+                x:0,
+                boundsArea:[
+                    {x:gameWidth*.4, y:-25},
+                    {x:0, y:0},
+                    {x:gameWidth*.8, y:0},
+                ]
+            });
+            poly.beginFill("#f69", 1).beginPath().moveTo(0, 0).lineTo(gameWidth*.4, -25).lineTo(gameWidth*.8, 0).endFill();
+            world.bindView(poly, {
+                type:Hilo.Physics.SHAPE_POLYGEN
+            });
+            stage.addChild(poly);
+
+            stage.addChild(debugView);
+        }
+
+        function createCar(carX, carY){
+            var billdLeft = createBilld(-50 + carX, 50 + carY);
+            world.bindView(billdLeft, {
+                type:Hilo.Physics.SHAPE_CIRCLE
+            });
+            stage.addChild(billdLeft);
+
+            var billdRight = window.rr = createBilld(50 + carX, 50 + carY);
+            world.bindView(billdRight, {
+                type:Hilo.Physics.SHAPE_CIRCLE
+            });
+            stage.addChild(billdRight);
+
+            var carBody = new Hilo.View({
+                width:120,
+                height:30,
+                x: carX,
+                y: carY,
+                background:"#0f0",
+                alpha:.5
+            });
+            world.bindView(carBody, {
+                type:Hilo.Physics.SHAPE_RECT
+            });
+            stage.addChild(carBody);
+
+            var grooveLeft = world.addConstraint(new cp.GrooveJoint(carBody.body, billdLeft.body, cp.v(-50, 25), cp.v(-50, 50), cp.v(0, 0)));
+            var grooveRight = world.addConstraint(new cp.GrooveJoint(carBody.body, billdRight.body, cp.v(50, 25), cp.v(50, 50), cp.v(0, 0)));
+            var springLeft = world.addConstraint(new cp.DampedSpring(carBody.body, billdRight.body, cp.v( 50, 15), cp.v(0, 0), 80, 30, 10));
+            var springRight = world.addConstraint(new cp.DampedSpring(carBody.body, billdLeft.body, cp.v(-50, 15), cp.v(0, 0), 80, 30, 10));
+
+            var motor = world.addConstraint(new cp.SimpleMotor(billdLeft.body, billdRight.body, Math.PI*2));
+
+            grooveRight.hideDebugView = true;
+            motor.hideDebugView = true;
+        }
+
+        function createBilld(x, y){
+            var anims = "stand3,stand2,stand1,run2,run1,swim,play1,play2,play3,down,jump2,attack".split(",");
+            var scaleV = 1.5;
+            var scale = Math.random() * 1+.5;
+            var billd = new Hilo.Sprite({
+                alpha:.8,
+                x:x,
+                y:y,
+                scaleX:scale,
+                scaleY:scale,
+                pivotX:11,
+                pivotY:11,
+                frames:Hilo.TextureAtlas.createSpriteFrames([
+                    ["stand3", "0-5", img, 22, 22, true, 12/scaleV],
+                    ["stand2", "6-11", img, 22, 22, true, 12/scaleV],
+                    ["stand1", "12-19", img, 22, 22, true, 12/scaleV],
+                    ["run2", "20-23", img, 22, 22, true, 8/scaleV],
+                    ["run1", "24-29", img, 22, 22, true, 12/scaleV],
+                    ["swim", "30-35 ", img, 22, 22, true, 12/scaleV],
+                    ["play1", "40-54", img, 22, 22, true, 12/scaleV],
+                    ["play2", "55-59", img, 22, 22, true, 12/scaleV],
+                    ["play3", "88-93", img, 22, 22, true, 12/scaleV],
+                    ["down", "94-95", img, 22, 22, true, 12/scaleV],
+                    ["jump2", "60-70", img, 22, 22, true, 16/scaleV],
+                    ["jump1", "71-77", img, 22, 22, true, 12/scaleV],
+                    ["attack", "80-87", img, 22, 22, true, 12/scaleV]
+                ])
+            });
+            billd.goto(anims[Math.floor(Math.random()*anims.length)]);
+            billd.on("mouseover", function(e){
+                this.applyImpulse({x:0,y:-400});
+            });
+            return billd;
+        }
+
+
+    </script>
+</body>
+</html>

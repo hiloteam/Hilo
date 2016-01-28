@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>MouseEvent - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>MouseEvent</h1>
+        <p>目前支持mousemove, mouseup, mousedown, mouseover, mouseout, 支持事件冒泡</p>
+        <p>可以通过e.eventTarget和e.eventCurrentTarget获得触发鼠标事件的对象</p>
+        <p>建议使用Hilo.event.POINTER_START, Hilo.event.POINTER_MOVE, Hilo.event.POINTER_END，它在pc上对应mousemove, mouseup, mousedonw, 在手机上对应touchstart, touchmove, touchend</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            window.stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(20);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //enable dom events
+            stage.enableDOMEvent([Hilo.event.POINTER_START, Hilo.event.POINTER_MOVE, Hilo.event.POINTER_END]);
+
+            var container = new Hilo.Container({
+                width:winWidth,
+                height:winHeight,
+                background:"#f00",
+                x:150,
+                y:50,
+                rotation:30
+            }).addTo(stage);
+
+            //blue button
+            var blueBtn = new Hilo.Button({
+                id: 'blueBtn',
+                image: 'images/btn.png',
+                width: 64,
+                height: 64,
+                upState: {rect:[0, 0, 64, 64]},
+                overState: {rect:[64, 0, 64, 64]},
+                downState: {rect:[128, 0, 64, 64]},
+                disabledState: {rect:[192, 0, 64, 64]},
+                x: 60,
+                y: 50
+            }).addTo(container);
+
+            //green button
+            var greenBtn = new Hilo.Button({
+                id: 'greenBtn',
+                image: 'images/btn.png',
+                width: 64,
+                height: 64,
+                upState: {rect:[0, 64, 64, 64]},
+                overState: {rect:[64, 64, 64, 64]},
+                downState: {rect:[128, 64, 64, 64]},
+                disabledState: {rect:[192, 64, 64, 64]},
+                x: 190,
+                y: 50
+            }).addTo(stage);
+
+            container.on(Hilo.event.POINTER_START, function(e){
+                console.log("container", "down", e.eventTarget.id, e.eventCurrentTarget.id);
+            });
+
+            container.on("mouseout", function(e){
+                console.log("container", "out", e.eventTarget.id, e.eventCurrentTarget.id)
+                container.background = "#ff0"
+            });
+
+            container.on("mouseover", function(e){
+                console.log("container", "over", e.eventTarget.id, e.eventCurrentTarget.id);
+                container.background = "#f00";
+            });
+
+            container.on(Hilo.event.POINTER_MOVE, function(){
+                // console.log("container", "move")
+            });
+
+            blueBtn.on("mouseover", function(e){
+                console.log("blueBtn", "over", e.eventTarget.id, e.eventCurrentTarget.id);
+            });
+
+            var isStop = false;
+            blueBtn.on(Hilo.event.POINTER_START, function(e){
+                console.log("blueBtn", "down", e.eventTarget.id, e.eventCurrentTarget.id);
+                isStop && e.stopPropagation();
+                console.log("blueBtn", "isStopPropagation", isStop);
+                isStop = !isStop;
+            });
+        }
+    </script>
+</body>
+</html>

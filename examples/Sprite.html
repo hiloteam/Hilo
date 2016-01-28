@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Sprite - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <img src="images/fish.png" alt="" id="fish" style="display:none">
+</head>
+<body onload="init();">
+    <header>
+        <h1>Sprite</h1>
+        <p>Sprite是动画精灵类。它可以基于时间或帧。</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //init texture atlas
+            var atlas = new Hilo.TextureAtlas({
+                image: 'images/fish.png',
+                width: 174,
+                height: 1512,
+                frames: {
+                    frameWidth: 174,
+                    frameHeight: 126,
+                    numFrames: 12
+                },
+                sprites: {
+                    fish: {from:0, to:7}
+                }
+            });
+
+            //create a fish sprite
+            var fish = new Hilo.Sprite({
+                frames: atlas.getSprite('fish'),
+                x: 0,
+                y: 100,
+                interval: 6,
+                timeBased: false,
+                loop: true,
+                onUpdate: function(){
+                    if(this.x > stage.width - this.pivotX){
+                        this.x = 0;
+                    }else{
+                        this.x += 3;
+                    }
+                }
+            }).addTo(stage);
+
+            //use TextureAtlas.createSpriteFrames, create a fish sprite
+            var fish = new Hilo.Sprite({
+                frames: Hilo.TextureAtlas.createSpriteFrames("swim", "0-7", document.getElementById("fish"), 174, 126, true),
+                x: 0,
+                y: 200,
+                alpha:0.5,
+                interval: 6,
+                timeBased: false,
+                loop: true,
+                onEnterFrame: function(frameIndex){
+                    if(this.x > stage.width - this.pivotX){
+                        this.x = 0;
+                    }else{
+                        this.x += 3;
+                    }
+                }
+            }).addTo(stage);
+    }
+    </script>
+</body>
+</html>

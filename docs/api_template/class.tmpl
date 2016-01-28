@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset={+IO.encoding+}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+{! Link.base = "../"; /* all generated links will be relative to this */ !}
+<title>{+data.alias+} - Hilo API参考文档</title>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+{+include("static/header.html").replace(/%link.base%/g, Link.base)+}
+<div class="container main">
+    <div class="col-md-3">
+        {+publish.classesIndex+}
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        {!
+        var classType = "";
+
+        if (data.isBuiltin()) {
+            classType += "Built-In ";
+        }
+
+        if (data.isNamespace) {
+            if (data.is('FUNCTION')) {
+                classType += "Function ";
+            }
+            if(data.isStatic){
+                classType += "Static Class ";
+            }else{
+                classType += "Namespace ";
+            }
+        }
+        else {
+            classType += "Class ";
+        }
+    !}
+    {+data.alias+}{+data.type+}
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        <if test="data.version"><br />Version
+            {+ data.version +}.<br />
+        </if>
+
+        {!
+            var borrowedMembers = data.properties.filter(function($){
+                return $.memberOf != data.alias
+            });
+
+            var contributers = [];
+            borrowedMembers.map(function($){
+                if(contributers.indexOf($.memberOf) < 0) contributers.push($.memberOf);
+            });
+        !}
+        <if test="contributers.length">
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">继承</b> {+data.alias+}
+                {+
+                    contributers.map(
+                        function($) { return ' <i class="glyphicon glyphicon-arrow-right"></i> ' + new Link().toSymbol($); }
+                    ).join(" ")
+                +}
+            </span>
+        </if>
+
+        {! var module = data.comment.getTag("module"); !}
+        <if test="module.length">
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">模块</b> {+ module +}
+            </span>
+        </if>
+
+        <if test="data.requires.length">
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">依赖</b>
+                {+ data.requires.map(function(item){
+                        var clazz = item.match(/\/?(\w+)$/)[1];
+                        return '<span>' + new Link().toSymbol(clazz).withText(item) + '</span>';
+                    }).join(", ")
+                +}
+            </span>
+        </if>
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">源码</b>
+            {+new Link().toSrc(data.srcFile)+}
+        </span>
+
+        <br>
+        {+resolveLinks(data.classDesc)+}
+        <if test="data.desc">
+            <br><br>{+resolveLinks(summarize(data.desc))+}
+        </if>
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    <if test="data.properties.length">
+        {!
+            var allProperties = data.properties.sort(function(a, b){
+                var isOwn1 = a.memberOf == data.alias;
+                var isOwn2 = b.memberOf == data.alias;
+                if(isOwn1 && !isOwn2) return -1;
+                else if(!isOwn1 && isOwn2) return 1;
+                if(a.isStatic) return 1;
+                else if(b.isStatic) return -1;
+                a = a['name'].toLowerCase();
+                b = b['name'].toLowerCase();
+                return a > b ? 1 : a < b ? -1 : 0;
+            });
+            var ownProperties = data.properties.filter(function($){return $.memberOf == data.alias && !$.isNamespace}).sort(makeSortby("name"));
+            var borrowedMembers = data.properties.filter(function($) {return $.memberOf != data.alias});
+        !}
+        <if test="allProperties.length">
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">属性概览</h3>
+            <if test="borrowedMembers.length">
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleProperties()"><i class="glyphicon glyphicon-circle-arrow-right" id="propToggleIcon"></i><span id="propToggleTip">显示继承属性</span></a>
+            </if>
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">属性</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            <for each="member" in="allProperties">
+                {!
+                    var isBorrowed = borrowedMembers.indexOf(member) != -1;
+                !}
+                <tr {+ isBorrowed ? "class='inheritProp' style='display:none;'" : "" +}>
+                    <td>
+                        {+ isBorrowed ? '<i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>' : '' +}
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- <if test="member.isStatic && member.memberOf != '_global_'">
+                                {+member.memberOf+}.
+                            </if> -->
+                            <b>{+new Link().toSymbol(member.alias).withText(member.name)+}</b><if test="member.type.length">:{+ member.type +}</if>
+                        </div>
+                        <div class="description">
+                            {!
+                                if (member.isStatic) output += '<span class="label">static</span> ';
+                                if (member.isConstant) output += '<span class="label">constant</span> ';
+                            !}
+                            {+resolveLinks(summarize(member.desc))+}
+                        </div>
+                    </td>
+                    <td>
+                        {!
+                            output += isBorrowed ? new Link().toSymbol(member.memberOf) : member.memberOf
+                        !}
+                    </td>
+                </tr>
+            </for>
+            </tbody>
+        </table>
+        </if>
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('隐藏继承属性');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('显示继承属性');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    </if>
+
+    <!-- ============================== methods summary ======================== -->
+    <if test="data.methods.length">
+        {!
+            var allMethods = data.methods.sort(function(a, b){
+                var isOwn1 = a.memberOf == data.alias;
+                var isOwn2 = b.memberOf == data.alias;
+                if(isOwn1 && !isOwn2) return -1;
+                else if(!isOwn1 && isOwn2) return 1;
+                if(a.isStatic) return 1;
+                else if(b.isStatic) return -1;
+                a = a['name'].toLowerCase();
+                b = b['name'].toLowerCase();
+                return a > b ? 1 : a < b ? -1 : 0;
+            });
+            var ownMethods = data.methods.filter(function($){return $.memberOf == data.alias  && !$.isNamespace}).sort(makeSortby("name"));
+            var borrowedMethods = data.methods.filter(function($) {return $.memberOf != data.alias});
+        !}
+        <if test="allMethods.length">
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">方法概览</h3>
+            <if test="borrowedMethods.length">
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleMethods()"><i class="glyphicon glyphicon-circle-arrow-right" id="methodToggleIcon"></i><span id="methodToggleTip">显示继承方法</span></a>
+            </if>
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">方法</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            <if test="!data.isStatic">
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">{+data.alias+}</a></b><if test="classType != 'Namespace '">{+ makeSignature2(data.params) +}</if>
+                    </div>
+                    <div class="description">构造函数。</div>
+                </td>
+                <td>{+ data.alias +}</td>
+            </tr>
+            </if>
+
+            <for each="member" in="allMethods">
+                {!
+                    var isBorrowed = borrowedMethods.indexOf(member) != -1;
+                !}
+                <tr {+ isBorrowed ? "class='inheritMethod' style='display:none;'" : "" +}>
+                    <td>
+                        {+ isBorrowed ? '<i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>' : '' +}
+                    </td>
+                    <td class="fixedFont">
+                        <div><b>{+new Link().toSymbol(member.alias).withText(member.name.replace(/\^\d+$/, ''))+}</b>{+makeSignature2(member.params)+}<if test="member.returns[0]">:{+ member.returns[0] ? member.returns[0].type : '' +}</if>
+                        </div>
+                        <div class="description">
+                            {!
+                                if(member.isStatic || data.isStatic) output += '<span class="label">static</span> ';
+                            !}
+                            {+resolveLinks(summarize(member.desc))+}
+                        </div>
+                    </td>
+                    <td>
+                        {!
+                            output += isBorrowed ? new Link().toSymbol(member.memberOf) : member.memberOf
+                        !}
+                    </td>
+                </tr>
+            </for>
+            </tbody>
+        </table>
+        </if>
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('隐藏继承方法');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('显示继承方法');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    </if>
+
+    <!-- ============================== field details ========================== -->
+    <if test="defined(ownProperties) && ownProperties.length">
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">属性详情</h3>
+    </div>
+    <for each="member" in="ownProperties">
+        <a class="anchor" name="{+Link.symbolNameToLinkName(member)+}"> </a>
+        <div class="member-box">
+        <div class="member-header">{!
+            if (member.isStatic || data.isStatic) output += '[Static] ';
+        !}
+        <b>{+member.name+}</b><if test="member.type"><span class="light">:{+new Link().toSymbol(member.type)+}</span></if>
+
+        </div>
+        <div class="description">
+            {+resolveLinks(member.desc)+}
+        </div>
+
+        <if test="member.example.length">
+            <for each="example" in="member.example">
+            <pre class="code">{+example+}</pre>
+            </for>
+        </if>
+
+        <if test="member.deprecated">
+            <dl class="detailList">
+            <dt class="heading">废弃:</dt>
+            <dt>
+                {+ resolveLinks(member.deprecated) +}
+            </dt>
+            </dl>
+        </if>
+        <if test="member.since">
+            <dl class="detailList">
+            <dt class="heading">始于:</dt>
+                <dd>{+ member.since +}</dd>
+            </dl>
+        </if>
+        <if test="member.see.length">
+            <dl class="detailList">
+            <dt class="heading">查看相关:</dt>
+            <for each="item" in="member.see">
+            <dd>{+ new Link().toSymbol(item) +}</dd>
+            </for>
+            </dl>
+        </if>
+        <if test="member.defaultValue">
+            <dl class="detailList">
+                <dd>
+                    <b>默认值:</b>
+                    <span>{+resolveLinks(member.defaultValue)+}</span>
+                </dd>
+            </dl>
+        </if>
+
+        </div>
+    </for>
+    </if>
+
+    <!-- ============================== constructor details ==================== -->
+    <if test="!data.isStatic && !data.isBuiltin() && (data.isNamespace || data.is('CONSTRUCTOR'))">
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">构造函数</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>{+ data.alias +}</b><if test="classType != 'Namespace '">{+ makeSignature2(data.params) +}</if>
+        </div>
+
+        <if test="data.params.length">
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            <for each="item" in="data.params">
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>{+item.name+}</b>{+((item.type)?""+(":<span>"+(new Link().toSymbol(item.type)+"</span> ")) : "")+}
+                    <if test="item.isOptional"><i>Optional<if test="item.defaultValue">, Default: {+item.defaultValue+}</if></i></if> — {+resolveLinks(item.desc)+}
+                </dt>
+            </for>
+            </dl>
+        </if>
+        </div>
+    </div>
+    </if>
+
+    <!-- ============================== method details ========================= -->
+    <if test="defined(ownMethods) && ownMethods.length">
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">方法详情</h3></div>
+    <for each="member" in="ownMethods">
+        <a class="anchor" name="{+Link.symbolNameToLinkName(member)+}"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        {!
+            if (member.isStatic || data.isStatic) output += '[Static] ';
+        !}
+        <b>{+member.name.replace(/\^\d+$/, '')+}</b>{+makeSignature2(member.params)+}<if test="member.type">:<span class="light">{+new Link().toSymbol(member.type)+}</span></if>
+        </div>
+        <div class="description">{+resolveLinks(member.desc)+}</div>
+
+        <if test="member.example.length">
+            <for each="example" in="member.example">
+            <pre class="code">{+example+}</pre>
+            </for>
+        </if>
+
+        <if test="member.params.length">
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            <for each="item" in="member.params">
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>{+item.name+}</b>{+((item.type)?":<span>"+(new Link().toSymbol(item.type))+"</span> " : "")+}
+                    <if test="item.isOptional"><i>Optional<if test="item.defaultValue">, Default: {+item.defaultValue+}</if></i></if> — {+resolveLinks(item.desc)+}
+                </dt>
+            </for>
+            </dl>
+        </if>
+        <if test="member.deprecated">
+            <dl class="detailList">
+            <dt class="heading">废弃</dt>
+            <dt>
+                {+ resolveLinks(member.deprecated) +}
+            </dt>
+            </dl>
+        </if>
+        <if test="member.since">
+            <dl class="detailList">
+            <dt class="heading">始于</dt>
+                <dd>{+ member.since +}</dd>
+            </dl>
+            </dl>
+        </if>
+        <if test="member.exceptions.length">
+            <dl class="detailList">
+            <dt class="heading">异常</dt>
+            <for each="item" in="member.exceptions">
+                <dt>
+                    {+((item.type)?"<span class=\"light\">{"+(new Link().toSymbol(item.type))+"}</span> " : "")+} <b>{+item.name+}</b>
+                </dt>
+                <dd>{+resolveLinks(item.desc)+}</dd>
+            </for>
+            </dl>
+        </if>
+        <if test="member.returns.length">
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            <for each="item" in="member.returns">
+                <dd style="margin-left:20px;font-weight:normal;">{+((item.type)?"<span>"+(new Link().toSymbol(item.type))+"</span> " : "")+} — {+resolveLinks(item.desc)+}</dd>
+            </for>
+            </dl>
+        </if>
+        <if test="member.requires.length">
+            <dl class="detailList">
+            <dt class="heading">需求</dt>
+            <for each="item" in="member.requires">
+                <dd>{+ resolveLinks(item) +}</dd>
+            </for>
+            </dl>
+        </if>
+        <if test="member.see.length">
+            <dl class="detailList">
+            <dt class="heading">相关</dt>
+            <for each="item" in="member.see">
+                <dd>{+ new Link().toSymbol(item) +}</dd>
+            </for>
+            </dl>
+        </if>
+
+        </div>
+    </for>
+    </if>
+
+    </div>
+
+</div>
+
+{+ include("static/footer.html") +}
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

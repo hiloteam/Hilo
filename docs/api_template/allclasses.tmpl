@@ -1,0 +1,25 @@
+{! 
+    var classes = data.sort(function(a, b){
+        var value1 = a.comment.getTag('module');
+        var value2 = b.comment.getTag('module');
+        return value1 < value2 ? -1 : value1 > value2 ? 1 : 0;
+    }).filter(function(clazz){
+        return clazz.alias != '_global_';
+    });
+    var currentPackage, newPackage = false;
+!}
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    <for each="thisClass" in="classes">
+    {!
+        var pkg = thisClass.comment.getTag('module').toString().match(/\/(\w+)\//)[1];
+        newPackage = currentPackage !== pkg;
+        currentPackage = pkg;
+    !}
+    <if test="newPackage"><li class="nav-pkg">{+ currentPackage +}<span></span></li></if>
+    <li class="nav-class">{! output += new Link().toClass(thisClass.alias);!}</li>
+    </for>
+  </ul>
+</div>

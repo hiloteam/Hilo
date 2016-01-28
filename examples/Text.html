@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Text - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>Text</h1>
+        <p>Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(20);
+            ticker.addTick(stage);
+            ticker.start();
+
+            var font = "14px arial";
+            var content = "Hello World! Hilo是一款HTML5 2D游戏引擎，欢迎使用。";
+
+            //text view
+            var text = new Hilo.Text({
+                font: font,
+                text: content,
+                lineSpacing: 0,
+                width: 250,
+                height: 100,
+                x: 40,
+                y: 50
+            }).addTo(stage);
+
+            //text wrapped in dom element
+            var elem = new Hilo.DOMElement({
+                element: Hilo.createElement('div', {
+                    innerHTML: content,
+                    style: {
+                        position: 'absolute',
+                        font: font
+                    }
+                }),
+                width: 250,
+                height: 100,
+                x: 40,
+                y: 150,
+            }).addTo(stage);
+        }
+    </script>
+</body>
+</html>

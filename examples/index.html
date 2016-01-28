@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hilo examples</title>
+    <style>
+        body,ul,li{
+            margin:0px;
+            padding:0px;
+        }
+
+        #exampleList{
+            list-style: none;
+            background: #aaa;
+            width:150px;
+            margin: 10px;
+        }
+
+        #exampleList li{
+            font-size: 16px;
+            line-height: 30px;
+            height: 30px;
+            margin: 1px 1px;
+            background: #999;
+            cursor: pointer;
+            text-align: center;
+            color: #fff;
+        }
+
+        #exampleList .active{
+            background: #3a383e;
+        }
+
+        #exampleFrame{
+            position: absolute;
+            right:10px;
+            top:10px;
+            border:2px solid #333;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul id='exampleList'></ul>
+        <iframe  id='exampleFrame' name='exampleFrame' frameborder="0"></iframe>
+    </div>
+    <script>
+        var listElem = document.getElementById('exampleList');
+        var iframeElem = document.getElementById('exampleFrame');
+        var examples = [
+                'Bitmap',
+                'Sprite',
+                'Graphics',
+                'MouseEvent',
+                'Button',
+                'BitmapText',
+                'LoadQueue',
+                'Text',
+                'Tween',
+                'WebSound',
+                'drag',
+                'Camera',
+                'Camera3d',
+                'Background',
+                'align',
+                'DOMElement',
+                'ParticleSystem',
+                ['physics','../src/extensions/physics/demo/index'],
+                ['dragonbones','../src/extensions/dragonbones/demo/cat']
+        ];
+
+        function getExampleName(name){
+            if(Object.prototype.toString.call(name) === '[object Array]'){
+                return name[0];
+            }
+            else{
+                return name;
+            }
+        }
+
+        function getExamplePath(name){
+            if(Object.prototype.toString.call(name) === '[object Array]'){
+                return name[1] + '.html';
+            }
+            else{
+                return name + '.html';
+            }
+        }
+
+        var examplesDict = {};
+        examples.forEach(function(originName, i){
+            var name = getExampleName(originName);
+            var elem = document.createElement('li');
+            examplesDict[name] = {
+                elem:elem,
+                originName:originName
+            };
+            elem.innerHTML = name;
+            listElem.appendChild(elem);
+            elem.onclick = function(){
+                setDemo(originName);
+            };
+        });
+
+        iframeElem.width = innerWidth - 220;
+        iframeElem.height = innerHeight - 20;
+
+        var hashName = location.hash.slice(1);
+        var currentName = '';
+        function setDemo(originName){
+            var name = getExampleName(originName);
+            var path = getExamplePath(originName);
+            if(name !== currentName){
+                location.hash = name;
+                iframeElem.src = path + location.search;
+                if(examplesDict[currentName]){
+                    examplesDict[currentName].elem.className = '';
+                }
+                examplesDict[name].elem.className = 'active';
+                currentName = name;
+            }
+        }
+
+        setDemo(examplesDict[hashName]?examplesDict[hashName].originName:examples[0]);
+
+        window.onkeydown = function(e){
+            var index = examples.indexOf(examplesDict[currentName].originName);
+            switch(e.keyCode){
+                case 38://up
+                case 87://w
+                    index --;
+                    break;
+                case 40://down
+                case 83://s
+                    index ++;
+                    break;
+            }
+            if(index < 0){
+                index = examples.length - 1;
+            }
+            else if(index > examples.length - 1){
+                index = 0;
+            }
+
+            setDemo(examples[index]);
+        };
+
+    </script>
+</body>
+</html>

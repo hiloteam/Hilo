@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>DOMElement - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>DOMElement</h1>
+        <p>DOM元素的View封装。让DOM元素像View一样方便操作，如对象管理、tween变换、事件响应等等。</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.addTick(Hilo.Tween);
+            ticker.start();
+
+            //enable dom events
+            stage.enableDOMEvent(Hilo.event.POINTER_START, true);
+
+            //static bitmap
+            var bmp = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: 75,
+                y: 20
+            }).addTo(stage);
+
+            //dom element
+            var blueRect = new Hilo.DOMElement({
+                id: 'blueRect',
+                element: Hilo.createElement('div', {
+                    style: {
+                        backgroundColor: '#004eff',
+                        position: 'absolute'
+                    }
+                }),
+                width: 100,
+                height: 100,
+                x: 50,
+                y: 70
+            }).addTo(stage);
+
+            //dom element
+            var yellowRect = new Hilo.DOMElement({
+                id: 'yellowRect',
+                element: Hilo.createElement('div', {
+                    style: {
+                        backgroundColor: '#ff0',
+                        position: 'absolute'
+                    }
+                }),
+                width: 100,
+                height: 100,
+                x: 80,
+                y: 100
+            }).addTo(stage);
+
+            //dom element
+            var redRect = new Hilo.DOMElement({
+                id: 'redRect',
+                element: Hilo.createElement('div', {
+                    style: {
+                        backgroundColor: '#f00',
+                        position: 'absolute',
+                    }
+                }),
+                width: 100,
+                height: 100,
+                x: 110,
+                y: 130
+            }).addTo(stage);
+
+            //make redRect move
+            Hilo.Tween.to(redRect, {x:220}, {time:500, loop:true, reverse:true});
+
+            //bind events
+            stage.on(Hilo.event.POINTER_START, function(e){
+                if(e.eventTarget){
+                    console.log(e.eventTarget, e.stageX, e.stageY);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

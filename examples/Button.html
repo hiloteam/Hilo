@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Button - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>Button</h1>
+        <p>Button类表示简单按钮类。它有up、over、down和disabled等四种状态。</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(20);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //enable dom events
+            stage.enableDOMEvent([Hilo.event.POINTER_START, Hilo.event.POINTER_MOVE, Hilo.event.POINTER_END]);
+
+            //blue button
+            var blueBtn = new Hilo.Button({
+                id: 'blueBtn',
+                image: 'images/btn.png',
+                width: 64,
+                height: 64,
+                upState: {rect:[0, 0, 64, 64]},
+                overState: {rect:[64, 0, 64, 64]},
+                downState: {rect:[128, 0, 64, 64]},
+                disabledState: {rect:[192, 0, 64, 64]},
+                x: 60,
+                y: 50
+            }).addTo(stage);
+
+            //green button
+            var greenBtn = new Hilo.Button({
+                id: 'greenBtn',
+                image: 'images/btn.png',
+                width: 64,
+                height: 64,
+                upState: {rect:[0, 64, 64, 64]},
+                overState: {rect:[64, 64, 64, 64]},
+                downState: {rect:[128, 64, 64, 64]},
+                disabledState: {rect:[192, 64, 64, 64]},
+                x: 190,
+                y: 50
+            }).addTo(stage);
+
+            //bind pointer events
+            blueBtn.on(Hilo.event.POINTER_START, function(e){
+                console.log(e.type, this);
+            }).on(Hilo.event.POINTER_END, function(e){
+                console.log(e.type, this);
+            });
+
+            greenBtn.on(Hilo.event.POINTER_START, function(e){
+                console.log(e.type, this);
+            }).on(Hilo.event.POINTER_END, function(e){
+                console.log(e.type, this);
+            });
+        }
+    </script>
+</body>
+</html>

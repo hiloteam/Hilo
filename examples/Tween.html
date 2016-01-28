@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Tween - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <style type="text/css">
+    body{
+        /*background-color: #000;*/
+    }
+    #game-container{
+      line-height: 0;
+      /*-webkit-tranform: translateZ(0);*/
+    }
+    .box{
+        position: relative;
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border: 1px solid #fff;
+        background-color: blue;
+    }
+    </style>
+</head>
+<body onload="init();">
+    <header>
+        <h1>Tween</h1>
+        <p>Tween类提供缓动动画功能，使用Tween和Ease函数库可创建各种各样丰富的缓动动画。</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        var Ticker = Hilo.Ticker;
+        var Tween = Hilo.Tween;
+        var Ease = Hilo.Ease;
+        var boxes = [];
+        function init(){
+            //start ticker
+            var ticker = new Ticker(60);
+            ticker.addTick(Tween);
+            ticker.start();
+
+            var total = 200;
+            for(var i = 0; i < total; i++){
+                var box = document.createElement('div');
+                box.id = 'box' + i;
+                box.className = 'box';
+                gameContainer.appendChild(box);
+                boxes[i] = box;
+            }
+            boxes.reverse();
+
+            setTimeout(runStagger, 100);
+        }
+
+        function runStagger(){
+            Tween.to(boxes, {y:100}, {
+                duration: 2000,
+                stagger: 20,
+                ease: Ease.Elastic.EaseIn,
+                onUpdate: onUpdate
+            });
+
+            window.tweens = Tween._tweens.slice();
+        }
+
+        function runLink(){
+            var box1 = boxes[0], box2 = boxes[1];
+
+            Tween.to(box1, {y:100}, {
+                duration: 1000,
+                onUpdate: onUpdate
+            }).link(Tween.to(box2, {y:100}, {
+                duration: 1000,
+                delay: '+1000',
+                onUpdate: onUpdate
+            }));
+
+            window.tweens = Tween._tweens.slice();
+        }
+
+        function onUpdate(ratio, tween){
+            tween.target.style.webkitTransform = 'translate(0,' + tween.target.y + 'px)';
+        }
+    </script>
+</body>
+</html>

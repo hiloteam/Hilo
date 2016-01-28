@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>WebSound - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <script type="text/javascript" src="../src/util/debug.js"></script>
+    <style type="text/css">
+        .wrapper{
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .wrapper div:nth-child(n+2){
+            margin-top: 20px;
+        }
+        .btn{
+            display: inline-block;
+            padding: 10px 10px;
+            margin-right: 10px;
+            background-color: #f00;
+            text-decoration: none;
+            color: #fff;
+        }
+        .control{
+            background-color: #fa0;
+        }
+        .disabled{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WebSound</h1>
+        <p>WebSound提供在浏览器中播放音频的方法。目前支持WebAudio和HTMLAudio两种方式播放音频。</p>
+    </header>
+    <div class="wrapper">
+        <div>
+            <a id="enableBtn" class="btn" href="javascript:void(0);">激活WebAudio，5秒后自动播放</a>
+        </div>
+
+        <div>
+            <a class="sound btn" data-sound="sounds/bomb.mp3" href="javascript:void(0);">爆炸音效</a>
+            <a class="sound btn" data-sound="sounds/menu.mp3" href="javascript:void(0);">背景音乐</a>
+        </div>
+
+        <div>
+            <a class="sound btn" data-sound="http://g.tbcdn.cn/mtb/app-618h5/1.0.8/images/mole_die.mp3" href="javascript:void(0);">远程音效</a>
+        </div>
+
+        <div>
+            <a id="pauseBtn" class="control btn" href="javascript:void(0);">暂停</a>
+            <a id="resumeBtn" class="control btn" href="javascript:void(0);">恢复</a>
+            <a id="stopBtn" class="control btn" href="javascript:void(0);">停止</a>
+            <a id="muteBtn" data-mute="0" class="control btn" href="javascript:void(0);">静音</a>
+        </div>
+
+        <div>
+            <label>音量：</label> <input id="volume" type="range" value="100">
+        </div>
+    </div>
+    <script type="text/javascript">
+        var event = Hilo.event.POINTER_START;
+        var autoPlaySound = false;
+        var audio = null;
+
+        var stage = new Hilo.Stage({
+            container:document.body,
+            width:1,
+            height:1
+        });
+
+        var aElems = document.getElementsByTagName("a");
+        var soundElems = [];
+        for(var i = 0;i < aElems.length;i ++){
+            if(aElems[i].className.indexOf("sound") > -1){
+                soundElems.push(aElems[i]);
+            }
+        }
+
+        document.getElementById("enableBtn").onclick = function(){
+            Hilo.WebSound.enableAudio();
+            this.className = 'btn disabled';
+            autoPlaySound = true;
+        };
+
+        //auto play sound after 5s if `WebAudio` is enabled
+        setTimeout(function(){
+            if(!autoPlaySound) return;
+            audio = Hilo.WebSound.getAudio({
+                src: soundElems[1].getAttribute('data-sound')
+            }).play();
+        }, 5000);
+
+        //play different sounds
+        for(var i = 0; i < soundElems.length; i++){
+            var soundElem = soundElems[i];
+            soundElem.onclick = function(e){
+                audio = Hilo.WebSound.getAudio({
+                    src: this.getAttribute('data-sound'),
+                    loop: false
+                }).play();
+            };
+        }
+
+        //control sound: pause, resume, stop, setMute, setVolume
+        document.getElementById('pauseBtn').onclick = function(e){
+            audio && audio.pause();
+        };
+
+        document.getElementById('resumeBtn').onclick = function(e){
+            audio && audio.resume();
+        };
+
+        document.getElementById('stopBtn').onclick = function(e){
+            audio && audio.stop();
+        };
+
+        document.getElementById('muteBtn').onclick = function(e){
+            var muted = parseInt(this.getAttribute('data-mute')) == 0;
+            this.setAttribute('data-mute', muted ? 1 : 0);
+            document.getElementById('volume').value = muted ? 0 : 100;
+            audio && audio.setMute(muted);
+        };
+
+        document.getElementById('volume').onchange = function(e){
+            var volume = this.value * 0.01;
+            audio && audio.setVolume(volume);
+        };
+    </script>
+</body>
+</html>

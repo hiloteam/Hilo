@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>joints</title>
+    <style>
+        #container{
+            margin:0 auto;
+            border:1px solid #000;
+            width: 640px;
+            height: 480px;
+            position: relative;
+            cursor:pointer;
+        }
+        .info{
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <script src="../../../../build/standalone/hilo-standalone.js"></script>
+    <script src="../chipmunk.js"></script>
+    <script src="../physics.js"></script>
+    <div id="container"></div>
+    <div class="info">用鼠标拖拽关节查看</div>
+
+    <script>
+        var v = cp.v;
+        var gameWidth = 640;
+        var gameHeight = 480;
+        var stage = new Hilo.Stage({
+            width:gameWidth,
+            height:gameHeight,
+            container:"container"
+        });
+        stage.enableDOMEvent(["mousemove","mousedown","mouseup"]);
+
+        var ticker = new Hilo.Ticker(60);
+        ticker.start();
+
+        var world = new Hilo.Physics({
+            x:0,
+            y:500
+        },{
+            iterations:10,
+            sleepTimeThreshold:0.5
+        });
+        world.createBounds(gameWidth, gameHeight);
+
+        var debugView = new Hilo.PhysicsDebugView({
+            alpha:.4,
+            world:world,
+            showShapes:true,
+            showConstraints:true
+        });
+
+        ticker.addTick(stage);
+        ticker.addTick(world);
+
+        init();
+        function init(){
+            var addBall = function(pos, rotation)
+            {
+                var radius = 15;
+                var mass = 1;
+                var pos = v.add(pos, boxOffset);
+
+                var view = new Hilo.View({
+                    alpha:1,
+                    x:pos.x,
+                    y:pos.y,
+                    rotation:rotation||0,
+                    width:radius*2,
+                    height:radius*2
+                });
+
+                world.bindView(view, {
+                    type:Hilo.Physics.SHAPE_CIRCLE,
+                    mass:mass,
+                    friction:0.7,
+                    restitution:0,
+                    radius:radius
+                });
+
+                stage.addChild(view);
+
+                return view;
+            };
+
+            var addLever = function(pos)
+            {
+                var mass = 1;
+                var a = v(0,  -15);
+                var b = v(0, 15);
+
+                var body = world.space.addBody(new cp.Body(mass, cp.momentForSegment(mass, a, b)));
+                body.setPos(v.add(pos, v.add(boxOffset, v(0, 15))));
+
+                var shape = world.space.addShape(new cp.SegmentShape(body, a, b, 5));
+                shape.setElasticity(0);
+                shape.setFriction(0.7);
+
+                return body;
+            };
+
+            var addBar = function(pos)
+            {
+                var mass = 2;
+                var a = v(0,  30);
+                var b = v(0, -30);
+
+                var body = world.space.addBody(new cp.Body(mass, cp.momentForSegment(mass, a, b)));
+                body.setPos(v.add(pos, boxOffset));
+
+                var shape = world.space.addShape(new cp.SegmentShape(body, a, b, 5));
+                shape.setElasticity(0);
+                shape.setFriction(0.7);
+
+                return body;
+            };
+
+            var addWheel = function(pos)
+            {
+                var radius = 15;
+                var mass = 1;
+                pos = v.add(pos, boxOffset)
+                var view = new Hilo.View({
+                    x:pos.x,
+                    y:pos.y
+                });
+
+                world.bindView(view, {
+                    type:Hilo.Physics.SHAPE_CIRCLE,
+                    radius:radius,
+                    elasticity:0,
+                    friction:0.7
+                });
+
+                view.shape.group = 1;
+                return view;
+            };
+
+            var addChassis = function(pos)
+            {
+                var mass = 5;
+                var width = 80;
+                var height = 30;
+                pos = v.add(pos, boxOffset);
+                var view = new Hilo.View({
+                    x:pos.x,
+                    y:pos.y
+                });
+
+                world.bindView(view, {
+                    type:Hilo.Physics.SHAPE_RECT,
+                    width:width,
+                    height:height,
+                    elasticity:0,
+                    friction:0.7
+                });
+
+                view.shape.group = 1;
+                return view;
+            };
+
+            var staticBody = world.staticBody;
+            var shape;
+
+            var NOT_GRABABLE_MASK = 1;
+            for(var y = 480; y >= 0; y -= 120) {
+                shape = world.space.addShape(new cp.SegmentShape(staticBody, v(0,y), v(640,y), 0));
+                shape.setElasticity(1);
+                shape.setFriction(1);
+                shape.layers = NOT_GRABABLE_MASK;
+            }
+
+            for(var x = 0; x <= 640; x += 160) {
+                shape = world.space.addShape(new cp.SegmentShape(staticBody, v(x,0), v(x,480), 0));
+                shape.setElasticity(1);
+                shape.setFriction(1);
+                shape.layers = NOT_GRABABLE_MASK;
+            }
+
+            var posA = v( 50, 60);
+            var posB = v(110, 60);
+
+            var POS_A = function() { return v.add(boxOffset, posA); };
+            var POS_B = function() { return v.add(boxOffset, posB); };
+
+            var label = function(text) {
+                var textView = new Hilo.Text({
+                    text:text,
+                    x:boxOffset.x,
+                    y:boxOffset.y + 5,
+                    width:160,
+                    textAlign:"center"
+                });
+                stage.addChild(textView);
+            };
+
+            // Pin Joints - Link shapes with a solid bar or pin.
+            // Keeps the anchor points the same distance apart from when the joint was created.
+            boxOffset = v(0, 0);
+            label('Pin Joint');
+            view1 = addBall(posA);
+            view2 = addBall(posB, 180);
+            world.addConstraint(new cp.PinJoint(view1.body, view2.body, v(15,0), v(15,0)));
+
+            // Slide Joints - Like pin joints but with a min/max distance.
+            // Can be used for a cheap approximation of a rope.
+            boxOffset = v(160, 0);
+            label('Slide Joint');
+            view1 = addBall(posA);
+            view2 = addBall(posB);
+            view2.setRotation(180);
+            world.addConstraint(new cp.SlideJoint(view1.body, view2.body, v(15,0), v(15,0), 20, 40));
+
+            // Pivot Joints - Holds the two anchor points together. Like a swivel.
+            boxOffset = v(320, 0);
+            label('Pivot Joint');
+            view1 = addBall(posA);
+            view2 = addBall(posB);
+            view2.setRotation(180);
+            // cp.PivotJoint(a, b, v) takes it's anchor parameter in world coordinates. The anchors are calculated from that
+            // Alternately, specify two anchor points using cp.PivotJoint(a, b, anch1, anch2)
+            world.addConstraint(new cp.PivotJoint(view1.body, view2.body, v.add(boxOffset, v(80,60))));
+
+            // Groove Joints - Like a pivot joint, but one of the anchors is a line segment that the pivot can slide in
+            boxOffset = v(480, 0);
+            label('Groove Joint');
+            view1 = addBall(posA);
+            view2 = addBall(posB);
+            world.addConstraint(new cp.GrooveJoint(view1.body, view2.body, v(30,30), v(30,-30), v(-30,0)));
+
+            // Damped Springs
+            boxOffset = v(0, 120);
+            label('Damped Spring');
+            view1 = addBall(posA);
+            view2 = addBall(posB);
+            view2.setRotation(180);
+            world.addConstraint(new cp.DampedSpring(view1.body, view2.body, v(15,0), v(15,0), 20, 5, 0.3));
+
+            // Damped Rotary Springs
+            boxOffset = v(160, 120);
+            label('Damped Rotary Spring');
+            view1 = addBar(posA);
+            view2 = addBar(posB);
+            // Add some pin joints to hold the circles in place.
+            world.addConstraint(new cp.PivotJoint(view1, staticBody, POS_A()));
+            world.addConstraint(new cp.PivotJoint(view2, staticBody, POS_B()));
+            world.addConstraint(new cp.DampedRotarySpring(view1, view2, 0, 3000, 60));
+
+            // Rotary Limit Joint
+            boxOffset = v(320, 120);
+            label('Rotary Limit Joint');
+            view1 = addLever(posA);
+            view2 = addLever(posB);
+            // Add some pin joints to hold the circles in place.
+            world.addConstraint(new cp.PivotJoint(view1, staticBody, POS_A()));
+            world.addConstraint(new cp.PivotJoint(view2, staticBody, POS_B()));
+            // Hold their rotation within 90 degrees of each other.
+            world.addConstraint(new cp.RotaryLimitJoint(view1, view2, -Math.PI/2, Math.PI/2));
+
+            // Ratchet Joint - A rotary ratchet, like a socket wrench
+            boxOffset = v(480, 120);
+            label('Ratchet Joint');
+            view1 = addLever(posA);
+            view2 = addLever(posB);
+            // Add some pin joints to hold the circles in place.
+            world.addConstraint(new cp.PivotJoint(view1, staticBody, POS_A()));
+            world.addConstraint(new cp.PivotJoint(view2, staticBody, POS_B()));
+            // Ratchet every 90 degrees
+            world.addConstraint(new cp.RatchetJoint(view1, view2, 0, Math.PI/2));
+
+            // Gear Joint - Maintain a specific angular velocity ratio
+            boxOffset = v(0, 240);
+            label('Gear Joint');
+            view1 = addBar(posA);
+            view2 = addBar(posB);
+            // Add some pin joints to hold the circles in place.
+            world.addConstraint(new cp.PivotJoint(view1, staticBody, POS_A()));
+            world.addConstraint(new cp.PivotJoint(view2, staticBody, POS_B()));
+            // Force one to sping 2x as fast as the other
+            world.addConstraint(new cp.GearJoint(view1, view2, 0, 2));
+
+            // Simple Motor - Maintain a specific angular relative velocity
+            boxOffset = v(160, 240);
+            label('Simple Motor');
+            view1 = addBar(posA);
+            view2 = addBar(posB);
+            // Add some pin joints to hold the circles in place.
+            world.addConstraint(new cp.PivotJoint(view1, staticBody, POS_A()));
+            world.addConstraint(new cp.PivotJoint(view2, staticBody, POS_B()));
+            // Make them spin at 1/2 revolution per second in relation to each other.
+            world.addConstraint(new cp.SimpleMotor(view1, view2, Math.PI));
+
+            // Make a car with some nice soft suspension
+            boxOffset = v(320, 240);
+            var wheel1 = addWheel(posA);
+            var wheel2 = addWheel(posB);
+            var chassis = addChassis(v(80, 30));
+
+            world.addConstraint(new cp.GrooveJoint(chassis.body, wheel1.body, v(-30, 10), v(-30, 40), v(0,0)));
+            world.addConstraint(new cp.GrooveJoint(chassis.body, wheel2.body, v( 30, 10), v( 30, 40), v(0,0)));
+
+            world.addConstraint(new cp.DampedSpring(chassis.body, wheel1.body, v(-30, 0), v(0,0), 50, 20, 10));
+            world.addConstraint(new cp.DampedSpring(chassis.body, wheel2.body, v( 30, 0), v(0,0), 50, 20, 10));
+            stage.addChild(debugView);
+
+            initMouseJoint();
+        }
+
+        function initMouseJoint(){
+            var mouseJoint, mouse = v(0, 0);
+            var mouseBody = new cp.Body(Infinity, Infinity);
+
+            var moveMouse = function(e){
+                mouse.x = e.stageX;
+                mouse.y = e.stageY;
+                var newPoint = v.lerp(mouseBody.p, mouse, 0.25);
+                mouseBody.v = v.mult(v.sub(newPoint, mouseBody.p), 60);
+                mouseBody.p = newPoint;
+            }
+            stage.on("mousedown", function(e){
+                moveMouse(e);
+                var point = v(e.stageX, e.stageY);
+                var shape = world.space.pointQueryFirst(point, 1, cp.NO_GROUP);
+                if(shape){
+                    var body = shape.body;
+                    mouseJoint = new cp.PivotJoint(mouseBody, body, v(0,0), body.world2Local(point));
+
+                    mouseJoint.maxForce = 50000;
+                    mouseJoint.errorBias = Math.pow(1 - 0.15, 60);
+                    world.addConstraint(mouseJoint);
+                }
+            });
+
+            stage.on("mousemove", function(e){
+                moveMouse(e);
+            });
+
+            stage.on("mouseup", function(e){
+                moveMouse(e);
+                if(mouseJoint) {
+                    world.removeConstraint(mouseJoint);
+                    mouseJoint = null;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

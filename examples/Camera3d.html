@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+<title>Camera - Hilo Example</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+    #game-container{
+        border:solid 1px #000;
+        width: 800px;
+        height: 600px;
+        margin: 20px auto;
+    }
+    #button-container{
+        position: absolute;
+        left: 50%;
+        top: 20px;
+        width: 800px;
+        height: 600px;
+        margin-left: -400px;
+    }
+    button, input, label {
+        position: absolute;
+    }
+    #x_angle {
+        left: 20px;
+        bottom: 60px;
+    }
+    #y_angle {
+        left: 20px;
+        bottom: 40px;
+    }
+    #z_angle {
+        left: 20px;
+        bottom: 20px;
+    }
+    #x_angle_range {
+        left: 70px;
+        bottom: 60px;
+    }
+    #y_angle_range {
+        left: 70px;
+        bottom: 40px;
+    }
+    #z_angle_range {
+        left: 70px;
+        bottom: 20px;
+    }
+    #start {
+        left: 20px;
+        bottom: 0;
+    }
+    #zoomin {
+        left: 70px;
+        bottom: 0;
+    }
+    #reset {
+        left: 120px;
+        bottom: 0;
+    }
+    #fv {
+        left: 20px;
+        bottom: -30px;
+    }
+    #fv_range {
+        left: 160px;
+        bottom: -30px;
+    }
+</style>
+<script type="text/javascript" src="../build/standalone/hilo-standalone.js"></script>
+<script type="text/javascript" src="../build/flash/hilo-flash.js" data-auto="true"></script>
+<script type="text/javascript" src="../src/util/debug.js"></script>
+</head>
+<body onload="init();">
+<header>
+    <h1>Camera3d</h1>
+    <p>Camera3d摄像机，提供基础的伪3D视觉效果</p>
+</header>
+
+<div id="game-container"></div>
+
+<div id="button-container">
+
+    <label id="x_angle">X旋转</label><input id="x_angle_range" type="range">
+    <label id="y_angle">Y旋转</label><input id="y_angle_range" type="range">
+    <label id="z_angle">Z旋转</label><input id="z_angle_range" type="range">
+
+    <button id="start">旋转动画</button>
+
+    <button id="zoomin">Zoomin</button>
+
+    <button id="reset">复位</button>
+
+    <label id="fv">透射距离(200-600)</label><input id="fv_range" type="range">
+</div>
+
+<script type="text/javascript">
+var Tween = Hilo.Tween;
+var Ease = Hilo.Ease;
+
+function init(){
+
+    var degree = Math.PI/180;
+    var winWidth = 800;
+    var winHeight = 600;
+    var radius = 200;
+    var mapScale = 1.5;
+    var mapWidth = 1440*mapScale;
+    var mapHeight = 900*mapScale;
+    var gameContainer = document.getElementById("game-container");
+
+    //init stage
+    var stage = new Hilo.Stage({
+        container: gameContainer,
+        width: winWidth,
+        height: winHeight
+    });
+
+    var camera = new Hilo.Camera3d({
+        fv : winWidth/2,
+        fx : winWidth/2,
+        fy : winHeight/2,
+        stage : stage
+    });
+
+    var angle = 360 / 8;
+    var view3d_list = [];
+
+    for(var i = 0; i < 8; i++) {
+        var offset_angle = degree * (angle * i),
+            x_3d = Math.sin(offset_angle) * radius,
+            y_3d = Math.cos(offset_angle) * radius;
+
+        var view = new Hilo.Bitmap({
+            image: 'images/tmallIcon.jpg',
+            x: 0,
+            y: 0,
+            scaleX: 0.1,
+            scaleY: 0.1,
+            pivotX: 43,
+            pivotY: 50,
+            onUpdate:function(){
+                var vector2d = camera.project(this.vector3d, this);
+            }
+        }).addTo(stage);
+
+        view.vector3d = {
+            x : x_3d,
+            y : y_3d,
+            z : 0
+        };
+
+        view3d_list.push(view);
+    }
+
+    //切换摄像机跟随对象
+    global_slowdown = false;
+    rotateZ_velocity = -360/1400;
+    accelaretion_angle = 0;
+
+    document.getElementById('fv_range').onchange = function(){
+        camera.fv = 200 + 2 * this.value;
+    }
+    document.getElementById('x_angle_range').onchange = function(){
+        camera.rotateX(3.6 * this.value);
+    }
+    document.getElementById('y_angle_range').onchange = function(){
+        camera.rotateY(3.6 * this.value);
+    }
+    document.getElementById('z_angle_range').onchange = function(){
+        camera.rotateZ(3.6 * this.value);
+    }
+
+    document.getElementById('start').onclick = function(){
+        var me = this,
+            index = Math.floor(Math.random(8)),
+            rotationZ_start = camera.rotationZ,
+            rotationZ_end = index * angle - 180 + 360 * ( Math.floor(rotationZ_start / 360) - 1), //angle * index
+            decrease_time = (rotationZ_end - rotationZ_start) * 2 / rotateZ_velocity,
+            accelaretion_angle = rotateZ_velocity / decrease_time,
+            animation = {
+                x : camera.rotationX,
+                z : rotationZ_start
+            };
+
+        Tween.to(animation, {
+            z : rotationZ_end
+        }, {
+            duration:5000,
+            ease:Ease.Quad.EaseOut,
+            onUpdate: function(){
+                camera.rotateZ(animation.z);
+            },
+            onComplete: function(){
+                // ticker.stop();
+            }
+        });
+
+        Tween.to(animation, {
+            // y : 20,
+            x : 105
+        }, {
+            duration:1000,
+            onUpdate: function(){
+                camera.rotateX(animation.x);
+            }
+        });
+        // ticker.start();
+    }
+    document.getElementById('zoomin').onclick = function(){
+        var animation = {
+                tz : 0,
+            };
+        Tween.to(animation, {
+            tz : 100
+        }, {
+            duration:500,
+            onUpdate: function(){
+                // camera.z = animation.z;
+                camera.translate(0,0, animation.tz);
+            },
+            onComplete: function(){
+                // ticker.stop();
+            }
+        });
+        // ticker.start(true);
+    }
+    document.getElementById('reset').onclick = function(){
+        var rotation_z = camera.rotationZ,
+            rotationZ_start = rotation_z % 360 - 360 * (rotation_z % 360 <= -180 ? 0 : 1),
+            animation = {
+                tz : camera.tz,
+                rotationX : camera.rotationX,
+                rotationZ : rotationZ_start
+            };
+
+        Tween.to(animation, {
+            tz : 0,
+            rotationX : 0,
+            rotationZ : 0
+        }, {
+            duration:1500,
+            onUpdate: function(){
+                // camera.z = animation.z;
+                camera.translate(0,0, animation.tz);
+                camera.rotateX(animation.rotationX);
+                camera.rotateZ(animation.rotationZ);
+            },
+            onComplete: function(){
+                // ticker.stop();
+            }
+        });
+        // ticker.start(true);
+    }
+
+    var ticker = new Hilo.Ticker(60);
+
+    ticker.addTick(stage);
+    // ticker.addTick(camera);
+    ticker.addTick(Tween);
+    // add camera to auto sortZ 3d views
+    ticker.addTick(camera);
+    //start stage ticker
+    ticker.start(true);
+}
+
+</script>
+
+</body>
+</html>
