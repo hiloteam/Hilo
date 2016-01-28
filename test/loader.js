@@ -45,7 +45,7 @@ describe('loader', function(){
             var onLoad = scriptLoader.onLoad;
             timeoutId = setTimeout(function(){
                 done(new Error('onLoad not work'));
-            }, 500);
+            }, 2000);
 
             scriptLoader.onLoad = function(data){
                 !isDone && done();

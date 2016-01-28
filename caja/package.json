@@ -1,7 +1,0 @@
-{
-  "name": "caja-adapt",
-  "version": "1.0.0",
-  "devDependencies": {
-    "mustache": "*"
-  }
-}

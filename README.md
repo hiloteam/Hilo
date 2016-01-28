@@ -27,8 +27,8 @@ Built by gulp:
 
 ### Project Generator for games
 
-* run `npm install yeoman`
-* run `npm install generator-hilo`
+* run `npm install -g yo`
+* run `npm install -g generator-hilo`
 * run `yo hilo` to create a project to continue your fascinating game development
 
 ### API Documentation
@@ -36,28 +36,28 @@ Built by gulp:
 Get started by reading [docs/api/index.html](http://hiloteam.github.io/api/index.html)
 
 ### API Samples
- * [Index](examples/index.html)
+ * [Index.html](http://hiloteam.github.io/Hilo/examples/index.html)
  * Visual Objects (View)
-    * [Bitmap](examples/Bitmap.html)
-    * [Sprite](examples/Sprite.html)
-    * [Graphics](examples/Graphics.html)
-    * [DOM element](examples/DOMElement.html)
-    * [Button](examples/Button.html)
-    * [Background](examples/Background.html)
-    * [Canvas Text](examples/Text.html)
+    * [Bitmap](http://hiloteam.github.io/Hilo/examples/Bitmap.html)
+    * [Sprite](http://hiloteam.github.io/Hilo/examples/Sprite.html)
+    * [Graphics](http://hiloteam.github.io/Hilo/examples/Graphics.html)
+    * [DOM element](http://hiloteam.github.io/Hilo/examples/DOMElement.html)
+    * [Button](http://hiloteam.github.io/Hilo/examples/Button.html)
+    * [Background](http://hiloteam.github.io/Hilo/examples/Background.html)
+    * [Canvas Text](http://hiloteam.github.io/Hilo/examples/Text.html)
 
  * Others
-    * [Load queue](examples/LoadQueue.html)
-    * [Web sound](examples/WebSound.html)
-    * [Mouse Event](examples/MouseEvent.html)
-    * [Drag](examples/drag.html)
+    * [Load queue](http://hiloteam.github.io/Hilo/examples/LoadQueue.html)
+    * [Web sound](http://hiloteam.github.io/Hilo/examples/WebSound.html)
+    * [Mouse Event](http://hiloteam.github.io/Hilo/examples/MouseEvent.html)
+    * [Drag](http://hiloteam.github.io/Hilo/examples/drag.html)
 
  * Extensions
-    * [Camera](examples/Camera.html)
-    * [Camera3d](examples/Camera3d.html)
-    * [Skeleton Animation - Dragonbones](src/extensions/dragonbones/README.md)
-    * [Particle System](examples/ParticleSystem.html)
-    * [Physics](src/extensions/physics/README.md)
+    * [Camera](http://hiloteam.github.io/Hilo/examples/Camera.html)
+    * [Camera3d](http://hiloteam.github.io/Hilo/examples/Camera3d.html)
+    * [Skeleton Animation - Dragonbones](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/cat)
+    * [Particle System](http://hiloteam.github.io/Hilo/examples/ParticleSystem.html)
+    * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
 ### RoadMap
 
@@ -75,5 +75,5 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/api/index
 
 
 
-[travis-image]: https://travis-ci.org/hiloteam/generator-hilo.svg?branch=master
-[travis-url]: https://travis-ci.org/hiloteam/generator-hilo
+[travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
+[travis-url]: https://travis-ci.org/hiloteam/Hilo
