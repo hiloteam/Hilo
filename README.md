@@ -63,6 +63,10 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/api/index
 
 ![Hilo RoadMap](http://gtms03.alicdn.com/tps/i3/TB1VaALIFXXXXcLXVXXlFbLSXXX-940-668.png)
 
+### Wiki
+
+[wiki](https://github.com/hiloteam/Hilo/wiki)
+
 ### Demonstrations
 
  * [1111 dance mv](http://www.tmall.com/go/market/promotion-act/mv-alone.php)
