@@ -67,17 +67,15 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/api/index
 
 [wiki](https://github.com/hiloteam/Hilo/wiki)
 
-### Demonstrations
+### Demos
 
- * [1111 dance mv](http://www.tmall.com/go/market/promotion-act/mv-alone.php)
- * [car game](#hilo/demo/raw/master/race/index.html)
- * [Flappy Bird](#hilo/demo/raw/master/flappy/index.html)
- * [2048](#hilo/demo/raw/master/2048/index.html)
- * [Fruit Ninja](#hilo/demo/raw/master/fruit-ninja/index.html)
- * [Whack Mole](#hilo/demo/raw/master/whackmole/index.html)
- * [No One Dies](#hilo/demo/raw/master/noonedie/index.html)
+ * [1111 dance mv](http://g.alicdn.com/tmapp/hilodemos/3.0.7/mv1111/index.html)
+ * [Flappy Bird](http://g.alicdn.com/tmapp/hilodemos/3.0.7/flappy/index.html)
+ * [2048](http://g.alicdn.com/tmapp/hilodemos/3.0.7/2048/index.html)
+ * [Fruit Ninja](http://g.alicdn.com/tmapp/hilodemos/3.0.7/fruit-ninja/index.html)
 
-
+## License
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 [travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
 [travis-url]: https://travis-ci.org/hiloteam/Hilo
