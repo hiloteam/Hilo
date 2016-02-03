@@ -12,9 +12,22 @@ if(!renderTypes[renderType]){
 var winWidth = window.innerWidth || document.documentElement.clientWidth;
 var winHeight = window.innerHeight || document.documentElement.clientHeight;
 
+var headerElems = document.getElementsByTagName('header');
+if(headerElems[0] && location.search.indexOf('noHeader') < 0){
+    headerElems[0].style.display = 'block';
+}
+else{
+    winWidth = 550;
+    winHeight = 400;
+}
+
 var gameContainer = document.getElementById("game-container");
-gameContainer.style.height = winWidth - gameContainer.offsetTop + 'px';
+gameContainer.style.height = winHeight - gameContainer.offsetTop + 'px';
 
 var stageWidth = winWidth;
 var stageHeight = winHeight - gameContainer.offsetTop;
 window.console = window.console||{log:function(){}};
+
+
+
+

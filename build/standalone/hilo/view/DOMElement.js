@@ -15,6 +15,23 @@ var Drawable = Hilo.Drawable;
  */
 
 /**
+ * <iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
+ * <br/>
+ * 使用示例:
+ * <pre>
+ * var domView = new Hilo.DOMElement({
+ *     element: Hilo.createElement('div', {
+ *         style: {
+ *             backgroundColor: '#004eff',
+ *             position: 'absolute'
+ *         }
+ *     }),
+ *     width: 100,
+ *     height: 100,
+ *     x: 50,
+ *     y: 70
+ * }).addTo(stage);
+ * </pre>
  * @name DOMElement
  * @class DOMElement是dom元素的包装。
  * @augments View

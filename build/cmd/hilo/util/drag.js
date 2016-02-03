@@ -15,7 +15,15 @@ var Hilo = require('hilo/core/Hilo');
  */
 
 /**
- * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, EventMixin)或Hilo.copy(view, drag)来为view增加拖拽功能。
+ * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
+ * <br/>
+ * 使用示例:
+ * <pre>
+ * var bmp = new Bitmap({image:img});
+ * Hilo.copy(bmp, Hilo.drag);
+ * bmp.startDrag([0, 0, 550, 400]);
+ * </pre>
+ * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.copy(view, drag)来为view增加拖拽功能。
  * @mixin
  * @static
  * @module hilo/util/drag

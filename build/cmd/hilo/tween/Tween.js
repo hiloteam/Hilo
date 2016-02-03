@@ -14,6 +14,26 @@ var Class = require('hilo/core/Class');
  */
 
 /**
+ * <iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
+ * <br/>
+ * 使用示例:
+ * <pre>
+ * ticker.addTick(Hilo.Tween);//需要把Tween加到ticker里才能使用
+ *
+ * var view = new View({x:5, y:10});
+ * Hilo.Tween.to(view, {
+ *     x:100,
+ *     y:20,
+ *     alpha:0
+ * }, {
+ *     duration:1000,
+ *     delay:500,
+ *     ease:Hilo.Ease.Quad.EaseIn,
+ *     onComplete:function(){
+ *         console.log('complete');
+ *     }
+ * });
+ * </pre>
  * @class Tween类提供缓动功能。
  * @param {Object} target 缓动对象。
  * @param {Object} fromProps 对象缓动的起始属性集合。

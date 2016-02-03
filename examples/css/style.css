@@ -9,6 +9,7 @@ html, body{
 }
 
 header{
+    display: none;
     color: #fff;
     font-family: arial;
     background-color: #3a383e;

@@ -17,6 +17,8 @@ var CacheMixin = require('hilo/view/CacheMixin');
  */
 
 /**
+ * <iframe src='../../../examples/Text.html?noHeader' width = '320' height = '240' scrolling='no'></iframe>
+ * <br/>
  * @class Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。
  * @augments View
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。

@@ -12,6 +12,8 @@ define('hilo/view/Graphics', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Vi
  */
 
 /**
+ * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+ * <br/>
  * @class Graphics类包含一组创建矢量图形的方法。
  * @augments View
  * @mixes CacheMixin

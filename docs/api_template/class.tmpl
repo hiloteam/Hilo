@@ -6,6 +6,11 @@
 <meta name="generator" content="JsDoc Toolkit"/>
 {! Link.base = "../"; /* all generated links will be relative to this */ !}
 <title>{+data.alias+} - Hilo API参考文档</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
 <link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
 <link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="../../css/prettify.min.css" rel="stylesheet">
@@ -99,7 +104,7 @@
         <br>
         {+resolveLinks(data.classDesc)+}
         <if test="data.desc">
-            <br><br>{+resolveLinks(summarize(data.desc))+}
+            <br><br>{+resolveLinks(data.desc)+}
         </if>
 
     </p>

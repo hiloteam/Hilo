@@ -15,6 +15,8 @@ var Drawable = require('./Drawable');
  */
 
 /**
+ * <iframe src='../../../examples/Button.html?noHeader' width = '320' height = '170' scrolling='no'></iframe>
+ * <br/>
  * 示例:
  * <pre>
  * var btn = new Hilo.Button({

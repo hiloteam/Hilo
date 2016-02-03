@@ -5,6 +5,8 @@
  */
 
 /**
+ * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
+ * <br/>
  * 使用示例:
  * <pre>
  * var audio = WebSound.getAudio({

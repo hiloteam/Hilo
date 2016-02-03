@@ -12,6 +12,8 @@ KISSY.add('hilo/view/BitmapText', function(S, Class, Hilo, Container, Bitmap){
  */
 
 /**
+ * <iframe src='../../../examples/BitmapText.html?noHeader' width = '550' height = '80' scrolling='no'></iframe>
+ * <br/>
  * @class BitmapText类提供使用位图文本的功能。当前仅支持单行文本。
  * @augments Container
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。

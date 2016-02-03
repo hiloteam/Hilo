@@ -6,6 +6,11 @@
 <meta name="generator" content="JsDoc Toolkit"/>
 
 <title>Tween - Hilo API参考文档</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
 <link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
 <link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="../../css/prettify.min.css" rel="stylesheet">
@@ -215,6 +220,27 @@
 
         <br>
         Tween类提供缓动功能。
+        
+            <br><br><iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
+<br/>
+使用示例:
+<pre>
+ticker.addTick(Hilo.Tween);//需要把Tween加到ticker里才能使用
+
+var view = new View({x:5, y:10});
+Hilo.Tween.to(view, {
+    x:100,
+    y:20,
+    alpha:0
+}, {
+    duration:1000,
+    delay:500,
+    ease:Hilo.Ease.Quad.EaseIn,
+    onComplete:function(){
+        console.log('complete');
+    }
+});
+</pre>
         
 
     </p>

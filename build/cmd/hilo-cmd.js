@@ -3117,6 +3117,8 @@ var Drawable = require('hilo/view/Drawable');
  */
 
 /**
+ * <iframe src='../../../examples/Bitmap.html?noHeader' width = '300' height = '200' scrolling='no'></iframe>
+ * <br/>
  * 使用示例:
  * <pre>
  * var bmp = new Hilo.Bitmap({image:imgElem, rect:[0, 0, 100, 100]});
@@ -3192,6 +3194,8 @@ var Drawable = require('hilo/view/Drawable');
  */
 
 /**
+ * <iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+ * <br/>
  * @class 动画精灵类。
  * @augments View
  * @module hilo/view/Sprite
@@ -3456,6 +3460,23 @@ var Drawable = require('hilo/view/Drawable');
  */
 
 /**
+ * <iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
+ * <br/>
+ * 使用示例:
+ * <pre>
+ * var domView = new Hilo.DOMElement({
+ *     element: Hilo.createElement('div', {
+ *         style: {
+ *             backgroundColor: '#004eff',
+ *             position: 'absolute'
+ *         }
+ *     }),
+ *     width: 100,
+ *     height: 100,
+ *     x: 50,
+ *     y: 70
+ * }).addTo(stage);
+ * </pre>
  * @name DOMElement
  * @class DOMElement是dom元素的包装。
  * @augments View
@@ -3542,6 +3563,8 @@ var CacheMixin = require('hilo/view/CacheMixin');
  */
 
 /**
+ * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+ * <br/>
  * @class Graphics类包含一组创建矢量图形的方法。
  * @augments View
  * @mixes CacheMixin
@@ -3968,6 +3991,8 @@ var CacheMixin = require('hilo/view/CacheMixin');
  */
 
 /**
+ * <iframe src='../../../examples/Text.html?noHeader' width = '320' height = '240' scrolling='no'></iframe>
+ * <br/>
  * @class Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。
  * @augments View
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -4212,6 +4237,8 @@ var Bitmap = require('hilo/view/Bitmap');
  */
 
 /**
+ * <iframe src='../../../examples/BitmapText.html?noHeader' width = '550' height = '80' scrolling='no'></iframe>
+ * <br/>
  * @class BitmapText类提供使用位图文本的功能。当前仅支持单行文本。
  * @augments Container
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -4395,6 +4422,8 @@ var Drawable = require('hilo/view/Drawable');
  */
 
 /**
+ * <iframe src='../../../examples/Button.html?noHeader' width = '320' height = '170' scrolling='no'></iframe>
+ * <br/>
  * 示例:
  * <pre>
  * var btn = new Hilo.Button({
@@ -5004,7 +5033,15 @@ var Hilo = require('hilo/core/Hilo');
  */
 
 /**
- * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, EventMixin)或Hilo.copy(view, drag)来为view增加拖拽功能。
+ * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
+ * <br/>
+ * 使用示例:
+ * <pre>
+ * var bmp = new Bitmap({image:img});
+ * Hilo.copy(bmp, Hilo.drag);
+ * bmp.startDrag([0, 0, 550, 400]);
+ * </pre>
+ * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.copy(view, drag)来为view增加拖拽功能。
  * @mixin
  * @static
  * @module hilo/util/drag
@@ -5111,6 +5148,26 @@ var Class = require('hilo/core/Class');
  */
 
 /**
+ * <iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
+ * <br/>
+ * 使用示例:
+ * <pre>
+ * ticker.addTick(Hilo.Tween);//需要把Tween加到ticker里才能使用
+ *
+ * var view = new View({x:5, y:10});
+ * Hilo.Tween.to(view, {
+ *     x:100,
+ *     y:20,
+ *     alpha:0
+ * }, {
+ *     duration:1000,
+ *     delay:500,
+ *     ease:Hilo.Ease.Quad.EaseIn,
+ *     onComplete:function(){
+ *         console.log('complete');
+ *     }
+ * });
+ * </pre>
  * @class Tween类提供缓动功能。
  * @param {Object} target 缓动对象。
  * @param {Object} fromProps 对象缓动的起始属性集合。
@@ -6628,6 +6685,8 @@ var WebAudio = require('hilo/media/WebAudio');
  */
 
 /**
+ * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
+ * <br/>
  * 使用示例:
  * <pre>
  * var audio = WebSound.getAudio({
@@ -7010,6 +7069,8 @@ var Drawable = require('hilo/view/Drawable');
  */
 
 /**
+ * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+ * <br/>
  * @class 粒子系统
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo

@@ -5,6 +5,8 @@
  */
 
 /**
+ * <iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+ * <br/>
  * @class 动画精灵类。
  * @augments View
  * @module hilo/view/Sprite

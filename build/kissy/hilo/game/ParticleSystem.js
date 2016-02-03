@@ -12,6 +12,8 @@ KISSY.add('hilo/game/ParticleSystem', function(S, Hilo, Class, View, Container, 
  */
 
 /**
+ * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+ * <br/>
  * @class 粒子系统
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo

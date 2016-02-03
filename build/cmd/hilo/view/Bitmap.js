@@ -17,6 +17,8 @@ var Drawable = require('hilo/view/Drawable');
  */
 
 /**
+ * <iframe src='../../../examples/Bitmap.html?noHeader' width = '300' height = '200' scrolling='no'></iframe>
+ * <br/>
  * 使用示例:
  * <pre>
  * var bmp = new Hilo.Bitmap({image:imgElem, rect:[0, 0, 100, 100]});
