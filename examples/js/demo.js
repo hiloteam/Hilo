@@ -12,9 +12,29 @@ if(!renderTypes[renderType]){
 var winWidth = window.innerWidth || document.documentElement.clientWidth;
 var winHeight = window.innerHeight || document.documentElement.clientHeight;
 
-var headerElems = document.getElementsByTagName('header');
-if(headerElems[0] && location.search.indexOf('noHeader') < 0){
-    headerElems[0].style.display = 'block';
+var headerElem = document.getElementsByTagName('header')[0];
+if(location.search.indexOf('noHeader') < 0){
+    headerElem.style.display = 'block';
+    var renderTypeElem = document.createElement('div');
+    headerElem.appendChild(renderTypeElem);
+    var renderTypes = ['canvas', 'dom', 'webgl'];
+    renderTypes.forEach(function(type){
+        var typeElem = document.createElement('div');
+        typeElem.innerHTML = '<input type="radio" data-type="{type}">{type}</input>'.replace(/{type}/g, type);
+        typeElem.setAttribute('data-type', type);
+        typeElem.style.cssText = 'display:inline;margin-left:10px;line-height:20px;cursor:pointer;height:40px;';
+        typeElem.input = typeElem.children[0];
+        renderTypeElem.appendChild(typeElem);
+        if(type === renderType){
+            typeElem.input.checked = true;
+        }
+        typeElem.onclick = function(){
+            if(renderType !== type){
+                location.search = type;
+            }
+        }
+    });
+    renderTypeElem.style.cssText = 'position:absolute;right:5px;top:5px;';
 }
 else{
     winWidth = 550;
@@ -22,10 +42,11 @@ else{
 }
 
 var gameContainer = document.getElementById("game-container");
-gameContainer.style.height = winHeight - gameContainer.offsetTop + 'px';
+var stageWidth = window.stageWidth||winWidth;
+var stageHeight = window.stageHeight||(winHeight - gameContainer.offsetTop);
+gameContainer.style.height = stageHeight + 'px';
+gameContainer.style.width = stageWidth + 'px';
 
-var stageWidth = winWidth;
-var stageHeight = winHeight - gameContainer.offsetTop;
 window.console = window.console||{log:function(){}};
 
 

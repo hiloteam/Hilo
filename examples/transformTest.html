@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Bitmap - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <style>
+        #game-container{
+            margin: 5px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body onload="init();">
+    <header>
+        <h1>Bitmap</h1>
+        <p>Bitmap是Hilo中最常用的类之一，它表示一个静态位图，对应一个Image或Image的某个矩形区域。</p>
+    </header>
+    <div id="game-container"></div>
+    <script>
+        stageWidth = 800;
+        stageHeight = 400;
+    </script>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //create a bitmap
+            var bmp = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: 87,
+                y: 0,
+                pivotX:87,
+                pivotY:0,
+                rotation:30,
+                width:87
+            }).addTo(stage);
+
+            container0 = new Hilo.Container({
+                x:100,
+                y:50,
+                pivotX:100,
+                pivotY:50,
+                width:200,
+                height:200,
+                rotation:20,
+                alpha:0.5
+            }).addTo(stage);
+
+            var bmp = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: 110,
+                y: 210,
+                pivotX:110,
+                pivotY:220,
+                rotation:70
+            }).addTo(container0);
+
+            var container1 = new Hilo.Container({
+                x:200,
+                y:200,
+                pivotX:100,
+                pivotY:150,
+                scaleX:-1,
+                scaleY:2,
+                width:200,
+                height:200,
+                rotation:135,
+                alpha:0.5
+            }).addTo(container0);
+
+            var bmp = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: 110,
+                y: 110,
+                pivotX:100,
+                pivotY:20,
+                rotation:45
+            }).addTo(container1);
+
+
+        }
+    </script>
+</body>
+</html>

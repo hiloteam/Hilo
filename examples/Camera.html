@@ -8,8 +8,6 @@
     <style>
         #game-container{
             border:solid 1px #000;
-            width: 800px;
-            height: 600px;
             margin: 20px auto;
         }
     </style>
@@ -22,13 +20,15 @@
         <p>Camera摄像机，鼠标点击切换摄像机跟随对象</p>
     </header>
     <div id="game-container"></div>
+    <script>
+        stageWidth = 800;
+        stageHeight = 600;
+    </script>
     <script type="text/javascript" src="js/demo.js"></script>
     <script type="text/javascript">
         function init(){
             var Tween = Hilo.Tween;
             var Camera = Hilo.Camera;
-            stageWidth = 800;
-            stageHeight = 600;
             gameContainer.style.height = stageHeight + 'px';
             var mapScale = 1.5;
             var mapWidth = 1440*mapScale;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
     <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <script type="text/javascript" src="../src/util/debug.js" data-auto="true"></script>
 </head>
 <body onload="init();">
     <header>
@@ -73,16 +74,16 @@
             }).addTo(stage);
 
             container.on(Hilo.event.POINTER_START, function(e){
-                console.log("container", "down", e.eventTarget.id, e.eventCurrentTarget.id);
+                console.log("container:", "down,", "target:" + e.eventTarget.id, ", currentTarget:" + e.eventCurrentTarget.id);
             });
 
             container.on("mouseout", function(e){
-                console.log("container", "out", e.eventTarget.id, e.eventCurrentTarget.id)
+                console.log("container:", "out,", "target:" + e.eventTarget.id, ", currentTarget:" + e.eventCurrentTarget.id)
                 container.background = "#ff0"
             });
 
             container.on("mouseover", function(e){
-                console.log("container", "over", e.eventTarget.id, e.eventCurrentTarget.id);
+                console.log("container:", "over,", "target:" + e.eventTarget.id, ", currentTarget:" + e.eventCurrentTarget.id);
                 container.background = "#f00";
             });
 
@@ -91,14 +92,14 @@
             });
 
             blueBtn.on("mouseover", function(e){
-                console.log("blueBtn", "over", e.eventTarget.id, e.eventCurrentTarget.id);
+                console.log("blueBtn:", "over,", "target:" + e.eventTarget.id, ", currentTarget:" + e.eventCurrentTarget.id);
             });
 
             var isStop = false;
             blueBtn.on(Hilo.event.POINTER_START, function(e){
-                console.log("blueBtn", "down", e.eventTarget.id, e.eventCurrentTarget.id);
+                console.log("blueBtn:", "down,", "target:" + e.eventTarget.id, ", currentTarget:" + e.eventCurrentTarget.id);
                 isStop && e.stopPropagation();
-                console.log("blueBtn", "isStopPropagation", isStop);
+                console.log("blueBtn:", "isStopPropagation:", isStop);
                 isStop = !isStop;
             });
         }

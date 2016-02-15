@@ -105,15 +105,16 @@
 
         iframeElem.width = innerWidth - 220;
         iframeElem.height = innerHeight - 20;
+        var iframeWindow = iframeElem.contentWindow;
 
         var hashName = location.hash.slice(1);
         var currentName = '';
-        function setDemo(originName){
+        function setDemo(originName, first){
             var name = getExampleName(originName);
             var path = getExamplePath(originName);
             if(name !== currentName){
                 location.hash = name;
-                iframeElem.src = path + location.search;
+                iframeElem.src = path + (first?location.search:iframeWindow.location.search);
                 if(examplesDict[currentName]){
                     examplesDict[currentName].elem.className = '';
                 }
@@ -122,7 +123,7 @@
             }
         }
 
-        setDemo(examplesDict[hashName]?examplesDict[hashName].originName:examples[0]);
+        setDemo(examplesDict[hashName]?examplesDict[hashName].originName:examples[0], true);
 
         window.onkeydown = function(e){
             var index = examples.indexOf(examplesDict[currentName].originName);
