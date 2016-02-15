@@ -1574,7 +1574,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
                 this._renderBatches();
             }
 
-            var vertexs = this._createVertexs(image, rect[0], rect[1], sw, sh, -target.pivotX, -target.pivotY, w, h);
+            var vertexs = this._createVertexs(image, rect[0], rect[1], sw, sh, 0, 0, w, h);
             var index = this.batchIndex * this.positionStride;
             var positions = this.positions;
             var alpha = target.__webglRenderAlpha;
@@ -1739,7 +1739,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         if(!this._projectionTransformElements||force){
             this._projectionTransformElements = new Float32Array([
                 1/this.canvasHalfWidth, 0, 0,
-                0, 1/this.canvasHalfHeight, 0,
+                0, -1/this.canvasHalfHeight, 0,
                 -1, 1, 1,
             ]);
         }
@@ -1802,10 +1802,6 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             th = 1 - ty;
         }
 
-        ty = 1 - ty - th;
-
-        y = -h - y;
-
         var index = 0;
         tempVertexs[index++] = x; tempVertexs[index++] = y; tempVertexs[index++] = tx; tempVertexs[index++] = ty;
         tempVertexs[index++] = x+w;tempVertexs[index++] = y; tempVertexs[index++] = tx+tw; tempVertexs[index++] = ty;
@@ -1817,7 +1813,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     _setConcatenatedMatrix:function(view, ancestor){
         var mtx = view.__webglWorldMatrix;
         var cos = 1, sin = 0,
-            rotation = 360-view.rotation % 360,
+            rotation = view.rotation % 360,
             pivotX = view.pivotX, pivotY = view.pivotY,
             scaleX = view.scaleX, scaleY = view.scaleY;
 
@@ -1831,11 +1827,10 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         mtx.b = sin*scaleX;
         mtx.c = -sin*scaleY;
         mtx.d = cos*scaleY;
-        mtx.tx = view.x;
-        mtx.ty = -view.y;
+        mtx.tx =  view.x - mtx.a * pivotX - mtx.c * pivotY;
+        mtx.ty =  view.y - mtx.b * pivotX - mtx.d * pivotY;
 
-        var aMtx = ancestor.__webglWorldMatrix;
-        mtx.concat(aMtx.a, aMtx.b, aMtx.c, aMtx.d, aMtx.tx, aMtx.ty);
+        mtx.concat(ancestor.__webglWorldMatrix);
     }
 });
 
@@ -1900,7 +1895,7 @@ Shader.prototype = {
             gl.activeTexture(gl.TEXTURE0);
             gl.bindTexture(gl.TEXTURE_2D, texture);
 
-            gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
+            // gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
             gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
             gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
@@ -2814,6 +2809,7 @@ define('hilo/view/Stage', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Conta
  * 示例:
  * <pre>
  * var stage = new Hilo.Stage({
+ *     renderType:'canvas',
  *     container: containerElement,
  *     width: 320,
  *     height: 480

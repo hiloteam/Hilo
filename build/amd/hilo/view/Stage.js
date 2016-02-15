@@ -15,6 +15,7 @@ define('hilo/view/Stage', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Conta
  * 示例:
  * <pre>
  * var stage = new Hilo.Stage({
+ *     renderType:'canvas',
  *     container: containerElement,
  *     width: 320,
  *     height: 480

@@ -20,6 +20,7 @@ var WebGLRenderer = require('../renderer/WebGLRenderer');
  * 示例:
  * <pre>
  * var stage = new Hilo.Stage({
+ *     renderType:'canvas',
  *     container: containerElement,
  *     width: 320,
  *     height: 480
