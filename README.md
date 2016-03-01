@@ -59,14 +59,6 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
     * [Particle System](http://hiloteam.github.io/Hilo/examples/ParticleSystem.html)
     * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
-### RoadMap
-
-![Hilo RoadMap](http://gtms03.alicdn.com/tps/i3/TB1VaALIFXXXXcLXVXXlFbLSXXX-940-668.png)
-
-### Wiki
-
-[wiki](https://github.com/hiloteam/Hilo/wiki)
-
 ### Demos
 
  * [1111 dance mv](http://g.alicdn.com/tmapp/hilodemos/3.0.7/mv1111/index.html)
@@ -74,7 +66,12 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
  * [2048](http://g.alicdn.com/tmapp/hilodemos/3.0.7/2048/index.html)
  * [Fruit Ninja](http://g.alicdn.com/tmapp/hilodemos/3.0.7/fruit-ninja/index.html)
 
-## License
+### Authors
+ * [flashlizi](https://github.com/flashlizi)
+ * [06wj](https://github.com/06wj)
+ * [picacure](https://github.com/picacure)
+
+### License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 [travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
