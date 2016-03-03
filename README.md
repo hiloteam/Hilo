@@ -2,7 +2,7 @@ Hilo - HTML5 Game Framework [![Build Status][travis-image]][travis-url]
 ===========================
 [中文版](./README_ZH.md)
 
-Hilo is a Cross-end HTML5 Game development solution. It could help developers build HTML5 games conveniently in minutes.
+Hilo is a Cross-end HTML5 Game development solution developed by Alibaba Group. It could help developers build HTML5 games conveniently in minutes.
 
 ### Features
 
@@ -61,7 +61,7 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
     * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
 ### Demos
- ![](https://img.alicdn.com/tps/TB1ehVBLVXXXXb1XVXXXXXXXXXX-754-588.png)  
+ [![example image][example-image]][example-url]
  
  * [1111 dance mv](http://g.alicdn.com/tmapp/hilodemos/3.0.7/mv1111/index.html)
  * [Flappy Bird](http://g.alicdn.com/tmapp/hilodemos/3.0.7/flappy/index.html)
@@ -78,3 +78,5 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
 
 [travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
 [travis-url]: https://travis-ci.org/hiloteam/Hilo
+[example-image]: https://img.alicdn.com/tps/TB1ehVBLVXXXXb1XVXXXXXXXXXX-754-588.png
+[example-url]: http://hiloteam.github.io/examples/index.html

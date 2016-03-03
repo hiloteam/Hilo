@@ -2,7 +2,7 @@ Hilo - HTML5 互动游戏引擎 [![Build Status][travis-image]][travis-url]
 ===========================
 [English Version](./README.md)
 
-Hilo 是一款HTML5跨终端游戏解决方案，ta可以帮助开发者快速创建HTML5游戏。
+Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta可以帮助开发者快速创建HTML5游戏。
 
 ### 主要特性
 
@@ -61,7 +61,7 @@ Hilo 是一款HTML5跨终端游戏解决方案，ta可以帮助开发者快速�
     * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
 ### Demos
- ![](https://img.alicdn.com/tps/TB1ehVBLVXXXXb1XVXXXXXXXXXX-754-588.png)  
+  [![example image][example-image]][example-url] 
  
  * [1111 dance mv](http://g.alicdn.com/tmapp/hilodemos/3.0.7/mv1111/index.html)
  * [Flappy Bird](http://g.alicdn.com/tmapp/hilodemos/3.0.7/flappy/index.html)
@@ -78,3 +78,5 @@ Hilo 是一款HTML5跨终端游戏解决方案，ta可以帮助开发者快速�
 
 [travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
 [travis-url]: https://travis-ci.org/hiloteam/Hilo
+[example-image]: https://img.alicdn.com/tps/TB1ehVBLVXXXXb1XVXXXXXXXXXX-754-588.png
+[example-url]: http://hiloteam.github.io/examples/index.html
