@@ -1,5 +1,6 @@
-Hilo - HTML5 Game Framework [![Build Status][travis-image]][travis-url][中文版](./README_ZH.md)
+Hilo - HTML5 Game Framework [![Build Status][travis-image]][travis-url]
 ===========================
+[中文版](./README_ZH.md)
 
 Hilo is a Cross-end HTML5 Game development solution. It could help developers build HTML5 games conveniently in minutes.
 
@@ -60,12 +61,13 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
     * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
 ### Demos
-
+ ![](https://img.alicdn.com/tps/TB1ehVBLVXXXXb1XVXXXXXXXXXX-754-588.png)  
+ 
  * [1111 dance mv](http://g.alicdn.com/tmapp/hilodemos/3.0.7/mv1111/index.html)
  * [Flappy Bird](http://g.alicdn.com/tmapp/hilodemos/3.0.7/flappy/index.html)
  * [2048](http://g.alicdn.com/tmapp/hilodemos/3.0.7/2048/index.html)
- * [Fruit Ninja](http://g.alicdn.com/tmapp/hilodemos/3.0.7/fruit-ninja/index.html)
-
+ * [Fruit Ninja](http://g.alicdn.com/tmapp/hilodemos/3.0.7/fruit-ninja/index.html)  
+ 
 ### Authors
  * [flashlizi](https://github.com/flashlizi)
  * [06wj](https://github.com/06wj)
