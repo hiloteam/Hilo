@@ -29,7 +29,7 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
 
 * 运行 `npm install -g yo`
 * 运行 `npm install -g generator-hilo`
-* 运行 `yo hilo` 
+* 运行 `yo hilo`
 * 经过以上几步会创建Hilo的预置初始工程，接下来你建造属于你的游戏吧。
 
 ### API 文档
@@ -61,8 +61,8 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
     * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
 ### Demos
-  [![example image][example-image]][example-url] 
- 
+  [![example image][example-image]][example-url]
+
  * [1111 dance mv](http://g.alicdn.com/tmapp/hilodemos/3.0.7/mv1111/index.html)
  * [Flappy Bird](http://g.alicdn.com/tmapp/hilodemos/3.0.7/flappy/index.html)
  * [2048](http://g.alicdn.com/tmapp/hilodemos/3.0.7/2048/index.html)
@@ -78,5 +78,5 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
 
 [travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
 [travis-url]: https://travis-ci.org/hiloteam/Hilo
-[example-image]: https://img.alicdn.com/tps/TB1ehVBLVXXXXb1XVXXXXXXXXXX-754-588.png
+[example-image]: https://img.alicdn.com/tps/TB1vDlBLVXXXXcDXVXXXXXXXXXX-850-806.png
 [example-url]: http://hiloteam.github.io/examples/index.html

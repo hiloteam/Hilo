@@ -62,12 +62,12 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
 
 ### Demos
  [![example image][example-image]][example-url]
- 
+
  * [1111 dance mv](http://g.alicdn.com/tmapp/hilodemos/3.0.7/mv1111/index.html)
  * [Flappy Bird](http://g.alicdn.com/tmapp/hilodemos/3.0.7/flappy/index.html)
  * [2048](http://g.alicdn.com/tmapp/hilodemos/3.0.7/2048/index.html)
- * [Fruit Ninja](http://g.alicdn.com/tmapp/hilodemos/3.0.7/fruit-ninja/index.html)  
- 
+ * [Fruit Ninja](http://g.alicdn.com/tmapp/hilodemos/3.0.7/fruit-ninja/index.html)
+
 ### Authors
  * [flashlizi](https://github.com/flashlizi)
  * [06wj](https://github.com/06wj)
@@ -78,5 +78,5 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
 
 [travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
 [travis-url]: https://travis-ci.org/hiloteam/Hilo
-[example-image]: https://img.alicdn.com/tps/TB1ehVBLVXXXXb1XVXXXXXXXXXX-754-588.png
+[example-image]: https://img.alicdn.com/tps/TB1vDlBLVXXXXcDXVXXXXXXXXXX-850-806.png
 [example-url]: http://hiloteam.github.io/examples/index.html
