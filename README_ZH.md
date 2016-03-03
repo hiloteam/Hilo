@@ -1,43 +1,43 @@
-Hilo - HTML5 Game Framework [![Build Status][travis-image]][travis-url][中文版](./README_ZH.md)
+Hilo - HTML5 互动游戏引擎 [![Build Status][travis-image]][travis-url][English Version](./README.md)
 ===========================
 
-Hilo is a Cross-end HTML5 Game development solution. It could help developers build HTML5 games conveniently in minutes.
+Hilo 是一款HTML5跨终端游戏解决方案，ta可以帮助开发者快速创建HTML5游戏。
 
-### Features
+### 主要特性
 
-* independency modules design, support multiple module styles;
-* Object Oriented Programmed Development;
-* Simple and efficient Visual Object Architecture;
-* Multiple render model supported, including `CanvasRenderer`, `DOMRenderer` and `WebGLRenderer`;
-* Compatible for multiple desktop and mobile browsers. Using `Flash Shim` to support IE (yes as you can see, it support IE);
-* Physics extensions supported: `Chipmunk`
-* Skeleton animation extensions supported: `DragonBones`
+* Hilo 支持多种模块范式的包装版本，包括AMD，CMD，COMMONJS，Standalone多种方式接入。另外，你可以根据需要新增和扩展模块和类型；
+* 极精简的模块设计，完全面向对象；
+* 多种渲染方式, 提供DOM，Canvas，Flash，WebGL等多种渲染方案（目前已经申请专利）；
+* 全端浏览器的支持和高性能方案，独有的Flash渲染方案，即使在低版本IE浏览器下也可以跑起来“酷炫”游戏； DOM渲染方案能显著解决低性能手机浏览器遇到的性能问题；
+* 物理引擎支持——Chipmunk，支持自扩展物理实现；骨骼动画支持——DragonBones，同时内建骨骼动画系统——Tahiti（目前内部使用）；
+* 案例丰富，框架成熟，已经经历多届阿里巴巴双十一，年中大促互动营销活动考验；
 
 
-### Compile and build
+### 编译和构建
 
-Built by gulp:
+目前采用gulp构建:
 
-* run `npm install` to install all dependencies.
-* run `gulp` to build source.
-* run `gulp extensions` to build extensions source.
-* run `gulp doc` to build API documentation.
-* run `gulp test` to run tests.
-* multiple module styles can be found in build folder, involving `CMD, AMD, CommonJS, KMD`.
+* 运行 `npm install` 安装依赖.
+* 运行 `gulp` 构建.
+* 运行 `gulp extensions` 构建插件.
+* 运行 `gulp doc` 构建Hilo API 文档.
+* 运行 `gulp test` 构建测试.
+* build 目录下会生成多种范式版本的Hilo，包括`CMD, AMD, CommonJS, KMD`
 
-### Project Generator for games
+### 创建Hilo 游戏工程
 
-* run `npm install -g yo`
-* run `npm install -g generator-hilo`
-* run `yo hilo` to create a project to continue your fascinating game development
+* 运行 `npm install -g yo`
+* 运行 `npm install -g generator-hilo`
+* 运行 `yo hilo` 
+* 经过以上几步会创建Hilo的预置初始工程，接下来你建造属于你的游戏吧。
 
-### API Documentation
+### API 文档
 
-Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs/api/index.html)
+参见 [docs/api/index.html](http://hiloteam.github.io/Hilo/docs/api/index.html)
 
-### API Samples
+### API 样例
  * [Index.html](http://hiloteam.github.io/Hilo/examples/index.html)
- * Visual Objects (View)
+ * 可视对象 (View)
     * [Bitmap](http://hiloteam.github.io/Hilo/examples/Bitmap.html)
     * [Sprite](http://hiloteam.github.io/Hilo/examples/Sprite.html)
     * [Graphics](http://hiloteam.github.io/Hilo/examples/Graphics.html)
@@ -46,13 +46,13 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
     * [Background](http://hiloteam.github.io/Hilo/examples/Background.html)
     * [Canvas Text](http://hiloteam.github.io/Hilo/examples/Text.html)
 
- * Others
+ * 其他
     * [Load queue](http://hiloteam.github.io/Hilo/examples/LoadQueue.html)
     * [Web sound](http://hiloteam.github.io/Hilo/examples/WebSound.html)
     * [Mouse Event](http://hiloteam.github.io/Hilo/examples/MouseEvent.html)
     * [Drag](http://hiloteam.github.io/Hilo/examples/drag.html)
 
- * Extensions
+ * Hilo扩展 样例
     * [Camera](http://hiloteam.github.io/Hilo/examples/Camera.html)
     * [Camera3d](http://hiloteam.github.io/Hilo/examples/Camera3d.html)
     * [Skeleton Animation - Dragonbones](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/cat)
@@ -66,7 +66,7 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
  * [2048](http://g.alicdn.com/tmapp/hilodemos/3.0.7/2048/index.html)
  * [Fruit Ninja](http://g.alicdn.com/tmapp/hilodemos/3.0.7/fruit-ninja/index.html)
 
-### Authors
+### 作者
  * [flashlizi](https://github.com/flashlizi)
  * [06wj](https://github.com/06wj)
  * [picacure](https://github.com/picacure)
