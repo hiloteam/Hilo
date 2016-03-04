@@ -165,6 +165,11 @@ gulp.task('doc-clean', function(cb){
     del('docs/api', cb);
 });
 
+gulp.task('setIsWatch', function(cb){
+    isWatch = true;
+    cb();
+});
+
 gulp.task('doc', ['doc-clean'], (function(){
     var files = pkg.sources.files.map(function(file){
         return pkg.sources.dir + '/' + file;
@@ -185,12 +190,11 @@ gulp.task('doc', ['doc-clean'], (function(){
     return shell.task(cmd);
 })());
 
-gulp.task('watch', function(){
-    isWatch = true;
+gulp.task('watch', ['setIsWatch', 'standalone', 'flash'], function(){
     gulp.watch('src/**/*.js', ['standalone', 'flash']);
 });
 
-gulp.task('test', function () {
+gulp.task('test', ['setIsWatch', 'standalone', 'flash'], function () {
     return gulp
         .src('test/html/index.html')
         .pipe(mochaPhantomJS({
