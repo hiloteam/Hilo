@@ -12,7 +12,7 @@ define('hilo/event/EventMixin', ['hilo/core/Class'], function(Class){
  */
 
 /**
- * @class EventMixin Mixin is an event that contains related functions. You can increase the functionality of the event target by Class.mix(target, EventMixin).
+ * @class EventMixin是一个包含事件相关功能的mixin。可以通过 Class.mix(target, EventMixin) 来为target增加事件功能。
  * @mixin
  * @static
  * @module hilo/event/EventMixin
@@ -22,11 +22,11 @@ var EventMixin = {
     _listeners: null,
 
     /**
-     * Add an event listener.
-     * @param {String} type Type of event to monitor.
-     * @param {Function} listener Event listener callback.
-     * @param {Boolean} once Whether it is a one-time listener.
-     * @returns {Object} Object itself.
+     * 增加一个事件监听。
+     * @param {String} type 要监听的事件类型。
+     * @param {Function} listener 事件监听回调函数。
+     * @param {Boolean} once 是否是一次性监听，即回调函数响应一次后即删除，不再响应。
+     * @returns {Object} 对象本身。链式调用支持。
      */
     on: function(type, listener, once){
         var listeners = (this._listeners = this._listeners || {});
@@ -40,11 +40,10 @@ var EventMixin = {
     },
 
     /**
-     * Remove an event listener. If you do not pass any parameters, then delete all event listeners.
-     * If you do not pass the second parameter then delete all events of the specified type.
-     * @param {String} type Type of listening event to delete.
-     * @param {Function} listener Listener callback function to remove.
-     * @returns {Object} Object itself. meh
+     * 删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
+     * @param {String} type 要删除监听的事件类型。
+     * @param {Function} listener 要删除监听的回调函数。
+     * @returns {Object} 对象本身。链式调用支持。
      */
     off: function(type, listener){
         //remove all event listeners
@@ -74,10 +73,10 @@ var EventMixin = {
     },
 
     /**
-     * Send event. When the first argument of type Object, put the event as a while object.
-     * @param {String} type The type of event you want to send.
-     * @param {Object} detail Specific event information to be transmitted.
-     * @returns {Boolean} Whether the event was successfully dispatched.
+     * 发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
+     * @param {String} type 要发送的事件类型。
+     * @param {Object} detail 要发送的事件的具体信息，即事件随带参数。
+     * @returns {Boolean} 是否成功调度事件。
      */
     fire: function(type, detail){
         var event, eventType;
@@ -111,9 +110,7 @@ var EventMixin = {
 };
 
 /**
- * Event object class.
- * Currently only inner class.
- * Independent class may be considered if demanded.
+ * 事件对象类。当前仅为内部类，以后有需求的话可能会考虑独立为公开类。
  */
 var EventObject = Class.create({
     constructor: function EventObject(type, target, detail){
