@@ -12,41 +12,41 @@ define('hilo/game/Camera3d', ['hilo/core/Hilo', 'hilo/core/Class'], function(Hil
  */
 
 /**
- * @class Camera3d 伪3D虚拟摄像机。
+ * @class Camera3d Pseudo 3D virtual camera.
  * @module hilo/game/Camera3d
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
- * @property {Number} fv 镜头视点距离（屏幕视点相对眼睛距离，绝对了坐标缩放比例）
- * @property {Number} fx 镜头视点X（屏幕视点相对屏幕左上角X距离）
- * @property {Number} fy 镜头视点Y（屏幕视点相对屏幕左上角Y距离）
- * @property {Object} stage 3D对象所在容器，可以是stage或container，结合ticker时是必须参数，用来Z深度排序
- * @property {Number} x 镜头三维坐标x
- * @property {Number} y 镜头三维坐标y
- * @property {Number} z 镜头三维坐标z
- * @property {Number} rotationX X轴旋转角度
- * @property {Number} rotationY Y轴旋转角度
- * @property {Number} rotationZ Z轴旋转角度
+ * @property {Number} fv Distance from the camera viewpoint (viewpoint w.r.t. the eyes form the screen.)
+ * @property {Number} fx The camera viewpoint X (relative to the ipper left corner of the screen viewpoint distance X)
+ * @property {Number} fy The camera viewpoint Y (relative to the ipper left corner of the screen viewpoint distance Y)
+ * @property {Object} stage Where the 3D object can be a stage or a container, is a must when combined with ticker parameter.
+ * @property {Number} x Lens dimensional coordinates x
+ * @property {Number} y Lens dimensional coordinates y
+ * @property {Number} z Lens dimensional coordinates z
+ * @property {Number} rotationX X axis rotation angle
+ * @property {Number} rotationY Y axis rotation angle
+ * @property {Number} rotationZ Z axis rotation angle
  */
 var Camera3d = (function(){
 
 	var degtorad = Math.PI / 180;
 
-	//向量旋转
-	function rotateX(x, y, z, ca, sa) {//绕X轴旋转
+	// Vector rotation
+	function rotateX(x, y, z, ca, sa) {// Around the X axis
 		return {
 			x: x,
 			y: y * ca - z * sa,
 			z: y * sa + z * ca
 		};
 	}
-	function rotateY(x, y, z, ca, sa) {//绕Y轴旋转
+	function rotateY(x, y, z, ca, sa) {// Around the Y axis
 		return {
 			x: x * ca - z * sa,
 			y: y,
 			z: x * sa + z * ca
 		};
 	}
-	function rotateZ(x, y, z, ca, sa) {//绕Z轴旋转
+	function rotateZ(x, y, z, ca, sa) {// Around the Z axis
 		return {
 			x: x * ca - y * sa,
 			y: x * sa + y * ca,
@@ -68,10 +68,13 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z. 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
-	     * @param {Number} x坐标
-	     * @param {Number} y坐标
-	     * @param {Number} z坐标
+	     * Affine transformation matrix displacement.
+	     * Unlike directly modify Camera3d.x/y/z coordinates, is done sequentially.
+	     * After rotation transformation, coupled with a displacement transducer.
+	     * The main function can be done using Zoomin.out function.
+	     * @param {Number} x coordinate
+	     * @param {Number} y coordinate
+	     * @param {Number} z coordinate
 	     */
 		translate : function(x,y,z){
 			this.tx = x;
@@ -80,33 +83,33 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 旋转X轴方向角度，相当于欧拉角系统的 beta
-	     * @param {Number} X旋转角度
+	     * The rotation angle of the X-axis direction, the equivalent Euler angles system beta.
+	     * @param {Number} X rotation angle
 	     */
 		rotateX : function(angle){
 			this.rotationX = angle;
 		},
 
 	    /**
-	     * 旋转Y轴方向角度，相当于欧拉角系统的 gamma
-	     * @param {Number} Y旋转角度
+	     * The rotation angle of the Y-axis direction, the equivalent Euler angles system gamma.
+	     * @param {Number} Y rotation angle
 	     */
 		rotateY : function(angle){
 			this.rotationY = angle;
 		},
 
 	    /**
-	     * 旋转Z轴方向角度，相当于欧拉角系统的 alpha
-	     * @param {Number} Z旋转角度
+	     * The rotation angle of the Z-axis direction, the equivalent Euler angles system alpha.
+	     * @param {Number} Z rotation angle
 	     */
 		rotateZ : function(angle){
 			this.rotationZ = angle;
 		},
 
 	    /**
-	     * 将三维坐标转换投影为二维坐标，同时返回Z轴深度，和投影显示的缩放比例
-	     * @param {object} 三维坐标对象
-	     * @param {object} Hilo.View对象，用于自动转换坐标
+	     * The 3D coordinates to 2D projection coordinates, and return the Z-axis depth, and projection display scaling.
+	     * @param {object} Three-dimensional coordinates of the object
+	     * @param {object} Hilo.View objects for automatic coordinate conversion
 	     */
 		project : function(vector3D, view){
 
@@ -118,17 +121,17 @@ var Camera3d = (function(){
 				cosY = Math.cos(ry), sinY = Math.sin(ry),
 				cosZ = Math.cos(rz), sinZ = Math.sin(rz),
 
-				// 旋转变换前的 仿射矩阵位移，
+				// Rotation affine transformation matrix pre displacement
 				dx = vector3D.x - this.x,
 				dy = vector3D.y - this.y,
 				dz = vector3D.z - this.z,
 
-			// 旋转矩阵变换
+			// Rotation matrix transformation
 			vector = rotateZ(dx, dy, dz, cosZ, sinZ);
 			vector = rotateY(vector.x, vector.y, vector.z, cosY, sinY);
 			vector = rotateX(vector.x, vector.y, vector.z, cosX, sinX);
 
-			// 最后的仿射矩阵变换
+			// The final affine transformation matrix
 			if(this.tx) vector.x -= this.tx;
 			if(this.ty) vector.y -= this.ty;
 			if(this.tz) vector.z -= this.tz;
@@ -154,7 +157,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * Z深度排序
+	     * Z depth sorting
 	     */
 		sortZ : function(){
 			this.stage.children.sort(function(view_a, view_b){
@@ -163,7 +166,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * Ticker 轮询使用
+	     * Ticker Polling Use
 	     */
 		tick : function(){
 			this.sortZ();

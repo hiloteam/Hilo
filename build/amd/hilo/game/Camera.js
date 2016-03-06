@@ -12,17 +12,17 @@ define('hilo/game/Camera', ['hilo/core/Hilo', 'hilo/core/Class'], function(Hilo,
  */
 
 /**
- * @class Camera类表示摄像机。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @class Camera Class represents the camera.
+ * @param {Object} properties Create attribute parameter object. Such may contain all writable properties.
  * @module hilo/game/Camera
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
- * @property {Number} width 镜头宽
- * @property {Number} height 镜头高
- * @property {Object} scroll 滚动值 {x:0, y:0}
- * @property {View} target 摄像机跟随的目标
- * @property {Array} bounds 摄像机移动边界的矩形区域 [x, y, width, height]
- * @property {Array} deadzone 摄像机不移动的矩形区域 [ x, y, width, height]
+ * @property {Number} width Lens Width
+ * @property {Number} height Lens Height
+ * @property {Object} scroll Scroll value {x:0, y:0}
+ * @property {View} target The target the camera follows.
+ * @property {Array} bounds A rectangular area of the camera's moving boundary [x, y, width, height]
+ * @property {Array} deadzone The camera does not move this rectangular area. [ x, y, width, height]
  */
 var Camera = Class.create(/** @lends Camera.prototype */{
     constructor:function(properties){
@@ -41,7 +41,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         Hilo.copy(this, properties);
     },
     /**
-     * 更新
+     * Update
      * @param {Number} deltaTime
     */
     tick:function(deltaTime){
@@ -75,9 +75,9 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         }
     },
     /**
-     * 跟随目标
-     * @param {Object} target 跟随的目标，必须是有x,y属性的对象
-     * @param {Array} deadzone 摄像机不移动的矩形区域 [ x, y, width, height]
+     * Follow goal.
+     * @param {Object} target Object to follow. Object must have x,y property.
+     * @param {Array} deadzone The rectangular area not moved by the camera [ x, y, width, height]
     */
     follow:function(target, deadzone){
         this.target = target;
