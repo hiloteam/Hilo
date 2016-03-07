@@ -5,6 +5,32 @@
  */
 
 /**
+ * @language=en
+ * @class TextureAtlas纹理集是将许多小的纹理图片整合到一起的一张大图。这个类可根据一个纹理集数据读取纹理小图、精灵动画等。
+ * @param {Object} atlasData 纹理集数据。它可包含如下数据：
+ * <ul>
+ * <li><b>image</b> - 纹理集图片。必需。</li>
+ * <li><b>width</b> - 纹理集图片宽度。若frames数据为Object时，此属性必需。</li>
+ * <li><b>height</b> - 纹理集图片高度。若frames数据为Object时，此属性必需。</li>
+ * <li><b>frames</b> - 纹理集帧数据，可以是Array或Object。必需。
+ * <ul>
+ * <li>若为Array，则每项均为一个纹理图片帧数据，如：[[0, 0, 50, 50], [0, 50, 50, 50]。</li>
+ * <li>若为Object，则需包含frameWidth(帧宽)、frameHeight(帧高)、numFrames(帧数) 属性。</li>
+ * </ul>
+ * </li>
+ * <li><b>sprites</b> - 纹理集精灵动画定义，其每个值均定义一个精灵。为Object对象。可选。
+ * <ul>
+ * <li>若为Number，即此精灵只包含一帧，此帧为帧数据中索引为当前值的帧。如：sprites:{'foo':1}。</li>
+ * <li>若为Array，则每项均为一个帧的索引值。如：sprites:{'foo':[0, 1, 2, 3]}。</li>
+ * <li>若为Object，则需包含from(起始帧索引值)、to(末帧索引值) 属性。</li>
+ * </ul>
+ * </li>
+ * </ul>
+ * @module hilo/util/TextureAtlas
+ * @requires hilo/core/Class
+ */
+/**
+ * @language=zh
  * @class TextureAtlas纹理集是将许多小的纹理图片整合到一起的一张大图。这个类可根据一个纹理集数据读取纹理小图、精灵动画等。
  * @param {Object} atlasData 纹理集数据。它可包含如下数据：
  * <ul>
@@ -40,6 +66,13 @@ return Class.create(/** @lends TextureAtlas.prototype */{
     _sprites: null,
 
     /**
+     * @language=en
+     * 获取指定索引位置index的帧数据。
+     * @param {Int} index 要获取帧的索引位置。
+     * @returns {Object} 帧数据。
+     */
+    /**
+     * @language=zh
      * 获取指定索引位置index的帧数据。
      * @param {Int} index 要获取帧的索引位置。
      * @returns {Object} 帧数据。
@@ -50,6 +83,13 @@ return Class.create(/** @lends TextureAtlas.prototype */{
     },
 
     /**
+     * @language=en
+     * 获取指定id的精灵数据。
+     * @param {String} id 要获取精灵的id。
+     * @returns {Object} 精灵数据。
+     */
+    /**
+     * @language=zh
      * 获取指定id的精灵数据。
      * @param {String} id 要获取精灵的id。
      * @returns {Object} 精灵数据。
@@ -61,6 +101,25 @@ return Class.create(/** @lends TextureAtlas.prototype */{
 
     Statics: /** @lends TextureAtlas */ {
         /**
+         * @language=en
+         * 创建精灵帧数据的快捷方法。
+         * @param {String|Array} name 动画名称|一组动画数据
+         * @param {String} frames 帧数据 eg:"0-5"代表第0到第5帧
+         * @param {Number} w 每帧的宽
+         * @param {Number} h 每帧的高
+         * @param {Bollean} loop 是否循环
+         * @param {Number} duration 每帧间隔 默认单位帧, 如果sprite的timeBased为true则单位是毫秒，默认一帧
+         * @example
+         *  //方式一 单个动画
+         *  createSpriteFrames("walk", "0-5,8,9", meImg, 55, 88, true, 1);
+         *  //方式二 多组动画
+         *  createSpriteFrames([
+         *    ["walk", "0-5,8,9", meImg, 55, 88, true, 1],
+         *    ["jump", "0-5", meImg, 55, 88, false, 1]
+         *  ]);
+        */
+        /**
+         * @language=zh
          * 创建精灵帧数据的快捷方法。
          * @param {String|Array} name 动画名称|一组动画数据
          * @param {String} frames 帧数据 eg:"0-5"代表第0到第5帧
@@ -125,6 +184,12 @@ return Class.create(/** @lends TextureAtlas.prototype */{
 });
 
 /**
+ * @language=en
+ * 解析纹理集帧数据。
+ * @private
+ */
+/**
+ * @language=zh
  * 解析纹理集帧数据。
  * @private
  */
@@ -160,6 +225,12 @@ function parseTextureFrames(atlasData){
 }
 
 /**
+ * @language=en
+ * 解析精灵数据。
+ * @private
+ */
+/**
+ * @language=zh
  * 解析精灵数据。
  * @private
  */

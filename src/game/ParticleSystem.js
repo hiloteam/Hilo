@@ -5,6 +5,42 @@
  */
 
 /**
+ * @language=en
+ * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+ * <br/>
+ * @class 粒子系统
+ * @module hilo/game/ParticleSystem
+ * @requires hilo/core/Hilo
+ * @requires hilo/core/Class
+ * @requires hilo/view/View
+ * @requires hilo/view/Container
+ * @requires hilo/view/Bitmap
+ * @requires hilo/view/Drawable
+ * @property {Number} emitTime 发射间隔
+ * @property {Number} emitTimeVar 发射间隔变化量
+ * @property {Number} emitNum 每次发射数量变化量
+ * @property {Number} emitNumVar 每次发射数量
+ * @property {Number} emitterX 发射器位置x
+ * @property {Number} emitterY 发射器位置y
+ * @property {Number} totalTime 总时间
+ * @property {Number} gx 重力加速度x
+ * @property {Number} gy 重力加速度y
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties.particle 粒子属性配置
+ * @param {Number} properties.particle.x x位置
+ * @param {Number} properties.particle.y y位置
+ * @param {Number} properties.particle.vx x速度
+ * @param {Number} properties.particle.vy y速度
+ * @param {Number} properties.particle.ax x加速度
+ * @param {Number} properties.particle.ay y加速度
+ * @param {Number} properties.particle.life 粒子存活时间 单位s
+ * @param {Number} properties.particle.alpha 透明度
+ * @param {Number} properties.particle.alphaV 透明度变化
+ * @param {Number} properties.particle.scale 缩放
+ * @param {Number} properties.particle.scaleV 缩放变化速度
+*/
+/**
+ * @language=zh
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class 粒子系统
@@ -97,6 +133,12 @@ var ParticleSystem = (function(){
             diedParticles:diedParticles
         },
         /**
+         * @language=en
+         * 重置属性
+         * @param {Object} cfg
+        */
+        /**
+         * @language=zh
          * 重置属性
          * @param {Object} cfg
         */
@@ -108,6 +150,12 @@ var ParticleSystem = (function(){
             }
         },
         /**
+         * @language=en
+         * 更新
+         * @param {Number} dt 间隔时间 单位ms
+        */
+        /**
+         * @language=zh
          * 更新
          * @param {Number} dt 间隔时间 单位ms
         */
@@ -128,6 +176,11 @@ var ParticleSystem = (function(){
             }
         },
         /**
+         * @language=en
+         * 发射粒子
+        */
+        /**
+         * @language=zh
          * 发射粒子
         */
         _emit: function() {
@@ -137,6 +190,11 @@ var ParticleSystem = (function(){
             }
         },
         /**
+         * @language=en
+         * 开始
+        */
+        /**
+         * @language=zh
          * 开始
         */
         start: function() {
@@ -147,6 +205,12 @@ var ParticleSystem = (function(){
             this._emitTime = getRandomValue(this.emitTime, this.emitTimeVar);
         },
         /**
+         * @language=en
+         * 停止
+         * @param {Boolean} clear 是否清除所有粒子
+        */
+        /**
+         * @language=zh
          * 停止
          * @param {Boolean} clear 是否清除所有粒子
         */
@@ -161,6 +225,20 @@ var ParticleSystem = (function(){
     });
 
     /**
+     * @language=en
+     * @class 粒子
+     * @inner
+     * @param {Number} vx x速度
+     * @param {Number} vy y速度
+     * @param {Number} ax x加速度
+     * @param {Number} ay y加速度
+     * @param {Number} scaleV 缩放变化速度
+     * @param {Number} alphaV 透明度变换速度
+     * @param {Number} rotationV 旋转速度
+     * @param {Number} life 存活时间
+    */
+    /**
+     * @language=zh
      * @class 粒子
      * @inner
      * @param {Number} vx x速度
@@ -180,6 +258,11 @@ var ParticleSystem = (function(){
             this.init(properties);
         },
         /**
+         * @language=en
+         * 更新
+        */
+        /**
+         * @language=zh
          * 更新
         */
         onUpdate: function(dt) {
@@ -210,6 +293,11 @@ var ParticleSystem = (function(){
             }
         },
         /**
+         * @language=en
+         * 设置图像
+        */
+        /**
+         * @language=zh
          * 设置图像
         */
         setImage: function(img, frame) {
@@ -222,6 +310,11 @@ var ParticleSystem = (function(){
             this.drawable.image = img;
         },
         /**
+         * @language=en
+         * 销毁
+        */
+        /**
+         * @language=zh
          * 销毁
         */
         destroy: function() {
@@ -230,6 +323,11 @@ var ParticleSystem = (function(){
             diedParticles.push(this);
         },
         /**
+         * @language=en
+         * 初始化
+        */
+        /**
+         * @language=zh
          * 初始化
         */
         init: function(cfg) {
@@ -262,6 +360,12 @@ var ParticleSystem = (function(){
         },
         Statics:{
             /**
+             * @language=en
+             * 生成粒子
+             * @param {Object} cfg
+            */
+            /**
+             * @language=zh
              * 生成粒子
              * @param {Object} cfg
             */

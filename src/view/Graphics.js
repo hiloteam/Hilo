@@ -5,6 +5,29 @@
  */
 
 /**
+ * @language=en
+ * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+ * <br/>
+ * @class Graphics类包含一组创建矢量图形的方法。
+ * @augments View
+ * @mixes CacheMixin
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @module hilo/view/Graphics
+ * @requires hilo/core/Hilo
+ * @requires hilo/core/Class
+ * @requires hilo/view/View
+ * @requires hilo/view/CacheMixin
+ * @property {Number} lineWidth 笔画的线条宽度。默认为1。只读属性。
+ * @property {Number} lineAlpha 笔画的线条透明度。默认为1。只读属性。
+ * @property {String} lineCap 笔画的线条端部样式。可选值有：butt、round、square等，默认为null。只读属性。
+ * @property {String} lineJoin 笔画的线条连接样式。可选值有：miter、round、bevel等，默认为null。只读属性。
+ * @property {Number} miterLimit 斜连线长度和线条宽度的最大比率。此属性仅当lineJoin为miter时有效。默认值为10。只读属性。
+ * @property {String} strokeStyle 笔画边框的样式。默认值为'0'，即黑色。只读属性。
+ * @property {String} fillStyle 内容填充的样式。默认值为'0'，即黑色。只读属性。
+ * @property {Number} fillAlpha 内容填充的透明度。默认值为0。只读属性。
+ */
+/**
+ * @language=zh
  * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class Graphics类包含一组创建矢量图形的方法。
@@ -53,6 +76,18 @@ return Class.create(/** @lends Graphics.prototype */{
     fillAlpha: 0,
 
     /**
+     * @language=en
+     * 指定绘制图形的线条样式。
+     * @param {Number} thickness 线条的粗细值。默认为1。
+     * @param {String} lineColor 线条的CSS颜色值。默认为黑色，即'0'。
+     * @param {Number} lineAlpha 线条的透明度值。默认为不透明，即1。
+     * @param {String} lineCap 线条的端部样式。可选值有：butt、round、square等，默认值为null。
+     * @param {String} lineJoin 线条的连接样式。可选值有：miter、round、bevel等，默认值为null。
+     * @param {Number} miterLimit 斜连线长度和线条宽度的最大比率。此属性仅当lineJoin为miter时有效。默认值为10。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 指定绘制图形的线条样式。
      * @param {Number} thickness 线条的粗细值。默认为1。
      * @param {String} lineColor 线条的CSS颜色值。默认为黑色，即'0'。
@@ -76,6 +111,14 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 指定绘制图形的填充样式和透明度。
+     * @param {String} fill 填充样式。可以是color、gradient或pattern。
+     * @param {Number} alpha 透明度。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 指定绘制图形的填充样式和透明度。
      * @param {String} fill 填充样式。可以是color、gradient或pattern。
      * @param {Number} alpha 透明度。
@@ -91,6 +134,12 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 应用并结束笔画的绘制和图形样式的填充。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 应用并结束笔画的绘制和图形样式的填充。
      * @returns {Graphics} Graphics对象本身。
      */
@@ -104,6 +153,18 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 指定绘制图形的线性渐变填充样式。
+     * @param {Number} x0 渐变的起始点的x轴坐标。
+     * @param {Number} y0 渐变的起始点的y轴坐标。
+     * @param {Number} x1 渐变的结束点的x轴坐标。
+     * @param {Number} y1 渐变的结束点的y轴坐标。
+     * @param {Array} colors 渐变中使用的CSS颜色值数组。
+     * @param {Array} ratois 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 指定绘制图形的线性渐变填充样式。
      * @param {Number} x0 渐变的起始点的x轴坐标。
      * @param {Number} y0 渐变的起始点的y轴坐标。
@@ -124,6 +185,20 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 指定绘制图形的放射性渐变填充样式。
+     * @param {Number} x0 渐变的起始圆的x轴坐标。
+     * @param {Number} y0 渐变的起始圆的y轴坐标。
+     * @param {Number} r0 渐变的起始圆的半径。
+     * @param {Number} x1 渐变的结束圆的x轴坐标。
+     * @param {Number} y1 渐变的结束圆的y轴坐标。
+     * @param {Number} r1 渐变的结束圆的半径。
+     * @param {Array} colors 渐变中使用的CSS颜色值数组。
+     * @param {Array} ratois 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 指定绘制图形的放射性渐变填充样式。
      * @param {Number} x0 渐变的起始圆的x轴坐标。
      * @param {Number} y0 渐变的起始圆的y轴坐标。
@@ -146,6 +221,14 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 开始一个位图填充样式。
+     * @param {HTMLImageElement} image 指定填充的Image对象。
+     * @param {String} repetition 指定填充的重复设置参数。它可以是以下任意一个值：repeat, repeat-x, repeat-y, no-repeat。默认为''。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 开始一个位图填充样式。
      * @param {HTMLImageElement} image 指定填充的Image对象。
      * @param {String} repetition 指定填充的重复设置参数。它可以是以下任意一个值：repeat, repeat-x, repeat-y, no-repeat。默认为''。
@@ -158,6 +241,12 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 开始一个新的路径。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 开始一个新的路径。
      * @returns {Graphics} Graphics对象本身。
      */
@@ -166,6 +255,12 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 关闭当前的路径。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 关闭当前的路径。
      * @returns {Graphics} Graphics对象本身。
      */
@@ -174,6 +269,14 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 将当前绘制位置移动到点(x, y)。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 将当前绘制位置移动到点(x, y)。
      * @param {Number} x x轴坐标。
      * @param {Number} y y轴坐标。
@@ -184,6 +287,14 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 绘制从当前位置开始到点(x, y)结束的直线。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 绘制从当前位置开始到点(x, y)结束的直线。
      * @param {Number} x x轴坐标。
      * @param {Number} y y轴坐标。
@@ -194,6 +305,16 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 绘制从当前位置开始到点(x, y)结束的二次曲线。
+     * @param {Number} cpx 控制点cp的x轴坐标。
+     * @param {Number} cpy 控制点cp的y轴坐标。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 绘制从当前位置开始到点(x, y)结束的二次曲线。
      * @param {Number} cpx 控制点cp的x轴坐标。
      * @param {Number} cpy 控制点cp的y轴坐标。
@@ -206,6 +327,18 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 绘制从当前位置开始到点(x, y)结束的贝塞尔曲线。
+     * @param {Number} cp1x 控制点cp1的x轴坐标。
+     * @param {Number} cp1y 控制点cp1的y轴坐标。
+     * @param {Number} cp2x 控制点cp2的x轴坐标。
+     * @param {Number} cp2y 控制点cp2的y轴坐标。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 绘制从当前位置开始到点(x, y)结束的贝塞尔曲线。
      * @param {Number} cp1x 控制点cp1的x轴坐标。
      * @param {Number} cp1y 控制点cp1的y轴坐标。
@@ -220,6 +353,16 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 绘制一个矩形。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @param {Number} width 矩形的宽度。
+     * @param {Number} height 矩形的高度。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 绘制一个矩形。
      * @param {Number} x x轴坐标。
      * @param {Number} y y轴坐标。
@@ -232,6 +375,20 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 绘制一个复杂的圆角矩形。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @param {Number} width 圆角矩形的宽度。
+     * @param {Number} height 圆角矩形的高度。
+     * @param {Number} cornerTL 圆角矩形的左上圆角大小。
+     * @param {Number} cornerTR 圆角矩形的右上圆角大小。
+     * @param {Number} cornerBR 圆角矩形的右下圆角大小。
+     * @param {Number} cornerBL 圆角矩形的左下圆角大小。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 绘制一个复杂的圆角矩形。
      * @param {Number} x x轴坐标。
      * @param {Number} y y轴坐标。
@@ -258,6 +415,17 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 绘制一个圆角矩形。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @param {Number} width 圆角矩形的宽度。
+     * @param {Number} height 圆角矩形的高度。
+     * @param {Number} cornerSize 圆角矩形的圆角大小。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 绘制一个圆角矩形。
      * @param {Number} x x轴坐标。
      * @param {Number} y y轴坐标。
@@ -271,6 +439,15 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 绘制一个圆。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @param {Number} radius 圆的半径。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 绘制一个圆。
      * @param {Number} x x轴坐标。
      * @param {Number} y y轴坐标。
@@ -282,6 +459,16 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 绘制一个椭圆。
+     * @param {Number} x x轴坐标。
+     * @param {Number} y y轴坐标。
+     * @param {Number} width 椭圆的宽度。
+     * @param {Number} height 椭圆的高度。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 绘制一个椭圆。
      * @param {Number} x x轴坐标。
      * @param {Number} y y轴坐标。
@@ -307,6 +494,17 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 根据参数指定的SVG数据绘制一条路径。
+     * 代码示例:
+     * <p>var path = 'M250 150 L150 350 L350 350 Z';</p>
+     * <p>var shape = new Hilo.Graphics({width:500, height:500});</p>
+     * <p>shape.drawSVGPath(path).beginFill('#0ff').endFill();</p>
+     * @param {String} pathData 要绘制的SVG路径数据。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 根据参数指定的SVG数据绘制一条路径。
      * 代码示例:
      * <p>var path = 'M250 150 L150 350 L350 350 Z';</p>
@@ -343,6 +541,12 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 执行全部绘制动作。内部私有方法。
+     * @private
+     */
+    /**
+     * @language=zh
      * 执行全部绘制动作。内部私有方法。
      * @private
      */
@@ -361,6 +565,12 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 重写渲染实现。
+     * @private
+     */
+    /**
+     * @language=zh
      * 重写渲染实现。
      * @private
      */
@@ -375,6 +585,12 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 清除所有绘制动作并复原所有初始状态。
+     * @returns {Graphics} Graphics对象本身。
+     */
+    /**
+     * @language=zh
      * 清除所有绘制动作并复原所有初始状态。
      * @returns {Graphics} Graphics对象本身。
      */
@@ -398,6 +614,12 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * @language=en
+     * 添加一个绘制动作。内部私有方法。
+     * @private
+     */
+    /**
+     * @language=zh
      * 添加一个绘制动作。内部私有方法。
      * @private
      */

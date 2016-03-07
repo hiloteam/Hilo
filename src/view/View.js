@@ -5,6 +5,37 @@
  */
 
 /**
+ * @language=en
+ * @class View类是所有可视对象或组件的基类。
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @module hilo/view/View
+ * @requires hilo/core/Hilo
+ * @requires hilo/core/Class
+ * @requires hilo/event/EventMixin
+ * @requires hilo/geom/Matrix
+ * @property {String} id 可视对象的唯一标识符。
+ * @property {Number} x 可视对象的x轴坐标。默认值为0。
+ * @property {Number} y 可视对象的y轴坐标。默认值为0。
+ * @property {Number} width 可视对象的宽度。默认值为0。
+ * @property {Number} height 可视对象的高度。默认值为0。
+ * @property {Number} alpha 可视对象的透明度。默认值为1。
+ * @property {Number} rotation 可视对象的旋转角度。默认值为0。
+ * @property {Boolean} visible 可视对象是否可见。默认为可见，即true。
+ * @property {Number} pivotX 可视对象的中心点的x轴坐标。默认值为0。
+ * @property {Number} pivotY 可视对象的中心点的y轴坐标。默认值为0。
+ * @property {Number} scaleX 可视对象在x轴上的缩放比例。默认为不缩放，即1。
+ * @property {Number} scaleY 可视对象在y轴上的缩放比例。默认为不缩放，即1。
+ * @property {Boolean} pointerEnabled 可视对象是否接受交互事件。默认为接受交互事件，即true。
+ * @property {Object} background 可视对象的背景样式。可以是CSS颜色值、canvas的gradient或pattern填充。
+ * @property {Graphics} mask 可视对象的遮罩图形。
+ * @property {String|Function} align 可视对象相对于父容器的对齐方式。取值可查看Hilo.align枚举对象。
+ * @property {Container} parent 可视对象的父容器。只读属性。
+ * @property {Number} depth 可视对象的深度，也即z轴的序号。只读属性。
+ * @property {Drawable} drawable 可视对象的可绘制对象。供高级开发使用。
+ * @property {Array} boundsArea 可视对象的区域顶点数组。格式为：[{x:10, y:10}, {x:20, y:20}]。
+ */
+/**
+ * @language=zh
  * @class View类是所有可视对象或组件的基类。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/view/View
@@ -65,6 +96,12 @@ return Class.create(/** @lends View.prototype */{
     depth: -1,
 
     /**
+     * @language=en
+     * 返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
+     * @returns {Stage} 可视对象的舞台引用。
+     */
+    /**
+     * @language=zh
      * 返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
      * @returns {Stage} 可视对象的舞台引用。
      */
@@ -78,6 +115,12 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回可视对象缩放后的宽度。
+     * @returns {Number} 可视对象缩放后的宽度。
+     */
+    /**
+     * @language=zh
      * 返回可视对象缩放后的宽度。
      * @returns {Number} 可视对象缩放后的宽度。
      */
@@ -86,6 +129,12 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回可视对象缩放后的高度。
+     * @returns {Number} 可视对象缩放后的高度。
+     */
+    /**
+     * @language=zh
      * 返回可视对象缩放后的高度。
      * @returns {Number} 可视对象缩放后的高度。
      */
@@ -94,6 +143,14 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 添加此对象到父容器。
+     * @param {Container} container 一个容器。
+     * @param {Uint} index 要添加到索引位置。
+     * @returns {View} 可视对象本身。
+     */
+    /**
+     * @language=zh
      * 添加此对象到父容器。
      * @param {Container} container 一个容器。
      * @param {Uint} index 要添加到索引位置。
@@ -106,6 +163,12 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 从父容器里删除此对象。
+     * @returns {View} 可视对象本身。
+     */
+    /**
+     * @language=zh
      * 从父容器里删除此对象。
      * @returns {View} 可视对象本身。
      */
@@ -116,6 +179,18 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
+     * @returns {Array} 可视对象的顶点坐标数组vertexs。另vertexs还包含属性：
+     * <ul>
+     * <li><b>x</b> - 可视对象的外接矩形x轴坐标。</li>
+     * <li><b>y</b> - 可视对象的外接矩形y轴坐标。</li>
+     * <li><b>width</b> - 可视对象的外接矩形的宽度。</li>
+     * <li><b>height</b> - 可视对象的外接矩形的高度。</li>
+     * </ul>
+     */
+    /**
+     * @language=zh
      * 获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
      * @returns {Array} 可视对象的顶点坐标数组vertexs。另vertexs还包含属性：
      * <ul>
@@ -156,6 +231,13 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 获取可视对象相对于其某个祖先（默认为最上层容器）的连接矩阵。
+     * @param {View} ancestor 可视对象的相对的祖先容器。
+     * @private
+     */
+    /**
+     * @language=zh
      * 获取可视对象相对于其某个祖先（默认为最上层容器）的连接矩阵。
      * @param {View} ancestor 可视对象的相对的祖先容器。
      * @private
@@ -183,6 +265,15 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 检测由x和y参数指定的点是否在其外接矩形之内。
+     * @param {Number} x 要检测的点的x轴坐标。
+     * @param {Number} y 要检测的点的y轴坐标。
+     * @param {Boolean} usePolyCollision 是否使用多边形碰撞检测。默认为false。
+     * @returns {Boolean} 点是否在可视对象之内。
+     */
+    /**
+     * @language=zh
      * 检测由x和y参数指定的点是否在其外接矩形之内。
      * @param {Number} x 要检测的点的x轴坐标。
      * @param {Number} y 要检测的点的y轴坐标。
@@ -201,6 +292,13 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 检测object参数指定的对象是否与其相交。
+     * @param {View} object 要检测的可视对象。
+     * @param {Boolean} usePolyCollision 是否使用多边形碰撞检测。默认为false。
+     */
+    /**
+     * @language=zh
      * 检测object参数指定的对象是否与其相交。
      * @param {View} object 要检测的可视对象。
      * @param {Boolean} usePolyCollision 是否使用多边形碰撞检测。默认为false。
@@ -218,6 +316,14 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 可视对象的基本渲染实现，用于框架内部或高级开发使用。通常应该重写render方法。
+     * @param {Renderer} renderer 渲染器。
+     * @param {Number} delta 渲染时时间偏移量。
+     * @protected
+     */
+    /**
+     * @language=zh
      * 可视对象的基本渲染实现，用于框架内部或高级开发使用。通常应该重写render方法。
      * @param {Renderer} renderer 渲染器。
      * @param {Number} delta 渲染时时间偏移量。
@@ -231,6 +337,11 @@ return Class.create(/** @lends View.prototype */{
         }
     },
     /**
+     * @language=en
+     * 冒泡鼠标事件
+    */
+    /**
+     * @language=zh
      * 冒泡鼠标事件
     */
     _fireMouseEvent:function(e){
@@ -265,6 +376,14 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+     * 限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
+     * @type Function
+     * @default null
+     */
+    /**
+     * @language=zh
      * 更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
      * 限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
      * @type Function
@@ -273,6 +392,13 @@ return Class.create(/** @lends View.prototype */{
     onUpdate: null,
 
     /**
+     * @language=en
+     * 可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
+     * @param {Renderer} renderer 渲染器。
+     * @param {Number} delta 渲染时时间偏移量。
+     */
+    /**
+     * @language=zh
      * 可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
      * @param {Renderer} renderer 渲染器。
      * @param {Number} delta 渲染时时间偏移量。
@@ -282,6 +408,12 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回可视对象的字符串表示。
+     * @returns {String} 可视对象的字符串表示。
+     */
+    /**
+     * @language=zh
      * 返回可视对象的字符串表示。
      * @returns {String} 可视对象的字符串表示。
      */
@@ -291,6 +423,11 @@ return Class.create(/** @lends View.prototype */{
 });
 
 /**
+ * @language=en
+ * @private
+ */
+/**
+ * @language=zh
  * @private
  */
 function pointInPolygon(x, y, poly){
@@ -328,6 +465,11 @@ function pointInPolygon(x, y, poly){
 }
 
 /**
+ * @language=en
+ * @private
+ */
+/**
+ * @language=zh
  * @private
  */
 function polygonCollision(poly1, poly2){
@@ -337,6 +479,11 @@ function polygonCollision(poly1, poly2){
 }
 
 /**
+ * @language=en
+ * @private
+ */
+/**
+ * @language=zh
  * @private
  */
 function doSATCheck(poly1, poly2, result){

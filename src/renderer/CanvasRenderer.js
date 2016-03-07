@@ -5,6 +5,18 @@
  */
 
 /**
+ * @language=en
+ * @class canvas画布渲染器。所有可视对象将渲染在canvas画布上。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
+ * @augments Renderer
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @module hilo/renderer/CanvasRenderer
+ * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
+ * @requires hilo/renderer/Renderer
+ * @property {CanvasRenderingContext2D} context canvas画布的上下文。只读属性。
+ */
+/**
+ * @language=zh
  * @class canvas画布渲染器。所有可视对象将渲染在canvas画布上。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
  * @augments Renderer
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -25,6 +37,12 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     context: null,
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#startDraw
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#startDraw
      */
@@ -40,6 +58,12 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#draw
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#draw
      */
@@ -73,6 +97,12 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#endDraw
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#endDraw
      */
@@ -81,6 +111,12 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#transform
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#transform
      */
@@ -183,6 +219,12 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#remove
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#remove
      */
@@ -199,6 +241,12 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#clear
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#clear
      */
@@ -207,6 +255,12 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#resize
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#resize
      */

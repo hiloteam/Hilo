@@ -5,6 +5,25 @@
  */
 
 /**
+ * @language=en
+ * @class HTMLAudio声音播放模块。此模块使用HTMLAudioElement播放音频。
+ * 使用限制：iOS平台需用户事件触发才能播放，很多Android浏览器仅能同时播放一个音频。
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @module hilo/media/HTMLAudio
+ * @requires hilo/core/Hilo
+ * @requires hilo/core/Class
+ * @requires hilo/event/EventMixin
+ * @property {String} src 播放的音频的资源地址。
+ * @property {Boolean} loop 是否循环播放。默认为false。
+ * @property {Boolean} autoPlay 是否自动播放。默认为false。
+ * @property {Boolean} loaded 音频资源是否已加载完成。只读属性。
+ * @property {Boolean} playing 是否正在播放音频。只读属性。
+ * @property {Number} duration 音频的时长。只读属性。
+ * @property {Number} volume 音量的大小。取值范围：0-1。
+ * @property {Boolean} muted 是否静音。默认为false。
+ */
+/**
+ * @language=zh
  * @class HTMLAudio声音播放模块。此模块使用HTMLAudioElement播放音频。
  * 使用限制：iOS平台需用户事件触发才能播放，很多Android浏览器仅能同时播放一个音频。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -41,6 +60,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     _element: null, //HTMLAudioElement对象
 
     /**
+     * @language=en
+     * 加载音频文件。
+     */
+    /**
+     * @language=zh
      * 加载音频文件。
      */
     load: function(){
@@ -66,6 +90,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     */
+    /**
+     * @language=zh
      * @private
      */
     _onAudioEvent: function(e){
@@ -92,6 +121,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     */
+    /**
+     * @language=zh
      * @private
      */
     _doPlay: function(){
@@ -103,6 +137,12 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
+     * 播放音频。如果正在播放，则会重新开始。
+     * 注意：为了避免第一次播放不成功，建议在load音频后再播放。
+     */
+    /**
+     * @language=zh
      * 播放音频。如果正在播放，则会重新开始。
      * 注意：为了避免第一次播放不成功，建议在load音频后再播放。
      */
@@ -120,6 +160,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
+     * 暂停音频。
+     */
+    /**
+     * @language=zh
      * 暂停音频。
      */
     pause: function(){
@@ -131,6 +176,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
+     * 恢复音频播放。
+     */
+    /**
+     * @language=zh
      * 恢复音频播放。
      */
     resume: function(){
@@ -141,6 +191,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
+     * 停止音频播放。
+     */
+    /**
+     * @language=zh
      * 停止音频播放。
      */
     stop: function(){
@@ -153,6 +208,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
+     * 设置音量。注意: iOS设备无法设置音量。
+     */
+    /**
+     * @language=zh
      * 设置音量。注意: iOS设备无法设置音量。
      */
     setVolume: function(volume){
@@ -164,6 +224,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
+     * 设置静音模式。注意: iOS设备无法设置静音模式。
+     */
+    /**
+     * @language=zh
      * 设置静音模式。注意: iOS设备无法设置静音模式。
      */
     setMute: function(muted){
@@ -176,6 +241,11 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
 
     Statics: /** @lends HTMLAudio */ {
         /**
+         * @language=en
+         * 浏览器是否支持HTMLAudio。
+         */
+        /**
+         * @language=zh
          * 浏览器是否支持HTMLAudio。
          */
         isSupported: window.Audio !== null

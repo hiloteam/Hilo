@@ -2,9 +2,38 @@
  * Hilo
  * Copyright 2015 alibaba.com
  * Licensed under the MIT License
- */ 
+ */
 
 /**
+ * @language=en
+ * Create Example Class:
+ * <pre>
+ * var Bird = Hilo.Class.create({
+ *     Extends: Animal,
+ *     Mixes: EventMixin,
+ *     constructor: function(name){
+ *         this.name = name;
+ *     },
+ *     fly: function(){
+ *         console.log('I am flying');
+ *     },
+ *     Statics: {
+ *         isBird: function(bird){
+ *             return bird instanceof Bird;
+ *         }
+ *     }
+ * });
+ *
+ * var swallow = new Bird('swallow');
+ * swallow.fly();
+ * Bird.isBird(swallow);
+ * </pre>
+ * @namespace Class Class is created to aid the developer.
+ * @static
+ * @module hilo/core/Class
+ */
+/**
+ * @language=zh
  * 创建类示例：
  * <pre>
  * var Bird = Hilo.Class.create({
@@ -34,6 +63,20 @@
 var Class = (function(){
 
 /**
+ * @language=en
+ * Create a class based on the parameters, properties and methods specified.
+ * @param {Object} properties Properties and methods to create the class.
+ * <ul>
+ * <li><b>Extends</b> - Designed to inherit the parent class.</li>
+ * <li><b>Mixes</b> - Specifies mixed member collection object.</li>
+ * <li><b>Statics</b> - Static property or method specified class.</li>
+ * <li><b>constructor</b> -  The constructor of specified class.</li>
+ * <li>Other members of the property or method to create the class.</li>
+ * </ul>
+ * @returns {Object} Create classes.
+ */
+/**
+ * @language=zh
  * 根据参数指定的属性和方法创建类。
  * @param {Object} properties 要创建的类的相关属性和方法。主要有：
  * <ul>
@@ -53,6 +96,11 @@ var create = function(properties){
 }
 
 /**
+ * @language=en
+ * @private
+ */
+/**
+ * @language=zh
  * @private
  */
 var implement = function(properties){
@@ -99,6 +147,11 @@ var classMutators = /** @ignore */{
 };
 
 /**
+ * @language=en
+ * @private
+ */
+/**
+ * @language=zh
  * @private
  */
 var createProto = (function(){
@@ -116,6 +169,14 @@ var createProto = (function(){
 })();
 
 /**
+ * @language=en
+ * 混入属性或方法。
+ * @param {Object} target 混入目标对象。
+ * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。
+ * @returns {Object} 混入目标对象。
+ */
+/**
+ * @language=zh
  * 混入属性或方法。
  * @param {Object} target 混入目标对象。
  * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。
