@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var gulpif = require('gulp-if');
+var replace = require('gulp-replace');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
 var zip = require('gulp-zip');
@@ -15,7 +16,10 @@ var transformModule = require('gulp-transform-module');
 var pkg = require('./package.json');
 
 var isWatch = false;
+var licenseCommentReg = /\/\*\*[\d\D]+?alibaba.com[\d\D]+?Licensed under the MIT License[\s]+?\*\//g;
+var apiCommentReg = /(\/\*\*[\s]+?\*[\s]+?@language=en[\d\D]+?\*\/)[\s]+(\/\*\*[\s]+?\*[\s]+?@language=zh[\d\D]+?\*\/)/g;
 
+//format
 var getFileInfo = function(variant){
     variant = variant ? (' for ' + variant) : '';
     var info = '/**\n';
@@ -47,6 +51,8 @@ var createBuildFormatTask = function(type){
             cwd:pkg.sources.dir,
             base:pkg.sources.dir
         })
+        .pipe(replace(licenseCommentReg, ''))
+        .pipe(replace(apiCommentReg, '$1'))
         .pipe(transformModule(type))
         .pipe(header(getFileInfo(type)))
 
@@ -112,7 +118,6 @@ moduleTypes.forEach(function(moduleType){
     createBuildFormatTask(moduleType);
 });
 
-//format
 gulp.task('format', moduleTypes);
 
 //flash
@@ -137,6 +142,7 @@ gulp.task('flash', ['flash-clean'], function(){
     return merge(js, swf);
 });
 
+//extensions
 gulp.task('extensions', function(){
     var streams = merge();
     for(var extensionName in pkg.extensions){
@@ -161,39 +167,65 @@ gulp.task('extensions', function(){
     return streams;
 });
 
-gulp.task('doc-clean', function(cb){
-    del('docs/api', cb);
-});
+//docs
+var createDocTask = function(languages){
+    languages.forEach(function(language, i){
+        var cleanTask = 'doc-clean-' + language;
+        var commentTask = 'doc-comment-' + language;
+        var buildTask = 'doc-' + language;
 
+        var codeSrc = 'docs/api-' + language + '/code/';
+
+        gulp.task(cleanTask, function(cb){
+            del('docs/api-' + language, cb);
+        });
+
+        gulp.task(commentTask, [cleanTask], function(){
+            return gulp.src(pkg.sources.files, {
+                cwd:pkg.sources.dir,
+                base:pkg.sources.dir
+            })
+            .pipe(replace(apiCommentReg, '$' + (i+1)))
+            .pipe(gulp.dest(codeSrc));
+        });
+
+        gulp.task(buildTask, [commentTask], (function(){
+            var files = pkg.sources.files.map(function(src){
+                return codeSrc + src;
+            });
+
+            var cmd = 'java ' + [
+                '-jar',
+                'tools/jsdoc-toolkit-2.4.0/jsrun.jar',
+                'tools/jsdoc-toolkit-2.4.0/app/run.js',
+                codeSrc,
+                '-d=docs/api-' + language + '/',
+                '-t=docs/api_template/',
+                '-r=5',
+                '-x=js',
+                // '-q',
+                '-E=FilesLoad.js',
+                '-D="ver:' + pkg.version + '"'
+            ].join(' ');
+            return shell.task(cmd);
+        })());
+    });
+};
+
+createDocTask(['en', 'zh']);
+gulp.task('doc', ['doc-en', 'doc-zh']);
+
+//watch
 gulp.task('setIsWatch', function(cb){
     isWatch = true;
     cb();
 });
 
-gulp.task('doc', ['doc-clean'], (function(){
-    var files = pkg.sources.files.map(function(file){
-        return pkg.sources.dir + '/' + file;
-    });
-    var cmd = 'java ' + [
-        '-jar',
-        'tools/jsdoc-toolkit-2.4.0/jsrun.jar',
-        'tools/jsdoc-toolkit-2.4.0/app/run.js',
-        files.join(' '),
-        '-d=docs/api/',
-        '-t=docs/api_template/',
-        '-r=5',
-        '-x=js',
-        // '-q',
-        '-E=FilesLoad.js',
-        '-D="ver:' + pkg.version + '"'
-    ].join(' ');
-    return shell.task(cmd);
-})());
-
 gulp.task('watch', ['setIsWatch', 'standalone', 'flash'], function(){
     gulp.watch('src/**/*.js', ['standalone', 'flash']);
 });
 
+//test
 gulp.task('test', ['setIsWatch', 'standalone', 'flash'], function () {
     return gulp
         .src('test/html/index.html')
