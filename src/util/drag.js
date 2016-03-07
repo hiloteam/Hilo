@@ -5,6 +5,24 @@
  */
 
 /**
+ * @language=en
+ * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
+ * <br/>
+ * 使用示例:
+ * <pre>
+ * var bmp = new Bitmap({image:img});
+ * Hilo.copy(bmp, Hilo.drag);
+ * bmp.startDrag([0, 0, 550, 400]);
+ * </pre>
+ * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.copy(view, drag)来为view增加拖拽功能。
+ * @mixin
+ * @static
+ * @module hilo/util/drag
+ * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
+ */
+/**
+ * @language=zh
  * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -22,7 +40,13 @@
  */
 var drag = {
     /**
-      * 开始拖拽
+     * @language=en
+     * 开始拖拽
+      * @param {Array} bounds 拖拽范围，基于父容器坐标系，[x, y, width, height]， 默认无限制
+    */
+    /**
+     * @language=zh
+     * 开始拖拽
       * @param {Array} bounds 拖拽范围，基于父容器坐标系，[x, y, width, height]， 默认无限制
     */
     startDrag:function(bounds){
@@ -94,7 +118,12 @@ var drag = {
         that.stopDrag = stopDrag;
     },
     /**
-      * 停止拖拽
+     * @language=en
+     * 停止拖拽
+    */
+    /**
+     * @language=zh
+     * 停止拖拽
     */
     stopDrag:function(){
 

@@ -5,6 +5,13 @@
  */
 
 /**
+ * @language=en
+ * @class Ease类包含为Tween类提供各种缓动功能的函数。
+ * @module hilo/tween/Ease
+ * @static
+ */
+/**
+ * @language=zh
  * @class Ease类包含为Tween类提供各种缓动功能的函数。
  * @module hilo/tween/Ease
  * @static
@@ -21,6 +28,11 @@ function createEase(obj, easeInFn, easeOutFn, easeInOutFn, easeNoneFn){
 }
 
 /**
+ * @language=en
+ * 线性匀速缓动函数。包含EaseNone函数。
+ */
+/**
+ * @language=zh
  * 线性匀速缓动函数。包含EaseNone函数。
  */
 var Linear = createEase(null, null, null, null, function(k){
@@ -28,6 +40,11 @@ var Linear = createEase(null, null, null, null, function(k){
 });
 
 /**
+ * @language=en
+ * 二次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 二次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Quad = createEase(null,
@@ -45,6 +62,11 @@ var Quad = createEase(null,
 );
 
 /**
+ * @language=en
+ * 三次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 三次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Cubic = createEase(null,
@@ -62,6 +84,11 @@ var Cubic = createEase(null,
 );
 
 /**
+ * @language=en
+ * 四次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 四次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Quart = createEase(null,
@@ -79,6 +106,11 @@ var Quart = createEase(null,
 );
 
 /**
+ * @language=en
+ * 五次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 五次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Quint = createEase(null,
@@ -101,6 +133,11 @@ var math = Math,
     pow = math.pow, sqrt = math.sqrt;
 
 /**
+ * @language=en
+ * 正弦缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 正弦缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Sine = createEase(null,
@@ -118,6 +155,11 @@ var Sine = createEase(null,
 );
 
 /**
+ * @language=en
+ * 指数缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 指数缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Expo = createEase(null,
@@ -137,6 +179,11 @@ var Expo = createEase(null,
 );
 
 /**
+ * @language=en
+ * 圆形缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 圆形缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Circ = createEase(null,
@@ -155,6 +202,11 @@ var Circ = createEase(null,
 );
 
 /**
+ * @language=en
+ * 弹性缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 弹性缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Elastic = createEase(
@@ -185,6 +237,11 @@ var Elastic = createEase(
 );
 
 /**
+ * @language=en
+ * 向后缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 向后缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Back = createEase(
@@ -212,6 +269,11 @@ var Back = createEase(
 );
 
 /**
+ * @language=en
+ * 弹跳缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ */
+/**
+ * @language=zh
  * 弹跳缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
  */
 var Bounce = createEase(null,

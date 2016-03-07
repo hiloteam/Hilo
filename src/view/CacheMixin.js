@@ -7,6 +7,17 @@
 var _cacheCanvas = Hilo.createElement('canvas');
 var _cacheContext = _cacheCanvas.getContext('2d');
 /**
+ * @language=en
+ * @class CacheMixin是一个包含cache功能的mixin。可以通过 Class.mix(target, CacheMixin) 来为target增加cache功能。
+ * @mixin
+ * @static
+ * @module hilo/view/CacheMixin
+ * @requires hilo/core/Hilo
+ * @requires hilo/core/Class
+ * @requires hilo/view/Drawable
+ */
+/**
+ * @language=zh
  * @class CacheMixin是一个包含cache功能的mixin。可以通过 Class.mix(target, CacheMixin) 来为target增加cache功能。
  * @mixin
  * @static
@@ -18,6 +29,12 @@ var _cacheContext = _cacheCanvas.getContext('2d');
 var CacheMixin = {
     _cacheDirty:true,
     /**
+     * @language=en
+     * 缓存到图片里。可用来提高渲染效率。
+     * @param {Boolean} forceUpdate 是否强制更新缓存
+     */
+    /**
+     * @language=zh
      * 缓存到图片里。可用来提高渲染效率。
      * @param {Boolean} forceUpdate 是否强制更新缓存
      */
@@ -27,6 +44,11 @@ var CacheMixin = {
         }
     },
     /**
+     * @language=en
+     * 更新缓存
+     */
+    /**
+     * @language=zh
      * 更新缓存
      */
     updateCache:function(){
@@ -41,6 +63,11 @@ var CacheMixin = {
         this._cacheDirty = false;
     },
     /**
+     * @language=en
+     * 设置缓存是否dirty
+     */
+    /**
+     * @language=zh
      * 设置缓存是否dirty
      */
     setCacheDirty:function(dirty){

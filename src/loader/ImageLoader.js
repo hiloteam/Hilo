@@ -5,6 +5,14 @@
  */
 
 /**
+ * @language=en
+ * @private
+ * @class 图片资源加载器。
+ * @module hilo/loader/ImageLoader
+ * @requires hilo/core/Class
+ */
+/**
+ * @language=zh
  * @private
  * @class 图片资源加载器。
  * @module hilo/loader/ImageLoader

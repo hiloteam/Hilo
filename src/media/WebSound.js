@@ -5,6 +5,30 @@
  */
 
 /**
+ * @language=en
+ * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
+ * <br/>
+ * 使用示例:
+ * <pre>
+ * var audio = WebSound.getAudio({
+ *     src: 'test.mp3',
+ *     loop: false,
+ *     volume: 1
+ * }).on('load', function(e){
+ *     console.log('load');
+ * }).on('end', function(e){
+ *     console.log('end');
+ * }).play();
+ * </pre>
+ * @class 声音播放管理器。
+ * @static
+ * @module hilo/media/WebSound
+ * @requires hilo/core/Hilo
+ * @requires hilo/media/HTMLAudio
+ * @requires hilo/media/WebAudio
+ */
+/**
+ * @language=zh
  * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -30,6 +54,11 @@ var WebSound = {
     _audios: {},
 
     /**
+     * @language=en
+     * 激活音频功能。注意：需用户事件触发此方法才有效。目前仅对WebAudio有效。
+     */
+    /**
+     * @language=zh
      * 激活音频功能。注意：需用户事件触发此方法才有效。目前仅对WebAudio有效。
      */
     enableAudio: function(){
@@ -39,6 +68,13 @@ var WebSound = {
     },
 
     /**
+     * @language=en
+     * 获取音频对象。优先使用WebAudio。
+     * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
+     * @returns {WebAudio|HTMLAudio} 音频播放对象实例。
+     */
+    /**
+     * @language=zh
      * 获取音频对象。优先使用WebAudio。
      * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
      * @returns {WebAudio|HTMLAudio} 音频播放对象实例。
@@ -59,6 +95,12 @@ var WebSound = {
     },
 
     /**
+     * @language=en
+     * 删除音频对象。
+     * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
+     */
+    /**
+     * @language=zh
      * 删除音频对象。
      * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
      */
@@ -74,6 +116,11 @@ var WebSound = {
     },
 
     /**
+     * @language=en
+     * @private
+     */
+    /**
+     * @language=zh
      * @private
      */
     _normalizeSource: function(source){

@@ -5,6 +5,24 @@
  */
 
 /**
+ * @language=en
+ * <iframe src='../../../examples/BitmapText.html?noHeader' width = '550' height = '80' scrolling='no'></iframe>
+ * <br/>
+ * @class BitmapText类提供使用位图文本的功能。当前仅支持单行文本。
+ * @augments Container
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @module hilo/view/BitmapText
+ * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
+ * @requires hilo/view/Container
+ * @requires hilo/view/Bitmap
+ * @property {Object} glyphs 位图字体的字形集合。格式为：{letter:{image:img, rect:[0,0,100,100]}}。
+ * @property {Number} letterSpacing 字距，即字符间的间隔。默认值为0。
+ * @property {String} text 位图文本的文本内容。只读属性。设置文本请使用setFont方法。
+ * @property {String} textAlign 文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本请使用setTextAlign方法。
+ */
+/**
+ * @language=zh
  * <iframe src='../../../examples/BitmapText.html?noHeader' width = '550' height = '80' scrolling='no'></iframe>
  * <br/>
  * @class BitmapText类提供使用位图文本的功能。当前仅支持单行文本。
@@ -42,6 +60,13 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     textAlign:'left',
 
     /**
+     * @language=en
+     * 设置位图文本的文本内容。
+     * @param {String} text 要设置的文本内容。
+     * @returns {BitmapText} BitmapText对象本身。链式调用支持。
+     */
+    /**
+     * @language=zh
      * 设置位图文本的文本内容。
      * @param {String} text 要设置的文本内容。
      * @returns {BitmapText} BitmapText对象本身。链式调用支持。
@@ -100,7 +125,14 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     },
 
      /**
-     * 设置位图文本的对齐方式。
+      * @language=en
+      * 设置位图文本的对齐方式。
+     * @param textAlign 文本对齐方式，值为left、center、right
+     * @returns {BitmapText} BitmapText对象本身。链式调用支持。
+     */
+     /**
+      * @language=zh
+      * 设置位图文本的对齐方式。
      * @param textAlign 文本对齐方式，值为left、center、right
      * @returns {BitmapText} BitmapText对象本身。链式调用支持。
      */
@@ -122,6 +154,13 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回能否使用当前指定的字体显示提供的字符串。
+     * @param {String} str 要检测的字符串。
+     * @returns {Boolean} 是否能使用指定字体。
+     */
+    /**
+     * @language=zh
      * 返回能否使用当前指定的字体显示提供的字符串。
      * @param {String} str 要检测的字符串。
      * @returns {Boolean} 是否能使用指定字体。
@@ -140,6 +179,17 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     Statics:/** @lends BitmapText */{
         _pool:[],
         /**
+         * @language=en
+         * 简易方式生成字形集合。
+         * @static
+         * @param {String} text 字符文本。
+         * @param {Image} image 字符图片。
+         * @param {Number} col 列数  默认和文本字数一样
+         * @param {Number} row 行数 默认1行
+         * @returns {BitmapText} BitmapText对象本身。链式调用支持。
+         */
+        /**
+         * @language=zh
          * 简易方式生成字形集合。
          * @static
          * @param {String} text 字符文本。
