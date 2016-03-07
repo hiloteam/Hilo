@@ -5,6 +5,40 @@
  */
 
 /**
+ * @language=en
+ * <iframe src='../../../examples/Button.html?noHeader' width = '320' height = '170' scrolling='no'></iframe>
+ * <br/>
+ * 示例:
+ * <pre>
+ * var btn = new Hilo.Button({
+ *     image: buttonImage,
+ *     upState: {rect:[0, 0, 64, 64]},
+ *     overState: {rect:[64, 0, 64, 64]},
+ *     downState: {rect:[128, 0, 64, 64]},
+ *     disabledState: {rect:[192, 0, 64, 64]}
+ * });
+ * </pre>
+ * @class Button类表示简单按钮类。它有弹起、经过、按下和不可用等四种状态。
+ * @augments View
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
+ * <ul>
+ * <li><b>image</b> - 按钮图片所在的image对象。</li>
+ * </ul>
+ * @module hilo/view/Button
+ * @requires hilo/core/Hilo
+ * @requires hilo/core/Class
+ * @requires hilo/view/View
+ * @requires hilo/view/Drawable
+ * @property {Object} upState 按钮弹起状态的属性或其drawable的属性的集合。
+ * @property {Object} overState 按钮经过状态的属性或其drawable的属性的集合。
+ * @property {Object} downState 按钮按下状态的属性或其drawable的属性的集合。
+ * @property {Object} disabledState 按钮不可用状态的属性或其drawable的属性的集合。
+ * @property {String} state 按钮的状态名称。它是 Button.UP|OVER|DOWN|DISABLED 之一。 只读属性。
+ * @property {Boolean} enabled 指示按钮是否可用。默认为true。只读属性。
+ * @property {Boolean} useHandCursor 当设置为true时，表示指针滑过按钮上方时是否显示手形光标。默认为true。
+ */
+/**
+ * @language=zh
  * <iframe src='../../../examples/Button.html?noHeader' width = '320' height = '170' scrolling='no'></iframe>
  * <br/>
  * 示例:
@@ -57,6 +91,13 @@
     useHandCursor: true,
 
     /**
+     * @language=en
+     * 设置按钮是否可用。
+     * @param {Boolean} enabled 指示按钮是否可用。
+     * @returns {Button} 按钮本身。
+     */
+    /**
+     * @language=zh
      * 设置按钮是否可用。
      * @param {Boolean} enabled 指示按钮是否可用。
      * @returns {Button} 按钮本身。
@@ -73,6 +114,13 @@
     },
 
     /**
+     * @language=en
+     * 设置按钮的状态。此方法由Button内部调用，一般无需使用此方法。
+     * @param {String} state 按钮的新的状态。
+     * @returns {Button} 按钮本身。
+     */
+    /**
+     * @language=zh
      * 设置按钮的状态。此方法由Button内部调用，一般无需使用此方法。
      * @param {String} state 按钮的新的状态。
      * @returns {Button} 按钮本身。
@@ -108,6 +156,12 @@
     },
 
     /**
+     * @language=en
+     * overwrite
+     * @private
+     */
+    /**
+     * @language=zh
      * overwrite
      * @private
      */
@@ -140,21 +194,45 @@
 
     Statics: /** @lends Button */ {
         /**
+         * @language=en
+         * 按钮弹起状态的常量值，即：'up'。
+         * @type String
+         */
+        /**
+         * @language=zh
          * 按钮弹起状态的常量值，即：'up'。
          * @type String
          */
         UP: 'up',
         /**
+         * @language=en
+         * 按钮经过状态的常量值，即：'over'。
+         * @type String
+         */
+        /**
+         * @language=zh
          * 按钮经过状态的常量值，即：'over'。
          * @type String
          */
         OVER: 'over',
         /**
+         * @language=en
+         * 按钮按下状态的常量值，即：'down'。
+         * @type String
+         */
+        /**
+         * @language=zh
          * 按钮按下状态的常量值，即：'down'。
          * @type String
          */
         DOWN: 'down',
         /**
+         * @language=en
+         * 按钮不可用状态的常量值，即：'disabled'。
+         * @type String
+         */
+        /**
+         * @language=zh
          * 按钮不可用状态的常量值，即：'disabled'。
          * @type String
          */

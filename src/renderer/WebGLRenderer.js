@@ -5,12 +5,30 @@
  */
 
 /**
+ * @language=en
+ * Heavily inspired by PIXI's SpriteRenderer:
+ * https://github.com/pixijs/pixi.js/blob/v3.0.9/src/core/sprites/webgl/SpriteRenderer.js
+ */
+/**
+ * @language=zh
  * Heavily inspired by PIXI's SpriteRenderer:
  * https://github.com/pixijs/pixi.js/blob/v3.0.9/src/core/sprites/webgl/SpriteRenderer.js
  */
 
 var DEG2RAD = Math.PI / 180;
 /**
+ * @language=en
+ * @class webgl画布渲染器。所有可视对象将渲染在canvas画布上。
+ * @augments Renderer
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @module hilo/renderer/WebGLRenderer
+ * @requires hilo/core/Class
+ * @requires hilo/renderer/Renderer
+ * @requires  hilo/geom/Matrix
+ * @property {WebGLRenderingContext} gl webgl上下文。只读属性。
+ */
+/**
+ * @language=zh
  * @class webgl画布渲染器。所有可视对象将渲染在canvas画布上。
  * @augments Renderer
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -24,16 +42,34 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     Extends: Renderer,
     Statics:/** @lends WebGLRenderer */{
         /**
+         * @language=en
+         * 最大批渲染数量。
+         * @type {Number}
+         */
+        /**
+         * @language=zh
          * 最大批渲染数量。
          * @type {Number}
          */
         MAX_BATCH_NUM:2000,
         /**
+         * @language=en
+         * 顶点属性数。只读属性。
+         * @type {Number}
+         */
+        /**
+         * @language=zh
          * 顶点属性数。只读属性。
          * @type {Number}
          */
         ATTRIBUTE_NUM:5,
         /**
+         * @language=en
+         * 是否支持WebGL。只读属性。
+         * @type {Boolean}
+         */
+        /**
+         * @language=zh
          * 是否支持WebGL。只读属性。
          * @type {Boolean}
          */
@@ -90,6 +126,12 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     context: null,
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#startDraw
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#startDraw
      */
@@ -104,6 +146,12 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#draw
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#draw
      */
@@ -175,6 +223,12 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#endDraw
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#endDraw
      */
@@ -184,6 +238,12 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         }
     },
     /**
+     * @language=en
+     * @private
+     * @see Renderer#transform
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#transform
      */
@@ -228,6 +288,12 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#remove
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#remove
      */
@@ -244,6 +310,12 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#clear
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#clear
      */
@@ -252,6 +324,12 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#resize
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#resize
      */
@@ -393,6 +471,18 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 });
 
 /**
+ * @language=en
+ * shader
+ * @param {WebGLRenderer} renderer [description]
+ * @param {Object} source
+ * @param {String} source.v 顶点shader
+ * @param {String} source.f 片段shader
+ * @param {Object} attr
+ * @param {Array} attr.attributes attribute数组
+ * @param {Array} attr.uniforms uniform数组
+ */
+/**
+ * @language=zh
  * shader
  * @param {WebGLRenderer} renderer [description]
  * @param {Object} source

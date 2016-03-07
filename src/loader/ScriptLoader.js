@@ -5,6 +5,14 @@
  */
 
 /**
+ * @language=en
+ * @private
+ * @class javascript或JSONP加载器。
+ * @module hilo/loader/ScriptLoader
+ * @requires hilo/core/Class
+ */
+/**
+ * @language=zh
  * @private
  * @class javascript或JSONP加载器。
  * @module hilo/loader/ScriptLoader

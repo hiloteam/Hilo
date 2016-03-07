@@ -5,6 +5,20 @@
  */
 
 /**
+ * @language=en
+ * @class Container是所有容器类的基类。每个Container都可以添加其他可视对象为子级。
+ * @augments View
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @module hilo/view/Container
+ * @requires hilo/core/Hilo
+ * @requires hilo/core/Class
+ * @requires hilo/view/View
+ * @property {Array} children 容器的子元素列表。只读。
+ * @property {Boolean} pointerChildren 指示容器的子元素是否能响应用户交互事件。默认为true。
+ * @property {Boolean} clipChildren 指示是否裁剪超出容器范围的子元素。默认为false。
+ */
+/**
+ * @language=zh
  * @class Container是所有容器类的基类。每个Container都可以添加其他可视对象为子级。
  * @augments View
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -32,6 +46,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     clipChildren: false,
 
     /**
+     * @language=en
+     * 返回容器的子元素的数量。
+     * @returns {Uint} 容器的子元素的数量。
+     */
+    /**
+     * @language=zh
      * 返回容器的子元素的数量。
      * @returns {Uint} 容器的子元素的数量。
      */
@@ -40,6 +60,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 在指定索引位置添加子元素。
+     * @param {View} child 要添加的子元素。
+     * @param {Number} index 指定的索引位置，从0开始。
+     */
+    /**
+     * @language=zh
      * 在指定索引位置添加子元素。
      * @param {View} child 要添加的子元素。
      * @param {Number} index 指定的索引位置，从0开始。
@@ -77,6 +104,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 在最上面添加子元素。
+     * @param {View} child 要添加的子元素。
+     */
+    /**
+     * @language=zh
      * 在最上面添加子元素。
      * @param {View} child 要添加的子元素。
      */
@@ -91,6 +124,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 在指定索引位置删除子元素。
+     * @param {Int} index 指定删除元素的索引位置，从0开始。
+     * @returns {View} 被删除的对象。
+     */
+    /**
+     * @language=zh
      * 在指定索引位置删除子元素。
      * @param {Int} index 指定删除元素的索引位置，从0开始。
      * @returns {View} 被删除的对象。
@@ -133,6 +173,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 删除指定的子元素。
+     * @param {View} child 指定要删除的子元素。
+     * @returns {View} 被删除的对象。
+     */
+    /**
+     * @language=zh
      * 删除指定的子元素。
      * @param {View} child 指定要删除的子元素。
      * @returns {View} 被删除的对象。
@@ -142,6 +189,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 删除指定id的子元素。
+     * @param {String} id 指定要删除的子元素的id。
+     * @returns {View} 被删除的对象。
+     */
+    /**
+     * @language=zh
      * 删除指定id的子元素。
      * @param {String} id 指定要删除的子元素的id。
      * @returns {View} 被删除的对象。
@@ -159,6 +213,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 删除所有的子元素。
+     * @returns {Container} 容器本身。
+     */
+    /**
+     * @language=zh
      * 删除所有的子元素。
      * @returns {Container} 容器本身。
      */
@@ -168,6 +228,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回指定索引位置的子元素。
+     * @param {Number} index 指定要返回的子元素的索引值，从0开始。
+     */
+    /**
+     * @language=zh
      * 返回指定索引位置的子元素。
      * @param {Number} index 指定要返回的子元素的索引值，从0开始。
      */
@@ -178,6 +244,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回指定id的子元素。
+     * @param {String} id 指定要返回的子元素的id。
+     */
+    /**
+     * @language=zh
      * 返回指定id的子元素。
      * @param {String} id 指定要返回的子元素的id。
      */
@@ -191,6 +263,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回指定子元素的索引值。
+     * @param {View} child 指定要返回索引值的子元素。
+     */
+    /**
+     * @language=zh
      * 返回指定子元素的索引值。
      * @param {View} child 指定要返回索引值的子元素。
      */
@@ -199,6 +277,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 设置子元素的索引位置。
+     * @param {View} child 指定要设置的子元素。
+     * @param {Number} index 指定要设置的索引值。
+     */
+    /**
+     * @language=zh
      * 设置子元素的索引位置。
      * @param {View} child 指定要设置的子元素。
      * @param {Number} index 指定要设置的索引值。
@@ -218,6 +303,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 交换两个子元素的索引位置。
+     * @param {View} child1 指定要交换的子元素A。
+     * @param {View} child2 指定要交换的子元素B。
+     */
+    /**
+     * @language=zh
      * 交换两个子元素的索引位置。
      * @param {View} child1 指定要交换的子元素A。
      * @param {View} child2 指定要交换的子元素B。
@@ -234,6 +326,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 交换两个指定索引位置的子元素。
+     * @param {Number} index1 指定要交换的索引位置A。
+     * @param {Number} index2 指定要交换的索引位置B。
+     */
+    /**
+     * @language=zh
      * 交换两个指定索引位置的子元素。
      * @param {Number} index1 指定要交换的索引位置A。
      * @param {Number} index2 指定要交换的索引位置B。
@@ -250,6 +349,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 根据指定键值或函数对子元素进行排序。
+     * @param {Object} keyOrFunction 如果此参数为String时，则根据子元素的某个属性值进行排序；如果此参数为Function时，则根据此函数进行排序。
+     */
+    /**
+     * @language=zh
      * 根据指定键值或函数对子元素进行排序。
      * @param {Object} keyOrFunction 如果此参数为String时，则根据子元素的某个属性值进行排序；如果此参数为Function时，则根据此函数进行排序。
      */
@@ -267,6 +372,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 更新子元素。
+     * @private
+     */
+    /**
+     * @language=zh
      * 更新子元素。
      * @private
      */
@@ -282,6 +393,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回是否包含参数指定的子元素。
+     * @param {View} child 指定要测试的子元素。
+     */
+    /**
+     * @language=zh
      * 返回是否包含参数指定的子元素。
      * @param {View} child 指定要测试的子元素。
      */
@@ -295,6 +412,16 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 返回由x和y指定的点下的对象。
+     * @param {Number} x 指定点的x轴坐标。
+     * @param {Number} y 指定点的y轴坐标。
+     * @param {Boolean} usePolyCollision 指定是否使用多边形碰撞检测。默认为false。
+     * @param {Boolean} global 使用此标志表明将查找所有符合的对象，而不仅仅是第一个，即全局匹配。默认为false。
+     * @param {Boolean} eventMode 使用此标志表明将在事件模式下查找对象。默认为false。
+     */
+    /**
+     * @language=zh
      * 返回由x和y指定的点下的对象。
      * @param {Number} x 指定点的x轴坐标。
      * @param {Number} y 指定点的y轴坐标。
@@ -328,6 +455,12 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
+     * @language=en
+     * 覆盖渲染方法。
+     * @private
+     */
+    /**
+     * @language=zh
      * 覆盖渲染方法。
      * @private
      */

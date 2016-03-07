@@ -5,6 +5,18 @@
  */
 
 /**
+ * @language=en
+ * @class DOM+CSS3渲染器。将可视对象以DOM元素方式渲染出来。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
+ * @augments Renderer
+ * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @module hilo/renderer/DOMRenderer
+ * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
+ * @requires hilo/renderer/Renderer
+ * @requires hilo/view/Drawable
+ */
+/**
+ * @language=zh
  * @class DOM+CSS3渲染器。将可视对象以DOM元素方式渲染出来。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
  * @augments Renderer
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -23,6 +35,12 @@ return Class.create({
     },
     renderType:'dom',
     /**
+     * @language=en
+     * @private
+     * @see Renderer#startDraw
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#startDraw
      */
@@ -34,6 +52,12 @@ return Class.create({
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#draw
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#draw
      */
@@ -63,6 +87,12 @@ return Class.create({
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#transform
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#transform
      */
@@ -87,6 +117,12 @@ return Class.create({
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#remove
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#remove
      */
@@ -103,6 +139,12 @@ return Class.create({
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#hide
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#hide
      */
@@ -112,6 +154,12 @@ return Class.create({
     },
 
     /**
+     * @language=en
+     * @private
+     * @see Renderer#resize
+     */
+    /**
+     * @language=zh
      * @private
      * @see Renderer#resize
      */
@@ -126,6 +174,15 @@ return Class.create({
 });
 
 /**
+ * @language=en
+ * 创建一个可渲染的DOM，可指定tagName，如canvas或div。
+ * @param {Object} view 一个可视对象或类似的对象。
+ * @param {Object} imageObj 指定渲染的image及相关设置，如绘制区域rect。
+ * @return {HTMLElement} 新创建的DOM对象。
+ * @private
+ */
+/**
+ * @language=zh
  * 创建一个可渲染的DOM，可指定tagName，如canvas或div。
  * @param {Object} view 一个可视对象或类似的对象。
  * @param {Object} imageObj 指定渲染的image及相关设置，如绘制区域rect。

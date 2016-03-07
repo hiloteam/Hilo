@@ -5,6 +5,24 @@
  */
 
 /**
+ * @language=en
+ * @class Camera3d 伪3D虚拟摄像机。
+ * @module hilo/game/Camera3d
+ * @requires hilo/core/Hilo
+ * @requires hilo/core/Class
+ * @property {Number} fv 镜头视点距离（屏幕视点相对眼睛距离，绝对了坐标缩放比例）
+ * @property {Number} fx 镜头视点X（屏幕视点相对屏幕左上角X距离）
+ * @property {Number} fy 镜头视点Y（屏幕视点相对屏幕左上角Y距离）
+ * @property {Object} stage 3D对象所在容器，可以是stage或container，结合ticker时是必须参数，用来Z深度排序
+ * @property {Number} x 镜头三维坐标x
+ * @property {Number} y 镜头三维坐标y
+ * @property {Number} z 镜头三维坐标z
+ * @property {Number} rotationX X轴旋转角度
+ * @property {Number} rotationY Y轴旋转角度
+ * @property {Number} rotationZ Z轴旋转角度
+ */
+/**
+ * @language=zh
  * @class Camera3d 伪3D虚拟摄像机。
  * @module hilo/game/Camera3d
  * @requires hilo/core/Hilo
@@ -61,7 +79,15 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z. 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
+     * @language=en
+     * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z. 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
+	     * @param {Number} x坐标
+	     * @param {Number} y坐标
+	     * @param {Number} z坐标
+	     */
+    /**
+     * @language=zh
+     * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z. 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
 	     * @param {Number} x坐标
 	     * @param {Number} y坐标
 	     * @param {Number} z坐标
@@ -73,7 +99,13 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 旋转X轴方向角度，相当于欧拉角系统的 beta
+     * @language=en
+     * 旋转X轴方向角度，相当于欧拉角系统的 beta
+	     * @param {Number} X旋转角度
+	     */
+    /**
+     * @language=zh
+     * 旋转X轴方向角度，相当于欧拉角系统的 beta
 	     * @param {Number} X旋转角度
 	     */
 		rotateX : function(angle){
@@ -81,7 +113,13 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 旋转Y轴方向角度，相当于欧拉角系统的 gamma
+     * @language=en
+     * 旋转Y轴方向角度，相当于欧拉角系统的 gamma
+	     * @param {Number} Y旋转角度
+	     */
+    /**
+     * @language=zh
+     * 旋转Y轴方向角度，相当于欧拉角系统的 gamma
 	     * @param {Number} Y旋转角度
 	     */
 		rotateY : function(angle){
@@ -89,7 +127,13 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 旋转Z轴方向角度，相当于欧拉角系统的 alpha
+     * @language=en
+     * 旋转Z轴方向角度，相当于欧拉角系统的 alpha
+	     * @param {Number} Z旋转角度
+	     */
+    /**
+     * @language=zh
+     * 旋转Z轴方向角度，相当于欧拉角系统的 alpha
 	     * @param {Number} Z旋转角度
 	     */
 		rotateZ : function(angle){
@@ -97,7 +141,14 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 将三维坐标转换投影为二维坐标，同时返回Z轴深度，和投影显示的缩放比例
+     * @language=en
+     * 将三维坐标转换投影为二维坐标，同时返回Z轴深度，和投影显示的缩放比例
+	     * @param {object} 三维坐标对象
+	     * @param {object} Hilo.View对象，用于自动转换坐标
+	     */
+    /**
+     * @language=zh
+     * 将三维坐标转换投影为二维坐标，同时返回Z轴深度，和投影显示的缩放比例
 	     * @param {object} 三维坐标对象
 	     * @param {object} Hilo.View对象，用于自动转换坐标
 	     */
@@ -147,7 +198,12 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * Z深度排序
+     * @language=en
+     * Z深度排序
+	     */
+    /**
+     * @language=zh
+     * Z深度排序
 	     */
 		sortZ : function(){
 			this.stage.children.sort(function(view_a, view_b){
@@ -156,7 +212,12 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * Ticker 轮询使用
+     * @language=en
+     * Ticker 轮询使用
+	     */
+    /**
+     * @language=zh
+     * Ticker 轮询使用
 	     */
 		tick : function(){
 			this.sortZ();
