@@ -5,6 +5,35 @@
  */ 
 
 /**
+ * @language=en
+ * Create class example:
+ * <pre>
+ * var Bird = Hilo.Class.create({
+ *     Extends: Animal,
+ *     Mixes: EventMixin,
+ *     constructor: function(name){
+ *         this.name = name;
+ *     },
+ *     fly: function(){
+ *         console.log('I am flying');
+ *     },
+ *     Statics: {
+ *         isBird: function(bird){
+ *             return bird instanceof Bird;
+ *         }
+ *     }
+ * });
+ *
+ * var swallow = new Bird('swallow');
+ * swallow.fly();
+ * Bird.isBird(swallow);
+ * </pre>
+ * @namespace Class Class is created to provide aid.
+ * @static
+ * @module hilo/core/Class
+ */
+/**
+ * @language=zh
  * 创建类示例：
  * <pre>
  * var Bird = Hilo.Class.create({
@@ -34,6 +63,20 @@
 var Class = (function(){
 
 /**
+ * @language=en
+ * Create a class based on the specified properties, parameters and methods.
+ * @param {Object} properties Properties and methods to create the class. They are:
+ * <ul>
+ * <li><b>Extends</b> - Designated to inherit the parent class.</li>
+ * <li><b>Mixes</b> - Specifies mixed member collection object.</li>
+ * <li><b>Statics</b> - Static property or method of specified class.</li>
+ * <li><b>constructor</b> - The constructor of the specified class.</li>
+ * <li>Other members of the property or method to create the class.</li>
+ * </ul>
+ * @returns {Object} Create classes.
+ */
+/**
+ * @language=zh
  * 根据参数指定的属性和方法创建类。
  * @param {Object} properties 要创建的类的相关属性和方法。主要有：
  * <ul>
@@ -116,6 +159,14 @@ var createProto = (function(){
 })();
 
 /**
+ * @language=en
+ * Mixed property or method.
+ * @param {Object} target Mixed audiences.
+ * @param {Object} source The source whose methods and properties are to be mixed. It can support multiple source parameters.
+ * @returns {Object} Mixed audiences.
+ */
+/**
+ * @language=zh
  * 混入属性或方法。
  * @param {Object} target 混入目标对象。
  * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。
