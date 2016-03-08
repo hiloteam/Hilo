@@ -6,7 +6,7 @@
 
 /**
  * @language=en
- * Create Example Class:
+ * Create class example:
  * <pre>
  * var Bird = Hilo.Class.create({
  *     Extends: Animal,
@@ -28,7 +28,7 @@
  * swallow.fly();
  * Bird.isBird(swallow);
  * </pre>
- * @namespace Class Class is created to aid the developer.
+ * @namespace Class Class is created to provide aid.
  * @static
  * @module hilo/core/Class
  */
@@ -64,13 +64,13 @@ var Class = (function(){
 
 /**
  * @language=en
- * Create a class based on the parameters, properties and methods specified.
- * @param {Object} properties Properties and methods to create the class.
+ * Create a class based on the specified properties, parameters and methods.
+ * @param {Object} properties Properties and methods to create the class. They are:
  * <ul>
- * <li><b>Extends</b> - Designed to inherit the parent class.</li>
+ * <li><b>Extends</b> - Designated to inherit the parent class.</li>
  * <li><b>Mixes</b> - Specifies mixed member collection object.</li>
- * <li><b>Statics</b> - Static property or method specified class.</li>
- * <li><b>constructor</b> -  The constructor of specified class.</li>
+ * <li><b>Statics</b> - Static property or method of specified class.</li>
+ * <li><b>constructor</b> - The constructor of the specified class.</li>
  * <li>Other members of the property or method to create the class.</li>
  * </ul>
  * @returns {Object} Create classes.
@@ -96,11 +96,6 @@ var create = function(properties){
 }
 
 /**
- * @language=en
- * @private
- */
-/**
- * @language=zh
  * @private
  */
 var implement = function(properties){
@@ -147,11 +142,6 @@ var classMutators = /** @ignore */{
 };
 
 /**
- * @language=en
- * @private
- */
-/**
- * @language=zh
  * @private
  */
 var createProto = (function(){
@@ -170,10 +160,10 @@ var createProto = (function(){
 
 /**
  * @language=en
- * 混入属性或方法。
- * @param {Object} target 混入目标对象。
- * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。
- * @returns {Object} 混入目标对象。
+ * Mixed property or method.
+ * @param {Object} target Mixed audiences.
+ * @param {Object} source The source whose methods and properties are to be mixed. It can support multiple source parameters.
+ * @returns {Object} Mixed audiences.
  */
 /**
  * @language=zh
