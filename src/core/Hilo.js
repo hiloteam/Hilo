@@ -4,7 +4,15 @@
  * Licensed under the MIT License
  */
 
+
 /**
+ * @language=en
+ * @namespace Hilo The underlying core set of methods.
+ * @static
+ * @module hilo/core/Hilo
+ */
+/**
+ * @language=zh
  * @namespace Hilo的基础核心方法集合。
  * @static
  * @module hilo/core/Hilo
@@ -16,6 +24,13 @@ var win = window, doc = document, docElem = doc.documentElement,
 
 return {
     /**
+     * @language=en
+     * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
+     * @param {String} prefix Generated id's prefix.
+     * @returns {String} Globally unique id.
+     */
+    /**
+     * @language=zh
      * 获取一个全局唯一的id。如Stage1，Bitmap2等。
      * @param {String} prefix 生成id的前缀。
      * @returns {String} 全局唯一id。
@@ -31,6 +46,13 @@ return {
     },
 
     /**
+     * @language=en
+     * Generates a string representation that contains a path to the specified visual object. Such as Stage1.Container2.Bitmap3.
+     * @param {View} view Specified visual object.
+     * @returns {String} String representation of the visual object.
+     */
+    /**
+     * @language=zh
      * 为指定的可视对象生成一个包含路径的字符串表示形式。如Stage1.Container2.Bitmap3。
      * @param {View} view 指定的可视对象。
      * @returns {String} 可视对象的字符串表示形式。
@@ -45,6 +67,15 @@ return {
     },
 
     /**
+     * @language=en
+     * Simple shallow copy objects.
+     * @param {Object} target Target object to copy to.
+     * @param {Object} source Source object to copy.
+     * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
+     * @returns {Object} Object after copying.
+     */
+    /**
+     * @language=zh
      * 简单的浅复制对象。
      * @param {Object} target 要复制的目标对象。
      * @param {Object} source 要复制的源对象。
@@ -61,6 +92,20 @@ return {
     },
 
     /**
+     * @language=en
+     * Browser feature set includes:
+     * <ul>
+     * <li><b>jsVendor</b> - Browser vendors js value CSS prefix. For example: webkit.</li>
+     * <li><b>cssVendor</b> - Browser vendors css value CSS prefix.</li>
+     * <li><b>supportTransform</b> - Whether to support CSS Transform transformation.</li>
+     * <li><b>supportTransform3D</b> - Whether to support CSS Transform 3D transformation.</li>
+     * <li><b>supportStorage</b> - Whether to support local stores like localStorage.</li>
+     * <li><b>supportTouch</b> - Whether to support the touch event.</li>
+     * <li><b>supportCanvas</b> - Whether to support the canvas element.</li>
+     * </ul>
+     */
+    /**
+     * @language=zh
      * 浏览器特性集合。包括：
      * <ul>
      * <li><b>jsVendor</b> - 浏览器厂商CSS前缀的js值。比如：webkit。</li>
@@ -127,6 +172,16 @@ return {
     })(),
 
     /**
+     * @language=en
+     * Event enumeration objects include:
+     * <ul>
+     * <li><b>POINTER_START</b> - Mouse or touch start event. Corresponds to touchstart or mousedown.</li>
+     * <li><b>POINTER_MOVE</b> - Mouse or touch move event. Corresponds to touchmove or mousemove.</li>
+     * <li><b>POINTER_END</b> - Mouse or touch end event. Corresponds to touchend or mouseup.</li>
+     * </ul>
+     */
+    /**
+     * @language=zh
      * 事件类型枚举对象。包括：
      * <ul>
      * <li><b>POINTER_START</b> - 鼠标或触碰开始事件。对应touchstart或mousedown。</li>
@@ -144,6 +199,22 @@ return {
     })(),
 
     /**
+     * @language=en
+     * Visual object alinment enumeration objects include:
+     * <ul>
+     * <li><b>TOP_LEFT</b> - Align the top left corner.</li>
+     * <li><b>TOP</b> - Top center alignment.</li>
+     * <li><b>TOP_RIGHT</b> - Align the top right corner.</li>
+     * <li><b>LEFT</b> - Left center alignment.</li>
+     * <li><b>CENTER</b> - Align center.</li>
+     * <li><b>RIGHT</b> - Right center alignment.</li>
+     * <li><b>BOTTOM_LEFT</b> - Align the bottom left corner.</li>
+     * <li><b>BOTTOM</b> - Bottom center alignment.</li>
+     * <li><b>BOTTOM_RIGHT</b> - Align the bottom right corner.</li>
+     * </ul>
+     */
+    /**
+     * @language=zh
      * 可视对象对齐方式枚举对象。包括：
      * <ul>
      * <li><b>TOP_LEFT</b> - 左上角对齐。</li>
@@ -170,6 +241,13 @@ return {
     },
 
     /**
+     * @language=en
+     * Get DOM element content in the page display area.
+     * @param {HTMLElement} elem DOM elements.
+     * @returns {Object} Viewable area DOM elements. Format is: {left:0, top:0, width:100, height:100}.
+     */
+    /**
+     * @language=zh
      * 获取DOM元素在页面中的内容显示区域。
      * @param {HTMLElement} elem DOM元素。
      * @returns {Object} DOM元素的可视区域。格式为：{left:0, top:0, width:100, height:100}。
@@ -203,6 +281,14 @@ return {
     },
 
     /**
+     * @language=en
+     * Create a DOM element. You can specify properties and styles.
+     * @param {String} type DOM element type to be created. Such as: 'div'.
+     * @param {Object} properties Properties and styles for DOM element.
+     * @returns {HTMLElement} A DOM element.
+     */
+    /**
+     * @language=zh
      * 创建一个DOM元素。可指定属性和样式。
      * @param {String} type 要创建的DOM元素的类型。比如：'div'。
      * @param {Object} properties 指定DOM元素的属性和样式。
@@ -222,6 +308,13 @@ return {
     },
 
     /**
+     * @language=en
+     * Gets a DOM element according to the parameter id. This method is equivalent to document.getElementById(id).
+     * @param {String} id id of the DOM element you want to get.
+     * @returns {HTMLElement} A DOM element.
+     */
+    /**
+     * @language=zh
      * 根据参数id获取一个DOM元素。此方法等价于document.getElementById(id)。
      * @param {String} id 要获取的DOM元素的id。
      * @returns {HTMLElement} 一个DOM元素。
@@ -231,6 +324,13 @@ return {
     },
 
     /**
+     * @language=en
+     * Set visual object DOM element CSS style.
+     * @param {View} obj Specifies the CSS style to set the visual object.
+     * @private
+     */
+    /**
+     * @language=zh
      * 设置可视对象DOM元素的CSS样式。
      * @param {View} obj 指定要设置CSS样式的可视对象。
      * @private
@@ -330,6 +430,13 @@ return {
     },
 
     /**
+     * @language=en
+     * Generated visual object CSS style transformation.
+     * @param {View} obj Specifies visual object whose CSS style must be got.
+     * @returns {String} String representation of the CSS style.
+     */
+    /**
+     * @language=zh
      * 生成可视对象的CSS变换样式。
      * @param {View} obj 指定生成CSS变换样式的可视对象。
      * @returns {String} 生成的CSS样式字符串。
