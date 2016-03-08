@@ -170,10 +170,10 @@ var createProto = (function(){
 
 /**
  * @language=en
- * 混入属性或方法。
- * @param {Object} target 混入目标对象。
- * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。
- * @returns {Object} 混入目标对象。
+ * Mixed property or method.
+ * @param {Object} target Mixed audiences.
+ * @param {Object} source The source whose methods and properties are to be mixed. It can support multiple source parameters.
+ * @returns {Object} Mixed audiences.
  */
 /**
  * @language=zh
