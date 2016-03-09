@@ -48,7 +48,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         MAX_BATCH_NUM:2000,
         /**
          * @language=en
-         * The num of vertex attribute, readonly.
+         * The num of vertex attributes, readonly.
          * @type {Number}
          */
         /**
@@ -59,7 +59,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         ATTRIBUTE_NUM:5,
         /**
          * @language=en
-         * Support WebGL, readonly.
+         * is WebGL supported, readonly.
          * @type {Boolean}
          */
         /**
@@ -67,7 +67,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
          * 是否支持WebGL。只读属性。
          * @type {Boolean}
          */
-        isSupport:null
+        isSupported:null
     },
     renderType:'webgl',
     gl:null,
@@ -132,14 +132,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         }
         return false;
     },
-
     /**
-     * @language=en
-     * @private
-     * @see Renderer#draw
-     */
-    /**
-     * @language=zh
      * @private
      * @see Renderer#draw
      */
@@ -560,18 +553,12 @@ Shader.prototype = {
     }
 };
 
-WebGLRenderer.isSupport = function(){
-    if(this._isSupport !== undefined){
-        return this._isSupport;
+WebGLRenderer.isSupported = (function(){
+    var canvas = document.createElement('canvas');
+    if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
+        return true;
     }
     else{
-        var canvas = document.createElement('canvas');
-        if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
-            this._isSupport = true;
-        }
-        else{
-            this._isSupport = false;
-        }
-        return this._isSupport;
+        return false;
     }
-};
+})();
