@@ -456,7 +456,7 @@ describe('view', function() {
                 renderType:'webgl'
             });
 
-            if(Hilo.WebGLRenderer.isSupport()){
+            if(Hilo.WebGLRenderer.isSupported){
                 stage.renderer.should.instanceOf(Hilo.WebGLRenderer);
             }
             else{
@@ -468,7 +468,7 @@ describe('view', function() {
                 renderType:'webgl'
             });
 
-            if(Hilo.WebGLRenderer.isSupport()){
+            if(Hilo.WebGLRenderer.isSupported){
                 stage.renderer.should.instanceOf(Hilo.WebGLRenderer);
             }
             else{
