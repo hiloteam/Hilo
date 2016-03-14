@@ -87,6 +87,13 @@
             this.width = rect[2];
             this.height = rect[3];
         }
+        else if(!this.width && !this.height){
+            var rect = this.drawable.rect;
+            if(rect){
+                this.width = rect[2];
+                this.height = rect[3];
+            }
+        }
         return this;
     }
  });
