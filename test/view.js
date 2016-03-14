@@ -26,9 +26,10 @@ describe('view', function() {
     });
 
     describe('Bitmap', function() {
-        var bmp;
+        var bmp, btnImage;
         beforeEach('init bitmap', function(done){
             utils.loadImage('images/btn.png', function(img){
+                btnImage = img;
                 bmp = new Hilo.Bitmap({
                     image: img,
                     rect:[0, 64, 64, 64]
@@ -58,6 +59,13 @@ describe('view', function() {
                 bmp.setImage(img, [0, 0, 174, 126]);
                 utils.diffWithScreenshot('Bitmap-setImage', done);
             });
+        });
+
+        it('new Bitmap and setImage', function(){
+            var bmp = new Hilo.Bitmap();
+            bmp.setImage(btnImage);
+            bmp.width.should.equal(256);
+            bmp.height.should.equal(128);
         });
     });
 
