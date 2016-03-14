@@ -8,7 +8,7 @@
  * @language=en
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
- * @class 粒子系统
+ * @class ParticleSystem A particle system.
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
@@ -16,28 +16,28 @@
  * @requires hilo/view/Container
  * @requires hilo/view/Bitmap
  * @requires hilo/view/Drawable
- * @property {Number} emitTime 发射间隔
- * @property {Number} emitTimeVar 发射间隔变化量
- * @property {Number} emitNum 每次发射数量变化量
- * @property {Number} emitNumVar 每次发射数量
- * @property {Number} emitterX 发射器位置x
- * @property {Number} emitterY 发射器位置y
- * @property {Number} totalTime 总时间
- * @property {Number} gx 重力加速度x
- * @property {Number} gy 重力加速度y
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
- * @param {Object} properties.particle 粒子属性配置
- * @param {Number} properties.particle.x x位置
- * @param {Number} properties.particle.y y位置
- * @param {Number} properties.particle.vx x速度
- * @param {Number} properties.particle.vy y速度
- * @param {Number} properties.particle.ax x加速度
- * @param {Number} properties.particle.ay y加速度
- * @param {Number} properties.particle.life 粒子存活时间 单位s
- * @param {Number} properties.particle.alpha 透明度
- * @param {Number} properties.particle.alphaV 透明度变化
- * @param {Number} properties.particle.scale 缩放
- * @param {Number} properties.particle.scaleV 缩放变化速度
+ * @property {Number} emitTime Emit time interval.
+ * @property {Number} emitTimeVar Emit time interval variances.
+ * @property {Number} emitNum Emit number.
+ * @property {Number} emitNumVar Emit number variances.
+ * @property {Number} emitterX The emitter x position.
+ * @property {Number} emitterY The emitter y position.
+ * @property {Number} totalTime Total time.
+ * @property {Number} gx The gravity x value.
+ * @property {Number} gy The gravity y value.
+ * @param {Object} properties properties The properties to create a view object, contains all writeable props of this class
+ * @param {Object} properties.particle The config of particle.
+ * @param {Number} properties.particle.x The x position.
+ * @param {Number} properties.particle.y The y position
+ * @param {Number} properties.particle.vx The x velocity.
+ * @param {Number} properties.particle.vy The y velocity.
+ * @param {Number} properties.particle.ax The x acceleration.
+ * @param {Number} properties.particle.ay The y acceleration.
+ * @param {Number} properties.particle.life The time particle lives(in second).
+ * @param {Number} properties.particle.alpha The alpha.
+ * @param {Number} properties.particle.alphaV The alpha decline rate.
+ * @param {Number} properties.particle.scale The scale.
+ * @param {Number} properties.particle.scaleV The scale decline rate.
 */
 /**
  * @language=zh
@@ -134,7 +134,7 @@ var ParticleSystem = (function(){
         },
         /**
          * @language=en
-         * 重置属性
+         * Reset the properties.
          * @param {Object} cfg
         */
         /**
@@ -152,7 +152,7 @@ var ParticleSystem = (function(){
         /**
          * @language=en
          * 更新
-         * @param {Number} dt 间隔时间 单位ms
+         * @param {Number} dt delta time(in milliseconds)
         */
         /**
          * @language=zh
@@ -177,7 +177,7 @@ var ParticleSystem = (function(){
         },
         /**
          * @language=en
-         * 发射粒子
+         * Emit particles.
         */
         /**
          * @language=zh
@@ -191,11 +191,11 @@ var ParticleSystem = (function(){
         },
         /**
          * @language=en
-         * 开始
+         * Start emit particles.
         */
         /**
          * @language=zh
-         * 开始
+         * 开始发射粒子
         */
         start: function() {
             this.stop(true);
@@ -206,12 +206,12 @@ var ParticleSystem = (function(){
         },
         /**
          * @language=en
-         * 停止
-         * @param {Boolean} clear 是否清除所有粒子
+         * Stop emit particles.
+         * @param {Boolean} clear Whether or not clear all the particles.
         */
         /**
          * @language=zh
-         * 停止
+         * 停止发射粒子
          * @param {Boolean} clear 是否清除所有粒子
         */
         stop: function(clear) {
@@ -228,14 +228,14 @@ var ParticleSystem = (function(){
      * @language=en
      * @class 粒子
      * @inner
-     * @param {Number} vx x速度
-     * @param {Number} vy y速度
-     * @param {Number} ax x加速度
-     * @param {Number} ay y加速度
-     * @param {Number} scaleV 缩放变化速度
-     * @param {Number} alphaV 透明度变换速度
-     * @param {Number} rotationV 旋转速度
-     * @param {Number} life 存活时间
+     * @param {Number} vx The x velocity.
+     * @param {Number} vy The y velocity.
+     * @param {Number} ax The x acceleration.
+     * @param {Number} ay The y acceleration.
+     * @param {Number} scaleV The scale decline rate.
+     * @param {Number} alphaV The alpha decline rate.
+     * @param {Number} rotationV The rotate speed.
+     * @param {Number} life The time particle lives(in seconds)
     */
     /**
      * @language=zh
@@ -259,11 +259,11 @@ var ParticleSystem = (function(){
         },
         /**
          * @language=en
-         * 更新
+         * Update the particle.
         */
         /**
          * @language=zh
-         * 更新
+         * 更新粒子。
         */
         onUpdate: function(dt) {
             dt *= .001;
@@ -294,11 +294,11 @@ var ParticleSystem = (function(){
         },
         /**
          * @language=en
-         * 设置图像
+         * Set the image of particle.
         */
         /**
          * @language=zh
-         * 设置图像
+         * 设置粒子图像。
         */
         setImage: function(img, frame) {
             this.drawable = this.drawable||new Drawable();
@@ -311,11 +311,11 @@ var ParticleSystem = (function(){
         },
         /**
          * @language=en
-         * 销毁
+         * Destroy the particle.
         */
         /**
          * @language=zh
-         * 销毁
+         * 销毁粒子
         */
         destroy: function() {
             this.died = true;
@@ -324,11 +324,11 @@ var ParticleSystem = (function(){
         },
         /**
          * @language=en
-         * 初始化
+         * Init the particle.
         */
         /**
          * @language=zh
-         * 初始化
+         * 初始化粒子。
         */
         init: function(cfg) {
             this.system = cfg.system;
@@ -361,13 +361,13 @@ var ParticleSystem = (function(){
         Statics:{
             /**
              * @language=en
-             * 生成粒子
-             * @param {Object} cfg
+             * Create the particle.
+             * @param {Object} cfg The config of particle.
             */
             /**
              * @language=zh
-             * 生成粒子
-             * @param {Object} cfg
+             * 生成粒子。
+             * @param {Object} cfg 粒子参数。
             */
             create:function(cfg) {
                 if (diedParticles.length > 0) {
@@ -382,6 +382,13 @@ var ParticleSystem = (function(){
 
     });
 
+    /**
+     * Get the random value.
+     * @private
+     * @param  {Number} value     The value.
+     * @param  {Number} variances The variances.
+     * @return {Number}
+     */
     function getRandomValue(value, variances){
         return variances ? value + (Math.random() - .5) * 2 * variances : value;
     }
