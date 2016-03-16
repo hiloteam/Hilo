@@ -8,17 +8,17 @@
  * @language=en
  * <iframe src='../../../examples/Bitmap.html?noHeader' width = '300' height = '200' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * Example:
  * <pre>
  * var bmp = new Hilo.Bitmap({image:imgElem, rect:[0, 0, 100, 100]});
  * stage.addChild(bmp);
  * </pre>
- * @class Bitmap类表示位图图像类。
+ * @class Bitmap
  * @augments View
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
+ * @param {Object} properties the options of create Instance.It can contains all writable property and Moreover：
  * <ul>
- * <li><b>image</b> - 位图所在的图像image。必需。</li>
- * <li><b>rect</b> - 位图在图像image中矩形区域。</li>
+ * <li><b>image</b> - the image of bitmap which contained。required。</li>
+ * <li><b>rect</b> - the range of bitmap in the image。option</li>
  * </ul>
  * @module hilo/view/Bitmap
  * @requires hilo/core/Hilo
@@ -69,10 +69,10 @@
 
     /**
      * @language=en
-     * 设置位图的图片。
-     * @param {Image|String} image 图片对象或地址。
-     * @param {Array} rect 指定位图在图片image的矩形区域。
-     * @returns {Bitmap} 位图本身。
+     * set the image。
+     * @param {Image|String} Image Object or URL。
+     * @param {Array} rect the range of bitmap in the image。
+     * @returns {Bitmap} self。
      */
     /**
      * @language=zh
