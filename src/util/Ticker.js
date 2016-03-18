@@ -6,8 +6,8 @@
 
 /**
  * @language=en
- * @class Ticker是一个定时器类。它可以按指定帧率重复运行，从而按计划执行代码。
- * @param {Number} fps 指定定时器的运行帧率。
+ * @class Ticker is a Timer. It can run the code at specified framerate.
+ * @param {Number} fps The fps of ticker.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
@@ -39,8 +39,8 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * @language=en
-     * 启动定时器。
-     * @param {Boolean} userRAF 是否使用requestAnimationFrame，默认为false。
+     * Start the ticker.
+     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is not.
      */
     /**
      * @language=zh
@@ -75,7 +75,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * @language=en
-     * 停止定时器。
+     * Stop the ticker.
      */
     /**
      * @language=zh
@@ -89,7 +89,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * @language=en
-     * 暂停定时器。
+     * Pause the ticker.
      */
     /**
      * @language=zh
@@ -101,7 +101,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * @language=en
-     * 恢复定时器。
+     * Resume the ticker.
      */
     /**
      * @language=zh
@@ -112,11 +112,6 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * @language=en
-     * @private
-     */
-    /**
-     * @language=zh
      * @private
      */
     _tick: function(){
@@ -142,7 +137,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * @language=en
-     * 获得测定的运行时帧率。
+     * Get the fps.
      */
     /**
      * @language=zh
@@ -154,7 +149,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * @language=en
-     * 添加定时器对象。定时器对象必须实现 tick 方法。
+     * Add tickObject. A tickObject must implement the tick method.
      * @param {Object} tickObject 要添加的定时器对象。此对象必须包含 tick 方法。
      */
     /**
@@ -171,8 +166,8 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * @language=en
-     * 删除定时器对象。
-     * @param {Object} tickObject 要删除的定时器对象。
+     * Remove the tickObject
+     * @param {Object} tickObject The tickObject to remove.
      */
     /**
      * @language=zh
