@@ -11,8 +11,8 @@
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @property {Number} fv The distance of the fov(The distance between eyes and the Z plane，it determines the scale ratio of the 3d object).
- * @property {Number} fx The x position of the screen viewpoint(屏幕视点相对屏幕左上角X距离).
- * @property {Number} fy The y position of the screen viewpoint(屏幕视点相对屏幕左上角Y距离).
+ * @property {Number} fx The x position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the x axis).
+ * @property {Number} fy The y position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the y axis).
  * @property {Object} stage The 3d object's container, it can be stage or container.It is required if you need to sort the 3d object by z axis.
  * @property {Number} x The x position.
  * @property {Number} y The y position.
@@ -81,16 +81,16 @@ var Camera3d = (function(){
 	    /**
          * @language=en
          * Translate the camera，used for Zoomin/out feature.
-	     * @param {Number} x坐标
-	     * @param {Number} y坐标
-	     * @param {Number} z坐标
+	     * @param {Number} x The x position.
+	     * @param {Number} y The y position.
+	     * @param {Number} z The z position.
 	     */
         /**
          * @language=zh
          * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z. 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
-	     * @param {Number} x坐标
-	     * @param {Number} y坐标
-	     * @param {Number} z坐标
+	     * @param {Number} x x坐标
+	     * @param {Number} y y坐标
+	     * @param {Number} z z坐标
 	     */
 		translate : function(x,y,z){
 			this.tx = x;
@@ -217,7 +217,7 @@ var Camera3d = (function(){
 
 	    /**
          * @language=en
-         * Used for ticker.
+         * Used for the ticker.
 	     */
         /**
          * @language=zh
