@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Bitmap - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <header>
+        <h1>Ease</h1>
+        <p>Ease是Hilo中的缓动函数，它代表缓动的变化率</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        var Ease = Hilo.Ease;
+        var Graphics = Hilo.Graphics;
+        var Text = Hilo.Text;
+        var Ticker = Hilo.Ticker;
+        var Stage = Hilo.Stage;
+        function init(){
+            //init stage
+            var stage = window._stage = new Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            var easeTypeNames = ['Linear', 'Quad', 'Cubic', 'Quart', 'Quint', 'Sine', 'Expo', 'Circ', 'Elastic', 'Back', 'Bounce'];
+            var easeFunctionNames = ['EaseNone', 'EaseIn', 'EaseOut', 'EaseInOut'];
+
+            var num = 0;
+            easeTypeNames.forEach(function(easeTypeName){
+                var easeType = Hilo.Ease[easeTypeName];
+                easeFunctionNames.forEach(function(easeFunctionName){
+                    var easeFunction = easeType[easeFunctionName];
+                    if(easeFunction){
+                        var size = 80;
+                        var ceilSize = 130;
+                        var margin = (ceilSize - size) * .5;
+                        var col = ((innerWidth-5)/ceilSize)>>0;
+                        var g = new Graphics({
+                            width:ceilSize,
+                            height:ceilSize,
+                            x:5 + num%col * ceilSize,
+                            y:5 + ((num/col)>>0) * ceilSize
+                        }).addTo(stage);
+
+                        g.beginPath();
+                        g.lineStyle(1, '#69f');
+                        var delta = 0.02;
+                        g.moveTo(margin, margin + (1-easeFunction(0))*size);
+                        for(var i = delta;i <= 1;i += delta){
+                            g.lineTo(margin + i * size, margin + (1-easeFunction(i)) * size)
+                        }
+                        g.drawRect(0, 0, ceilSize, ceilSize);
+                        g.endFill();
+
+                        //draw axis
+                        g.beginPath();
+                        g.lineStyle(0.5, '#96f');
+                        g.moveTo(margin, margin);
+                        g.lineTo(margin, margin + size);
+                        g.lineTo(margin + size, margin + size);
+                        g.endFill();
+
+                        var text = new Text({
+                            width:ceilSize,
+                            height:20,
+                            font:'12px arial',
+                            textAlign:'center',
+                            x:g.x,
+                            y:g.y + size + margin + 10,
+                            text:easeTypeName + '.' + easeFunctionName
+                        }).addTo(stage);
+
+                        num++;
+                    }
+                });
+            });
+
+            stage.tick();
+            stage.tick();
+        }
+    </script>
+</body>
+</html>
