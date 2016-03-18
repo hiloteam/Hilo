@@ -7,7 +7,7 @@
 /**
  * @language=en
  * @private
- * @class 图片资源加载器。
+ * @class image resources loader.
  * @module hilo/loader/ImageLoader
  * @requires hilo/core/Class
  */
