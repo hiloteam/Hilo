@@ -149,8 +149,8 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * @language=en
-     * Add tickObject. A tickObject must implement the tick method.
-     * @param {Object} tickObject 要添加的定时器对象。此对象必须包含 tick 方法。
+     * Add tickObject. The tickObject must implement the tick method.
+     * @param {Object} tickObject The tickObject to add.It must implement the tick method.
      */
     /**
      * @language=zh
