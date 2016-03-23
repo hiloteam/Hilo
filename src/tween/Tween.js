@@ -8,9 +8,9 @@
  * @language=en
  * <iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * Example:
  * <pre>
- * ticker.addTick(Hilo.Tween);//需要把Tween加到ticker里才能使用
+ * ticker.addTick(Hilo.Tween);//need to add the Tween to use in the ticker 
  *
  * var view = new View({x:5, y:10});
  * Hilo.Tween.to(view, {
@@ -26,11 +26,11 @@
  *     }
  * });
  * </pre>
- * @class Tween类提供缓动功能。
- * @param {Object} target 缓动对象。
- * @param {Object} fromProps 对象缓动的起始属性集合。
- * @param {Object} toProps 对象缓动的目标属性集合。
- * @param {Object} params 缓动参数。可包含Tween类所有可写属性。
+ * @class Tween Classes provide tween . 
+ * @param {Object} target  tween target。
+ * @param {Object} fromProps The object of tween  starting attributes set.
+ * @param {Object} toProps The object of tween target  attributes set.
+ * @param {Object} params tween params。All writable attribute can contain Tween class.
  * @module hilo/tween/Tween
  * @requires hilo/core/Class
  * @property {Object} target 缓动目标。只读属性。
