@@ -8,9 +8,9 @@
  * @language=en
  * <iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * Example:
  * <pre>
- * ticker.addTick(Hilo.Tween);//需要把Tween加到ticker里才能使用
+ * ticker.addTick(Hilo.Tween);//need to add the Tween to use in the ticker 需要把Tween加到ticker里才能使用
  *
  * var view = new View({x:5, y:10});
  * Hilo.Tween.to(view, {
