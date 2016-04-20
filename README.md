@@ -1,5 +1,7 @@
 Hilo - HTML5 Game Framework [![Build Status][travis-image]][travis-url]
 ===========================
+
+[![Join the chat at https://gitter.im/hiloteam/Hilo](https://badges.gitter.im/hiloteam/Hilo.svg)](https://gitter.im/hiloteam/Hilo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [中文版](./README_ZH.md)
 
 Hilo is a Cross-end HTML5 Game development solution developed by Alibaba Group. It could help developers build HTML5 games conveniently in minutes.
