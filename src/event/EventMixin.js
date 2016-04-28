@@ -119,14 +119,19 @@ var EventMixin = {
 
         var eventListeners = listeners[eventType];
         if(eventListeners){
-            eventListeners = eventListeners.slice(0);
+            var eventListenersCopy = eventListeners.slice(0);
             event = event || new EventObject(eventType, this, detail);
             if(event._stopped) return false;
 
-            for(var i = 0; i < eventListeners.length; i++){
-                var el = eventListeners[i];
+            for(var i = 0; i < eventListenersCopy.length; i++){
+                var el = eventListenersCopy[i];
                 el.listener.call(this, event);
-                if(el.once) eventListeners.splice(i--, 1);
+                if(el.once) {
+                    var index = eventListeners.indexOf(el);
+                    if(index > -1){
+                        eventListeners.splice(index, 1);
+                    }
+                }
             }
 
             if(eventListeners.length == 0) delete listeners[eventType];
