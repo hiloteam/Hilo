@@ -6,21 +6,21 @@
 
 /**
  * @language=en
- * @class WebAudio声音播放模块。它具有更好的声音播放和控制能力，适合在iOS6+平台使用。
- * 兼容情况：iOS6+、Chrome33+、Firefox28+支持，但Android浏览器均不支持。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @class WebAudio audio playing module. It provides a better way to play and control audio, use on iOS6+ platform.
+ * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
+ * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/WebAudio
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
- * @property {String} src 播放的音频的资源地址。
- * @property {Boolean} loop 是否循环播放。默认为false。
- * @property {Boolean} autoPlay 是否自动播放。默认为false。
- * @property {Boolean} loaded 音频资源是否已加载完成。只读属性。
- * @property {Boolean} playing 是否正在播放音频。只读属性。
- * @property {Number} duration 音频的时长。只读属性。
- * @property {Number} volume 音量的大小。取值范围：0-1。
- * @property {Boolean} muted 是否静音。默认为false。
+ * @property {String} src The source of the playing audio.
+ * @property {Boolean} loop Is loop playback, default value is false.
+ * @property {Boolean} autoPlay Is the audio autoplay, default value is false.
+ * @property {Boolean} loaded Is the audio resource loaded, readonly!
+ * @property {Boolean} playing Is the audio playing, readonly!
+ * @property {Number} duration The duration of the audio, readonly!
+ * @property {Number} volume The volume of the audio, value between 0 to 1.
+ * @property {Boolean} muted Is the audio muted, default value is false.
  */
 /**
  * @language=zh
@@ -62,16 +62,16 @@ return Class.create(/** @lends WebAudio.prototype */{
     volume: 1,
     muted: false,
 
-    _context: null, //WebAudio上下文
-    _gainNode: null, //音量控制器
-    _buffer: null, //音频缓冲文件
-    _audioNode: null, //音频播放器
-    _startTime: 0, //开始播放时间戳
-    _offset: 0, //播放偏移量
+    _context: null, //WebAudio上下文 the WebAudio Context
+    _gainNode: null, //音量控制器 the volume controller
+    _buffer: null, //音频缓冲文件 the audio file buffer
+    _audioNode: null, //音频播放器 the audio playing node
+    _startTime: 0, //开始播放时间戳 the start time to play the audio
+    _offset: 0, //播放偏移量 the offset of current playing audio
 
     /**
      * @language=en
-     * @private 初始化
+     * @private Initialize.
      */
     /**
      * @language=zh
@@ -88,7 +88,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
     /**
      * @language=en
-     * 加载音频文件。注意：我们使用XMLHttpRequest进行加载，因此需要注意跨域问题。
+     * Load audio file. Note: use XMLHttpRequest to load the audio, should pay attention to cross-origin problem.
      */
     /**
      * @language=zh
@@ -221,7 +221,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     /**
      * @language=en
-     * 播放音频。如果正在播放，则会重新开始。
+     * Play the audio. Restart playing the audio from the beginning if already playing.
      */
     /**
      * @language=zh
@@ -242,7 +242,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     /**
      * @language=en
-     * 暂停音频。
+     * Pause (halt) playing the audio.
      */
     /**
      * @language=zh
@@ -259,7 +259,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     /**
      * @language=en
-     * 恢复音频播放。
+     * Continue to play the audio.
      */
     /**
      * @language=zh
@@ -274,7 +274,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     /**
      * @language=en
-     * 停止音频播放。
+     * Stop playing the audio.
      */
     /**
      * @language=zh
@@ -292,7 +292,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     /**
      * @language=en
-     * 设置音量。
+     * Set the volume.
      */
     /**
      * @language=zh
@@ -308,7 +308,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     /**
      * @language=en
-     * 设置是否静音。
+     * Set mute mode.
      */
     /**
      * @language=zh
@@ -325,7 +325,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     Statics: /** @lends WebAudio */ {
         /**
          * @language=en
-         * 浏览器是否支持WebAudio。
+         * Does the browser support WebAudio.
          */
         /**
          * @language=zh
@@ -335,7 +335,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 
         /**
          * @language=en
-         * 浏览器是否已激活WebAudio。
+         * Does browser activate WebAudio already.
          */
         /**
          * @language=zh
@@ -345,7 +345,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 
         /**
          * @language=en
-         * 激活WebAudio。注意：需用户事件触发此方法才有效。激活后，无需用户事件也可播放音频。
+         * Activate WebAudio. Note: Require user action events to activate. Once activated, can play audio without user action events.
          */
         /**
          * @language=zh
