@@ -7,16 +7,16 @@
 /**
  * @language=en
  * @class HTMLAudio is an audio playing module, which uses HTMLAudioElement to play audio.
- * Limits: iOS platform requires user events to start playing, and many Android browser can only play one audio at a time.
+ * Limits: iOS platform requires user action events to start playing, and many Android browser can only play one audio at a time.
  * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/HTMLAudio
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
- * @property {String} src The source of the playing audio
+ * @property {String} src The source of the playing audio.
  * @property {Boolean} loop Is loop playback, default value is false.
  * @property {Boolean} autoPlay Is the audio autoplay, default value is false.
- * @property {Boolean} loaded Is the audio resource loaded, default value is false.
+ * @property {Boolean} loaded Is the audio resource loaded, readonly!
  * @property {Boolean} playing Is the audio playing, readonly!
  * @property {Number} duration The duration of the audio, readonly!
  * @property {Number} volume The volume of the audio, value between 0 to 1.
