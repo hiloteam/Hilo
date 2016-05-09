@@ -8,7 +8,7 @@
  * @language=en
  * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * demo:
  * <pre>
  * var audio = WebSound.getAudio({
  *     src: 'test.mp3',
@@ -20,7 +20,7 @@
  *     console.log('end');
  * }).play();
  * </pre>
- * @class 声音播放管理器。
+ * @class Audio playing manager.
  * @static
  * @module hilo/media/WebSound
  * @requires hilo/core/Hilo
@@ -55,7 +55,7 @@ var WebSound = {
 
     /**
      * @language=en
-     * 激活音频功能。注意：需用户事件触发此方法才有效。目前仅对WebAudio有效。
+     * Activate audio function. Note: Require user action events to activate. Currently support WebAudio.
      */
     /**
      * @language=zh
@@ -69,9 +69,9 @@ var WebSound = {
 
     /**
      * @language=en
-     * 获取音频对象。优先使用WebAudio。
-     * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
-     * @returns {WebAudio|HTMLAudio} 音频播放对象实例。
+     * Get audio element. Use WebAudio if supported.
+     * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
+     * @returns {WebAudio|HTMLAudio} Audio playing instance.
      */
     /**
      * @language=zh
@@ -96,8 +96,8 @@ var WebSound = {
 
     /**
      * @language=en
-     * 删除音频对象。
-     * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
+     * Remove audio element.
+     * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
      */
     /**
      * @language=zh
