@@ -8,7 +8,7 @@
  * @language=en
  * <iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * demo:
  * <pre>
  * var domView = new Hilo.DOMElement({
  *     element: Hilo.createElement('div', {
@@ -24,11 +24,11 @@
  * }).addTo(stage);
  * </pre>
  * @name DOMElement
- * @class DOMElement是dom元素的包装。
+ * @class DOMElement is a wrapper of dom element.
  * @augments View
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。特殊属性有：
+ * @param {Object} properties create Objects properties. Contains all writable properties in this class. Special properties include:
  * <ul>
- * <li><b>element</b> - 要包装的dom元素。必需。</li>
+ * <li><b>element</b> - dom element to wrap, required! </li>
  * </ul>
  * @module hilo/view/DOMElement
  * @requires hilo/core/Hilo
@@ -82,7 +82,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
 
     /**
      * @language=en
-     * 覆盖渲染方法。
+     * Overwrite render method.
      * @private
      */
     /**
@@ -101,7 +101,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
 
     /**
      * @language=en
-     * 覆盖渲染方法。
+     * Overwrite render method.
      * @private
      */
     /**
