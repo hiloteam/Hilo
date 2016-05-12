@@ -20,6 +20,7 @@ describe('event', function(){
 
         it('on once', function(){
             var firedNum = 0;
+            eventTarget.on('hello', function(e){});
             eventTarget.on('hello', function(e){
                 firedNum ++;
             }, true);

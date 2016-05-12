@@ -102,7 +102,6 @@
             var world = new cp.Space();
             world.iterations = 20;
             world.gravity = new cp.Vect(gravity.x, gravity.y);
-            world.sleepTimeThreshold = 0.5;
             world.collisionSlop = 0.5;
             world.sleepTimeThreshold = 0.5;
 
