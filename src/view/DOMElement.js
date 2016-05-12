@@ -45,6 +45,10 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
         this.drawable = new Drawable();
         var elem = this.drawable.domElement = properties.element || Hilo.createElement('div');
         elem.id = this.id;
+
+        if(this.pointerEnabled){
+            elem.style.pointerEvents = 'visible';
+        }
     },
 
     /**
