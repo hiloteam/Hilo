@@ -72,8 +72,8 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var canvas = renderer.canvas;
-        if(canvas.getContext){
+        if(renderer.renderType !== 'dom'){
+            var canvas = renderer.canvas;
             var elem = this.drawable.domElement, depth = this.depth,
                 nextElement = canvas.nextSibling, nextDepth;
             if(elem.parentNode) return;

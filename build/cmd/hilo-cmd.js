@@ -3516,8 +3516,8 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var canvas = renderer.canvas;
-        if(canvas.getContext){
+        if(renderer.renderType !== 'dom'){
+            var canvas = renderer.canvas;
             var elem = this.drawable.domElement, depth = this.depth,
                 nextElement = canvas.nextSibling, nextDepth;
             if(elem.parentNode) return;
@@ -4096,7 +4096,7 @@ var Text = Class.create(/** @lends Text.prototype */{
         var lines = text.split(/\r\n|\r|\n|<br(?:[ \/])*>/);
         var width = 0, height = 0;
         var lineHeight = me._fontHeight + me.lineSpacing;
-        var i, line, w;
+        var i, line, w, len, wlen;
         var drawLines = [];
 
         for(i = 0, len = lines.length; i < len; i++){
@@ -4859,26 +4859,38 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     start: function(useRAF){
         if(this._intervalId) return;
         this._lastTime = +new Date();
-
-        var self = this, interval = this._interval,
-            raf = window.requestAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
-
+        this._rafStop = false;
+        var self = this, interval = this._interval;
+         var raf = window.requestAnimationFrame ||
+                   window[Hilo.browser.jsVendor + 'RequestAnimationFrame'] ||
+                   function(callback){
+                        window.setTimeout(callback, 1000 / 60);
+                    };
+        
         if(useRAF && raf){
-            var tick = function(){
-                self._tick();
+            this._useRAF = true;
+            var start  = null;
+            var tick = function(t){
+                t = t || +new Date
+                if (!start) start = t;
+                if (t-start >= interval){
+                    self._tick();
+                    start = t;
+                }
+                if (!self._rafStop){
+                    raf(tick);
+                }
             }
             var runLoop = function(){
-                self._intervalId = setTimeout(runLoop, interval);
-                raf(tick);
+                self._intervalId = raf(tick);
             };
         }else{
-            runLoop = function(){
+            var runLoop = function(){
                 self._intervalId = setTimeout(runLoop, interval);
                 self._tick();
             };
         }
-
+        
         runLoop();
     },
 
@@ -4886,7 +4898,11 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
      * 停止定时器。
      */
     stop: function(){
-        clearTimeout(this._intervalId);
+        if (this._useRAF){
+            this._rafStop = true;
+        }else{
+            clearTimeout(this._intervalId);
+        }
         this._intervalId = null;
         this._lastTime = 0;
     },

@@ -124,7 +124,7 @@ var Text = Class.create(/** @lends Text.prototype */{
         var lines = text.split(/\r\n|\r|\n|<br(?:[ \/])*>/);
         var width = 0, height = 0;
         var lineHeight = me._fontHeight + me.lineSpacing;
-        var i, line, w;
+        var i, line, w, len, wlen;
         var drawLines = [];
 
         for(i = 0, len = lines.length; i < len; i++){
