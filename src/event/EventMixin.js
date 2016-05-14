@@ -6,7 +6,7 @@
 
 /**
  * @language=en
- * @class EventMixin是一个包含事件相关功能的mixin。可以通过 Class.mix(target, EventMixin) 来为target增加事件功能。
+ * @class EventMixin is a mixin on event related functions. Use Class.mix(target, EventMixin) to add event function onto target.
  * @mixin
  * @static
  * @module hilo/event/EventMixin
@@ -25,11 +25,11 @@ var EventMixin = {
 
     /**
      * @language=en
-     * 增加一个事件监听。
-     * @param {String} type 要监听的事件类型。
-     * @param {Function} listener 事件监听回调函数。
-     * @param {Boolean} once 是否是一次性监听，即回调函数响应一次后即删除，不再响应。
-     * @returns {Object} 对象本身。链式调用支持。
+     * Add an event listenser.
+     * @param {String} type Event type to listen.
+     * @param {Function} listener Callback function of event listening.
+     * @param {Boolean} once Listen on event only once and no more response after the first response?
+     * @returns {Object} The Event itself. Functions chain call supported.
      */
     /**
      * @language=zh
@@ -52,10 +52,10 @@ var EventMixin = {
 
     /**
      * @language=en
-     * 删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
-     * @param {String} type 要删除监听的事件类型。
-     * @param {Function} listener 要删除监听的回调函数。
-     * @returns {Object} 对象本身。链式调用支持。
+     * Remove one event listener. Remove all event listeners if no parameter provided, and remove all event listeners on one type which is provided as the only parameter.
+     * @param {String} type The type of event listener that want to remove.
+     * @param {Function} listener Event listener callback function to be removed.
+     * @returns {Object} The Event itself. Functions chain call supported.
      */
     /**
      * @language=zh
@@ -93,10 +93,10 @@ var EventMixin = {
 
     /**
      * @language=en
-     * 发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
-     * @param {String} type 要发送的事件类型。
-     * @param {Object} detail 要发送的事件的具体信息，即事件随带参数。
-     * @returns {Boolean} 是否成功调度事件。
+     * Send events. If the first parameter is an Object, take it  as an Event Object.
+     * @param {String} type Event type to send.
+     * @param {Object} detail The detail (parameters go with the event) of Event to send.
+     * @returns {Boolean} Whether Event call successfully.
      */
     /**
      * @language=zh
@@ -138,7 +138,7 @@ var EventMixin = {
 
 /**
  * @language=en
- * 事件对象类。当前仅为内部类，以后有需求的话可能会考虑独立为公开类。
+ * Event Object class. It's an private class now, but maybe will become a public class if needed.
  */
 /**
  * @language=zh
