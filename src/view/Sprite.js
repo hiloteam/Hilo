@@ -339,7 +339,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
 
     /**
      * @language=en
-     * Callback function on when sprite enter an now frame. default value is null. Note: this function is obsolete, use addFrameCallback funciton instead.
+     * Callback function on when sprite enter a new frame. default value is null. Note: this function is obsolete, use addFrameCallback funciton instead.
      * @type Function
      * @deprecated
      */

@@ -80,7 +80,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
      * @language=en
      * Rotate the Matrix Object.
      * @param {Number} angle The angle to rotate.
-     * @returns {Matrix} An Matrix object.
+     * @returns {Matrix} A Matrix object.
      */
     /**
      * @language=zh
@@ -107,7 +107,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
      * Scale the Matrix.
      * @param {Number} sx The value to multiply those object scale alongside the x axis.
      * @param {Number} sy The value to multiply those object scale alongside the y axis.
-     * @returns {Matrix} An Matrix object.
+     * @returns {Matrix} A Matrix object.
      */
     /**
      * @language=zh
@@ -131,7 +131,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
      * Translate the Matrix alongside x axis and y axis by dx and dy.
      * @param {Number} dx Translate Matrix alongside the x axis to the right (measured in px).
      * @param {Number} dy Translate Matrix alongside the y axis to the right (measured in px).
-     * @returns {Matrix} An Matrix object.
+     * @returns {Matrix} A Matrix object.
      */
     /**
      * @language=zh
@@ -149,7 +149,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     /**
      * @language=en
      * Set each Matrix property a value to trigger null transform. The Matrix after applying identity matrix transformation will be exactly the same as original.
-     * @returns {Matrix} An Matrix object.
+     * @returns {Matrix} A Matrix object.
      */
     /**
      * @language=zh
@@ -165,7 +165,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     /**
      * @language=en
      * Apply an invert transformation of original Matrix. Using this invert transformation, you can reset a Matrix to a state before it had been apply some Matrix.
-     * @returns {Matrix} An Matrix object.
+     * @returns {Matrix} A Matrix object.
      */
     /**
      * @language=zh
@@ -191,7 +191,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
 
     /**
      * @language=en
-     * Return the result after apply an Matrix displaying transform on the point.
+     * Return the result after apply a Matrix displaying transform on the point.
      * @param {Object} point Point need to transform.
      * @param {Boolean} round Whether ceil the coordinate values of the point.
      * @param {Boolean} returnNew Whether return a new point.
