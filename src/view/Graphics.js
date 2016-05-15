@@ -8,23 +8,23 @@
  * @language=en
  * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
  * <br/>
- * @class Graphics类包含一组创建矢量图形的方法。
+ * @class Graphics class contains a group of functions for creating vector graphics.
  * @augments View
  * @mixes CacheMixin
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties Properties parameters of the object to create. Contains all writable properties of this class.
  * @module hilo/view/Graphics
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/CacheMixin
- * @property {Number} lineWidth 笔画的线条宽度。默认为1。只读属性。
- * @property {Number} lineAlpha 笔画的线条透明度。默认为1。只读属性。
- * @property {String} lineCap 笔画的线条端部样式。可选值有：butt、round、square等，默认为null。只读属性。
- * @property {String} lineJoin 笔画的线条连接样式。可选值有：miter、round、bevel等，默认为null。只读属性。
- * @property {Number} miterLimit 斜连线长度和线条宽度的最大比率。此属性仅当lineJoin为miter时有效。默认值为10。只读属性。
- * @property {String} strokeStyle 笔画边框的样式。默认值为'0'，即黑色。只读属性。
- * @property {String} fillStyle 内容填充的样式。默认值为'0'，即黑色。只读属性。
- * @property {Number} fillAlpha 内容填充的透明度。默认值为0。只读属性。
+ * @property {Number} lineWidth The thickness of lines in space units, default value is 1, readonly!
+ * @property {Number} lineAlpha The alpha value (transparency) of line, default value is 1, readonly!
+ * @property {String} lineCap The style of how every end point of line are drawn, value options: butt, round, square. default value is null, readonly!
+ * @property {String} lineJoin The joint style of two lines. value options: miter, round, bevel. default value is null, readonly!
+ * @property {Number} miterLimit The miter limit ratio in space units, works only when lineJoin value is miter. default value is 10, readonly!
+ * @property {String} strokeStyle The color or style to use for lines around shapes, default value is 0 (the black color), readonly!
+ * @property {String} fillStyle The color or style to use inside shapes, default value is 0 (the black color), readonly!
+ * @property {Number} fillAlpha The transparency of color or style inside shapes, default value is 0, readonly!
  */
 /**
  * @language=zh
@@ -77,14 +77,14 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 指定绘制图形的线条样式。
-     * @param {Number} thickness 线条的粗细值。默认为1。
-     * @param {String} lineColor 线条的CSS颜色值。默认为黑色，即'0'。
-     * @param {Number} lineAlpha 线条的透明度值。默认为不透明，即1。
-     * @param {String} lineCap 线条的端部样式。可选值有：butt、round、square等，默认值为null。
-     * @param {String} lineJoin 线条的连接样式。可选值有：miter、round、bevel等，默认值为null。
-     * @param {Number} miterLimit 斜连线长度和线条宽度的最大比率。此属性仅当lineJoin为miter时有效。默认值为10。
-     * @returns {Graphics} Graphics对象本身。
+     * Set the lines style for drawing shapes.
+     * @param {Number} thickness The thickness of lines, default value is 1.
+     * @param {String} lineColor The CSS color value of lines, default value is 0 (the black color).
+     * @param {Number} lineAlpha The transparency of lines, default value is 1 (fully opaque).
+     * @param {String} lineCap The style of how every end point of line are drawn, value options: butt, round, square. default value is null.
+     * @param {String} lineJoin The joint style of two lines. value options: miter, round, bevel. default value is null.
+     * @param {Number} miterLimit The miter limit ratio in space units, works only when lineJoin value is miter. default value is 10.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -112,10 +112,10 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 指定绘制图形的填充样式和透明度。
-     * @param {String} fill 填充样式。可以是color、gradient或pattern。
-     * @param {Number} alpha 透明度。
-     * @returns {Graphics} Graphics对象本身。
+     * Set how to fill shapes and the transparency.
+     * @param {String} fill Filling style. this can be color, gradient or pattern.
+     * @param {Number} alpha Transparency.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -135,8 +135,8 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 应用并结束笔画的绘制和图形样式的填充。
-     * @returns {Graphics} Graphics对象本身。
+     * Apply and end lines-drawing and shapes-filling.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -154,14 +154,14 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 指定绘制图形的线性渐变填充样式。
-     * @param {Number} x0 渐变的起始点的x轴坐标。
-     * @param {Number} y0 渐变的起始点的y轴坐标。
-     * @param {Number} x1 渐变的结束点的x轴坐标。
-     * @param {Number} y1 渐变的结束点的y轴坐标。
-     * @param {Array} colors 渐变中使用的CSS颜色值数组。
-     * @param {Array} ratois 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
-     * @returns {Graphics} Graphics对象本身。
+     * Set linear gradient filling style to draw shapes.
+     * @param {Number} x0 The x-coordinate value of the linear gradient start point.
+     * @param {Number} y0 The y-coordinate value of the linear gradient start point.
+     * @param {Number} x1 The x-coordinate value of the linear gradient end point.
+     * @param {Number} y1 The y-coordinate value of the linear gradient end point.
+     * @param {Array} colors An array of CSS colors used in the linear gradient.
+     * @param {Array} ratios An array of position between start point and end point, should be one-to-one to colors in the colors array. each value range between 0.0 to 1.0.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -171,7 +171,7 @@ return Class.create(/** @lends Graphics.prototype */{
      * @param {Number} x1 渐变的结束点的x轴坐标。
      * @param {Number} y1 渐变的结束点的y轴坐标。
      * @param {Array} colors 渐变中使用的CSS颜色值数组。
-     * @param {Array} ratois 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
+     * @param {Array} ratios 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
      * @returns {Graphics} Graphics对象本身。
      */
     beginLinearGradientFill: function(x0, y0, x1, y1, colors, ratios){
@@ -186,16 +186,16 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 指定绘制图形的放射性渐变填充样式。
-     * @param {Number} x0 渐变的起始圆的x轴坐标。
-     * @param {Number} y0 渐变的起始圆的y轴坐标。
-     * @param {Number} r0 渐变的起始圆的半径。
-     * @param {Number} x1 渐变的结束圆的x轴坐标。
-     * @param {Number} y1 渐变的结束圆的y轴坐标。
-     * @param {Number} r1 渐变的结束圆的半径。
-     * @param {Array} colors 渐变中使用的CSS颜色值数组。
-     * @param {Array} ratois 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
-     * @returns {Graphics} Graphics对象本身。
+     * Set radial gradient filling style to draw shapes.
+     * @param {Number} x0 The x-coordinate value of the radial gradient start circle.
+     * @param {Number} y0 The y-coordinate value of the radial gradient start circle.
+     * @param {Number} r0 The diameter of the radial gradient start circle.
+     * @param {Number} x1 The x-coordinate value of the radial gradient end circle.
+     * @param {Number} y1 The y-coordinate value of the radial gradient end circle.
+     * @param {Number} r1 The radius of the radial gradient end circle.
+     * @param {Array} colors An array of CSS colors used in the radial gradient.
+     * @param {Array} ratios An array of position between start circle and end circle, should be one-to-one to colors in the colors array. each value range between 0.0 to 1.0.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -207,7 +207,7 @@ return Class.create(/** @lends Graphics.prototype */{
      * @param {Number} y1 渐变的结束圆的y轴坐标。
      * @param {Number} r1 渐变的结束圆的半径。
      * @param {Array} colors 渐变中使用的CSS颜色值数组。
-     * @param {Array} ratois 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
+     * @param {Array} ratios 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
      * @returns {Graphics} Graphics对象本身。
      */
     beginRadialGradientFill: function(x0, y0, r0, x1, y1, r1, colors, ratios){
@@ -222,10 +222,10 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 开始一个位图填充样式。
-     * @param {HTMLImageElement} image 指定填充的Image对象。
-     * @param {String} repetition 指定填充的重复设置参数。它可以是以下任意一个值：repeat, repeat-x, repeat-y, no-repeat。默认为''。
-     * @returns {Graphics} Graphics对象本身。
+     * Begin an image filling pattern.
+     * @param {HTMLImageElement} image The Image to fill.
+     * @param {String} repetition The fill repetition style, can be one of valus:repeat, repeat-x, repeat-y, no-repeat. default valus is ''.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -242,8 +242,8 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 开始一个新的路径。
-     * @returns {Graphics} Graphics对象本身。
+     * Begin a new path.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -256,8 +256,8 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 关闭当前的路径。
-     * @returns {Graphics} Graphics对象本身。
+     * Close current path.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -270,10 +270,10 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 将当前绘制位置移动到点(x, y)。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @returns {Graphics} Graphics对象本身。
+     * Move current drawing point to a new point on coordinate values (x, y).
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -288,10 +288,10 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 绘制从当前位置开始到点(x, y)结束的直线。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @returns {Graphics} Graphics对象本身。
+     * Draw a line from current point to the point on the coordinate value (x, y).
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -306,12 +306,12 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 绘制从当前位置开始到点(x, y)结束的二次曲线。
-     * @param {Number} cpx 控制点cp的x轴坐标。
-     * @param {Number} cpy 控制点cp的y轴坐标。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @returns {Graphics} Graphics对象本身。
+     * Draw a quadratic Bézier curve from current point to the point on coordinate (x, y).
+     * @param {Number} cpx The x-coordinate value of the Bézier curve control point cp.
+     * @param {Number} cpy The y-coordinate value of the Bézier curve control point cp.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -328,14 +328,14 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 绘制从当前位置开始到点(x, y)结束的贝塞尔曲线。
-     * @param {Number} cp1x 控制点cp1的x轴坐标。
-     * @param {Number} cp1y 控制点cp1的y轴坐标。
-     * @param {Number} cp2x 控制点cp2的x轴坐标。
-     * @param {Number} cp2y 控制点cp2的y轴坐标。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @returns {Graphics} Graphics对象本身。
+     * Draw a Bézier curve from current point to the point on coordinate (x, y).
+     * @param {Number} cp1x The x-coordinate value of the Bézier curve control point cp1.
+     * @param {Number} cp1y The y-coordinate value of the Bézier curve control point cp1.
+     * @param {Number} cp2x The x-coordinate value of the Bézier curve control point cp2.
+     * @param {Number} cp2y The y-coordinate value of the Bézier curve control point cp2.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -354,12 +354,12 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 绘制一个矩形。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} width 矩形的宽度。
-     * @param {Number} height 矩形的高度。
-     * @returns {Graphics} Graphics对象本身。
+     * Draw a rectangle.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} width The width of the rectangle.
+     * @param {Number} height The height of the rectangle.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -376,16 +376,16 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 绘制一个复杂的圆角矩形。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} width 圆角矩形的宽度。
-     * @param {Number} height 圆角矩形的高度。
-     * @param {Number} cornerTL 圆角矩形的左上圆角大小。
-     * @param {Number} cornerTR 圆角矩形的右上圆角大小。
-     * @param {Number} cornerBR 圆角矩形的右下圆角大小。
-     * @param {Number} cornerBL 圆角矩形的左下圆角大小。
-     * @returns {Graphics} Graphics对象本身。
+     * Draw a complex rounded rectangle.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} width The width of rounded rectangle.
+     * @param {Number} height The height of rounded rectangle.
+     * @param {Number} cornerTL The size of the rounded corner on the top-left of the rounded rectangle.
+     * @param {Number} cornerTR The size of the rounded corner on the top-right of the rounded rectangle.
+     * @param {Number} cornerBR The size of the rounded corner on the bottom-left of the rounded rectangle.
+     * @param {Number} cornerBL The size of the rounded corner on the bottom-right of the rounded rectangle.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -416,13 +416,13 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 绘制一个圆角矩形。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} width 圆角矩形的宽度。
-     * @param {Number} height 圆角矩形的高度。
-     * @param {Number} cornerSize 圆角矩形的圆角大小。
-     * @returns {Graphics} Graphics对象本身。
+     * Draw a rounded rectangle.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} width The width of rounded rectangle.
+     * @param {Number} height The height of rounded rectangle.
+     * @param {Number} cornerSize The size of all rounded corners.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -440,11 +440,11 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 绘制一个圆。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} radius 圆的半径。
-     * @returns {Graphics} Graphics对象本身。
+     * Draw a circle.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} radius The radius of the circle.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -460,12 +460,12 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 绘制一个椭圆。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} width 椭圆的宽度。
-     * @param {Number} height 椭圆的高度。
-     * @returns {Graphics} Graphics对象本身。
+     * Draw an ellipse.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} width The width of the ellipse.
+     * @param {Number} height The height of the ellipse.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -495,13 +495,13 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 根据参数指定的SVG数据绘制一条路径。
-     * 代码示例:
+     * Draw a path from the SVG data given by parameters.
+     * Demo:
      * <p>var path = 'M250 150 L150 350 L350 350 Z';</p>
      * <p>var shape = new Hilo.Graphics({width:500, height:500});</p>
      * <p>shape.drawSVGPath(path).beginFill('#0ff').endFill();</p>
-     * @param {String} pathData 要绘制的SVG路径数据。
-     * @returns {Graphics} Graphics对象本身。
+     * @param {String} pathData The SVG path data to draw.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -542,7 +542,7 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 执行全部绘制动作。内部私有方法。
+     * Apply all draw actions. private function.
      * @private
      */
     /**
@@ -566,7 +566,7 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 重写渲染实现。
+     * Overwrite render function.
      * @private
      */
     /**
@@ -586,8 +586,8 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 清除所有绘制动作并复原所有初始状态。
-     * @returns {Graphics} Graphics对象本身。
+     * Clear all draw actions and reset to the initial state.
+     * @returns {Graphics} The Graphics Object.
      */
     /**
      * @language=zh
@@ -615,7 +615,7 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * 添加一个绘制动作。内部私有方法。
+     * Add a draw action, this is a private function.
      * @private
      */
     /**
