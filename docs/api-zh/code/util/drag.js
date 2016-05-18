@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -23,7 +23,7 @@
  */
 var drag = {
     /**
-     * 
+     * @language=zh
      * 开始拖拽。
       * @param {Array} bounds 拖拽范围，基于父容器坐标系，[x, y, width, height]， 默认无限制
     */
@@ -96,7 +96,7 @@ var drag = {
         that.stopDrag = stopDrag;
     },
     /**
-     * 
+     * @language=zh
      * 停止拖拽。
     */
     stopDrag:function(){

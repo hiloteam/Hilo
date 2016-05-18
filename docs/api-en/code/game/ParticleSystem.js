@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class ParticleSystem A particle system.
@@ -98,7 +98,7 @@ var ParticleSystem = (function(){
             diedParticles:diedParticles
         },
         /**
-         * 
+         * @language=en
          * Reset the properties.
          * @param {Object} cfg
         */
@@ -110,7 +110,7 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * 
+         * @language=en
          * 更新
          * @param {Number} dt delta time(in milliseconds)
         */
@@ -131,7 +131,7 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * 
+         * @language=en
          * Emit particles.
         */
         _emit: function() {
@@ -141,7 +141,7 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * 
+         * @language=en
          * Start emit particles.
         */
         start: function() {
@@ -152,7 +152,7 @@ var ParticleSystem = (function(){
             this._emitTime = getRandomValue(this.emitTime, this.emitTimeVar);
         },
         /**
-         * 
+         * @language=en
          * Stop emit particles.
          * @param {Boolean} clear Whether or not clear all the particles.
         */
@@ -167,7 +167,7 @@ var ParticleSystem = (function(){
     });
 
     /**
-     * 
+     * @language=en
      * @class 粒子
      * @inner
      * @param {Number} vx The x velocity.
@@ -187,7 +187,7 @@ var ParticleSystem = (function(){
             this.init(properties);
         },
         /**
-         * 
+         * @language=en
          * Update the particle.
         */
         onUpdate: function(dt) {
@@ -218,7 +218,7 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * 
+         * @language=en
          * Set the image of particle.
         */
         setImage: function(img, frame) {
@@ -231,7 +231,7 @@ var ParticleSystem = (function(){
             this.drawable.image = img;
         },
         /**
-         * 
+         * @language=en
          * Destroy the particle.
         */
         destroy: function() {
@@ -240,7 +240,7 @@ var ParticleSystem = (function(){
             diedParticles.push(this);
         },
         /**
-         * 
+         * @language=en
          * Init the particle.
         */
         init: function(cfg) {
@@ -273,7 +273,7 @@ var ParticleSystem = (function(){
         },
         Statics:{
             /**
-             * 
+             * @language=en
              * Create the particle.
              * @param {Object} cfg The config of particle.
             */

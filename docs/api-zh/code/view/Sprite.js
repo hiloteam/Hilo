@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * <iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class 动画精灵类。
@@ -50,7 +50,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     currentFrame: 0, //当前帧的索引 Index of current frame
 
     /**
-     * 
+     * @language=zh
      * 返回精灵动画的总帧数。
      * @returns {Uint} 精灵动画的总帧数。
      */
@@ -59,7 +59,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 往精灵动画序列中增加帧。
      * @param {Object} frame 要增加的精灵动画帧数据。
      * @param {Int} startIndex 开始增加帧的索引位置。若不设置，默认为在末尾添加。
@@ -78,7 +78,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 设置精灵动画序列指定索引位置的帧。
      * @param {Object} frame 要设置的精灵动画帧数据。
      * @param {Int} index 要设置的索引位置。
@@ -98,7 +98,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 获取精灵动画序列中指定的帧。
      * @param {Object} indexOrName 要获取的帧的索引位置或别名。
      * @returns {Object} 精灵帧对象。
@@ -113,7 +113,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 获取精灵动画序列中指定帧的索引位置。
      * @param {Object} frameValue 要获取的帧的索引位置或别名。
      * @returns {Object} 精灵帧对象。
@@ -139,7 +139,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 播放精灵动画。
      * @returns {Sprite} Sprite对象本身。
      */
@@ -149,7 +149,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 暂停播放精灵动画。
      * @returns {Sprite} Sprite对象本身。
      */
@@ -159,7 +159,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 跳转精灵动画到指定的帧。
      * @param {Object} indexOrName 要跳转的帧的索引位置或别名。
      * @param {Boolean} pause 指示跳转后是否暂停播放。
@@ -176,7 +176,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 渲染方法。
      * @private
      */
@@ -204,7 +204,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * @private
      */
     _nextFrame: function(delta){
@@ -240,7 +240,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 设置指定帧的回调函数。即每当播放头进入指定帧时调用callback函数。若callback为空，则会删除回调函数。
      * @param {Int|String} frame 要指定的帧的索引位置或别名。
      * @param {Function} callback 指定回调函数。
@@ -253,7 +253,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 精灵动画的播放头进入新帧时的回调方法。默认值为null。此方法已废弃，请使用addFrameCallback方法。
      * @type Function
      * @deprecated

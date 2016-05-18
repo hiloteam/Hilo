@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * <iframe src='../../../examples/Bitmap.html?noHeader' width = '300' height = '200' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -46,7 +46,7 @@
     },
 
     /**
-     * 
+     * @language=zh
      * 设置位图的图片。
      * @param {Image|String} image 图片对象或地址。
      * @param {Array} rect 指定位图在图片image的矩形区域。

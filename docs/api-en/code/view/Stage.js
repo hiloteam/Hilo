@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * Demo:
  * <pre>
  * var stage = new Hilo.Stage({
@@ -61,7 +61,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     viewport: null,
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _initRenderer: function(properties){
@@ -108,7 +108,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Add Stage canvas to DOM container. Note: this function overwrite View.addTo function.
      * @param {HTMLElement} domElement An dom element.
      * @returns {Stage} The Stage Object, chained call supported.
@@ -122,7 +122,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Invoke tick function and Stage will update and render. Developer may not need to use this funciton.
      * @param {Number} delta The time had pass between this tick invoke and last tick invoke.
      */
@@ -133,7 +133,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Turn on/off Stage response to DOM event. To make visual objects on the Stage interactive, use this function to turn on Stage's responses to events.
      * @param {String|Array} type The event name or array that need to turn on/off.
      * @param {Boolean} enabled Whether turn on or off the response method of stage DOM event. If not provided, default value is true.
@@ -160,7 +160,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * DOM events handler function. This funciton will invoke events onto the visual object, which is on the position of the coordinate where the events is invoked.
      * @private
      */
@@ -224,7 +224,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Update the viewport (rendering area) which Stage show on the page. Invoke this function to update viewport when Stage canvas changes border, margin or padding properties.
      * @returns {Object} The visible area of the Stage (the viewport property).
      */
@@ -237,7 +237,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Resize the Stage.
      * @param {Number} width The width of the new Stage.
      * @param {Number} height The height of the new Stage.

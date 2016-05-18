@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class Graphics class contains a group of functions for creating vector graphics.
@@ -54,7 +54,7 @@ return Class.create(/** @lends Graphics.prototype */{
     fillAlpha: 0,
 
     /**
-     * 
+     * @language=en
      * Set the lines style for drawing shapes.
      * @param {Number} thickness The thickness of lines, default value is 1.
      * @param {String} lineColor The CSS color value of lines, default value is 0 (the black color).
@@ -78,7 +78,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Set how to fill shapes and the transparency.
      * @param {String} fill Filling style. this can be color, gradient or pattern.
      * @param {Number} alpha Transparency.
@@ -94,7 +94,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Apply and end lines-drawing and shapes-filling.
      * @returns {Graphics} The Graphics Object.
      */
@@ -108,7 +108,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Set linear gradient filling style to draw shapes.
      * @param {Number} x0 The x-coordinate value of the linear gradient start point.
      * @param {Number} y0 The y-coordinate value of the linear gradient start point.
@@ -129,7 +129,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Set radial gradient filling style to draw shapes.
      * @param {Number} x0 The x-coordinate value of the radial gradient start circle.
      * @param {Number} y0 The y-coordinate value of the radial gradient start circle.
@@ -152,7 +152,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Begin an image filling pattern.
      * @param {HTMLImageElement} image The Image to fill.
      * @param {String} repetition The fill repetition style, can be one of valus:repeat, repeat-x, repeat-y, no-repeat. default valus is ''.
@@ -165,7 +165,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Begin a new path.
      * @returns {Graphics} The Graphics Object.
      */
@@ -174,7 +174,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Close current path.
      * @returns {Graphics} The Graphics Object.
      */
@@ -183,7 +183,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Move current drawing point to a new point on coordinate values (x, y).
      * @param {Number} x The x-coordinate value.
      * @param {Number} y The y-coordinate value.
@@ -194,7 +194,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a line from current point to the point on the coordinate value (x, y).
      * @param {Number} x The x-coordinate value.
      * @param {Number} y The y-coordinate value.
@@ -205,7 +205,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a quadratic Bézier curve from current point to the point on coordinate (x, y).
      * @param {Number} cpx The x-coordinate value of the Bézier curve control point cp.
      * @param {Number} cpy The y-coordinate value of the Bézier curve control point cp.
@@ -218,7 +218,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a Bézier curve from current point to the point on coordinate (x, y).
      * @param {Number} cp1x The x-coordinate value of the Bézier curve control point cp1.
      * @param {Number} cp1y The y-coordinate value of the Bézier curve control point cp1.
@@ -233,7 +233,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a rectangle.
      * @param {Number} x The x-coordinate value.
      * @param {Number} y The y-coordinate value.
@@ -246,7 +246,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a complex rounded rectangle.
      * @param {Number} x The x-coordinate value.
      * @param {Number} y The y-coordinate value.
@@ -273,7 +273,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a rounded rectangle.
      * @param {Number} x The x-coordinate value.
      * @param {Number} y The y-coordinate value.
@@ -287,7 +287,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a circle.
      * @param {Number} x The x-coordinate value.
      * @param {Number} y The y-coordinate value.
@@ -299,7 +299,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw an ellipse.
      * @param {Number} x The x-coordinate value.
      * @param {Number} y The y-coordinate value.
@@ -325,7 +325,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a path from the SVG data given by parameters.
      * Demo:
      * <p>var path = 'M250 150 L150 350 L350 350 Z';</p>
@@ -362,7 +362,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Apply all draw actions. private function.
      * @private
      */
@@ -381,7 +381,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Overwrite render function.
      * @private
      */
@@ -396,7 +396,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Clear all draw actions and reset to the initial state.
      * @returns {Graphics} The Graphics Object.
      */
@@ -420,7 +420,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Add a draw action, this is a private function.
      * @private
      */

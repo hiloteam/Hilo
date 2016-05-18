@@ -12,7 +12,7 @@
 <span class='line'>  5</span>  */</span><span class="WHIT">
 <span class='line'>  6</span> 
 <span class='line'>  7</span> </span><span class="COMM">/**
-<span class='line'>  8</span>  * 
+<span class='line'>  8</span>  * @language=zh
 <span class='line'>  9</span>  * @class Camera3d 伪3D虚拟摄像机。
 <span class='line'> 10</span>  * @module hilo/game/Camera3d
 <span class='line'> 11</span>  * @requires hilo/core/Hilo
@@ -69,7 +69,7 @@
 <span class='line'> 62</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 63</span> 
 <span class='line'> 64</span> </span><span class="WHIT">	    </span><span class="COMM">/**
-<span class='line'> 65</span>          * 
+<span class='line'> 65</span>          * @language=zh
 <span class='line'> 66</span>          * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z. 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
 <span class='line'> 67</span> 	     * @param {Number} x x坐标
 <span class='line'> 68</span> 	     * @param {Number} y y坐标
@@ -82,7 +82,7 @@
 <span class='line'> 75</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 76</span> 
 <span class='line'> 77</span> </span><span class="WHIT">	    </span><span class="COMM">/**
-<span class='line'> 78</span>          * 
+<span class='line'> 78</span>          * @language=zh
 <span class='line'> 79</span>          * 旋转X轴方向角度，相当于欧拉角系统的 beta。
 <span class='line'> 80</span> 	     * @param {Number} angle 旋转角度。
 <span class='line'> 81</span> 	     */</span><span class="WHIT">
@@ -91,7 +91,7 @@
 <span class='line'> 84</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 85</span> 
 <span class='line'> 86</span> </span><span class="WHIT">	    </span><span class="COMM">/**
-<span class='line'> 87</span>          * 
+<span class='line'> 87</span>          * @language=zh
 <span class='line'> 88</span>          * 旋转Y轴方向角度，相当于欧拉角系统的 gamma。
 <span class='line'> 89</span> 	     * @param {Number} angle 旋转角度。
 <span class='line'> 90</span> 	     */</span><span class="WHIT">
@@ -100,7 +100,7 @@
 <span class='line'> 93</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 94</span> 
 <span class='line'> 95</span> </span><span class="WHIT">	    </span><span class="COMM">/**
-<span class='line'> 96</span>          * 
+<span class='line'> 96</span>          * @language=zh
 <span class='line'> 97</span>          * 旋转Z轴方向角度，相当于欧拉角系统的 alpha。
 <span class='line'> 98</span> 	     * @param {Number} angle 旋转角度。
 <span class='line'> 99</span> 	     */</span><span class="WHIT">
@@ -109,7 +109,7 @@
 <span class='line'>102</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>103</span> 
 <span class='line'>104</span> </span><span class="WHIT">	    </span><span class="COMM">/**
-<span class='line'>105</span>          * 
+<span class='line'>105</span>          * @language=zh
 <span class='line'>106</span>          * 将三维坐标转换投影为二维坐标。
 <span class='line'>107</span> 	     * @param {object} vector3D 三维坐标对象，必须含有x, y, z属性。
 <span class='line'>108</span> 	     * @param {View} view Hilo.View对象，用于自动转换坐标。
@@ -163,7 +163,7 @@
 <span class='line'>156</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>157</span> 
 <span class='line'>158</span> </span><span class="WHIT">	    </span><span class="COMM">/**
-<span class='line'>159</span>          * 
+<span class='line'>159</span>          * @language=zh
 <span class='line'>160</span>          * Z深度排序。
 <span class='line'>161</span> 	     */</span><span class="WHIT">
 <span class='line'>162</span> </span><span class="WHIT">		</span><span class="NAME">sortZ</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -173,7 +173,7 @@
 <span class='line'>166</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>167</span> 
 <span class='line'>168</span> </span><span class="WHIT">	    </span><span class="COMM">/**
-<span class='line'>169</span>          * 
+<span class='line'>169</span>          * @language=zh
 <span class='line'>170</span>          * Ticker 轮询使用。
 <span class='line'>171</span> 	     */</span><span class="WHIT">
 <span class='line'>172</span> </span><span class="WHIT">		</span><span class="NAME">tick</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">

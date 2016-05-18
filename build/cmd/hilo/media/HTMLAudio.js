@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -9,28 +9,25 @@ var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 var EventMixin = require('hilo/event/EventMixin');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class HTMLAudio声音播放模块。此模块使用HTMLAudioElement播放音频。
- * 使用限制：iOS平台需用户事件触发才能播放，很多Android浏览器仅能同时播放一个音频。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @language=en
+ * @class HTMLAudio is an audio playing module, which uses HTMLAudioElement to play audio.
+ * Limits: iOS platform requires user action events to start playing, and many Android browser can only play one audio at a time.
+ * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/HTMLAudio
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
- * @property {String} src 播放的音频的资源地址。
- * @property {Boolean} loop 是否循环播放。默认为false。
- * @property {Boolean} autoPlay 是否自动播放。默认为false。
- * @property {Boolean} loaded 音频资源是否已加载完成。只读属性。
- * @property {Boolean} playing 是否正在播放音频。只读属性。
- * @property {Number} duration 音频的时长。只读属性。
- * @property {Number} volume 音量的大小。取值范围：0-1。
- * @property {Boolean} muted 是否静音。默认为false。
+ * @property {String} src The source of the playing audio.
+ * @property {Boolean} loop Is loop playback, default value is false.
+ * @property {Boolean} autoPlay Is the audio autoplay, default value is false.
+ * @property {Boolean} loaded Is the audio resource loaded, readonly!
+ * @property {Boolean} playing Is the audio playing, readonly!
+ * @property {Number} duration The duration of the audio, readonly!
+ * @property {Number} volume The volume of the audio, value between 0 to 1.
+ * @property {Boolean} muted Is the audio muted, default value is false.
  */
 var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     Mixes: EventMixin,
@@ -52,7 +49,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     _element: null, //HTMLAudioElement对象
 
     /**
-     * 加载音频文件。
+     * @language=en
+     * Load audio file.
      */
     load: function(){
         if(!this._element){
@@ -77,6 +75,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _onAudioEvent: function(e){
@@ -103,6 +102,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _doPlay: function(){
@@ -114,8 +114,9 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 播放音频。如果正在播放，则会重新开始。
-     * 注意：为了避免第一次播放不成功，建议在load音频后再播放。
+     * @language=en
+     * Start playing the audio. And play the audio from the beginning if the audio is already playing.
+     * Note: To prevent failing to play at the first time, play when the audio is loaded.
      */
     play: function(){
         if(this.playing) this.stop();
@@ -131,7 +132,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 暂停音频。
+     * @language=en
+     * Pause (halt) the currently playing audio.
      */
     pause: function(){
         if(this.playing){
@@ -142,7 +144,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 恢复音频播放。
+     * @language=en
+     * Continue to play the audio.
      */
     resume: function(){
         if(!this.playing){
@@ -152,7 +155,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 停止音频播放。
+     * @language=en
+     * Stop playing the audio.
      */
     stop: function(){
         if(this.playing){
@@ -164,7 +168,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 设置音量。注意: iOS设备无法设置音量。
+     * @language=en
+     * Set the volume. Note: iOS devices cannot set volume.
      */
     setVolume: function(volume){
         if(this.volume != volume){
@@ -175,7 +180,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 设置静音模式。注意: iOS设备无法设置静音模式。
+     * @language=en
+     * Set mute mode. Note: iOS devices cannot set mute mode.
      */
     setMute: function(muted){
         if(this.muted != muted){
@@ -187,7 +193,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
 
     Statics: /** @lends HTMLAudio */ {
         /**
-         * 浏览器是否支持HTMLAudio。
+         * @language=en
+         * Does the browser supports HTMLAudio.
          */
         isSupported: window.Audio !== null
     }

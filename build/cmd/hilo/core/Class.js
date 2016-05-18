@@ -1,18 +1,15 @@
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */ 
+
 
 /**
- * 创建类示例：
+ * @language=en
+ * Create Example Class:
  * <pre>
  * var Bird = Hilo.Class.create({
  *     Extends: Animal,
@@ -34,23 +31,24 @@ define(function(require, exports, module){
  * swallow.fly();
  * Bird.isBird(swallow);
  * </pre>
- * @namespace Class是提供类的创建的辅助工具。
+ * @namespace Class Class is created to aid the developer.
  * @static
  * @module hilo/core/Class
  */
 var Class = (function(){
 
 /**
- * 根据参数指定的属性和方法创建类。
- * @param {Object} properties 要创建的类的相关属性和方法。主要有：
+ * @language=en
+ * Create a class based on the parameters, properties and methods specified.
+ * @param {Object} properties Properties and methods to create the class.
  * <ul>
- * <li><b>Extends</b> - 指定要继承的父类。</li>
- * <li><b>Mixes</b> - 指定要混入的成员集合对象。</li>
- * <li><b>Statics</b> - 指定类的静态属性或方法。</li>
- * <li><b>constructor</b> - 指定类的构造函数。</li>
- * <li>其他创建类的成员属性或方法。</li>
+ * <li><b>Extends</b> - Designed to inherit the parent class.</li>
+ * <li><b>Mixes</b> - Specifies mixed member collection object.</li>
+ * <li><b>Statics</b> - Static property or method specified class.</li>
+ * <li><b>constructor</b> -  The constructor of specified class.</li>
+ * <li>Other members of the property or method to create the class.</li>
  * </ul>
- * @returns {Object} 创建的类。
+ * @returns {Object} Create classes.
  */
 var create = function(properties){
     properties = properties || {};
@@ -60,6 +58,7 @@ var create = function(properties){
 }
 
 /**
+ * @language=en
  * @private
  */
 var implement = function(properties){
@@ -106,6 +105,7 @@ var classMutators = /** @ignore */{
 };
 
 /**
+ * @language=en
  * @private
  */
 var createProto = (function(){
@@ -123,10 +123,11 @@ var createProto = (function(){
 })();
 
 /**
- * 混入属性或方法。
- * @param {Object} target 混入目标对象。
- * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。
- * @returns {Object} 混入目标对象。
+ * @language=en
+ * Mixed property or method.
+ * @param {Object} target Mixed audiences.
+ * @param {Object} source The source whose methods and properties are to be mixed. It can support multiple source parameters.
+ * @returns {Object} Mixed audiences.
  */
 var mix = function(target){
     for(var i = 1, len = arguments.length; i < len; i++){

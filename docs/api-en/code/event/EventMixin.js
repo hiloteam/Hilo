@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @class EventMixin is a mixin on event related functions. Use Class.mix(target, EventMixin) to add event function onto target.
  * @mixin
  * @static
@@ -16,7 +16,7 @@ var EventMixin = {
     _listeners: null,
 
     /**
-     * 
+     * @language=en
      * Add an event listenser.
      * @param {String} type Event type to listen.
      * @param {Function} listener Callback function of event listening.
@@ -35,7 +35,7 @@ var EventMixin = {
     },
 
     /**
-     * 
+     * @language=en
      * Remove one event listener. Remove all event listeners if no parameter provided, and remove all event listeners on one type which is provided as the only parameter.
      * @param {String} type The type of event listener that want to remove.
      * @param {Function} listener Event listener callback function to be removed.
@@ -69,7 +69,7 @@ var EventMixin = {
     },
 
     /**
-     * 
+     * @language=en
      * Send events. If the first parameter is an Object, take it  as an Event Object.
      * @param {String} type Event type to send.
      * @param {Object} detail The detail (parameters go with the event) of Event to send.
@@ -112,7 +112,7 @@ var EventMixin = {
 };
 
 /**
- * 
+ * @language=en
  * Event Object class. It's an private class now, but maybe will become a public class if needed.
  */
 var EventObject = Class.create({

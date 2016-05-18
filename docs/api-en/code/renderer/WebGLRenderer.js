@@ -11,7 +11,7 @@
 
 var DEG2RAD = Math.PI / 180;
 /**
- * 
+ * @language=en
  * @class WebGLRenderer The WebGLRenderer, all the visual object is drawing on the canvas using WebGL.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
@@ -25,19 +25,19 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     Extends: Renderer,
     Statics:/** @lends WebGLRenderer */{
         /**
-         * 
+         * @language=en
          * The max num of batch draw, default is 2000.
          * @type {Number}
          */
         MAX_BATCH_NUM:2000,
         /**
-         * 
+         * @language=en
          * The num of vertex attributes, readonly.
          * @type {Number}
          */
         ATTRIBUTE_NUM:5,
         /**
-         * 
+         * @language=en
          * is WebGL supported, readonly.
          * @type {Boolean}
          */
@@ -396,7 +396,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 });
 
 /**
- * 
+ * @language=en
  * shader
  * @param {WebGLRenderer} renderer [description]
  * @param {Object} source

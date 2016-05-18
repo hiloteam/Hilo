@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * @private
  * @class 图片资源加载器。
  * @module hilo/loader/ImageLoader

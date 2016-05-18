@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * @class Drawable是可绘制图像的包装。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/view/Drawable
@@ -23,7 +23,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
     rect: null,
 
     /**
-     * 
+     * @language=zh
      * 初始化可绘制对象。
      * @param {Object} properties 要初始化的属性。
      */
@@ -57,7 +57,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
 
     Statics: /** @lends Drawable */{
         /**
-         * 
+         * @language=zh
          * 判断参数elem指定的元素是否可包装成Drawable对象。
          * @param {Object} elem 要测试的对象。
          * @return {Boolean} 如果是可包装成Drawable对象则返回true，否则为false。

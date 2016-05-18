@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for standalone
+ * Hilo 1.0.1 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -8,16 +8,13 @@ var Hilo = window.Hilo;
 var Class = Hilo.Class;
 var Renderer = Hilo.Renderer;
 var Drawable = Hilo.Drawable;
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class DOM+CSS3渲染器。将可视对象以DOM元素方式渲染出来。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
+ * @language=en
+ * @class DomRenderer The DomRenderer, all the visual object is drawing using dom element.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/DOMRenderer
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
@@ -136,10 +133,11 @@ return Class.create({
 });
 
 /**
- * 创建一个可渲染的DOM，可指定tagName，如canvas或div。
- * @param {Object} view 一个可视对象或类似的对象。
- * @param {Object} imageObj 指定渲染的image及相关设置，如绘制区域rect。
- * @return {HTMLElement} 新创建的DOM对象。
+ * @language=en
+ * Create a dom element, you can set the tagName property，such as canvas and div.
+ * @param {Object} view A visual object.
+ * @param {Object} imageObj The image object to render, include the image propertiy and other associated properties, such as rect.
+ * @return {HTMLElement} The created dom element.
  * @private
  */
 function createDOMDrawable(view, imageObj){

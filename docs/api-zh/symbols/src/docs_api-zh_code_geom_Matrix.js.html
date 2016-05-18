@@ -12,7 +12,7 @@
 <span class='line'>  5</span>  */</span><span class="WHIT">
 <span class='line'>  6</span> 
 <span class='line'>  7</span> </span><span class="COMM">/**
-<span class='line'>  8</span>  * 
+<span class='line'>  8</span>  * @language=zh
 <span class='line'>  9</span>  * @class Matrix类表示一个转换矩阵，它确定如何将点从一个坐标空间映射到另一个坐标空间。
 <span class='line'> 10</span>  * @param {Number} a 缩放或旋转图像时影响像素沿 x 轴定位的值。
 <span class='line'> 11</span>  * @param {Number} b 旋转或倾斜图像时影响像素沿 y 轴定位的值。
@@ -34,7 +34,7 @@
 <span class='line'> 27</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 28</span> 
 <span class='line'> 29</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 30</span>      * 
+<span class='line'> 30</span>      * @language=zh
 <span class='line'> 31</span>      * 将某个矩阵与当前矩阵连接，从而将这两个矩阵的几何效果有效地结合在一起。
 <span class='line'> 32</span>      * @param {Matrix} mtx 要连接到源矩阵的矩阵。
 <span class='line'> 33</span>      * @returns {Matrix} 一个Matrix对象。
@@ -66,7 +66,7 @@
 <span class='line'> 59</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 60</span> 
 <span class='line'> 61</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 62</span>      * 
+<span class='line'> 62</span>      * @language=zh
 <span class='line'> 63</span>      * 对 Matrix 对象应用旋转转换。
 <span class='line'> 64</span>      * @param {Number} angle 旋转的角度。
 <span class='line'> 65</span>      * @returns {Matrix} 一个Matrix对象。
@@ -86,7 +86,7 @@
 <span class='line'> 79</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 80</span> 
 <span class='line'> 81</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 82</span>      * 
+<span class='line'> 82</span>      * @language=zh
 <span class='line'> 83</span>      * 对矩阵应用缩放转换。
 <span class='line'> 84</span>      * @param {Number} sx 用于沿 x 轴缩放对象的乘数。
 <span class='line'> 85</span>      * @param {Number} sy 用于沿 y 轴缩放对象的乘数。
@@ -103,7 +103,7 @@
 <span class='line'> 96</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 97</span> 
 <span class='line'> 98</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 99</span>      * 
+<span class='line'> 99</span>      * @language=zh
 <span class='line'>100</span>      * 沿 x 和 y 轴平移矩阵，由 dx 和 dy 参数指定。
 <span class='line'>101</span>      * @param {Number} dx 沿 x 轴向右移动的量（以像素为单位）。
 <span class='line'>102</span>      * @param {Number} dy 沿 y 轴向右移动的量（以像素为单位）。
@@ -116,7 +116,7 @@
 <span class='line'>109</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>110</span> 
 <span class='line'>111</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>112</span>      * 
+<span class='line'>112</span>      * @language=zh
 <span class='line'>113</span>      * 为每个矩阵属性设置一个值，该值将导致 null 转换。通过应用恒等矩阵转换的对象将与原始对象完全相同。
 <span class='line'>114</span>      * @returns {Matrix} 一个Matrix对象。
 <span class='line'>115</span>      */</span><span class="WHIT">
@@ -127,7 +127,7 @@
 <span class='line'>120</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>121</span> 
 <span class='line'>122</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>123</span>      * 
+<span class='line'>123</span>      * @language=zh
 <span class='line'>124</span>      * 执行原始矩阵的逆转换。您可以将一个逆矩阵应用于对象来撤消在应用原始矩阵时执行的转换。
 <span class='line'>125</span>      * @returns {Matrix} 一个Matrix对象。
 <span class='line'>126</span>      */</span><span class="WHIT">
@@ -149,7 +149,7 @@
 <span class='line'>142</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>143</span> 
 <span class='line'>144</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>145</span>      * 
+<span class='line'>145</span>      * @language=zh
 <span class='line'>146</span>      * 返回将 Matrix 对象表示的几何转换应用于指定点所产生的结果。
 <span class='line'>147</span>      * @param {Object} point 想要获得其矩阵转换结果的点。
 <span class='line'>148</span>      * @param {Boolean} round 是否对点的坐标进行向上取整。

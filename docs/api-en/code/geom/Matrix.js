@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @class Matrix class is a transforming matrix, which declare how points in one coordinate maped to another coordinate.
  * @param {Number} a The value affects pixel positioning alongside the x axis when Scale or rotate images.
  * @param {Number} b The value affects pixel positioning alongside the y axis when rotate or skew images.
@@ -27,7 +27,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Link a Matrix to current Matrix, in order to make geometry effects on these two composed more effective.
      * @param {Matrix} mtx Matrix that link to the source matrix.
      * @returns {Matrix} A Matrix Object.
@@ -59,7 +59,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Rotate the Matrix Object.
      * @param {Number} angle The angle to rotate.
      * @returns {Matrix} A Matrix object.
@@ -79,7 +79,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Scale the Matrix.
      * @param {Number} sx The value to multiply those object scale alongside the x axis.
      * @param {Number} sy The value to multiply those object scale alongside the y axis.
@@ -96,7 +96,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Translate the Matrix alongside x axis and y axis by dx and dy.
      * @param {Number} dx Translate Matrix alongside the x axis to the right (measured in px).
      * @param {Number} dy Translate Matrix alongside the y axis to the right (measured in px).
@@ -109,7 +109,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Set each Matrix property a value to trigger null transform. The Matrix after applying identity matrix transformation will be exactly the same as original.
      * @returns {Matrix} A Matrix object.
      */
@@ -120,7 +120,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Apply an invert transformation of original Matrix. Using this invert transformation, you can reset a Matrix to a state before it had been apply some Matrix.
      * @returns {Matrix} A Matrix object.
      */
@@ -142,7 +142,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Return the result after apply a Matrix displaying transform on the point.
      * @param {Object} point Point need to transform.
      * @param {Boolean} round Whether ceil the coordinate values of the point.

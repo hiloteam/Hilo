@@ -12,7 +12,7 @@
 <span class='line'>  5</span>  */</span><span class="WHIT">
 <span class='line'>  6</span> 
 <span class='line'>  7</span> </span><span class="COMM">/**
-<span class='line'>  8</span>  * 
+<span class='line'>  8</span>  * @language=zh
 <span class='line'>  9</span>  * @class Container是所有容器类的基类。每个Container都可以添加其他可视对象为子级。
 <span class='line'> 10</span>  * @augments View
 <span class='line'> 11</span>  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -40,7 +40,7 @@
 <span class='line'> 33</span> </span><span class="WHIT">    </span><span class="NAME">clipChildren</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 34</span> 
 <span class='line'> 35</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 36</span>      * 
+<span class='line'> 36</span>      * @language=zh
 <span class='line'> 37</span>      * 返回容器的子元素的数量。
 <span class='line'> 38</span>      * @returns {Uint} 容器的子元素的数量。
 <span class='line'> 39</span>      */</span><span class="WHIT">
@@ -49,7 +49,7 @@
 <span class='line'> 42</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 43</span> 
 <span class='line'> 44</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 45</span>      * 
+<span class='line'> 45</span>      * @language=zh
 <span class='line'> 46</span>      * 在指定索引位置添加子元素。
 <span class='line'> 47</span>      * @param {View} child 要添加的子元素。
 <span class='line'> 48</span>      * @param {Number} index 指定的索引位置，从0开始。
@@ -89,7 +89,7 @@
 <span class='line'> 82</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 83</span> 
 <span class='line'> 84</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 85</span>      * 
+<span class='line'> 85</span>      * @language=zh
 <span class='line'> 86</span>      * 在最上面添加子元素。
 <span class='line'> 87</span>      * @param {View} child 要添加的子元素。
 <span class='line'> 88</span>      */</span><span class="WHIT">
@@ -104,7 +104,7 @@
 <span class='line'> 97</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 98</span> 
 <span class='line'> 99</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>100</span>      * 
+<span class='line'>100</span>      * @language=zh
 <span class='line'>101</span>      * 在指定索引位置删除子元素。
 <span class='line'>102</span>      * @param {Int} index 指定删除元素的索引位置，从0开始。
 <span class='line'>103</span>      * @returns {View} 被删除的对象。
@@ -147,7 +147,7 @@
 <span class='line'>140</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>141</span> 
 <span class='line'>142</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>143</span>      * 
+<span class='line'>143</span>      * @language=zh
 <span class='line'>144</span>      * 删除指定的子元素。
 <span class='line'>145</span>      * @param {View} child 指定要删除的子元素。
 <span class='line'>146</span>      * @returns {View} 被删除的对象。
@@ -157,7 +157,7 @@
 <span class='line'>150</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>151</span> 
 <span class='line'>152</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>153</span>      * 
+<span class='line'>153</span>      * @language=zh
 <span class='line'>154</span>      * 删除指定id的子元素。
 <span class='line'>155</span>      * @param {String} id 指定要删除的子元素的id。
 <span class='line'>156</span>      * @returns {View} 被删除的对象。
@@ -175,7 +175,7 @@
 <span class='line'>168</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>169</span> 
 <span class='line'>170</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>171</span>      * 
+<span class='line'>171</span>      * @language=zh
 <span class='line'>172</span>      * 删除所有的子元素。
 <span class='line'>173</span>      * @returns {Container} 容器本身。
 <span class='line'>174</span>      */</span><span class="WHIT">
@@ -185,7 +185,7 @@
 <span class='line'>178</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>179</span> 
 <span class='line'>180</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>181</span>      * 
+<span class='line'>181</span>      * @language=zh
 <span class='line'>182</span>      * 返回指定索引位置的子元素。
 <span class='line'>183</span>      * @param {Number} index 指定要返回的子元素的索引值，从0开始。
 <span class='line'>184</span>      */</span><span class="WHIT">
@@ -196,7 +196,7 @@
 <span class='line'>189</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>190</span> 
 <span class='line'>191</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>192</span>      * 
+<span class='line'>192</span>      * @language=zh
 <span class='line'>193</span>      * 返回指定id的子元素。
 <span class='line'>194</span>      * @param {String} id 指定要返回的子元素的id。
 <span class='line'>195</span>      */</span><span class="WHIT">
@@ -210,7 +210,7 @@
 <span class='line'>203</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>204</span> 
 <span class='line'>205</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>206</span>      * 
+<span class='line'>206</span>      * @language=zh
 <span class='line'>207</span>      * 返回指定子元素的索引值。
 <span class='line'>208</span>      * @param {View} child 指定要返回索引值的子元素。
 <span class='line'>209</span>      */</span><span class="WHIT">
@@ -219,7 +219,7 @@
 <span class='line'>212</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>213</span> 
 <span class='line'>214</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>215</span>      * 
+<span class='line'>215</span>      * @language=zh
 <span class='line'>216</span>      * 设置子元素的索引位置。
 <span class='line'>217</span>      * @param {View} child 指定要设置的子元素。
 <span class='line'>218</span>      * @param {Number} index 指定要设置的索引值。
@@ -239,7 +239,7 @@
 <span class='line'>232</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>233</span> 
 <span class='line'>234</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>235</span>      * 
+<span class='line'>235</span>      * @language=zh
 <span class='line'>236</span>      * 交换两个子元素的索引位置。
 <span class='line'>237</span>      * @param {View} child1 指定要交换的子元素A。
 <span class='line'>238</span>      * @param {View} child2 指定要交换的子元素B。
@@ -256,7 +256,7 @@
 <span class='line'>249</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>250</span> 
 <span class='line'>251</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>252</span>      * 
+<span class='line'>252</span>      * @language=zh
 <span class='line'>253</span>      * 交换两个指定索引位置的子元素。
 <span class='line'>254</span>      * @param {Number} index1 指定要交换的索引位置A。
 <span class='line'>255</span>      * @param {Number} index2 指定要交换的索引位置B。
@@ -273,7 +273,7 @@
 <span class='line'>266</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>267</span> 
 <span class='line'>268</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>269</span>      * 
+<span class='line'>269</span>      * @language=zh
 <span class='line'>270</span>      * 根据指定键值或函数对子元素进行排序。
 <span class='line'>271</span>      * @param {Object} keyOrFunction 如果此参数为String时，则根据子元素的某个属性值进行排序；如果此参数为Function时，则根据此函数进行排序。
 <span class='line'>272</span>      */</span><span class="WHIT">
@@ -291,7 +291,7 @@
 <span class='line'>284</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>285</span> 
 <span class='line'>286</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>287</span>      * 
+<span class='line'>287</span>      * @language=zh
 <span class='line'>288</span>      * 更新子元素。
 <span class='line'>289</span>      * @private
 <span class='line'>290</span>      */</span><span class="WHIT">
@@ -307,7 +307,7 @@
 <span class='line'>300</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>301</span> 
 <span class='line'>302</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>303</span>      * 
+<span class='line'>303</span>      * @language=zh
 <span class='line'>304</span>      * 返回是否包含参数指定的子元素。
 <span class='line'>305</span>      * @param {View} child 指定要测试的子元素。
 <span class='line'>306</span>      */</span><span class="WHIT">
@@ -321,7 +321,7 @@
 <span class='line'>314</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>315</span> 
 <span class='line'>316</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>317</span>      * 
+<span class='line'>317</span>      * @language=zh
 <span class='line'>318</span>      * 返回由x和y指定的点下的对象。
 <span class='line'>319</span>      * @param {Number} x 指定点的x轴坐标。
 <span class='line'>320</span>      * @param {Number} y 指定点的y轴坐标。
@@ -355,7 +355,7 @@
 <span class='line'>348</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>349</span> 
 <span class='line'>350</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>351</span>      * 
+<span class='line'>351</span>      * @language=zh
 <span class='line'>352</span>      * 覆盖渲染方法。
 <span class='line'>353</span>      * @private
 <span class='line'>354</span>      */</span><span class="WHIT">

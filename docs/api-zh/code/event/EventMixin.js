@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * @class EventMixin是一个包含事件相关功能的mixin。可以通过 Class.mix(target, EventMixin) 来为target增加事件功能。
  * @mixin
  * @static
@@ -16,7 +16,7 @@ var EventMixin = {
     _listeners: null,
 
     /**
-     * 
+     * @language=zh
      * 增加一个事件监听。
      * @param {String} type 要监听的事件类型。
      * @param {Function} listener 事件监听回调函数。
@@ -35,7 +35,7 @@ var EventMixin = {
     },
 
     /**
-     * 
+     * @language=zh
      * 删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
      * @param {String} type 要删除监听的事件类型。
      * @param {Function} listener 要删除监听的回调函数。
@@ -69,7 +69,7 @@ var EventMixin = {
     },
 
     /**
-     * 
+     * @language=zh
      * 发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
      * @param {String} type 要发送的事件类型。
      * @param {Object} detail 要发送的事件的具体信息，即事件随带参数。
@@ -112,7 +112,7 @@ var EventMixin = {
 };
 
 /**
- * 
+ * @language=zh
  * 事件对象类。当前仅为内部类，以后有需求的话可能会考虑独立为公开类。
  */
 var EventObject = Class.create({

@@ -1,19 +1,16 @@
 /**
- * Hilo 1.0.0 for kissy
+ * Hilo 1.0.1 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 KISSY.add('hilo/loader/ImageLoader', function(S, Class){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * @private
- * @class 图片资源加载器。
+ * @class image resources loader.
  * @module hilo/loader/ImageLoader
  * @requires hilo/core/Class
  */

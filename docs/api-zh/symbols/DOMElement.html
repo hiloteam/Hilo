@@ -226,24 +226,6 @@
         <br>
         DOMElement是dom元素的包装。
         
-            <br><br><iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
-<br/>
-使用示例:
-<pre>
-var domView = new Hilo.DOMElement({
-    element: Hilo.createElement('div', {
-        style: {
-            backgroundColor: '#004eff',
-            position: 'absolute'
-        }
-    }),
-    width: 100,
-    height: 100,
-    x: 50,
-    y: 70
-}).addTo(stage);
-</pre>
-        
 
     </p>
 
@@ -459,8 +441,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
-限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
+                            
                         </div>
                     </td>
                     <td>
@@ -753,7 +734,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            添加此对象到父容器。
+                            
                         </div>
                     </td>
                     <td>
@@ -771,7 +752,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
+                            
                         </div>
                     </td>
                     <td>
@@ -789,7 +770,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            返回可视对象缩放后的高度。
+                            
                         </div>
                     </td>
                     <td>
@@ -807,7 +788,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            返回可视对象缩放后的宽度。
+                            
                         </div>
                     </td>
                     <td>
@@ -825,7 +806,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
+                            
                         </div>
                     </td>
                     <td>
@@ -843,7 +824,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            检测object参数指定的对象是否与其相交。
+                            
                         </div>
                     </td>
                     <td>
@@ -861,7 +842,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            检测由x和y参数指定的点是否在其外接矩形之内。
+                            
                         </div>
                     </td>
                     <td>
@@ -879,7 +860,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            从父容器里删除此对象。
+                            
                         </div>
                     </td>
                     <td>
@@ -897,7 +878,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
+                            
                         </div>
                     </td>
                     <td>
@@ -915,7 +896,7 @@ var domView = new Hilo.DOMElement({
                         </div>
                         <div class="description">
                             
-                            返回可视对象的字符串表示。
+                            
                         </div>
                     </td>
                     <td>

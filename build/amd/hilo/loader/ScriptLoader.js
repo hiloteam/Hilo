@@ -1,19 +1,16 @@
 /**
- * Hilo 1.0.0 for amd
+ * Hilo 1.0.1 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define('hilo/loader/ScriptLoader', ['hilo/core/Class'], function(Class){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * @private
- * @class javascript或JSONP加载器。
+ * @class javascript or JSONP loader
  * @module hilo/loader/ScriptLoader
  * @requires hilo/core/Class
  */

@@ -1,18 +1,16 @@
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
+
 
 /**
- * @namespace Hilo的基础核心方法集合。
+ * @language=en
+ * @namespace Hilo The underlying core set of methods.
  * @static
  * @module hilo/core/Hilo
  */
@@ -23,9 +21,10 @@ var win = window, doc = document, docElem = doc.documentElement,
 
 return {
     /**
-     * 获取一个全局唯一的id。如Stage1，Bitmap2等。
-     * @param {String} prefix 生成id的前缀。
-     * @returns {String} 全局唯一id。
+     * @language=en
+     * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
+     * @param {String} prefix Generated id's prefix.
+     * @returns {String} Globally unique id.
      */
     getUid: function(prefix){
         var id = ++uid;
@@ -38,9 +37,10 @@ return {
     },
 
     /**
-     * 为指定的可视对象生成一个包含路径的字符串表示形式。如Stage1.Container2.Bitmap3。
-     * @param {View} view 指定的可视对象。
-     * @returns {String} 可视对象的字符串表示形式。
+     * @language=en
+     * Generates a string representation that contains a path to the specified visual object. Such as Stage1.Container2.Bitmap3.
+     * @param {View} view Specified visual object.
+     * @returns {String} String representation of the visual object.
      */
     viewToString: function(view){
         var result, obj = view;
@@ -52,11 +52,12 @@ return {
     },
 
     /**
-     * 简单的浅复制对象。
-     * @param {Object} target 要复制的目标对象。
-     * @param {Object} source 要复制的源对象。
-     * @param {Boolean} strict 指示是否复制未定义的属性，默认为false，即不复制未定义的属性。
-     * @returns {Object} 复制后的对象。
+     * @language=en
+     * Simple shallow copy objects.
+     * @param {Object} target Target object to copy to.
+     * @param {Object} source Source object to copy.
+     * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
+     * @returns {Object} Object after copying.
      */
     copy: function(target, source, strict){
         for(var key in source){
@@ -68,15 +69,16 @@ return {
     },
 
     /**
-     * 浏览器特性集合。包括：
+     * @language=en
+     * Browser feature set includes:
      * <ul>
-     * <li><b>jsVendor</b> - 浏览器厂商CSS前缀的js值。比如：webkit。</li>
-     * <li><b>cssVendor</b> - 浏览器厂商CSS前缀的css值。比如：-webkit-。</li>
-     * <li><b>supportTransform</b> - 是否支持CSS Transform变换。</li>
-     * <li><b>supportTransform3D</b> - 是否支持CSS Transform 3D变换。</li>
-     * <li><b>supportStorage</b> - 是否支持本地存储localStorage。</li>
-     * <li><b>supportTouch</b> - 是否支持触碰事件。</li>
-     * <li><b>supportCanvas</b> - 是否支持canvas元素。</li>
+     * <li><b>jsVendor</b> - Browser vendors js value CSS prefix. For example: webkit.</li>
+     * <li><b>cssVendor</b> - Browser vendors css value CSS prefix.</li>
+     * <li><b>supportTransform</b> - Whether to support CSS Transform transformation.</li>
+     * <li><b>supportTransform3D</b> - Whether to support CSS Transform 3D transformation.</li>
+     * <li><b>supportStorage</b> - Whether to support local stores like localStorage.</li>
+     * <li><b>supportTouch</b> - Whether to support the touch event.</li>
+     * <li><b>supportCanvas</b> - Whether to support the canvas element.</li>
      * </ul>
      */
     browser: (function(){
@@ -134,11 +136,12 @@ return {
     })(),
 
     /**
-     * 事件类型枚举对象。包括：
+     * @language=en
+     * Event enumeration objects include:
      * <ul>
-     * <li><b>POINTER_START</b> - 鼠标或触碰开始事件。对应touchstart或mousedown。</li>
-     * <li><b>POINTER_MOVE</b> - 鼠标或触碰移动事件。对应touchmove或mousemove。</li>
-     * <li><b>POINTER_END</b> - 鼠标或触碰结束事件。对应touchend或mouseup。</li>
+     * <li><b>POINTER_START</b> - Mouse or touch start event. Corresponds to touchstart or mousedown.</li>
+     * <li><b>POINTER_MOVE</b> - Mouse or touch move event. Corresponds to touchmove or mousemove.</li>
+     * <li><b>POINTER_END</b> - Mouse or touch end event. Corresponds to touchend or mouseup.</li>
      * </ul>
      */
     event: (function(){
@@ -151,17 +154,18 @@ return {
     })(),
 
     /**
-     * 可视对象对齐方式枚举对象。包括：
+     * @language=en
+     * Visual object alinment enumeration objects include:
      * <ul>
-     * <li><b>TOP_LEFT</b> - 左上角对齐。</li>
-     * <li><b>TOP</b> - 顶部居中对齐。</li>
-     * <li><b>TOP_RIGHT</b> - 右上角对齐。</li>
-     * <li><b>LEFT</b> - 左边居中对齐。</li>
-     * <li><b>CENTER</b> - 居中对齐。</li>
-     * <li><b>RIGHT</b> - 右边居中对齐。</li>
-     * <li><b>BOTTOM_LEFT</b> - 左下角对齐。</li>
-     * <li><b>BOTTOM</b> - 底部居中对齐。</li>
-     * <li><b>BOTTOM_RIGHT</b> - 右下角对齐。</li>
+     * <li><b>TOP_LEFT</b> - Align the top left corner.</li>
+     * <li><b>TOP</b> - Top center alignment.</li>
+     * <li><b>TOP_RIGHT</b> - Align the top right corner.</li>
+     * <li><b>LEFT</b> - Left center alignment.</li>
+     * <li><b>CENTER</b> - Align center.</li>
+     * <li><b>RIGHT</b> - Right center alignment.</li>
+     * <li><b>BOTTOM_LEFT</b> - Align the bottom left corner.</li>
+     * <li><b>BOTTOM</b> - Bottom center alignment.</li>
+     * <li><b>BOTTOM_RIGHT</b> - Align the bottom right corner.</li>
      * </ul>
      */
     align: {
@@ -177,16 +181,17 @@ return {
     },
 
     /**
-     * 获取DOM元素在页面中的内容显示区域。
-     * @param {HTMLElement} elem DOM元素。
-     * @returns {Object} DOM元素的可视区域。格式为：{left:0, top:0, width:100, height:100}。
+     * @language=en
+     * Get DOM element content in the page display area.
+     * @param {HTMLElement} elem DOM elements.
+     * @returns {Object} Viewable area DOM elements. Format is: {left:0, top:0, width:100, height:100}.
      */
     getElementRect: function(elem){
         try{
             //this fails if it's a disconnected DOM node
             var bounds = elem.getBoundingClientRect();
         }catch(e){
-            bounds = {top:elem.offsetTop, left:elem.offsetLeft, width:elem.offsetWidth, height:elem.offsetHeight};
+            bounds = {top:elem.offsetTop, left:elem.offsetLeft, right:elem.offsetLeft + elem.offsetWidth, bottom:elem.offsetTop + elem.offsetHeight};
         }
 
         var offsetX = ((win.pageXOffset || docElem.scrollLeft) - (docElem.clientLeft || 0)) || 0;
@@ -198,22 +203,26 @@ return {
         var padTop = (parseIntFn(styles.paddingTop) + parseIntFn(styles.borderTopWidth)) || 0;
         var padRight = (parseIntFn(styles.paddingRight) + parseIntFn(styles.borderRightWidth)) || 0;
         var padBottom = (parseIntFn(styles.paddingBottom) + parseIntFn(styles.borderBottomWidth)) || 0;
+
         var top = bounds.top || 0;
         var left = bounds.left || 0;
+        var right = bounds.right || 0;
+        var bottom = bounds.bottom || 0;
 
         return {
             left: left + offsetX + padLeft,
             top: top + offsetY + padTop,
-            width: bounds.right - padRight - left - padLeft,
-            height: bounds.bottom - padBottom - top - padTop
+            width: right - padRight - left - padLeft,
+            height: bottom - padBottom - top - padTop
         };
     },
 
     /**
-     * 创建一个DOM元素。可指定属性和样式。
-     * @param {String} type 要创建的DOM元素的类型。比如：'div'。
-     * @param {Object} properties 指定DOM元素的属性和样式。
-     * @returns {HTMLElement} 一个DOM元素。
+     * @language=en
+     * Create a DOM element. You can specify properties and styles.
+     * @param {String} type DOM element type to be created. Such as: 'div'.
+     * @param {Object} properties Properties and styles for DOM element.
+     * @returns {HTMLElement} A DOM element.
      */
     createElement: function(type, properties){
         var elem = doc.createElement(type), p, val, s;
@@ -229,17 +238,19 @@ return {
     },
 
     /**
-     * 根据参数id获取一个DOM元素。此方法等价于document.getElementById(id)。
-     * @param {String} id 要获取的DOM元素的id。
-     * @returns {HTMLElement} 一个DOM元素。
+     * @language=en
+     * Gets a DOM element according to the parameter id. This method is equivalent to document.getElementById(id).
+     * @param {String} id id of the DOM element you want to get.
+     * @returns {HTMLElement} A DOM element.
      */
     getElement: function(id){
         return doc.getElementById(id);
     },
 
     /**
-     * 设置可视对象DOM元素的CSS样式。
-     * @param {View} obj 指定要设置CSS样式的可视对象。
+     * @language=en
+     * Set visual object DOM element CSS style.
+     * @param {View} obj Specifies the CSS style to set the visual object.
      * @private
      */
     setElementStyleByView: function(obj){
@@ -337,9 +348,10 @@ return {
     },
 
     /**
-     * 生成可视对象的CSS变换样式。
-     * @param {View} obj 指定生成CSS变换样式的可视对象。
-     * @returns {String} 生成的CSS样式字符串。
+     * @language=en
+     * Generated visual object CSS style transformation.
+     * @param {View} obj Specifies visual object whose CSS style must be got.
+     * @returns {String} String representation of the CSS style.
      */
     getTransformCSS: function(obj){
         var use3d = this.browser.supportTransform3D,
@@ -357,20 +369,17 @@ return Hilo;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */ 
+
 
 /**
- * 创建类示例：
+ * @language=en
+ * Create Example Class:
  * <pre>
  * var Bird = Hilo.Class.create({
  *     Extends: Animal,
@@ -392,23 +401,24 @@ define(function(require, exports, module){
  * swallow.fly();
  * Bird.isBird(swallow);
  * </pre>
- * @namespace Class是提供类的创建的辅助工具。
+ * @namespace Class Class is created to aid the developer.
  * @static
  * @module hilo/core/Class
  */
 var Class = (function(){
 
 /**
- * 根据参数指定的属性和方法创建类。
- * @param {Object} properties 要创建的类的相关属性和方法。主要有：
+ * @language=en
+ * Create a class based on the parameters, properties and methods specified.
+ * @param {Object} properties Properties and methods to create the class.
  * <ul>
- * <li><b>Extends</b> - 指定要继承的父类。</li>
- * <li><b>Mixes</b> - 指定要混入的成员集合对象。</li>
- * <li><b>Statics</b> - 指定类的静态属性或方法。</li>
- * <li><b>constructor</b> - 指定类的构造函数。</li>
- * <li>其他创建类的成员属性或方法。</li>
+ * <li><b>Extends</b> - Designed to inherit the parent class.</li>
+ * <li><b>Mixes</b> - Specifies mixed member collection object.</li>
+ * <li><b>Statics</b> - Static property or method specified class.</li>
+ * <li><b>constructor</b> -  The constructor of specified class.</li>
+ * <li>Other members of the property or method to create the class.</li>
  * </ul>
- * @returns {Object} 创建的类。
+ * @returns {Object} Create classes.
  */
 var create = function(properties){
     properties = properties || {};
@@ -418,6 +428,7 @@ var create = function(properties){
 }
 
 /**
+ * @language=en
  * @private
  */
 var implement = function(properties){
@@ -464,6 +475,7 @@ var classMutators = /** @ignore */{
 };
 
 /**
+ * @language=en
  * @private
  */
 var createProto = (function(){
@@ -481,10 +493,11 @@ var createProto = (function(){
 })();
 
 /**
- * 混入属性或方法。
- * @param {Object} target 混入目标对象。
- * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。
- * @returns {Object} 混入目标对象。
+ * @language=en
+ * Mixed property or method.
+ * @param {Object} target Mixed audiences.
+ * @param {Object} source The source whose methods and properties are to be mixed. It can support multiple source parameters.
+ * @returns {Object} Mixed audiences.
  */
 var mix = function(target){
     for(var i = 1, len = arguments.length; i < len; i++){
@@ -538,7 +551,7 @@ return Class;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -546,20 +559,17 @@ define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Matrix类表示一个转换矩阵，它确定如何将点从一个坐标空间映射到另一个坐标空间。
- * @param {Number} a 缩放或旋转图像时影响像素沿 x 轴定位的值。
- * @param {Number} b 旋转或倾斜图像时影响像素沿 y 轴定位的值。
- * @param {Number} c 旋转或倾斜图像时影响像素沿 x 轴定位的值。
- * @param {Number} d 缩放或旋转图像时影响像素沿 y 轴定位的值。
- * @param {Number} tx 沿 x 轴平移每个点的距离。
- * @param {Number} ty 沿 y 轴平移每个点的距离。
+ * @language=en
+ * @class Matrix class is a transforming matrix, which declare how points in one coordinate maped to another coordinate.
+ * @param {Number} a The value affects pixel positioning alongside the x axis when Scale or rotate images.
+ * @param {Number} b The value affects pixel positioning alongside the y axis when rotate or skew images.
+ * @param {Number} c The value affects pixel positioning alongside the x axis when rotate or skew images.
+ * @param {Number} d The value affects pixel positioning alongside the y axis when Scale or rotate images.
+ * @param {Number} tx The distance to move every point alongside the x axis.
+ * @param {Number} ty The distance to move every point alongside the y axis.
  * @module hilo/geom/Matrix
  * @requires hilo/core/Class
  */
@@ -574,9 +584,10 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 将某个矩阵与当前矩阵连接，从而将这两个矩阵的几何效果有效地结合在一起。
-     * @param {Matrix} mtx 要连接到源矩阵的矩阵。
-     * @returns {Matrix} 一个Matrix对象。
+     * @language=en
+     * Link a Matrix to current Matrix, in order to make geometry effects on these two composed more effective.
+     * @param {Matrix} mtx Matrix that link to the source matrix.
+     * @returns {Matrix} A Matrix Object.
      */
     concat: function(mtx){
         var args = arguments,
@@ -605,9 +616,10 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 对 Matrix 对象应用旋转转换。
-     * @param {Number} angle 旋转的角度。
-     * @returns {Matrix} 一个Matrix对象。
+     * @language=en
+     * Rotate the Matrix Object.
+     * @param {Number} angle The angle to rotate.
+     * @returns {Matrix} A Matrix object.
      */
     rotate: function(angle){
         var sin = Math.sin(angle), cos = Math.cos(angle),
@@ -624,10 +636,11 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 对矩阵应用缩放转换。
-     * @param {Number} sx 用于沿 x 轴缩放对象的乘数。
-     * @param {Number} sy 用于沿 y 轴缩放对象的乘数。
-     * @returns {Matrix} 一个Matrix对象。
+     * @language=en
+     * Scale the Matrix.
+     * @param {Number} sx The value to multiply those object scale alongside the x axis.
+     * @param {Number} sy The value to multiply those object scale alongside the y axis.
+     * @returns {Matrix} A Matrix object.
      */
     scale: function(sx, sy){
         this.a *= sx;
@@ -640,10 +653,11 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 沿 x 和 y 轴平移矩阵，由 dx 和 dy 参数指定。
-     * @param {Number} dx 沿 x 轴向右移动的量（以像素为单位）。
-     * @param {Number} dy 沿 y 轴向右移动的量（以像素为单位）。
-     * @returns {Matrix} 一个Matrix对象。
+     * @language=en
+     * Translate the Matrix alongside x axis and y axis by dx and dy.
+     * @param {Number} dx Translate Matrix alongside the x axis to the right (measured in px).
+     * @param {Number} dy Translate Matrix alongside the y axis to the right (measured in px).
+     * @returns {Matrix} A Matrix object.
      */
     translate: function(dx, dy){
         this.tx += dx;
@@ -652,8 +666,9 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 为每个矩阵属性设置一个值，该值将导致 null 转换。通过应用恒等矩阵转换的对象将与原始对象完全相同。
-     * @returns {Matrix} 一个Matrix对象。
+     * @language=en
+     * Set each Matrix property a value to trigger null transform. The Matrix after applying identity matrix transformation will be exactly the same as original.
+     * @returns {Matrix} A Matrix object.
      */
     identity: function(){
         this.a = this.d = 1;
@@ -662,8 +677,9 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 执行原始矩阵的逆转换。您可以将一个逆矩阵应用于对象来撤消在应用原始矩阵时执行的转换。
-     * @returns {Matrix} 一个Matrix对象。
+     * @language=en
+     * Apply an invert transformation of original Matrix. Using this invert transformation, you can reset a Matrix to a state before it had been apply some Matrix.
+     * @returns {Matrix} A Matrix object.
      */
     invert: function(){
         var a = this.a;
@@ -683,10 +699,11 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * 返回将 Matrix 对象表示的几何转换应用于指定点所产生的结果。
-     * @param {Object} point 想要获得其矩阵转换结果的点。
-     * @param {Boolean} round 是否对点的坐标进行向上取整。
-     * @param {Boolean} returnNew 是否返回一个新的点。
+     * @language=en
+     * Return the result after apply a Matrix displaying transform on the point.
+     * @param {Object} point Point need to transform.
+     * @param {Boolean} round Whether ceil the coordinate values of the point.
+     * @param {Boolean} returnNew Whether return a new point.
      * @returns {Object} 由应用矩阵转换所产生的点。
      */
     transformPoint: function(point, round, returnNew){
@@ -705,11 +722,12 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
 
 });
 
+
 return Matrix;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -717,14 +735,11 @@ define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class EventMixin是一个包含事件相关功能的mixin。可以通过 Class.mix(target, EventMixin) 来为target增加事件功能。
+ * @language=en
+ * @class EventMixin is a mixin on event related functions. Use Class.mix(target, EventMixin) to add event function onto target.
  * @mixin
  * @static
  * @module hilo/event/EventMixin
@@ -734,11 +749,12 @@ var EventMixin = {
     _listeners: null,
 
     /**
-     * 增加一个事件监听。
-     * @param {String} type 要监听的事件类型。
-     * @param {Function} listener 事件监听回调函数。
-     * @param {Boolean} once 是否是一次性监听，即回调函数响应一次后即删除，不再响应。
-     * @returns {Object} 对象本身。链式调用支持。
+     * @language=en
+     * Add an event listenser.
+     * @param {String} type Event type to listen.
+     * @param {Function} listener Callback function of event listening.
+     * @param {Boolean} once Listen on event only once and no more response after the first response?
+     * @returns {Object} The Event itself. Functions chain call supported.
      */
     on: function(type, listener, once){
         var listeners = (this._listeners = this._listeners || {});
@@ -752,10 +768,11 @@ var EventMixin = {
     },
 
     /**
-     * 删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
-     * @param {String} type 要删除监听的事件类型。
-     * @param {Function} listener 要删除监听的回调函数。
-     * @returns {Object} 对象本身。链式调用支持。
+     * @language=en
+     * Remove one event listener. Remove all event listeners if no parameter provided, and remove all event listeners on one type which is provided as the only parameter.
+     * @param {String} type The type of event listener that want to remove.
+     * @param {Function} listener Event listener callback function to be removed.
+     * @returns {Object} The Event itself. Functions chain call supported.
      */
     off: function(type, listener){
         //remove all event listeners
@@ -785,10 +802,11 @@ var EventMixin = {
     },
 
     /**
-     * 发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
-     * @param {String} type 要发送的事件类型。
-     * @param {Object} detail 要发送的事件的具体信息，即事件随带参数。
-     * @returns {Boolean} 是否成功调度事件。
+     * @language=en
+     * Send events. If the first parameter is an Object, take it  as an Event Object.
+     * @param {String} type Event type to send.
+     * @param {Object} detail The detail (parameters go with the event) of Event to send.
+     * @returns {Boolean} Whether Event call successfully.
      */
     fire: function(type, detail){
         var event, eventType;
@@ -804,14 +822,19 @@ var EventMixin = {
 
         var eventListeners = listeners[eventType];
         if(eventListeners){
-            eventListeners = eventListeners.slice(0);
+            var eventListenersCopy = eventListeners.slice(0);
             event = event || new EventObject(eventType, this, detail);
             if(event._stopped) return false;
 
-            for(var i = 0; i < eventListeners.length; i++){
-                var el = eventListeners[i];
+            for(var i = 0; i < eventListenersCopy.length; i++){
+                var el = eventListenersCopy[i];
                 el.listener.call(this, event);
-                if(el.once) eventListeners.splice(i--, 1);
+                if(el.once) {
+                    var index = eventListeners.indexOf(el);
+                    if(index > -1){
+                        eventListeners.splice(index, 1);
+                    }
+                }
             }
 
             if(eventListeners.length == 0) delete listeners[eventType];
@@ -822,7 +845,8 @@ var EventMixin = {
 };
 
 /**
- * 事件对象类。当前仅为内部类，以后有需求的话可能会考虑独立为公开类。
+ * @language=en
+ * Event Object class. It's an private class now, but maybe will become a public class if needed.
  */
 var EventObject = Class.create({
     constructor: function EventObject(type, target, detail){
@@ -858,7 +882,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -867,20 +891,17 @@ define(function(require, exports, module){
 var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Drawable是可绘制图像的包装。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @language=en
+ * @class Drawable is a wrapper of drawable images.
+ * @param {Object} properties create Objects properties, contains all writable properties.
  * @module hilo/view/Drawable
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
- * @property {Object} image 要绘制的图像。即可被CanvasRenderingContext2D.drawImage使用的对象类型，可以是HTMLImageElement、HTMLCanvasElement、HTMLVideoElement等对象。
- * @property {array} rect 要绘制的图像的矩形区域。
+ * @property {Object} image Image to be drawed, can used by CanvasRenderingContext2D.drawImage，like HTMLImageElement、HTMLCanvasElement、HTMLVideoElement。
+ * @property {array} rect The retangle area that image will be drawed.
  */
 var Drawable = Class.create(/** @lends Drawable.prototype */{
     constructor: function(properties){
@@ -891,8 +912,9 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
     rect: null,
 
     /**
-     * 初始化可绘制对象。
-     * @param {Object} properties 要初始化的属性。
+     * @language=en
+     * Initialize drawable elements.
+     * @param {Object} properties Properties need to be initialized.
      */
     init: function(properties){
         var me = this, oldImage = me.image;
@@ -924,9 +946,10 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
 
     Statics: /** @lends Drawable */{
         /**
-         * 判断参数elem指定的元素是否可包装成Drawable对象。
-         * @param {Object} elem 要测试的对象。
-         * @return {Boolean} 如果是可包装成Drawable对象则返回true，否则为false。
+         * @language=en
+         * Check whether the given 'elem' and be wrapped into Drawable object.
+         * @param {Object} elem Element to be tested.
+         * @return {Boolean} Return true if element can be wrapped into Drawable element, otherwises return false.
          */
         isDrawable: function(elem){
             if(!elem || !elem.tagName) return false;
@@ -940,7 +963,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -949,21 +972,18 @@ define(function(require, exports, module){
 var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class 渲染器抽象基类。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @language=en
+ * @class Renderer Renderer is the base class of renderer.
+ * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/Renderer
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
- * @property {Object} canvas 渲染器对应的画布。它可能是一个普通的DOM元素，比如div，也可以是一个canvas画布元素。只读属性。
- * @property {Object} stage 渲染器对应的舞台。只读属性。
- * @property {String} renderType 渲染方式。只读属性。
+ * @property {Object} canvas The canvas of renderer. It can be a dom element, such as a div element, or a canvas element. readonly.
+ * @property {Object} stage The stage of renderer, readonly.
+ * @property {String} renderType The render type of renderer, readonly.
  */
 var Renderer = Class.create(/** @lends Renderer.prototype */{
     constructor: function(properties){
@@ -976,52 +996,60 @@ var Renderer = Class.create(/** @lends Renderer.prototype */{
     stage: null,
 
     /**
-     * 为开始绘制可视对象做准备。需要子类来实现。
-     * @param {View} target 要绘制的可视对象。
+     * @language=en
+     * Prepare for draw visual object. The subclass need to implement it.
+     * @param {View} target The visual target to draw.
      */
     startDraw: function(target){ },
 
     /**
-     * 绘制可视对象。需要子类来实现。
-     * @param {View} target 要绘制的可视对象。
+     * @language=en
+     * Draw the visual object. The subclass need to implement it.
+     * @param {View} target The visual target to draw.
      */
     draw: function(target){ },
 
     /**
-     * 结束绘制可视对象后的后续处理方法。需要子类来实现。
-     * @param {View} target 要绘制的可视对象。
+     * @language=en
+     * The handling method after draw the visual object. The subclass need to implement it.
+     * @param {View} target The visual target to draw.
      */
     endDraw: function(target){ },
 
     /**
-     * 对可视对象进行变换。需要子类来实现。
+     * @language=en
+     * Transfrom the visual object. The subclass need to implement it.
      */
     transform: function(){ },
 
     /**
-     * 隐藏可视对象。需要子类来实现。
+     * @language=en
+     * Hide the visual object. The subclass need to implement it.
      */
     hide: function(){ },
 
     /**
-     * 从画布中删除可视对象。注意：不是从stage中删除对象。需要子类来实现。
-     * @param {View} target 要删除的可视对象。
+     * @language=en
+     * Remove the visual object from canvas. Notice that it dosen't remove the object from stage. The subclass need to implement it.
+     * @param {View} target The visual target to remove.
      */
     remove: function(target){ },
 
     /**
-     * 清除画布指定区域。需要子类来实现。
-     * @param {Number} x 指定区域的x轴坐标。
-     * @param {Number} y 指定区域的y轴坐标。
-     * @param {Number} width 指定区域的宽度。
-     * @param {Number} height 指定区域的高度。
+     * @language=en
+     * Clear the given region of canvas. The subclass need to implement it.
+     * @param {Number} x The position on the x axis of the given region.
+     * @param {Number} y The position on the y axis of the given region.
+     * @param {Number} width The width of the given region.
+     * @param {Number} height The height of the given region.
      */
     clear: function(x, y, width, height){ },
 
     /**
-     * 改变渲染器的画布大小。
-     * @param {Number} width 指定渲染画布新的宽度。
-     * @param {Number} height 指定渲染画布新的高度。
+     * @language=en
+     * Resize the renderer's canvas.
+     * @param {Number} width The width of renderer's canvas.
+     * @param {Number} height The height of the renderer's canvas.
      */
     resize: function(width, height){ }
 
@@ -1031,7 +1059,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1041,21 +1069,18 @@ var Class = require('hilo/core/Class');
 var Hilo = require('hilo/core/Hilo');
 var Renderer = require('hilo/renderer/Renderer');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class canvas画布渲染器。所有可视对象将渲染在canvas画布上。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
+ * @language=en
+ * @class CanvasRenderer CanvasRenderer, all the visual object is drawing on the canvas element.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/CanvasRenderer
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  * @requires hilo/renderer/Renderer
- * @property {CanvasRenderingContext2D} context canvas画布的上下文。只读属性。
+ * @property {CanvasRenderingContext2D} context The context of the canvas element, readonly.
  */
 var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     Extends: Renderer,
@@ -1100,7 +1125,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
         var drawable = target.drawable, image = drawable && drawable.image;
         if(image){
             var rect = drawable.rect, sw = rect[2], sh = rect[3], offsetX = rect[4], offsetY = rect[5];
-            //ie9+浏览器宽高为0时会报错
+            //ie9+浏览器宽高为0时会报错 fixed ie9 bug.
             if(!sw || !sh){
                 return;
             }
@@ -1264,7 +1289,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1275,16 +1300,13 @@ var Hilo = require('hilo/core/Hilo');
 var Renderer = require('hilo/renderer/Renderer');
 var Drawable = require('hilo/view/Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class DOM+CSS3渲染器。将可视对象以DOM元素方式渲染出来。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
+ * @language=en
+ * @class DomRenderer The DomRenderer, all the visual object is drawing using dom element.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/DOMRenderer
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
@@ -1403,10 +1425,11 @@ return Class.create({
 });
 
 /**
- * 创建一个可渲染的DOM，可指定tagName，如canvas或div。
- * @param {Object} view 一个可视对象或类似的对象。
- * @param {Object} imageObj 指定渲染的image及相关设置，如绘制区域rect。
- * @return {HTMLElement} 新创建的DOM对象。
+ * @language=en
+ * Create a dom element, you can set the tagName property，such as canvas and div.
+ * @param {Object} view A visual object.
+ * @param {Object} imageObj The image object to render, include the image propertiy and other associated properties, such as rect.
+ * @return {HTMLElement} The created dom element.
  * @private
  */
 function createDOMDrawable(view, imageObj){
@@ -1453,7 +1476,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1463,11 +1486,7 @@ var Class = require('hilo/core/Class');
 var Renderer = require('hilo/renderer/Renderer');
 var Matrix = require('hilo/geom/Matrix');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
  * Heavily inspired by PIXI's SpriteRenderer:
@@ -1476,33 +1495,37 @@ var Matrix = require('hilo/geom/Matrix');
 
 var DEG2RAD = Math.PI / 180;
 /**
- * @class webgl画布渲染器。所有可视对象将渲染在canvas画布上。
+ * @language=en
+ * @class WebGLRenderer The WebGLRenderer, all the visual object is drawing on the canvas using WebGL.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/WebGLRenderer
  * @requires hilo/core/Class
  * @requires hilo/renderer/Renderer
  * @requires  hilo/geom/Matrix
- * @property {WebGLRenderingContext} gl webgl上下文。只读属性。
+ * @property {WebGLRenderingContext} gl The WebGL context of the renderer, readonly.
  */
 var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     Extends: Renderer,
     Statics:/** @lends WebGLRenderer */{
         /**
-         * 最大批渲染数量。
+         * @language=en
+         * The max num of batch draw, default is 2000.
          * @type {Number}
          */
         MAX_BATCH_NUM:2000,
         /**
-         * 顶点属性数。只读属性。
+         * @language=en
+         * The num of vertex attributes, readonly.
          * @type {Number}
          */
         ATTRIBUTE_NUM:5,
         /**
-         * 是否支持WebGL。只读属性。
+         * @language=en
+         * is WebGL supported, readonly.
          * @type {Boolean}
          */
-        isSupport:null
+        isSupported:null
     },
     renderType:'webgl',
     gl:null,
@@ -1567,7 +1590,6 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         }
         return false;
     },
-
     /**
      * @private
      * @see Renderer#draw
@@ -1858,6 +1880,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 });
 
 /**
+ * @language=en
  * shader
  * @param {WebGLRenderer} renderer [description]
  * @param {Object} source
@@ -1977,27 +2000,21 @@ Shader.prototype = {
     }
 };
 
-WebGLRenderer.isSupport = function(){
-    if(this._isSupport !== undefined){
-        return this._isSupport;
+WebGLRenderer.isSupported = (function(){
+    var canvas = document.createElement('canvas');
+    if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
+        return true;
     }
     else{
-        var canvas = document.createElement('canvas');
-        if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
-            this._isSupport = true;
-        }
-        else{
-            this._isSupport = false;
-        }
-        return this._isSupport;
+        return false;
     }
-};
+})();
 
 return WebGLRenderer;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2008,40 +2025,37 @@ var Class = require('hilo/core/Class');
 var EventMixin = require('hilo/event/EventMixin');
 var Matrix = require('hilo/geom/Matrix');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class View类是所有可视对象或组件的基类。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @language=en
+ * @class View View is the base class of all display objects
+ * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/view/View
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/geom/Matrix
- * @property {String} id 可视对象的唯一标识符。
- * @property {Number} x 可视对象的x轴坐标。默认值为0。
- * @property {Number} y 可视对象的y轴坐标。默认值为0。
- * @property {Number} width 可视对象的宽度。默认值为0。
- * @property {Number} height 可视对象的高度。默认值为0。
- * @property {Number} alpha 可视对象的透明度。默认值为1。
- * @property {Number} rotation 可视对象的旋转角度。默认值为0。
- * @property {Boolean} visible 可视对象是否可见。默认为可见，即true。
- * @property {Number} pivotX 可视对象的中心点的x轴坐标。默认值为0。
- * @property {Number} pivotY 可视对象的中心点的y轴坐标。默认值为0。
- * @property {Number} scaleX 可视对象在x轴上的缩放比例。默认为不缩放，即1。
- * @property {Number} scaleY 可视对象在y轴上的缩放比例。默认为不缩放，即1。
- * @property {Boolean} pointerEnabled 可视对象是否接受交互事件。默认为接受交互事件，即true。
- * @property {Object} background 可视对象的背景样式。可以是CSS颜色值、canvas的gradient或pattern填充。
- * @property {Graphics} mask 可视对象的遮罩图形。
- * @property {String|Function} align 可视对象相对于父容器的对齐方式。取值可查看Hilo.align枚举对象。
- * @property {Container} parent 可视对象的父容器。只读属性。
- * @property {Number} depth 可视对象的深度，也即z轴的序号。只读属性。
- * @property {Drawable} drawable 可视对象的可绘制对象。供高级开发使用。
- * @property {Array} boundsArea 可视对象的区域顶点数组。格式为：[{x:10, y:10}, {x:20, y:20}]。
+ * @property {String} id The identifier for the view.
+ * @property {Number} x The position of the view on the x axis relative to the local coordinates of the parent, default value is 0.
+ * @property {Number} y The position of the view on the y axis relative to the local coordinates of the parent, default value is 0.
+ * @property {Number} width The width of the view, default value is 0.
+ * @property {Number} height The height of the view, default value is 0.
+ * @property {Number} alpha The opacity of the view, default value is 1.
+ * @property {Number} rotation The rotation of the view in angles, default value is 0.
+ * @property {Boolean} visible The visibility of the view. If false the vew will not be drawn, default value is true.
+ * @property {Number} pivotX Position of the center point on the x axis of the view, default value is 0.
+ * @property {Number} pivotY Position of the center point on the y axis of the view, default value is 0.
+ * @property {Number} scaleX The x axis scale factor of the view, default value is 1.
+ * @property {Number} scaleY The y axis scale factor of the view, default value is 1.
+ * @property {Boolean} pointerEnabled Is the view can receive DOM events, default value is true.
+ * @property {Object} background The background style to fill the view, can be css color, gradient or pattern of canvas
+ * @property {Graphics} mask Sets a mask for the view. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. A regular mask must be a Hilo.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping. To remove a mask, set this property to null. 
+ * @property {String|Function} align The alignment of the view, the value must be one of Hilo.align enum.
+ * @property {Container} parent The parent view of this view, readonly!
+ * @property {Number} depth The z index of the view, readonly!
+ * @property {Drawable} drawable The drawable object of the view. Only for advanced develop.
+ * @property {Array} boundsArea The vertex points of the view, the points are relative to the center point. This is a example: [{x:10, y:10}, {x:20, y:20}].
  */
 var View = (function(){
 
@@ -2075,8 +2089,9 @@ return Class.create(/** @lends View.prototype */{
     depth: -1,
 
     /**
-     * 返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
-     * @returns {Stage} 可视对象的舞台引用。
+     * @language=en
+     * Get the stage object of the view. If the view doesn't add to any stage, null will be returned.
+     * @returns {Stage} The stage object of the view.
      */
     getStage: function(){
         var obj = this, parent;
@@ -2088,26 +2103,29 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * 返回可视对象缩放后的宽度。
-     * @returns {Number} 可视对象缩放后的宽度。
+     * @language=en
+     * Get the scaled width of the view.
+     * @returns {Number} scaled width of the view.
      */
     getScaledWidth: function(){
         return this.width * this.scaleX;
     },
 
     /**
-     * 返回可视对象缩放后的高度。
-     * @returns {Number} 可视对象缩放后的高度。
+     * @language=en
+     * Get the scaled height of the view.
+     * @returns {Number} scaled height of the view.
      */
     getScaledHeight: function(){
         return this.height * this.scaleY;
     },
 
     /**
-     * 添加此对象到父容器。
-     * @param {Container} container 一个容器。
-     * @param {Uint} index 要添加到索引位置。
-     * @returns {View} 可视对象本身。
+     * @language=en
+     * Add current view to a Contaner.
+     * @param {Container} container Container object.
+     * @param {Uint} index The index of the view in container.
+     * @returns {View} Current view.
      */
     addTo: function(container, index){
         if(typeof index === 'number') container.addChildAt(this, index);
@@ -2116,8 +2134,9 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * 从父容器里删除此对象。
-     * @returns {View} 可视对象本身。
+     * @language=en
+     * Remove current view from it's parent container
+     * @returns {View} Current view.
      */
     removeFromParent: function(){
         var parent = this.parent;
@@ -2126,13 +2145,14 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * 获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
-     * @returns {Array} 可视对象的顶点坐标数组vertexs。另vertexs还包含属性：
+     * @language=en
+     * Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
+     * @returns {Array} The vertex points array, and the array contains the following properties:
      * <ul>
-     * <li><b>x</b> - 可视对象的外接矩形x轴坐标。</li>
-     * <li><b>y</b> - 可视对象的外接矩形y轴坐标。</li>
-     * <li><b>width</b> - 可视对象的外接矩形的宽度。</li>
-     * <li><b>height</b> - 可视对象的外接矩形的高度。</li>
+     * <li><b>x</b> - The position of the view on the x axis relative to the coordinates of the stage.</li>
+     * <li><b>y</b> - The position of the view on the y axis relative to the coordinates of the stage.</li>
+     * <li><b>width</b> - The width of circumscribed rectangle of the view.</li>
+     * <li><b>height</b> - The height of circumscribed rectangle of the view</li>
      * </ul>
      */
     getBounds: function(){
@@ -2166,8 +2186,9 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * 获取可视对象相对于其某个祖先（默认为最上层容器）的连接矩阵。
-     * @param {View} ancestor 可视对象的相对的祖先容器。
+     * @language=en
+     * Get the matrix that can transform points from current view coordinates to the ancestor container coordinates.
+     * @param {View} ancestor The ancestor of current view, default value is the top container.
      * @private
      */
     getConcatenatedMatrix: function(ancestor){
@@ -2193,11 +2214,12 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * 检测由x和y参数指定的点是否在其外接矩形之内。
-     * @param {Number} x 要检测的点的x轴坐标。
-     * @param {Number} y 要检测的点的y轴坐标。
-     * @param {Boolean} usePolyCollision 是否使用多边形碰撞检测。默认为false。
-     * @returns {Boolean} 点是否在可视对象之内。
+     * @language=en
+     * Determining whether a point is in the circumscribed rectangle of current view.
+     * @param {Number} x The x axis relative to the stage coordinates.
+     * @param {Number} y The y axis relative to the stage coordinates.
+     * @param {Boolean} usePolyCollision Is use polygon collision, default value is false.
+     * @returns {Boolean} the point is in the circumscribed rectangle of current view.
      */
     hitTestPoint: function(x, y, usePolyCollision){
         var bound = this.getBounds(),
@@ -2211,9 +2233,10 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * 检测object参数指定的对象是否与其相交。
-     * @param {View} object 要检测的可视对象。
-     * @param {Boolean} usePolyCollision 是否使用多边形碰撞检测。默认为false。
+     * @language=en
+     * Determining whether an object is in the circumscribed rectangle of current view.
+     * @param {View} object The object need to determining.
+     * @param {Boolean} usePolyCollision Is use polygon collision, default value is false.
      */
     hitTestObject: function(object, usePolyCollision){
         var b1 = this.getBounds(),
@@ -2228,9 +2251,10 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * 可视对象的基本渲染实现，用于框架内部或高级开发使用。通常应该重写render方法。
-     * @param {Renderer} renderer 渲染器。
-     * @param {Number} delta 渲染时时间偏移量。
+     * @language=en
+     * The method to render current display object. Only for advanced develop.
+     * @param {Renderer} renderer Renderer object.
+     * @param {Number} delta The delta time of render.
      * @protected
      */
     _render: function(renderer, delta){
@@ -2241,13 +2265,15 @@ return Class.create(/** @lends View.prototype */{
         }
     },
     /**
-     * 冒泡鼠标事件
+     * @language=en
+     * Mouse event 
     */
     _fireMouseEvent:function(e){
         e.eventCurrentTarget = this;
         this.fire(e);
 
-        //处理mouseover事件 mouseover不需要阻止冒泡
+        // 处理mouseover事件 mouseover不需要阻止冒泡
+        // handle mouseover event, mouseover needn't stop propagation.
         if(e.type == "mousemove"){
             if(!this.__mouseOver){
                 this.__mouseOver = true;
@@ -2260,7 +2286,8 @@ return Class.create(/** @lends View.prototype */{
             this.__mouseOver = false;
         }
 
-        //向上冒泡
+        // 向上冒泡
+        // handle event propagation
         var parent = this.parent;
         if(!e._stopped && !e._stopPropagationed && parent){
             if(e.type == "mouseout" || e.type == "touchout"){
@@ -2275,25 +2302,28 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * 更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
-     * 限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
+     * @language=en
+     * This method will call while the view need update(usually caused by ticker update). This method can return a Boolean value, if return false, the view will not be drawn. 
+     * Limit: If you change the index in it's parent, it will not be drawn correct in current frame but next frame is correct.
      * @type Function
      * @default null
      */
     onUpdate: null,
 
     /**
-     * 可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
-     * @param {Renderer} renderer 渲染器。
-     * @param {Number} delta 渲染时时间偏移量。
+     * @language=en
+     * The render method of current view. The subclass can implement it's own render logic by rewrite this function. 
+     * @param {Renderer} renderer Renderer object.
+     * @param {Number} delta The delta time of render.
      */
     render: function(renderer, delta){
         renderer.draw(this);
     },
 
     /**
-     * 返回可视对象的字符串表示。
-     * @returns {String} 可视对象的字符串表示。
+     * @language=en
+     * Get a string representing current view.
+     * @returns {String} string representing current view.
      */
     toString: function(){
         return Hilo.viewToString(this);
@@ -2301,6 +2331,7 @@ return Class.create(/** @lends View.prototype */{
 });
 
 /**
+ * @language=en
  * @private
  */
 function pointInPolygon(x, y, poly){
@@ -2338,6 +2369,7 @@ function pointInPolygon(x, y, poly){
 }
 
 /**
+ * @language=en
  * @private
  */
 function polygonCollision(poly1, poly2){
@@ -2347,6 +2379,7 @@ function polygonCollision(poly1, poly2){
 }
 
 /**
+ * @language=en
  * @private
  */
 function doSATCheck(poly1, poly2, result){
@@ -2405,7 +2438,7 @@ return View;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2415,16 +2448,13 @@ var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 var Drawable = require('hilo/view/Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 var _cacheCanvas = Hilo.createElement('canvas');
 var _cacheContext = _cacheCanvas.getContext('2d');
 /**
- * @class CacheMixin是一个包含cache功能的mixin。可以通过 Class.mix(target, CacheMixin) 来为target增加cache功能。
+ * @language=en
+ * @class CacheMixin A mixin that contains cache method.You can mix cache method to the target by use Class.mix(target, CacheMixin).
  * @mixin
  * @static
  * @module hilo/view/CacheMixin
@@ -2435,8 +2465,9 @@ var _cacheContext = _cacheCanvas.getContext('2d');
 var CacheMixin = {
     _cacheDirty:true,
     /**
-     * 缓存到图片里。可用来提高渲染效率。
-     * @param {Boolean} forceUpdate 是否强制更新缓存
+     * @language=en
+     * Cache the view.
+     * @param {Boolean} forceUpdate is force update cache.
      */
     cache: function(forceUpdate){
         if(forceUpdate || this._cacheDirty || !this._cacheImage){
@@ -2444,7 +2475,8 @@ var CacheMixin = {
         }
     },
     /**
-     * 更新缓存
+     * @language=en
+     * Update the cache.
      */
     updateCache:function(){
         //TODO:width, height自动判断
@@ -2458,7 +2490,8 @@ var CacheMixin = {
         this._cacheDirty = false;
     },
     /**
-     * 设置缓存是否dirty
+     * @language=en
+     * set the cache state diry.
      */
     setCacheDirty:function(dirty){
         this._cacheDirty = dirty;
@@ -2469,7 +2502,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2479,23 +2512,20 @@ var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Container是所有容器类的基类。每个Container都可以添加其他可视对象为子级。
+ * @language=en
+ * @class Container is the base class to all container classes. Each Container can add other view object as children.
  * @augments View
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties Properties parameters of the object to create. Contains all writable properties of this class.
  * @module hilo/view/Container
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/view/View
- * @property {Array} children 容器的子元素列表。只读。
- * @property {Boolean} pointerChildren 指示容器的子元素是否能响应用户交互事件。默认为true。
- * @property {Boolean} clipChildren 指示是否裁剪超出容器范围的子元素。默认为false。
+ * @property {Array} children List of children elements of the container, readonly!
+ * @property {Boolean} pointerChildren Whether children elements of the container can response to user interactive events, default value is true.
+ * @property {Boolean} clipChildren Whether clip children elements which are out of the container, default value is false.
  */
 var Container = Class.create(/** @lends Container.prototype */{
     Extends: View,
@@ -2513,17 +2543,19 @@ var Container = Class.create(/** @lends Container.prototype */{
     clipChildren: false,
 
     /**
-     * 返回容器的子元素的数量。
-     * @returns {Uint} 容器的子元素的数量。
+     * @language=en
+     * Return the amount of the children elements of the container.
+     * @returns {Uint} The amount of the children elements of the container.
      */
     getNumChildren: function(){
         return this.children.length;
     },
 
     /**
-     * 在指定索引位置添加子元素。
-     * @param {View} child 要添加的子元素。
-     * @param {Number} index 指定的索引位置，从0开始。
+     * @language=en
+     * Add child element at given index.
+     * @param {View} child Element to add.
+     * @param {Number} index The given index position, range from 0.
      */
     addChildAt: function(child, index){
         var children = this.children,
@@ -2544,10 +2576,12 @@ var Container = Class.create(/** @lends Container.prototype */{
         children.splice(index, 0, child);
 
         //直接插入，影响插入位置之后的深度
+        //Insert directly, this will affect depth of elements after the index.
         if(childIndex < 0){
             this._updateChildren(index);
         }
         //只是移动时影响中间段的深度
+        //Will affect depth of elements in the middle during moving
         else{
             var startIndex = childIndex < index ? childIndex : index;
             var endIndex = childIndex < index ? index : childIndex;;
@@ -2558,8 +2592,9 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 在最上面添加子元素。
-     * @param {View} child 要添加的子元素。
+     * @language=en
+     * Add child element at the top.
+     * @param {View} child Elements to add.
      */
     addChild: function(child){
         var total = this.children.length,
@@ -2572,9 +2607,10 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 在指定索引位置删除子元素。
-     * @param {Int} index 指定删除元素的索引位置，从0开始。
-     * @returns {View} 被删除的对象。
+     * @language=en
+     * Remove element at the index.
+     * @param {Int} index Index of the element to remove, range from 0.
+     * @returns {View} Element had been removed.
      */
     removeChildAt: function(index){
         var children = this.children;
@@ -2614,18 +2650,20 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 删除指定的子元素。
-     * @param {View} child 指定要删除的子元素。
-     * @returns {View} 被删除的对象。
+     * @language=en
+     * Remove the given child element.
+     * @param {View} child The child element to remove.
+     * @returns {View} Element had been removed.
      */
     removeChild: function(child){
         return this.removeChildAt(this.getChildIndex(child));
     },
 
     /**
-     * 删除指定id的子元素。
-     * @param {String} id 指定要删除的子元素的id。
-     * @returns {View} 被删除的对象。
+     * @language=en
+     * Remove child element by its id.
+     * @param {String} id The id of element to remove.
+     * @returns {View} Element had been removed.
      */
     removeChildById: function(id){
         var children = this.children, child;
@@ -2640,8 +2678,9 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 删除所有的子元素。
-     * @returns {Container} 容器本身。
+     * @language=en
+     * Remove all children elements.
+     * @returns {Container} Container itself.
      */
     removeAllChildren: function(){
         while(this.children.length) this.removeChildAt(0);
@@ -2649,8 +2688,9 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 返回指定索引位置的子元素。
-     * @param {Number} index 指定要返回的子元素的索引值，从0开始。
+     * @language=en
+     * Return child element at the given index.
+     * @param {Number} index The index of the element, range from 0.
      */
     getChildAt: function(index){
         var children = this.children;
@@ -2659,8 +2699,9 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 返回指定id的子元素。
-     * @param {String} id 指定要返回的子元素的id。
+     * @language=en
+     * Return child element at the given id.
+     * @param {String} id The id of child element to return.
      */
     getChildById: function(id){
         var children = this.children, child;
@@ -2672,17 +2713,19 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 返回指定子元素的索引值。
-     * @param {View} child 指定要返回索引值的子元素。
+     * @language=en
+     * Return index value of the given child element.
+     * @param {View} child The child element need to get its index.
      */
     getChildIndex: function(child){
         return this.children.indexOf(child);
     },
 
     /**
-     * 设置子元素的索引位置。
-     * @param {View} child 指定要设置的子元素。
-     * @param {Number} index 指定要设置的索引值。
+     * @language=en
+     * Set the index of child element.
+     * @param {View} child The child element need to set index.
+     * @param {Number} index The index to set to the element.
      */
     setChildIndex: function(child, index){
         var children = this.children,
@@ -2699,9 +2742,10 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 交换两个子元素的索引位置。
-     * @param {View} child1 指定要交换的子元素A。
-     * @param {View} child2 指定要交换的子元素B。
+     * @language=en
+     * Swap index between two child elements.
+     * @param {View} child1 Child element A.
+     * @param {View} child2 Child element B.
      */
     swapChildren: function(child1, child2){
         var children = this.children,
@@ -2715,9 +2759,10 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 交换两个指定索引位置的子元素。
-     * @param {Number} index1 指定要交换的索引位置A。
-     * @param {Number} index2 指定要交换的索引位置B。
+     * @language=en
+     * Swap two children elements at given indexes.
+     * @param {Number} index1 Given index A.
+     * @param {Number} index2 Given index B.
      */
     swapChildrenAt: function(index1, index2){
         var children = this.children,
@@ -2731,8 +2776,9 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 根据指定键值或函数对子元素进行排序。
-     * @param {Object} keyOrFunction 如果此参数为String时，则根据子元素的某个属性值进行排序；如果此参数为Function时，则根据此函数进行排序。
+     * @language=en
+     * Sort children elements by the given key or function.
+     * @param {Object} keyOrFunction If is String, sort children elements by the given property string; If is Function, sort by the function.
      */
     sortChildren: function(keyOrFunction){
         var fn = keyOrFunction,
@@ -2748,7 +2794,8 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 更新子元素。
+     * @language=en
+     * Update children elements.
      * @private
      */
     _updateChildren: function(start, end){
@@ -2763,8 +2810,9 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 返回是否包含参数指定的子元素。
-     * @param {View} child 指定要测试的子元素。
+     * @language=en
+     * Return whether this container contains the parameter described child element.
+     * @param {View} child The child element to test.
      */
     contains: function(child){
         while(child = child.parent){
@@ -2776,12 +2824,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 返回由x和y指定的点下的对象。
-     * @param {Number} x 指定点的x轴坐标。
-     * @param {Number} y 指定点的y轴坐标。
-     * @param {Boolean} usePolyCollision 指定是否使用多边形碰撞检测。默认为false。
-     * @param {Boolean} global 使用此标志表明将查找所有符合的对象，而不仅仅是第一个，即全局匹配。默认为false。
-     * @param {Boolean} eventMode 使用此标志表明将在事件模式下查找对象。默认为false。
+     * @language=en
+     * Return object at the point positioned by given values on x axis and y axis.
+     * @param {Number} x The point's value on the coordinate's x axis.
+     * @param {Number} y The point's value on the coordinate's y asix.
+     * @param {Boolean} usePolyCollision Whether use polygon collision detection, default value is false.
+     * @param {Boolean} global Whether return all elements that match the condition, default value is false.
+     * @param {Boolean} eventMode Whether find elements under event mode, default value is false.
      */
     getViewAtPoint: function(x, y, usePolyCollision, global, eventMode){
         var result = global ? [] : null,
@@ -2809,7 +2858,8 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * 覆盖渲染方法。
+     * @language=en
+     * Rewrite render method.
      * @private
      */
     render: function(renderer, delta){
@@ -2825,11 +2875,12 @@ var Container = Class.create(/** @lends Container.prototype */{
 
 });
 
+
 return Container;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2842,14 +2893,11 @@ var CanvasRenderer = require('hilo/renderer/CanvasRenderer');
 var DOMRenderer = require('hilo/renderer/DOMRenderer');
 var WebGLRenderer = require('hilo/renderer/WebGLRenderer');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * 示例:
+ * @language=en
+ * Demo:
  * <pre>
  * var stage = new Hilo.Stage({
  *     renderType:'canvas',
@@ -2858,16 +2906,16 @@ var WebGLRenderer = require('hilo/renderer/WebGLRenderer');
  *     height: 480
  * });
  * </pre>
- * @class 舞台是可视对象树的根，可视对象只有添加到舞台或其子对象后才会被渲染出来。创建一个hilo应用一般都是从创建一个stage开始的。
+ * @class Stage is the root of all visual object tree, any visual object will be render only after being added to Stage or any children elements of Stage. Normally, every hilo application start with an stage instance.
  * @augments Container
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。主要有：
+ * @param {Object} properties Properties parameters for the object. Includes all writable properties of this class. Some important like:
  * <ul>
- * <li><b>container</b>:String|HTMLElement - 指定舞台在页面中的父容器元素。它是一个dom容器或id。若不传入此参数且canvas未被加入到dom树，则需要在舞台创建后手动把舞台画布加入到dom树中，否则舞台不会被渲染。可选。</li>
- * <li><b>renderType</b>:String - 指定渲染方式，canvas|dom|webgl，默认canvas。可选。</li>
+ * <li><b>container</b>:String|HTMLElement - Assign the parent container element of the Stage in the page. It should be a dom container or an id. If this parameter is not given and canvas isn't in the dom tree, you should add the stage vanvas into the dom tree yourself, otherwise Stage will not render. optional.</li>
+ * <li><b>renderType</b>:String - Renering way: canvas|dom|webgl，default value is canvas, optional.</li>
  * <li><b>canvas</b>:String|HTMLCanvasElement|HTMLElement - 指定舞台所对应的画布元素。它是一个canvas或普通的div，也可以传入元素的id。若为canvas，则使用canvas来渲染所有对象，否则使用dom+css来渲染。可选。</li>
- * <li><b>width</b>:Number</li> - 指定舞台的宽度。默认为canvas的宽度。可选。
- * <li><b>height</b>:Number</li> - 指定舞台的高度。默认为canvas的高度。可选。
- * <li><b>paused</b>:Boolean</li> - 指定舞台是否停止渲染。默认为false。可选。
+ * <li><b>width</b>:Number</li> - The width of the Stage, default value is the width of canvas, optional.
+ * <li><b>height</b>:Number</li> - The height of the Stage, default value is the height of canvas, optional.
+ * <li><b>paused</b>:Boolean</li> - Whether stop rendering the Stage, default value is false, optional.
  * </ul>
  * @module hilo/view/Stage
  * @requires hilo/core/Hilo
@@ -2876,10 +2924,10 @@ var WebGLRenderer = require('hilo/renderer/WebGLRenderer');
  * @requires hilo/renderer/CanvasRenderer
  * @requires hilo/renderer/DOMRenderer
  * @requires hilo/renderer/WebGLRenderer
- * @property {HTMLCanvasElement|HTMLElement} canvas 舞台所对应的画布。它可以是一个canvas或一个普通的div。只读属性。
- * @property {Renderer} renderer 舞台渲染器。只读属性。
- * @property {Boolean} paused 指示舞台是否暂停刷新渲染。
- * @property {Object} viewport 舞台内容在页面中的渲染区域。包含的属性有：left、top、width、height。只读属性。
+ * @property {HTMLCanvasElement|HTMLElement} canvas The canvas the Stage is related to. It can be a canvas or a div element, readonly!
+ * @property {Renderer} renderer Stage renderer, readonly!
+ * @property {Boolean} paused Paused Stage rendering.
+ * @property {Object} viewport Rendering area of the Stage. Including properties like: left, top, width, height. readonly!
  */
 var Stage = Class.create(/** @lends Stage.prototype */{
     Extends: Container,
@@ -2904,6 +2952,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     viewport: null,
 
     /**
+     * @language=en
      * @private
      */
     _initRenderer: function(properties){
@@ -2935,7 +2984,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
                 this.renderer = new DOMRenderer(props);
                 break;
             case 'webgl':
-                if(WebGLRenderer.isSupport()){
+                if(WebGLRenderer.isSupported){
                     this.renderer = new WebGLRenderer(props);
                 }
                 else{
@@ -2950,9 +2999,10 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 添加舞台画布到DOM容器中。注意：此方法覆盖了View.addTo方法。
-     * @param {HTMLElement} domElement 一个dom元素。
-     * @returns {Stage} 舞台本身，可用于链式调用。
+     * @language=en
+     * Add Stage canvas to DOM container. Note: this function overwrite View.addTo function.
+     * @param {HTMLElement} domElement An dom element.
+     * @returns {Stage} The Stage Object, chained call supported.
      */
     addTo: function(domElement){
         var canvas = this.canvas;
@@ -2963,8 +3013,9 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 调用tick会触发舞台的更新和渲染。开发者一般无需使用此方法。
-     * @param {Number} delta 调度器当前调度与上次调度tick之间的时间差。
+     * @language=en
+     * Invoke tick function and Stage will update and render. Developer may not need to use this funciton.
+     * @param {Number} delta The time had pass between this tick invoke and last tick invoke.
      */
     tick: function(delta){
         if(!this.paused){
@@ -2973,10 +3024,11 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 开启/关闭舞台的DOM事件响应。要让舞台上的可视对象响应用户交互，必须先使用此方法开启舞台的相应事件的响应。
-     * @param {String|Array} type 要开启/关闭的事件名称或数组。
-     * @param {Boolean} enabled 指定开启还是关闭。如果不传此参数，则默认为开启。
-     * @returns {Stage} 舞台本身。链式调用支持。
+     * @language=en
+     * Turn on/off Stage response to DOM event. To make visual objects on the Stage interactive, use this function to turn on Stage's responses to events.
+     * @param {String|Array} type The event name or array that need to turn on/off.
+     * @param {Boolean} enabled Whether turn on or off the response method of stage DOM event. If not provided, default value is true.
+     * @returns {Stage} The Stage Object, chained call supported.
      */
     enableDOMEvent: function(type, enabled){
         var me = this,
@@ -2999,7 +3051,8 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * DOM事件处理函数。此方法会把事件调度到事件的坐标点所对应的可视对象。
+     * @language=en
+     * DOM events handler function. This funciton will invoke events onto the visual object, which is on the position of the coordinate where the events is invoked.
      * @private
      */
     _onDOMEvent: function(e){
@@ -3019,7 +3072,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
         event.stageX = x = (x - viewport.left) / this.scaleX;
         event.stageY = y = (y - viewport.top) / this.scaleY;
 
-        //鼠标事件需要阻止冒泡方法
+        //鼠标事件需要阻止冒泡方法 Prevent bubbling on mouse events.
         event.stopPropagation = function(){
             this._stopPropagationed = true;
         };
@@ -3029,7 +3082,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
 
         //fire mouseout/touchout event for last event target
         var leave = type === 'mouseout';
-        //当obj和target不同 且obj不是target的子元素时才触发out事件
+        //当obj和target不同 且obj不是target的子元素时才触发out事件 fire out event when obj and target isn't the same as well as obj is not a child element to target.
         if(target && (target != obj && (!target.contains || !target.contains(obj))|| leave)){
             var out = (type === 'touchmove') ? 'touchout' :
                       (type === 'mousemove' || leave || !obj) ? 'mouseout' : null;
@@ -3062,8 +3115,9 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 更新舞台在页面中的可视区域，即渲染区域。当舞台canvas的样式border、margin、padding等属性更改后，需要调用此方法更新舞台渲染区域。
-     * @returns {Object} 舞台的可视区域。即viewport属性。
+     * @language=en
+     * Update the viewport (rendering area) which Stage show on the page. Invoke this function to update viewport when Stage canvas changes border, margin or padding properties.
+     * @returns {Object} The visible area of the Stage (the viewport property).
      */
     updateViewport: function(){
         var canvas = this.canvas, viewport = null;
@@ -3074,10 +3128,11 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * 改变舞台的大小。
-     * @param {Number} width 指定舞台新的宽度。
-     * @param {Number} height 指定舞台新的高度。
-     * @param {Boolean} forceResize 指定是否强制改变舞台大小，即不管舞台大小是否相同，仍然强制执行改变动作，可确保舞台、画布以及视窗之间的尺寸同步。
+     * @language=en
+     * Resize the Stage.
+     * @param {Number} width The width of the new Stage.
+     * @param {Number} height The height of the new Stage.
+     * @param {Boolean} forceResize Whether forced to resize the Stage, means no matter the size of the Stage, force to change the size to keep Stage, canvas and window act at the same time.
      */
     resize: function(width, height, forceResize){
         if(forceResize || this.width !== width || this.height !== height){
@@ -3095,7 +3150,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3106,26 +3161,23 @@ var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 var Drawable = require('hilo/view/Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/Bitmap.html?noHeader' width = '300' height = '200' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * Example:
  * <pre>
  * var bmp = new Hilo.Bitmap({image:imgElem, rect:[0, 0, 100, 100]});
  * stage.addChild(bmp);
  * </pre>
- * @class Bitmap类表示位图图像类。
+ * @class Bitmap
  * @augments View
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
+ * @param {Object} properties the options of create Instance.It can contains all writable property and Moreover：
  * <ul>
- * <li><b>image</b> - 位图所在的图像image。必需。</li>
- * <li><b>rect</b> - 位图在图像image中矩形区域。</li>
+ * <li><b>image</b> - the image of bitmap which contained。required。</li>
+ * <li><b>rect</b> - the range of bitmap in the image。option</li>
  * </ul>
  * @module hilo/view/Bitmap
  * @requires hilo/core/Hilo
@@ -3153,10 +3205,11 @@ var Drawable = require('hilo/view/Drawable');
     },
 
     /**
-     * 设置位图的图片。
-     * @param {Image|String} image 图片对象或地址。
-     * @param {Array} rect 指定位图在图片image的矩形区域。
-     * @returns {Bitmap} 位图本身。
+     * @language=en
+     * set the image。
+     * @param {Image|String} Image Object or URL。
+     * @param {Array} rect the range of bitmap in the image。
+     * @returns {Bitmap} self。
      */
     setImage: function(image, rect){
         this.drawable.init({image:image, rect:rect});
@@ -3164,15 +3217,23 @@ var Drawable = require('hilo/view/Drawable');
             this.width = rect[2];
             this.height = rect[3];
         }
+        else if(!this.width && !this.height){
+            var rect = this.drawable.rect;
+            if(rect){
+                this.width = rect[2];
+                this.height = rect[3];
+            }
+        }
         return this;
     }
  });
+
 
 return Bitmap;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3183,31 +3244,28 @@ var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 var Drawable = require('hilo/view/Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
- * @class 动画精灵类。
+ * @class Sprite animation class.
  * @augments View
  * @module hilo/view/Sprite
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
- * @param properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
+ * @param properties Properties parameters for creating object, include all writable properties of this class, also include:
  * <ul>
- * <li><b>frames</b> - 精灵动画的帧数据对象。</li>
+ * <li><b>frames</b> - Sprite animation frames data object.</li>
  * </ul>
- * @property {number} currentFrame 当前播放帧的索引。从0开始。只读属性。
- * @property {boolean} paused 判断精灵是否暂停。默认为false。
- * @property {boolean} loop 判断精灵是否可以循环播放。默认为true。
- * @property {boolean} timeBased 指定精灵动画是否是以时间为基准。默认为false，即以帧为基准。
- * @property {number} interval 精灵动画的帧间隔。如果timeBased为true，则单位为毫秒，否则为帧数。
+ * @property {number} currentFrame Current showing frame index, range from 0, readoly!
+ * @property {boolean} paused Is sprite paused, default value is false.
+ * @property {boolean} loop Is sprite play in loop, default value is false.
+ * @property {boolean} timeBased Is sprite animate base on time, default value is false (base on frame).
+ * @property {number} interval Interval between sprite animation frames. If timeBased is true, measured in ms, otherwise, measured in frames.
  */
 var Sprite = Class.create(/** @lends Sprite.prototype */{
     Extends: View,
@@ -3222,30 +3280,32 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
         if(properties.frames) this.addFrame(properties.frames);
     },
 
-    _frames: null, //所有帧的集合
-    _frameNames: null, //带名字name的帧的集合
-    _frameElapsed: 0, //当前帧持续的时间或帧数
-    _firstRender: true, //标记是否是第一次渲染
+    _frames: null, //所有帧的集合 Collection of all frames
+    _frameNames: null, //带名字name的帧的集合 Collection of frames that with name
+    _frameElapsed: 0, //当前帧持续的时间或帧数 Elapsed time of current frame.
+    _firstRender: true, //标记是否是第一次渲染 Is the first render.
 
     paused: false,
     loop: true,
     timeBased: false,
     interval: 1,
-    currentFrame: 0, //当前帧的索引
+    currentFrame: 0, //当前帧的索引 Index of current frame
 
     /**
-     * 返回精灵动画的总帧数。
-     * @returns {Uint} 精灵动画的总帧数。
+     * @language=en
+     * Return the total amount of sprite animation frames.
+     * @returns {Uint} The total amount of frames.
      */
     getNumFrames: function(){
         return this._frames ? this._frames.length : 0;
     },
 
     /**
-     * 往精灵动画序列中增加帧。
-     * @param {Object} frame 要增加的精灵动画帧数据。
-     * @param {Int} startIndex 开始增加帧的索引位置。若不设置，默认为在末尾添加。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Add frame into sprite.
+     * @param {Object} frame Frames to add into.
+     * @param {Int} startIndex The index to start adding frame, if is not given, add at the end of sprite.
+     * @returns {Sprite} Sprite itself.
      */
     addFrame: function(frame, startIndex){
         var start = startIndex != null ? startIndex : this._frames.length;
@@ -3260,10 +3320,11 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 设置精灵动画序列指定索引位置的帧。
-     * @param {Object} frame 要设置的精灵动画帧数据。
-     * @param {Int} index 要设置的索引位置。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Set the frame on the given index.
+     * @param {Object} frame The frame data to set on that index.
+     * @param {Int} index Index of the frame to set.
+     * @returns {Sprite} Sprite itself.
      */
     setFrame: function(frame, index){
         var frames = this._frames,
@@ -3279,9 +3340,10 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 获取精灵动画序列中指定的帧。
-     * @param {Object} indexOrName 要获取的帧的索引位置或别名。
-     * @returns {Object} 精灵帧对象。
+     * @language=en
+     * Get the frame of given parameter from sprite.
+     * @param {Object} indexOrName The index or name of the frame.
+     * @returns {Object} The sprite object.
      */
     getFrame: function(indexOrName){
         if(typeof indexOrName === 'number'){
@@ -3293,9 +3355,10 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 获取精灵动画序列中指定帧的索引位置。
-     * @param {Object} frameValue 要获取的帧的索引位置或别名。
-     * @returns {Object} 精灵帧对象。
+     * @language=en
+     * Get frame index from sprite.
+     * @param {Object} frameValue Index or name of the frame.
+     * @returns {Object} Sprite frame object.
      */
     getFrameIndex: function(frameValue){
         var frames = this._frames,
@@ -3318,8 +3381,9 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 播放精灵动画。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Play sprite.
+     * @returns {Sprite} The Sprite object.
      */
     play: function(){
         this.paused = false;
@@ -3327,8 +3391,9 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 暂停播放精灵动画。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Pause playing sprite.
+     * @returns {Sprite} The Sprite object.
      */
     stop: function(){
         this.paused = true;
@@ -3336,10 +3401,11 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 跳转精灵动画到指定的帧。
-     * @param {Object} indexOrName 要跳转的帧的索引位置或别名。
-     * @param {Boolean} pause 指示跳转后是否暂停播放。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Jump to an assigned frame.
+     * @param {Object} indexOrName Index or name of an frame to jump to.
+     * @param {Boolean} pause Does pause after jumping to the new index.
+     * @returns {Sprite} The Sprite object.
      */
     goto: function(indexOrName, pause){
         var total = this._frames.length,
@@ -3352,7 +3418,8 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 渲染方法。
+     * @language=en
+     * Render function.
      * @private
      */
     _render: function(renderer, delta){
@@ -3379,6 +3446,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _nextFrame: function(delta){
@@ -3414,10 +3482,11 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 设置指定帧的回调函数。即每当播放头进入指定帧时调用callback函数。若callback为空，则会删除回调函数。
-     * @param {Int|String} frame 要指定的帧的索引位置或别名。
-     * @param {Function} callback 指定回调函数。
-     * @returns {Sprite} 精灵本身。
+     * @language=en
+     * Set a callback on an assigned frame. Every time assigned frame is played, invoke the callback function. If callback is empty, callback function will be removed.
+     * @param {Int|String} frame Index or name of the assigned frame.
+     * @param {Function} callback Callback function.
+     * @returns {Sprite} The Sprite object.
      */
     setFrameCallback: function(frame, callback){
         frame = this.getFrame(frame);
@@ -3426,7 +3495,8 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 精灵动画的播放头进入新帧时的回调方法。默认值为null。此方法已废弃，请使用addFrameCallback方法。
+     * @language=en
+     * Callback function on when sprite enter a new frame. default value is null. Note: this function is obsolete, use addFrameCallback funciton instead.
      * @type Function
      * @deprecated
      */
@@ -3434,11 +3504,12 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
 
 });
 
+
 return Sprite;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3449,16 +3520,13 @@ var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 var Drawable = require('hilo/view/Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * demo:
  * <pre>
  * var domView = new Hilo.DOMElement({
  *     element: Hilo.createElement('div', {
@@ -3474,11 +3542,11 @@ var Drawable = require('hilo/view/Drawable');
  * }).addTo(stage);
  * </pre>
  * @name DOMElement
- * @class DOMElement是dom元素的包装。
+ * @class DOMElement is a wrapper of dom element.
  * @augments View
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。特殊属性有：
+ * @param {Object} properties create Objects properties. Contains all writable properties in this class. Special properties include:
  * <ul>
- * <li><b>element</b> - 要包装的dom元素。必需。</li>
+ * <li><b>element</b> - dom element to wrap, required! </li>
  * </ul>
  * @module hilo/view/DOMElement
  * @requires hilo/core/Hilo
@@ -3496,10 +3564,15 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
         this.drawable = new Drawable();
         var elem = this.drawable.domElement = properties.element || Hilo.createElement('div');
         elem.id = this.id;
+
+        if(this.pointerEnabled){
+            elem.style.pointerEvents = 'visible';
+        }
     },
 
     /**
-     * 覆盖渲染方法。
+     * @language=en
+     * Overwrite render method.
      * @private
      */
     _render: function(renderer, delta){
@@ -3512,12 +3585,13 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
     },
 
     /**
-     * 覆盖渲染方法。
+     * @language=en
+     * Overwrite render method.
      * @private
      */
     render: function(renderer, delta){
-        var canvas = renderer.canvas;
-        if(canvas.getContext){
+        if(renderer.renderType !== 'dom'){
+            var canvas = renderer.canvas;
             var elem = this.drawable.domElement, depth = this.depth,
                 nextElement = canvas.nextSibling, nextDepth;
             if(elem.parentNode) return;
@@ -3541,7 +3615,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3552,32 +3626,29 @@ var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 var CacheMixin = require('hilo/view/CacheMixin');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
  * <br/>
- * @class Graphics类包含一组创建矢量图形的方法。
+ * @class Graphics class contains a group of functions for creating vector graphics.
  * @augments View
  * @mixes CacheMixin
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties Properties parameters of the object to create. Contains all writable properties of this class.
  * @module hilo/view/Graphics
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/CacheMixin
- * @property {Number} lineWidth 笔画的线条宽度。默认为1。只读属性。
- * @property {Number} lineAlpha 笔画的线条透明度。默认为1。只读属性。
- * @property {String} lineCap 笔画的线条端部样式。可选值有：butt、round、square等，默认为null。只读属性。
- * @property {String} lineJoin 笔画的线条连接样式。可选值有：miter、round、bevel等，默认为null。只读属性。
- * @property {Number} miterLimit 斜连线长度和线条宽度的最大比率。此属性仅当lineJoin为miter时有效。默认值为10。只读属性。
- * @property {String} strokeStyle 笔画边框的样式。默认值为'0'，即黑色。只读属性。
- * @property {String} fillStyle 内容填充的样式。默认值为'0'，即黑色。只读属性。
- * @property {Number} fillAlpha 内容填充的透明度。默认值为0。只读属性。
+ * @property {Number} lineWidth The thickness of lines in space units, default value is 1, readonly!
+ * @property {Number} lineAlpha The alpha value (transparency) of line, default value is 1, readonly!
+ * @property {String} lineCap The style of how every end point of line are drawn, value options: butt, round, square. default value is null, readonly!
+ * @property {String} lineJoin The joint style of two lines. value options: miter, round, bevel. default value is null, readonly!
+ * @property {Number} miterLimit The miter limit ratio in space units, works only when lineJoin value is miter. default value is 10, readonly!
+ * @property {String} strokeStyle The color or style to use for lines around shapes, default value is 0 (the black color), readonly!
+ * @property {String} fillStyle The color or style to use inside shapes, default value is 0 (the black color), readonly!
+ * @property {Number} fillAlpha The transparency of color or style inside shapes, default value is 0, readonly!
  */
 var Graphics = (function(){
 
@@ -3607,14 +3678,15 @@ return Class.create(/** @lends Graphics.prototype */{
     fillAlpha: 0,
 
     /**
-     * 指定绘制图形的线条样式。
-     * @param {Number} thickness 线条的粗细值。默认为1。
-     * @param {String} lineColor 线条的CSS颜色值。默认为黑色，即'0'。
-     * @param {Number} lineAlpha 线条的透明度值。默认为不透明，即1。
-     * @param {String} lineCap 线条的端部样式。可选值有：butt、round、square等，默认值为null。
-     * @param {String} lineJoin 线条的连接样式。可选值有：miter、round、bevel等，默认值为null。
-     * @param {Number} miterLimit 斜连线长度和线条宽度的最大比率。此属性仅当lineJoin为miter时有效。默认值为10。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Set the lines style for drawing shapes.
+     * @param {Number} thickness The thickness of lines, default value is 1.
+     * @param {String} lineColor The CSS color value of lines, default value is 0 (the black color).
+     * @param {Number} lineAlpha The transparency of lines, default value is 1 (fully opaque).
+     * @param {String} lineCap The style of how every end point of line are drawn, value options: butt, round, square. default value is null.
+     * @param {String} lineJoin The joint style of two lines. value options: miter, round, bevel. default value is null.
+     * @param {Number} miterLimit The miter limit ratio in space units, works only when lineJoin value is miter. default value is 10.
+     * @returns {Graphics} The Graphics Object.
      */
     lineStyle: function(thickness, lineColor, lineAlpha, lineCap, lineJoin, miterLimit){
         var me = this, addAction = me._addAction;
@@ -3630,10 +3702,11 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 指定绘制图形的填充样式和透明度。
-     * @param {String} fill 填充样式。可以是color、gradient或pattern。
-     * @param {Number} alpha 透明度。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Set how to fill shapes and the transparency.
+     * @param {String} fill Filling style. this can be color, gradient or pattern.
+     * @param {Number} alpha Transparency.
+     * @returns {Graphics} The Graphics Object.
      */
     beginFill: function(fill, alpha){
         var me = this, addAction = me._addAction;
@@ -3645,8 +3718,9 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 应用并结束笔画的绘制和图形样式的填充。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Apply and end lines-drawing and shapes-filling.
+     * @returns {Graphics} The Graphics Object.
      */
     endFill: function(){
         var me = this, addAction = me._addAction;
@@ -3658,14 +3732,15 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 指定绘制图形的线性渐变填充样式。
-     * @param {Number} x0 渐变的起始点的x轴坐标。
-     * @param {Number} y0 渐变的起始点的y轴坐标。
-     * @param {Number} x1 渐变的结束点的x轴坐标。
-     * @param {Number} y1 渐变的结束点的y轴坐标。
-     * @param {Array} colors 渐变中使用的CSS颜色值数组。
-     * @param {Array} ratois 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Set linear gradient filling style to draw shapes.
+     * @param {Number} x0 The x-coordinate value of the linear gradient start point.
+     * @param {Number} y0 The y-coordinate value of the linear gradient start point.
+     * @param {Number} x1 The x-coordinate value of the linear gradient end point.
+     * @param {Number} y1 The y-coordinate value of the linear gradient end point.
+     * @param {Array} colors An array of CSS colors used in the linear gradient.
+     * @param {Array} ratios An array of position between start point and end point, should be one-to-one to colors in the colors array. each value range between 0.0 to 1.0.
+     * @returns {Graphics} The Graphics Object.
      */
     beginLinearGradientFill: function(x0, y0, x1, y1, colors, ratios){
         var me = this, gradient = helpContext.createLinearGradient(x0, y0, x1, y1);
@@ -3678,16 +3753,17 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 指定绘制图形的放射性渐变填充样式。
-     * @param {Number} x0 渐变的起始圆的x轴坐标。
-     * @param {Number} y0 渐变的起始圆的y轴坐标。
-     * @param {Number} r0 渐变的起始圆的半径。
-     * @param {Number} x1 渐变的结束圆的x轴坐标。
-     * @param {Number} y1 渐变的结束圆的y轴坐标。
-     * @param {Number} r1 渐变的结束圆的半径。
-     * @param {Array} colors 渐变中使用的CSS颜色值数组。
-     * @param {Array} ratois 渐变中开始与结束之间的位置数组。需与colors数组里的颜色值一一对应，介于0.0与1.0之间的值。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Set radial gradient filling style to draw shapes.
+     * @param {Number} x0 The x-coordinate value of the radial gradient start circle.
+     * @param {Number} y0 The y-coordinate value of the radial gradient start circle.
+     * @param {Number} r0 The diameter of the radial gradient start circle.
+     * @param {Number} x1 The x-coordinate value of the radial gradient end circle.
+     * @param {Number} y1 The y-coordinate value of the radial gradient end circle.
+     * @param {Number} r1 The radius of the radial gradient end circle.
+     * @param {Array} colors An array of CSS colors used in the radial gradient.
+     * @param {Array} ratios An array of position between start circle and end circle, should be one-to-one to colors in the colors array. each value range between 0.0 to 1.0.
+     * @returns {Graphics} The Graphics Object.
      */
     beginRadialGradientFill: function(x0, y0, r0, x1, y1, r1, colors, ratios){
         var me = this, gradient = helpContext.createRadialGradient(x0, y0, r0, x1, y1, r1);
@@ -3700,10 +3776,11 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 开始一个位图填充样式。
-     * @param {HTMLImageElement} image 指定填充的Image对象。
-     * @param {String} repetition 指定填充的重复设置参数。它可以是以下任意一个值：repeat, repeat-x, repeat-y, no-repeat。默认为''。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Begin an image filling pattern.
+     * @param {HTMLImageElement} image The Image to fill.
+     * @param {String} repetition The fill repetition style, can be one of valus:repeat, repeat-x, repeat-y, no-repeat. default valus is ''.
+     * @returns {Graphics} The Graphics Object.
      */
     beginBitmapFill: function(image, repetition){
         var me = this, pattern = helpContext.createPattern(image, repetition || '');
@@ -3712,90 +3789,98 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 开始一个新的路径。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Begin a new path.
+     * @returns {Graphics} The Graphics Object.
      */
     beginPath: function(){
         return this._addAction(['beginPath']);
     },
 
     /**
-     * 关闭当前的路径。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Close current path.
+     * @returns {Graphics} The Graphics Object.
      */
     closePath: function(){
         return this._addAction(['closePath']);
     },
 
     /**
-     * 将当前绘制位置移动到点(x, y)。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Move current drawing point to a new point on coordinate values (x, y).
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @returns {Graphics} The Graphics Object.
      */
     moveTo: function(x, y){
         return this._addAction(['moveTo', x, y]);
     },
 
     /**
-     * 绘制从当前位置开始到点(x, y)结束的直线。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Draw a line from current point to the point on the coordinate value (x, y).
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @returns {Graphics} The Graphics Object.
      */
     lineTo: function(x, y){
         return this._addAction(['lineTo', x, y]);
     },
 
     /**
-     * 绘制从当前位置开始到点(x, y)结束的二次曲线。
-     * @param {Number} cpx 控制点cp的x轴坐标。
-     * @param {Number} cpy 控制点cp的y轴坐标。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Draw a quadratic Bézier curve from current point to the point on coordinate (x, y).
+     * @param {Number} cpx The x-coordinate value of the Bézier curve control point cp.
+     * @param {Number} cpy The y-coordinate value of the Bézier curve control point cp.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @returns {Graphics} The Graphics Object.
      */
     quadraticCurveTo: function(cpx, cpy, x, y){
         return this._addAction(['quadraticCurveTo', cpx, cpy, x, y]);
     },
 
     /**
-     * 绘制从当前位置开始到点(x, y)结束的贝塞尔曲线。
-     * @param {Number} cp1x 控制点cp1的x轴坐标。
-     * @param {Number} cp1y 控制点cp1的y轴坐标。
-     * @param {Number} cp2x 控制点cp2的x轴坐标。
-     * @param {Number} cp2y 控制点cp2的y轴坐标。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Draw a Bézier curve from current point to the point on coordinate (x, y).
+     * @param {Number} cp1x The x-coordinate value of the Bézier curve control point cp1.
+     * @param {Number} cp1y The y-coordinate value of the Bézier curve control point cp1.
+     * @param {Number} cp2x The x-coordinate value of the Bézier curve control point cp2.
+     * @param {Number} cp2y The y-coordinate value of the Bézier curve control point cp2.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @returns {Graphics} The Graphics Object.
      */
     bezierCurveTo: function(cp1x, cp1y, cp2x, cp2y, x, y){
         return this._addAction(['bezierCurveTo', cp1x, cp1y, cp2x, cp2y, x, y]);
     },
 
     /**
-     * 绘制一个矩形。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} width 矩形的宽度。
-     * @param {Number} height 矩形的高度。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Draw a rectangle.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} width The width of the rectangle.
+     * @param {Number} height The height of the rectangle.
+     * @returns {Graphics} The Graphics Object.
      */
     drawRect: function(x, y, width, height){
         return this._addAction(['rect', x, y, width, height]);
     },
 
     /**
-     * 绘制一个复杂的圆角矩形。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} width 圆角矩形的宽度。
-     * @param {Number} height 圆角矩形的高度。
-     * @param {Number} cornerTL 圆角矩形的左上圆角大小。
-     * @param {Number} cornerTR 圆角矩形的右上圆角大小。
-     * @param {Number} cornerBR 圆角矩形的右下圆角大小。
-     * @param {Number} cornerBL 圆角矩形的左下圆角大小。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Draw a complex rounded rectangle.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} width The width of rounded rectangle.
+     * @param {Number} height The height of rounded rectangle.
+     * @param {Number} cornerTL The size of the rounded corner on the top-left of the rounded rectangle.
+     * @param {Number} cornerTR The size of the rounded corner on the top-right of the rounded rectangle.
+     * @param {Number} cornerBR The size of the rounded corner on the bottom-left of the rounded rectangle.
+     * @param {Number} cornerBL The size of the rounded corner on the bottom-right of the rounded rectangle.
+     * @returns {Graphics} The Graphics Object.
      */
     drawRoundRectComplex: function(x, y, width, height, cornerTL, cornerTR, cornerBR, cornerBL){
         var me = this, addAction = me._addAction;
@@ -3812,36 +3897,39 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 绘制一个圆角矩形。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} width 圆角矩形的宽度。
-     * @param {Number} height 圆角矩形的高度。
-     * @param {Number} cornerSize 圆角矩形的圆角大小。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Draw a rounded rectangle.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} width The width of rounded rectangle.
+     * @param {Number} height The height of rounded rectangle.
+     * @param {Number} cornerSize The size of all rounded corners.
+     * @returns {Graphics} The Graphics Object.
      */
     drawRoundRect: function(x, y, width, height, cornerSize){
         return this.drawRoundRectComplex(x, y, width, height, cornerSize, cornerSize, cornerSize, cornerSize);
     },
 
     /**
-     * 绘制一个圆。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} radius 圆的半径。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Draw a circle.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} radius The radius of the circle.
+     * @returns {Graphics} The Graphics Object.
      */
     drawCircle: function(x, y, radius){
         return this._addAction(['arc', x + radius, y + radius, radius, 0, Math.PI * 2, 0]);
     },
 
     /**
-     * 绘制一个椭圆。
-     * @param {Number} x x轴坐标。
-     * @param {Number} y y轴坐标。
-     * @param {Number} width 椭圆的宽度。
-     * @param {Number} height 椭圆的高度。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Draw an ellipse.
+     * @param {Number} x The x-coordinate value.
+     * @param {Number} y The y-coordinate value.
+     * @param {Number} width The width of the ellipse.
+     * @param {Number} height The height of the ellipse.
+     * @returns {Graphics} The Graphics Object.
      */
     drawEllipse: function(x, y, width, height){
         var me = this;
@@ -3861,13 +3949,14 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 根据参数指定的SVG数据绘制一条路径。
-     * 代码示例:
+     * @language=en
+     * Draw a path from the SVG data given by parameters.
+     * Demo:
      * <p>var path = 'M250 150 L150 350 L350 350 Z';</p>
      * <p>var shape = new Hilo.Graphics({width:500, height:500});</p>
      * <p>shape.drawSVGPath(path).beginFill('#0ff').endFill();</p>
-     * @param {String} pathData 要绘制的SVG路径数据。
-     * @returns {Graphics} Graphics对象本身。
+     * @param {String} pathData The SVG path data to draw.
+     * @returns {Graphics} The Graphics Object.
      */
     drawSVGPath: function(pathData){
         var me = this, addAction = me._addAction,
@@ -3897,7 +3986,8 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 执行全部绘制动作。内部私有方法。
+     * @language=en
+     * Apply all draw actions. private function.
      * @private
      */
     _draw: function(context){
@@ -3915,7 +4005,8 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 重写渲染实现。
+     * @language=en
+     * Overwrite render function.
      * @private
      */
     render: function(renderer, delta){
@@ -3929,8 +4020,9 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 清除所有绘制动作并复原所有初始状态。
-     * @returns {Graphics} Graphics对象本身。
+     * @language=en
+     * Clear all draw actions and reset to the initial state.
+     * @returns {Graphics} The Graphics Object.
      */
     clear: function(){
         var me = this;
@@ -3952,7 +4044,8 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * 添加一个绘制动作。内部私有方法。
+     * @language=en
+     * Add a draw action, this is a private function.
      * @private
      */
     _addAction: function(action){
@@ -3965,11 +4058,12 @@ return Class.create(/** @lends Graphics.prototype */{
 
 })();
 
+
 return Graphics;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3980,33 +4074,30 @@ var Hilo = require('hilo/core/Hilo');
 var View = require('hilo/view/View');
 var CacheMixin = require('hilo/view/CacheMixin');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/Text.html?noHeader' width = '320' height = '240' scrolling='no'></iframe>
  * <br/>
- * @class Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。
+ * @class Text class provide basic text-display function, use DOMElement for complex text-display.
  * @augments View
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties Properties parameters for the object. Includes all writable properties.
  * @module hilo/view/Text
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  * @requires hilo/view/View
  * @requires hilo/view/CacheMixin
- * @property {String} text 指定要显示的文本内容。
- * @property {String} color 指定使用的字体颜色。
- * @property {String} textAlign 指定文本的对齐方式。可以是以下任意一个值：'start', 'end', 'left', 'right', and 'center'。
- * @property {String} textVAlign 指定文本的垂直对齐方式。可以是以下任意一个值：'top', 'middle', 'bottom'。
- * @property {Boolean} outline 指定文本是绘制边框还是填充。
- * @property {Number} lineSpacing 指定文本的行距。单位为像素。默认值为0。
- * @property {Number} maxWidth 指定文本的最大宽度。默认值为200。
- * @property {String} font 文本的字体CSS样式。只读属性。设置字体样式请用setFont方法。
- * @property {Number} textWidth 指示文本内容的宽度，只读属性。仅在canvas模式下有效。
- * @property {Number} textHeight 指示文本内容的高度，只读属性。仅在canvas模式下有效。
+ * @property {String} text Text to display.
+ * @property {String} color Color of the text.
+ * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'。
+ * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'。
+ * @property {Boolean} outline Draw the outline of the text or fill the text.
+ * @property {Number} lineSpacing The spacing between lines. Measured in px, default value is 0.
+ * @property {Number} maxWidth The max length of the text, default value is 200.
+ * @property {String} font Text's CSS font style, readonly! Use setFont function to set text font.
+ * @property {Number} textWidth Width of the text, readonly! Works only on canvas mode.
+ * @property {Number} textHeight Height of the text, readonly! Works only on canvas mode.
  */
 var Text = Class.create(/** @lends Text.prototype */{
     Extends: View,
@@ -4033,9 +4124,10 @@ var Text = Class.create(/** @lends Text.prototype */{
     textHeight: 0, //read-only
 
     /**
-     * 设置文本的字体CSS样式。
-     * @param {String} font 要设置的字体CSS样式。
-     * @returns {Text} Text对象本身。链式调用支持。
+     * @language=en
+     * Set text CSS font style.
+     * @param {String} font Text CSS font style to set.
+     * @returns {Text} the Text object, chained call supported.
      */
     setFont: function(font){
         var me = this;
@@ -4048,7 +4140,8 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * 覆盖渲染方法。
+     * @language=en
+     * Overwrite render function.
      * @private
      */
     render: function(renderer, delta){
@@ -4073,14 +4166,15 @@ var Text = Class.create(/** @lends Text.prototype */{
             renderer.draw(this);
         }
         else{
-            //TODO:自动更新cache
+            //TODO:自动更新cache  TODO:auto update cache
             me.cache();
             renderer.draw(me);
         }
     },
 
     /**
-     * 在指定的渲染上下文上绘制文本。
+     * @language=en
+     * Draw text under the assigned render context.
      * @private
      */
     _draw: function(context){
@@ -4096,7 +4190,7 @@ var Text = Class.create(/** @lends Text.prototype */{
         var lines = text.split(/\r\n|\r|\n|<br(?:[ \/])*>/);
         var width = 0, height = 0;
         var lineHeight = me._fontHeight + me.lineSpacing;
-        var i, line, w;
+        var i, line, w, len, wlen;
         var drawLines = [];
 
         for(i = 0, len = lines.length; i < len; i++){
@@ -4172,7 +4266,8 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * 在指定的渲染上下文上绘制一行文本。
+     * @language=en
+     * Draw a line of text under the assigned render context.
      * @private
      */
     _drawTextLine: function(context, text, y){
@@ -4194,9 +4289,10 @@ var Text = Class.create(/** @lends Text.prototype */{
 
     Statics: /** @lends Text */{
         /**
-         * 测算指定字体样式的行高。
-         * @param {String} font 指定要测算的字体样式。
-         * @return {Number} 返回指定字体的行高。
+         * @language=en
+         * Measure the line height of the assigned text font style.
+         * @param {String} font Font style to measure.
+         * @return {Number} Return line height of the assigned font style.
          */
         measureFontHeight: function(font){
             var docElement = document.documentElement, fontHeight;
@@ -4211,11 +4307,12 @@ var Text = Class.create(/** @lends Text.prototype */{
 
 });
 
+
 return Text;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4226,27 +4323,24 @@ var Hilo = require('hilo/core/Hilo');
 var Container = require('hilo/view/Container');
 var Bitmap = require('hilo/view/Bitmap');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/BitmapText.html?noHeader' width = '550' height = '80' scrolling='no'></iframe>
  * <br/>
- * @class BitmapText类提供使用位图文本的功能。当前仅支持单行文本。
+ * @class BitmapText  support bitmap text function ,but only support single-line text
  * @augments Container
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties the options of create Instance.It can contains all writable property
  * @module hilo/view/BitmapText
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  * @requires hilo/view/Container
  * @requires hilo/view/Bitmap
- * @property {Object} glyphs 位图字体的字形集合。格式为：{letter:{image:img, rect:[0,0,100,100]}}。
- * @property {Number} letterSpacing 字距，即字符间的间隔。默认值为0。
- * @property {String} text 位图文本的文本内容。只读属性。设置文本请使用setFont方法。
- * @property {String} textAlign 文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本请使用setTextAlign方法。
+ * @property {Object} glyphs font glyph set of bitmap. format:{letter:{image:img, rect:[0,0,100,100]}}
+ * @property {Number} letterSpacing spacing of letter. default:0
+ * @property {String} text content of bitmap text. Not writable,set this value by 'setFont'
+ * @property {String} textAlign property values:left、center、right, default:left,Not writable,set this property by 'setTextAlign'
  */
 var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     Extends: Container,
@@ -4270,9 +4364,10 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     textAlign:'left',
 
     /**
-     * 设置位图文本的文本内容。
-     * @param {String} text 要设置的文本内容。
-     * @returns {BitmapText} BitmapText对象本身。链式调用支持。
+     * @language=en
+     * set the content of bitmap text
+     * @param {String} text content
+     * @returns {BitmapText} BitmapText Instance,support chained calls
      */
     setText: function(text){
         var me = this, str = text.toString(), len = str.length;
@@ -4328,9 +4423,10 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     },
 
      /**
-     * 设置位图文本的对齐方式。
-     * @param textAlign 文本对齐方式，值为left、center、right
-     * @returns {BitmapText} BitmapText对象本身。链式调用支持。
+      * @language=en
+      * set the textAlign of text。
+     * @param textAlign value of textAlign:left、center、right
+     * @returns {BitmapText} itmapText Instance,support chained calls
      */
     setTextAlign:function(textAlign){
         this.textAlign = textAlign||this.textAlign;
@@ -4350,9 +4446,10 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     },
 
     /**
-     * 返回能否使用当前指定的字体显示提供的字符串。
-     * @param {String} str 要检测的字符串。
-     * @returns {Boolean} 是否能使用指定字体。
+     * @language=en
+     * detect whether can display the string by the currently assigned font provided
+     * @param {String} str to detect string
+     * @returns {Boolean} whether can display the string
      */
     hasGlyphs: function(str){
         var glyphs = this.glyphs;
@@ -4368,12 +4465,13 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     Statics:/** @lends BitmapText */{
         _pool:[],
         /**
-         * 简易方式生成字形集合。
+         * @language=en
+         * easy way to generate a collection of glyphs
          * @static
-         * @param {String} text 字符文本。
-         * @param {Image} image 字符图片。
-         * @param {Number} col 列数  默认和文本字数一样
-         * @param {Number} row 行数 默认1行
+         * @param {String} text character text.
+         * @param {Image} image character image.
+         * @param {Number} col default:the length of string
+         * @param {Number} row default:1
          * @returns {BitmapText} BitmapText对象本身。链式调用支持。
          */
         createGlyphs:function(text, image, col, row){
@@ -4396,11 +4494,12 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
 
 });
 
+
 return BitmapText;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4411,16 +4510,13 @@ var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 var Drawable = require('hilo/view/Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/Button.html?noHeader' width = '320' height = '170' scrolling='no'></iframe>
  * <br/>
- * 示例:
+ * demo:
  * <pre>
  * var btn = new Hilo.Button({
  *     image: buttonImage,
@@ -4430,24 +4526,24 @@ var Drawable = require('hilo/view/Drawable');
  *     disabledState: {rect:[192, 0, 64, 64]}
  * });
  * </pre>
- * @class Button类表示简单按钮类。它有弹起、经过、按下和不可用等四种状态。
+ * @class Button class is a simple button class, contains four kinds of state: 'up', 'over', 'down', 'disabled'
  * @augments View
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
+ * @param {Object} properties create object properties. Contains all writable properties. Also contains:
  * <ul>
- * <li><b>image</b> - 按钮图片所在的image对象。</li>
+ * <li><b>image</b> - the image element that button image is in</li>
  * </ul>
  * @module hilo/view/Button
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
- * @property {Object} upState 按钮弹起状态的属性或其drawable的属性的集合。
- * @property {Object} overState 按钮经过状态的属性或其drawable的属性的集合。
- * @property {Object} downState 按钮按下状态的属性或其drawable的属性的集合。
- * @property {Object} disabledState 按钮不可用状态的属性或其drawable的属性的集合。
- * @property {String} state 按钮的状态名称。它是 Button.UP|OVER|DOWN|DISABLED 之一。 只读属性。
- * @property {Boolean} enabled 指示按钮是否可用。默认为true。只读属性。
- * @property {Boolean} useHandCursor 当设置为true时，表示指针滑过按钮上方时是否显示手形光标。默认为true。
+ * @property {Object} upState The property of button 'up' state or collections of its drawable properties.
+ * @property {Object} overState The property of button 'over' state or collections of its drawable properties.
+ * @property {Object} downState The property of button 'down' state or collections of its drawable properties.
+ * @property {Object} disabledState The property of button 'disabled' state or collections of its drawable properties.
+ * @property {String} state the state name of button, could be one of Button.UP|OVER|DOWN|DISABLED, readonly!
+ * @property {Boolean} enabled Is button enabled. default value is true, readonly!
+ * @property {Boolean} useHandCursor If true, cursor over the button will become a pointer cursor, default value is true.
  */
  var Button = Class.create(/** @lends Button.prototype */{
     Extends: View,
@@ -4470,9 +4566,10 @@ var Drawable = require('hilo/view/Drawable');
     useHandCursor: true,
 
     /**
-     * 设置按钮是否可用。
-     * @param {Boolean} enabled 指示按钮是否可用。
-     * @returns {Button} 按钮本身。
+     * @language=en
+     * Set whether the button is enabled.
+     * @param {Boolean} enabled Show whether the button is enabled.
+     * @returns {Button} Return the button itself.
      */
     setEnabled: function(enabled){
         if(this.enabled != enabled){
@@ -4486,9 +4583,10 @@ var Drawable = require('hilo/view/Drawable');
     },
 
     /**
-     * 设置按钮的状态。此方法由Button内部调用，一般无需使用此方法。
-     * @param {String} state 按钮的新的状态。
-     * @returns {Button} 按钮本身。
+     * @language=en
+     * Set the state of the button. Invoke inside the Button and may not be used.
+     * @param {String} state New state of the button.
+     * @returns {Button} Return the button itself.
      */
     setState: function(state){
         if(this.state !== state){
@@ -4521,6 +4619,7 @@ var Drawable = require('hilo/view/Drawable');
     },
 
     /**
+     * @language=en
      * overwrite
      * @private
      */
@@ -4553,22 +4652,26 @@ var Drawable = require('hilo/view/Drawable');
 
     Statics: /** @lends Button */ {
         /**
-         * 按钮弹起状态的常量值，即：'up'。
+         * @language=en
+         * Statics value of Button's 'up' state.
          * @type String
          */
         UP: 'up',
         /**
-         * 按钮经过状态的常量值，即：'over'。
+         * @language=en
+         * Statics value of Button's 'over' state.
          * @type String
          */
         OVER: 'over',
         /**
-         * 按钮按下状态的常量值，即：'down'。
+         * @language=en
+         * Statics value of Button's 'down' state.
          * @type String
          */
         DOWN: 'down',
         /**
-         * 按钮不可用状态的常量值，即：'disabled'。
+         * @language=en
+         * Statics value of Button's 'disabled' state.
          * @type String
          */
         DISABLED: 'disabled'
@@ -4579,7 +4682,7 @@ return Button;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4587,13 +4690,10 @@ define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * @class TextureAtlas纹理集是将许多小的纹理图片整合到一起的一张大图。这个类可根据一个纹理集数据读取纹理小图、精灵动画等。
  * @param {Object} atlasData 纹理集数据。它可包含如下数据：
  * <ul>
@@ -4629,6 +4729,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
     _sprites: null,
 
     /**
+     * @language=en
      * 获取指定索引位置index的帧数据。
      * @param {Int} index 要获取帧的索引位置。
      * @returns {Object} 帧数据。
@@ -4639,6 +4740,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
     },
 
     /**
+     * @language=en
      * 获取指定id的精灵数据。
      * @param {String} id 要获取精灵的id。
      * @returns {Object} 精灵数据。
@@ -4650,17 +4752,18 @@ return Class.create(/** @lends TextureAtlas.prototype */{
 
     Statics: /** @lends TextureAtlas */ {
         /**
-         * 创建精灵帧数据的快捷方法。
-         * @param {String|Array} name 动画名称|一组动画数据
-         * @param {String} frames 帧数据 eg:"0-5"代表第0到第5帧
-         * @param {Number} w 每帧的宽
-         * @param {Number} h 每帧的高
-         * @param {Bollean} loop 是否循环
-         * @param {Number} duration 每帧间隔 默认单位帧, 如果sprite的timeBased为true则单位是毫秒，默认一帧
+         * @language=en
+         * Shorthand method to create spirte frames
+         * @param {String|Array} name Name of one animation|a group of animation
+         * @param {String} frames Frames message, eg:"0-5" means frame 0 to frame 5.
+         * @param {Number} w The width of each frame.
+         * @param {Number} h The height of each frame.
+         * @param {Bollean} loop Is play in loop.
+         * @param {Number} duration The time between each frame. default value is 1 (Frame), but if timeBased is true, default value will be duration(milli-second).
          * @example
-         *  //方式一 单个动画
+         *  //demo1 make one animation
          *  createSpriteFrames("walk", "0-5,8,9", meImg, 55, 88, true, 1);
-         *  //方式二 多组动画
+         *  //demo2 make a group of animation
          *  createSpriteFrames([
          *    ["walk", "0-5,8,9", meImg, 55, 88, true, 1],
          *    ["jump", "0-5", meImg, 55, 88, false, 1]
@@ -4714,7 +4817,8 @@ return Class.create(/** @lends TextureAtlas.prototype */{
 });
 
 /**
- * 解析纹理集帧数据。
+ * @language=en
+ * Parse texture frames
  * @private
  */
 function parseTextureFrames(atlasData){
@@ -4749,7 +4853,8 @@ function parseTextureFrames(atlasData){
 }
 
 /**
- * 解析精灵数据。
+ * @language=en
+ * Parse texture sprites
  * @private
  */
 function parseTextureSprites(atlasData, frames){
@@ -4813,7 +4918,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4822,15 +4927,12 @@ define(function(require, exports, module){
 var Class = require('hilo/core/Class');
 var Hilo = require('hilo/core/Hilo');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Ticker是一个定时器类。它可以按指定帧率重复运行，从而按计划执行代码。
- * @param {Number} fps 指定定时器的运行帧率。
+ * @language=en
+ * @class Ticker is a Timer. It can run the code at specified framerate.
+ * @param {Number} fps The fps of ticker.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
@@ -4853,8 +4955,9 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     _measuredFPS: 0,
 
     /**
-     * 启动定时器。
-     * @param {Boolean} userRAF 是否使用requestAnimationFrame，默认为false。
+     * @language=en
+     * Start the ticker.
+     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is not.
      */
     start: function(useRAF){
         if(this._intervalId) return;
@@ -4883,7 +4986,8 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 停止定时器。
+     * @language=en
+     * Stop the ticker.
      */
     stop: function(){
         clearTimeout(this._intervalId);
@@ -4892,14 +4996,16 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 暂停定时器。
+     * @language=en
+     * Pause the ticker.
      */
     pause: function(){
         this._paused = true;
     },
 
     /**
-     * 恢复定时器。
+     * @language=en
+     * Resume the ticker.
      */
     resume: function(){
         this._paused = false;
@@ -4930,15 +5036,17 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 获得测定的运行时帧率。
+     * @language=en
+     * Get the fps.
      */
     getMeasuredFPS: function(){
         return this._measuredFPS;
     },
 
     /**
-     * 添加定时器对象。定时器对象必须实现 tick 方法。
-     * @param {Object} tickObject 要添加的定时器对象。此对象必须包含 tick 方法。
+     * @language=en
+     * Add tickObject. The tickObject must implement the tick method.
+     * @param {Object} tickObject The tickObject to add.It must implement the tick method.
      */
     addTick: function(tickObject){
         if(!tickObject || typeof(tickObject.tick) != 'function'){
@@ -4948,8 +5056,9 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 删除定时器对象。
-     * @param {Object} tickObject 要删除的定时器对象。
+     * @language=en
+     * Remove the tickObject
+     * @param {Object} tickObject The tickObject to remove.
      */
     removeTick: function(tickObject){
         var tickers = this._tickers,
@@ -4965,17 +5074,13 @@ return Ticker;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 var arrayProto = Array.prototype,
     slice = arrayProto.slice;
@@ -5013,7 +5118,7 @@ fnProto.bind = fnProto.bind || function(thisArg){
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5022,22 +5127,19 @@ define(function(require, exports, module){
 var Class = require('hilo/core/Class');
 var Hilo = require('hilo/core/Hilo');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * example:
  * <pre>
  * var bmp = new Bitmap({image:img});
  * Hilo.copy(bmp, Hilo.drag);
  * bmp.startDrag([0, 0, 550, 400]);
  * </pre>
- * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.copy(view, drag)来为view增加拖拽功能。
+ * @class drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.copy(target, drag).
  * @mixin
  * @static
  * @module hilo/util/drag
@@ -5046,8 +5148,9 @@ var Hilo = require('hilo/core/Hilo');
  */
 var drag = {
     /**
-      * 开始拖拽
-      * @param {Array} bounds 拖拽范围，基于父容器坐标系，[x, y, width, height]， 默认无限制
+     * @language=en
+     * start drag.
+      * @param {Array} bounds The bounds area that the view can move, relative to the coordinates of the view's parent, [x, y, width, height]， default is no limit.
     */
     startDrag:function(bounds){
         var that = this;
@@ -5118,7 +5221,8 @@ var drag = {
         that.stopDrag = stopDrag;
     },
     /**
-      * 停止拖拽
+     * @language=en
+     * stop drag.
     */
     stopDrag:function(){
 
@@ -5129,7 +5233,7 @@ return drag;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5137,18 +5241,15 @@ define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * Demo:
  * <pre>
- * ticker.addTick(Hilo.Tween);//需要把Tween加到ticker里才能使用
+ * ticker.addTick(Hilo.Tween);//Tween works after being added to ticker
  *
  * var view = new View({x:5, y:10});
  * Hilo.Tween.to(view, {
@@ -5164,26 +5265,26 @@ var Class = require('hilo/core/Class');
  *     }
  * });
  * </pre>
- * @class Tween类提供缓动功能。
- * @param {Object} target 缓动对象。
- * @param {Object} fromProps 对象缓动的起始属性集合。
- * @param {Object} toProps 对象缓动的目标属性集合。
- * @param {Object} params 缓动参数。可包含Tween类所有可写属性。
+ * @class Tween class makes tweening (easing, slow motion).
+ * @param {Object} target Tween target object.
+ * @param {Object} fromProps Beginning properties of target tweening object.
+ * @param {Object} toProps Ending properties of target tweening object.
+ * @param {Object} params Tweening parameters, include all writable Tween class properties.
  * @module hilo/tween/Tween
  * @requires hilo/core/Class
- * @property {Object} target 缓动目标。只读属性。
- * @property {Int} duration 缓动总时长。单位毫秒。
- * @property {Int} delay 缓动延迟时间。单位毫秒。
- * @property {Boolean} paused 缓动是否暂停。默认为false。
- * @property {Boolean} loop 缓动是否循环。默认为false。
- * @property {Boolean} reverse 缓动是否反转播放。默认为false。
- * @property {Int} repeat 缓动重复的次数。默认为0。
- * @property {Int} repeatDelay 缓动重复的延迟时长。单位为毫秒。
- * @property {Function} ease 缓动变化函数。默认为null。
- * @property {Int} time 缓动已进行的时长。单位毫秒。只读属性。
- * @property {Function} onStart 缓动开始回调函数。它接受1个参数：tween。默认值为null。
- * @property {Function} onUpdate 缓动更新回调函数。它接受2个参数：ratio和tween。默认值为null。
- * @property {Function} onComplete 缓动结束回调函数。它接受1个参数：tween。默认值为null。
+ * @property {Object} target Tween target object, readonly!
+ * @property {Int} duration Tweening duration, measure in ms.
+ * @property {Int} delay Tweenning delay time, measure in ms.
+ * @property {Boolean} paused Is tweening paused, default value is false.
+ * @property {Boolean} loop Does tweening loop, default value is false.
+ * @property {Boolean} reverse Does tweening reverse, default value is false.
+ * @property {Int} repeat Repeat times of tweening, default value is 0.
+ * @property {Int} repeatDelay Delay time of repeating tweening, measure in ms.
+ * @property {Function} ease Tweening transform function, default value is null.
+ * @property {Int} time Time that tweening taken, measure in ms, readonly!
+ * @property {Function} onStart Function invoked on the beginning of tweening. Require 1 parameter: tween. default value is null.
+ * @property {Function} onUpdate Function invoked on tweening update. Require 2 parameters: ratio, tween.  default value is null.
+ * @property {Function} onComplete Function invoked on the end of tweening. Require 1 parameter: tween.  default value is null.
  */
 var Tween = (function(){
 
@@ -5236,10 +5337,11 @@ return Class.create(/** @lends Tween.prototype */{
     onComplete: null,
 
     /**
-     * 设置缓动对象的初始和目标属性。
-     * @param {Object} fromProps 缓动对象的初始属性。
-     * @param {Object} toProps 缓动对象的目标属性。
-     * @returns {Tween} Tween变换本身。可用于链式调用。
+     * @language=en
+     * Set beginning properties and ending properties of tweening object.
+     * @param {Object} fromProps Beginning properties of target tweening object.
+     * @param {Object} toProps Ending properties of target tweening object.
+     * @returns {Tween} Current Tween, for chain calls.
      */
     setProps: function(fromProps, toProps){
         var me = this, target = me.target,
@@ -5257,8 +5359,9 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 启动缓动动画的播放。
-     * @returns {Tween} Tween变换本身。可用于链式调用。
+     * @language=en
+     * Starting the tweening.
+     * @returns {Tween} Current Tween, for chain calls.
      */
     start: function(){
         var me = this;
@@ -5271,8 +5374,9 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 停止缓动动画的播放。
-     * @returns {Tween} Tween变换本身。可用于链式调用。
+     * @language=en
+     * Stop the tweening.
+     * @returns {Tween} Current Tween, for chain calls.
      */
     stop: function(){
         Tween.remove(this);
@@ -5280,8 +5384,9 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 暂停缓动动画的播放。
-     * @returns {Tween} Tween变换本身。可用于链式调用。
+     * @language=en
+     * Pause the tweening.
+     * @returns {Tween} Current Tween, for chain calls.
      */
     pause: function(){
         var me = this;
@@ -5291,8 +5396,9 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 恢复缓动动画的播放。
-     * @returns {Tween} Tween变换本身。可用于链式调用。
+     * @language=en
+     * Continue to play the tweening.
+     * @returns {Tween} Current Tween, for chain calls.
      */
     resume: function(){
         var me = this;
@@ -5303,10 +5409,11 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 跳转Tween到指定的时间。
-     * @param {Number} time 指定要跳转的时间。取值范围为：0 - duraion。
-     * @param {Boolean} pause 是否暂停。
-     * @returns {Tween} Tween变换本身。可用于链式调用。
+     * @language=en
+     * Tween jumps to some point.
+     * @param {Number} time The time to jump to, range from 0 to duration.
+     * @param {Boolean} pause Is paused.
+     * @returns {Tween} Current Tween, for chain calls.
      */
     seek: function(time, pause){
         var me = this, current = now();
@@ -5320,9 +5427,10 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 连接下一个Tween变换。其开始时间根据delay值不同而不同。当delay值为字符串且以'+'或'-'开始时，Tween的开始时间从当前变换结束点计算，否则以当前变换起始点计算。
-     * @param {Tween} tween 要连接的Tween变换。
-     * @returns {Tween} Tween变换本身。可用于链式调用。
+     * @language=en
+     * Link next Tween. The beginning time of next Tween depends on the delay value. If delay is a string that begins with '+' or '-', next Tween will begin at (delay) ms after or before the current tween is ended. If delay is out of previous situation, next Tween will begin at (delay) ms after the beginning point of current Tween.
+     * @param {Tween} tween Tween to link.
+     * @returns {Tween} Current Tween, for chain calls.
      */
     link: function(tween){
         var me = this, delay = tween.delay, startTime = me._startTime;
@@ -5340,7 +5448,8 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * Tween类的内部渲染方法。
+     * @language=en
+     * Private render method inside Tween class.
      * @private
      */
     _render: function(ratio){
@@ -5349,7 +5458,8 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * Tween类的内部更新方法。
+     * @language=en
+     * Private update method inside Tween class.
      * @private
      */
     _update: function(time, forceUpdate){
@@ -5426,12 +5536,14 @@ return Class.create(/** @lends Tween.prototype */{
 
     Statics: /** @lends Tween */ {
         /**
+         * @language=en
          * @private
          */
         _tweens: [],
 
         /**
-         * 更新所有Tween实例。
+         * @language=en
+         * Update all Tween instances.
          * @returns {Object} Tween。
          */
         tick: function(){
@@ -5448,8 +5560,9 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 添加Tween实例。
-         * @param {Tween} tween 要添加的Tween对象。
+         * @language=en
+         * Add a Tween instance.
+         * @param {Tween} tween Tween object to add.
          * @returns {Object} Tween。
          */
         add: function(tween){
@@ -5459,8 +5572,9 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 删除Tween实例。
-         * @param {Tween|Object|Array} tweenOrTarget 要删除的Tween对象或target对象或要删除的一组对象。
+         * @language=en
+         * Remove one Tween target.
+         * @param {Tween|Object|Array} tweenOrTarget Tween object, target object or an array of object to remove
          * @returns {Object} Tween。
          */
         remove: function(tweenOrTarget){
@@ -5488,7 +5602,8 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 删除所有Tween实例。
+         * @language=en
+         * Remove all Tween instances.
          * @returns {Object} Tween。
          */
         removeAll: function(){
@@ -5497,12 +5612,13 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 创建一个缓动动画，让目标对象从开始属性变换到目标属性。
-         * @param {Object|Array} target 缓动目标对象或缓动目标数组。
-         * @param fromProps 缓动目标对象的开始属性。
-         * @param toProps 缓动目标对象的目标属性。
-         * @param params 缓动动画的参数。
-         * @returns {Tween|Array} 一个Tween实例对象或Tween实例数组。
+         * @language=en
+         * Create a tween, make target object easing from beginning properties to ending properties.
+         * @param {Object|Array} target Tweening target or tweening target array.
+         * @param fromProps Beginning properties of target tweening object.
+         * @param toProps Ending properties of target tweening object.
+         * @param params Tweening parameters.
+         * @returns {Tween|Array} An tween instance or an array of tween instance.
          */
         fromTo: function(target, fromProps, toProps, params){
             var isArray = target instanceof Array;
@@ -5520,22 +5636,24 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 创建一个缓动动画，让目标对象从当前属性变换到目标属性。
-         * @param {Object|Array} target 缓动目标对象或缓动目标数组。
-         * @param toProps 缓动目标对象的目标属性。
-         * @param params 缓动动画的参数。
-         * @returns {Tween|Array} 一个Tween实例对象或Tween实例数组。
+         * @language=en
+         * Create a tween, make target object easing from current properties to ending properties.
+         * @param {Object|Array} target Tweening target or tweening target array.
+         * @param toProps Ending properties of target tweening object.
+         * @param params Tweening parameters.
+         * @returns {Tween|Array} An tween instance or an array of tween instance.
          */
         to: function(target, toProps, params){
             return Tween.fromTo(target, null, toProps, params);
         },
 
         /**
-         * 创建一个缓动动画，让目标对象从指定的起始属性变换到当前属性。
-         * @param {Object|Array} target 缓动目标对象或缓动目标数组。
-         * @param fromProps 缓动目标对象的目标属性。
-         * @param params 缓动动画的参数。
-         * @returns {Tween|Array} 一个Tween实例对象或Tween实例数组。
+         * @language=en
+         * Create a tween, make target object easing from beginning properties to current properties.
+         * @param {Object|Array} target Tweening target or tweening target array.
+         * @param fromProps Beginning properties of target tweening object.
+         * @param params Tweening parameters.
+         * @returns {Tween|Array} An tween instance or an array of tween instance.
          */
         from: function(target, fromProps, params){
             return Tween.fromTo(target, fromProps, null, params);
@@ -5546,24 +5664,22 @@ return Class.create(/** @lends Tween.prototype */{
 
 })();
 
+
 return Tween;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Ease类包含为Tween类提供各种缓动功能的函数。
+ * @language=en
+ * @class Ease class provides multiple easing functions for Tween.
  * @module hilo/tween/Ease
  * @static
  */
@@ -5579,14 +5695,16 @@ function createEase(obj, easeInFn, easeOutFn, easeInOutFn, easeNoneFn){
 }
 
 /**
- * 线性匀速缓动函数。包含EaseNone函数。
+ * @language=en
+ * Linear easing function.Include EaseNone.
  */
 var Linear = createEase(null, null, null, null, function(k){
     return k;
 });
 
 /**
- * 二次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Quad easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quad = createEase(null,
     function(k){
@@ -5603,7 +5721,8 @@ var Quad = createEase(null,
 );
 
 /**
- * 三次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Cubic easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Cubic = createEase(null,
     function(k){
@@ -5620,7 +5739,8 @@ var Cubic = createEase(null,
 );
 
 /**
- * 四次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Quart easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quart = createEase(null,
     function(k){
@@ -5637,7 +5757,8 @@ var Quart = createEase(null,
 );
 
 /**
- * 五次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Quint easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quint = createEase(null,
     function(k){
@@ -5659,7 +5780,8 @@ var math = Math,
     pow = math.pow, sqrt = math.sqrt;
 
 /**
- * 正弦缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Sine easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Sine = createEase(null,
     function(k){
@@ -5676,7 +5798,8 @@ var Sine = createEase(null,
 );
 
 /**
- * 指数缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Expo easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Expo = createEase(null,
     function(k){
@@ -5695,7 +5818,8 @@ var Expo = createEase(null,
 );
 
 /**
- * 圆形缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Circ easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Circ = createEase(null,
     function(k){
@@ -5713,7 +5837,8 @@ var Circ = createEase(null,
 );
 
 /**
- * 弹性缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Elastic easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Elastic = createEase(
     {
@@ -5743,7 +5868,8 @@ var Elastic = createEase(
 );
 
 /**
- * 向后缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Back easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Back = createEase(
     {
@@ -5770,7 +5896,8 @@ var Back = createEase(
 );
 
 /**
- * 弹跳缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Bounce easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Bounce = createEase(null,
     function(k){
@@ -5814,7 +5941,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5822,15 +5949,12 @@ define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * @private
- * @class 图片资源加载器。
+ * @class image resources loader.
  * @module hilo/loader/ImageLoader
  * @requires hilo/core/Class
  */
@@ -5870,7 +5994,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5878,15 +6002,12 @@ define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * @private
- * @class javascript或JSONP加载器。
+ * @class javascript or JSONP loader
  * @module hilo/loader/ScriptLoader
  * @requires hilo/core/Class
  */
@@ -5941,7 +6062,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5952,23 +6073,20 @@ var EventMixin = require('hilo/event/EventMixin');
 var ImageLoader = require('hilo/loader/ImageLoader');
 var ScriptLoader = require('hilo/loader/ScriptLoader');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
  
 //TODO: 超时timeout，失败重连次数maxTries，更多的下载器Loader，队列暂停恢复等。
 
 /**
- * @class LoadQueue是一个队列下载工具。
- * @param {Object} source 要下载的资源。可以是单个资源对象或多个资源的数组。
+ * @language=en
+ * @class LoadQueue is a queue-like loader.
+ * @param {Object} source ,resource that need to be loaded,could be a single object or array resource.
  * @module hilo/loader/LoadQueue
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/loader/ImageLoader
  * @requires hilo/loader/ScriptLoader
- * @property {Int} maxConnections 同时下载的最大连接数。默认为2。
+ * @property {Int} maxConnections ,the limited concurrent connections. default value  2.
  */
 var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     Mixes: EventMixin,
@@ -5985,15 +6103,16 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     _currentIndex: -1,
 
     /**
-     * 增加要下载的资源。可以是单个资源对象或多个资源的数组。
-     * @param {Object|Array} source 资源对象或资源对象数组。每个资源对象包含以下属性：
+     * @language=en
+     * Add desired resource,could be a single object or array resource.
+     * @param {Object|Array} source ,a single object or array resource. Each resource contains properties like below:
      * <ul>
-     * <li><b>id</b> - 资源的唯一标识符。可用于从下载队列获取目标资源。</li>
-     * <li><b>src</b> - 资源的地址url。</li>
-     * <li><b>type</b> - 指定资源的类型。默认会根据资源文件的后缀来自动判断类型，不同的资源类型会使用不同的加载器来加载资源。</li>
-     * <li><b>loader</b> - 指定资源的加载器。默认会根据资源类型来自动选择加载器，若指定loader，则会使用指定的loader来加载资源。</li>
-     * <li><b>noCache</b> - 指示加载资源时是否增加时间标签以防止缓存。</li>
-     * <li><b>size</b> - 资源对象的预计大小。可用于预估下载进度。</li>
+     * <li><b>id</b> - resource identifier</li>
+     * <li><b>src</b> - resource url</li>
+     * <li><b>type</b> - resource type. By default, we automatically identify resource by file suffix and choose the relevant loader for you</li>
+     * <li><b>loader</b> - specified resource loader. If you specify this,we abandon choosing loader inside</li>
+     * <li><b>noCache</b> - a tag that set on or off to prevent cache,implemented by adding timestamp inside</li>
+     * <li><b>size</b> - predicted resource size, help calculating loading progress</li>
      * </ul>
      * @returns {LoadQueue} 下载队列实例本身。
      */
@@ -6007,9 +6126,10 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 根据id或src地址获取资源对象。
-     * @param {String} id 指定资源的id或src。
-     * @returns {Object} 资源对象。
+     * @language=en
+     * get resource object by id or src
+     * @param {String}  specified id or src
+     * @returns {Object} resource object
      */
     get: function(id){
         if(id){
@@ -6025,9 +6145,10 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 根据id或src地址获取资源内容。
-     * @param {String} id 指定资源的id或src。
-     * @returns {Object} 资源内容。
+     * @language=en
+     * get resource object content  by id or src
+     * @param {String} specified id or src
+     * @returns {Object} resource object content
      */
     getContent: function(id){
         var item = this.get(id);
@@ -6035,8 +6156,9 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 开始下载队列。
-     * @returns {LoadQueue} 下载队列实例本身。
+     * @language=en
+     * start loading
+     * @returns {LoadQueue} the loading instance
      */
     start: function(){
         var me = this;
@@ -6045,6 +6167,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _loadNext: function(){
@@ -6085,6 +6208,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _getLoader: function(item){
@@ -6110,6 +6234,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _onItemLoad: function(index, content){
@@ -6123,6 +6248,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _onItemError: function(index, e){
@@ -6135,9 +6261,10 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 获取全部或已下载的资源的字节大小。
-     * @param {Boolean} loaded 指示是已下载的资源还是全部资源。默认为全部。
-     * @returns {Number} 指定资源的字节大小。
+     * @language=en
+     *  get resource size, loaded or all.
+     * @param {Boolean} identify loaded or all resource. default is false, return all resource size. when set true, return loaded resource size.
+     * @returns {Number} resource size.
      */
     getSize: function(loaded){
         var size = 0, source = this._source;
@@ -6149,16 +6276,18 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 获取已下载的资源数量。
-     * @returns {Uint} 已下载的资源数量。
+     * @language=en
+     * get loaded resource count
+     * @returns {Uint} loaded resource count
      */
     getLoaded: function(){
         return this._loaded;
     },
 
     /**
-     * 获取所有资源的数量。
-     * @returns {Uint} 所有资源的数量。
+     * @language=en
+     * get all resource count
+     * @returns {Uint} all resource count
      */
     getTotal: function(){
         return this._source.length;
@@ -6167,6 +6296,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
 });
 
 /**
+ * @language=en
  * @private
  */
 function getExtension(src){
@@ -6181,7 +6311,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6191,28 +6321,25 @@ var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 var EventMixin = require('hilo/event/EventMixin');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class HTMLAudio声音播放模块。此模块使用HTMLAudioElement播放音频。
- * 使用限制：iOS平台需用户事件触发才能播放，很多Android浏览器仅能同时播放一个音频。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @language=en
+ * @class HTMLAudio is an audio playing module, which uses HTMLAudioElement to play audio.
+ * Limits: iOS platform requires user action events to start playing, and many Android browser can only play one audio at a time.
+ * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/HTMLAudio
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
- * @property {String} src 播放的音频的资源地址。
- * @property {Boolean} loop 是否循环播放。默认为false。
- * @property {Boolean} autoPlay 是否自动播放。默认为false。
- * @property {Boolean} loaded 音频资源是否已加载完成。只读属性。
- * @property {Boolean} playing 是否正在播放音频。只读属性。
- * @property {Number} duration 音频的时长。只读属性。
- * @property {Number} volume 音量的大小。取值范围：0-1。
- * @property {Boolean} muted 是否静音。默认为false。
+ * @property {String} src The source of the playing audio.
+ * @property {Boolean} loop Is loop playback, default value is false.
+ * @property {Boolean} autoPlay Is the audio autoplay, default value is false.
+ * @property {Boolean} loaded Is the audio resource loaded, readonly!
+ * @property {Boolean} playing Is the audio playing, readonly!
+ * @property {Number} duration The duration of the audio, readonly!
+ * @property {Number} volume The volume of the audio, value between 0 to 1.
+ * @property {Boolean} muted Is the audio muted, default value is false.
  */
 var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     Mixes: EventMixin,
@@ -6234,7 +6361,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     _element: null, //HTMLAudioElement对象
 
     /**
-     * 加载音频文件。
+     * @language=en
+     * Load audio file.
      */
     load: function(){
         if(!this._element){
@@ -6259,6 +6387,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _onAudioEvent: function(e){
@@ -6285,6 +6414,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _doPlay: function(){
@@ -6296,8 +6426,9 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 播放音频。如果正在播放，则会重新开始。
-     * 注意：为了避免第一次播放不成功，建议在load音频后再播放。
+     * @language=en
+     * Start playing the audio. And play the audio from the beginning if the audio is already playing.
+     * Note: To prevent failing to play at the first time, play when the audio is loaded.
      */
     play: function(){
         if(this.playing) this.stop();
@@ -6313,7 +6444,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 暂停音频。
+     * @language=en
+     * Pause (halt) the currently playing audio.
      */
     pause: function(){
         if(this.playing){
@@ -6324,7 +6456,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 恢复音频播放。
+     * @language=en
+     * Continue to play the audio.
      */
     resume: function(){
         if(!this.playing){
@@ -6334,7 +6467,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 停止音频播放。
+     * @language=en
+     * Stop playing the audio.
      */
     stop: function(){
         if(this.playing){
@@ -6346,7 +6480,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 设置音量。注意: iOS设备无法设置音量。
+     * @language=en
+     * Set the volume. Note: iOS devices cannot set volume.
      */
     setVolume: function(volume){
         if(this.volume != volume){
@@ -6357,7 +6492,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * 设置静音模式。注意: iOS设备无法设置静音模式。
+     * @language=en
+     * Set mute mode. Note: iOS devices cannot set mute mode.
      */
     setMute: function(muted){
         if(this.muted != muted){
@@ -6369,7 +6505,8 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
 
     Statics: /** @lends HTMLAudio */ {
         /**
-         * 浏览器是否支持HTMLAudio。
+         * @language=en
+         * Does the browser supports HTMLAudio.
          */
         isSupported: window.Audio !== null
     }
@@ -6380,7 +6517,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6390,28 +6527,25 @@ var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 var EventMixin = require('hilo/event/EventMixin');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class WebAudio声音播放模块。它具有更好的声音播放和控制能力，适合在iOS6+平台使用。
- * 兼容情况：iOS6+、Chrome33+、Firefox28+支持，但Android浏览器均不支持。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @language=en
+ * @class WebAudio audio playing module. It provides a better way to play and control audio, use on iOS6+ platform.
+ * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
+ * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/WebAudio
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
- * @property {String} src 播放的音频的资源地址。
- * @property {Boolean} loop 是否循环播放。默认为false。
- * @property {Boolean} autoPlay 是否自动播放。默认为false。
- * @property {Boolean} loaded 音频资源是否已加载完成。只读属性。
- * @property {Boolean} playing 是否正在播放音频。只读属性。
- * @property {Number} duration 音频的时长。只读属性。
- * @property {Number} volume 音量的大小。取值范围：0-1。
- * @property {Boolean} muted 是否静音。默认为false。
+ * @property {String} src The source of the playing audio.
+ * @property {Boolean} loop Is loop playback, default value is false.
+ * @property {Boolean} autoPlay Is the audio autoplay, default value is false.
+ * @property {Boolean} loaded Is the audio resource loaded, readonly!
+ * @property {Boolean} playing Is the audio playing, readonly!
+ * @property {Number} duration The duration of the audio, readonly!
+ * @property {Number} volume The volume of the audio, value between 0 to 1.
+ * @property {Boolean} muted Is the audio muted, default value is false.
  */
 var WebAudio = (function(){
 
@@ -6435,15 +6569,16 @@ return Class.create(/** @lends WebAudio.prototype */{
     volume: 1,
     muted: false,
 
-    _context: null, //WebAudio上下文
-    _gainNode: null, //音量控制器
-    _buffer: null, //音频缓冲文件
-    _audioNode: null, //音频播放器
-    _startTime: 0, //开始播放时间戳
-    _offset: 0, //播放偏移量
+    _context: null, //WebAudio上下文 the WebAudio Context
+    _gainNode: null, //音量控制器 the volume controller
+    _buffer: null, //音频缓冲文件 the audio file buffer
+    _audioNode: null, //音频播放器 the audio playing node
+    _startTime: 0, //开始播放时间戳 the start time to play the audio
+    _offset: 0, //播放偏移量 the offset of current playing audio
 
     /**
-     * @private 初始化
+     * @language=en
+     * @private Initialize.
      */
     _init:function(){
         this._context = context;
@@ -6455,7 +6590,8 @@ return Class.create(/** @lends WebAudio.prototype */{
         this._onDecodeError = this._onDecodeError.bind(this);
     },
     /**
-     * 加载音频文件。注意：我们使用XMLHttpRequest进行加载，因此需要注意跨域问题。
+     * @language=en
+     * Load audio file. Note: use XMLHttpRequest to load the audio, should pay attention to cross-origin problem.
      */
     load: function(){
         if(!this._buffer){
@@ -6473,6 +6609,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _onAudioEvent: function(e){
@@ -6501,6 +6638,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _onDecodeComplete: function(audioBuffer){
@@ -6513,6 +6651,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _onDecodeError: function(){
@@ -6520,6 +6659,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _doPlay: function(){
@@ -6545,6 +6685,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _clearAudioNode: function(){
@@ -6558,7 +6699,8 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 播放音频。如果正在播放，则会重新开始。
+     * @language=en
+     * Play the audio. Restart playing the audio from the beginning if already playing.
      */
     play: function(){
         if(this.playing) this.stop();
@@ -6574,7 +6716,8 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 暂停音频。
+     * @language=en
+     * Pause (halt) playing the audio.
      */
     pause: function(){
         if(this.playing){
@@ -6586,7 +6729,8 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 恢复音频播放。
+     * @language=en
+     * Continue to play the audio.
      */
     resume: function(){
         if(!this.playing){
@@ -6596,7 +6740,8 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 停止音频播放。
+     * @language=en
+     * Stop playing the audio.
      */
     stop: function(){
         if(this.playing){
@@ -6609,7 +6754,8 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 设置音量。
+     * @language=en
+     * Set the volume.
      */
     setVolume: function(volume){
         if(this.volume != volume){
@@ -6620,7 +6766,8 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 设置是否静音。
+     * @language=en
+     * Set mute mode.
      */
     setMute: function(muted){
         if(this.muted != muted){
@@ -6632,17 +6779,20 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     Statics: /** @lends WebAudio */ {
         /**
-         * 浏览器是否支持WebAudio。
+         * @language=en
+         * Does the browser support WebAudio.
          */
         isSupported: AudioContext != null,
 
         /**
-         * 浏览器是否已激活WebAudio。
+         * @language=en
+         * Does browser activate WebAudio already.
          */
         enabled: false,
 
         /**
-         * 激活WebAudio。注意：需用户事件触发此方法才有效。激活后，无需用户事件也可播放音频。
+         * @language=en
+         * Activate WebAudio. Note: Require user action events to activate. Once activated, can play audio without user action events.
          */
         enable: function(){
             if(!this.enabled && context){
@@ -6664,7 +6814,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6674,16 +6824,13 @@ var Hilo = require('hilo/core/Hilo');
 var HTMLAudio = require('hilo/media/HTMLAudio');
 var WebAudio = require('hilo/media/WebAudio');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * demo:
  * <pre>
  * var audio = WebSound.getAudio({
  *     src: 'test.mp3',
@@ -6695,7 +6842,7 @@ var WebAudio = require('hilo/media/WebAudio');
  *     console.log('end');
  * }).play();
  * </pre>
- * @class 声音播放管理器。
+ * @class Audio playing manager.
  * @static
  * @module hilo/media/WebSound
  * @requires hilo/core/Hilo
@@ -6706,7 +6853,8 @@ var WebSound = {
     _audios: {},
 
     /**
-     * 激活音频功能。注意：需用户事件触发此方法才有效。目前仅对WebAudio有效。
+     * @language=en
+     * Activate audio function. Note: Require user action events to activate. Currently support WebAudio.
      */
     enableAudio: function(){
         if(WebAudio.isSupported){
@@ -6715,9 +6863,10 @@ var WebSound = {
     },
 
     /**
-     * 获取音频对象。优先使用WebAudio。
-     * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
-     * @returns {WebAudio|HTMLAudio} 音频播放对象实例。
+     * @language=en
+     * Get audio element. Use WebAudio if supported.
+     * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
+     * @returns {WebAudio|HTMLAudio} Audio playing instance.
      */
     getAudio: function(source){
         source = this._normalizeSource(source);
@@ -6735,8 +6884,9 @@ var WebSound = {
     },
 
     /**
-     * 删除音频对象。
-     * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
+     * @language=en
+     * Remove audio element.
+     * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
      */
     removeAudio: function(source){
         var src = typeof source === 'string' ? source : source.src;
@@ -6750,6 +6900,7 @@ var WebSound = {
     },
 
     /**
+     * @language=en
      * @private
      */
     _normalizeSource: function(source){
@@ -6765,7 +6916,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6774,24 +6925,21 @@ define(function(require, exports, module){
 var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Camera类表示摄像机。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @language=en
+ * @class Camera.
+ * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/game/Camera
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
- * @property {Number} width 镜头宽
- * @property {Number} height 镜头高
- * @property {Object} scroll 滚动值 {x:0, y:0}
- * @property {View} target 摄像机跟随的目标
- * @property {Array} bounds 摄像机移动边界的矩形区域 [x, y, width, height]
- * @property {Array} deadzone 摄像机不移动的矩形区域 [ x, y, width, height]
+ * @property {Number} width The width of the camera.
+ * @property {Number} height The height of the camera.
+ * @property {Object} scroll The scrolling value of the camera {x:0, y:0}.
+ * @property {View} target The target that the camera follow.
+ * @property {Array} bounds The rect area where camera is allowed to move [x, y, width, height].
+ * @property {Array} deadzone The rect area where camera isn't allowed to move[ x, y, width, height].
  */
 var Camera = Class.create(/** @lends Camera.prototype */{
     constructor:function(properties){
@@ -6810,7 +6958,8 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         Hilo.copy(this, properties);
     },
     /**
-     * 更新
+     * @language=en
+     * update.
      * @param {Number} deltaTime
     */
     tick:function(deltaTime){
@@ -6844,9 +6993,10 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         }
     },
     /**
-     * 跟随目标
-     * @param {Object} target 跟随的目标，必须是有x,y属性的对象
-     * @param {Array} deadzone 摄像机不移动的矩形区域 [ x, y, width, height]
+     * @language=en
+     * Follow the target.
+     * @param {Object} target The target that the camera follow. It must has x and y properties.
+     * @param {Array} deadzone The rect area where camera isn't allowed to move[ x, y, width, height].
     */
     follow:function(target, deadzone){
         this.target = target;
@@ -6862,7 +7012,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6871,48 +7021,45 @@ define(function(require, exports, module){
 var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Camera3d 伪3D虚拟摄像机。
+ * @language=en
+ * @class Camera3d is a pseudo-3d camera.
  * @module hilo/game/Camera3d
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
- * @property {Number} fv 镜头视点距离（屏幕视点相对眼睛距离，绝对了坐标缩放比例）
- * @property {Number} fx 镜头视点X（屏幕视点相对屏幕左上角X距离）
- * @property {Number} fy 镜头视点Y（屏幕视点相对屏幕左上角Y距离）
- * @property {Object} stage 3D对象所在容器，可以是stage或container，结合ticker时是必须参数，用来Z深度排序
- * @property {Number} x 镜头三维坐标x
- * @property {Number} y 镜头三维坐标y
- * @property {Number} z 镜头三维坐标z
- * @property {Number} rotationX X轴旋转角度
- * @property {Number} rotationY Y轴旋转角度
- * @property {Number} rotationZ Z轴旋转角度
+ * @property {Number} fv The distance of the fov(The distance between eyes and the Z plane，it determines the scale ratio of the 3d object).
+ * @property {Number} fx The x position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the x axis).
+ * @property {Number} fy The y position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the y axis).
+ * @property {Object} stage The 3d object's container, it can be stage or container.It is required if you need to sort the 3d object by z axis.
+ * @property {Number} x The x position.
+ * @property {Number} y The y position.
+ * @property {Number} z The z position.
+ * @property {Number} rotationX The x rotation.
+ * @property {Number} rotationY The y rotation.
+ * @property {Number} rotationZ The z rotation.
  */
 var Camera3d = (function(){
 
 	var degtorad = Math.PI / 180;
 
-	//向量旋转
-	function rotateX(x, y, z, ca, sa) {//绕X轴旋转
+	//Rotate the axis.
+	function rotateX(x, y, z, ca, sa) {//rotate x
 		return {
 			x: x,
 			y: y * ca - z * sa,
 			z: y * sa + z * ca
 		};
 	}
-	function rotateY(x, y, z, ca, sa) {//绕Y轴旋转
+	function rotateY(x, y, z, ca, sa) {//rotate y
 		return {
 			x: x * ca - z * sa,
 			y: y,
 			z: x * sa + z * ca
 		};
 	}
-	function rotateZ(x, y, z, ca, sa) {//绕Z轴旋转
+	function rotateZ(x, y, z, ca, sa) {//rotate z
 		return {
 			x: x * ca - y * sa,
 			y: x * sa + y * ca,
@@ -6934,10 +7081,11 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z. 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
-	     * @param {Number} x坐标
-	     * @param {Number} y坐标
-	     * @param {Number} z坐标
+         * @language=en
+         * Translate the camera，used for Zoomin/out feature.
+	     * @param {Number} x The x position.
+	     * @param {Number} y The y position.
+	     * @param {Number} z The z position.
 	     */
 		translate : function(x,y,z){
 			this.tx = x;
@@ -6946,33 +7094,38 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * 旋转X轴方向角度，相当于欧拉角系统的 beta
-	     * @param {Number} X旋转角度
+         * @language=en
+         * Rotate by the x axis.
+	     * @param {Number} angle The rotate degree.
 	     */
 		rotateX : function(angle){
 			this.rotationX = angle;
 		},
 
 	    /**
-	     * 旋转Y轴方向角度，相当于欧拉角系统的 gamma
-	     * @param {Number} Y旋转角度
+         * @language=en
+         * Rotate by the y axis.
+	     * @param {Number} angle The rotate degree.
 	     */
 		rotateY : function(angle){
 			this.rotationY = angle;
 		},
 
 	    /**
-	     * 旋转Z轴方向角度，相当于欧拉角系统的 alpha
-	     * @param {Number} Z旋转角度
+         * @language=en
+         * Rotate by the z axis.
+	     * @param {Number} angle The rotate degree.
 	     */
 		rotateZ : function(angle){
 			this.rotationZ = angle;
 		},
 
 	    /**
-	     * 将三维坐标转换投影为二维坐标，同时返回Z轴深度，和投影显示的缩放比例
-	     * @param {object} 三维坐标对象
-	     * @param {object} Hilo.View对象，用于自动转换坐标
+         * @language=en
+         * Project the 3d point to 2d point.
+	     * @param {object} vector3D The 3d position, it must have x, y and z properties.
+	     * @param {View} view The view related to the 3d position.It'll be auto translated by the 3d position.
+         * @returns {Object} The 2d object include z and scale properties, e.g.:{x:x, y:y, z:z, scale}
 	     */
 		project : function(vector3D, view){
 
@@ -6987,10 +7140,10 @@ var Camera3d = (function(){
 				// 旋转变换前的 仿射矩阵位移，
 				dx = vector3D.x - this.x,
 				dy = vector3D.y - this.y,
-				dz = vector3D.z - this.z,
+				dz = vector3D.z - this.z;
 
 			// 旋转矩阵变换
-			vector = rotateZ(dx, dy, dz, cosZ, sinZ);
+			var vector = rotateZ(dx, dy, dz, cosZ, sinZ);
 			vector = rotateY(vector.x, vector.y, vector.z, cosY, sinY);
 			vector = rotateX(vector.x, vector.y, vector.z, cosX, sinX);
 
@@ -7003,24 +7156,27 @@ var Camera3d = (function(){
 				_x = vector.x * perspective,
 				_y = -vector.y * perspective;
 
-			if(view) {
-                view.x = _x + this.fx;
-                view.y = _y + this.fy;
-                view.z = -vector.z;
-                view.scaleX = perspective;
-                view.scaleY = perspective;
-			} else {
-				return {
-					x : _x + this.fx,
-					y : _y + this.fy,
-					z : -vector.z,
-					scale : perspective
-				};
+            var result = {
+                x : _x + this.fx,
+                y : _y + this.fy,
+                z : -vector.z,
+                scale : perspective
+            };
+
+			if(view){
+                view.x = result.x;
+                view.y = result.y;
+                view.z = result.z;
+                view.scaleX = result.scale;
+                view.scaleY = result.scale;
 			}
+
+            return result;
 		},
 
 	    /**
-	     * Z深度排序
+         * @language=en
+         * Sort by z axis.
 	     */
 		sortZ : function(){
 			this.stage.children.sort(function(view_a, view_b){
@@ -7029,7 +7185,8 @@ var Camera3d = (function(){
 		},
 
 	    /**
-	     * Ticker 轮询使用
+         * @language=en
+         * Used for the ticker.
 	     */
 		tick : function(){
 			this.sortZ();
@@ -7045,7 +7202,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7058,16 +7215,13 @@ var Container = require('hilo/view/Container');
 var Bitmap = require('hilo/view/Bitmap');
 var Drawable = require('hilo/view/Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
- * @class 粒子系统
+ * @class ParticleSystem A particle system.
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
@@ -7075,28 +7229,28 @@ var Drawable = require('hilo/view/Drawable');
  * @requires hilo/view/Container
  * @requires hilo/view/Bitmap
  * @requires hilo/view/Drawable
- * @property {Number} emitTime 发射间隔
- * @property {Number} emitTimeVar 发射间隔变化量
- * @property {Number} emitNum 每次发射数量变化量
- * @property {Number} emitNumVar 每次发射数量
- * @property {Number} emitterX 发射器位置x
- * @property {Number} emitterY 发射器位置y
- * @property {Number} totalTime 总时间
- * @property {Number} gx 重力加速度x
- * @property {Number} gy 重力加速度y
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
- * @param {Object} properties.particle 粒子属性配置
- * @param {Number} properties.particle.x x位置
- * @param {Number} properties.particle.y y位置
- * @param {Number} properties.particle.vx x速度
- * @param {Number} properties.particle.vy y速度
- * @param {Number} properties.particle.ax x加速度
- * @param {Number} properties.particle.ay y加速度
- * @param {Number} properties.particle.life 粒子存活时间 单位s
- * @param {Number} properties.particle.alpha 透明度
- * @param {Number} properties.particle.alphaV 透明度变化
- * @param {Number} properties.particle.scale 缩放
- * @param {Number} properties.particle.scaleV 缩放变化速度
+ * @property {Number} emitTime Emit time interval.
+ * @property {Number} emitTimeVar Emit time interval variances.
+ * @property {Number} emitNum Emit number.
+ * @property {Number} emitNumVar Emit number variances.
+ * @property {Number} emitterX The emitter x position.
+ * @property {Number} emitterY The emitter y position.
+ * @property {Number} totalTime Total time.
+ * @property {Number} gx The gravity x value.
+ * @property {Number} gy The gravity y value.
+ * @param {Object} properties properties The properties to create a view object, contains all writeable props of this class
+ * @param {Object} properties.particle The config of particle.
+ * @param {Number} properties.particle.x The x position.
+ * @param {Number} properties.particle.y The y position
+ * @param {Number} properties.particle.vx The x velocity.
+ * @param {Number} properties.particle.vy The y velocity.
+ * @param {Number} properties.particle.ax The x acceleration.
+ * @param {Number} properties.particle.ay The y acceleration.
+ * @param {Number} properties.particle.life The time particle lives(in second).
+ * @param {Number} properties.particle.alpha The alpha.
+ * @param {Number} properties.particle.alphaV The alpha decline rate.
+ * @param {Number} properties.particle.scale The scale.
+ * @param {Number} properties.particle.scaleV The scale decline rate.
 */
 var ParticleSystem = (function(){
     //粒子属性
@@ -7157,7 +7311,8 @@ var ParticleSystem = (function(){
             diedParticles:diedParticles
         },
         /**
-         * 重置属性
+         * @language=en
+         * Reset the properties.
          * @param {Object} cfg
         */
         reset: function(cfg) {
@@ -7168,8 +7323,9 @@ var ParticleSystem = (function(){
             }
         },
         /**
+         * @language=en
          * 更新
-         * @param {Number} dt 间隔时间 单位ms
+         * @param {Number} dt delta time(in milliseconds)
         */
         onUpdate: function(dt) {
             dt *= .001;
@@ -7188,7 +7344,8 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * 发射粒子
+         * @language=en
+         * Emit particles.
         */
         _emit: function() {
             var num = getRandomValue(this.emitNum, this.emitNumVar)>>0;
@@ -7197,7 +7354,8 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * 开始
+         * @language=en
+         * Start emit particles.
         */
         start: function() {
             this.stop(true);
@@ -7207,8 +7365,9 @@ var ParticleSystem = (function(){
             this._emitTime = getRandomValue(this.emitTime, this.emitTimeVar);
         },
         /**
-         * 停止
-         * @param {Boolean} clear 是否清除所有粒子
+         * @language=en
+         * Stop emit particles.
+         * @param {Boolean} clear Whether or not clear all the particles.
         */
         stop: function(clear) {
             this.isRun = false;
@@ -7221,16 +7380,17 @@ var ParticleSystem = (function(){
     });
 
     /**
+     * @language=en
      * @class 粒子
      * @inner
-     * @param {Number} vx x速度
-     * @param {Number} vy y速度
-     * @param {Number} ax x加速度
-     * @param {Number} ay y加速度
-     * @param {Number} scaleV 缩放变化速度
-     * @param {Number} alphaV 透明度变换速度
-     * @param {Number} rotationV 旋转速度
-     * @param {Number} life 存活时间
+     * @param {Number} vx The x velocity.
+     * @param {Number} vy The y velocity.
+     * @param {Number} ax The x acceleration.
+     * @param {Number} ay The y acceleration.
+     * @param {Number} scaleV The scale decline rate.
+     * @param {Number} alphaV The alpha decline rate.
+     * @param {Number} rotationV The rotate speed.
+     * @param {Number} life The time particle lives(in seconds)
     */
     var Particle = Class.create({
         Extends:View,
@@ -7240,7 +7400,8 @@ var ParticleSystem = (function(){
             this.init(properties);
         },
         /**
-         * 更新
+         * @language=en
+         * Update the particle.
         */
         onUpdate: function(dt) {
             dt *= .001;
@@ -7270,7 +7431,8 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * 设置图像
+         * @language=en
+         * Set the image of particle.
         */
         setImage: function(img, frame) {
             this.drawable = this.drawable||new Drawable();
@@ -7282,7 +7444,8 @@ var ParticleSystem = (function(){
             this.drawable.image = img;
         },
         /**
-         * 销毁
+         * @language=en
+         * Destroy the particle.
         */
         destroy: function() {
             this.died = true;
@@ -7290,7 +7453,8 @@ var ParticleSystem = (function(){
             diedParticles.push(this);
         },
         /**
-         * 初始化
+         * @language=en
+         * Init the particle.
         */
         init: function(cfg) {
             this.system = cfg.system;
@@ -7322,8 +7486,9 @@ var ParticleSystem = (function(){
         },
         Statics:{
             /**
-             * 生成粒子
-             * @param {Object} cfg
+             * @language=en
+             * Create the particle.
+             * @param {Object} cfg The config of particle.
             */
             create:function(cfg) {
                 if (diedParticles.length > 0) {
@@ -7338,6 +7503,13 @@ var ParticleSystem = (function(){
 
     });
 
+    /**
+     * Get the random value.
+     * @private
+     * @param  {Number} value     The value.
+     * @param  {Number} variances The variances.
+     * @return {Number}
+     */
     function getRandomValue(value, variances){
         return variances ? value + (Math.random() - .5) * 2 * variances : value;
     }

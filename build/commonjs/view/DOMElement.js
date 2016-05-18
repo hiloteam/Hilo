@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for commonjs
+ * Hilo 1.0.1 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -8,16 +8,13 @@ var Class = require('../core/Class');
 var View = require('./View');
 var Drawable = require('./Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * demo:
  * <pre>
  * var domView = new Hilo.DOMElement({
  *     element: Hilo.createElement('div', {
@@ -33,11 +30,11 @@ var Drawable = require('./Drawable');
  * }).addTo(stage);
  * </pre>
  * @name DOMElement
- * @class DOMElement是dom元素的包装。
+ * @class DOMElement is a wrapper of dom element.
  * @augments View
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。特殊属性有：
+ * @param {Object} properties create Objects properties. Contains all writable properties in this class. Special properties include:
  * <ul>
- * <li><b>element</b> - 要包装的dom元素。必需。</li>
+ * <li><b>element</b> - dom element to wrap, required! </li>
  * </ul>
  * @module hilo/view/DOMElement
  * @requires hilo/core/Hilo
@@ -55,10 +52,15 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
         this.drawable = new Drawable();
         var elem = this.drawable.domElement = properties.element || Hilo.createElement('div');
         elem.id = this.id;
+
+        if(this.pointerEnabled){
+            elem.style.pointerEvents = 'visible';
+        }
     },
 
     /**
-     * 覆盖渲染方法。
+     * @language=en
+     * Overwrite render method.
      * @private
      */
     _render: function(renderer, delta){
@@ -71,12 +73,13 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
     },
 
     /**
-     * 覆盖渲染方法。
+     * @language=en
+     * Overwrite render method.
      * @private
      */
     render: function(renderer, delta){
-        var canvas = renderer.canvas;
-        if(canvas.getContext){
+        if(renderer.renderType !== 'dom'){
+            var canvas = renderer.canvas;
             var elem = this.drawable.domElement, depth = this.depth,
                 nextElement = canvas.nextSibling, nextDepth;
             if(elem.parentNode) return;

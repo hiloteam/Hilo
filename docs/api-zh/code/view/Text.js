@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * <iframe src='../../../examples/Text.html?noHeader' width = '320' height = '240' scrolling='no'></iframe>
  * <br/>
  * @class Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。
@@ -52,7 +52,7 @@ var Text = Class.create(/** @lends Text.prototype */{
     textHeight: 0, //read-only
 
     /**
-     * 
+     * @language=zh
      * 设置文本的字体CSS样式。
      * @param {String} font 要设置的字体CSS样式。
      * @returns {Text} Text对象本身。链式调用支持。
@@ -68,7 +68,7 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 覆盖渲染方法。
      * @private
      */
@@ -101,7 +101,7 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 在指定的渲染上下文上绘制文本。
      * @private
      */
@@ -194,7 +194,7 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 在指定的渲染上下文上绘制一行文本。
      * @private
      */
@@ -217,7 +217,7 @@ var Text = Class.create(/** @lends Text.prototype */{
 
     Statics: /** @lends Text */{
         /**
-         * 
+         * @language=zh
          * 测算指定字体样式的行高。
          * @param {String} font 指定要测算的字体样式。
          * @return {Number} 返回指定字体的行高。

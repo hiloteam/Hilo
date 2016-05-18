@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * <iframe src='../../../examples/Bitmap.html?noHeader' width = '300' height = '200' scrolling='no'></iframe>
  * <br/>
  * Example:
@@ -46,7 +46,7 @@
     },
 
     /**
-     * 
+     * @language=en
      * set the image。
      * @param {Image|String} Image Object or URL。
      * @param {Array} rect the range of bitmap in the image。

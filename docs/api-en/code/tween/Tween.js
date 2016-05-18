@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * <iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
  * <br/>
  * Demo:
@@ -98,7 +98,7 @@ return Class.create(/** @lends Tween.prototype */{
     onComplete: null,
 
     /**
-     * 
+     * @language=en
      * Set beginning properties and ending properties of tweening object.
      * @param {Object} fromProps Beginning properties of target tweening object.
      * @param {Object} toProps Ending properties of target tweening object.
@@ -120,7 +120,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Starting the tweening.
      * @returns {Tween} Current Tween, for chain calls.
      */
@@ -135,7 +135,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Stop the tweening.
      * @returns {Tween} Current Tween, for chain calls.
      */
@@ -145,7 +145,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Pause the tweening.
      * @returns {Tween} Current Tween, for chain calls.
      */
@@ -157,7 +157,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Continue to play the tweening.
      * @returns {Tween} Current Tween, for chain calls.
      */
@@ -170,7 +170,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Tween jumps to some point.
      * @param {Number} time The time to jump to, range from 0 to duration.
      * @param {Boolean} pause Is paused.
@@ -188,7 +188,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Link next Tween. The beginning time of next Tween depends on the delay value. If delay is a string that begins with '+' or '-', next Tween will begin at (delay) ms after or before the current tween is ended. If delay is out of previous situation, next Tween will begin at (delay) ms after the beginning point of current Tween.
      * @param {Tween} tween Tween to link.
      * @returns {Tween} Current Tween, for chain calls.
@@ -209,7 +209,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Private render method inside Tween class.
      * @private
      */
@@ -219,7 +219,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Private update method inside Tween class.
      * @private
      */
@@ -297,13 +297,13 @@ return Class.create(/** @lends Tween.prototype */{
 
     Statics: /** @lends Tween */ {
         /**
-         * 
+         * @language=en
          * @private
          */
         _tweens: [],
 
         /**
-         * 
+         * @language=en
          * Update all Tween instances.
          * @returns {Object} Tween。
          */
@@ -321,7 +321,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=en
          * Add a Tween instance.
          * @param {Tween} tween Tween object to add.
          * @returns {Object} Tween。
@@ -333,7 +333,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=en
          * Remove one Tween target.
          * @param {Tween|Object|Array} tweenOrTarget Tween object, target object or an array of object to remove
          * @returns {Object} Tween。
@@ -363,7 +363,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=en
          * Remove all Tween instances.
          * @returns {Object} Tween。
          */
@@ -373,7 +373,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=en
          * Create a tween, make target object easing from beginning properties to ending properties.
          * @param {Object|Array} target Tweening target or tweening target array.
          * @param fromProps Beginning properties of target tweening object.
@@ -397,7 +397,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=en
          * Create a tween, make target object easing from current properties to ending properties.
          * @param {Object|Array} target Tweening target or tweening target array.
          * @param toProps Ending properties of target tweening object.
@@ -409,7 +409,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=en
          * Create a tween, make target object easing from beginning properties to current properties.
          * @param {Object|Array} target Tweening target or tweening target array.
          * @param fromProps Beginning properties of target tweening object.

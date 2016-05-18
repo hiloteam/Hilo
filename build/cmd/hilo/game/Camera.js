@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -8,24 +8,21 @@ define(function(require, exports, module){
 var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Camera类表示摄像机。
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @language=en
+ * @class Camera.
+ * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/game/Camera
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
- * @property {Number} width 镜头宽
- * @property {Number} height 镜头高
- * @property {Object} scroll 滚动值 {x:0, y:0}
- * @property {View} target 摄像机跟随的目标
- * @property {Array} bounds 摄像机移动边界的矩形区域 [x, y, width, height]
- * @property {Array} deadzone 摄像机不移动的矩形区域 [ x, y, width, height]
+ * @property {Number} width The width of the camera.
+ * @property {Number} height The height of the camera.
+ * @property {Object} scroll The scrolling value of the camera {x:0, y:0}.
+ * @property {View} target The target that the camera follow.
+ * @property {Array} bounds The rect area where camera is allowed to move [x, y, width, height].
+ * @property {Array} deadzone The rect area where camera isn't allowed to move[ x, y, width, height].
  */
 var Camera = Class.create(/** @lends Camera.prototype */{
     constructor:function(properties){
@@ -44,7 +41,8 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         Hilo.copy(this, properties);
     },
     /**
-     * 更新
+     * @language=en
+     * update.
      * @param {Number} deltaTime
     */
     tick:function(deltaTime){
@@ -78,9 +76,10 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         }
     },
     /**
-     * 跟随目标
-     * @param {Object} target 跟随的目标，必须是有x,y属性的对象
-     * @param {Array} deadzone 摄像机不移动的矩形区域 [ x, y, width, height]
+     * @language=en
+     * Follow the target.
+     * @param {Object} target The target that the camera follow. It must has x and y properties.
+     * @param {Array} deadzone The rect area where camera isn't allowed to move[ x, y, width, height].
     */
     follow:function(target, deadzone){
         this.target = target;

@@ -1,15 +1,11 @@
 /**
- * Hilo 1.0.0 for kissy
+ * Hilo 1.0.1 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 KISSY.add(function(S){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 var arrayProto = Array.prototype,
     slice = arrayProto.slice;

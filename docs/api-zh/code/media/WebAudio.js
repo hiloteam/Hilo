@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * @class WebAudio声音播放模块。它具有更好的声音播放和控制能力，适合在iOS6+平台使用。
  * 兼容情况：iOS6+、Chrome33+、Firefox28+支持，但Android浏览器均不支持。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -52,7 +52,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     _offset: 0, //播放偏移量 the offset of current playing audio
 
     /**
-     * 
+     * @language=zh
      * @private 初始化
      */
     _init:function(){
@@ -65,7 +65,7 @@ return Class.create(/** @lends WebAudio.prototype */{
         this._onDecodeError = this._onDecodeError.bind(this);
     },
     /**
-     * 
+     * @language=zh
      * 加载音频文件。注意：我们使用XMLHttpRequest进行加载，因此需要注意跨域问题。
      */
     load: function(){
@@ -84,7 +84,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * @private
      */
     _onAudioEvent: function(e){
@@ -113,7 +113,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * @private
      */
     _onDecodeComplete: function(audioBuffer){
@@ -126,7 +126,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * @private
      */
     _onDecodeError: function(){
@@ -134,7 +134,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * @private
      */
     _doPlay: function(){
@@ -160,7 +160,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * @private
      */
     _clearAudioNode: function(){
@@ -174,7 +174,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 播放音频。如果正在播放，则会重新开始。
      */
     play: function(){
@@ -191,7 +191,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 暂停音频。
      */
     pause: function(){
@@ -204,7 +204,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 恢复音频播放。
      */
     resume: function(){
@@ -215,7 +215,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 停止音频播放。
      */
     stop: function(){
@@ -229,7 +229,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 设置音量。
      */
     setVolume: function(volume){
@@ -241,7 +241,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 设置是否静音。
      */
     setMute: function(muted){
@@ -254,19 +254,19 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     Statics: /** @lends WebAudio */ {
         /**
-         * 
+         * @language=zh
          * 浏览器是否支持WebAudio。
          */
         isSupported: AudioContext != null,
 
         /**
-         * 
+         * @language=zh
          * 浏览器是否已激活WebAudio。
          */
         enabled: false,
 
         /**
-         * 
+         * @language=zh
          * 激活WebAudio。注意：需用户事件触发此方法才有效。激活后，无需用户事件也可播放音频。
          */
         enable: function(){

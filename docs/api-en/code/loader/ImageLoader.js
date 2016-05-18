@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @private
  * @class image resources loader.
  * @module hilo/loader/ImageLoader

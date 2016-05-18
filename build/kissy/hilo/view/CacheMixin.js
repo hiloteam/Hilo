@@ -1,20 +1,17 @@
 /**
- * Hilo 1.0.0 for kissy
+ * Hilo 1.0.1 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 KISSY.add('hilo/view/CacheMixin', function(S, Hilo, Class, Drawable){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 var _cacheCanvas = Hilo.createElement('canvas');
 var _cacheContext = _cacheCanvas.getContext('2d');
 /**
- * @class CacheMixin是一个包含cache功能的mixin。可以通过 Class.mix(target, CacheMixin) 来为target增加cache功能。
+ * @language=en
+ * @class CacheMixin A mixin that contains cache method.You can mix cache method to the target by use Class.mix(target, CacheMixin).
  * @mixin
  * @static
  * @module hilo/view/CacheMixin
@@ -25,8 +22,9 @@ var _cacheContext = _cacheCanvas.getContext('2d');
 var CacheMixin = {
     _cacheDirty:true,
     /**
-     * 缓存到图片里。可用来提高渲染效率。
-     * @param {Boolean} forceUpdate 是否强制更新缓存
+     * @language=en
+     * Cache the view.
+     * @param {Boolean} forceUpdate is force update cache.
      */
     cache: function(forceUpdate){
         if(forceUpdate || this._cacheDirty || !this._cacheImage){
@@ -34,7 +32,8 @@ var CacheMixin = {
         }
     },
     /**
-     * 更新缓存
+     * @language=en
+     * Update the cache.
      */
     updateCache:function(){
         //TODO:width, height自动判断
@@ -48,7 +47,8 @@ var CacheMixin = {
         this._cacheDirty = false;
     },
     /**
-     * 设置缓存是否dirty
+     * @language=en
+     * set the cache state diry.
      */
     setCacheDirty:function(dirty){
         this._cacheDirty = dirty;

@@ -1,16 +1,13 @@
 /**
- * Hilo 1.0.0 for commonjs
+ * Hilo 1.0.1 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Ease类包含为Tween类提供各种缓动功能的函数。
+ * @language=en
+ * @class Ease class provides multiple easing functions for Tween.
  * @module hilo/tween/Ease
  * @static
  */
@@ -26,14 +23,16 @@ function createEase(obj, easeInFn, easeOutFn, easeInOutFn, easeNoneFn){
 }
 
 /**
- * 线性匀速缓动函数。包含EaseNone函数。
+ * @language=en
+ * Linear easing function.Include EaseNone.
  */
 var Linear = createEase(null, null, null, null, function(k){
     return k;
 });
 
 /**
- * 二次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Quad easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quad = createEase(null,
     function(k){
@@ -50,7 +49,8 @@ var Quad = createEase(null,
 );
 
 /**
- * 三次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Cubic easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Cubic = createEase(null,
     function(k){
@@ -67,7 +67,8 @@ var Cubic = createEase(null,
 );
 
 /**
- * 四次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Quart easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quart = createEase(null,
     function(k){
@@ -84,7 +85,8 @@ var Quart = createEase(null,
 );
 
 /**
- * 五次缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Quint easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quint = createEase(null,
     function(k){
@@ -106,7 +108,8 @@ var math = Math,
     pow = math.pow, sqrt = math.sqrt;
 
 /**
- * 正弦缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Sine easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Sine = createEase(null,
     function(k){
@@ -123,7 +126,8 @@ var Sine = createEase(null,
 );
 
 /**
- * 指数缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Expo easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Expo = createEase(null,
     function(k){
@@ -142,7 +146,8 @@ var Expo = createEase(null,
 );
 
 /**
- * 圆形缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Circ easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Circ = createEase(null,
     function(k){
@@ -160,7 +165,8 @@ var Circ = createEase(null,
 );
 
 /**
- * 弹性缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Elastic easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Elastic = createEase(
     {
@@ -190,7 +196,8 @@ var Elastic = createEase(
 );
 
 /**
- * 向后缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Back easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Back = createEase(
     {
@@ -217,7 +224,8 @@ var Back = createEase(
 );
 
 /**
- * 弹跳缓动函数。包含EaseIn、EaseOut、EaseInOut三个函数。
+ * @language=en
+ * Bounce easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Bounce = createEase(null,
     function(k){

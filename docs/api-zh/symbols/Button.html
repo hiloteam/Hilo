@@ -226,19 +226,6 @@
         <br>
         Button类表示简单按钮类。它有弹起、经过、按下和不可用等四种状态。
         
-            <br><br><iframe src='../../../examples/Button.html?noHeader' width = '320' height = '170' scrolling='no'></iframe>
-<br/>
-示例:
-<pre>
-var btn = new Hilo.Button({
-    image: buttonImage,
-    upState: {rect:[0, 0, 64, 64]},
-    overState: {rect:[64, 0, 64, 64]},
-    downState: {rect:[128, 0, 64, 64]},
-    disabledState: {rect:[192, 0, 64, 64]}
-});
-</pre>
-        
 
     </p>
 
@@ -416,7 +403,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            按钮经过状态的常量值，即：'over'。
+                            
                         </div>
                     </td>
                     <td>
@@ -438,7 +425,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            按钮不可用状态的常量值，即：'disabled'。
+                            
                         </div>
                     </td>
                     <td>
@@ -460,7 +447,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            按钮按下状态的常量值，即：'down'。
+                            
                         </div>
                     </td>
                     <td>
@@ -482,7 +469,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            按钮弹起状态的常量值，即：'up'。
+                            
                         </div>
                     </td>
                     <td>
@@ -682,8 +669,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
-限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
+                            
                         </div>
                     </td>
                     <td>
@@ -976,7 +962,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            设置按钮是否可用。
+                            
                         </div>
                     </td>
                     <td>
@@ -994,7 +980,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            设置按钮的状态。此方法由Button内部调用，一般无需使用此方法。
+                            
                         </div>
                     </td>
                     <td>
@@ -1012,7 +998,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            添加此对象到父容器。
+                            
                         </div>
                     </td>
                     <td>
@@ -1030,7 +1016,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
+                            
                         </div>
                     </td>
                     <td>
@@ -1048,7 +1034,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            返回可视对象缩放后的高度。
+                            
                         </div>
                     </td>
                     <td>
@@ -1066,7 +1052,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            返回可视对象缩放后的宽度。
+                            
                         </div>
                     </td>
                     <td>
@@ -1084,7 +1070,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
+                            
                         </div>
                     </td>
                     <td>
@@ -1102,7 +1088,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            检测object参数指定的对象是否与其相交。
+                            
                         </div>
                     </td>
                     <td>
@@ -1120,7 +1106,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            检测由x和y参数指定的点是否在其外接矩形之内。
+                            
                         </div>
                     </td>
                     <td>
@@ -1138,7 +1124,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            从父容器里删除此对象。
+                            
                         </div>
                     </td>
                     <td>
@@ -1156,7 +1142,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
+                            
                         </div>
                     </td>
                     <td>
@@ -1174,7 +1160,7 @@ var btn = new Hilo.Button({
                         </div>
                         <div class="description">
                             
-                            返回可视对象的字符串表示。
+                            
                         </div>
                     </td>
                     <td>
@@ -1218,7 +1204,7 @@ var btn = new Hilo.Button({
 
         </div>
         <div class="description">
-            按钮不可用状态的常量值，即：'disabled'。
+            
         </div>
 
         
@@ -1256,7 +1242,7 @@ var btn = new Hilo.Button({
 
         </div>
         <div class="description">
-            按钮按下状态的常量值，即：'down'。
+            
         </div>
 
         
@@ -1313,7 +1299,7 @@ var btn = new Hilo.Button({
 
         </div>
         <div class="description">
-            按钮经过状态的常量值，即：'over'。
+            
         </div>
 
         
@@ -1370,7 +1356,7 @@ var btn = new Hilo.Button({
 
         </div>
         <div class="description">
-            按钮弹起状态的常量值，即：'up'。
+            
         </div>
 
         
@@ -1464,7 +1450,7 @@ var btn = new Hilo.Button({
         
         <b>setEnabled</b>(enabled:Boolean):<span class="light"><a href="../symbols/Button.html">Button</a></span>
         </div>
-        <div class="description">设置按钮是否可用。</div>
+        <div class="description"></div>
 
         
 
@@ -1501,7 +1487,7 @@ var btn = new Hilo.Button({
         
         <b>setState</b>(state:String):<span class="light"><a href="../symbols/Button.html">Button</a></span>
         </div>
-        <div class="description">设置按钮的状态。此方法由Button内部调用，一般无需使用此方法。</div>
+        <div class="description"></div>
 
         
 

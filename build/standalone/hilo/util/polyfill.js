@@ -1,15 +1,11 @@
 /**
- * Hilo 1.0.0 for standalone
+ * Hilo 1.0.1 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 var arrayProto = Array.prototype,
     slice = arrayProto.slice;

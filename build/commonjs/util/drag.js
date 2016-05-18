@@ -1,27 +1,24 @@
 /**
- * Hilo 1.0.0 for commonjs
+ * Hilo 1.0.1 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 var Class = require('../core/Class');
 var Hilo = require('../core/Hilo');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * example:
  * <pre>
  * var bmp = new Bitmap({image:img});
  * Hilo.copy(bmp, Hilo.drag);
  * bmp.startDrag([0, 0, 550, 400]);
  * </pre>
- * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.copy(view, drag)来为view增加拖拽功能。
+ * @class drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.copy(target, drag).
  * @mixin
  * @static
  * @module hilo/util/drag
@@ -30,8 +27,9 @@ var Hilo = require('../core/Hilo');
  */
 var drag = {
     /**
-      * 开始拖拽
-      * @param {Array} bounds 拖拽范围，基于父容器坐标系，[x, y, width, height]， 默认无限制
+     * @language=en
+     * start drag.
+      * @param {Array} bounds The bounds area that the view can move, relative to the coordinates of the view's parent, [x, y, width, height]， default is no limit.
     */
     startDrag:function(bounds){
         var that = this;
@@ -102,7 +100,8 @@ var drag = {
         that.stopDrag = stopDrag;
     },
     /**
-      * 停止拖拽
+     * @language=en
+     * stop drag.
     */
     stopDrag:function(){
 

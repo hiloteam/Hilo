@@ -221,27 +221,6 @@
         <br>
         Tween class makes tweening (easing, slow motion).
         
-            <br><br><iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
-<br/>
-Demo:
-<pre>
-ticker.addTick(Hilo.Tween);//Tween works after being added to ticker
-
-var view = new View({x:5, y:10});
-Hilo.Tween.to(view, {
-    x:100,
-    y:20,
-    alpha:0
-}, {
-    duration:1000,
-    delay:500,
-    ease:Hilo.Ease.Quad.EaseIn,
-    onComplete:function(){
-        console.log('complete');
-    }
-});
-</pre>
-        
 
     </p>
 
@@ -586,7 +565,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             
-                            Link next Tween.
+                            
                         </div>
                     </td>
                     <td>
@@ -604,7 +583,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             
-                            Pause the tweening.
+                            
                         </div>
                     </td>
                     <td>
@@ -622,7 +601,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             
-                            Continue to play the tweening.
+                            
                         </div>
                     </td>
                     <td>
@@ -640,7 +619,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             
-                            Tween jumps to some point.
+                            
                         </div>
                     </td>
                     <td>
@@ -658,7 +637,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             
-                            Set beginning properties and ending properties of tweening object.
+                            
                         </div>
                     </td>
                     <td>
@@ -676,7 +655,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             
-                            Starting the tweening.
+                            
                         </div>
                     </td>
                     <td>
@@ -694,7 +673,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             
-                            Stop the tweening.
+                            
                         </div>
                     </td>
                     <td>
@@ -712,7 +691,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            Update all Tween instances.
+                            
                         </div>
                     </td>
                     <td>
@@ -730,7 +709,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            Add a Tween instance.
+                            
                         </div>
                     </td>
                     <td>
@@ -748,7 +727,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            Remove one Tween target.
+                            
                         </div>
                     </td>
                     <td>
@@ -766,7 +745,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            Remove all Tween instances.
+                            
                         </div>
                     </td>
                     <td>
@@ -784,7 +763,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            Create a tween, make target object easing from beginning properties to ending properties.
+                            
                         </div>
                     </td>
                     <td>
@@ -802,7 +781,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            Create a tween, make target object easing from current properties to ending properties.
+                            
                         </div>
                     </td>
                     <td>
@@ -820,7 +799,7 @@ Hilo.Tween.to(view, {
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            Create a tween, make target object easing from beginning properties to current properties.
+                            
                         </div>
                     </td>
                     <td>
@@ -1160,7 +1139,7 @@ Hilo.Tween.to(view, {
         [Static] 
         <b>add</b>(tween:<a href="../symbols/Tween.html">Tween</a>):<span class="light">Object</span>
         </div>
-        <div class="description">Add a Tween instance.</div>
+        <div class="description"></div>
 
         
 
@@ -1197,7 +1176,7 @@ Hilo.Tween.to(view, {
         [Static] 
         <b>from</b>(target:Object|Array, fromProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
         </div>
-        <div class="description">Create a tween, make target object easing from beginning properties to current properties.</div>
+        <div class="description"></div>
 
         
 
@@ -1244,7 +1223,7 @@ Hilo.Tween.to(view, {
         [Static] 
         <b>fromTo</b>(target:Object|Array, fromProps, toProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
         </div>
-        <div class="description">Create a tween, make target object easing from beginning properties to ending properties.</div>
+        <div class="description"></div>
 
         
 
@@ -1296,7 +1275,7 @@ Hilo.Tween.to(view, {
         
         <b>link</b>(tween:<a href="../symbols/Tween.html">Tween</a>):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description">Link next Tween. The beginning time of next Tween depends on the delay value. If delay is a string that begins with '+' or '-', next Tween will begin at (delay) ms after or before the current tween is ended. If delay is out of previous situation, next Tween will begin at (delay) ms after the beginning point of current Tween.</div>
+        <div class="description"></div>
 
         
 
@@ -1333,7 +1312,7 @@ Hilo.Tween.to(view, {
         
         <b>pause</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description">Pause the tweening.</div>
+        <div class="description"></div>
 
         
 
@@ -1360,7 +1339,7 @@ Hilo.Tween.to(view, {
         [Static] 
         <b>remove</b>(tweenOrTarget:<a href="../symbols/Tween.html">Tween</a>|Object|Array):<span class="light">Object</span>
         </div>
-        <div class="description">Remove one Tween target.</div>
+        <div class="description"></div>
 
         
 
@@ -1397,7 +1376,7 @@ Hilo.Tween.to(view, {
         [Static] 
         <b>removeAll</b>():<span class="light">Object</span>
         </div>
-        <div class="description">Remove all Tween instances.</div>
+        <div class="description"></div>
 
         
 
@@ -1424,7 +1403,7 @@ Hilo.Tween.to(view, {
         
         <b>resume</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description">Continue to play the tweening.</div>
+        <div class="description"></div>
 
         
 
@@ -1451,7 +1430,7 @@ Hilo.Tween.to(view, {
         
         <b>seek</b>(time:Number, pause:Boolean):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description">Tween jumps to some point.</div>
+        <div class="description"></div>
 
         
 
@@ -1493,7 +1472,7 @@ Hilo.Tween.to(view, {
         
         <b>setProps</b>(fromProps:Object, toProps:Object):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description">Set beginning properties and ending properties of tweening object.</div>
+        <div class="description"></div>
 
         
 
@@ -1535,7 +1514,7 @@ Hilo.Tween.to(view, {
         
         <b>start</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description">Starting the tweening.</div>
+        <div class="description"></div>
 
         
 
@@ -1562,7 +1541,7 @@ Hilo.Tween.to(view, {
         
         <b>stop</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description">Stop the tweening.</div>
+        <div class="description"></div>
 
         
 
@@ -1589,7 +1568,7 @@ Hilo.Tween.to(view, {
         [Static] 
         <b>tick</b>():<span class="light">Object</span>
         </div>
-        <div class="description">Update all Tween instances.</div>
+        <div class="description"></div>
 
         
 
@@ -1616,7 +1595,7 @@ Hilo.Tween.to(view, {
         [Static] 
         <b>to</b>(target:Object|Array, toProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
         </div>
-        <div class="description">Create a tween, make target object easing from current properties to ending properties.</div>
+        <div class="description"></div>
 
         
 

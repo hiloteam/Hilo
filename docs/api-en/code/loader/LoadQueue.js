@@ -7,7 +7,7 @@
 //TODO: 超时timeout，失败重连次数maxTries，更多的下载器Loader，队列暂停恢复等。
 
 /**
- * 
+ * @language=en
  * @class LoadQueue is a queue-like loader.
  * @param {Object} source ,resource that need to be loaded,could be a single object or array resource.
  * @module hilo/loader/LoadQueue
@@ -32,7 +32,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     _currentIndex: -1,
 
     /**
-     * 
+     * @language=en
      * Add desired resource,could be a single object or array resource.
      * @param {Object|Array} source ,a single object or array resource. Each resource contains properties like below:
      * <ul>
@@ -55,7 +55,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * get resource object by id or src
      * @param {String}  specified id or src
      * @returns {Object} resource object
@@ -74,7 +74,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * get resource object content  by id or src
      * @param {String} specified id or src
      * @returns {Object} resource object content
@@ -85,7 +85,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * start loading
      * @returns {LoadQueue} the loading instance
      */
@@ -96,7 +96,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _loadNext: function(){
@@ -137,7 +137,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _getLoader: function(item){
@@ -163,7 +163,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _onItemLoad: function(index, content){
@@ -177,7 +177,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _onItemError: function(index, e){
@@ -190,7 +190,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      *  get resource size, loaded or all.
      * @param {Boolean} identify loaded or all resource. default is false, return all resource size. when set true, return loaded resource size.
      * @returns {Number} resource size.
@@ -205,7 +205,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * get loaded resource count
      * @returns {Uint} loaded resource count
      */
@@ -214,7 +214,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * get all resource count
      * @returns {Uint} all resource count
      */
@@ -225,7 +225,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
 });
 
 /**
- * 
+ * @language=en
  * @private
  */
 function getExtension(src){

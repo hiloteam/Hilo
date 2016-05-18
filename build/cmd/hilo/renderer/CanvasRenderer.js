@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -9,21 +9,18 @@ var Class = require('hilo/core/Class');
 var Hilo = require('hilo/core/Hilo');
 var Renderer = require('hilo/renderer/Renderer');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class canvas画布渲染器。所有可视对象将渲染在canvas画布上。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
+ * @language=en
+ * @class CanvasRenderer CanvasRenderer, all the visual object is drawing on the canvas element.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/CanvasRenderer
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  * @requires hilo/renderer/Renderer
- * @property {CanvasRenderingContext2D} context canvas画布的上下文。只读属性。
+ * @property {CanvasRenderingContext2D} context The context of the canvas element, readonly.
  */
 var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
     Extends: Renderer,
@@ -68,7 +65,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
         var drawable = target.drawable, image = drawable && drawable.image;
         if(image){
             var rect = drawable.rect, sw = rect[2], sh = rect[3], offsetX = rect[4], offsetY = rect[5];
-            //ie9+浏览器宽高为0时会报错
+            //ie9+浏览器宽高为0时会报错 fixed ie9 bug.
             if(!sw || !sh){
                 return;
             }

@@ -1,20 +1,17 @@
 /**
- * Hilo 1.0.0 for standalone
+ * Hilo 1.0.1 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * @private
- * @class javascript或JSONP加载器。
+ * @class javascript or JSONP loader
  * @module hilo/loader/ScriptLoader
  * @requires hilo/core/Class
  */

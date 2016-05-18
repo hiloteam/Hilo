@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @class Camera.
  * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/game/Camera
@@ -35,7 +35,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         Hilo.copy(this, properties);
     },
     /**
-     * 
+     * @language=en
      * update.
      * @param {Number} deltaTime
     */
@@ -70,7 +70,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         }
     },
     /**
-     * 
+     * @language=en
      * Follow the target.
      * @param {Object} target The target that the camera follow. It must has x and y properties.
      * @param {Array} deadzone The rect area where camera isn't allowed to move[ x, y, width, height].

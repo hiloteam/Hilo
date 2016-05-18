@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @class Ticker is a Timer. It can run the code at specified framerate.
  * @param {Number} fps The fps of ticker.
  * @module hilo/util/Ticker
@@ -30,7 +30,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     _measuredFPS: 0,
 
     /**
-     * 
+     * @language=en
      * Start the ticker.
      * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is not.
      */
@@ -61,7 +61,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Stop the ticker.
      */
     stop: function(){
@@ -71,7 +71,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Pause the ticker.
      */
     pause: function(){
@@ -79,7 +79,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Resume the ticker.
      */
     resume: function(){
@@ -111,7 +111,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Get the fps.
      */
     getMeasuredFPS: function(){
@@ -119,7 +119,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Add tickObject. The tickObject must implement the tick method.
      * @param {Object} tickObject The tickObject to add.It must implement the tick method.
      */
@@ -131,7 +131,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Remove the tickObject
      * @param {Object} tickObject The tickObject to remove.
      */

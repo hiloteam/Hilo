@@ -12,7 +12,7 @@
 <span class='line'>  5</span>  */</span><span class="WHIT">
 <span class='line'>  6</span> 
 <span class='line'>  7</span> </span><span class="COMM">/**
-<span class='line'>  8</span>  * 
+<span class='line'>  8</span>  * @language=zh
 <span class='line'>  9</span>  * @class EventMixin是一个包含事件相关功能的mixin。可以通过 Class.mix(target, EventMixin) 来为target增加事件功能。
 <span class='line'> 10</span>  * @mixin
 <span class='line'> 11</span>  * @static
@@ -23,7 +23,7 @@
 <span class='line'> 16</span> </span><span class="WHIT">    </span><span class="NAME">_listeners</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 17</span> 
 <span class='line'> 18</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 19</span>      * 
+<span class='line'> 19</span>      * @language=zh
 <span class='line'> 20</span>      * 增加一个事件监听。
 <span class='line'> 21</span>      * @param {String} type 要监听的事件类型。
 <span class='line'> 22</span>      * @param {Function} listener 事件监听回调函数。
@@ -42,7 +42,7 @@
 <span class='line'> 35</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 36</span> 
 <span class='line'> 37</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 38</span>      * 
+<span class='line'> 38</span>      * @language=zh
 <span class='line'> 39</span>      * 删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
 <span class='line'> 40</span>      * @param {String} type 要删除监听的事件类型。
 <span class='line'> 41</span>      * @param {Function} listener 要删除监听的回调函数。
@@ -76,7 +76,7 @@
 <span class='line'> 69</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 70</span> 
 <span class='line'> 71</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 72</span>      * 
+<span class='line'> 72</span>      * @language=zh
 <span class='line'> 73</span>      * 发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
 <span class='line'> 74</span>      * @param {String} type 要发送的事件类型。
 <span class='line'> 75</span>      * @param {Object} detail 要发送的事件的具体信息，即事件随带参数。
@@ -119,7 +119,7 @@
 <span class='line'>112</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>113</span> 
 <span class='line'>114</span> </span><span class="COMM">/**
-<span class='line'>115</span>  * 
+<span class='line'>115</span>  * @language=zh
 <span class='line'>116</span>  * 事件对象类。当前仅为内部类，以后有需求的话可能会考虑独立为公开类。
 <span class='line'>117</span>  */</span><span class="WHIT">
 <span class='line'>118</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">EventObject</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Class.create</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">

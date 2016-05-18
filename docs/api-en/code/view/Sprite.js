@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * <iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class Sprite animation class.
@@ -50,7 +50,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     currentFrame: 0, //当前帧的索引 Index of current frame
 
     /**
-     * 
+     * @language=en
      * Return the total amount of sprite animation frames.
      * @returns {Uint} The total amount of frames.
      */
@@ -59,7 +59,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Add frame into sprite.
      * @param {Object} frame Frames to add into.
      * @param {Int} startIndex The index to start adding frame, if is not given, add at the end of sprite.
@@ -78,7 +78,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Set the frame on the given index.
      * @param {Object} frame The frame data to set on that index.
      * @param {Int} index Index of the frame to set.
@@ -98,7 +98,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Get the frame of given parameter from sprite.
      * @param {Object} indexOrName The index or name of the frame.
      * @returns {Object} The sprite object.
@@ -113,7 +113,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Get frame index from sprite.
      * @param {Object} frameValue Index or name of the frame.
      * @returns {Object} Sprite frame object.
@@ -139,7 +139,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Play sprite.
      * @returns {Sprite} The Sprite object.
      */
@@ -149,7 +149,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Pause playing sprite.
      * @returns {Sprite} The Sprite object.
      */
@@ -159,7 +159,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Jump to an assigned frame.
      * @param {Object} indexOrName Index or name of an frame to jump to.
      * @param {Boolean} pause Does pause after jumping to the new index.
@@ -176,7 +176,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Render function.
      * @private
      */
@@ -204,7 +204,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _nextFrame: function(delta){
@@ -240,7 +240,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Set a callback on an assigned frame. Every time assigned frame is played, invoke the callback function. If callback is empty, callback function will be removed.
      * @param {Int|String} frame Index or name of the assigned frame.
      * @param {Function} callback Callback function.
@@ -253,7 +253,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Callback function on when sprite enter a new frame. default value is null. Note: this function is obsolete, use addFrameCallback funciton instead.
      * @type Function
      * @deprecated

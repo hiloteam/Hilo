@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @class Drawable is a wrapper of drawable images.
  * @param {Object} properties create Objects properties, contains all writable properties.
  * @module hilo/view/Drawable
@@ -23,7 +23,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
     rect: null,
 
     /**
-     * 
+     * @language=en
      * Initialize drawable elements.
      * @param {Object} properties Properties need to be initialized.
      */
@@ -57,7 +57,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
 
     Statics: /** @lends Drawable */{
         /**
-         * 
+         * @language=en
          * Check whether the given 'elem' and be wrapped into Drawable object.
          * @param {Object} elem Element to be tested.
          * @return {Boolean} Return true if element can be wrapped into Drawable element, otherwises return false.

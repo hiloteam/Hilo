@@ -1,13 +1,9 @@
 /**
- * Hilo 1.0.0 for commonjs
+ * Hilo 1.0.1 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 var arrayProto = Array.prototype,
     slice = arrayProto.slice;

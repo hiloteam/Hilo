@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * @class canvas画布渲染器。所有可视对象将渲染在canvas画布上。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
  * @augments Renderer
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。

@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * <iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -53,7 +53,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 覆盖渲染方法。
      * @private
      */
@@ -67,7 +67,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 覆盖渲染方法。
      * @private
      */

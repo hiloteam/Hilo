@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7,15 +7,12 @@ define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * @private
- * @class 图片资源加载器。
+ * @class image resources loader.
  * @module hilo/loader/ImageLoader
  * @requires hilo/core/Class
  */

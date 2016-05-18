@@ -12,7 +12,7 @@
 <span class='line'>  5</span>  */</span><span class="WHIT">
 <span class='line'>  6</span> 
 <span class='line'>  7</span> </span><span class="COMM">/**
-<span class='line'>  8</span>  * 
+<span class='line'>  8</span>  * @language=zh
 <span class='line'>  9</span>  * @class View类是所有可视对象或组件的基类。
 <span class='line'> 10</span>  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
 <span class='line'> 11</span>  * @module hilo/view/View
@@ -73,7 +73,7 @@
 <span class='line'> 66</span> </span><span class="WHIT">    </span><span class="NAME">depth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 67</span> 
 <span class='line'> 68</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 69</span>      * 
+<span class='line'> 69</span>      * @language=zh
 <span class='line'> 70</span>      * 返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
 <span class='line'> 71</span>      * @returns {Stage} 可视对象的舞台引用。
 <span class='line'> 72</span>      */</span><span class="WHIT">
@@ -87,7 +87,7 @@
 <span class='line'> 80</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 81</span> 
 <span class='line'> 82</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 83</span>      * 
+<span class='line'> 83</span>      * @language=zh
 <span class='line'> 84</span>      * 返回可视对象缩放后的宽度。
 <span class='line'> 85</span>      * @returns {Number} 可视对象缩放后的宽度。
 <span class='line'> 86</span>      */</span><span class="WHIT">
@@ -96,7 +96,7 @@
 <span class='line'> 89</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 90</span> 
 <span class='line'> 91</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 92</span>      * 
+<span class='line'> 92</span>      * @language=zh
 <span class='line'> 93</span>      * 返回可视对象缩放后的高度。
 <span class='line'> 94</span>      * @returns {Number} 可视对象缩放后的高度。
 <span class='line'> 95</span>      */</span><span class="WHIT">
@@ -105,7 +105,7 @@
 <span class='line'> 98</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 99</span> 
 <span class='line'>100</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>101</span>      * 
+<span class='line'>101</span>      * @language=zh
 <span class='line'>102</span>      * 添加此对象到父容器。
 <span class='line'>103</span>      * @param {Container} container 一个容器。
 <span class='line'>104</span>      * @param {Uint} index 要添加到索引位置。
@@ -118,7 +118,7 @@
 <span class='line'>111</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>112</span> 
 <span class='line'>113</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>114</span>      * 
+<span class='line'>114</span>      * @language=zh
 <span class='line'>115</span>      * 从父容器里删除此对象。
 <span class='line'>116</span>      * @returns {View} 可视对象本身。
 <span class='line'>117</span>      */</span><span class="WHIT">
@@ -129,7 +129,7 @@
 <span class='line'>122</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>123</span> 
 <span class='line'>124</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>125</span>      * 
+<span class='line'>125</span>      * @language=zh
 <span class='line'>126</span>      * 获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
 <span class='line'>127</span>      * @returns {Array} 可视对象的顶点坐标数组vertexs。另vertexs还包含属性：
 <span class='line'>128</span>      * &lt;ul>
@@ -170,7 +170,7 @@
 <span class='line'>163</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>164</span> 
 <span class='line'>165</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>166</span>      * 
+<span class='line'>166</span>      * @language=zh
 <span class='line'>167</span>      * 获取可视对象相对于其某个祖先（默认为最上层容器）的连接矩阵。
 <span class='line'>168</span>      * @param {View} ancestor 可视对象的相对的祖先容器。
 <span class='line'>169</span>      * @private
@@ -198,7 +198,7 @@
 <span class='line'>191</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>192</span> 
 <span class='line'>193</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>194</span>      * 
+<span class='line'>194</span>      * @language=zh
 <span class='line'>195</span>      * 检测由x和y参数指定的点是否在其外接矩形之内。
 <span class='line'>196</span>      * @param {Number} x 要检测的点的x轴坐标。
 <span class='line'>197</span>      * @param {Number} y 要检测的点的y轴坐标。
@@ -217,7 +217,7 @@
 <span class='line'>210</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>211</span> 
 <span class='line'>212</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>213</span>      * 
+<span class='line'>213</span>      * @language=zh
 <span class='line'>214</span>      * 检测object参数指定的对象是否与其相交。
 <span class='line'>215</span>      * @param {View} object 要检测的可视对象。
 <span class='line'>216</span>      * @param {Boolean} usePolyCollision 是否使用多边形碰撞检测。默认为false。
@@ -235,7 +235,7 @@
 <span class='line'>228</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>229</span> 
 <span class='line'>230</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>231</span>      * 
+<span class='line'>231</span>      * @language=zh
 <span class='line'>232</span>      * 可视对象的基本渲染实现，用于框架内部或高级开发使用。通常应该重写render方法。
 <span class='line'>233</span>      * @param {Renderer} renderer 渲染器。
 <span class='line'>234</span>      * @param {Number} delta 渲染时时间偏移量。
@@ -249,7 +249,7 @@
 <span class='line'>242</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>243</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>244</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>245</span>      * 
+<span class='line'>245</span>      * @language=zh
 <span class='line'>246</span>      * 冒泡鼠标事件
 <span class='line'>247</span>     */</span><span class="WHIT">
 <span class='line'>248</span> </span><span class="WHIT">    </span><span class="NAME">_fireMouseEvent</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -286,7 +286,7 @@
 <span class='line'>279</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>280</span> 
 <span class='line'>281</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>282</span>      * 
+<span class='line'>282</span>      * @language=zh
 <span class='line'>283</span>      * 更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
 <span class='line'>284</span>      * 限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
 <span class='line'>285</span>      * @type Function
@@ -295,7 +295,7 @@
 <span class='line'>288</span> </span><span class="WHIT">    </span><span class="NAME">onUpdate</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>289</span> 
 <span class='line'>290</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>291</span>      * 
+<span class='line'>291</span>      * @language=zh
 <span class='line'>292</span>      * 可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
 <span class='line'>293</span>      * @param {Renderer} renderer 渲染器。
 <span class='line'>294</span>      * @param {Number} delta 渲染时时间偏移量。
@@ -305,7 +305,7 @@
 <span class='line'>298</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>299</span> 
 <span class='line'>300</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>301</span>      * 
+<span class='line'>301</span>      * @language=zh
 <span class='line'>302</span>      * 返回可视对象的字符串表示。
 <span class='line'>303</span>      * @returns {String} 可视对象的字符串表示。
 <span class='line'>304</span>      */</span><span class="WHIT">
@@ -315,7 +315,7 @@
 <span class='line'>308</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>309</span> 
 <span class='line'>310</span> </span><span class="COMM">/**
-<span class='line'>311</span>  * 
+<span class='line'>311</span>  * @language=zh
 <span class='line'>312</span>  * @private
 <span class='line'>313</span>  */</span><span class="WHIT">
 <span class='line'>314</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">pointInPolygon</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">poly</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -353,7 +353,7 @@
 <span class='line'>346</span> </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>347</span> 
 <span class='line'>348</span> </span><span class="COMM">/**
-<span class='line'>349</span>  * 
+<span class='line'>349</span>  * @language=zh
 <span class='line'>350</span>  * @private
 <span class='line'>351</span>  */</span><span class="WHIT">
 <span class='line'>352</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">polygonCollision</span><span class="PUNC">(</span><span class="NAME">poly1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">poly2</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -363,7 +363,7 @@
 <span class='line'>356</span> </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>357</span> 
 <span class='line'>358</span> </span><span class="COMM">/**
-<span class='line'>359</span>  * 
+<span class='line'>359</span>  * @language=zh
 <span class='line'>360</span>  * @private
 <span class='line'>361</span>  */</span><span class="WHIT">
 <span class='line'>362</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">doSATCheck</span><span class="PUNC">(</span><span class="NAME">poly1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">poly2</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">

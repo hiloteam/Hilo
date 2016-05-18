@@ -1,19 +1,16 @@
 /**
- * Hilo 1.0.0 for kissy
+ * Hilo 1.0.1 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 KISSY.add('hilo/util/Ticker', function(S, Class, Hilo){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
- * @class Ticker是一个定时器类。它可以按指定帧率重复运行，从而按计划执行代码。
- * @param {Number} fps 指定定时器的运行帧率。
+ * @language=en
+ * @class Ticker is a Timer. It can run the code at specified framerate.
+ * @param {Number} fps The fps of ticker.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
  * @requires hilo/core/Hilo
@@ -36,8 +33,9 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     _measuredFPS: 0,
 
     /**
-     * 启动定时器。
-     * @param {Boolean} userRAF 是否使用requestAnimationFrame，默认为false。
+     * @language=en
+     * Start the ticker.
+     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is not.
      */
     start: function(useRAF){
         if(this._intervalId) return;
@@ -66,7 +64,8 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 停止定时器。
+     * @language=en
+     * Stop the ticker.
      */
     stop: function(){
         clearTimeout(this._intervalId);
@@ -75,14 +74,16 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 暂停定时器。
+     * @language=en
+     * Pause the ticker.
      */
     pause: function(){
         this._paused = true;
     },
 
     /**
-     * 恢复定时器。
+     * @language=en
+     * Resume the ticker.
      */
     resume: function(){
         this._paused = false;
@@ -113,15 +114,17 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 获得测定的运行时帧率。
+     * @language=en
+     * Get the fps.
      */
     getMeasuredFPS: function(){
         return this._measuredFPS;
     },
 
     /**
-     * 添加定时器对象。定时器对象必须实现 tick 方法。
-     * @param {Object} tickObject 要添加的定时器对象。此对象必须包含 tick 方法。
+     * @language=en
+     * Add tickObject. The tickObject must implement the tick method.
+     * @param {Object} tickObject The tickObject to add.It must implement the tick method.
      */
     addTick: function(tickObject){
         if(!tickObject || typeof(tickObject.tick) != 'function'){
@@ -131,8 +134,9 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * 删除定时器对象。
-     * @param {Object} tickObject 要删除的定时器对象。
+     * @language=en
+     * Remove the tickObject
+     * @param {Object} tickObject The tickObject to remove.
      */
     removeTick: function(tickObject){
         var tickers = this._tickers,

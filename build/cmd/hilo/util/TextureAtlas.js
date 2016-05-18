@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7,13 +7,10 @@ define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * @class TextureAtlas纹理集是将许多小的纹理图片整合到一起的一张大图。这个类可根据一个纹理集数据读取纹理小图、精灵动画等。
  * @param {Object} atlasData 纹理集数据。它可包含如下数据：
  * <ul>
@@ -49,6 +46,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
     _sprites: null,
 
     /**
+     * @language=en
      * 获取指定索引位置index的帧数据。
      * @param {Int} index 要获取帧的索引位置。
      * @returns {Object} 帧数据。
@@ -59,6 +57,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
     },
 
     /**
+     * @language=en
      * 获取指定id的精灵数据。
      * @param {String} id 要获取精灵的id。
      * @returns {Object} 精灵数据。
@@ -70,17 +69,18 @@ return Class.create(/** @lends TextureAtlas.prototype */{
 
     Statics: /** @lends TextureAtlas */ {
         /**
-         * 创建精灵帧数据的快捷方法。
-         * @param {String|Array} name 动画名称|一组动画数据
-         * @param {String} frames 帧数据 eg:"0-5"代表第0到第5帧
-         * @param {Number} w 每帧的宽
-         * @param {Number} h 每帧的高
-         * @param {Bollean} loop 是否循环
-         * @param {Number} duration 每帧间隔 默认单位帧, 如果sprite的timeBased为true则单位是毫秒，默认一帧
+         * @language=en
+         * Shorthand method to create spirte frames
+         * @param {String|Array} name Name of one animation|a group of animation
+         * @param {String} frames Frames message, eg:"0-5" means frame 0 to frame 5.
+         * @param {Number} w The width of each frame.
+         * @param {Number} h The height of each frame.
+         * @param {Bollean} loop Is play in loop.
+         * @param {Number} duration The time between each frame. default value is 1 (Frame), but if timeBased is true, default value will be duration(milli-second).
          * @example
-         *  //方式一 单个动画
+         *  //demo1 make one animation
          *  createSpriteFrames("walk", "0-5,8,9", meImg, 55, 88, true, 1);
-         *  //方式二 多组动画
+         *  //demo2 make a group of animation
          *  createSpriteFrames([
          *    ["walk", "0-5,8,9", meImg, 55, 88, true, 1],
          *    ["jump", "0-5", meImg, 55, 88, false, 1]
@@ -134,7 +134,8 @@ return Class.create(/** @lends TextureAtlas.prototype */{
 });
 
 /**
- * 解析纹理集帧数据。
+ * @language=en
+ * Parse texture frames
  * @private
  */
 function parseTextureFrames(atlasData){
@@ -169,7 +170,8 @@ function parseTextureFrames(atlasData){
 }
 
 /**
- * 解析精灵数据。
+ * @language=en
+ * Parse texture sprites
  * @private
  */
 function parseTextureSprites(atlasData, frames){

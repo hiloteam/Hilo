@@ -14,7 +14,7 @@
 <span class='line'>  7</span> </span><span class="COMM">//TODO: 超时timeout，失败重连次数maxTries，更多的下载器Loader，队列暂停恢复等。</span><span class="WHIT">
 <span class='line'>  8</span> 
 <span class='line'>  9</span> </span><span class="COMM">/**
-<span class='line'> 10</span>  * 
+<span class='line'> 10</span>  * @language=en
 <span class='line'> 11</span>  * @class LoadQueue is a queue-like loader.
 <span class='line'> 12</span>  * @param {Object} source ,resource that need to be loaded,could be a single object or array resource.
 <span class='line'> 13</span>  * @module hilo/loader/LoadQueue
@@ -39,7 +39,7 @@
 <span class='line'> 32</span> </span><span class="WHIT">    </span><span class="NAME">_currentIndex</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 33</span> 
 <span class='line'> 34</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 35</span>      * 
+<span class='line'> 35</span>      * @language=en
 <span class='line'> 36</span>      * Add desired resource,could be a single object or array resource.
 <span class='line'> 37</span>      * @param {Object|Array} source ,a single object or array resource. Each resource contains properties like below:
 <span class='line'> 38</span>      * &lt;ul>
@@ -62,7 +62,7 @@
 <span class='line'> 55</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 56</span> 
 <span class='line'> 57</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 58</span>      * 
+<span class='line'> 58</span>      * @language=en
 <span class='line'> 59</span>      * get resource object by id or src
 <span class='line'> 60</span>      * @param {String}  specified id or src
 <span class='line'> 61</span>      * @returns {Object} resource object
@@ -81,7 +81,7 @@
 <span class='line'> 74</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 75</span> 
 <span class='line'> 76</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 77</span>      * 
+<span class='line'> 77</span>      * @language=en
 <span class='line'> 78</span>      * get resource object content  by id or src
 <span class='line'> 79</span>      * @param {String} specified id or src
 <span class='line'> 80</span>      * @returns {Object} resource object content
@@ -92,7 +92,7 @@
 <span class='line'> 85</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 86</span> 
 <span class='line'> 87</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 88</span>      * 
+<span class='line'> 88</span>      * @language=en
 <span class='line'> 89</span>      * start loading
 <span class='line'> 90</span>      * @returns {LoadQueue} the loading instance
 <span class='line'> 91</span>      */</span><span class="WHIT">
@@ -103,7 +103,7 @@
 <span class='line'> 96</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 97</span> 
 <span class='line'> 98</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 99</span>      * 
+<span class='line'> 99</span>      * @language=en
 <span class='line'>100</span>      * @private
 <span class='line'>101</span>      */</span><span class="WHIT">
 <span class='line'>102</span> </span><span class="WHIT">    </span><span class="NAME">_loadNext</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -144,7 +144,7 @@
 <span class='line'>137</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>138</span> 
 <span class='line'>139</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>140</span>      * 
+<span class='line'>140</span>      * @language=en
 <span class='line'>141</span>      * @private
 <span class='line'>142</span>      */</span><span class="WHIT">
 <span class='line'>143</span> </span><span class="WHIT">    </span><span class="NAME">_getLoader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -170,7 +170,7 @@
 <span class='line'>163</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>164</span> 
 <span class='line'>165</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>166</span>      * 
+<span class='line'>166</span>      * @language=en
 <span class='line'>167</span>      * @private
 <span class='line'>168</span>      */</span><span class="WHIT">
 <span class='line'>169</span> </span><span class="WHIT">    </span><span class="NAME">_onItemLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">content</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -184,7 +184,7 @@
 <span class='line'>177</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>178</span> 
 <span class='line'>179</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>180</span>      * 
+<span class='line'>180</span>      * @language=en
 <span class='line'>181</span>      * @private
 <span class='line'>182</span>      */</span><span class="WHIT">
 <span class='line'>183</span> </span><span class="WHIT">    </span><span class="NAME">_onItemError</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -197,7 +197,7 @@
 <span class='line'>190</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>191</span> 
 <span class='line'>192</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>193</span>      * 
+<span class='line'>193</span>      * @language=en
 <span class='line'>194</span>      *  get resource size, loaded or all.
 <span class='line'>195</span>      * @param {Boolean} identify loaded or all resource. default is false, return all resource size. when set true, return loaded resource size.
 <span class='line'>196</span>      * @returns {Number} resource size.
@@ -212,7 +212,7 @@
 <span class='line'>205</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>206</span> 
 <span class='line'>207</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>208</span>      * 
+<span class='line'>208</span>      * @language=en
 <span class='line'>209</span>      * get loaded resource count
 <span class='line'>210</span>      * @returns {Uint} loaded resource count
 <span class='line'>211</span>      */</span><span class="WHIT">
@@ -221,7 +221,7 @@
 <span class='line'>214</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>215</span> 
 <span class='line'>216</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>217</span>      * 
+<span class='line'>217</span>      * @language=en
 <span class='line'>218</span>      * get all resource count
 <span class='line'>219</span>      * @returns {Uint} all resource count
 <span class='line'>220</span>      */</span><span class="WHIT">
@@ -232,7 +232,7 @@
 <span class='line'>225</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>226</span> 
 <span class='line'>227</span> </span><span class="COMM">/**
-<span class='line'>228</span>  * 
+<span class='line'>228</span>  * @language=en
 <span class='line'>229</span>  * @private
 <span class='line'>230</span>  */</span><span class="WHIT">
 <span class='line'>231</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getExtension</span><span class="PUNC">(</span><span class="NAME">src</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">

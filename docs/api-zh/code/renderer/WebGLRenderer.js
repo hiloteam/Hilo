@@ -11,7 +11,7 @@
 
 var DEG2RAD = Math.PI / 180;
 /**
- * 
+ * @language=zh
  * @class webgl画布渲染器。所有可视对象将渲染在canvas画布上。
  * @augments Renderer
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -25,19 +25,19 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     Extends: Renderer,
     Statics:/** @lends WebGLRenderer */{
         /**
-         * 
+         * @language=zh
          * 最大批渲染数量。
          * @type {Number}
          */
         MAX_BATCH_NUM:2000,
         /**
-         * 
+         * @language=zh
          * 顶点属性数。只读属性。
          * @type {Number}
          */
         ATTRIBUTE_NUM:5,
         /**
-         * 
+         * @language=zh
          * 是否支持WebGL。只读属性。
          * @type {Boolean}
          */
@@ -396,7 +396,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 });
 
 /**
- * 
+ * @language=zh
  * shader
  * @param {WebGLRenderer} renderer [description]
  * @param {Object} source

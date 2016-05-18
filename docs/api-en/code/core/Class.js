@@ -5,8 +5,8 @@
  */
 
 /**
- * 
- * Create class example:
+ * @language=en
+ * Create Example Class:
  * <pre>
  * var Bird = Hilo.Class.create({
  *     Extends: Animal,
@@ -28,21 +28,21 @@
  * swallow.fly();
  * Bird.isBird(swallow);
  * </pre>
- * @namespace Class Class is created to provide aid.
+ * @namespace Class Class is created to aid the developer.
  * @static
  * @module hilo/core/Class
  */
 var Class = (function(){
 
 /**
- * 
- * Create a class based on the specified properties, parameters and methods.
- * @param {Object} properties Properties and methods to create the class. They are:
+ * @language=en
+ * Create a class based on the parameters, properties and methods specified.
+ * @param {Object} properties Properties and methods to create the class.
  * <ul>
- * <li><b>Extends</b> - Designated to inherit the parent class.</li>
+ * <li><b>Extends</b> - Designed to inherit the parent class.</li>
  * <li><b>Mixes</b> - Specifies mixed member collection object.</li>
- * <li><b>Statics</b> - Static property or method of specified class.</li>
- * <li><b>constructor</b> - The constructor of the specified class.</li>
+ * <li><b>Statics</b> - Static property or method specified class.</li>
+ * <li><b>constructor</b> -  The constructor of specified class.</li>
  * <li>Other members of the property or method to create the class.</li>
  * </ul>
  * @returns {Object} Create classes.
@@ -55,6 +55,7 @@ var create = function(properties){
 }
 
 /**
+ * @language=en
  * @private
  */
 var implement = function(properties){
@@ -101,6 +102,7 @@ var classMutators = /** @ignore */{
 };
 
 /**
+ * @language=en
  * @private
  */
 var createProto = (function(){
@@ -118,7 +120,7 @@ var createProto = (function(){
 })();
 
 /**
- * 
+ * @language=en
  * Mixed property or method.
  * @param {Object} target Mixed audiences.
  * @param {Object} source The source whose methods and properties are to be mixed. It can support multiple source parameters.

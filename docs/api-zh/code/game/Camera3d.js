@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * @class Camera3d 伪3D虚拟摄像机。
  * @module hilo/game/Camera3d
  * @requires hilo/core/Hilo
@@ -62,7 +62,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * 
+         * @language=zh
          * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z. 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
 	     * @param {Number} x x坐标
 	     * @param {Number} y y坐标
@@ -75,7 +75,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * 
+         * @language=zh
          * 旋转X轴方向角度，相当于欧拉角系统的 beta。
 	     * @param {Number} angle 旋转角度。
 	     */
@@ -84,7 +84,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * 
+         * @language=zh
          * 旋转Y轴方向角度，相当于欧拉角系统的 gamma。
 	     * @param {Number} angle 旋转角度。
 	     */
@@ -93,7 +93,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * 
+         * @language=zh
          * 旋转Z轴方向角度，相当于欧拉角系统的 alpha。
 	     * @param {Number} angle 旋转角度。
 	     */
@@ -102,7 +102,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * 
+         * @language=zh
          * 将三维坐标转换投影为二维坐标。
 	     * @param {object} vector3D 三维坐标对象，必须含有x, y, z属性。
 	     * @param {View} view Hilo.View对象，用于自动转换坐标。
@@ -156,7 +156,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * 
+         * @language=zh
          * Z深度排序。
 	     */
 		sortZ : function(){
@@ -166,7 +166,7 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * 
+         * @language=zh
          * Ticker 轮询使用。
 	     */
 		tick : function(){

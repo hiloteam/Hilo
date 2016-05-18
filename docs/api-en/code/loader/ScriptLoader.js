@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @private
  * @class javascript or JSONP loader
  * @module hilo/loader/ScriptLoader

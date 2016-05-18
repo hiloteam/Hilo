@@ -7,7 +7,7 @@
 var _cacheCanvas = Hilo.createElement('canvas');
 var _cacheContext = _cacheCanvas.getContext('2d');
 /**
- * 
+ * @language=en
  * @class CacheMixin A mixin that contains cache method.You can mix cache method to the target by use Class.mix(target, CacheMixin).
  * @mixin
  * @static
@@ -19,7 +19,7 @@ var _cacheContext = _cacheCanvas.getContext('2d');
 var CacheMixin = {
     _cacheDirty:true,
     /**
-     * 
+     * @language=en
      * Cache the view.
      * @param {Boolean} forceUpdate is force update cache.
      */
@@ -29,7 +29,7 @@ var CacheMixin = {
         }
     },
     /**
-     * 
+     * @language=en
      * Update the cache.
      */
     updateCache:function(){
@@ -44,7 +44,7 @@ var CacheMixin = {
         this._cacheDirty = false;
     },
     /**
-     * 
+     * @language=en
      * set the cache state diry.
      */
     setCacheDirty:function(dirty){

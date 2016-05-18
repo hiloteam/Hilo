@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for commonjs
+ * Hilo 1.0.1 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -8,31 +8,28 @@ var Class = require('../core/Class');
 var View = require('./View');
 var Drawable = require('./Drawable');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
- * @class 动画精灵类。
+ * @class Sprite animation class.
  * @augments View
  * @module hilo/view/Sprite
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
- * @param properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
+ * @param properties Properties parameters for creating object, include all writable properties of this class, also include:
  * <ul>
- * <li><b>frames</b> - 精灵动画的帧数据对象。</li>
+ * <li><b>frames</b> - Sprite animation frames data object.</li>
  * </ul>
- * @property {number} currentFrame 当前播放帧的索引。从0开始。只读属性。
- * @property {boolean} paused 判断精灵是否暂停。默认为false。
- * @property {boolean} loop 判断精灵是否可以循环播放。默认为true。
- * @property {boolean} timeBased 指定精灵动画是否是以时间为基准。默认为false，即以帧为基准。
- * @property {number} interval 精灵动画的帧间隔。如果timeBased为true，则单位为毫秒，否则为帧数。
+ * @property {number} currentFrame Current showing frame index, range from 0, readoly!
+ * @property {boolean} paused Is sprite paused, default value is false.
+ * @property {boolean} loop Is sprite play in loop, default value is false.
+ * @property {boolean} timeBased Is sprite animate base on time, default value is false (base on frame).
+ * @property {number} interval Interval between sprite animation frames. If timeBased is true, measured in ms, otherwise, measured in frames.
  */
 var Sprite = Class.create(/** @lends Sprite.prototype */{
     Extends: View,
@@ -47,30 +44,32 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
         if(properties.frames) this.addFrame(properties.frames);
     },
 
-    _frames: null, //所有帧的集合
-    _frameNames: null, //带名字name的帧的集合
-    _frameElapsed: 0, //当前帧持续的时间或帧数
-    _firstRender: true, //标记是否是第一次渲染
+    _frames: null, //所有帧的集合 Collection of all frames
+    _frameNames: null, //带名字name的帧的集合 Collection of frames that with name
+    _frameElapsed: 0, //当前帧持续的时间或帧数 Elapsed time of current frame.
+    _firstRender: true, //标记是否是第一次渲染 Is the first render.
 
     paused: false,
     loop: true,
     timeBased: false,
     interval: 1,
-    currentFrame: 0, //当前帧的索引
+    currentFrame: 0, //当前帧的索引 Index of current frame
 
     /**
-     * 返回精灵动画的总帧数。
-     * @returns {Uint} 精灵动画的总帧数。
+     * @language=en
+     * Return the total amount of sprite animation frames.
+     * @returns {Uint} The total amount of frames.
      */
     getNumFrames: function(){
         return this._frames ? this._frames.length : 0;
     },
 
     /**
-     * 往精灵动画序列中增加帧。
-     * @param {Object} frame 要增加的精灵动画帧数据。
-     * @param {Int} startIndex 开始增加帧的索引位置。若不设置，默认为在末尾添加。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Add frame into sprite.
+     * @param {Object} frame Frames to add into.
+     * @param {Int} startIndex The index to start adding frame, if is not given, add at the end of sprite.
+     * @returns {Sprite} Sprite itself.
      */
     addFrame: function(frame, startIndex){
         var start = startIndex != null ? startIndex : this._frames.length;
@@ -85,10 +84,11 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 设置精灵动画序列指定索引位置的帧。
-     * @param {Object} frame 要设置的精灵动画帧数据。
-     * @param {Int} index 要设置的索引位置。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Set the frame on the given index.
+     * @param {Object} frame The frame data to set on that index.
+     * @param {Int} index Index of the frame to set.
+     * @returns {Sprite} Sprite itself.
      */
     setFrame: function(frame, index){
         var frames = this._frames,
@@ -104,9 +104,10 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 获取精灵动画序列中指定的帧。
-     * @param {Object} indexOrName 要获取的帧的索引位置或别名。
-     * @returns {Object} 精灵帧对象。
+     * @language=en
+     * Get the frame of given parameter from sprite.
+     * @param {Object} indexOrName The index or name of the frame.
+     * @returns {Object} The sprite object.
      */
     getFrame: function(indexOrName){
         if(typeof indexOrName === 'number'){
@@ -118,9 +119,10 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 获取精灵动画序列中指定帧的索引位置。
-     * @param {Object} frameValue 要获取的帧的索引位置或别名。
-     * @returns {Object} 精灵帧对象。
+     * @language=en
+     * Get frame index from sprite.
+     * @param {Object} frameValue Index or name of the frame.
+     * @returns {Object} Sprite frame object.
      */
     getFrameIndex: function(frameValue){
         var frames = this._frames,
@@ -143,8 +145,9 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 播放精灵动画。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Play sprite.
+     * @returns {Sprite} The Sprite object.
      */
     play: function(){
         this.paused = false;
@@ -152,8 +155,9 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 暂停播放精灵动画。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Pause playing sprite.
+     * @returns {Sprite} The Sprite object.
      */
     stop: function(){
         this.paused = true;
@@ -161,10 +165,11 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 跳转精灵动画到指定的帧。
-     * @param {Object} indexOrName 要跳转的帧的索引位置或别名。
-     * @param {Boolean} pause 指示跳转后是否暂停播放。
-     * @returns {Sprite} Sprite对象本身。
+     * @language=en
+     * Jump to an assigned frame.
+     * @param {Object} indexOrName Index or name of an frame to jump to.
+     * @param {Boolean} pause Does pause after jumping to the new index.
+     * @returns {Sprite} The Sprite object.
      */
     goto: function(indexOrName, pause){
         var total = this._frames.length,
@@ -177,7 +182,8 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 渲染方法。
+     * @language=en
+     * Render function.
      * @private
      */
     _render: function(renderer, delta){
@@ -204,6 +210,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
+     * @language=en
      * @private
      */
     _nextFrame: function(delta){
@@ -239,10 +246,11 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 设置指定帧的回调函数。即每当播放头进入指定帧时调用callback函数。若callback为空，则会删除回调函数。
-     * @param {Int|String} frame 要指定的帧的索引位置或别名。
-     * @param {Function} callback 指定回调函数。
-     * @returns {Sprite} 精灵本身。
+     * @language=en
+     * Set a callback on an assigned frame. Every time assigned frame is played, invoke the callback function. If callback is empty, callback function will be removed.
+     * @param {Int|String} frame Index or name of the assigned frame.
+     * @param {Function} callback Callback function.
+     * @returns {Sprite} The Sprite object.
      */
     setFrameCallback: function(frame, callback){
         frame = this.getFrame(frame);
@@ -251,12 +259,14 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
     },
 
     /**
-     * 精灵动画的播放头进入新帧时的回调方法。默认值为null。此方法已废弃，请使用addFrameCallback方法。
+     * @language=en
+     * Callback function on when sprite enter a new frame. default value is null. Note: this function is obsolete, use addFrameCallback funciton instead.
      * @type Function
      * @deprecated
      */
     onEnterFrame: null
 
 });
+
 
 module.exports = Sprite;

@@ -1,6 +1,6 @@
 /**
- * Hilo 1.0.0 for physics
- * Copyright 2015 alibaba.com
+ * Hilo 1.0.1 for physics
+ * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(){
@@ -6304,7 +6304,6 @@ SimpleMotor.prototype.getImpulse = function()
             var world = new cp.Space();
             world.iterations = 20;
             world.gravity = new cp.Vect(gravity.x, gravity.y);
-            world.sleepTimeThreshold = 0.5;
             world.collisionSlop = 0.5;
             world.sleepTimeThreshold = 0.5;
 

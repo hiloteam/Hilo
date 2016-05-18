@@ -4,8 +4,9 @@
  * Licensed under the MIT License
  */
 
+
 /**
- * 
+ * @language=zh
  * @namespace Hilo的基础核心方法集合。
  * @static
  * @module hilo/core/Hilo
@@ -17,7 +18,7 @@ var win = window, doc = document, docElem = doc.documentElement,
 
 return {
     /**
-     * 
+     * @language=zh
      * 获取一个全局唯一的id。如Stage1，Bitmap2等。
      * @param {String} prefix 生成id的前缀。
      * @returns {String} 全局唯一id。
@@ -33,7 +34,7 @@ return {
     },
 
     /**
-     * 
+     * @language=zh
      * 为指定的可视对象生成一个包含路径的字符串表示形式。如Stage1.Container2.Bitmap3。
      * @param {View} view 指定的可视对象。
      * @returns {String} 可视对象的字符串表示形式。
@@ -48,7 +49,7 @@ return {
     },
 
     /**
-     * 
+     * @language=zh
      * 简单的浅复制对象。
      * @param {Object} target 要复制的目标对象。
      * @param {Object} source 要复制的源对象。
@@ -65,7 +66,7 @@ return {
     },
 
     /**
-     * 
+     * @language=zh
      * 浏览器特性集合。包括：
      * <ul>
      * <li><b>jsVendor</b> - 浏览器厂商CSS前缀的js值。比如：webkit。</li>
@@ -132,7 +133,7 @@ return {
     })(),
 
     /**
-     * 
+     * @language=zh
      * 事件类型枚举对象。包括：
      * <ul>
      * <li><b>POINTER_START</b> - 鼠标或触碰开始事件。对应touchstart或mousedown。</li>
@@ -150,7 +151,7 @@ return {
     })(),
 
     /**
-     * 
+     * @language=zh
      * 可视对象对齐方式枚举对象。包括：
      * <ul>
      * <li><b>TOP_LEFT</b> - 左上角对齐。</li>
@@ -177,7 +178,7 @@ return {
     },
 
     /**
-     * 
+     * @language=zh
      * 获取DOM元素在页面中的内容显示区域。
      * @param {HTMLElement} elem DOM元素。
      * @returns {Object} DOM元素的可视区域。格式为：{left:0, top:0, width:100, height:100}。
@@ -214,7 +215,7 @@ return {
     },
 
     /**
-     * 
+     * @language=zh
      * 创建一个DOM元素。可指定属性和样式。
      * @param {String} type 要创建的DOM元素的类型。比如：'div'。
      * @param {Object} properties 指定DOM元素的属性和样式。
@@ -234,7 +235,7 @@ return {
     },
 
     /**
-     * 
+     * @language=zh
      * 根据参数id获取一个DOM元素。此方法等价于document.getElementById(id)。
      * @param {String} id 要获取的DOM元素的id。
      * @returns {HTMLElement} 一个DOM元素。
@@ -244,7 +245,7 @@ return {
     },
 
     /**
-     * 
+     * @language=zh
      * 设置可视对象DOM元素的CSS样式。
      * @param {View} obj 指定要设置CSS样式的可视对象。
      * @private
@@ -344,7 +345,7 @@ return {
     },
 
     /**
-     * 
+     * @language=zh
      * 生成可视对象的CSS变换样式。
      * @param {View} obj 指定生成CSS变换样式的可视对象。
      * @returns {String} 生成的CSS样式字符串。

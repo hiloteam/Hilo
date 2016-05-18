@@ -12,7 +12,7 @@
 <span class='line'>  5</span>  */</span><span class="WHIT">
 <span class='line'>  6</span> 
 <span class='line'>  7</span> </span><span class="COMM">/**
-<span class='line'>  8</span>  * 
+<span class='line'>  8</span>  * @language=zh
 <span class='line'>  9</span>  * @class Ticker是一个定时器类。它可以按指定帧率重复运行，从而按计划执行代码。
 <span class='line'> 10</span>  * @param {Number} fps 指定定时器的运行帧率。
 <span class='line'> 11</span>  * @module hilo/util/Ticker
@@ -37,7 +37,7 @@
 <span class='line'> 30</span> </span><span class="WHIT">    </span><span class="NAME">_measuredFPS</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 31</span> 
 <span class='line'> 32</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 33</span>      * 
+<span class='line'> 33</span>      * @language=zh
 <span class='line'> 34</span>      * 启动定时器。
 <span class='line'> 35</span>      * @param {Boolean} userRAF 是否使用requestAnimationFrame，默认为false。
 <span class='line'> 36</span>      */</span><span class="WHIT">
@@ -68,7 +68,7 @@
 <span class='line'> 61</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 62</span> 
 <span class='line'> 63</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 64</span>      * 
+<span class='line'> 64</span>      * @language=zh
 <span class='line'> 65</span>      * 停止定时器。
 <span class='line'> 66</span>      */</span><span class="WHIT">
 <span class='line'> 67</span> </span><span class="WHIT">    </span><span class="NAME">stop</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -78,7 +78,7 @@
 <span class='line'> 71</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 72</span> 
 <span class='line'> 73</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 74</span>      * 
+<span class='line'> 74</span>      * @language=zh
 <span class='line'> 75</span>      * 暂停定时器。
 <span class='line'> 76</span>      */</span><span class="WHIT">
 <span class='line'> 77</span> </span><span class="WHIT">    </span><span class="NAME">pause</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -86,7 +86,7 @@
 <span class='line'> 79</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 80</span> 
 <span class='line'> 81</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 82</span>      * 
+<span class='line'> 82</span>      * @language=zh
 <span class='line'> 83</span>      * 恢复定时器。
 <span class='line'> 84</span>      */</span><span class="WHIT">
 <span class='line'> 85</span> </span><span class="WHIT">    </span><span class="NAME">resume</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -118,7 +118,7 @@
 <span class='line'>111</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>112</span> 
 <span class='line'>113</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>114</span>      * 
+<span class='line'>114</span>      * @language=zh
 <span class='line'>115</span>      * 获得测定的运行时帧率。
 <span class='line'>116</span>      */</span><span class="WHIT">
 <span class='line'>117</span> </span><span class="WHIT">    </span><span class="NAME">getMeasuredFPS</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -126,7 +126,7 @@
 <span class='line'>119</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>120</span> 
 <span class='line'>121</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>122</span>      * 
+<span class='line'>122</span>      * @language=zh
 <span class='line'>123</span>      * 添加定时器对象。定时器对象必须实现 tick 方法。
 <span class='line'>124</span>      * @param {Object} tickObject 要添加的定时器对象。此对象必须包含 tick 方法。
 <span class='line'>125</span>      */</span><span class="WHIT">
@@ -138,7 +138,7 @@
 <span class='line'>131</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>132</span> 
 <span class='line'>133</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>134</span>      * 
+<span class='line'>134</span>      * @language=zh
 <span class='line'>135</span>      * 删除定时器对象。
 <span class='line'>136</span>      * @param {Object} tickObject 要删除的定时器对象。
 <span class='line'>137</span>      */</span><span class="WHIT">

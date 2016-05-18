@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * <iframe src='../../../examples/Text.html?noHeader' width = '320' height = '240' scrolling='no'></iframe>
  * <br/>
  * @class Text class provide basic text-display function, use DOMElement for complex text-display.
@@ -52,7 +52,7 @@ var Text = Class.create(/** @lends Text.prototype */{
     textHeight: 0, //read-only
 
     /**
-     * 
+     * @language=en
      * Set text CSS font style.
      * @param {String} font Text CSS font style to set.
      * @returns {Text} the Text object, chained call supported.
@@ -68,7 +68,7 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Overwrite render function.
      * @private
      */
@@ -101,7 +101,7 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw text under the assigned render context.
      * @private
      */
@@ -194,7 +194,7 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Draw a line of text under the assigned render context.
      * @private
      */
@@ -217,7 +217,7 @@ var Text = Class.create(/** @lends Text.prototype */{
 
     Statics: /** @lends Text */{
         /**
-         * 
+         * @language=en
          * Measure the line height of the assigned text font style.
          * @param {String} font Font style to measure.
          * @return {Number} Return line height of the assigned font style.

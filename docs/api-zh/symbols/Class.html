@@ -216,29 +216,6 @@
         <br>
         Class是提供类的创建的辅助工具。
         
-            <br><br>创建类示例：
-<pre>
-var Bird = Hilo.Class.create({
-    Extends: Animal,
-    Mixes: EventMixin,
-    constructor: function(name){
-        this.name = name;
-    },
-    fly: function(){
-        console.log('I am flying');
-    },
-    Statics: {
-        isBird: function(bird){
-            return bird instanceof Bird;
-        }
-    }
-});
-
-var swallow = new Bird('swallow');
-swallow.fly();
-Bird.isBird(swallow);
-</pre>
-        
 
     </p>
 
@@ -275,7 +252,7 @@ Bird.isBird(swallow);
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            根据参数指定的属性和方法创建类。
+                            
                         </div>
                     </td>
                     <td>
@@ -293,7 +270,7 @@ Bird.isBird(swallow);
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            混入属性或方法。
+                            
                         </div>
                     </td>
                     <td>
@@ -340,7 +317,7 @@ Bird.isBird(swallow);
         [Static] 
         <b>create</b>(properties:Object):<span class="light">Object</span>
         </div>
-        <div class="description">根据参数指定的属性和方法创建类。</div>
+        <div class="description"></div>
 
         
 
@@ -384,7 +361,7 @@ Bird.isBird(swallow);
         [Static] 
         <b>mix</b>(target:Object, source:Object):<span class="light">Object</span>
         </div>
-        <div class="description">混入属性或方法。</div>
+        <div class="description"></div>
 
         
 

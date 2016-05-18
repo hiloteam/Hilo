@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @class WebAudio audio playing module. It provides a better way to play and control audio, use on iOS6+ platform.
  * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
  * @param {Object} properties create object properties, include all writable properties of this class.
@@ -52,7 +52,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     _offset: 0, //播放偏移量 the offset of current playing audio
 
     /**
-     * 
+     * @language=en
      * @private Initialize.
      */
     _init:function(){
@@ -65,7 +65,7 @@ return Class.create(/** @lends WebAudio.prototype */{
         this._onDecodeError = this._onDecodeError.bind(this);
     },
     /**
-     * 
+     * @language=en
      * Load audio file. Note: use XMLHttpRequest to load the audio, should pay attention to cross-origin problem.
      */
     load: function(){
@@ -84,7 +84,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _onAudioEvent: function(e){
@@ -113,7 +113,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _onDecodeComplete: function(audioBuffer){
@@ -126,7 +126,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _onDecodeError: function(){
@@ -134,7 +134,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _doPlay: function(){
@@ -160,7 +160,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * @private
      */
     _clearAudioNode: function(){
@@ -174,7 +174,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Play the audio. Restart playing the audio from the beginning if already playing.
      */
     play: function(){
@@ -191,7 +191,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Pause (halt) playing the audio.
      */
     pause: function(){
@@ -204,7 +204,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Continue to play the audio.
      */
     resume: function(){
@@ -215,7 +215,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Stop playing the audio.
      */
     stop: function(){
@@ -229,7 +229,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Set the volume.
      */
     setVolume: function(volume){
@@ -241,7 +241,7 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * 
+     * @language=en
      * Set mute mode.
      */
     setMute: function(muted){
@@ -254,19 +254,19 @@ return Class.create(/** @lends WebAudio.prototype */{
 
     Statics: /** @lends WebAudio */ {
         /**
-         * 
+         * @language=en
          * Does the browser support WebAudio.
          */
         isSupported: AudioContext != null,
 
         /**
-         * 
+         * @language=en
          * Does browser activate WebAudio already.
          */
         enabled: false,
 
         /**
-         * 
+         * @language=en
          * Activate WebAudio. Note: Require user action events to activate. Once activated, can play audio without user action events.
          */
         enable: function(){

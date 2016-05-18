@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * <iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -98,7 +98,7 @@ return Class.create(/** @lends Tween.prototype */{
     onComplete: null,
 
     /**
-     * 
+     * @language=zh
      * 设置缓动对象的初始和目标属性。
      * @param {Object} fromProps 缓动对象的初始属性。
      * @param {Object} toProps 缓动对象的目标属性。
@@ -120,7 +120,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 启动缓动动画的播放。
      * @returns {Tween} Tween变换本身。可用于链式调用。
      */
@@ -135,7 +135,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 停止缓动动画的播放。
      * @returns {Tween} Tween变换本身。可用于链式调用。
      */
@@ -145,7 +145,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 暂停缓动动画的播放。
      * @returns {Tween} Tween变换本身。可用于链式调用。
      */
@@ -157,7 +157,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 恢复缓动动画的播放。
      * @returns {Tween} Tween变换本身。可用于链式调用。
      */
@@ -170,7 +170,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 跳转Tween到指定的时间。
      * @param {Number} time 指定要跳转的时间。取值范围为：0 - duraion。
      * @param {Boolean} pause 是否暂停。
@@ -188,7 +188,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * 连接下一个Tween变换。其开始时间根据delay值不同而不同。当delay值为字符串且以'+'或'-'开始时，Tween的开始时间从当前变换结束点计算，否则以当前变换起始点计算。
      * @param {Tween} tween 要连接的Tween变换。
      * @returns {Tween} Tween变换本身。可用于链式调用。
@@ -209,7 +209,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * Tween类的内部渲染方法。
      * @private
      */
@@ -219,7 +219,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     /**
-     * 
+     * @language=zh
      * Tween类的内部更新方法。
      * @private
      */
@@ -297,13 +297,13 @@ return Class.create(/** @lends Tween.prototype */{
 
     Statics: /** @lends Tween */ {
         /**
-         * 
+         * @language=zh
          * @private
          */
         _tweens: [],
 
         /**
-         * 
+         * @language=zh
          * 更新所有Tween实例。
          * @returns {Object} Tween。
          */
@@ -321,7 +321,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=zh
          * 添加Tween实例。
          * @param {Tween} tween 要添加的Tween对象。
          * @returns {Object} Tween。
@@ -333,7 +333,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=zh
          * 删除Tween实例。
          * @param {Tween|Object|Array} tweenOrTarget 要删除的Tween对象或target对象或要删除的一组对象。
          * @returns {Object} Tween。
@@ -363,7 +363,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=zh
          * 删除所有Tween实例。
          * @returns {Object} Tween。
          */
@@ -373,7 +373,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=zh
          * 创建一个缓动动画，让目标对象从开始属性变换到目标属性。
          * @param {Object|Array} target 缓动目标对象或缓动目标数组。
          * @param fromProps 缓动目标对象的开始属性。
@@ -397,7 +397,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=zh
          * 创建一个缓动动画，让目标对象从当前属性变换到目标属性。
          * @param {Object|Array} target 缓动目标对象或缓动目标数组。
          * @param toProps 缓动目标对象的目标属性。
@@ -409,7 +409,7 @@ return Class.create(/** @lends Tween.prototype */{
         },
 
         /**
-         * 
+         * @language=zh
          * 创建一个缓动动画，让目标对象从指定的起始属性变换到当前属性。
          * @param {Object|Array} target 缓动目标对象或缓动目标数组。
          * @param fromProps 缓动目标对象的初始属性。

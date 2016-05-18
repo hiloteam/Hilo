@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=zh
  * 创建类示例：
  * <pre>
  * var Bird = Hilo.Class.create({
@@ -35,7 +35,7 @@
 var Class = (function(){
 
 /**
- * 
+ * @language=zh
  * 根据参数指定的属性和方法创建类。
  * @param {Object} properties 要创建的类的相关属性和方法。主要有：
  * <ul>
@@ -55,6 +55,7 @@ var create = function(properties){
 }
 
 /**
+ * @language=zh
  * @private
  */
 var implement = function(properties){
@@ -101,6 +102,7 @@ var classMutators = /** @ignore */{
 };
 
 /**
+ * @language=zh
  * @private
  */
 var createProto = (function(){
@@ -118,7 +120,7 @@ var createProto = (function(){
 })();
 
 /**
- * 
+ * @language=zh
  * 混入属性或方法。
  * @param {Object} target 混入目标对象。
  * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。

@@ -12,7 +12,7 @@
 <span class='line'>  5</span>  */</span><span class="WHIT">
 <span class='line'>  6</span> 
 <span class='line'>  7</span> </span><span class="COMM">/**
-<span class='line'>  8</span>  * 
+<span class='line'>  8</span>  * @language=en
 <span class='line'>  9</span>  * @class WebAudio audio playing module. It provides a better way to play and control audio, use on iOS6+ platform.
 <span class='line'> 10</span>  * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
 <span class='line'> 11</span>  * @param {Object} properties create object properties, include all writable properties of this class.
@@ -59,7 +59,7 @@
 <span class='line'> 52</span> </span><span class="WHIT">    </span><span class="NAME">_offset</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">//播放偏移量 the offset of current playing audio</span><span class="WHIT">
 <span class='line'> 53</span> 
 <span class='line'> 54</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 55</span>      * 
+<span class='line'> 55</span>      * @language=en
 <span class='line'> 56</span>      * @private Initialize.
 <span class='line'> 57</span>      */</span><span class="WHIT">
 <span class='line'> 58</span> </span><span class="WHIT">    </span><span class="NAME">_init</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -72,7 +72,7 @@
 <span class='line'> 65</span> </span><span class="WHIT">        </span><span class="NAME">this._onDecodeError</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._onDecodeError.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 66</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 67</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 68</span>      * 
+<span class='line'> 68</span>      * @language=en
 <span class='line'> 69</span>      * Load audio file. Note: use XMLHttpRequest to load the audio, should pay attention to cross-origin problem.
 <span class='line'> 70</span>      */</span><span class="WHIT">
 <span class='line'> 71</span> </span><span class="WHIT">    </span><span class="NAME">load</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -91,7 +91,7 @@
 <span class='line'> 84</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 85</span> 
 <span class='line'> 86</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 87</span>      * 
+<span class='line'> 87</span>      * @language=en
 <span class='line'> 88</span>      * @private
 <span class='line'> 89</span>      */</span><span class="WHIT">
 <span class='line'> 90</span> </span><span class="WHIT">    </span><span class="NAME">_onAudioEvent</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -120,7 +120,7 @@
 <span class='line'>113</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>114</span> 
 <span class='line'>115</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>116</span>      * 
+<span class='line'>116</span>      * @language=en
 <span class='line'>117</span>      * @private
 <span class='line'>118</span>      */</span><span class="WHIT">
 <span class='line'>119</span> </span><span class="WHIT">    </span><span class="NAME">_onDecodeComplete</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">audioBuffer</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -133,7 +133,7 @@
 <span class='line'>126</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>127</span> 
 <span class='line'>128</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>129</span>      * 
+<span class='line'>129</span>      * @language=en
 <span class='line'>130</span>      * @private
 <span class='line'>131</span>      */</span><span class="WHIT">
 <span class='line'>132</span> </span><span class="WHIT">    </span><span class="NAME">_onDecodeError</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -141,7 +141,7 @@
 <span class='line'>134</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>135</span> 
 <span class='line'>136</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>137</span>      * 
+<span class='line'>137</span>      * @language=en
 <span class='line'>138</span>      * @private
 <span class='line'>139</span>      */</span><span class="WHIT">
 <span class='line'>140</span> </span><span class="WHIT">    </span><span class="NAME">_doPlay</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -167,7 +167,7 @@
 <span class='line'>160</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>161</span> 
 <span class='line'>162</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>163</span>      * 
+<span class='line'>163</span>      * @language=en
 <span class='line'>164</span>      * @private
 <span class='line'>165</span>      */</span><span class="WHIT">
 <span class='line'>166</span> </span><span class="WHIT">    </span><span class="NAME">_clearAudioNode</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -181,7 +181,7 @@
 <span class='line'>174</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>175</span> 
 <span class='line'>176</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>177</span>      * 
+<span class='line'>177</span>      * @language=en
 <span class='line'>178</span>      * Play the audio. Restart playing the audio from the beginning if already playing.
 <span class='line'>179</span>      */</span><span class="WHIT">
 <span class='line'>180</span> </span><span class="WHIT">    </span><span class="NAME">play</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -198,7 +198,7 @@
 <span class='line'>191</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>192</span> 
 <span class='line'>193</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>194</span>      * 
+<span class='line'>194</span>      * @language=en
 <span class='line'>195</span>      * Pause (halt) playing the audio.
 <span class='line'>196</span>      */</span><span class="WHIT">
 <span class='line'>197</span> </span><span class="WHIT">    </span><span class="NAME">pause</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -211,7 +211,7 @@
 <span class='line'>204</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>205</span> 
 <span class='line'>206</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>207</span>      * 
+<span class='line'>207</span>      * @language=en
 <span class='line'>208</span>      * Continue to play the audio.
 <span class='line'>209</span>      */</span><span class="WHIT">
 <span class='line'>210</span> </span><span class="WHIT">    </span><span class="NAME">resume</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -222,7 +222,7 @@
 <span class='line'>215</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>216</span> 
 <span class='line'>217</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>218</span>      * 
+<span class='line'>218</span>      * @language=en
 <span class='line'>219</span>      * Stop playing the audio.
 <span class='line'>220</span>      */</span><span class="WHIT">
 <span class='line'>221</span> </span><span class="WHIT">    </span><span class="NAME">stop</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -236,7 +236,7 @@
 <span class='line'>229</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>230</span> 
 <span class='line'>231</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>232</span>      * 
+<span class='line'>232</span>      * @language=en
 <span class='line'>233</span>      * Set the volume.
 <span class='line'>234</span>      */</span><span class="WHIT">
 <span class='line'>235</span> </span><span class="WHIT">    </span><span class="NAME">setVolume</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">volume</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -248,7 +248,7 @@
 <span class='line'>241</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>242</span> 
 <span class='line'>243</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>244</span>      * 
+<span class='line'>244</span>      * @language=en
 <span class='line'>245</span>      * Set mute mode.
 <span class='line'>246</span>      */</span><span class="WHIT">
 <span class='line'>247</span> </span><span class="WHIT">    </span><span class="NAME">setMute</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">muted</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
@@ -261,19 +261,19 @@
 <span class='line'>254</span> 
 <span class='line'>255</span> </span><span class="WHIT">    </span><span class="NAME">Statics</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="COMM">/** @lends WebAudio */</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>256</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>257</span>          * 
+<span class='line'>257</span>          * @language=en
 <span class='line'>258</span>          * Does the browser support WebAudio.
 <span class='line'>259</span>          */</span><span class="WHIT">
 <span class='line'>260</span> </span><span class="WHIT">        </span><span class="NAME">isSupported</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">AudioContext</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>261</span> 
 <span class='line'>262</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>263</span>          * 
+<span class='line'>263</span>          * @language=en
 <span class='line'>264</span>          * Does browser activate WebAudio already.
 <span class='line'>265</span>          */</span><span class="WHIT">
 <span class='line'>266</span> </span><span class="WHIT">        </span><span class="NAME">enabled</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>267</span> 
 <span class='line'>268</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>269</span>          * 
+<span class='line'>269</span>          * @language=en
 <span class='line'>270</span>          * Activate WebAudio. Note: Require user action events to activate. Once activated, can play audio without user action events.
 <span class='line'>271</span>          */</span><span class="WHIT">
 <span class='line'>272</span> </span><span class="WHIT">        </span><span class="NAME">enable</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">

@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.0 for cmd
+ * Hilo 1.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -9,16 +9,13 @@ var Hilo = require('hilo/core/Hilo');
 var HTMLAudio = require('hilo/media/HTMLAudio');
 var WebAudio = require('hilo/media/WebAudio');
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
+ * @language=en
  * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
  * <br/>
- * 使用示例:
+ * demo:
  * <pre>
  * var audio = WebSound.getAudio({
  *     src: 'test.mp3',
@@ -30,7 +27,7 @@ var WebAudio = require('hilo/media/WebAudio');
  *     console.log('end');
  * }).play();
  * </pre>
- * @class 声音播放管理器。
+ * @class Audio playing manager.
  * @static
  * @module hilo/media/WebSound
  * @requires hilo/core/Hilo
@@ -41,7 +38,8 @@ var WebSound = {
     _audios: {},
 
     /**
-     * 激活音频功能。注意：需用户事件触发此方法才有效。目前仅对WebAudio有效。
+     * @language=en
+     * Activate audio function. Note: Require user action events to activate. Currently support WebAudio.
      */
     enableAudio: function(){
         if(WebAudio.isSupported){
@@ -50,9 +48,10 @@ var WebSound = {
     },
 
     /**
-     * 获取音频对象。优先使用WebAudio。
-     * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
-     * @returns {WebAudio|HTMLAudio} 音频播放对象实例。
+     * @language=en
+     * Get audio element. Use WebAudio if supported.
+     * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
+     * @returns {WebAudio|HTMLAudio} Audio playing instance.
      */
     getAudio: function(source){
         source = this._normalizeSource(source);
@@ -70,8 +69,9 @@ var WebSound = {
     },
 
     /**
-     * 删除音频对象。
-     * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
+     * @language=en
+     * Remove audio element.
+     * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
      */
     removeAudio: function(source){
         var src = typeof source === 'string' ? source : source.src;
@@ -85,6 +85,7 @@ var WebSound = {
     },
 
     /**
+     * @language=en
      * @private
      */
     _normalizeSource: function(source){

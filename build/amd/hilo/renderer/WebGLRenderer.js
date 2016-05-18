@@ -1,15 +1,11 @@
 /**
- * Hilo 1.0.0 for amd
+ * Hilo 1.0.1 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define('hilo/renderer/WebGLRenderer', ['hilo/core/Class', 'hilo/renderer/Renderer', 'hilo/geom/Matrix'], function(Class, Renderer, Matrix){
 
-/**
- * Hilo
- * Copyright 2015 alibaba.com
- * Licensed under the MIT License
- */
+
 
 /**
  * Heavily inspired by PIXI's SpriteRenderer:
@@ -18,33 +14,37 @@ define('hilo/renderer/WebGLRenderer', ['hilo/core/Class', 'hilo/renderer/Rendere
 
 var DEG2RAD = Math.PI / 180;
 /**
- * @class webgl画布渲染器。所有可视对象将渲染在canvas画布上。
+ * @language=en
+ * @class WebGLRenderer The WebGLRenderer, all the visual object is drawing on the canvas using WebGL.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
- * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
+ * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/WebGLRenderer
  * @requires hilo/core/Class
  * @requires hilo/renderer/Renderer
  * @requires  hilo/geom/Matrix
- * @property {WebGLRenderingContext} gl webgl上下文。只读属性。
+ * @property {WebGLRenderingContext} gl The WebGL context of the renderer, readonly.
  */
 var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     Extends: Renderer,
     Statics:/** @lends WebGLRenderer */{
         /**
-         * 最大批渲染数量。
+         * @language=en
+         * The max num of batch draw, default is 2000.
          * @type {Number}
          */
         MAX_BATCH_NUM:2000,
         /**
-         * 顶点属性数。只读属性。
+         * @language=en
+         * The num of vertex attributes, readonly.
          * @type {Number}
          */
         ATTRIBUTE_NUM:5,
         /**
-         * 是否支持WebGL。只读属性。
+         * @language=en
+         * is WebGL supported, readonly.
          * @type {Boolean}
          */
-        isSupport:null
+        isSupported:null
     },
     renderType:'webgl',
     gl:null,
@@ -109,7 +109,6 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         }
         return false;
     },
-
     /**
      * @private
      * @see Renderer#draw
@@ -400,6 +399,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 });
 
 /**
+ * @language=en
  * shader
  * @param {WebGLRenderer} renderer [description]
  * @param {Object} source
@@ -519,21 +519,15 @@ Shader.prototype = {
     }
 };
 
-WebGLRenderer.isSupport = function(){
-    if(this._isSupport !== undefined){
-        return this._isSupport;
+WebGLRenderer.isSupported = (function(){
+    var canvas = document.createElement('canvas');
+    if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
+        return true;
     }
     else{
-        var canvas = document.createElement('canvas');
-        if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
-            this._isSupport = true;
-        }
-        else{
-            this._isSupport = false;
-        }
-        return this._isSupport;
+        return false;
     }
-};
+})();
 
 return WebGLRenderer;
 

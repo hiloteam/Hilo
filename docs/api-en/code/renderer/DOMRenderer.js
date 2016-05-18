@@ -5,7 +5,7 @@
  */
 
 /**
- * 
+ * @language=en
  * @class DomRenderer The DomRenderer, all the visual object is drawing using dom element.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
@@ -127,7 +127,7 @@ return Class.create({
 });
 
 /**
- * 
+ * @language=en
  * Create a dom element, you can set the tagName property，such as canvas and div.
  * @param {Object} view A visual object.
  * @param {Object} imageObj The image object to render, include the image propertiy and other associated properties, such as rect.
