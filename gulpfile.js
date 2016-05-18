@@ -205,7 +205,8 @@ var createDocTask = function(languages){
                 '-x=js',
                 // '-q',
                 '-E=FilesLoad.js',
-                '-D="ver:' + pkg.version + '"'
+                '-D="ver:' + pkg.version + '"',
+                '-lang=' + language
             ].join(' ');
             return shell.task(cmd);
         })());
