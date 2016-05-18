@@ -1,7 +1,5 @@
-Hilo - HTML5 Game Framework [![Build Status][travis-image]][travis-url]
+Hilo - HTML5 Game Framework [![Build Status][travis-image]][travis-url] [![gitter.im][gitter-image]][gitter-url]
 ===========================
-
-[![Join the chat at https://gitter.im/hiloteam/Hilo](https://badges.gitter.im/hiloteam/Hilo.svg)](https://gitter.im/hiloteam/Hilo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [中文版](./README_ZH.md)
 
 Hilo is a Cross-end HTML5 Game development solution developed by Alibaba Group. It could help developers build HTML5 games conveniently in minutes.
@@ -36,7 +34,7 @@ Built by gulp:
 
 ### API Documentation
 
-Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs/api-en/index.html)
+Get started by reading [docs/api-en/index.html](http://hiloteam.github.io/Hilo/docs/api-en/index.html)
 
 ### API Samples
  * [Index.html](http://hiloteam.github.io/Hilo/examples/index.html)
@@ -80,5 +78,7 @@ Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs
 
 [travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
 [travis-url]: https://travis-ci.org/hiloteam/Hilo
+[gitter-image]: https://badges.gitter.im/hiloteam/Hilo.svg
+[gitter-url]: https://gitter.im/hiloteam/Hilo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [example-image]: https://img.alicdn.com/tps/TB1vDlBLVXXXXcDXVXXXXXXXXXX-850-806.png
 [example-url]: http://hiloteam.github.io/examples/index.html
