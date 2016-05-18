@@ -34,7 +34,7 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
 
 ### API 文档
 
-参见 [docs/api/index.html](http://hiloteam.github.io/Hilo/docs/api/index.html)
+参见 [docs/api/index.html](http://hiloteam.github.io/Hilo/docs/api-zh/index.html)
 
 ### API 样例
  * [Index.html](http://hiloteam.github.io/Hilo/examples/index.html)

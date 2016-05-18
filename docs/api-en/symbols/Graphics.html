@@ -1,0 +1,2556 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Graphics - Hilo API Document</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Graphics
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Inheritance</b> Graphics
+                 <i class="glyphicon glyphicon-arrow-right"></i> <a href="../symbols/View.html">View</a>
+            </span>
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Module</b> hilo/view/Graphics
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Requires</b>
+                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/View.html">hilo/view/View</a></span>, <span><a href="../symbols/CacheMixin.html">hilo/view/CacheMixin</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">Source</b>
+            <a href="../symbols/src/docs_api-en_code_view_Graphics.js.html">Graphics.js</a>
+        </span>
+
+        <br>
+        Graphics class contains a group of functions for creating vector graphics.
+        
+            <br><br><iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+<br/>
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">Properties</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleProperties()"><i class="glyphicon glyphicon-circle-arrow-right" id="propToggleIcon"></i><span id="propToggleTip">Show Inherited Properties</span></a>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Property	</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Graphics.html#fillAlpha">fillAlpha</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The transparency of color or style inside shapes, default value is 0, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Graphics.html#fillStyle">fillStyle</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            The color or style to use inside shapes, default value is 0 (the black color), readonly!
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Graphics.html#lineAlpha">lineAlpha</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The alpha value (transparency) of line, default value is 1, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Graphics.html#lineCap">lineCap</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            The style of how every end point of line are drawn, value options: butt, round, square.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Graphics.html#lineJoin">lineJoin</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            The joint style of two lines.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Graphics.html#lineWidth">lineWidth</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The thickness of lines in space units, default value is 1, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Graphics.html#miterLimit">miterLimit</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The miter limit ratio in space units, works only when lineJoin value is miter.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Graphics.html#strokeStyle">strokeStyle</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            The color or style to use for lines around shapes, default value is 0 (the black color), readonly!
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#align">align</a></b>:String|Function
+                        </div>
+                        <div class="description">
+                            
+                            The alignment of the view, the value must be one of Hilo.align enum.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#alpha">alpha</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The opacity of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#background">background</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            The background style to fill the view, can be css color, gradient or pattern of canvas
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#boundsArea">boundsArea</a></b>:Array
+                        </div>
+                        <div class="description">
+                            
+                            The vertex points of the view, the points are relative to the center point.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#depth">depth</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The z index of the view, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#drawable">drawable</a></b>:Drawable
+                        </div>
+                        <div class="description">
+                            
+                            The drawable object of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#height">height</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The height of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#id">id</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            The identifier for the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#mask">mask</a></b>:Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Sets a mask for the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#onUpdate">onUpdate</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            This method will call while the view need update(usually caused by ticker update).
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#parent">parent</a></b>:Container
+                        </div>
+                        <div class="description">
+                            
+                            The parent view of this view, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotX">pivotX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            Position of the center point on the x axis of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotY">pivotY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            Position of the center point on the y axis of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pointerEnabled">pointerEnabled</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Is the view can receive DOM events, default value is true.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#rotation">rotation</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The rotation of the view in angles, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleX">scaleX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The x axis scale factor of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleY">scaleY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The y axis scale factor of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            The visibility of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#width">width</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The width of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#x">x</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The position of the view on the x axis relative to the local coordinates of the parent, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#y">y</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The position of the view on the y axis relative to the local coordinates of the parent, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('Hide Inherited Properties');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('Show Inherited Properties');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">Methods</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleMethods()"><i class="glyphicon glyphicon-circle-arrow-right" id="methodToggleIcon"></i><span id="methodToggleTip">Show Inherited Methods</span></a>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">Graphics</a></b>(properties:Object)
+                    </div>
+                    <div class="description">Constructor</div>
+                </td>
+                <td>Graphics</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#beginBitmapFill">beginBitmapFill</a></b>(image:HTMLImageElement, repetition:String):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Begin an image filling pattern.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#beginFill">beginFill</a></b>(fill:String, alpha:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Set how to fill shapes and the transparency.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#beginLinearGradientFill">beginLinearGradientFill</a></b>(x0:Number, y0:Number, x1:Number, y1:Number, colors:Array, ratios:Array):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Set linear gradient filling style to draw shapes.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#beginPath">beginPath</a></b>():Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Begin a new path.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#beginRadialGradientFill">beginRadialGradientFill</a></b>(x0:Number, y0:Number, r0:Number, x1:Number, y1:Number, r1:Number, colors:Array, ratios:Array):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Set radial gradient filling style to draw shapes.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#bezierCurveTo">bezierCurveTo</a></b>(cp1x:Number, cp1y:Number, cp2x:Number, cp2y:Number, x:Number, y:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw a Bézier curve from current point to the point on coordinate (x, y).
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#clear">clear</a></b>():Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Clear all draw actions and reset to the initial state.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#closePath">closePath</a></b>():Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Close current path.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#drawCircle">drawCircle</a></b>(x:Number, y:Number, radius:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw a circle.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#drawEllipse">drawEllipse</a></b>(x:Number, y:Number, width:Number, height:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw an ellipse.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#drawRect">drawRect</a></b>(x:Number, y:Number, width:Number, height:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw a rectangle.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#drawRoundRect">drawRoundRect</a></b>(x:Number, y:Number, width:Number, height:Number, cornerSize:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw a rounded rectangle.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#drawRoundRectComplex">drawRoundRectComplex</a></b>(x:Number, y:Number, width:Number, height:Number, cornerTL:Number, cornerTR:Number, cornerBR:Number, cornerBL:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw a complex rounded rectangle.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#drawSVGPath">drawSVGPath</a></b>(pathData:String):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw a path from the SVG data given by parameters.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#endFill">endFill</a></b>():Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Apply and end lines-drawing and shapes-filling.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#lineStyle">lineStyle</a></b>(thickness:Number, lineColor:String, lineAlpha:Number, lineCap:String, lineJoin:String, miterLimit:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Set the lines style for drawing shapes.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#lineTo">lineTo</a></b>(x:Number, y:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw a line from current point to the point on the coordinate value (x, y).
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#moveTo">moveTo</a></b>(x:Number, y:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Move current drawing point to a new point on coordinate values (x, y).
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#quadraticCurveTo">quadraticCurveTo</a></b>(cpx:Number, cpy:Number, x:Number, y:Number):Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Draw a quadratic Bézier curve from current point to the point on coordinate (x, y).
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#addTo">addTo</a></b>(container:<a href="../symbols/Container.html">Container</a>, index:Uint):View
+                        </div>
+                        <div class="description">
+                            
+                            Add current view to a Contaner.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getBounds">getBounds</a></b>():Array
+                        </div>
+                        <div class="description">
+                            
+                            Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledHeight">getScaledHeight</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            Get the scaled height of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledWidth">getScaledWidth</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            Get the scaled width of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getStage">getStage</a></b>():Stage
+                        </div>
+                        <div class="description">
+                            
+                            Get the stage object of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestObject">hitTestObject</a></b>(object:<a href="../symbols/View.html">View</a>, usePolyCollision:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            Determining whether an object is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestPoint">hitTestPoint</a></b>(x:Number, y:Number, usePolyCollision:Boolean):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Determining whether a point is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#removeFromParent">removeFromParent</a></b>():View
+                        </div>
+                        <div class="description">
+                            
+                            Remove current view from it's parent container
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#render">render</a></b>(renderer:<a href="../symbols/Renderer.html">Renderer</a>, delta:Number)
+                        </div>
+                        <div class="description">
+                            
+                            The render method of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#toString">toString</a></b>():String
+                        </div>
+                        <div class="description">
+                            
+                            Get a string representing current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('Hide Inherited Methods');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('Show Inherited Methods');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">Property Detail</h3>
+    </div>
+    
+        <a class="anchor" name="fillAlpha"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>fillAlpha</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The transparency of color or style inside shapes, default value is 0, readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="fillStyle"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>fillStyle</b><span class="light">:String</span>
+
+        </div>
+        <div class="description">
+            The color or style to use inside shapes, default value is 0 (the black color), readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="lineAlpha"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>lineAlpha</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The alpha value (transparency) of line, default value is 1, readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="lineCap"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>lineCap</b><span class="light">:String</span>
+
+        </div>
+        <div class="description">
+            The style of how every end point of line are drawn, value options: butt, round, square. default value is null, readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="lineJoin"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>lineJoin</b><span class="light">:String</span>
+
+        </div>
+        <div class="description">
+            The joint style of two lines. value options: miter, round, bevel. default value is null, readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="lineWidth"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>lineWidth</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The thickness of lines in space units, default value is 1, readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="miterLimit"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>miterLimit</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The miter limit ratio in space units, works only when lineJoin value is miter. default value is 10, readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="strokeStyle"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>strokeStyle</b><span class="light">:String</span>
+
+        </div>
+        <div class="description">
+            The color or style to use for lines around shapes, default value is 0 (the black color), readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">Constructor</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>Graphics</b>(properties:Object)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>properties</b>:<span>Object</span> 
+                     — Properties parameters of the object to create. Contains all writable properties of this class.
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
+    
+        <a class="anchor" name="beginBitmapFill"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>beginBitmapFill</b>(image:HTMLImageElement, repetition:String):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Begin an image filling pattern.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>image</b>:<span>HTMLImageElement</span> 
+                     — The Image to fill.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>repetition</b>:<span>String</span> 
+                     — The fill repetition style, can be one of valus:repeat, repeat-x, repeat-y, no-repeat. default valus is ''.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="beginFill"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>beginFill</b>(fill:String, alpha:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Set how to fill shapes and the transparency.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fill</b>:<span>String</span> 
+                     — Filling style. this can be color, gradient or pattern.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>alpha</b>:<span>Number</span> 
+                     — Transparency.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="beginLinearGradientFill"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>beginLinearGradientFill</b>(x0:Number, y0:Number, x1:Number, y1:Number, colors:Array, ratios:Array):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Set linear gradient filling style to draw shapes.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x0</b>:<span>Number</span> 
+                     — The x-coordinate value of the linear gradient start point.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y0</b>:<span>Number</span> 
+                     — The y-coordinate value of the linear gradient start point.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x1</b>:<span>Number</span> 
+                     — The x-coordinate value of the linear gradient end point.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y1</b>:<span>Number</span> 
+                     — The y-coordinate value of the linear gradient end point.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>colors</b>:<span>Array</span> 
+                     — An array of CSS colors used in the linear gradient.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>ratios</b>:<span>Array</span> 
+                     — An array of position between start point and end point, should be one-to-one to colors in the colors array. each value range between 0.0 to 1.0.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="beginPath"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>beginPath</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Begin a new path.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="beginRadialGradientFill"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>beginRadialGradientFill</b>(x0:Number, y0:Number, r0:Number, x1:Number, y1:Number, r1:Number, colors:Array, ratios:Array):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Set radial gradient filling style to draw shapes.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x0</b>:<span>Number</span> 
+                     — The x-coordinate value of the radial gradient start circle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y0</b>:<span>Number</span> 
+                     — The y-coordinate value of the radial gradient start circle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>r0</b>:<span>Number</span> 
+                     — The diameter of the radial gradient start circle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x1</b>:<span>Number</span> 
+                     — The x-coordinate value of the radial gradient end circle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y1</b>:<span>Number</span> 
+                     — The y-coordinate value of the radial gradient end circle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>r1</b>:<span>Number</span> 
+                     — The radius of the radial gradient end circle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>colors</b>:<span>Array</span> 
+                     — An array of CSS colors used in the radial gradient.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>ratios</b>:<span>Array</span> 
+                     — An array of position between start circle and end circle, should be one-to-one to colors in the colors array. each value range between 0.0 to 1.0.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="bezierCurveTo"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>bezierCurveTo</b>(cp1x:Number, cp1y:Number, cp2x:Number, cp2y:Number, x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw a Bézier curve from current point to the point on coordinate (x, y).</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cp1x</b>:<span>Number</span> 
+                     — The x-coordinate value of the Bézier curve control point cp1.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cp1y</b>:<span>Number</span> 
+                     — The y-coordinate value of the Bézier curve control point cp1.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cp2x</b>:<span>Number</span> 
+                     — The x-coordinate value of the Bézier curve control point cp2.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cp2y</b>:<span>Number</span> 
+                     — The y-coordinate value of the Bézier curve control point cp2.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="clear"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>clear</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Clear all draw actions and reset to the initial state.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="closePath"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>closePath</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Close current path.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="drawCircle"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>drawCircle</b>(x:Number, y:Number, radius:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw a circle.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>radius</b>:<span>Number</span> 
+                     — The radius of the circle.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="drawEllipse"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>drawEllipse</b>(x:Number, y:Number, width:Number, height:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw an ellipse.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>width</b>:<span>Number</span> 
+                     — The width of the ellipse.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>height</b>:<span>Number</span> 
+                     — The height of the ellipse.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="drawRect"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>drawRect</b>(x:Number, y:Number, width:Number, height:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw a rectangle.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>width</b>:<span>Number</span> 
+                     — The width of the rectangle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>height</b>:<span>Number</span> 
+                     — The height of the rectangle.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="drawRoundRect"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>drawRoundRect</b>(x:Number, y:Number, width:Number, height:Number, cornerSize:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw a rounded rectangle.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>width</b>:<span>Number</span> 
+                     — The width of rounded rectangle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>height</b>:<span>Number</span> 
+                     — The height of rounded rectangle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cornerSize</b>:<span>Number</span> 
+                     — The size of all rounded corners.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="drawRoundRectComplex"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>drawRoundRectComplex</b>(x:Number, y:Number, width:Number, height:Number, cornerTL:Number, cornerTR:Number, cornerBR:Number, cornerBL:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw a complex rounded rectangle.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>width</b>:<span>Number</span> 
+                     — The width of rounded rectangle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>height</b>:<span>Number</span> 
+                     — The height of rounded rectangle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cornerTL</b>:<span>Number</span> 
+                     — The size of the rounded corner on the top-left of the rounded rectangle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cornerTR</b>:<span>Number</span> 
+                     — The size of the rounded corner on the top-right of the rounded rectangle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cornerBR</b>:<span>Number</span> 
+                     — The size of the rounded corner on the bottom-left of the rounded rectangle.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cornerBL</b>:<span>Number</span> 
+                     — The size of the rounded corner on the bottom-right of the rounded rectangle.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="drawSVGPath"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>drawSVGPath</b>(pathData:String):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw a path from the SVG data given by parameters.
+Demo:
+<p>var path = 'M250 150 L150 350 L350 350 Z';</p>
+<p>var shape = new Hilo.Graphics({width:500, height:500});</p>
+<p>shape.drawSVGPath(path).beginFill('#0ff').endFill();</p></div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>pathData</b>:<span>String</span> 
+                     — The SVG path data to draw.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="endFill"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>endFill</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Apply and end lines-drawing and shapes-filling.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="lineStyle"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>lineStyle</b>(thickness:Number, lineColor:String, lineAlpha:Number, lineCap:String, lineJoin:String, miterLimit:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Set the lines style for drawing shapes.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>thickness</b>:<span>Number</span> 
+                     — The thickness of lines, default value is 1.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>lineColor</b>:<span>String</span> 
+                     — The CSS color value of lines, default value is 0 (the black color).
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>lineAlpha</b>:<span>Number</span> 
+                     — The transparency of lines, default value is 1 (fully opaque).
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>lineCap</b>:<span>String</span> 
+                     — The style of how every end point of line are drawn, value options: butt, round, square. default value is null.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>lineJoin</b>:<span>String</span> 
+                     — The joint style of two lines. value options: miter, round, bevel. default value is null.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>miterLimit</b>:<span>Number</span> 
+                     — The miter limit ratio in space units, works only when lineJoin value is miter. default value is 10.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="lineTo"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>lineTo</b>(x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw a line from current point to the point on the coordinate value (x, y).</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="moveTo"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>moveTo</b>(x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Move current drawing point to a new point on coordinate values (x, y).</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="quadraticCurveTo"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>quadraticCurveTo</b>(cpx:Number, cpy:Number, x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
+        </div>
+        <div class="description">Draw a quadratic Bézier curve from current point to the point on coordinate (x, y).</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cpx</b>:<span>Number</span> 
+                     — The x-coordinate value of the Bézier curve control point cp.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>cpy</b>:<span>Number</span> 
+                     — The y-coordinate value of the Bézier curve control point cp.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x-coordinate value.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y-coordinate value.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

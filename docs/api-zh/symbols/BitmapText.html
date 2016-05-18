@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>BitmapText - Hilo API 参考文档</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    BitmapText
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">继承</b> BitmapText
+                 <i class="glyphicon glyphicon-arrow-right"></i> <a href="../symbols/Container.html">Container</a>  <i class="glyphicon glyphicon-arrow-right"></i> <a href="../symbols/View.html">View</a>
+            </span>
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">模块</b> hilo/view/BitmapText
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">依赖</b>
+                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Container.html">hilo/view/Container</a></span>, <span><a href="../symbols/Bitmap.html">hilo/view/Bitmap</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">源码</b>
+            <a href="../symbols/src/docs_api-zh_code_view_BitmapText.js.html">BitmapText.js</a>
+        </span>
+
+        <br>
+        BitmapText类提供使用位图文本的功能。当前仅支持单行文本。
+        
+            <br><br><iframe src='../../../examples/BitmapText.html?noHeader' width = '550' height = '80' scrolling='no'></iframe>
+<br/>
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">属性概览</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleProperties()"><i class="glyphicon glyphicon-circle-arrow-right" id="propToggleIcon"></i><span id="propToggleTip">显示继承属性</span></a>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">属性</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/BitmapText.html#glyphs">glyphs</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            位图字体的字形集合。格式为：{letter:{image:img, rect:[0,0,100,100]}}。
+                        </div>
+                    </td>
+                    <td>
+                        BitmapText
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/BitmapText.html#letterSpacing">letterSpacing</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            字距，即字符间的间隔。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        BitmapText
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/BitmapText.html#text">text</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            位图文本的文本内容。只读属性。设置文本请使用setFont方法。
+                        </div>
+                    </td>
+                    <td>
+                        BitmapText
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/BitmapText.html#textAlign">textAlign</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本请使用setTextAlign方法。
+                        </div>
+                    </td>
+                    <td>
+                        BitmapText
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#align">align</a></b>:String|Function
+                        </div>
+                        <div class="description">
+                            
+                            可视对象相对于父容器的对齐方式。取值可查看Hilo.align枚举对象。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#alpha">alpha</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的透明度。默认值为1。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#background">background</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的背景样式。可以是CSS颜色值、canvas的gradient或pattern填充。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#boundsArea">boundsArea</a></b>:Array
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的区域顶点数组。格式为：[{x:10, y:10}, {x:20, y:20}]。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Container.html#children">children</a></b>:Array
+                        </div>
+                        <div class="description">
+                            
+                            容器的子元素列表。只读。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Container.html#clipChildren">clipChildren</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            指示是否裁剪超出容器范围的子元素。默认为false。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#depth">depth</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的深度，也即z轴的序号。只读属性。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#drawable">drawable</a></b>:Drawable
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的可绘制对象。供高级开发使用。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#height">height</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的高度。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#id">id</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的唯一标识符。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#mask">mask</a></b>:Graphics
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的遮罩图形。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#onUpdate">onUpdate</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#parent">parent</a></b>:Container
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的父容器。只读属性。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotX">pivotX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的中心点的x轴坐标。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotY">pivotY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的中心点的y轴坐标。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Container.html#pointerChildren">pointerChildren</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            指示容器的子元素是否能响应用户交互事件。默认为true。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pointerEnabled">pointerEnabled</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            可视对象是否接受交互事件。默认为接受交互事件，即true。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#rotation">rotation</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的旋转角度。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleX">scaleX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象在x轴上的缩放比例。默认为不缩放，即1。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleY">scaleY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象在y轴上的缩放比例。默认为不缩放，即1。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            可视对象是否可见。默认为可见，即true。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#width">width</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的宽度。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#x">x</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的x轴坐标。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#y">y</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的y轴坐标。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('隐藏继承属性');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('显示继承属性');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">方法概览</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleMethods()"><i class="glyphicon glyphicon-circle-arrow-right" id="methodToggleIcon"></i><span id="methodToggleTip">显示继承方法</span></a>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">方法</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">BitmapText</a></b>(properties:Object)
+                    </div>
+                    <div class="description">构造函数</div>
+                </td>
+                <td>BitmapText</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/BitmapText.html#hasGlyphs">hasGlyphs</a></b>(str:String):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            返回能否使用当前指定的字体显示提供的字符串。
+                        </div>
+                    </td>
+                    <td>
+                        BitmapText
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/BitmapText.html#setText">setText</a></b>(text:String):BitmapText
+                        </div>
+                        <div class="description">
+                            
+                            设置位图文本的文本内容。
+                        </div>
+                    </td>
+                    <td>
+                        BitmapText
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/BitmapText.html#setTextAlign">setTextAlign</a></b>(textAlign):BitmapText
+                        </div>
+                        <div class="description">
+                            
+                            设置位图文本的对齐方式。
+                        </div>
+                    </td>
+                    <td>
+                        BitmapText
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/BitmapText.html#.createGlyphs">createGlyphs</a></b>(text:String, image:Image, col:Number, row:Number):BitmapText
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            简易方式生成字形集合。
+                        </div>
+                    </td>
+                    <td>
+                        BitmapText
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#addChild">addChild</a></b>(child:<a href="../symbols/View.html">View</a>)
+                        </div>
+                        <div class="description">
+                            
+                            在最上面添加子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#addChildAt">addChildAt</a></b>(child:<a href="../symbols/View.html">View</a>, index:Number)
+                        </div>
+                        <div class="description">
+                            
+                            在指定索引位置添加子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#addTo">addTo</a></b>(container:<a href="../symbols/Container.html">Container</a>, index:Uint):View
+                        </div>
+                        <div class="description">
+                            
+                            添加此对象到父容器。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#contains">contains</a></b>(child:<a href="../symbols/View.html">View</a>)
+                        </div>
+                        <div class="description">
+                            
+                            返回是否包含参数指定的子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getBounds">getBounds</a></b>():Array
+                        </div>
+                        <div class="description">
+                            
+                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getChildAt">getChildAt</a></b>(index:Number)
+                        </div>
+                        <div class="description">
+                            
+                            返回指定索引位置的子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getChildById">getChildById</a></b>(id:String)
+                        </div>
+                        <div class="description">
+                            
+                            返回指定id的子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getChildIndex">getChildIndex</a></b>(child:<a href="../symbols/View.html">View</a>)
+                        </div>
+                        <div class="description">
+                            
+                            返回指定子元素的索引值。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getNumChildren">getNumChildren</a></b>():Uint
+                        </div>
+                        <div class="description">
+                            
+                            返回容器的子元素的数量。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledHeight">getScaledHeight</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            返回可视对象缩放后的高度。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledWidth">getScaledWidth</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            返回可视对象缩放后的宽度。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getStage">getStage</a></b>():Stage
+                        </div>
+                        <div class="description">
+                            
+                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getViewAtPoint">getViewAtPoint</a></b>(x:Number, y:Number, usePolyCollision:Boolean, global:Boolean, eventMode:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            返回由x和y指定的点下的对象。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestObject">hitTestObject</a></b>(object:<a href="../symbols/View.html">View</a>, usePolyCollision:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            检测object参数指定的对象是否与其相交。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestPoint">hitTestPoint</a></b>(x:Number, y:Number, usePolyCollision:Boolean):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            检测由x和y参数指定的点是否在其外接矩形之内。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#removeAllChildren">removeAllChildren</a></b>():Container
+                        </div>
+                        <div class="description">
+                            
+                            删除所有的子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#removeChild">removeChild</a></b>(child:<a href="../symbols/View.html">View</a>):View
+                        </div>
+                        <div class="description">
+                            
+                            删除指定的子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#removeChildAt">removeChildAt</a></b>(index:Int):View
+                        </div>
+                        <div class="description">
+                            
+                            在指定索引位置删除子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#removeChildById">removeChildById</a></b>(id:String):View
+                        </div>
+                        <div class="description">
+                            
+                            删除指定id的子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#removeFromParent">removeFromParent</a></b>():View
+                        </div>
+                        <div class="description">
+                            
+                            从父容器里删除此对象。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#render">render</a></b>(renderer:<a href="../symbols/Renderer.html">Renderer</a>, delta:Number)
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#setChildIndex">setChildIndex</a></b>(child:<a href="../symbols/View.html">View</a>, index:Number)
+                        </div>
+                        <div class="description">
+                            
+                            设置子元素的索引位置。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#sortChildren">sortChildren</a></b>(keyOrFunction:Object)
+                        </div>
+                        <div class="description">
+                            
+                            根据指定键值或函数对子元素进行排序。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#swapChildren">swapChildren</a></b>(child1:<a href="../symbols/View.html">View</a>, child2:<a href="../symbols/View.html">View</a>)
+                        </div>
+                        <div class="description">
+                            
+                            交换两个子元素的索引位置。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#swapChildrenAt">swapChildrenAt</a></b>(index1:Number, index2:Number)
+                        </div>
+                        <div class="description">
+                            
+                            交换两个指定索引位置的子元素。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#toString">toString</a></b>():String
+                        </div>
+                        <div class="description">
+                            
+                            返回可视对象的字符串表示。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('隐藏继承方法');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('显示继承方法');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">属性详情</h3>
+    </div>
+    
+        <a class="anchor" name="glyphs"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>glyphs</b><span class="light">:Object</span>
+
+        </div>
+        <div class="description">
+            位图字体的字形集合。格式为：{letter:{image:img, rect:[0,0,100,100]}}。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="letterSpacing"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>letterSpacing</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            字距，即字符间的间隔。默认值为0。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="text"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>text</b><span class="light">:String</span>
+
+        </div>
+        <div class="description">
+            位图文本的文本内容。只读属性。设置文本请使用setFont方法。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="textAlign"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>textAlign</b><span class="light">:String</span>
+
+        </div>
+        <div class="description">
+            文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本请使用setTextAlign方法。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">构造函数</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>BitmapText</b>(properties:Object)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>properties</b>:<span>Object</span> 
+                     — 创建对象的属性参数。可包含此类所有可写属性。
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">方法详情</h3></div>
+    
+        <a class="anchor" name=".createGlyphs"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>createGlyphs</b>(text:String, image:Image, col:Number, row:Number):<span class="light"><a href="../symbols/BitmapText.html">BitmapText</a></span>
+        </div>
+        <div class="description">简易方式生成字形集合。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>text</b>:<span>String</span> 
+                     — 字符文本。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>image</b>:<span>Image</span> 
+                     — 字符图片。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>col</b>:<span>Number</span> 
+                     — 列数  默认和文本字数一样
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>row</b>:<span>Number</span> 
+                     — 行数 默认1行
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/BitmapText.html">BitmapText</a></span>  — BitmapText对象本身。链式调用支持。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="hasGlyphs"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>hasGlyphs</b>(str:String):<span class="light">Boolean</span>
+        </div>
+        <div class="description">返回能否使用当前指定的字体显示提供的字符串。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>str</b>:<span>String</span> 
+                     — 要检测的字符串。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Boolean</span>  — 是否能使用指定字体。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setText"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setText</b>(text:String):<span class="light"><a href="../symbols/BitmapText.html">BitmapText</a></span>
+        </div>
+        <div class="description">设置位图文本的文本内容。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>text</b>:<span>String</span> 
+                     — 要设置的文本内容。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/BitmapText.html">BitmapText</a></span>  — BitmapText对象本身。链式调用支持。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setTextAlign"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setTextAlign</b>(textAlign):<span class="light"><a href="../symbols/BitmapText.html">BitmapText</a></span>
+        </div>
+        <div class="description">设置位图文本的对齐方式。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>textAlign</b>
+                     — 文本对齐方式，值为left、center、right
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/BitmapText.html">BitmapText</a></span>  — BitmapText对象本身。链式调用支持。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

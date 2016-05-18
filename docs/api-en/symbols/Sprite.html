@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Sprite - Hilo API Document</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Sprite
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Inheritance</b> Sprite
+                 <i class="glyphicon glyphicon-arrow-right"></i> <a href="../symbols/View.html">View</a>
+            </span>
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Module</b> hilo/view/Sprite
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Requires</b>
+                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/View.html">hilo/view/View</a></span>, <span><a href="../symbols/Drawable.html">hilo/view/Drawable</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">Source</b>
+            <a href="../symbols/src/docs_api-en_code_view_Sprite.js.html">Sprite.js</a>
+        </span>
+
+        <br>
+        Sprite animation class.
+        
+            <br><br><iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+<br/>
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">Properties</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleProperties()"><i class="glyphicon glyphicon-circle-arrow-right" id="propToggleIcon"></i><span id="propToggleTip">Show Inherited Properties</span></a>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Property	</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#currentFrame">currentFrame</a></b>:number
+                        </div>
+                        <div class="description">
+                            
+                            Current showing frame index, range from 0, readoly!
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#interval">interval</a></b>:number
+                        </div>
+                        <div class="description">
+                            
+                            Interval between sprite animation frames.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#loop">loop</a></b>:boolean
+                        </div>
+                        <div class="description">
+                            
+                            Is sprite play in loop, default value is false.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#onEnterFrame">onEnterFrame</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            Callback function on when sprite enter a new frame.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#paused">paused</a></b>:boolean
+                        </div>
+                        <div class="description">
+                            
+                            Is sprite paused, default value is false.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#timeBased">timeBased</a></b>:boolean
+                        </div>
+                        <div class="description">
+                            
+                            Is sprite animate base on time, default value is false (base on frame).
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#align">align</a></b>:String|Function
+                        </div>
+                        <div class="description">
+                            
+                            The alignment of the view, the value must be one of Hilo.align enum.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#alpha">alpha</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The opacity of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#background">background</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            The background style to fill the view, can be css color, gradient or pattern of canvas
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#boundsArea">boundsArea</a></b>:Array
+                        </div>
+                        <div class="description">
+                            
+                            The vertex points of the view, the points are relative to the center point.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#depth">depth</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The z index of the view, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#drawable">drawable</a></b>:Drawable
+                        </div>
+                        <div class="description">
+                            
+                            The drawable object of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#height">height</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The height of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#id">id</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            The identifier for the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#mask">mask</a></b>:Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Sets a mask for the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#onUpdate">onUpdate</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            This method will call while the view need update(usually caused by ticker update).
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#parent">parent</a></b>:Container
+                        </div>
+                        <div class="description">
+                            
+                            The parent view of this view, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotX">pivotX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            Position of the center point on the x axis of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotY">pivotY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            Position of the center point on the y axis of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pointerEnabled">pointerEnabled</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Is the view can receive DOM events, default value is true.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#rotation">rotation</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The rotation of the view in angles, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleX">scaleX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The x axis scale factor of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleY">scaleY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The y axis scale factor of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            The visibility of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#width">width</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The width of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#x">x</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The position of the view on the x axis relative to the local coordinates of the parent, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#y">y</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The position of the view on the y axis relative to the local coordinates of the parent, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('Hide Inherited Properties');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('Show Inherited Properties');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">Methods</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleMethods()"><i class="glyphicon glyphicon-circle-arrow-right" id="methodToggleIcon"></i><span id="methodToggleTip">Show Inherited Methods</span></a>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">Sprite</a></b>(properties)
+                    </div>
+                    <div class="description">Constructor</div>
+                </td>
+                <td>Sprite</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#addFrame">addFrame</a></b>(frame:Object, startIndex:Int):Sprite
+                        </div>
+                        <div class="description">
+                            
+                            Add frame into sprite.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#getFrame">getFrame</a></b>(indexOrName:Object):Object
+                        </div>
+                        <div class="description">
+                            
+                            Get the frame of given parameter from sprite.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#getFrameIndex">getFrameIndex</a></b>(frameValue:Object):Object
+                        </div>
+                        <div class="description">
+                            
+                            Get frame index from sprite.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#getNumFrames">getNumFrames</a></b>():Uint
+                        </div>
+                        <div class="description">
+                            
+                            Return the total amount of sprite animation frames.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#goto">goto</a></b>(indexOrName:Object, pause:Boolean):Sprite
+                        </div>
+                        <div class="description">
+                            
+                            Jump to an assigned frame.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#play">play</a></b>():Sprite
+                        </div>
+                        <div class="description">
+                            
+                            Play sprite.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#setFrame">setFrame</a></b>(frame:Object, index:Int):Sprite
+                        </div>
+                        <div class="description">
+                            
+                            Set the frame on the given index.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#setFrameCallback">setFrameCallback</a></b>(frame:Int|String, callback:Function):Sprite
+                        </div>
+                        <div class="description">
+                            
+                            Set a callback on an assigned frame.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#stop">stop</a></b>():Sprite
+                        </div>
+                        <div class="description">
+                            
+                            Pause playing sprite.
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#addTo">addTo</a></b>(container:<a href="../symbols/Container.html">Container</a>, index:Uint):View
+                        </div>
+                        <div class="description">
+                            
+                            Add current view to a Contaner.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getBounds">getBounds</a></b>():Array
+                        </div>
+                        <div class="description">
+                            
+                            Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledHeight">getScaledHeight</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            Get the scaled height of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledWidth">getScaledWidth</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            Get the scaled width of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getStage">getStage</a></b>():Stage
+                        </div>
+                        <div class="description">
+                            
+                            Get the stage object of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestObject">hitTestObject</a></b>(object:<a href="../symbols/View.html">View</a>, usePolyCollision:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            Determining whether an object is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestPoint">hitTestPoint</a></b>(x:Number, y:Number, usePolyCollision:Boolean):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Determining whether a point is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#removeFromParent">removeFromParent</a></b>():View
+                        </div>
+                        <div class="description">
+                            
+                            Remove current view from it's parent container
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#render">render</a></b>(renderer:<a href="../symbols/Renderer.html">Renderer</a>, delta:Number)
+                        </div>
+                        <div class="description">
+                            
+                            The render method of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#toString">toString</a></b>():String
+                        </div>
+                        <div class="description">
+                            
+                            Get a string representing current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('Hide Inherited Methods');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('Show Inherited Methods');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">Property Detail</h3>
+    </div>
+    
+        <a class="anchor" name="currentFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>currentFrame</b><span class="light">:number</span>
+
+        </div>
+        <div class="description">
+            Current showing frame index, range from 0, readoly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="interval"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>interval</b><span class="light">:number</span>
+
+        </div>
+        <div class="description">
+            Interval between sprite animation frames. If timeBased is true, measured in ms, otherwise, measured in frames.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="loop"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>loop</b><span class="light">:boolean</span>
+
+        </div>
+        <div class="description">
+            Is sprite play in loop, default value is false.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="onEnterFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>onEnterFrame</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            Callback function on when sprite enter a new frame. default value is null. Note: this function is obsolete, use addFrameCallback funciton instead.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="paused"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>paused</b><span class="light">:boolean</span>
+
+        </div>
+        <div class="description">
+            Is sprite paused, default value is false.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="timeBased"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>timeBased</b><span class="light">:boolean</span>
+
+        </div>
+        <div class="description">
+            Is sprite animate base on time, default value is false (base on frame).
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">Constructor</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>Sprite</b>(properties)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>properties</b>
+                     — Properties parameters for creating object, include all writable properties of this class, also include:
+<ul>
+<li><b>frames</b> - Sprite animation frames data object.</li>
+</ul>
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
+    
+        <a class="anchor" name="addFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>addFrame</b>(frame:Object, startIndex:Int):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">Add frame into sprite.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frame</b>:<span>Object</span> 
+                     — Frames to add into.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>startIndex</b>:<span>Int</span> 
+                     — The index to start adding frame, if is not given, add at the end of sprite.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — Sprite itself.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getFrame</b>(indexOrName:Object):<span class="light">Object</span>
+        </div>
+        <div class="description">Get the frame of given parameter from sprite.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>indexOrName</b>:<span>Object</span> 
+                     — The index or name of the frame.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — The sprite object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getFrameIndex"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getFrameIndex</b>(frameValue:Object):<span class="light">Object</span>
+        </div>
+        <div class="description">Get frame index from sprite.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frameValue</b>:<span>Object</span> 
+                     — Index or name of the frame.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Sprite frame object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getNumFrames"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getNumFrames</b>():<span class="light">Uint</span>
+        </div>
+        <div class="description">Return the total amount of sprite animation frames.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Uint</span>  — The total amount of frames.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="goto"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>goto</b>(indexOrName:Object, pause:Boolean):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">Jump to an assigned frame.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>indexOrName</b>:<span>Object</span> 
+                     — Index or name of an frame to jump to.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>pause</b>:<span>Boolean</span> 
+                     — Does pause after jumping to the new index.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — The Sprite object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="play"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>play</b>():<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">Play sprite.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — The Sprite object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setFrame</b>(frame:Object, index:Int):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">Set the frame on the given index.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frame</b>:<span>Object</span> 
+                     — The frame data to set on that index.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>index</b>:<span>Int</span> 
+                     — Index of the frame to set.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — Sprite itself.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setFrameCallback"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setFrameCallback</b>(frame:Int|String, callback:Function):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">Set a callback on an assigned frame. Every time assigned frame is played, invoke the callback function. If callback is empty, callback function will be removed.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frame</b>:<span>Int|String</span> 
+                     — Index or name of the assigned frame.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>callback</b>:<span>Function</span> 
+                     — Callback function.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — The Sprite object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="stop"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>stop</b>():<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">Pause playing sprite.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — The Sprite object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

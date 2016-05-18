@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Hilo - Hilo API Document</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Hilo
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Module</b> hilo/core/Hilo
+            </span>
+        
+
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">Source</b>
+            <a href="../symbols/src/docs_api-en_code_core_Hilo.js.html">Hilo.js</a>
+        </span>
+
+        <br>
+        Hilo The underlying core set of methods.
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">Properties</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Property	</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                Hilo.
+                             -->
+                            <b><a href="../symbols/Hilo.html#.browser">browser</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Browser feature set includes:
+<ul>
+<li><b>jsVendor</b> - Browser vendors js value CSS prefix.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                Hilo.
+                             -->
+                            <b><a href="../symbols/Hilo.html#.event">event</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Event enumeration objects include:
+<ul>
+<li><b>POINTER_START</b> - Mouse or touch start event.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                Hilo.
+                             -->
+                            <b><a href="../symbols/Hilo.html#.align">align</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Visual object alinment enumeration objects include:
+<ul>
+<li><b>TOP_LEFT</b> - Align the top left corner.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('Hide Inherited Properties');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('Show Inherited Properties');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">Methods</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Hilo.html#.getElementRect">getElementRect</a></b>(elem:HTMLElement):Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Get DOM element content in the page display area.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Hilo.html#.createElement">createElement</a></b>(type:String, properties:Object):HTMLElement
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Create a DOM element.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Hilo.html#.viewToString">viewToString</a></b>(view:<a href="../symbols/View.html">View</a>):String
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Generates a string representation that contains a path to the specified visual object.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Hilo.html#.getUid">getUid</a></b>(prefix:String):String
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Gets a globally unique id.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Hilo.html#.getElement">getElement</a></b>(id:String):HTMLElement
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Gets a DOM element according to the parameter id.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Hilo.html#.copy">copy</a></b>(target:Object, source:Object, strict:Boolean):Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Simple shallow copy objects.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Hilo.html#.getTransformCSS">getTransformCSS</a></b>(obj:<a href="../symbols/View.html">View</a>):String
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Generated visual object CSS style transformation.
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('Hide Inherited Methods');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('Show Inherited Methods');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">Property Detail</h3>
+    </div>
+    
+        <a class="anchor" name=".align"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>align</b>
+
+        </div>
+        <div class="description">
+            Visual object alinment enumeration objects include:
+<ul>
+<li><b>TOP_LEFT</b> - Align the top left corner.</li>
+<li><b>TOP</b> - Top center alignment.</li>
+<li><b>TOP_RIGHT</b> - Align the top right corner.</li>
+<li><b>LEFT</b> - Left center alignment.</li>
+<li><b>CENTER</b> - Align center.</li>
+<li><b>RIGHT</b> - Right center alignment.</li>
+<li><b>BOTTOM_LEFT</b> - Align the bottom left corner.</li>
+<li><b>BOTTOM</b> - Bottom center alignment.</li>
+<li><b>BOTTOM_RIGHT</b> - Align the bottom right corner.</li>
+</ul>
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".browser"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>browser</b>
+
+        </div>
+        <div class="description">
+            Browser feature set includes:
+<ul>
+<li><b>jsVendor</b> - Browser vendors js value CSS prefix. For example: webkit.</li>
+<li><b>cssVendor</b> - Browser vendors css value CSS prefix.</li>
+<li><b>supportTransform</b> - Whether to support CSS Transform transformation.</li>
+<li><b>supportTransform3D</b> - Whether to support CSS Transform 3D transformation.</li>
+<li><b>supportStorage</b> - Whether to support local stores like localStorage.</li>
+<li><b>supportTouch</b> - Whether to support the touch event.</li>
+<li><b>supportCanvas</b> - Whether to support the canvas element.</li>
+</ul>
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".event"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>event</b>
+
+        </div>
+        <div class="description">
+            Event enumeration objects include:
+<ul>
+<li><b>POINTER_START</b> - Mouse or touch start event. Corresponds to touchstart or mousedown.</li>
+<li><b>POINTER_MOVE</b> - Mouse or touch move event. Corresponds to touchmove or mousemove.</li>
+<li><b>POINTER_END</b> - Mouse or touch end event. Corresponds to touchend or mouseup.</li>
+</ul>
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
+    
+        <a class="anchor" name=".copy"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>copy</b>(target:Object, source:Object, strict:Boolean):<span class="light">Object</span>
+        </div>
+        <div class="description">Simple shallow copy objects.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object</span> 
+                     — Target object to copy to.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>source</b>:<span>Object</span> 
+                     — Source object to copy.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>strict</b>:<span>Boolean</span> 
+                     — Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Object after copying.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".createElement"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>createElement</b>(type:String, properties:Object):<span class="light">HTMLElement</span>
+        </div>
+        <div class="description">Create a DOM element. You can specify properties and styles.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — DOM element type to be created. Such as: 'div'.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>properties</b>:<span>Object</span> 
+                     — Properties and styles for DOM element.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>HTMLElement</span>  — A DOM element.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".getElement"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>getElement</b>(id:String):<span class="light">HTMLElement</span>
+        </div>
+        <div class="description">Gets a DOM element according to the parameter id. This method is equivalent to document.getElementById(id).</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>id</b>:<span>String</span> 
+                     — id of the DOM element you want to get.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>HTMLElement</span>  — A DOM element.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".getElementRect"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>getElementRect</b>(elem:HTMLElement):<span class="light">Object</span>
+        </div>
+        <div class="description">Get DOM element content in the page display area.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>elem</b>:<span>HTMLElement</span> 
+                     — DOM elements.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Viewable area DOM elements. Format is: {left:0, top:0, width:100, height:100}.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".getTransformCSS"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>getTransformCSS</b>(obj:<a href="../symbols/View.html">View</a>):<span class="light">String</span>
+        </div>
+        <div class="description">Generated visual object CSS style transformation.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>obj</b>:<span><a href="../symbols/View.html">View</a></span> 
+                     — Specifies visual object whose CSS style must be got.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>String</span>  — String representation of the CSS style.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".getUid"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>getUid</b>(prefix:String):<span class="light">String</span>
+        </div>
+        <div class="description">Gets a globally unique id. Such as Stage1, Bitmap2 etc.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>prefix</b>:<span>String</span> 
+                     — Generated id's prefix.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>String</span>  — Globally unique id.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".viewToString"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>viewToString</b>(view:<a href="../symbols/View.html">View</a>):<span class="light">String</span>
+        </div>
+        <div class="description">Generates a string representation that contains a path to the specified visual object. Such as Stage1.Container2.Bitmap3.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>view</b>:<span><a href="../symbols/View.html">View</a></span> 
+                     — Specified visual object.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>String</span>  — String representation of the visual object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

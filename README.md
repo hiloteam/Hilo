@@ -36,7 +36,7 @@ Built by gulp:
 
 ### API Documentation
 
-Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs/api/index.html)
+Get started by reading [docs/api/index.html](http://hiloteam.github.io/Hilo/docs/api-en/index.html)
 
 ### API Samples
  * [Index.html](http://hiloteam.github.io/Hilo/examples/index.html)

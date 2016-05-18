@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Camera3d - Hilo API Document</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Camera3d
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Module</b> hilo/game/Camera3d
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Requires</b>
+                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Class.html">hilo/core/Class</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">Source</b>
+            <a href="../symbols/src/docs_api-en_code_game_Camera3d.js.html">Camera3d.js</a>
+        </span>
+
+        <br>
+        Camera3d is a pseudo-3d camera.
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">Properties</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Property	</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#fv">fv</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The distance of the fov(The distance between eyes and the Z plane，it determines the scale ratio of the 3d object).
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#fx">fx</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The x position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the x axis).
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#fy">fy</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The y position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the y axis).
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#rotationX">rotationX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The x rotation.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#rotationY">rotationY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The y rotation.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#rotationZ">rotationZ</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The z rotation.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#stage">stage</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            The 3d object's container, it can be stage or container.It is required if you need to sort the 3d object by z axis.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#x">x</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The x position.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#y">y</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The y position.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Camera3d.html#z">z</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The z position.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('Hide Inherited Properties');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('Show Inherited Properties');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">Methods</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">Camera3d</a></b>()
+                    </div>
+                    <div class="description">Constructor</div>
+                </td>
+                <td>Camera3d</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Camera3d.html#project">project</a></b>(vector3D:object, view:<a href="../symbols/View.html">View</a>):Object
+                        </div>
+                        <div class="description">
+                            
+                            Project the 3d point to 2d point.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Camera3d.html#rotateX">rotateX</a></b>(angle:Number)
+                        </div>
+                        <div class="description">
+                            
+                            Rotate by the x axis.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Camera3d.html#rotateY">rotateY</a></b>(angle:Number)
+                        </div>
+                        <div class="description">
+                            
+                            Rotate by the y axis.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Camera3d.html#rotateZ">rotateZ</a></b>(angle:Number)
+                        </div>
+                        <div class="description">
+                            
+                            Rotate by the z axis.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Camera3d.html#sortZ">sortZ</a></b>()
+                        </div>
+                        <div class="description">
+                            
+                            Sort by z axis.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Camera3d.html#tick">tick</a></b>()
+                        </div>
+                        <div class="description">
+                            
+                            Used for the ticker.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Camera3d.html#translate">translate</a></b>(x:Number, y:Number, z:Number)
+                        </div>
+                        <div class="description">
+                            
+                            Translate the camera，used for Zoomin/out feature.
+                        </div>
+                    </td>
+                    <td>
+                        Camera3d
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('Hide Inherited Methods');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('Show Inherited Methods');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">Property Detail</h3>
+    </div>
+    
+        <a class="anchor" name="fv"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>fv</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The distance of the fov(The distance between eyes and the Z plane，it determines the scale ratio of the 3d object).
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="fx"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>fx</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The x position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the x axis).
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="fy"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>fy</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The y position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the y axis).
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="rotationX"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>rotationX</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The x rotation.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="rotationY"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>rotationY</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The y rotation.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="rotationZ"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>rotationZ</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The z rotation.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="stage"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>stage</b><span class="light">:Object</span>
+
+        </div>
+        <div class="description">
+            The 3d object's container, it can be stage or container.It is required if you need to sort the 3d object by z axis.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="x"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>x</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The x position.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="y"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>y</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The y position.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="z"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>z</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            The z position.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">Constructor</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>Camera3d</b>()
+        </div>
+
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
+    
+        <a class="anchor" name="project"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>project</b>(vector3D:object, view:<a href="../symbols/View.html">View</a>):<span class="light">Object</span>
+        </div>
+        <div class="description">Project the 3d point to 2d point.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>vector3D</b>:<span>object</span> 
+                     — The 3d position, it must have x, y and z properties.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>view</b>:<span><a href="../symbols/View.html">View</a></span> 
+                     — The view related to the 3d position.It'll be auto translated by the 3d position.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — The 2d object include z and scale properties, e.g.:{x:x, y:y, z:z, scale}</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="rotateX"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>rotateX</b>(angle:Number)
+        </div>
+        <div class="description">Rotate by the x axis.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>angle</b>:<span>Number</span> 
+                     — The rotate degree.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="rotateY"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>rotateY</b>(angle:Number)
+        </div>
+        <div class="description">Rotate by the y axis.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>angle</b>:<span>Number</span> 
+                     — The rotate degree.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="rotateZ"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>rotateZ</b>(angle:Number)
+        </div>
+        <div class="description">Rotate by the z axis.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>angle</b>:<span>Number</span> 
+                     — The rotate degree.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="sortZ"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>sortZ</b>()
+        </div>
+        <div class="description">Sort by z axis.</div>
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="tick"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>tick</b>()
+        </div>
+        <div class="description">Used for the ticker.</div>
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="translate"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>translate</b>(x:Number, y:Number, z:Number)
+        </div>
+        <div class="description">Translate the camera，used for Zoomin/out feature.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>x</b>:<span>Number</span> 
+                     — The x position.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>y</b>:<span>Number</span> 
+                     — The y position.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>z</b>:<span>Number</span> 
+                     — The z position.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

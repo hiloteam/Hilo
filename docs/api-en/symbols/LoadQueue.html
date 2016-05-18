@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>LoadQueue - Hilo API Document</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    LoadQueue
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Module</b> hilo/loader/LoadQueue
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Requires</b>
+                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/EventMixin.html">hilo/event/EventMixin</a></span>, <span>hilo/loader/ImageLoader</span>, <span>hilo/loader/ScriptLoader</span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">Source</b>
+            <a href="../symbols/src/docs_api-en_code_loader_LoadQueue.js.html">LoadQueue.js</a>
+        </span>
+
+        <br>
+        LoadQueue is a queue-like loader.
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">Properties</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Property	</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/LoadQueue.html#maxConnections">maxConnections</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            ,the limited concurrent connections.
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('Hide Inherited Properties');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('Show Inherited Properties');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">Methods</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">LoadQueue</a></b>(source:Object)
+                    </div>
+                    <div class="description">Constructor</div>
+                </td>
+                <td>LoadQueue</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#add">add</a></b>(source:Object|Array):LoadQueue
+                        </div>
+                        <div class="description">
+                            
+                            Add desired resource,could be a single object or array resource.
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#get">get</a></b>(specified:String):Object
+                        </div>
+                        <div class="description">
+                            
+                            get resource object by id or src
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#getContent">getContent</a></b>(specified:String):Object
+                        </div>
+                        <div class="description">
+                            
+                            get resource object content  by id or src
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#getLoaded">getLoaded</a></b>():Uint
+                        </div>
+                        <div class="description">
+                            
+                            get loaded resource count
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#getSize">getSize</a></b>(identify:Boolean):Number
+                        </div>
+                        <div class="description">
+                            
+                            get resource size, loaded or all.
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#getTotal">getTotal</a></b>():Uint
+                        </div>
+                        <div class="description">
+                            
+                            get all resource count
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#start">start</a></b>():LoadQueue
+                        </div>
+                        <div class="description">
+                            
+                            start loading
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('Hide Inherited Methods');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('Show Inherited Methods');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">Property Detail</h3>
+    </div>
+    
+        <a class="anchor" name="maxConnections"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>maxConnections</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            ,the limited concurrent connections. default value  2.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">Constructor</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>LoadQueue</b>(source:Object)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>source</b>:<span>Object</span> 
+                     — ,resource that need to be loaded,could be a single object or array resource.
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
+    
+        <a class="anchor" name="add"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>add</b>(source:Object|Array):<span class="light"><a href="../symbols/LoadQueue.html">LoadQueue</a></span>
+        </div>
+        <div class="description">Add desired resource,could be a single object or array resource.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>source</b>:<span>Object|Array</span> 
+                     — ,a single object or array resource. Each resource contains properties like below:
+<ul>
+<li><b>id</b> - resource identifier</li>
+<li><b>src</b> - resource url</li>
+<li><b>type</b> - resource type. By default, we automatically identify resource by file suffix and choose the relevant loader for you</li>
+<li><b>loader</b> - specified resource loader. If you specify this,we abandon choosing loader inside</li>
+<li><b>noCache</b> - a tag that set on or off to prevent cache,implemented by adding timestamp inside</li>
+<li><b>size</b> - predicted resource size, help calculating loading progress</li>
+</ul>
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/LoadQueue.html">LoadQueue</a></span>  — 下载队列实例本身。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="get"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>get</b>(specified:String):<span class="light">Object</span>
+        </div>
+        <div class="description">get resource object by id or src</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>specified</b>:<span>String</span> 
+                     — id or src
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — resource object</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getContent"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getContent</b>(specified:String):<span class="light">Object</span>
+        </div>
+        <div class="description">get resource object content  by id or src</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>specified</b>:<span>String</span> 
+                     — id or src
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — resource object content</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getLoaded"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getLoaded</b>():<span class="light">Uint</span>
+        </div>
+        <div class="description">get loaded resource count</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Uint</span>  — loaded resource count</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getSize"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getSize</b>(identify:Boolean):<span class="light">Number</span>
+        </div>
+        <div class="description">get resource size, loaded or all.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>identify</b>:<span>Boolean</span> 
+                     — loaded or all resource. default is false, return all resource size. when set true, return loaded resource size.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Number</span>  — resource size.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getTotal"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getTotal</b>():<span class="light">Uint</span>
+        </div>
+        <div class="description">get all resource count</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Uint</span>  — all resource count</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="start"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>start</b>():<span class="light"><a href="../symbols/LoadQueue.html">LoadQueue</a></span>
+        </div>
+        <div class="description">start loading</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/LoadQueue.html">LoadQueue</a></span>  — the loading instance</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Matrix - Hilo API 参考文档</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Matrix
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">模块</b> hilo/geom/Matrix
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">依赖</b>
+                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">源码</b>
+            <a href="../symbols/src/docs_api-zh_code_geom_Matrix.js.html">Matrix.js</a>
+        </span>
+
+        <br>
+        Matrix类表示一个转换矩阵，它确定如何将点从一个坐标空间映射到另一个坐标空间。
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">方法概览</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">方法</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">Matrix</a></b>(a:Number, b:Number, c:Number, d:Number, tx:Number, ty:Number)
+                    </div>
+                    <div class="description">构造函数</div>
+                </td>
+                <td>Matrix</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#concat">concat</a></b>(mtx:<a href="../symbols/Matrix.html">Matrix</a>):Matrix
+                        </div>
+                        <div class="description">
+                            
+                            将某个矩阵与当前矩阵连接，从而将这两个矩阵的几何效果有效地结合在一起。
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#identity">identity</a></b>():Matrix
+                        </div>
+                        <div class="description">
+                            
+                            为每个矩阵属性设置一个值，该值将导致 null 转换。通过应用恒等矩阵转换的对象将与原始对象完全相同。
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#invert">invert</a></b>():Matrix
+                        </div>
+                        <div class="description">
+                            
+                            执行原始矩阵的逆转换。您可以将一个逆矩阵应用于对象来撤消在应用原始矩阵时执行的转换。
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#rotate">rotate</a></b>(angle:Number):Matrix
+                        </div>
+                        <div class="description">
+                            
+                            对 Matrix 对象应用旋转转换。
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#scale">scale</a></b>(sx:Number, sy:Number):Matrix
+                        </div>
+                        <div class="description">
+                            
+                            对矩阵应用缩放转换。
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#transformPoint">transformPoint</a></b>(point:Object, round:Boolean, returnNew:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            返回将 Matrix 对象表示的几何转换应用于指定点所产生的结果。
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#translate">translate</a></b>(dx:Number, dy:Number):Matrix
+                        </div>
+                        <div class="description">
+                            
+                            沿 x 和 y 轴平移矩阵，由 dx 和 dy 参数指定。
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('隐藏继承方法');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('显示继承方法');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">构造函数</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>Matrix</b>(a:Number, b:Number, c:Number, d:Number, tx:Number, ty:Number)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>a</b>:<span>Number</span> 
+                     — 缩放或旋转图像时影响像素沿 x 轴定位的值。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>b</b>:<span>Number</span> 
+                     — 旋转或倾斜图像时影响像素沿 y 轴定位的值。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>c</b>:<span>Number</span> 
+                     — 旋转或倾斜图像时影响像素沿 x 轴定位的值。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>d</b>:<span>Number</span> 
+                     — 缩放或旋转图像时影响像素沿 y 轴定位的值。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>tx</b>:<span>Number</span> 
+                     — 沿 x 轴平移每个点的距离。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>ty</b>:<span>Number</span> 
+                     — 沿 y 轴平移每个点的距离。
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">方法详情</h3></div>
+    
+        <a class="anchor" name="concat"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>concat</b>(mtx:<a href="../symbols/Matrix.html">Matrix</a>):<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">将某个矩阵与当前矩阵连接，从而将这两个矩阵的几何效果有效地结合在一起。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>mtx</b>:<span><a href="../symbols/Matrix.html">Matrix</a></span> 
+                     — 要连接到源矩阵的矩阵。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — 一个Matrix对象。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="identity"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>identity</b>():<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">为每个矩阵属性设置一个值，该值将导致 null 转换。通过应用恒等矩阵转换的对象将与原始对象完全相同。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — 一个Matrix对象。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="invert"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>invert</b>():<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">执行原始矩阵的逆转换。您可以将一个逆矩阵应用于对象来撤消在应用原始矩阵时执行的转换。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — 一个Matrix对象。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="rotate"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>rotate</b>(angle:Number):<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">对 Matrix 对象应用旋转转换。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>angle</b>:<span>Number</span> 
+                     — 旋转的角度。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — 一个Matrix对象。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="scale"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>scale</b>(sx:Number, sy:Number):<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">对矩阵应用缩放转换。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>sx</b>:<span>Number</span> 
+                     — 用于沿 x 轴缩放对象的乘数。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>sy</b>:<span>Number</span> 
+                     — 用于沿 y 轴缩放对象的乘数。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — 一个Matrix对象。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="transformPoint"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>transformPoint</b>(point:Object, round:Boolean, returnNew:Boolean):<span class="light">Object</span>
+        </div>
+        <div class="description">返回将 Matrix 对象表示的几何转换应用于指定点所产生的结果。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>point</b>:<span>Object</span> 
+                     — 想要获得其矩阵转换结果的点。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>round</b>:<span>Boolean</span> 
+                     — 是否对点的坐标进行向上取整。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>returnNew</b>:<span>Boolean</span> 
+                     — 是否返回一个新的点。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — 由应用矩阵转换所产生的点。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="translate"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>translate</b>(dx:Number, dy:Number):<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">沿 x 和 y 轴平移矩阵，由 dx 和 dy 参数指定。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>dx</b>:<span>Number</span> 
+                     — 沿 x 轴向右移动的量（以像素为单位）。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>dy</b>:<span>Number</span> 
+                     — 沿 y 轴向右移动的量（以像素为单位）。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — 一个Matrix对象。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

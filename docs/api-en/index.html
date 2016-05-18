@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hilo API Document</title>
+<meta name="generator" content="JsDoc Toolkit"/>
+<link href="../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+  <div class="col-md-3">
+    
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="hilo-header">All Class Index<span class="small">(v1.0.0)</span></div>
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th><h3>Class</h3></th>
+          <th><h3>Info</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+
+      
+      
+      
+      <tr><td><h4><a href="symbols/Class.html">Class</a></h4></td><td>Class Class is created to provide aid.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Hilo.html">Hilo</a></h4></td><td>Hilo The underlying core set of methods.</td></tr>
+      
+      <tr><td><h4><a href="symbols/EventMixin.html">EventMixin</a></h4></td><td>EventMixin is a mixin on event related functions.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Camera.html">Camera</a></h4></td><td>Camera.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Camera3d.html">Camera3d</a></h4></td><td>Camera3d is a pseudo-3d camera.</td></tr>
+      
+      <tr><td><h4><a href="symbols/ParticleSystem.html">ParticleSystem</a></h4></td><td>ParticleSystem A particle system.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Matrix.html">Matrix</a></h4></td><td>Matrix class is a transforming matrix, which declare how points in one coordinate maped to another coordinate.</td></tr>
+      
+      <tr><td><h4><a href="symbols/LoadQueue.html">LoadQueue</a></h4></td><td>LoadQueue is a queue-like loader.</td></tr>
+      
+      <tr><td><h4><a href="symbols/HTMLAudio.html">HTMLAudio</a></h4></td><td>HTMLAudio is an audio playing module, which uses HTMLAudioElement to play audio.</td></tr>
+      
+      <tr><td><h4><a href="symbols/WebAudio.html">WebAudio</a></h4></td><td>WebAudio audio playing module.</td></tr>
+      
+      <tr><td><h4><a href="symbols/WebSound.html">WebSound</a></h4></td><td>Audio playing manager.</td></tr>
+      
+      <tr><td><h4><a href="symbols/CanvasRenderer.html">CanvasRenderer</a></h4></td><td>CanvasRenderer CanvasRenderer, all the visual object is drawing on the canvas element.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.</td></tr>
+      
+      <tr><td><h4><a href="symbols/DOMRenderer.html">DOMRenderer</a></h4></td><td>DomRenderer The DomRenderer, all the visual object is drawing using dom element.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Renderer.html">Renderer</a></h4></td><td>Renderer Renderer is the base class of renderer.</td></tr>
+      
+      <tr><td><h4><a href="symbols/WebGLRenderer.html">WebGLRenderer</a></h4></td><td>WebGLRenderer The WebGLRenderer, all the visual object is drawing on the canvas using WebGL.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Ease.html">Ease</a></h4></td><td>Ease class provides multiple easing functions for Tween.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Tween.html">Tween</a></h4></td><td>Tween class makes tweening (easing, slow motion).</td></tr>
+      
+      <tr><td><h4><a href="symbols/TextureAtlas.html">TextureAtlas</a></h4></td><td>TextureAtlas纹理集是将许多小的纹理图片整合到一起的一张大图。这个类可根据一个纹理集数据读取纹理小图、精灵动画等。</td></tr>
+      
+      <tr><td><h4><a href="symbols/Ticker.html">Ticker</a></h4></td><td>Ticker is a Timer.</td></tr>
+      
+      <tr><td><h4><a href="symbols/drag.html">drag</a></h4></td><td>drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.copy(target, drag).</td></tr>
+      
+      <tr><td><h4><a href="symbols/Bitmap.html">Bitmap</a></h4></td><td>Bitmap</td></tr>
+      
+      <tr><td><h4><a href="symbols/BitmapText.html">BitmapText</a></h4></td><td>BitmapText  support bitmap text function ,but only support single-line text</td></tr>
+      
+      <tr><td><h4><a href="symbols/Button.html">Button</a></h4></td><td>Button class is a simple button class, contains four kinds of state: 'up', 'over', 'down', 'disabled'</td></tr>
+      
+      <tr><td><h4><a href="symbols/CacheMixin.html">CacheMixin</a></h4></td><td>CacheMixin A mixin that contains cache method.You can mix cache method to the target by use Class.mix(target, CacheMixin).</td></tr>
+      
+      <tr><td><h4><a href="symbols/Container.html">Container</a></h4></td><td>Container is the base class to all container classes.</td></tr>
+      
+      <tr><td><h4><a href="symbols/DOMElement.html">DOMElement</a></h4></td><td>DOMElement is a wrapper of dom element.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Drawable.html">Drawable</a></h4></td><td>Drawable is a wrapper of drawable images.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Graphics.html">Graphics</a></h4></td><td>Graphics class contains a group of functions for creating vector graphics.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Sprite.html">Sprite</a></h4></td><td>Sprite animation class.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Stage.html">Stage</a></h4></td><td>Stage is the root of all visual object tree, any visual object will be render only after being added to Stage or any children elements of Stage.</td></tr>
+      
+      <tr><td><h4><a href="symbols/Text.html">Text</a></h4></td><td>Text class provide basic text-display function, use DOMElement for complex text-display.</td></tr>
+      
+      <tr><td><h4><a href="symbols/View.html">View</a></h4></td><td>View View is the base class of all display objects</td></tr>
+      
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../bootstrap3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>

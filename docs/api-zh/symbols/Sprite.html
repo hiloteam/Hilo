@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Sprite - Hilo API 参考文档</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Sprite
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">继承</b> Sprite
+                 <i class="glyphicon glyphicon-arrow-right"></i> <a href="../symbols/View.html">View</a>
+            </span>
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">模块</b> hilo/view/Sprite
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">依赖</b>
+                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/View.html">hilo/view/View</a></span>, <span><a href="../symbols/Drawable.html">hilo/view/Drawable</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">源码</b>
+            <a href="../symbols/src/docs_api-zh_code_view_Sprite.js.html">Sprite.js</a>
+        </span>
+
+        <br>
+        动画精灵类。
+        
+            <br><br><iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+<br/>
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">属性概览</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleProperties()"><i class="glyphicon glyphicon-circle-arrow-right" id="propToggleIcon"></i><span id="propToggleTip">显示继承属性</span></a>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">属性</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#currentFrame">currentFrame</a></b>:number
+                        </div>
+                        <div class="description">
+                            
+                            当前播放帧的索引。从0开始。只读属性。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#interval">interval</a></b>:number
+                        </div>
+                        <div class="description">
+                            
+                            精灵动画的帧间隔。如果timeBased为true，则单位为毫秒，否则为帧数。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#loop">loop</a></b>:boolean
+                        </div>
+                        <div class="description">
+                            
+                            判断精灵是否可以循环播放。默认为true。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#onEnterFrame">onEnterFrame</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            精灵动画的播放头进入新帧时的回调方法。默认值为null。此方法已废弃，请使用addFrameCallback方法。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#paused">paused</a></b>:boolean
+                        </div>
+                        <div class="description">
+                            
+                            判断精灵是否暂停。默认为false。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Sprite.html#timeBased">timeBased</a></b>:boolean
+                        </div>
+                        <div class="description">
+                            
+                            指定精灵动画是否是以时间为基准。默认为false，即以帧为基准。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#align">align</a></b>:String|Function
+                        </div>
+                        <div class="description">
+                            
+                            可视对象相对于父容器的对齐方式。取值可查看Hilo.align枚举对象。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#alpha">alpha</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的透明度。默认值为1。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#background">background</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的背景样式。可以是CSS颜色值、canvas的gradient或pattern填充。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#boundsArea">boundsArea</a></b>:Array
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的区域顶点数组。格式为：[{x:10, y:10}, {x:20, y:20}]。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#depth">depth</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的深度，也即z轴的序号。只读属性。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#drawable">drawable</a></b>:Drawable
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的可绘制对象。供高级开发使用。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#height">height</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的高度。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#id">id</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的唯一标识符。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#mask">mask</a></b>:Graphics
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的遮罩图形。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#onUpdate">onUpdate</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#parent">parent</a></b>:Container
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的父容器。只读属性。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotX">pivotX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的中心点的x轴坐标。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotY">pivotY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的中心点的y轴坐标。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pointerEnabled">pointerEnabled</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            可视对象是否接受交互事件。默认为接受交互事件，即true。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#rotation">rotation</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的旋转角度。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleX">scaleX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象在x轴上的缩放比例。默认为不缩放，即1。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleY">scaleY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象在y轴上的缩放比例。默认为不缩放，即1。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            可视对象是否可见。默认为可见，即true。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#width">width</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的宽度。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#x">x</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的x轴坐标。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#y">y</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的y轴坐标。默认值为0。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('隐藏继承属性');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('显示继承属性');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">方法概览</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleMethods()"><i class="glyphicon glyphicon-circle-arrow-right" id="methodToggleIcon"></i><span id="methodToggleTip">显示继承方法</span></a>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">方法</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">Sprite</a></b>(properties)
+                    </div>
+                    <div class="description">构造函数</div>
+                </td>
+                <td>Sprite</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#addFrame">addFrame</a></b>(frame:Object, startIndex:Int):Sprite
+                        </div>
+                        <div class="description">
+                            
+                            往精灵动画序列中增加帧。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#getFrame">getFrame</a></b>(indexOrName:Object):Object
+                        </div>
+                        <div class="description">
+                            
+                            获取精灵动画序列中指定的帧。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#getFrameIndex">getFrameIndex</a></b>(frameValue:Object):Object
+                        </div>
+                        <div class="description">
+                            
+                            获取精灵动画序列中指定帧的索引位置。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#getNumFrames">getNumFrames</a></b>():Uint
+                        </div>
+                        <div class="description">
+                            
+                            返回精灵动画的总帧数。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#goto">goto</a></b>(indexOrName:Object, pause:Boolean):Sprite
+                        </div>
+                        <div class="description">
+                            
+                            跳转精灵动画到指定的帧。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#play">play</a></b>():Sprite
+                        </div>
+                        <div class="description">
+                            
+                            播放精灵动画。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#setFrame">setFrame</a></b>(frame:Object, index:Int):Sprite
+                        </div>
+                        <div class="description">
+                            
+                            设置精灵动画序列指定索引位置的帧。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#setFrameCallback">setFrameCallback</a></b>(frame:Int|String, callback:Function):Sprite
+                        </div>
+                        <div class="description">
+                            
+                            设置指定帧的回调函数。即每当播放头进入指定帧时调用callback函数。若callback为空，则会删除回调函数。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Sprite.html#stop">stop</a></b>():Sprite
+                        </div>
+                        <div class="description">
+                            
+                            暂停播放精灵动画。
+                        </div>
+                    </td>
+                    <td>
+                        Sprite
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#addTo">addTo</a></b>(container:<a href="../symbols/Container.html">Container</a>, index:Uint):View
+                        </div>
+                        <div class="description">
+                            
+                            添加此对象到父容器。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getBounds">getBounds</a></b>():Array
+                        </div>
+                        <div class="description">
+                            
+                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledHeight">getScaledHeight</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            返回可视对象缩放后的高度。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledWidth">getScaledWidth</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            返回可视对象缩放后的宽度。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getStage">getStage</a></b>():Stage
+                        </div>
+                        <div class="description">
+                            
+                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestObject">hitTestObject</a></b>(object:<a href="../symbols/View.html">View</a>, usePolyCollision:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            检测object参数指定的对象是否与其相交。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestPoint">hitTestPoint</a></b>(x:Number, y:Number, usePolyCollision:Boolean):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            检测由x和y参数指定的点是否在其外接矩形之内。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#removeFromParent">removeFromParent</a></b>():View
+                        </div>
+                        <div class="description">
+                            
+                            从父容器里删除此对象。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#render">render</a></b>(renderer:<a href="../symbols/Renderer.html">Renderer</a>, delta:Number)
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#toString">toString</a></b>():String
+                        </div>
+                        <div class="description">
+                            
+                            返回可视对象的字符串表示。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('隐藏继承方法');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('显示继承方法');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">属性详情</h3>
+    </div>
+    
+        <a class="anchor" name="currentFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>currentFrame</b><span class="light">:number</span>
+
+        </div>
+        <div class="description">
+            当前播放帧的索引。从0开始。只读属性。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="interval"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>interval</b><span class="light">:number</span>
+
+        </div>
+        <div class="description">
+            精灵动画的帧间隔。如果timeBased为true，则单位为毫秒，否则为帧数。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="loop"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>loop</b><span class="light">:boolean</span>
+
+        </div>
+        <div class="description">
+            判断精灵是否可以循环播放。默认为true。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="onEnterFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>onEnterFrame</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            精灵动画的播放头进入新帧时的回调方法。默认值为null。此方法已废弃，请使用addFrameCallback方法。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="paused"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>paused</b><span class="light">:boolean</span>
+
+        </div>
+        <div class="description">
+            判断精灵是否暂停。默认为false。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="timeBased"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>timeBased</b><span class="light">:boolean</span>
+
+        </div>
+        <div class="description">
+            指定精灵动画是否是以时间为基准。默认为false，即以帧为基准。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">构造函数</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>Sprite</b>(properties)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>properties</b>
+                     — 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
+<ul>
+<li><b>frames</b> - 精灵动画的帧数据对象。</li>
+</ul>
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">方法详情</h3></div>
+    
+        <a class="anchor" name="addFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>addFrame</b>(frame:Object, startIndex:Int):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">往精灵动画序列中增加帧。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frame</b>:<span>Object</span> 
+                     — 要增加的精灵动画帧数据。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>startIndex</b>:<span>Int</span> 
+                     — 开始增加帧的索引位置。若不设置，默认为在末尾添加。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — Sprite对象本身。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getFrame</b>(indexOrName:Object):<span class="light">Object</span>
+        </div>
+        <div class="description">获取精灵动画序列中指定的帧。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>indexOrName</b>:<span>Object</span> 
+                     — 要获取的帧的索引位置或别名。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — 精灵帧对象。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getFrameIndex"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getFrameIndex</b>(frameValue:Object):<span class="light">Object</span>
+        </div>
+        <div class="description">获取精灵动画序列中指定帧的索引位置。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frameValue</b>:<span>Object</span> 
+                     — 要获取的帧的索引位置或别名。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — 精灵帧对象。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getNumFrames"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getNumFrames</b>():<span class="light">Uint</span>
+        </div>
+        <div class="description">返回精灵动画的总帧数。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Uint</span>  — 精灵动画的总帧数。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="goto"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>goto</b>(indexOrName:Object, pause:Boolean):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">跳转精灵动画到指定的帧。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>indexOrName</b>:<span>Object</span> 
+                     — 要跳转的帧的索引位置或别名。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>pause</b>:<span>Boolean</span> 
+                     — 指示跳转后是否暂停播放。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — Sprite对象本身。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="play"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>play</b>():<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">播放精灵动画。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — Sprite对象本身。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setFrame</b>(frame:Object, index:Int):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">设置精灵动画序列指定索引位置的帧。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frame</b>:<span>Object</span> 
+                     — 要设置的精灵动画帧数据。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>index</b>:<span>Int</span> 
+                     — 要设置的索引位置。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — Sprite对象本身。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setFrameCallback"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setFrameCallback</b>(frame:Int|String, callback:Function):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">设置指定帧的回调函数。即每当播放头进入指定帧时调用callback函数。若callback为空，则会删除回调函数。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frame</b>:<span>Int|String</span> 
+                     — 要指定的帧的索引位置或别名。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>callback</b>:<span>Function</span> 
+                     — 指定回调函数。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — 精灵本身。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="stop"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>stop</b>():<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
+        </div>
+        <div class="description">暂停播放精灵动画。</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Sprite.html">Sprite</a></span>  — Sprite对象本身。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

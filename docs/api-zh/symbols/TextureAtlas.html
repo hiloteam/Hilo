@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>TextureAtlas - Hilo API 参考文档</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    TextureAtlas
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">模块</b> hilo/util/TextureAtlas
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">依赖</b>
+                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">源码</b>
+            <a href="../symbols/src/docs_api-zh_code_util_TextureAtlas.js.html">TextureAtlas.js</a>
+        </span>
+
+        <br>
+        TextureAtlas纹理集是将许多小的纹理图片整合到一起的一张大图。这个类可根据一个纹理集数据读取纹理小图、精灵动画等。
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">方法概览</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">方法</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">TextureAtlas</a></b>(atlasData:Object)
+                    </div>
+                    <div class="description">构造函数</div>
+                </td>
+                <td>TextureAtlas</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/TextureAtlas.html#getFrame">getFrame</a></b>(index:Int):Object
+                        </div>
+                        <div class="description">
+                            
+                            获取指定索引位置index的帧数据。
+                        </div>
+                    </td>
+                    <td>
+                        TextureAtlas
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/TextureAtlas.html#getSprite">getSprite</a></b>(id:String):Object
+                        </div>
+                        <div class="description">
+                            
+                            获取指定id的精灵数据。
+                        </div>
+                    </td>
+                    <td>
+                        TextureAtlas
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/TextureAtlas.html#.createSpriteFrames">createSpriteFrames</a></b>(name:String|Array, frames:String, w:Number, h:Number, loop:Bollean, duration:Number, duration)
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            创建精灵帧数据的快捷方法。
+                        </div>
+                    </td>
+                    <td>
+                        TextureAtlas
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('隐藏继承方法');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('显示继承方法');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">构造函数</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>TextureAtlas</b>(atlasData:Object)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>atlasData</b>:<span>Object</span> 
+                     — 纹理集数据。它可包含如下数据：
+<ul>
+<li><b>image</b> - 纹理集图片。必需。</li>
+<li><b>width</b> - 纹理集图片宽度。若frames数据为Object时，此属性必需。</li>
+<li><b>height</b> - 纹理集图片高度。若frames数据为Object时，此属性必需。</li>
+<li><b>frames</b> - 纹理集帧数据，可以是Array或Object。必需。
+<ul>
+<li>若为Array，则每项均为一个纹理图片帧数据，如：[[0, 0, 50, 50], [0, 50, 50, 50]。</li>
+<li>若为Object，则需包含frameWidth(帧宽)、frameHeight(帧高)、numFrames(帧数) 属性。</li>
+</ul>
+</li>
+<li><b>sprites</b> - 纹理集精灵动画定义，其每个值均定义一个精灵。为Object对象。可选。
+<ul>
+<li>若为Number，即此精灵只包含一帧，此帧为帧数据中索引为当前值的帧。如：sprites:{'foo':1}。</li>
+<li>若为Array，则每项均为一个帧的索引值。如：sprites:{'foo':[0, 1, 2, 3]}。</li>
+<li>若为Object，则需包含from(起始帧索引值)、to(末帧索引值) 属性。</li>
+</ul>
+</li>
+</ul>
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">方法详情</h3></div>
+    
+        <a class="anchor" name=".createSpriteFrames"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>createSpriteFrames</b>(name:String|Array, frames:String, w:Number, h:Number, loop:Bollean, duration:Number, duration)
+        </div>
+        <div class="description">创建精灵帧数据的快捷方法。</div>
+
+        
+            
+            <pre class="code"> //方式一 单个动画
+ createSpriteFrames("walk", "0-5,8,9", meImg, 55, 88, true, 1);
+ //方式二 多组动画
+ createSpriteFrames([
+   ["walk", "0-5,8,9", meImg, 55, 88, true, 1],
+   ["jump", "0-5", meImg, 55, 88, false, 1]
+ ]);</pre>
+            
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>name</b>:<span>String|Array</span> 
+                     — 动画名称|一组动画数据
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>frames</b>:<span>String</span> 
+                     — 帧数据 eg:"0-5"代表第0到第5帧
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>w</b>:<span>Number</span> 
+                     — 每帧的宽
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>h</b>:<span>Number</span> 
+                     — 每帧的高
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>loop</b>:<span>Bollean</span> 
+                     — 是否循环
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>duration</b>:<span>Number</span> 
+                     — 每帧间隔 默认单位帧, 如果sprite的timeBased为true则单位是毫秒，默认一帧
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>duration</b>
+                     — 
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getFrame"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getFrame</b>(index:Int):<span class="light">Object</span>
+        </div>
+        <div class="description">获取指定索引位置index的帧数据。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>index</b>:<span>Int</span> 
+                     — 要获取帧的索引位置。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — 帧数据。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="getSprite"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>getSprite</b>(id:String):<span class="light">Object</span>
+        </div>
+        <div class="description">获取指定id的精灵数据。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>id</b>:<span>String</span> 
+                     — 要获取精灵的id。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — 精灵数据。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

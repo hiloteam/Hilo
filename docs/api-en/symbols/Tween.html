@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Tween - Hilo API Document</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Tween
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Module</b> hilo/tween/Tween
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Requires</b>
+                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">Source</b>
+            <a href="../symbols/src/docs_api-en_code_tween_Tween.js.html">Tween.js</a>
+        </span>
+
+        <br>
+        Tween class makes tweening (easing, slow motion).
+        
+            <br><br><iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
+<br/>
+Demo:
+<pre>
+ticker.addTick(Hilo.Tween);//Tween works after being added to ticker
+
+var view = new View({x:5, y:10});
+Hilo.Tween.to(view, {
+    x:100,
+    y:20,
+    alpha:0
+}, {
+    duration:1000,
+    delay:500,
+    ease:Hilo.Ease.Quad.EaseIn,
+    onComplete:function(){
+        console.log('complete');
+    }
+});
+</pre>
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">Properties</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Property	</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#delay">delay</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            Tweenning delay time, measure in ms.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#duration">duration</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            Tweening duration, measure in ms.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#ease">ease</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            Tweening transform function, default value is null.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#loop">loop</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Does tweening loop, default value is false.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#onComplete">onComplete</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            Function invoked on the end of tweening.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#onStart">onStart</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            Function invoked on the beginning of tweening.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#onUpdate">onUpdate</a></b>:Function
+                        </div>
+                        <div class="description">
+                            
+                            Function invoked on tweening update.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#paused">paused</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Is tweening paused, default value is false.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#repeat">repeat</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            Repeat times of tweening, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#repeatDelay">repeatDelay</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            Delay time of repeating tweening, measure in ms.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#reverse">reverse</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Does tweening reverse, default value is false.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#target">target</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            Tween target object, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Tween.html#time">time</a></b>:Int
+                        </div>
+                        <div class="description">
+                            
+                            Time that tweening taken, measure in ms, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('Hide Inherited Properties');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('Show Inherited Properties');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">Methods</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">Tween</a></b>(target:Object, fromProps:Object, toProps:Object, params:Object)
+                    </div>
+                    <div class="description">Constructor</div>
+                </td>
+                <td>Tween</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#link">link</a></b>(tween:<a href="../symbols/Tween.html">Tween</a>):Tween
+                        </div>
+                        <div class="description">
+                            
+                            Link next Tween.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#pause">pause</a></b>():Tween
+                        </div>
+                        <div class="description">
+                            
+                            Pause the tweening.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#resume">resume</a></b>():Tween
+                        </div>
+                        <div class="description">
+                            
+                            Continue to play the tweening.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#seek">seek</a></b>(time:Number, pause:Boolean):Tween
+                        </div>
+                        <div class="description">
+                            
+                            Tween jumps to some point.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#setProps">setProps</a></b>(fromProps:Object, toProps:Object):Tween
+                        </div>
+                        <div class="description">
+                            
+                            Set beginning properties and ending properties of tweening object.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#start">start</a></b>():Tween
+                        </div>
+                        <div class="description">
+                            
+                            Starting the tweening.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#stop">stop</a></b>():Tween
+                        </div>
+                        <div class="description">
+                            
+                            Stop the tweening.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.tick">tick</a></b>():Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Update all Tween instances.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.add">add</a></b>(tween:<a href="../symbols/Tween.html">Tween</a>):Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Add a Tween instance.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.remove">remove</a></b>(tweenOrTarget:<a href="../symbols/Tween.html">Tween</a>|Object|Array):Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Remove one Tween target.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.removeAll">removeAll</a></b>():Object
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Remove all Tween instances.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.fromTo">fromTo</a></b>(target:Object|Array, fromProps, toProps, params):Tween|Array
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Create a tween, make target object easing from beginning properties to ending properties.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.to">to</a></b>(target:Object|Array, toProps, params):Tween|Array
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Create a tween, make target object easing from current properties to ending properties.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Tween.html#.from">from</a></b>(target:Object|Array, fromProps, params):Tween|Array
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Create a tween, make target object easing from beginning properties to current properties.
+                        </div>
+                    </td>
+                    <td>
+                        Tween
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('Hide Inherited Methods');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('Show Inherited Methods');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">Property Detail</h3>
+    </div>
+    
+        <a class="anchor" name="delay"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>delay</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            Tweenning delay time, measure in ms.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="duration"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>duration</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            Tweening duration, measure in ms.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="ease"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>ease</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            Tweening transform function, default value is null.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="loop"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>loop</b><span class="light">:Boolean</span>
+
+        </div>
+        <div class="description">
+            Does tweening loop, default value is false.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="onComplete"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>onComplete</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            Function invoked on the end of tweening. Require 1 parameter: tween.  default value is null.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="onStart"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>onStart</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            Function invoked on the beginning of tweening. Require 1 parameter: tween. default value is null.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="onUpdate"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>onUpdate</b><span class="light">:Function</span>
+
+        </div>
+        <div class="description">
+            Function invoked on tweening update. Require 2 parameters: ratio, tween.  default value is null.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="paused"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>paused</b><span class="light">:Boolean</span>
+
+        </div>
+        <div class="description">
+            Is tweening paused, default value is false.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="repeat"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>repeat</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            Repeat times of tweening, default value is 0.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="repeatDelay"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>repeatDelay</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            Delay time of repeating tweening, measure in ms.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="reverse"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>reverse</b><span class="light">:Boolean</span>
+
+        </div>
+        <div class="description">
+            Does tweening reverse, default value is false.
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="target"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>target</b><span class="light">:Object</span>
+
+        </div>
+        <div class="description">
+            Tween target object, readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="time"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>time</b><span class="light">:Int</span>
+
+        </div>
+        <div class="description">
+            Time that tweening taken, measure in ms, readonly!
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">Constructor</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>Tween</b>(target:Object, fromProps:Object, toProps:Object, params:Object)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object</span> 
+                     — Tween target object.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fromProps</b>:<span>Object</span> 
+                     — Beginning properties of target tweening object.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>toProps</b>:<span>Object</span> 
+                     — Ending properties of target tweening object.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>params</b>:<span>Object</span> 
+                     — Tweening parameters, include all writable Tween class properties.
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
+    
+        <a class="anchor" name=".add"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>add</b>(tween:<a href="../symbols/Tween.html">Tween</a>):<span class="light">Object</span>
+        </div>
+        <div class="description">Add a Tween instance.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>tween</b>:<span><a href="../symbols/Tween.html">Tween</a></span> 
+                     — Tween object to add.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Tween。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".from"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>from</b>(target:Object|Array, fromProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
+        </div>
+        <div class="description">Create a tween, make target object easing from beginning properties to current properties.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object|Array</span> 
+                     — Tweening target or tweening target array.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fromProps</b>
+                     — Beginning properties of target tweening object.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>params</b>
+                     — Tweening parameters.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a>|Array</span>  — An tween instance or an array of tween instance.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".fromTo"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>fromTo</b>(target:Object|Array, fromProps, toProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
+        </div>
+        <div class="description">Create a tween, make target object easing from beginning properties to ending properties.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object|Array</span> 
+                     — Tweening target or tweening target array.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fromProps</b>
+                     — Beginning properties of target tweening object.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>toProps</b>
+                     — Ending properties of target tweening object.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>params</b>
+                     — Tweening parameters.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a>|Array</span>  — An tween instance or an array of tween instance.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="link"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>link</b>(tween:<a href="../symbols/Tween.html">Tween</a>):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">Link next Tween. The beginning time of next Tween depends on the delay value. If delay is a string that begins with '+' or '-', next Tween will begin at (delay) ms after or before the current tween is ended. If delay is out of previous situation, next Tween will begin at (delay) ms after the beginning point of current Tween.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>tween</b>:<span><a href="../symbols/Tween.html">Tween</a></span> 
+                     — Tween to link.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Current Tween, for chain calls.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="pause"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>pause</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">Pause the tweening.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Current Tween, for chain calls.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".remove"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>remove</b>(tweenOrTarget:<a href="../symbols/Tween.html">Tween</a>|Object|Array):<span class="light">Object</span>
+        </div>
+        <div class="description">Remove one Tween target.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>tweenOrTarget</b>:<span><a href="../symbols/Tween.html">Tween</a>|Object|Array</span> 
+                     — Tween object, target object or an array of object to remove
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Tween。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".removeAll"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>removeAll</b>():<span class="light">Object</span>
+        </div>
+        <div class="description">Remove all Tween instances.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Tween。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="resume"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>resume</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">Continue to play the tweening.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Current Tween, for chain calls.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="seek"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>seek</b>(time:Number, pause:Boolean):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">Tween jumps to some point.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>time</b>:<span>Number</span> 
+                     — The time to jump to, range from 0 to duration.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>pause</b>:<span>Boolean</span> 
+                     — Is paused.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Current Tween, for chain calls.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setProps"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setProps</b>(fromProps:Object, toProps:Object):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">Set beginning properties and ending properties of tweening object.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>fromProps</b>:<span>Object</span> 
+                     — Beginning properties of target tweening object.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>toProps</b>:<span>Object</span> 
+                     — Ending properties of target tweening object.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Current Tween, for chain calls.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="start"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>start</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">Starting the tweening.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Current Tween, for chain calls.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="stop"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>stop</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
+        </div>
+        <div class="description">Stop the tweening.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a></span>  — Current Tween, for chain calls.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".tick"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>tick</b>():<span class="light">Object</span>
+        </div>
+        <div class="description">Update all Tween instances.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — Tween。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".to"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>to</b>(target:Object|Array, toProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
+        </div>
+        <div class="description">Create a tween, make target object easing from current properties to ending properties.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>target</b>:<span>Object|Array</span> 
+                     — Tweening target or tweening target array.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>toProps</b>
+                     — Ending properties of target tweening object.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>params</b>
+                     — Tweening parameters.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Tween.html">Tween</a>|Array</span>  — An tween instance or an array of tween instance.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

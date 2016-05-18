@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>Matrix - Hilo API Document</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    Matrix
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Module</b> hilo/geom/Matrix
+            </span>
+        
+
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Requires</b>
+                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>
+            </span>
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">Source</b>
+            <a href="../symbols/src/docs_api-en_code_geom_Matrix.js.html">Matrix.js</a>
+        </span>
+
+        <br>
+        Matrix class is a transforming matrix, which declare how points in one coordinate maped to another coordinate.
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px; 0">
+            <h3 style="display:inline;margin-right:10px;">Methods</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <div class="fixedFont">
+                    <b><a href="#constructor">Matrix</a></b>(a:Number, b:Number, c:Number, d:Number, tx:Number, ty:Number)
+                    </div>
+                    <div class="description">Constructor</div>
+                </td>
+                <td>Matrix</td>
+            </tr>
+            
+
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#concat">concat</a></b>(mtx:<a href="../symbols/Matrix.html">Matrix</a>):Matrix
+                        </div>
+                        <div class="description">
+                            
+                            Link a Matrix to current Matrix, in order to make geometry effects on these two composed more effective.
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#identity">identity</a></b>():Matrix
+                        </div>
+                        <div class="description">
+                            
+                            Set each Matrix property a value to trigger null transform.
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#invert">invert</a></b>():Matrix
+                        </div>
+                        <div class="description">
+                            
+                            Apply an invert transformation of original Matrix.
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#rotate">rotate</a></b>(angle:Number):Matrix
+                        </div>
+                        <div class="description">
+                            
+                            Rotate the Matrix Object.
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#scale">scale</a></b>(sx:Number, sy:Number):Matrix
+                        </div>
+                        <div class="description">
+                            
+                            Scale the Matrix.
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#transformPoint">transformPoint</a></b>(point:Object, round:Boolean, returnNew:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            Return the result after apply a Matrix displaying transform on the point.
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Matrix.html#translate">translate</a></b>(dx:Number, dy:Number):Matrix
+                        </div>
+                        <div class="description">
+                            
+                            Translate the Matrix alongside x axis and y axis by dx and dy.
+                        </div>
+                    </td>
+                    <td>
+                        Matrix
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleMethods(){
+            var alink = $('#methodToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#methodToggleTip').html('Hide Inherited Methods');
+                $('.inheritMethod').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#methodToggleTip').html('Show Inherited Methods');
+                $('.inheritMethod').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== field details ========================== -->
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+    <br/>
+    <div class="details">
+        <a class="anchor" name="constructor"> </a>
+        <div class="">
+            <h3 style="margin-bottom:15px;">Constructor</h3>
+        </div>
+        <div class="member-box">
+        <div class="member-header">
+            <b>Matrix</b>(a:Number, b:Number, c:Number, d:Number, tx:Number, ty:Number)
+        </div>
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>a</b>:<span>Number</span> 
+                     — The value affects pixel positioning alongside the x axis when Scale or rotate images.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>b</b>:<span>Number</span> 
+                     — The value affects pixel positioning alongside the y axis when rotate or skew images.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>c</b>:<span>Number</span> 
+                     — The value affects pixel positioning alongside the x axis when rotate or skew images.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>d</b>:<span>Number</span> 
+                     — The value affects pixel positioning alongside the y axis when Scale or rotate images.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>tx</b>:<span>Number</span> 
+                     — The distance to move every point alongside the x axis.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>ty</b>:<span>Number</span> 
+                     — The distance to move every point alongside the y axis.
+                </dt>
+            
+            </dl>
+        
+        </div>
+    </div>
+    
+
+    <!-- ============================== method details ========================= -->
+    
+    <br/>
+    <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
+    
+        <a class="anchor" name="concat"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>concat</b>(mtx:<a href="../symbols/Matrix.html">Matrix</a>):<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">Link a Matrix to current Matrix, in order to make geometry effects on these two composed more effective.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>mtx</b>:<span><a href="../symbols/Matrix.html">Matrix</a></span> 
+                     — Matrix that link to the source matrix.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — A Matrix Object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="identity"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>identity</b>():<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">Set each Matrix property a value to trigger null transform. The Matrix after applying identity matrix transformation will be exactly the same as original.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — A Matrix object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="invert"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>invert</b>():<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">Apply an invert transformation of original Matrix. Using this invert transformation, you can reset a Matrix to a state before it had been apply some Matrix.</div>
+
+        
+
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — A Matrix object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="rotate"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>rotate</b>(angle:Number):<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">Rotate the Matrix Object.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>angle</b>:<span>Number</span> 
+                     — The angle to rotate.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — A Matrix object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="scale"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>scale</b>(sx:Number, sy:Number):<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">Scale the Matrix.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>sx</b>:<span>Number</span> 
+                     — The value to multiply those object scale alongside the x axis.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>sy</b>:<span>Number</span> 
+                     — The value to multiply those object scale alongside the y axis.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — A Matrix object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="transformPoint"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>transformPoint</b>(point:Object, round:Boolean, returnNew:Boolean):<span class="light">Object</span>
+        </div>
+        <div class="description">Return the result after apply a Matrix displaying transform on the point.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>point</b>:<span>Object</span> 
+                     — Point need to transform.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>round</b>:<span>Boolean</span> 
+                     — Whether ceil the coordinate values of the point.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>returnNew</b>:<span>Boolean</span> 
+                     — Whether return a new point.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — 由应用矩阵转换所产生的点。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="translate"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>translate</b>(dx:Number, dy:Number):<span class="light"><a href="../symbols/Matrix.html">Matrix</a></span>
+        </div>
+        <div class="description">Translate the Matrix alongside x axis and y axis by dx and dy.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>dx</b>:<span>Number</span> 
+                     — Translate Matrix alongside the x axis to the right (measured in px).
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>dy</b>:<span>Number</span> 
+                     — Translate Matrix alongside the y axis to the right (measured in px).
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Matrix.html">Matrix</a></span>  — A Matrix object.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>
