@@ -144,7 +144,9 @@
          * @param  {String} cfg.type  形状类型，SHAPE_RECT|SHAPE_CIRCLE|SHAPE_POLYGEN , 默认矩形
          * @param  {Number} cfg.restitution  弹力，默认0.4
          * @param  {Number} cfg.friction  摩擦力，默认1
+         * @param  {Number} cfg.mass  质量，默认1
          * @param  {Number} cfg.collisionType  碰撞类型，默认1
+         * @param  {Boolean} cfg.isStatic  是否静态刚体，默认false
          * @param  {Number} cfg.width  宽，type为SHAPE_RECT时有效，默认为view宽
          * @param  {Number} cfg.height  高，type为SHAPE_RECT时有效，默认为view高
          * @param  {Number} cfg.radius  半径，type为SHAPE_CIRCLE时有效，默认为view宽的一半
@@ -170,12 +172,12 @@
                 case Physics.SHAPE_RECT:
                     width = cfg.width||width;
                     height = cfg.height||height;
-                    body = new cp.Body(mass, cp.momentForBox(mass, width, height));
+                    body = cfg.isStatic?this._createStaticBody():new cp.Body(mass, cp.momentForBox(mass, width, height));
                     shape = new cp.BoxShape(body, width, height);
                     break;
                 case Physics.SHAPE_CIRCLE:
                     radius = cfg.radius||width*.5;
-                    body = new cp.Body(mass, cp.momentForCircle(mass, 0, radius, new cp.Vect(0, 0)));
+                    body = cfg.isStatic?this._createStaticBody():new cp.Body(mass, cp.momentForCircle(mass, 0, radius, new cp.Vect(0, 0)));
                     shape = new cp.CircleShape(body, radius, new cp.Vect(0, 0));
                     break;
                 case Physics.SHAPE_POLYGEN:
@@ -186,7 +188,7 @@
                         verts.push(point.y);
                     });
                     view.boundsArea = boundsArea;
-                    body = new cp.Body(mass, cp.momentForPoly(mass, verts, new cp.Vect(0, 0)));
+                    body = cfg.isStatic?this._createStaticBody():new cp.Body(mass, cp.momentForPoly(mass, verts, new cp.Vect(0, 0)));
                     shape = new cp.PolyShape(body, verts, new cp.Vect(0, 0));
                     break;
                 default:
@@ -212,8 +214,13 @@
             view.pivotX = view.width * .5;
             view.pivotY = view.height * .5;
 
-            this.space.addBody(body);
-            this.space.addShape(shape);
+            if(cfg.isStatic){
+                this.space.addShape(shape);
+            }
+            else{
+                this.space.addBody(body);
+                this.space.addShape(shape);
+            }
 
 
             view._physicsRender();
@@ -307,6 +314,12 @@
             floor.setElasticity(1);
             floor.setFriction(1);
         },
+        _createStaticBody:function(){
+            var body = new cp.Body(Infinity, Infinity);
+            body.nodeIdleTime = Infinity;
+            body.isStaticBody = true;
+            return body;
+        }
     });
 
     /**
