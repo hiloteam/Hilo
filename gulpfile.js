@@ -158,7 +158,7 @@ gulp.task('extensions', function(){
             .pipe(concat(extensionName + '.js'))
             .pipe(header(getFileInfo(extensionName)))
             .pipe(gulp.dest(dest))
-            .pipe(uglify())
+            .pipe(gulpif(!isWatch, uglify()))
             .pipe(rename({extname:'.min.js'}))
             .pipe(header(getFileInfo(extensionName)))
             .pipe(gulp.dest(dest));
@@ -222,8 +222,9 @@ gulp.task('setIsWatch', function(cb){
     cb();
 });
 
-gulp.task('watch', ['setIsWatch', 'standalone', 'flash'], function(){
+gulp.task('watch', ['setIsWatch', 'standalone', 'flash', 'extensions'], function(){
     gulp.watch('src/**/*.js', ['standalone', 'flash']);
+    gulp.watch('src/extensions/**/*.js', ['extensions']);
 });
 
 //test
