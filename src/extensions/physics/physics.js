@@ -12,7 +12,9 @@
      * @mixin PhysicsViewMixin
      */
     var PhysicsViewMixin = {
+        space:null,
         body:null,
+        shape:null,
         /**
          * 施加冲量
          * @memberOf PhysicsViewMixin
@@ -41,6 +43,9 @@
          */
         setPosition:function(x, y){
             this.body.setPos(new cp.Vect(x, y));
+            if(this.body.isStaticBody){
+                this.space.needReindexStatic = true;
+            }
         },
         /**
          * 设置角度
@@ -49,6 +54,9 @@
          */
         setRotation:function(rotation){
             this.body.setAngle(rotation * DEG2RAD);
+            if(this.body.isStaticBody){
+                this.space.needReindexStatic = true;
+            }
         },
         /**
          * 重写render
@@ -99,20 +107,20 @@
          * @private
          */
         _init:function(gravity, cfg){
-            var world = new cp.Space();
-            world.iterations = 20;
-            world.gravity = new cp.Vect(gravity.x, gravity.y);
-            world.collisionSlop = 0.5;
-            world.sleepTimeThreshold = 0.5;
+            var space = new cp.Space();
+            space.iterations = 20;
+            space.gravity = new cp.Vect(gravity.x, gravity.y);
+            space.collisionSlop = 0.5;
+            space.sleepTimeThreshold = 0.5;
 
             if(cfg){
                 for(var i in cfg){
-                    world[i] = cfg[i];
+                    space[i] = cfg[i];
                 }
             }
 
-            this.space = world;
-            this.staticBody = world.staticBody;
+            this.space = space;
+            this.staticBody = space.staticBody;
 
             this._deleteBodies = [];
         },
@@ -122,19 +130,23 @@
          * @param  {Number} dt 间隔
          */
         tick:function(dt){
-            var world = this.space;
+            var space = this.space;
             dt = dt > 32?16:dt;
 
-            world.step(dt * .001);
+            if(space.needReindexStatic){
+                space.reindexStatic();
+                space.needReindexStatic = false;
+            }
+            space.step(dt * .001);
 
             //delete bodies and shapes
             for(var i = this._deleteBodies.length - 1;i >= 0;i --){
                 var body = this._deleteBodies[i];
                 var shapeList = body.shapeList;
                 for(var j = shapeList.length - 1;j >= 0;j --){
-                    world.removeShape(shapeList[j]);
+                    space.removeShape(shapeList[j]);
                 }
-                world.removeBody(body);
+                space.removeBody(body);
             }
         },
         /**
@@ -208,6 +220,7 @@
 
             view.body = body;
             view.shape = shape;
+            view.space = this.space;
             body.view = view;
 
 	       //物理对象中心点必须在中心
