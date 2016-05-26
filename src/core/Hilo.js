@@ -24,6 +24,11 @@ var win = window, doc = document, docElem = doc.documentElement,
 
 return {
     /**
+     * Hilo version
+     * @type String
+     */
+    version:'{{$version}}',
+    /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
      * @param {String} prefix Generated id's prefix.

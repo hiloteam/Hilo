@@ -51,6 +51,9 @@ var createBuildFormatTask = function(type){
             cwd:pkg.sources.dir,
             base:pkg.sources.dir
         })
+        .pipe(gulpif(function(file){
+            return file.path.indexOf('Hilo.js') > -1;
+        }, replace('{{$version}}', pkg.version)))
         .pipe(replace(licenseCommentReg, ''))
         .pipe(replace(apiCommentReg, '$1'))
         .pipe(transformModule(type))
