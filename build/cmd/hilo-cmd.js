@@ -186,7 +186,7 @@ return {
             //this fails if it's a disconnected DOM node
             var bounds = elem.getBoundingClientRect();
         }catch(e){
-            bounds = {top:elem.offsetTop, left:elem.offsetLeft, width:elem.offsetWidth, height:elem.offsetHeight};
+            bounds = {top:elem.offsetTop, left:elem.offsetLeft, right:elem.offsetLeft + elem.offsetWidth, bottom:elem.offsetTop + elem.offsetHeight};
         }
 
         var offsetX = ((win.pageXOffset || docElem.scrollLeft) - (docElem.clientLeft || 0)) || 0;
@@ -198,14 +198,17 @@ return {
         var padTop = (parseIntFn(styles.paddingTop) + parseIntFn(styles.borderTopWidth)) || 0;
         var padRight = (parseIntFn(styles.paddingRight) + parseIntFn(styles.borderRightWidth)) || 0;
         var padBottom = (parseIntFn(styles.paddingBottom) + parseIntFn(styles.borderBottomWidth)) || 0;
+
         var top = bounds.top || 0;
         var left = bounds.left || 0;
+        var right = bounds.right || 0;
+        var bottom = bounds.bottom || 0;
 
         return {
             left: left + offsetX + padLeft,
             top: top + offsetY + padTop,
-            width: bounds.right - padRight - left - padLeft,
-            height: bounds.bottom - padBottom - top - padTop
+            width: right - padRight - left - padLeft,
+            height: bottom - padBottom - top - padTop
         };
     },
 
@@ -804,14 +807,19 @@ var EventMixin = {
 
         var eventListeners = listeners[eventType];
         if(eventListeners){
-            eventListeners = eventListeners.slice(0);
+            var eventListenersCopy = eventListeners.slice(0);
             event = event || new EventObject(eventType, this, detail);
             if(event._stopped) return false;
 
-            for(var i = 0; i < eventListeners.length; i++){
-                var el = eventListeners[i];
+            for(var i = 0; i < eventListenersCopy.length; i++){
+                var el = eventListenersCopy[i];
                 el.listener.call(this, event);
-                if(el.once) eventListeners.splice(i--, 1);
+                if(el.once) {
+                    var index = eventListeners.indexOf(el);
+                    if(index > -1){
+                        eventListeners.splice(index, 1);
+                    }
+                }
             }
 
             if(eventListeners.length == 0) delete listeners[eventType];
@@ -3496,6 +3504,10 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
         this.drawable = new Drawable();
         var elem = this.drawable.domElement = properties.element || Hilo.createElement('div');
         elem.id = this.id;
+
+        if(this.pointerEnabled){
+            elem.style.pointerEvents = 'visible';
+        }
     },
 
     /**
