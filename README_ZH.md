@@ -73,6 +73,11 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
  * [06wj](https://github.com/06wj)
  * [picacure](https://github.com/picacure)
 
+
+### 联系我们
+  * [![gitter.im][gitter-image]][gitter-url]
+  * QQ Group:372765886
+
 ### License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 

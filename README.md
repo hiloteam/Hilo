@@ -73,6 +73,10 @@ Get started by reading [docs/api-en/index.html](http://hiloteam.github.io/Hilo/d
  * [06wj](https://github.com/06wj)
  * [picacure](https://github.com/picacure)
 
+### Contact us
+  * [![gitter.im][gitter-image]][gitter-url]
+  * QQ Group:372765886
+
 ### License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
