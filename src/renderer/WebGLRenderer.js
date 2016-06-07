@@ -230,15 +230,21 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         if(target === this.stage){
             var style = this.canvas.style,
                 oldScaleX = target._scaleX,
-                oldScaleY = target._scaleY;
+                oldScaleY = target._scaleY,
+                isStyleChange = false;
 
             if((!oldScaleX && scaleX != 1) || (oldScaleX && oldScaleX != scaleX)){
                 target._scaleX = scaleX;
                 style.width = scaleX * target.width + "px";
+                isStyleChange = true;
             }
             if((!oldScaleY && scaleY != 1) || (oldScaleY && oldScaleY != scaleY)){
                 target._scaleY = scaleY;
                 style.height = scaleY * target.height + "px";
+                isStyleChange = true;
+            }
+            if(isStyleChange){
+                target.updateViewport();
             }
             target.__webglWorldMatrix = target.__webglWorldMatrix||new Matrix(1, 0, 0, 1, 0, 0);
         }else{
@@ -286,8 +292,16 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
      */
     resize: function(width, height){
         if(this.width !== width || this.height !== height){
-            this.width = this.canvas.width = width;
-            this.height = this.canvas.height = height;
+            var canvas = this.canvas;
+            var stage = this.stage;
+            var style = canvas.style;
+
+            this.width = canvas.width = width;
+            this.height = canvas.height = height;
+
+            style.width = stage.width * stage.scaleX + 'px';
+            style.height = stage.height * stage.scaleY + 'px';
+
             this.gl.viewport(0, 0, width, height);
 
             this.canvasHalfWidth = width * .5;

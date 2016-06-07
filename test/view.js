@@ -4,6 +4,7 @@ describe('view', function() {
     beforeEach('init stage', function() {
         stage = new Hilo.Stage({
             container:stageElem,
+            renderType:'canvas',
             width:550,
             height:400
         });
@@ -426,8 +427,34 @@ describe('view', function() {
         });
 
         it('resize', function(){
+            stage.canvas.width.should.equal(550);
+            stage.canvas.height.should.equal(400);
+            stage.canvas.style.width.should.equal('550px');
+            stage.canvas.style.height.should.equal('400px');
+            stage.viewport.should.eql({left:0, top:0, width:550, height:400});
+
             stage.resize(400, 300);
+            stage.canvas.width.should.equal(400);
+            stage.canvas.height.should.equal(300);
+            stage.canvas.style.width.should.equal('400px');
+            stage.canvas.style.height.should.equal('300px');
             stage.viewport.should.eql({left:0, top:0, width:400, height:300});
+
+            stage.scaleX = 0.5;
+            stage.scaleY = 2;
+            stage.tick(0);
+            stage.canvas.width.should.equal(400);
+            stage.canvas.height.should.equal(300);
+            stage.canvas.style.width.should.equal('200px');
+            stage.canvas.style.height.should.equal('600px');
+            stage.viewport.should.eql({left:0, top:0, width:200, height:600});
+
+            stage.resize(300, 200);
+            stage.canvas.width.should.equal(300);
+            stage.canvas.height.should.equal(200);
+            stage.canvas.style.width.should.equal('150px');
+            stage.canvas.style.height.should.equal('400px');
+            stage.viewport.should.eql({left:0, top:0, width:150, height:400});
         });
 
         it('canvasRenderer', function(){

@@ -110,15 +110,21 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
         if(target === this.stage){
             var style = this.canvas.style,
                 oldScaleX = target._scaleX,
-                oldScaleY = target._scaleY;
+                oldScaleY = target._scaleY,
+                isStyleChange = false;
 
             if((!oldScaleX && scaleX != 1) || (oldScaleX && oldScaleX != scaleX)){
                 target._scaleX = scaleX;
                 style.width = scaleX * target.width + "px";
+                isStyleChange = true;
             }
             if((!oldScaleY && scaleY != 1) || (oldScaleY && oldScaleY != scaleY)){
                 target._scaleY = scaleY;
                 style.height = scaleY * target.height + "px";
+                isStyleChange = true;
+            }
+            if(isStyleChange){
+                target.updateViewport();
             }
         }else{
             var x = target.x,
@@ -223,8 +229,15 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
      * @see Renderer#resize
      */
     resize: function(width, height){
-        this.canvas.width = width;
-        this.canvas.height = height;
+        var canvas = this.canvas;
+        var stage = this.stage;
+        var style = canvas.style;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        style.width = stage.width * stage.scaleX + 'px';
+        style.height = stage.height * stage.scaleY + 'px';
     }
 
 });
