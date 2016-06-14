@@ -1,33 +1,39 @@
 ## Classes
+
 <dl>
 <dt><a href="#Physics">Physics</a></dt>
 <dd></dd>
 <dt><a href="#PhysicsDebugView">PhysicsDebugView</a></dt>
 <dd></dd>
 </dl>
+
 ## Mixins
+
 <dl>
 <dt><a href="#PhysicsViewMixin">PhysicsViewMixin</a></dt>
 <dd><p>PhysicsViewMixin是一个包含物理相关功能的mixin。可以通过 Class.mix(target, PhysicsViewMixin) 来为target增加物理功能。</p>
 </dd>
 </dl>
+
 <a name="Physics"></a>
+
 ## Physics
 **Kind**: global class  
 
 * [Physics](#Physics)
-  * [new Physics(gravity, cfg)](#new_Physics_new)
-  * _instance_
-    * [.bindView(view, cfg)](#Physics#bindView)
-    * [.addConstraint(joint)](#Physics#addConstraint) ⇒ <code>Joint</code>
-    * [.removeConstraint(joint)](#Physics#removeConstraint) ⇒ <code>Joint</code>
-    * [.unbindView(view, isDelView)](#Physics#unbindView)
-    * [.addCollisionListener(typeA, typeB, listenerConfig)](#Physics#addCollisionListener)
-    * [.createBounds(width, height)](#Physics#createBounds)
-  * _inner_
-    * [~collisionCallback](#Physics..collisionCallback) : <code>function</code>
+    * [new Physics(gravity, cfg)](#new_Physics_new)
+    * _instance_
+        * [.bindView(view, cfg)](#Physics+bindView)
+        * [.addConstraint(joint)](#Physics+addConstraint) ⇒ <code>Joint</code>
+        * [.removeConstraint(joint)](#Physics+removeConstraint) ⇒ <code>Joint</code>
+        * [.unbindView(view, isDelView)](#Physics+unbindView)
+        * [.addCollisionListener(typeA, typeB, listenerConfig)](#Physics+addCollisionListener)
+        * [.createBounds(width, height)](#Physics+createBounds)
+    * _inner_
+        * [~collisionCallback](#Physics..collisionCallback) : <code>function</code>
 
 <a name="new_Physics_new"></a>
+
 ### new Physics(gravity, cfg)
 物理世界
 
@@ -39,7 +45,8 @@
 | gravity.y | <code>Number</code> | 重力加速度y |
 | cfg | <code>Object</code> | 世界属性配置 |
 
-<a name="Physics#bindView"></a>
+<a name="Physics+bindView"></a>
+
 ### physics.bindView(view, cfg)
 绑定物理刚体
 
@@ -52,13 +59,18 @@
 | cfg.type | <code>String</code> | 形状类型，SHAPE_RECT|SHAPE_CIRCLE|SHAPE_POLYGEN , 默认矩形 |
 | cfg.restitution | <code>Number</code> | 弹力，默认0.4 |
 | cfg.friction | <code>Number</code> | 摩擦力，默认1 |
+| cfg.mass | <code>Number</code> | 质量，默认1 |
 | cfg.collisionType | <code>Number</code> | 碰撞类型，默认1 |
+| cfg.group | <code>Uint</code> | 碰撞组标识，默认为0，零组与任何组都碰撞，相同的非零组之间不会互相碰撞 |
+| cfg.layers | <code>Uint</code> | 碰撞层的掩码，默认为~0，两个层的按位与不为0时(a.layers & b.layers != 0)会发生碰撞 |
+| cfg.isStatic | <code>Boolean</code> | 是否静态刚体，默认false |
 | cfg.width | <code>Number</code> | 宽，type为SHAPE_RECT时有效，默认为view宽 |
 | cfg.height | <code>Number</code> | 高，type为SHAPE_RECT时有效，默认为view高 |
 | cfg.radius | <code>Number</code> | 半径，type为SHAPE_CIRCLE时有效，默认为view宽的一半 |
 | cfg.boundsArea | <code>Array</code> | 顶点数组，type为SHAPE_POLYGEN时有效, 顶点顺序必须逆时针，[{x:0, y:0}, {x:100, y:0}, {x:50, y:50}] |
 
-<a name="Physics#addConstraint"></a>
+<a name="Physics+addConstraint"></a>
+
 ### physics.addConstraint(joint) ⇒ <code>Joint</code>
 增加关节
 
@@ -68,7 +80,8 @@
 | --- | --- | --- |
 | joint | <code>Joint</code> | 关节 |
 
-<a name="Physics#removeConstraint"></a>
+<a name="Physics+removeConstraint"></a>
+
 ### physics.removeConstraint(joint) ⇒ <code>Joint</code>
 移除关节
 
@@ -78,7 +91,8 @@
 | --- | --- | --- |
 | joint | <code>Joint</code> | 关节 |
 
-<a name="Physics#unbindView"></a>
+<a name="Physics+unbindView"></a>
+
 ### physics.unbindView(view, isDelView)
 解绑物理刚体
 
@@ -89,7 +103,8 @@
 | view | <code>View</code> | 要解绑的view |
 | isDelView | <code>Boolean</code> | 是否删除view，默认不删除 |
 
-<a name="Physics#addCollisionListener"></a>
+<a name="Physics+addCollisionListener"></a>
+
 ### physics.addCollisionListener(typeA, typeB, listenerConfig)
 添加碰撞监听
 
@@ -105,7 +120,8 @@
 | listenerConfig.postSolve | <code>[collisionCallback](#Physics..collisionCallback)</code> | 处理后碰撞回调 |
 | listenerConfig.separate | <code>[collisionCallback](#Physics..collisionCallback)</code> | 分离回调 |
 
-<a name="Physics#createBounds"></a>
+<a name="Physics+createBounds"></a>
+
 ### physics.createBounds(width, height)
 添加边框
 
@@ -117,6 +133,7 @@
 | height | <code>Number</code> | 高 |
 
 <a name="Physics..collisionCallback"></a>
+
 ### Physics~collisionCallback : <code>function</code>
 碰撞回调函数格式
 
@@ -129,9 +146,11 @@
 | arbiter.b | <code>Shape</code> | 碰撞b形状 |
 
 <a name="PhysicsDebugView"></a>
+
 ## PhysicsDebugView
 **Kind**: global class  
 <a name="new_PhysicsDebugView_new"></a>
+
 ### new PhysicsDebugView(properties)
 调试显示对象
 
@@ -144,6 +163,7 @@
 | properties.showConstraints | <code>Boolean</code> | 是否显示constraint，默认true |
 
 <a name="PhysicsViewMixin"></a>
+
 ## PhysicsViewMixin
 PhysicsViewMixin是一个包含物理相关功能的mixin。可以通过 Class.mix(target, PhysicsViewMixin) 来为target增加物理功能。
 
@@ -156,12 +176,13 @@ PhysicsViewMixin是一个包含物理相关功能的mixin。可以通过 Class.m
 
 
 * [PhysicsViewMixin](#PhysicsViewMixin)
-  * [.applyImpulse(impulse, pos)](#PhysicsViewMixin.applyImpulse)
-  * [.applyForce(force, pos)](#PhysicsViewMixin.applyForce)
-  * [.setPosition(x, y)](#PhysicsViewMixin.setPosition)
-  * [.setRotation(rotation)](#PhysicsViewMixin.setRotation)
+    * [.applyImpulse(impulse, pos)](#PhysicsViewMixin.applyImpulse)
+    * [.applyForce(force, pos)](#PhysicsViewMixin.applyForce)
+    * [.setPosition(x, y)](#PhysicsViewMixin.setPosition)
+    * [.setRotation(rotation)](#PhysicsViewMixin.setRotation)
 
 <a name="PhysicsViewMixin.applyImpulse"></a>
+
 ### PhysicsViewMixin.applyImpulse(impulse, pos)
 施加冲量
 
@@ -173,6 +194,7 @@ PhysicsViewMixin是一个包含物理相关功能的mixin。可以通过 Class.m
 | pos | <code>Object</code> | 施力位置离重心相对偏移量，默认0，格式：{x:0, y:0} |
 
 <a name="PhysicsViewMixin.applyForce"></a>
+
 ### PhysicsViewMixin.applyForce(force, pos)
 施加力
 
@@ -184,6 +206,7 @@ PhysicsViewMixin是一个包含物理相关功能的mixin。可以通过 Class.m
 | pos | <code>Object</code> | 施力位置离重心相对偏移量，默认0，格式：{x:0, y:0} |
 
 <a name="PhysicsViewMixin.setPosition"></a>
+
 ### PhysicsViewMixin.setPosition(x, y)
 设置位置
 
@@ -195,6 +218,7 @@ PhysicsViewMixin是一个包含物理相关功能的mixin。可以通过 Class.m
 | y | <code>Number</code> | 
 
 <a name="PhysicsViewMixin.setRotation"></a>
+
 ### PhysicsViewMixin.setRotation(rotation)
 设置角度
 

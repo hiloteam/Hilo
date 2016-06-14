@@ -6214,7 +6214,9 @@ SimpleMotor.prototype.getImpulse = function()
      * @mixin PhysicsViewMixin
      */
     var PhysicsViewMixin = {
+        space:null,
         body:null,
+        shape:null,
         /**
          * 施加冲量
          * @memberOf PhysicsViewMixin
@@ -6243,6 +6245,9 @@ SimpleMotor.prototype.getImpulse = function()
          */
         setPosition:function(x, y){
             this.body.setPos(new cp.Vect(x, y));
+            if(this.body.isStaticBody){
+                this.space.needReindexStatic = true;
+            }
         },
         /**
          * 设置角度
@@ -6251,6 +6256,9 @@ SimpleMotor.prototype.getImpulse = function()
          */
         setRotation:function(rotation){
             this.body.setAngle(rotation * DEG2RAD);
+            if(this.body.isStaticBody){
+                this.space.needReindexStatic = true;
+            }
         },
         /**
          * 重写render
@@ -6301,20 +6309,20 @@ SimpleMotor.prototype.getImpulse = function()
          * @private
          */
         _init:function(gravity, cfg){
-            var world = new cp.Space();
-            world.iterations = 20;
-            world.gravity = new cp.Vect(gravity.x, gravity.y);
-            world.collisionSlop = 0.5;
-            world.sleepTimeThreshold = 0.5;
+            var space = new cp.Space();
+            space.iterations = 20;
+            space.gravity = new cp.Vect(gravity.x, gravity.y);
+            space.collisionSlop = 0.5;
+            space.sleepTimeThreshold = 0.5;
 
             if(cfg){
                 for(var i in cfg){
-                    world[i] = cfg[i];
+                    space[i] = cfg[i];
                 }
             }
 
-            this.space = world;
-            this.staticBody = world.staticBody;
+            this.space = space;
+            this.staticBody = space.staticBody;
 
             this._deleteBodies = [];
         },
@@ -6324,19 +6332,23 @@ SimpleMotor.prototype.getImpulse = function()
          * @param  {Number} dt 间隔
          */
         tick:function(dt){
-            var world = this.space;
+            var space = this.space;
             dt = dt > 32?16:dt;
 
-            world.step(dt * .001);
+            if(space.needReindexStatic){
+                space.reindexStatic();
+                space.needReindexStatic = false;
+            }
+            space.step(dt * .001);
 
             //delete bodies and shapes
             for(var i = this._deleteBodies.length - 1;i >= 0;i --){
                 var body = this._deleteBodies[i];
                 var shapeList = body.shapeList;
                 for(var j = shapeList.length - 1;j >= 0;j --){
-                    world.removeShape(shapeList[j]);
+                    space.removeShape(shapeList[j]);
                 }
-                world.removeBody(body);
+                space.removeBody(body);
             }
         },
         /**
@@ -6346,7 +6358,11 @@ SimpleMotor.prototype.getImpulse = function()
          * @param  {String} cfg.type  形状类型，SHAPE_RECT|SHAPE_CIRCLE|SHAPE_POLYGEN , 默认矩形
          * @param  {Number} cfg.restitution  弹力，默认0.4
          * @param  {Number} cfg.friction  摩擦力，默认1
+         * @param  {Number} cfg.mass  质量，默认1
          * @param  {Number} cfg.collisionType  碰撞类型，默认1
+         * @param  {Uint} cfg.group  碰撞组标识，默认为0，零组与任何组都碰撞，相同的非零组之间不会互相碰撞
+         * @param  {Uint} cfg.layers  碰撞层的掩码，默认为~0，两个层的按位与不为0时(a.layers & b.layers != 0)会发生碰撞
+         * @param  {Boolean} cfg.isStatic  是否静态刚体，默认false
          * @param  {Number} cfg.width  宽，type为SHAPE_RECT时有效，默认为view宽
          * @param  {Number} cfg.height  高，type为SHAPE_RECT时有效，默认为view高
          * @param  {Number} cfg.radius  半径，type为SHAPE_CIRCLE时有效，默认为view宽的一半
@@ -6360,6 +6376,8 @@ SimpleMotor.prototype.getImpulse = function()
             var cfg = cfg||{};
             var mass = cfg.mass || 1;
             var type = cfg.type || Physics.SHAPE_RECT;
+            var group = cfg.group === undefined?0:cfg.group;
+            var layers = cfg.layers === undefined?~0:cfg.layers;
             var width = view.width * view.scaleX;
             var height = view.height * view.scaleY;
 
@@ -6372,12 +6390,12 @@ SimpleMotor.prototype.getImpulse = function()
                 case Physics.SHAPE_RECT:
                     width = cfg.width||width;
                     height = cfg.height||height;
-                    body = new cp.Body(mass, cp.momentForBox(mass, width, height));
+                    body = cfg.isStatic?this._createStaticBody():new cp.Body(mass, cp.momentForBox(mass, width, height));
                     shape = new cp.BoxShape(body, width, height);
                     break;
                 case Physics.SHAPE_CIRCLE:
                     radius = cfg.radius||width*.5;
-                    body = new cp.Body(mass, cp.momentForCircle(mass, 0, radius, new cp.Vect(0, 0)));
+                    body = cfg.isStatic?this._createStaticBody():new cp.Body(mass, cp.momentForCircle(mass, 0, radius, new cp.Vect(0, 0)));
                     shape = new cp.CircleShape(body, radius, new cp.Vect(0, 0));
                     break;
                 case Physics.SHAPE_POLYGEN:
@@ -6388,7 +6406,7 @@ SimpleMotor.prototype.getImpulse = function()
                         verts.push(point.y);
                     });
                     view.boundsArea = boundsArea;
-                    body = new cp.Body(mass, cp.momentForPoly(mass, verts, new cp.Vect(0, 0)));
+                    body = cfg.isStatic?this._createStaticBody():new cp.Body(mass, cp.momentForPoly(mass, verts, new cp.Vect(0, 0)));
                     shape = new cp.PolyShape(body, verts, new cp.Vect(0, 0));
                     break;
                 default:
@@ -6401,6 +6419,8 @@ SimpleMotor.prototype.getImpulse = function()
             shape.setElasticity(cfg.restitution||.4);
             shape.setFriction(cfg.friction||1);
             shape.setCollisionType(cfg.collisionType||1);
+            shape.layers = layers;
+            shape.group = group;
 
             view._viewRender = view.render;
             Class.mix(view, PhysicsViewMixin);
@@ -6408,14 +6428,20 @@ SimpleMotor.prototype.getImpulse = function()
 
             view.body = body;
             view.shape = shape;
+            view.space = this.space;
             body.view = view;
 
 	       //物理对象中心点必须在中心
             view.pivotX = view.width * .5;
             view.pivotY = view.height * .5;
 
-            this.space.addBody(body);
-            this.space.addShape(shape);
+            if(cfg.isStatic){
+                this.space.addShape(shape);
+            }
+            else{
+                this.space.addBody(body);
+                this.space.addShape(shape);
+            }
 
 
             view._physicsRender();
@@ -6509,6 +6535,12 @@ SimpleMotor.prototype.getImpulse = function()
             floor.setElasticity(1);
             floor.setFriction(1);
         },
+        _createStaticBody:function(){
+            var body = new cp.Body(Infinity, Infinity);
+            body.nodeIdleTime = Infinity;
+            body.isStaticBody = true;
+            return body;
+        }
     });
 
     /**

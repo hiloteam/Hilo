@@ -158,6 +158,8 @@
          * @param  {Number} cfg.friction  摩擦力，默认1
          * @param  {Number} cfg.mass  质量，默认1
          * @param  {Number} cfg.collisionType  碰撞类型，默认1
+         * @param  {Uint} cfg.group  碰撞组标识，默认为0，零组与任何组都碰撞，相同的非零组之间不会互相碰撞
+         * @param  {Uint} cfg.layers  碰撞层的掩码，默认为~0，两个层的按位与不为0时(a.layers & b.layers != 0)会发生碰撞
          * @param  {Boolean} cfg.isStatic  是否静态刚体，默认false
          * @param  {Number} cfg.width  宽，type为SHAPE_RECT时有效，默认为view宽
          * @param  {Number} cfg.height  高，type为SHAPE_RECT时有效，默认为view高
@@ -172,6 +174,8 @@
             var cfg = cfg||{};
             var mass = cfg.mass || 1;
             var type = cfg.type || Physics.SHAPE_RECT;
+            var group = cfg.group === undefined?0:cfg.group;
+            var layers = cfg.layers === undefined?~0:cfg.layers;
             var width = view.width * view.scaleX;
             var height = view.height * view.scaleY;
 
@@ -213,6 +217,8 @@
             shape.setElasticity(cfg.restitution||.4);
             shape.setFriction(cfg.friction||1);
             shape.setCollisionType(cfg.collisionType||1);
+            shape.layers = layers;
+            shape.group = group;
 
             view._viewRender = view.render;
             Class.mix(view, PhysicsViewMixin);

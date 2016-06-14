@@ -2,8 +2,9 @@
 对chipmunk二次封装，简化使用方法
 
 ## example
-* [demo](http://groups.demo.taobao.net/Hilo/hilo/src/extensions/physics/demo/)
-* [joints](http://groups.demo.taobao.net/Hilo/hilo/src/extensions/physics/demo/joints.html)
+* [demo](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
+* [joints](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/joints.html)
+* [collision](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/collision.html)
 
 ## 使用说明
 
@@ -27,7 +28,9 @@
    ```
    world.bindView(view, {
        type:Hilo.Physics.SHAPE_CIRCLE,
-       restitution:.9
+       restitution:0.9,
+       group:0,
+       layers:~0
    });
    ```
 1. 操作物理对象，施加力, 冲量，改变位置，角度 [详细api](./api.md#PhysicsViewMixin)
@@ -79,3 +82,9 @@
 ## 详细文档
 * [完整api](./api.md)
 * [chipmunk中文手册](https://github.com/iTyran/ChipmunkDocsCN/blob/master/Chipmunk2D.md)
+
+## build api doc
+```
+npm install -g jsdoc-to-markdown
+jsdoc2md src/extensions/physics/physics.js > src/extensions/physics/api.md
+```
