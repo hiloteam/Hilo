@@ -80,7 +80,9 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         this.positionStride = WebGLRenderer.ATTRIBUTE_NUM * 4;
         var vertexNum = this.maxBatchNum * WebGLRenderer.ATTRIBUTE_NUM * 4;
         var indexNum = this.maxBatchNum * 6;
-        this.positions = new Float32Array(vertexNum);
+        this.arrayBuffer = new ArrayBuffer(vertexNum * 4);
+        this.float32Array = new Float32Array(this.arrayBuffer);
+        this.uint32Array = new Uint32Array(this.arrayBuffer);
         this.indexs = new Uint16Array(indexNum);
         for (var i=0, j=0; i < indexNum; i += 6, j += 4)
         {
@@ -110,11 +112,11 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, this.indexs, gl.STATIC_DRAW);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.positionBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, this.positions, gl.DYNAMIC_DRAW);
+        gl.bufferData(gl.ARRAY_BUFFER, this.arrayBuffer, gl.DYNAMIC_DRAW);
 
         gl.vertexAttribPointer(this.a_position, 2, gl.FLOAT, false, this.positionStride, 0);//x, y
         gl.vertexAttribPointer(this.a_TexCoord, 2, gl.FLOAT, false, this.positionStride, 2 * 4);//x, y
-        gl.vertexAttribPointer(this.a_alpha, 1, gl.FLOAT, false, this.positionStride, 4 * 4);//alpha
+        gl.vertexAttribPointer(this.a_tint, 4, gl.UNSIGNED_BYTE, true, this.positionStride, 4 * 4);//alpha
     },
 
     context: null,
@@ -163,39 +165,42 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 
             var vertexs = this._createVertexs(image, rect[0], rect[1], sw, sh, 0, 0, w, h);
             var index = this.batchIndex * this.positionStride;
-            var positions = this.positions;
-            var alpha = target.__webglRenderAlpha;
-            positions[index + 0] = vertexs[0];//x
-            positions[index + 1] = vertexs[1];//y
-            positions[index + 2] = vertexs[2];//uvx
-            positions[index + 3] = vertexs[3];//uvy
-            positions[index + 4] = alpha;//alpha
+            var float32Array = this.float32Array;
+            var uint32Array = this.uint32Array;
 
-            positions[index + 5] = vertexs[4];
-            positions[index + 6] = vertexs[5];
-            positions[index + 7] = vertexs[6];
-            positions[index + 8] = vertexs[7];
-            positions[index + 9] = alpha;
+            var tint = (target.tint >> 16) + (target.tint & 0xff00) + ((target.tint & 0xff) << 16) + (target.__webglRenderAlpha * 255 << 24);
 
-            positions[index + 10] = vertexs[8]
-            positions[index + 11] = vertexs[9]
-            positions[index + 12] = vertexs[10]
-            positions[index + 13] = vertexs[11]
-            positions[index + 14] = alpha;
+            float32Array[index + 0] = vertexs[0];//x
+            float32Array[index + 1] = vertexs[1];//y
+            float32Array[index + 2] = vertexs[2];//uvx
+            float32Array[index + 3] = vertexs[3];//uvy
+            uint32Array[index + 4] = tint;//tint
 
-            positions[index + 15] = vertexs[12]
-            positions[index + 16] = vertexs[13]
-            positions[index + 17] = vertexs[14]
-            positions[index + 18] = vertexs[15]
-            positions[index + 19] = alpha;
+            float32Array[index + 5] = vertexs[4];
+            float32Array[index + 6] = vertexs[5];
+            float32Array[index + 7] = vertexs[6];
+            float32Array[index + 8] = vertexs[7];
+            uint32Array[index + 9] = tint;
+
+            float32Array[index + 10] = vertexs[8]
+            float32Array[index + 11] = vertexs[9]
+            float32Array[index + 12] = vertexs[10]
+            float32Array[index + 13] = vertexs[11]
+            uint32Array[index + 14] = tint;
+
+            float32Array[index + 15] = vertexs[12]
+            float32Array[index + 16] = vertexs[13]
+            float32Array[index + 17] = vertexs[14]
+            float32Array[index + 18] = vertexs[15]
+            uint32Array[index + 19] = tint;
 
             var matrix = target.__webglWorldMatrix;
             for(var i = 0;i < 4;i ++){
-                var x = positions[index + i*5];
-                var y = positions[index + i*5 + 1];
+                var x = float32Array[index + i*5];
+                var y = float32Array[index + i*5 + 1];
 
-                positions[index + i*5] = matrix.a*x+matrix.c*y + matrix.tx;
-                positions[index + i*5 + 1] = matrix.b*x+matrix.d*y + matrix.ty;
+                float32Array[index + i*5] = matrix.a*x+matrix.c*y + matrix.tx;
+                float32Array[index + i*5 + 1] = matrix.b*x+matrix.d*y + matrix.ty;
             }
 
             target.texture = image.texture;
@@ -312,7 +317,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
     _renderBatches:function(){
         var gl = this.gl;
-        gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.positions.subarray(0, this.batchIndex * this.positionStride));
+        gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.uint32Array.subarray(0, this.batchIndex * this.positionStride));
         var startIndex = 0;
         var batchNum = 0;
         var preTexture = null;
@@ -351,14 +356,14 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         var VSHADER_SOURCE ='\
             attribute vec2 a_position;\n\
             attribute vec2 a_TexCoord;\n\
-            attribute float a_alpha;\n\
+            attribute vec4 a_tint;\n\
             uniform mat3 u_projectionTransform;\n\
             varying vec2 v_TexCoord;\n\
-            varying float v_alpha;\n\
+            varying vec4 v_tint;\n\
             void main(){\n\
                 gl_Position =  vec4((u_projectionTransform * vec3(a_position, 1.0)).xy, 1.0, 1.0);\n\
                 v_TexCoord = a_TexCoord;\n\
-                v_alpha = a_alpha;\n\
+                v_tint = vec4(a_tint.rgb * a_tint.a, a_tint.a);\n\
             }\n\
         ';
 
@@ -366,9 +371,9 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             precision mediump float;\n\
             uniform sampler2D u_Sampler;\n\
             varying vec2 v_TexCoord;\n\
-            varying float v_alpha;\n\
+            varying vec4 v_tint;\n\
             void main(){\n\
-                gl_FragColor = texture2D(u_Sampler, v_TexCoord) * v_alpha;\n\
+                gl_FragColor = texture2D(u_Sampler, v_TexCoord) * v_tint;\n\
             }\n\
         ';
 
@@ -376,8 +381,8 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             v:VSHADER_SOURCE,
             f:FSHADER_SOURCE
         },{
-            attributes:["a_position", "a_TexCoord", "a_alpha"],
-            uniforms:["u_projectionTransform", "u_Alpha", "u_Sampler"]
+            attributes:["a_position", "a_TexCoord", "a_tint"],
+            uniforms:["u_projectionTransform", "u_Sampler"]
         });
     },
     _createVertexs:function(img, tx, ty, tw, th, x, y, w, h){

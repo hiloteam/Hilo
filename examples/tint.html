@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>tint - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <img src="images/fish.png" alt="" id="fish" style="display:none">
+    <style>
+        canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body onload="init();">
+    <header>
+        <h1>view.tint</h1>
+        <p>tint</p>
+    </header>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //init texture atlas
+            var atlas = new Hilo.TextureAtlas({
+                image: 'images/fish.png',
+                width: 174,
+                height: 1512,
+                frames: {
+                    frameWidth: 174,
+                    frameHeight: 126,
+                    numFrames: 12
+                },
+                sprites: {
+                    fish: {from:0, to:7}
+                }
+            });
+
+            //create a fish sprite
+            var maxX = stageWidth + 174;
+            var maxY = stageHeight + 126;
+            var minX = -174;
+            var minY = -126;
+
+            var num = 30;
+            while(num--){
+                var fish = new Hilo.Sprite({
+                    frames: atlas.getSprite('fish'),
+                    x: Math.random()*stageWidth,
+                    y: Math.random()*stageHeight,
+                    interval: 6,
+                    timeBased: false,
+                    loop: true,
+                    alpha:1,
+                    tint:Math.random()*0xffffff,
+                    pivotX:87,
+                    pivotY:63,
+                    onUpdate: function(){
+                        if(this.x > maxX){
+                            this.x = minX;
+                        }
+                        else if(this.x < minX){
+                            this.x = maxX;
+                        }
+
+                        if(this.y > maxY){
+                            this.y = minY;
+                        }
+                        else if(this.y < minY){
+                            this.y = maxY;
+                        }
+
+                        this.x += this.vx;
+                        this.y += this.vy;
+                    }
+                }).addTo(stage);
+
+                var speed = 2;
+                fish.rotation = Math.random()*360;
+                fish.vy = Math.sin(fish.rotation*Math.PI/180) * speed;
+                fish.vx = Math.cos(fish.rotation*Math.PI/180) * speed;
+            }
+    }
+    </script>
+</body>
+</html>
