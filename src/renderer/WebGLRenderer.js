@@ -71,9 +71,10 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
     renderType:'webgl',
     gl:null,
+    _isContextLost:false,
     constructor: function(properties){
-        window.__render = this;
         WebGLRenderer.superclass.constructor.call(this, properties);
+        var that = this;
         var gl = this.gl = this.canvas.getContext("webgl")||this.canvas.getContext('experimental-webgl');
 
         this.maxBatchNum = WebGLRenderer.MAX_BATCH_NUM;
@@ -96,6 +97,21 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         this.batchIndex = 0;
         this.sprites = [];
 
+        this.canvas.addEventListener('webglcontextlost', function(e){
+            that._isContextLost = true;
+            e.preventDefault();
+        }, false);
+
+        this.canvas.addEventListener('webglcontextrestored', function(e){
+            that._isContextLost = false;
+            _cacheTexture = {};
+            that.setupWebGLStateAndResource();
+        }, false);
+
+        this.setupWebGLStateAndResource();
+    },
+    setupWebGLStateAndResource:function(){
+        var gl = this.gl;
         gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
         gl.clearColor(0, 0, 0, 0);
         gl.disable(gl.DEPTH_TEST);
@@ -148,10 +164,6 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         var drawable = target.drawable, image = drawable && drawable.image;
         if(image){
             var gl = this.gl;
-            if(!image.texture){
-                this.activeShader.uploadTexture(image);
-            }
-
             var rect = drawable.rect, sw = rect[2], sh = rect[3], offsetX = rect[4], offsetY = rect[5];
             if(!w && !h){
                 //fix width/height TODO: how to get rid of this?
@@ -203,7 +215,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
                 float32Array[index + i*5 + 1] = matrix.b*x+matrix.d*y + matrix.ty;
             }
 
-            target.texture = image.texture;
+            target.__textureImage = image;
             this.sprites[this.batchIndex++] = target;
         }
     },
@@ -320,15 +332,15 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.uint32Array.subarray(0, this.batchIndex * this.positionStride));
         var startIndex = 0;
         var batchNum = 0;
-        var preTexture = null;
+        var preTextureImage = null;
         for(var i = 0;i < this.batchIndex;i ++){
             var sprite = this.sprites[i];
-            if(preTexture && preTexture !== sprite.texture){
+            if(preTextureImage && preTextureImage !== sprite.__textureImage){
                 this._renderBatch(startIndex, i);
                 startIndex = i;
                 batchNum = 1;
             }
-            preTexture = sprite.texture;
+            preTextureImage = sprite.__textureImage;
         }
         this._renderBatch(startIndex, this.batchIndex);
         this.batchIndex = 0;
@@ -337,7 +349,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         var gl = this.gl;
         var num = end - start;
         if(num > 0){
-            gl.bindTexture(gl.TEXTURE_2D, this.sprites[start].texture);
+            gl.bindTexture(gl.TEXTURE_2D, this._getTexture(this.sprites[start]));
             gl.drawElements(gl.TRIANGLES, num * 6, gl.UNSIGNED_SHORT, start * 6 * 2);
         }
     },
@@ -437,6 +449,14 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         mtx.ty =  view.y - mtx.b * pivotX - mtx.d * pivotY;
 
         mtx.concat(ancestor.__webglWorldMatrix);
+    },
+    _getTexture:function(sprite){
+        var image = sprite.__textureImage;
+        var texture = _cacheTexture[image.src];
+        if(!texture){
+            texture = this.activeShader.uploadTexture(image);
+        }
+        return texture;
     }
 });
 
@@ -502,31 +522,25 @@ Shader.prototype = {
     uploadTexture:function(image){
         var gl = this.gl;
         var renderer = this.renderer;
-        if(_cacheTexture[image.src]){
-            image.texture = _cacheTexture[image.src];
-        }
-        else{
-            var texture = gl.createTexture();
-            var u_Sampler = renderer.u_Sampler;
+        var texture = gl.createTexture();
+        var u_Sampler = renderer.u_Sampler;
 
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, texture);
 
-            gl.activeTexture(gl.TEXTURE0);
-            gl.bindTexture(gl.TEXTURE_2D, texture);
+        // gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
+        gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
-            // gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
-            gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
-            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.uniform1i(u_Sampler, 0);
+        gl.bindTexture(gl.TEXTURE_2D, null);
 
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-            gl.uniform1i(u_Sampler, 0);
-            gl.bindTexture(gl.TEXTURE_2D, null);
-
-            image.texture = texture;
-            _cacheTexture[image.src] = texture;
-        }
+        _cacheTexture[image.src] = texture;
+        return texture;
     },
     _createProgram:function(gl, vshader, fshader){
         var vertexShader = this._createShader(gl, gl.VERTEX_SHADER, vshader);
