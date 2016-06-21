@@ -215,7 +215,7 @@ var ParticleSystem = (function(){
          * @param {Boolean} clear 是否清除所有粒子
         */
         stop: function(clear) {
-            this.isRun = false;
+            this._isRun = false;
             if (clear) {
                 for (var i = this.children.length - 1; i >= 0; i--) {
                     this.children[i].destroy();
