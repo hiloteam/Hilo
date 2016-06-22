@@ -56,7 +56,7 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
  * Hilo扩展 样例
     * [Camera](http://hiloteam.github.io/Hilo/examples/Camera.html)
     * [Camera3d](http://hiloteam.github.io/Hilo/examples/Camera3d.html)
-    * [Skeleton Animation - Dragonbones](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/cat)
+    * [Skeleton Animation - Dragonbones](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/index.html)
     * [Particle System](http://hiloteam.github.io/Hilo/examples/ParticleSystem.html)
     * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
@@ -76,7 +76,7 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
 
 ### 联系我们
   * [![gitter.im][gitter-image]][gitter-url]
-  * QQ Group:372765886
+  * QQ群:372765886
 
 ### License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)

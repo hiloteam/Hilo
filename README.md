@@ -56,7 +56,7 @@ Get started by reading [docs/api-en/index.html](http://hiloteam.github.io/Hilo/d
  * Extensions
     * [Camera](http://hiloteam.github.io/Hilo/examples/Camera.html)
     * [Camera3d](http://hiloteam.github.io/Hilo/examples/Camera3d.html)
-    * [Skeleton Animation - Dragonbones](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/cat)
+    * [Skeleton Animation - Dragonbones](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/index.html)
     * [Particle System](http://hiloteam.github.io/Hilo/examples/ParticleSystem.html)
     * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
