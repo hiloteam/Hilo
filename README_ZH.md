@@ -1,5 +1,5 @@
-Hilo - HTML5 互动游戏引擎 [![Build Status][travis-image]][travis-url] [![gitter.im][gitter-image]][gitter-url]
-===========================
+# Hilo - HTML5 互动游戏引擎 [![Build Status][travis-image]][travis-url] [![gitter.im][gitter-image]][gitter-url]
+
 [English Version](./README.md)
 
 Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta可以帮助开发者快速创建HTML5游戏。
@@ -37,6 +37,7 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
 参见 [docs/api-zh/index.html](http://hiloteam.github.io/Hilo/docs/api-zh/index.html)
 
 ### API 样例
+
  * [Index.html](http://hiloteam.github.io/Hilo/examples/index.html)
  * 可视对象 (View)
     * [Bitmap](http://hiloteam.github.io/Hilo/examples/Bitmap.html)
@@ -61,6 +62,7 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
     * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
 ### Demos
+
   [![example image][example-image]][example-url]
 
  * [1111 dance mv](http://g.alicdn.com/tmapp/hilodemos/3.0.7/mv1111/index.html)
@@ -69,21 +71,23 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
  * [Fruit Ninja](http://g.alicdn.com/tmapp/hilodemos/3.0.7/fruit-ninja/index.html)
 
 ### 作者
+
  * [flashlizi](https://github.com/flashlizi)
  * [06wj](https://github.com/06wj)
  * [picacure](https://github.com/picacure)
 
-
 ### 联系我们
+
   * [![gitter.im][gitter-image]][gitter-url]
   * QQ群:372765886
 
 ### License
+
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
-[travis-image]: https://travis-ci.org/hiloteam/Hilo.svg?branch=master
+[travis-image]: https://img.shields.io/travis/hiloteam/Hilo.svg?style=flat-square
 [travis-url]: https://travis-ci.org/hiloteam/Hilo
-[gitter-image]: https://badges.gitter.im/hiloteam/Hilo.svg
+[gitter-image]: https://img.shields.io/badge/GITTER-join%20chat-green.svg?style=flat-square
 [gitter-url]: https://gitter.im/hiloteam/Hilo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [example-image]: https://img.alicdn.com/tps/TB1vDlBLVXXXXcDXVXXXXXXXXXX-850-806.png
 [example-url]: http://hiloteam.github.io/examples/index.html
