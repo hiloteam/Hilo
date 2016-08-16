@@ -239,7 +239,7 @@ gulp.task('test', ['setIsWatch', 'standalone', 'flash'], function () {
         height: 480,
         hidpi: false,
         useContentSize: true,
-        show: false,
+        show: false
       }));
 });
 
