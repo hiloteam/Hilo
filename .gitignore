@@ -3,4 +3,5 @@ node_modules/
 test/screenshot/
 *.iml
 .idea/
-*.swp
+*.sw*
+*.un~

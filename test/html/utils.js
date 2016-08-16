@@ -56,18 +56,11 @@ var utils = {
      */
     takeScreenshot:function(name, callback) {
         var that = this;
-
-        if (window.callPhantom) {
-            setTimeout(function(){
-                callPhantom({'screenshot':  'test/screenshot/' + name});
-                if(callback){
-                    that.loadImage('../screenshot/' + name + '.png', callback);
-                }
-            }, 100);
-        }
-        else{
-            callback && callback(null);
-        }
+        _macaca_uitest.screenshot(name + '.png', function() {
+          if (callback) {
+            that.loadImage('../screenshot/' + name + '.png', callback);
+          }
+        });
     },
     /**
      * 加载图片
@@ -114,8 +107,8 @@ var utils = {
      */
     diffImageData:function(imgData0, imgData1, tolerantCfg){
         tolerantCfg = tolerantCfg||{};
-        var tolerantValue = tolerantCfg.value || 10;
-        var tolerantNum = tolerantCfg.num || 10;
+        var tolerantValue = tolerantCfg.value || 20;
+        var tolerantNum = tolerantCfg.num || 20;
 
         var num = 0;
         for(var i = 0, l = imgData0.length;i < l;i += 4){
@@ -147,3 +140,4 @@ var utils = {
         return data;
     }
 };
+

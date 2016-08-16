@@ -26,15 +26,16 @@
     <div id='stage'></div>
     <div id="mocha"></div>
     <script src="mocha.js"></script>
+    <script src='uitest-shim.js'></script>
     <script src='utils.js'></script>
     <script src="../../node_modules/should/should.js"></script>
     <script src="../../build/standalone/hilo-standalone.min.js"></script>
     <script src="../../build/flash/hilo-flash.min.js" data-auto="true"></script>
     <script>
-    mocha.setup({
-        ui:'bdd',
-        timeout:5000,
-        slow:2000
+    _macaca_uitest.setup({
+      ui: 'bdd',
+      timeout: 5000,
+      slow: 2000
     });
     </script>
     <script src="../core.js"></script>
@@ -45,7 +46,7 @@
     <script src="../geom.js"></script>
     <script src="../event.js"></script>
     <script>
-      mocha.run();
+    _macaca_uitest.run();
     </script>
   </body>
 </html>
