@@ -29,7 +29,8 @@
     "merge-stream": "^0.1.8",
     "mocha": "=3.0.2",
     "should": "^8.0.2",
-    "through2": "^2.0.0"
+    "through2": "^2.0.0",
+    "uitest": "^1.1.4"
   },
   "sources": {
     "dir": "src",
