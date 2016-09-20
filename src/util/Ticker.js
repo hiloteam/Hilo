@@ -130,8 +130,9 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
         }
         this._lastTime = startTime;
 
-        for(var i = 0, len = tickers.length; i < len; i++){
-            tickers[i].tick(deltaTime);
+        var tickersCopy = tickers.slice(0);
+        for(var i = 0, len = tickersCopy.length; i < len; i++){
+            tickersCopy[i].tick(deltaTime);
         }
     },
 
@@ -180,6 +181,69 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
         if(index >= 0){
             tickers.splice(index, 1);
         }
-    }
+    },
+    /**
+     * 下次tick时回调
+     * @param  {Function} callback
+     * @return {tickObj}
+     */
+    nextTick:function(callback){
+        var that = this;
+        var tickObj = {
+            tick:function(dt){
+                that.removeTick(tickObj);
+                callback();
+            }
+        };
 
+        that.addTick(tickObj);
+        return tickObj;
+    },
+    /**
+     * 延迟指定的时间后调用回调, 类似setTimeout
+     * @param  {Function} callback
+     * @param  {Number}   duration 延迟的毫秒数
+     * @return {tickObj}
+     */
+    timeout:function(callback, duration){
+        var that = this;
+        var targetTime = new Date().getTime() + duration;
+        var tickObj = {
+            tick:function(){
+                var nowTime = new Date().getTime();
+                var dt = nowTime - targetTime;
+                if(dt >= 0){
+                    that.removeTick(tickObj);
+                    callback();
+                }
+            }
+        };
+        that.addTick(tickObj);
+        return tickObj;
+    },
+    /**
+     * 指定的时间周期来调用函数, 类似setInterval
+     * @param  {Function} callback
+     * @param  {Number}   duration 时间周期，单位毫秒
+     * @return {tickObj}
+     */
+    interval:function(callback, duration){
+        var that = this;
+        var targetTime = new Date().getTime() + duration;
+        var tickObj = {
+            tick:function(){
+                var nowTime = new Date().getTime();
+                var dt = nowTime - targetTime;
+                if(dt >= 0){
+                    if(dt < duration){
+                        nowTime -= dt;
+                    }
+                    targetTime = nowTime + duration;
+                    callback();
+                }
+            }
+        };
+        that.addTick(tickObj);
+        return tickObj;
+    }
 });
