@@ -150,7 +150,7 @@ gulp.task('extensions', function(){
     var streams = merge();
     for(var extensionName in pkg.extensions){
         var extensionPathData = pkg.extensions[extensionName];
-
+        var needWrap = extensionPathData.needWrap;
         var src = extensionPathData.files.map(function(src, i, arr){
             return 'src/extensions/' + extensionPathData.dir + src;
         });
@@ -159,6 +159,8 @@ gulp.task('extensions', function(){
 
         var stream = gulp.src(src)
             .pipe(concat(extensionName + '.js'))
+            .pipe(gulpif(needWrap, header('(function(){\n')))
+            .pipe(gulpif(needWrap, footer('\n})();\n')))
             .pipe(header(getFileInfo(extensionName)))
             .pipe(gulp.dest(dest))
             .pipe(gulpif(!isWatch, uglify()))
