@@ -10,7 +10,7 @@ var header = require('gulp-header');
 var footer = require('gulp-footer');
 var zip = require('gulp-zip');
 var shell = require('gulp-shell');
-var mochaPhantomJS = require('gulp-mocha-phantomjs');
+var uitest = require('gulp-uitest');
 var transformModule = require('gulp-transform-module');
 
 var pkg = require('./package.json');
@@ -233,17 +233,14 @@ gulp.task('watch', ['setIsWatch', 'standalone', 'flash', 'extensions'], function
 //test
 gulp.task('test', ['setIsWatch', 'standalone', 'flash'], function () {
     return gulp
-        .src('test/html/index.html')
-        .pipe(mochaPhantomJS({
-            reporter:'spec',
-            phantomjs: {
-                viewportSize: {
-                    width: 550,
-                    height: 400
-                },
-                useColors:true
-            }
-        }));
+      .src('test/html/index.html')
+      .pipe(uitest({
+        width: 600,
+        height: 480,
+        hidpi: false,
+        useContentSize: true,
+        show: false
+      }));
 });
 
 gulp.task('default', ['format', 'flash']);
