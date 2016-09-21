@@ -74,6 +74,7 @@
   },
   "extensions": {
     "physics": {
+      "needWrap":false,
       "dir": "physics/",
       "files": [
         "chipmunk.js",
@@ -81,10 +82,21 @@
       ]
     },
     "dragonbones": {
+      "needWrap":false,
       "dir": "dragonbones/src/",
       "files": [
         "dragonbones.js",
         "hiloFactory.js"
+      ]
+    },
+    "tiledmap": {
+      "needWrap":true,
+      "dir": "tiledmap/src/",
+      "files": [
+        "Base.js",
+        "Tileset.js",
+        "Layer.js",
+        "TiledMap.js"
       ]
     }
   }

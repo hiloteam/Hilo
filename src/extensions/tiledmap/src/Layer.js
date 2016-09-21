@@ -1,49 +1,52 @@
-var Class = Hilo.Class;
-var Layer =  Class.create({
-    layers:[],
-    tileset:null,
-    Statics:{
-        TILELAYER:'tilelayer',
-        OBJECTGROUP:'objectgroup',
-        IMAGELAYER:'imagelayer'
-    },
-    constructor:function(layers, tileset){
+var Layer = tiledMap.Layer = {
+    /**
+     * 生成地图层数组 layers
+     * @param  {Object} mapData  地图数据
+     * @param  {Object} tileDict 图块集合
+     * @return {Array}  layers 地图层数组
+     */
+    create:function(mapData, tileDict){
         var that = this;
-        that.layers = [];
-        that.tileset = tileset;
-        layers.forEach(function(layerData){
+        var layers = [];
+        var col = mapData.width;
+        var row = mapData.height;
+        mapData.layers.forEach(function(layerData){
             var layer;
             switch(layerData.type){
-                case Layer.TILELAYER:
-                    layer = that._parseTileLayer(layerData);
+                case tiledMap.layerType.TILELAYER:
+                    layer = that._parseTileLayer(layerData, tileDict, col, row);
                     break;
-                case Layer.IMAGELAYER:
+                case tiledMap.layerType.IMAGELAYER:
                     layer = that._parseImageLayer(layerData);
                     break;
-                case Layer.OBJECTGROUP:
-                    layer = that._parseObjectGroup(layerData);
+                case tiledMap.layerType.OBJECTGROUP:
+                    layer = that._parseObjectGroup(layerData, tileDict);
                     break;
             }
             if(layer){
-                that.layers.push(layer);
+                layers.push(layer);
             }
         });
+
+        return layers;
     },
-    _parseTileLayer:function(layerData){
+    /**
+     * 解析地图块层
+     * @param  {Object}
+     * @param  {Object} tileDict
+     * @param  {Number} col
+     * @param  {Number} row
+     * @return {Layer}
+     */
+    _parseTileLayer:function(layerData, tileDict, col, row){
         var that = this;
-        var w = that.tileWidth;
-        var h = that.tileHeight;
-        var col = that.col;
-        var row = that.row;
 
         var layer = that._createLayer(layerData);
-        layer.children = [];
+        var children = layer.children = [];
 
-        var tileDict = that.tileset.tileDict;
-        var children = layer.children;
         layerData.data.forEach(function(tileGid, index){
             if(tileGid !== 0){
-                var tileData = tileDict[tileGid];
+                var tileData = that._getTileData(tileGid, tileDict);
                 if(tileData){
                     tileData.col = index%col;
                     tileData.row = Math.floor(index/col);
@@ -53,21 +56,61 @@ var Layer =  Class.create({
         });
         return layer;
     },
+    /**
+     * 解析图片图层
+     * @param  {Object} layerData
+     * @return {Layer}
+     */
     _parseImageLayer:function(layerData){
         var layer = this._createLayer(layerData);
-        layer.image = layerData.image;
+        tiledMap.merge(layer, {
+            image:layerData.image
+        });
         return layer;
     },
-    _parseObjectGroup:function(layerData){
-        var layer = this._createLayer(layerData);
+    /**
+     * 解析对象层
+     * @param  {Object} layerData
+     * @param  {Object} tileDict
+     * @return {Layer}
+     */
+    _parseObjectGroup:function(layerData, tileDict){
+        var that = this;
+        var layer = that._createLayer(layerData);
+        var children = layer.children = [];
+        layerData.objects.forEach(function(objectData){
+            var tileData = that._getTileData(objectData.gid, tileDict);
+            if(tileData){
+                tiledMap.merge(tileData, {
+                    x:objectData.x,
+                    y:objectData.y,
+                    pivotX:0,
+                    pivotY:objectData.height,
+                    rotation:objectData.rotation,
+                    width:objectData.width,
+                    height:objectData.height,
+                    visible:objectData.visible,
+                    type:objectData.type,
+                    properties:objectData.properties,
+                    name:objectData.name
+                });
+                children.push(tileData);
+            }
+        });
+        return layer;
     },
+    /**
+     * 生成图层数据
+     * @param  {Object} layerData
+     * @return {Layer}
+     */
     _createLayer:function(layerData){
         var layer = {
             type:layerData.type,
             alpha:layerData.opacity,
             visible:layerData.visible,
-            offsetx:layerData.offsetx,
-            offsety:layerData.offsety,
+            x:layerData.offsetx||0,
+            y:layerData.offsety||0,
             name:layerData.name
         };
 
@@ -76,5 +119,76 @@ var Layer =  Class.create({
         }
 
         return layer;
+    },
+    /**
+     * 获取地图块数据
+     * @param  {Nubmer} gid 地图块gid
+     * @param  {Object} tileDict
+     * @return {Object}
+     */
+    _getTileData:function(gid, tileDict){
+        var tilesetData = tileDict[gid & tiledMap.flag.CLEAR]
+        if(tilesetData){
+            var tileData = {
+                tileset:tilesetData
+            };
+            if (gid & tiledMap.flag.FLIP_X) {
+                tileData.scaleX = -1;
+                tileData.scaleY = 1;
+            } else if (gid & tiledMap.flag.FLIP_Y) {
+                tileData.scaleX = 1;
+                tileData.scaleY = -1;
+            } else {
+                tileData.scaleX = 1;
+                tileData.scaleY = 1;
+            }
+
+            if(gid & tiledMap.flag.ROTATION){
+                tileData.rotation = 90;
+            }
+            else{
+                tileData.rotation = 0;
+            }
+
+            tileData.pivotX = tilesetData.tilewidth * 0.5;
+            tileData.pivotY = tilesetData.tileheight * 0.5;
+            return tileData;
+        }
     }
-});
+};
+
+/*
+tileData(TileLayer){
+    tileset:tilesetData,
+    col:col,
+    row:row,
+    x:x,
+    y:y,
+    scaleX:scaleX,
+    scaleY:scaleY,
+    pivotX:pivotX,
+    pivotY:pivotY,
+    rotation:rotation,
+    properties:properties,
+    visible:visible,
+    type:type,
+    name:name,
+}
+
+tileData(ObjectGroup){
+    tileset:tilesetData,
+    col:col,
+    row:row,
+    x:x,
+    y:y,
+    scaleX:scaleX,
+    scaleY:scaleY,
+    pivotX:pivotX,
+    pivotY:pivotY,
+    rotation:rotation,
+    properties:properties,
+    visible:visible,
+    type:type,
+    name:name,
+}
+ */

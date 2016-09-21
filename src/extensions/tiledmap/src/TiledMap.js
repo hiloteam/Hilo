@@ -1,76 +1,47 @@
-var Class = Hilo.Class;
-var Container = Hilo.Container;
-var Bitmap = Hilo.Bitmap;
-var Sprite = Hilo.Sprite;
-
-/**
- * TiledMap
- * @property {Object} data 地图数据
- * @property {Object} getImage 获取图片方法
- */
-var TiledMap = Class.create({
-    Extends:Container,
-    Statics:{
-        renderOrder:{
-            RIGHT_DOWN:'right_down',
-            RIGHT_UP:'right_up',
-            LEFT_DOWN:'left_down',
-            LEFT_UP:'left_up'
-        },
-        mapType:{
-            ORTHOGONAL:'orthogonal',
-            STAGGERED:'staggered',
-            HEXAGONAL:'hexagonal'
-        },
-        layerType:{
-            TILELAYER:'tilelayer',
-            OBJECTGROUP:'objectgroup',
-            IMAGELAYER:'imagelayer'
-        }
-    },
-    constructor:function(properties){
-        TiledMap.superclass.constructor.call(this, properties);
-        if(this.data){
-            this.parseData(this.data);
-            console.log('mapData:', this.data);
-        }
-    },
-    data:{},
-    orientation:null,
-    renderOrder:null,
-    col:0,
-    row:0,
-    tileWidth:0,
-    tileHeight:0,
-    _tilesetDict:{},
-    getImage:function(src){
-        return src;
+var TiledMap = tiledMap.TiledMap = {
+    create:function(mapData){
+        return this.parseData(mapData);
     },
     /**
      * 解析地图数据
      * @param  {Object} data 地图数据
      */
-    parseData:function(data){
-        this.data = data;
-        this.orientation = data.orientation;
-        this.renderOrder = data.renderorder;
-        this.tileWidth = data.tilewidth;
-        this.tileHeight = data.tileheight;
-        this.col = data.width;
-        this.row = data.height;
-        this.width = this.col * data.tilewidth;
-        this.height = this.row * data.tileheight;
-        this.version = data.version;
-        this.background = data.backgroundcolor;
+    parseData:function(mapData){
+        var that = this;
+        var map = {};
+        map.mapData = mapData;
+        map.orientation = mapData.orientation;
+        map.renderOrder = mapData.renderorder;
+        map.tilewidth = mapData.tilewidth;
+        map.tileheight = mapData.tileheight;
+        map.col = mapData.width;
+        map.row = mapData.height;
+        map.width = map.col * mapData.tilewidth;
+        map.height = map.row * mapData.tileheight;
+        map.version = mapData.version;
+        map.background = mapData.backgroundcolor;
 
-        var tileset = new Tileset(data.tilesets);
-        switch(this.orientation){
-            case TiledMap.mapType.ORTHOGONAL:
-                break;
+        var tileDict = map.tileDict = Tileset.create(mapData.tilesets);
+        var layers = map.layers = Layer.create(mapData, tileDict);
+        switch(map.orientation){
+            case tiledMap.mapType.ORTHOGONAL:
             default:
-                console.error("Hilo TiledMap not support " + this.orientation);
+                layers.forEach(function(layer){
+                    if(layer.children){
+                        layer.children.forEach(function(child){
+                            if(child.col !== undefined && child.row !== undefined){
+                                var tileset = child.tileset;
+                                child.x = child.col * map.tilewidth;
+                                child.y = child.row * map.tileheight + map.tileheight - tileset.tileheight;
+
+                                child.x += tileset.tilewidth * .5;
+                                child.y += tileset.tileheight * .5;
+                            }
+                        });
+                    }
+                });
                 break;
         }
+        return map;
     }
-});
-
+};

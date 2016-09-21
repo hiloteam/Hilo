@@ -3,17 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <title>TiledMap</title>
+    <style>
+        div{
+            pointer-events:all !important;
+        }
+    </style>
 </head>
 <body>
     <script src='./map/mario.js'></script>
+    <script src='./map/khc.js'></script>
     <script src='../../../../../build/standalone/hilo-standalone.js'></script>
-    <script src='../../src/Tileset.js'></script>
-    <script src='../../src/Layer.js'></script>
-    <script src='../../src/TiledMap.js'></script>
+    <script src='../../../../../build/tiledmap/tiledmap.js'></script>
     <script>
-    var tiledmap = new TiledMap({
-        data:TileMaps.mario
+    var tiledmap = tiledMap.TiledMap.create(TileMaps.mario);
+    console.log(tiledmap);
+
+    var Stage = Hilo.Stage;
+    var Ticker = Hilo.Ticker;
+    var Container = Hilo.Container;
+    var Bitmap = Hilo.Bitmap;
+    var Sprite = Hilo.Sprite;
+
+    var stage = new Stage({
+        canvas:document.body,
+        width:tiledmap.width,
+        height:tiledmap.height
     });
+    var ticker = new Ticker(60);
+    ticker.addTick(stage);
+
+    var hiloRenderer = {
+        init:function(){
+            this.tilesets = this.initTileset();
+            this.layers = this.initLayers();
+        },
+        getImage:function(src){
+            return './map/' + src;
+        },
+        initTileset:function(){
+            var that = this;
+            var tileDict = tiledmap.tileDict;
+            for(var gid in tileDict){
+                var tileData = tileDict[gid];
+                tileData.image = that.getImage(tileData.image);
+                if(tileData.animation){
+                    tileData.animation.forEach(function(frame){
+                        frame.image = that.getImage(frame.image);
+                    });
+                }
+            }
+
+            return tileDict;
+        },
+        createBitmap:function(cfg){
+            return new Bitmap({
+                image:cfg.image,
+                rect:cfg.rect,
+                x:cfg.x,
+                y:cfg.y,
+                rotation:cfg.rotation,
+                scaleX:cfg.scaleX,
+                scaleY:cfg.scaleY,
+                id:cfg.id,
+                pivotX:cfg.pivotX,
+                pivotY:cfg.pivotY
+            });
+        },
+        createSprite:function(cfg){
+            return new Sprite({
+                image:cfg.image,
+                rect:cfg.rect,
+                x:cfg.x,
+                y:cfg.y,
+                rotation:cfg.rotation,
+                scaleX:cfg.scaleX,
+                scaleY:cfg.scaleY,
+                frames:cfg.frames,
+                id:cfg.id,
+                pivotX:cfg.pivotX,
+                pivotY:cfg.pivotY,
+                timeBased:true,
+                loop:true,
+            });
+        },
+        createContainer:function(cfg){
+            return new Container({
+                x:cfg.x,
+                y:cfg.y,
+                width:cfg.width,
+                height:cfg.height,
+                id:cfg.id
+            });
+        },
+        initLayers:function(){
+            var that = this;
+            var mapContainer = that.createContainer({
+                width:tiledmap.width,
+                height:tiledmap.height,
+                x:0,
+                y:0
+            });
+            tiledmap.layers.forEach(function(layerData){
+                var layerView;
+                switch(layerData.type){
+                    case tiledMap.layerType.IMAGELAYER:
+                        layerView = that.createBitmap({
+                            image:that.getImage(layerData.image),
+                            x:layerData.x,
+                            y:layerData.y,
+                            scaleX:1,
+                            scaleY:1,
+                            rotation:0,
+                            pivotX:0,
+                            pivotY:0,
+                            id:'layer_' + layerData.name
+                        });
+                        break;
+                    case tiledMap.layerType.TILELAYER:
+                    case tiledMap.layerType.OBJECTGROUP:
+                        layerView = that.createContainer({
+                            x:layerData.x,
+                            y:layerData.y,
+                            id:'layer_' + layerData.name
+                        });
+
+                        layerData.children.forEach(function(childData){
+                            var view;
+                            var tileset = childData.tileset;
+                            if(tileset.animation){
+                                view = that.createSprite({
+                                    image:tileset.image,
+                                    x:childData.x,
+                                    y:childData.y,
+                                    scaleX:childData.scaleX,
+                                    scaleY:childData.scaleY,
+                                    frames:tileset.animation,
+                                    rotation:childData.rotation,
+                                    rect:tileset.rect,
+                                    pivotX:childData.pivotX,
+                                    pivotY:childData.pivotY
+                                });
+                            }
+                            else{
+                                view = that.createBitmap({
+                                    image:tileset.image,
+                                    x:childData.x,
+                                    y:childData.y,
+                                    scaleX:childData.scaleX,
+                                    scaleY:childData.scaleY,
+                                    rotation:childData.rotation,
+                                    rect:tileset.rect,
+                                    pivotX:childData.pivotX,
+                                    pivotY:childData.pivotY
+                                });
+                            }
+                            layerView.addChild(view);
+                        });
+                        break;
+                    default:
+                        break;
+                }
+                if(layerView){
+                    mapContainer.addChild(layerView);
+                }
+            });
+            return mapContainer;
+        }
+    };
+
+    hiloRenderer.init();
+    stage.addChild(hiloRenderer.layers);
+    ticker.start();
     </script>
 </body>
 </html>
