@@ -67,7 +67,18 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
          * 是否支持WebGL。只读属性。
          * @type {Boolean}
          */
-        isSupported:null
+        isSupport:function(){
+            if(this._isSupported == undefined){
+                var canvas = document.createElement('canvas');
+                if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
+                    this._isSupported = true;
+                }
+                else{
+                    this._isSupported = false;
+                }
+            }
+            return this._isSupported;
+        }
     },
     renderType:'webgl',
     gl:null,
@@ -585,13 +596,3 @@ Shader.prototype = {
         return shader;
     }
 };
-
-WebGLRenderer.isSupported = (function(){
-    var canvas = document.createElement('canvas');
-    if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
-        return true;
-    }
-    else{
-        return false;
-    }
-})();
