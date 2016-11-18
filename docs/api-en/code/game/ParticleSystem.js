@@ -157,7 +157,7 @@ var ParticleSystem = (function(){
          * @param {Boolean} clear Whether or not clear all the particles.
         */
         stop: function(clear) {
-            this.isRun = false;
+            this._isRun = false;
             if (clear) {
                 for (var i = this.children.length - 1; i >= 0; i--) {
                     this.children[i].destroy();

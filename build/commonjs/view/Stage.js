@@ -101,7 +101,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
                 this.renderer = new DOMRenderer(props);
                 break;
             case 'webgl':
-                if(WebGLRenderer.isSupported){
+                if(WebGLRenderer.isSupport()){
                     this.renderer = new WebGLRenderer(props);
                 }
                 else{

@@ -18,6 +18,11 @@ var win = window, doc = document, docElem = doc.documentElement,
 
 return {
     /**
+     * Hilo version
+     * @type String
+     */
+    version:'{{$version}}',
+    /**
      * @language=zh
      * 获取一个全局唯一的id。如Stage1，Bitmap2等。
      * @param {String} prefix 生成id的前缀。
@@ -107,8 +112,8 @@ return {
             data.supportStorage = true;
         }catch(e){ };
 
-        //vendro prefix
-        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'Moz' : data.opera ? 'O' : data.ie ? 'ms' : '';
+        //vendor prefix
+        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'moz' : data.opera ? 'o' : data.ie ? 'ms' : '';
         var cssVendor = data.cssVendor = '-' + jsVendor + '-';
 
         //css transform/3d feature dectection

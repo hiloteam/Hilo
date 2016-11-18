@@ -70,21 +70,26 @@ return Class.create(/** @lends WebAudio.prototype */{
      */
     load: function(){
         if(!this._buffer){
-            var request = new XMLHttpRequest();
-            request.src = this.src;
-            request.open('GET', this.src, true);
-            request.responseType = 'arraybuffer';
-            request.onload = this._onAudioEvent;
-            request.onprogress = this._onAudioEvent;
-            request.onerror = this._onAudioEvent;
-            request.send();
+            var buffer = WebAudio._bufferCache[this.src];
+            if(buffer){
+                this._onDecodeComplete(buffer);
+            }
+            else{
+                var request = new XMLHttpRequest();
+                request.src = this.src;
+                request.open('GET', this.src, true);
+                request.responseType = 'arraybuffer';
+                request.onload = this._onAudioEvent;
+                request.onprogress = this._onAudioEvent;
+                request.onerror = this._onAudioEvent;
+                request.send();
+            }
             this._buffer = true;
         }
         return this;
     },
 
     /**
-     * @language=zh
      * @private
      */
     _onAudioEvent: function(e){
@@ -113,20 +118,22 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * @language=zh
      * @private
      */
     _onDecodeComplete: function(audioBuffer){
+        if(!WebAudio._bufferCache[this.src]){
+            WebAudio._bufferCache[this.src] = audioBuffer;
+        }
+
         this._buffer = audioBuffer;
         this.loaded = true;
         this.duration = audioBuffer.duration;
-        // console.log('onDecodeComplete:', audioBuffer.duration);
+
         this.fire('load');
         if(this.autoPlay) this._doPlay();
     },
 
     /**
-     * @language=zh
      * @private
      */
     _onDecodeError: function(){
@@ -134,7 +141,6 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * @language=zh
      * @private
      */
     _doPlay: function(){
@@ -160,7 +166,6 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * @language=zh
      * @private
      */
     _clearAudioNode: function(){
@@ -279,6 +284,25 @@ return Class.create(/** @lends WebAudio.prototype */{
                 return true;
             }
             return this.enabled;
+        },
+        /**
+         * The audio buffer caches.
+         * @private
+         * @type {Object}
+         */
+        _bufferCache:{},
+        /**
+         * @language=zh
+         * 清除audio buffer 缓存。
+         * @param  {String} url audio的网址，默认清除所有的缓存
+         */
+        clearBufferCache:function(url){
+            if(url){
+                this._bufferCache[url] = null;
+            }
+            else{
+                this._bufferCache = {};
+            }
         }
     }
 });

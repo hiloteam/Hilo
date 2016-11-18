@@ -300,6 +300,42 @@
                         
                     </td>
                     <td class="fixedFont">
+                        <div><b><a href="../symbols/Ticker.html#interval">interval</a></b>(callback:Function, duration:Number):tickObj
+                        </div>
+                        <div class="description">
+                            
+                            指定的时间周期来调用函数, 类似setInterval
+                        </div>
+                    </td>
+                    <td>
+                        Ticker
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Ticker.html#nextTick">nextTick</a></b>(callback:Function):tickObj
+                        </div>
+                        <div class="description">
+                            
+                            下次tick时回调
+                        </div>
+                    </td>
+                    <td>
+                        Ticker
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
                         <div><b><a href="../symbols/Ticker.html#pause">pause</a></b>()
                         </div>
                         <div class="description">
@@ -377,6 +413,24 @@
                         <div class="description">
                             
                             
+                        </div>
+                    </td>
+                    <td>
+                        Ticker
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Ticker.html#timeout">timeout</a></b>(callback:Function, duration:Number):tickObj
+                        </div>
+                        <div class="description">
+                            
+                            延迟指定的时间后调用回调, 类似setTimeout
                         </div>
                     </td>
                     <td>
@@ -486,6 +540,85 @@
         
         
         
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="interval"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>interval</b>(callback:Function, duration:Number):<span class="light">tickObj</span>
+        </div>
+        <div class="description">指定的时间周期来调用函数, 类似setInterval</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>callback</b>:<span>Function</span> 
+                     — 
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>duration</b>:<span>Number</span> 
+                     — 时间周期，单位毫秒
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>tickObj</span>  — </dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="nextTick"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>nextTick</b>(callback:Function):<span class="light">tickObj</span>
+        </div>
+        <div class="description">下次tick时回调</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>callback</b>:<span>Function</span> 
+                     — 
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>tickObj</span>  — </dd>
+            
+            </dl>
         
         
         
@@ -606,6 +739,48 @@
         
         
         
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="timeout"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>timeout</b>(callback:Function, duration:Number):<span class="light">tickObj</span>
+        </div>
+        <div class="description">延迟指定的时间后调用回调, 类似setTimeout</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>callback</b>:<span>Function</span> 
+                     — 
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>duration</b>:<span>Number</span> 
+                     — 延迟的毫秒数
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>tickObj</span>  — </dd>
+            
+            </dl>
         
         
         

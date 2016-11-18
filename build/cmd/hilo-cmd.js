@@ -21,6 +21,11 @@ var win = window, doc = document, docElem = doc.documentElement,
 
 return {
     /**
+     * Hilo version
+     * @type String
+     */
+    version:'1.0.1',
+    /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
      * @param {String} prefix Generated id's prefix.
@@ -110,8 +115,8 @@ return {
             data.supportStorage = true;
         }catch(e){ };
 
-        //vendro prefix
-        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'Moz' : data.opera ? 'O' : data.ie ? 'ms' : '';
+        //vendor prefix
+        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'moz' : data.opera ? 'o' : data.ie ? 'ms' : '';
         var cssVendor = data.cssVendor = '-' + jsVendor + '-';
 
         //css transform/3d feature dectection
@@ -364,6 +369,7 @@ return {
 };
 
 })();
+
 
 return Hilo;
 
@@ -1166,15 +1172,21 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
         if(target === this.stage){
             var style = this.canvas.style,
                 oldScaleX = target._scaleX,
-                oldScaleY = target._scaleY;
+                oldScaleY = target._scaleY,
+                isStyleChange = false;
 
             if((!oldScaleX && scaleX != 1) || (oldScaleX && oldScaleX != scaleX)){
                 target._scaleX = scaleX;
                 style.width = scaleX * target.width + "px";
+                isStyleChange = true;
             }
             if((!oldScaleY && scaleY != 1) || (oldScaleY && oldScaleY != scaleY)){
                 target._scaleY = scaleY;
                 style.height = scaleY * target.height + "px";
+                isStyleChange = true;
+            }
+            if(isStyleChange){
+                target.updateViewport();
             }
         }else{
             var x = target.x,
@@ -1279,8 +1291,15 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
      * @see Renderer#resize
      */
     resize: function(width, height){
-        this.canvas.width = width;
-        this.canvas.height = height;
+        var canvas = this.canvas;
+        var stage = this.stage;
+        var style = canvas.style;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        style.width = stage.width * stage.scaleX + 'px';
+        style.height = stage.height * stage.scaleY + 'px';
     }
 
 });
@@ -1525,20 +1544,34 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
          * is WebGL supported, readonly.
          * @type {Boolean}
          */
-        isSupported:null
+        isSupport:function(){
+            if(this._isSupported == undefined){
+                var canvas = document.createElement('canvas');
+                if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
+                    this._isSupported = true;
+                }
+                else{
+                    this._isSupported = false;
+                }
+            }
+            return this._isSupported;
+        }
     },
     renderType:'webgl',
     gl:null,
+    _isContextLost:false,
     constructor: function(properties){
-        window.__render = this;
         WebGLRenderer.superclass.constructor.call(this, properties);
+        var that = this;
         var gl = this.gl = this.canvas.getContext("webgl")||this.canvas.getContext('experimental-webgl');
 
         this.maxBatchNum = WebGLRenderer.MAX_BATCH_NUM;
         this.positionStride = WebGLRenderer.ATTRIBUTE_NUM * 4;
         var vertexNum = this.maxBatchNum * WebGLRenderer.ATTRIBUTE_NUM * 4;
         var indexNum = this.maxBatchNum * 6;
-        this.positions = new Float32Array(vertexNum);
+        this.arrayBuffer = new ArrayBuffer(vertexNum * 4);
+        this.float32Array = new Float32Array(this.arrayBuffer);
+        this.uint32Array = new Uint32Array(this.arrayBuffer);
         this.indexs = new Uint16Array(indexNum);
         for (var i=0, j=0; i < indexNum; i += 6, j += 4)
         {
@@ -1552,6 +1585,21 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         this.batchIndex = 0;
         this.sprites = [];
 
+        this.canvas.addEventListener('webglcontextlost', function(e){
+            that._isContextLost = true;
+            e.preventDefault();
+        }, false);
+
+        this.canvas.addEventListener('webglcontextrestored', function(e){
+            that._isContextLost = false;
+            _cacheTexture = {};
+            that.setupWebGLStateAndResource();
+        }, false);
+
+        this.setupWebGLStateAndResource();
+    },
+    setupWebGLStateAndResource:function(){
+        var gl = this.gl;
         gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
         gl.clearColor(0, 0, 0, 0);
         gl.disable(gl.DEPTH_TEST);
@@ -1568,11 +1616,11 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, this.indexs, gl.STATIC_DRAW);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.positionBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, this.positions, gl.DYNAMIC_DRAW);
+        gl.bufferData(gl.ARRAY_BUFFER, this.arrayBuffer, gl.DYNAMIC_DRAW);
 
         gl.vertexAttribPointer(this.a_position, 2, gl.FLOAT, false, this.positionStride, 0);//x, y
         gl.vertexAttribPointer(this.a_TexCoord, 2, gl.FLOAT, false, this.positionStride, 2 * 4);//x, y
-        gl.vertexAttribPointer(this.a_alpha, 1, gl.FLOAT, false, this.positionStride, 4 * 4);//alpha
+        gl.vertexAttribPointer(this.a_tint, 4, gl.UNSIGNED_BYTE, true, this.positionStride, 4 * 4);//alpha
     },
 
     context: null,
@@ -1604,10 +1652,6 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         var drawable = target.drawable, image = drawable && drawable.image;
         if(image){
             var gl = this.gl;
-            if(!image.texture){
-                this.activeShader.uploadTexture(image);
-            }
-
             var rect = drawable.rect, sw = rect[2], sh = rect[3], offsetX = rect[4], offsetY = rect[5];
             if(!w && !h){
                 //fix width/height TODO: how to get rid of this?
@@ -1621,42 +1665,45 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 
             var vertexs = this._createVertexs(image, rect[0], rect[1], sw, sh, 0, 0, w, h);
             var index = this.batchIndex * this.positionStride;
-            var positions = this.positions;
-            var alpha = target.__webglRenderAlpha;
-            positions[index + 0] = vertexs[0];//x
-            positions[index + 1] = vertexs[1];//y
-            positions[index + 2] = vertexs[2];//uvx
-            positions[index + 3] = vertexs[3];//uvy
-            positions[index + 4] = alpha;//alpha
+            var float32Array = this.float32Array;
+            var uint32Array = this.uint32Array;
 
-            positions[index + 5] = vertexs[4];
-            positions[index + 6] = vertexs[5];
-            positions[index + 7] = vertexs[6];
-            positions[index + 8] = vertexs[7];
-            positions[index + 9] = alpha;
+            var tint = (target.tint >> 16) + (target.tint & 0xff00) + ((target.tint & 0xff) << 16) + (target.__webglRenderAlpha * 255 << 24);
 
-            positions[index + 10] = vertexs[8]
-            positions[index + 11] = vertexs[9]
-            positions[index + 12] = vertexs[10]
-            positions[index + 13] = vertexs[11]
-            positions[index + 14] = alpha;
+            float32Array[index + 0] = vertexs[0];//x
+            float32Array[index + 1] = vertexs[1];//y
+            float32Array[index + 2] = vertexs[2];//uvx
+            float32Array[index + 3] = vertexs[3];//uvy
+            uint32Array[index + 4] = tint;//tint
 
-            positions[index + 15] = vertexs[12]
-            positions[index + 16] = vertexs[13]
-            positions[index + 17] = vertexs[14]
-            positions[index + 18] = vertexs[15]
-            positions[index + 19] = alpha;
+            float32Array[index + 5] = vertexs[4];
+            float32Array[index + 6] = vertexs[5];
+            float32Array[index + 7] = vertexs[6];
+            float32Array[index + 8] = vertexs[7];
+            uint32Array[index + 9] = tint;
+
+            float32Array[index + 10] = vertexs[8]
+            float32Array[index + 11] = vertexs[9]
+            float32Array[index + 12] = vertexs[10]
+            float32Array[index + 13] = vertexs[11]
+            uint32Array[index + 14] = tint;
+
+            float32Array[index + 15] = vertexs[12]
+            float32Array[index + 16] = vertexs[13]
+            float32Array[index + 17] = vertexs[14]
+            float32Array[index + 18] = vertexs[15]
+            uint32Array[index + 19] = tint;
 
             var matrix = target.__webglWorldMatrix;
             for(var i = 0;i < 4;i ++){
-                var x = positions[index + i*5];
-                var y = positions[index + i*5 + 1];
+                var x = float32Array[index + i*5];
+                var y = float32Array[index + i*5 + 1];
 
-                positions[index + i*5] = matrix.a*x+matrix.c*y + matrix.tx;
-                positions[index + i*5 + 1] = matrix.b*x+matrix.d*y + matrix.ty;
+                float32Array[index + i*5] = matrix.a*x+matrix.c*y + matrix.tx;
+                float32Array[index + i*5 + 1] = matrix.b*x+matrix.d*y + matrix.ty;
             }
 
-            target.texture = image.texture;
+            target.__textureImage = image;
             this.sprites[this.batchIndex++] = target;
         }
     },
@@ -1688,15 +1735,21 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         if(target === this.stage){
             var style = this.canvas.style,
                 oldScaleX = target._scaleX,
-                oldScaleY = target._scaleY;
+                oldScaleY = target._scaleY,
+                isStyleChange = false;
 
             if((!oldScaleX && scaleX != 1) || (oldScaleX && oldScaleX != scaleX)){
                 target._scaleX = scaleX;
                 style.width = scaleX * target.width + "px";
+                isStyleChange = true;
             }
             if((!oldScaleY && scaleY != 1) || (oldScaleY && oldScaleY != scaleY)){
                 target._scaleY = scaleY;
                 style.height = scaleY * target.height + "px";
+                isStyleChange = true;
+            }
+            if(isStyleChange){
+                target.updateViewport();
             }
             target.__webglWorldMatrix = target.__webglWorldMatrix||new Matrix(1, 0, 0, 1, 0, 0);
         }else{
@@ -1744,8 +1797,16 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
      */
     resize: function(width, height){
         if(this.width !== width || this.height !== height){
-            this.width = this.canvas.width = width;
-            this.height = this.canvas.height = height;
+            var canvas = this.canvas;
+            var stage = this.stage;
+            var style = canvas.style;
+
+            this.width = canvas.width = width;
+            this.height = canvas.height = height;
+
+            style.width = stage.width * stage.scaleX + 'px';
+            style.height = stage.height * stage.scaleY + 'px';
+
             this.gl.viewport(0, 0, width, height);
 
             this.canvasHalfWidth = width * .5;
@@ -1756,18 +1817,18 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
     _renderBatches:function(){
         var gl = this.gl;
-        gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.positions.subarray(0, this.batchIndex * this.positionStride));
+        gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.uint32Array.subarray(0, this.batchIndex * this.positionStride));
         var startIndex = 0;
         var batchNum = 0;
-        var preTexture = null;
+        var preTextureImage = null;
         for(var i = 0;i < this.batchIndex;i ++){
             var sprite = this.sprites[i];
-            if(preTexture && preTexture !== sprite.texture){
+            if(preTextureImage && preTextureImage !== sprite.__textureImage){
                 this._renderBatch(startIndex, i);
                 startIndex = i;
                 batchNum = 1;
             }
-            preTexture = sprite.texture;
+            preTextureImage = sprite.__textureImage;
         }
         this._renderBatch(startIndex, this.batchIndex);
         this.batchIndex = 0;
@@ -1776,7 +1837,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         var gl = this.gl;
         var num = end - start;
         if(num > 0){
-            gl.bindTexture(gl.TEXTURE_2D, this.sprites[start].texture);
+            gl.bindTexture(gl.TEXTURE_2D, this._getTexture(this.sprites[start]));
             gl.drawElements(gl.TRIANGLES, num * 6, gl.UNSIGNED_SHORT, start * 6 * 2);
         }
     },
@@ -1795,14 +1856,14 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         var VSHADER_SOURCE ='\
             attribute vec2 a_position;\n\
             attribute vec2 a_TexCoord;\n\
-            attribute float a_alpha;\n\
+            attribute vec4 a_tint;\n\
             uniform mat3 u_projectionTransform;\n\
             varying vec2 v_TexCoord;\n\
-            varying float v_alpha;\n\
+            varying vec4 v_tint;\n\
             void main(){\n\
                 gl_Position =  vec4((u_projectionTransform * vec3(a_position, 1.0)).xy, 1.0, 1.0);\n\
                 v_TexCoord = a_TexCoord;\n\
-                v_alpha = a_alpha;\n\
+                v_tint = vec4(a_tint.rgb * a_tint.a, a_tint.a);\n\
             }\n\
         ';
 
@@ -1810,9 +1871,9 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             precision mediump float;\n\
             uniform sampler2D u_Sampler;\n\
             varying vec2 v_TexCoord;\n\
-            varying float v_alpha;\n\
+            varying vec4 v_tint;\n\
             void main(){\n\
-                gl_FragColor = texture2D(u_Sampler, v_TexCoord) * v_alpha;\n\
+                gl_FragColor = texture2D(u_Sampler, v_TexCoord) * v_tint;\n\
             }\n\
         ';
 
@@ -1820,8 +1881,8 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             v:VSHADER_SOURCE,
             f:FSHADER_SOURCE
         },{
-            attributes:["a_position", "a_TexCoord", "a_alpha"],
-            uniforms:["u_projectionTransform", "u_Alpha", "u_Sampler"]
+            attributes:["a_position", "a_TexCoord", "a_tint"],
+            uniforms:["u_projectionTransform", "u_Sampler"]
         });
     },
     _createVertexs:function(img, tx, ty, tw, th, x, y, w, h){
@@ -1876,6 +1937,14 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         mtx.ty =  view.y - mtx.b * pivotX - mtx.d * pivotY;
 
         mtx.concat(ancestor.__webglWorldMatrix);
+    },
+    _getTexture:function(sprite){
+        var image = sprite.__textureImage;
+        var texture = _cacheTexture[image.src];
+        if(!texture){
+            texture = this.activeShader.uploadTexture(image);
+        }
+        return texture;
     }
 });
 
@@ -1930,31 +1999,25 @@ Shader.prototype = {
     uploadTexture:function(image){
         var gl = this.gl;
         var renderer = this.renderer;
-        if(_cacheTexture[image.src]){
-            image.texture = _cacheTexture[image.src];
-        }
-        else{
-            var texture = gl.createTexture();
-            var u_Sampler = renderer.u_Sampler;
+        var texture = gl.createTexture();
+        var u_Sampler = renderer.u_Sampler;
 
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, texture);
 
-            gl.activeTexture(gl.TEXTURE0);
-            gl.bindTexture(gl.TEXTURE_2D, texture);
+        // gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
+        gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
-            // gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
-            gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
-            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.uniform1i(u_Sampler, 0);
+        gl.bindTexture(gl.TEXTURE_2D, null);
 
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-            gl.uniform1i(u_Sampler, 0);
-            gl.bindTexture(gl.TEXTURE_2D, null);
-
-            image.texture = texture;
-            _cacheTexture[image.src] = texture;
-        }
+        _cacheTexture[image.src] = texture;
+        return texture;
     },
     _createProgram:function(gl, vshader, fshader){
         var vertexShader = this._createShader(gl, gl.VERTEX_SHADER, vshader);
@@ -2000,16 +2063,6 @@ Shader.prototype = {
     }
 };
 
-WebGLRenderer.isSupported = (function(){
-    var canvas = document.createElement('canvas');
-    if(canvas.getContext && (canvas.getContext('webgl')||canvas.getContext('experimental-webgl'))){
-        return true;
-    }
-    else{
-        return false;
-    }
-})();
-
 return WebGLRenderer;
 
 });
@@ -2050,7 +2103,8 @@ var Matrix = require('hilo/geom/Matrix');
  * @property {Number} scaleY The y axis scale factor of the view, default value is 1.
  * @property {Boolean} pointerEnabled Is the view can receive DOM events, default value is true.
  * @property {Object} background The background style to fill the view, can be css color, gradient or pattern of canvas
- * @property {Graphics} mask Sets a mask for the view. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. A regular mask must be a Hilo.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping. To remove a mask, set this property to null. 
+ * @property {Graphics} mask Sets a mask for the view. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. A regular mask must be a Hilo.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping. To remove a mask, set this property to null.
+ * @property {Number} tint The tint applied to the view，default is 0xFFFFFF.Only support in WebGL mode.
  * @property {String|Function} align The alignment of the view, the value must be one of Hilo.align enum.
  * @property {Container} parent The parent view of this view, readonly!
  * @property {Number} depth The z index of the view, readonly!
@@ -2067,6 +2121,7 @@ return Class.create(/** @lends View.prototype */{
         Hilo.copy(this, properties, true);
     },
 
+    tint:0xffffff,
     id: null,
     x: 0,
     y: 0,
@@ -2266,7 +2321,7 @@ return Class.create(/** @lends View.prototype */{
     },
     /**
      * @language=en
-     * Mouse event 
+     * Mouse event
     */
     _fireMouseEvent:function(e){
         e.eventCurrentTarget = this;
@@ -2303,7 +2358,7 @@ return Class.create(/** @lends View.prototype */{
 
     /**
      * @language=en
-     * This method will call while the view need update(usually caused by ticker update). This method can return a Boolean value, if return false, the view will not be drawn. 
+     * This method will call while the view need update(usually caused by ticker update). This method can return a Boolean value, if return false, the view will not be drawn.
      * Limit: If you change the index in it's parent, it will not be drawn correct in current frame but next frame is correct.
      * @type Function
      * @default null
@@ -2312,7 +2367,7 @@ return Class.create(/** @lends View.prototype */{
 
     /**
      * @language=en
-     * The render method of current view. The subclass can implement it's own render logic by rewrite this function. 
+     * The render method of current view. The subclass can implement it's own render logic by rewrite this function.
      * @param {Renderer} renderer Renderer object.
      * @param {Number} delta The delta time of render.
      */
@@ -2984,7 +3039,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
                 this.renderer = new DOMRenderer(props);
                 break;
             case 'webgl':
-                if(WebGLRenderer.isSupported){
+                if(WebGLRenderer.isSupport()){
                     this.renderer = new WebGLRenderer(props);
                 }
                 else{
@@ -5030,8 +5085,9 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
         }
         this._lastTime = startTime;
 
-        for(var i = 0, len = tickers.length; i < len; i++){
-            tickers[i].tick(deltaTime);
+        var tickersCopy = tickers.slice(0);
+        for(var i = 0, len = tickersCopy.length; i < len; i++){
+            tickersCopy[i].tick(deltaTime);
         }
     },
 
@@ -5066,8 +5122,71 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
         if(index >= 0){
             tickers.splice(index, 1);
         }
-    }
+    },
+    /**
+     * 下次tick时回调
+     * @param  {Function} callback
+     * @return {tickObj}
+     */
+    nextTick:function(callback){
+        var that = this;
+        var tickObj = {
+            tick:function(dt){
+                that.removeTick(tickObj);
+                callback();
+            }
+        };
 
+        that.addTick(tickObj);
+        return tickObj;
+    },
+    /**
+     * 延迟指定的时间后调用回调, 类似setTimeout
+     * @param  {Function} callback
+     * @param  {Number}   duration 延迟的毫秒数
+     * @return {tickObj}
+     */
+    timeout:function(callback, duration){
+        var that = this;
+        var targetTime = new Date().getTime() + duration;
+        var tickObj = {
+            tick:function(){
+                var nowTime = new Date().getTime();
+                var dt = nowTime - targetTime;
+                if(dt >= 0){
+                    that.removeTick(tickObj);
+                    callback();
+                }
+            }
+        };
+        that.addTick(tickObj);
+        return tickObj;
+    },
+    /**
+     * 指定的时间周期来调用函数, 类似setInterval
+     * @param  {Function} callback
+     * @param  {Number}   duration 时间周期，单位毫秒
+     * @return {tickObj}
+     */
+    interval:function(callback, duration){
+        var that = this;
+        var targetTime = new Date().getTime() + duration;
+        var tickObj = {
+            tick:function(){
+                var nowTime = new Date().getTime();
+                var dt = nowTime - targetTime;
+                if(dt >= 0){
+                    if(dt < duration){
+                        nowTime -= dt;
+                    }
+                    targetTime = nowTime + duration;
+                    callback();
+                }
+            }
+        };
+        that.addTick(tickObj);
+        return tickObj;
+    }
 });
 
 return Ticker;
@@ -6595,21 +6714,26 @@ return Class.create(/** @lends WebAudio.prototype */{
      */
     load: function(){
         if(!this._buffer){
-            var request = new XMLHttpRequest();
-            request.src = this.src;
-            request.open('GET', this.src, true);
-            request.responseType = 'arraybuffer';
-            request.onload = this._onAudioEvent;
-            request.onprogress = this._onAudioEvent;
-            request.onerror = this._onAudioEvent;
-            request.send();
+            var buffer = WebAudio._bufferCache[this.src];
+            if(buffer){
+                this._onDecodeComplete(buffer);
+            }
+            else{
+                var request = new XMLHttpRequest();
+                request.src = this.src;
+                request.open('GET', this.src, true);
+                request.responseType = 'arraybuffer';
+                request.onload = this._onAudioEvent;
+                request.onprogress = this._onAudioEvent;
+                request.onerror = this._onAudioEvent;
+                request.send();
+            }
             this._buffer = true;
         }
         return this;
     },
 
     /**
-     * @language=en
      * @private
      */
     _onAudioEvent: function(e){
@@ -6638,20 +6762,22 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * @language=en
      * @private
      */
     _onDecodeComplete: function(audioBuffer){
+        if(!WebAudio._bufferCache[this.src]){
+            WebAudio._bufferCache[this.src] = audioBuffer;
+        }
+
         this._buffer = audioBuffer;
         this.loaded = true;
         this.duration = audioBuffer.duration;
-        // console.log('onDecodeComplete:', audioBuffer.duration);
+
         this.fire('load');
         if(this.autoPlay) this._doPlay();
     },
 
     /**
-     * @language=en
      * @private
      */
     _onDecodeError: function(){
@@ -6659,7 +6785,6 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * @language=en
      * @private
      */
     _doPlay: function(){
@@ -6685,7 +6810,6 @@ return Class.create(/** @lends WebAudio.prototype */{
     },
 
     /**
-     * @language=en
      * @private
      */
     _clearAudioNode: function(){
@@ -6804,6 +6928,25 @@ return Class.create(/** @lends WebAudio.prototype */{
                 return true;
             }
             return this.enabled;
+        },
+        /**
+         * The audio buffer caches.
+         * @private
+         * @type {Object}
+         */
+        _bufferCache:{},
+        /**
+         * @language=en
+         * Clear the audio buffer cache.
+         * @param  {String} url audio's url. if url is none, it will clear all buffer.
+         */
+        clearBufferCache:function(url){
+            if(url){
+                this._bufferCache[url] = null;
+            }
+            else{
+                this._bufferCache = {};
+            }
         }
     }
 });
@@ -7370,7 +7513,7 @@ var ParticleSystem = (function(){
          * @param {Boolean} clear Whether or not clear all the particles.
         */
         stop: function(clear) {
-            this.isRun = false;
+            this._isRun = false;
             if (clear) {
                 for (var i = this.children.length - 1; i >= 0; i--) {
                     this.children[i].destroy();

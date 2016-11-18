@@ -35,7 +35,8 @@ var Matrix = require('hilo/geom/Matrix');
  * @property {Number} scaleY The y axis scale factor of the view, default value is 1.
  * @property {Boolean} pointerEnabled Is the view can receive DOM events, default value is true.
  * @property {Object} background The background style to fill the view, can be css color, gradient or pattern of canvas
- * @property {Graphics} mask Sets a mask for the view. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. A regular mask must be a Hilo.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping. To remove a mask, set this property to null. 
+ * @property {Graphics} mask Sets a mask for the view. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. A regular mask must be a Hilo.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping. To remove a mask, set this property to null.
+ * @property {Number} tint The tint applied to the view，default is 0xFFFFFF.Only support in WebGL mode.
  * @property {String|Function} align The alignment of the view, the value must be one of Hilo.align enum.
  * @property {Container} parent The parent view of this view, readonly!
  * @property {Number} depth The z index of the view, readonly!
@@ -52,6 +53,7 @@ return Class.create(/** @lends View.prototype */{
         Hilo.copy(this, properties, true);
     },
 
+    tint:0xffffff,
     id: null,
     x: 0,
     y: 0,
@@ -251,7 +253,7 @@ return Class.create(/** @lends View.prototype */{
     },
     /**
      * @language=en
-     * Mouse event 
+     * Mouse event
     */
     _fireMouseEvent:function(e){
         e.eventCurrentTarget = this;
@@ -288,7 +290,7 @@ return Class.create(/** @lends View.prototype */{
 
     /**
      * @language=en
-     * This method will call while the view need update(usually caused by ticker update). This method can return a Boolean value, if return false, the view will not be drawn. 
+     * This method will call while the view need update(usually caused by ticker update). This method can return a Boolean value, if return false, the view will not be drawn.
      * Limit: If you change the index in it's parent, it will not be drawn correct in current frame but next frame is correct.
      * @type Function
      * @default null
@@ -297,7 +299,7 @@ return Class.create(/** @lends View.prototype */{
 
     /**
      * @language=en
-     * The render method of current view. The subclass can implement it's own render logic by rewrite this function. 
+     * The render method of current view. The subclass can implement it's own render logic by rewrite this function.
      * @param {Renderer} renderer Renderer object.
      * @param {Number} delta The delta time of render.
      */

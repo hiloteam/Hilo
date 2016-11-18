@@ -28,6 +28,7 @@
  * @property {Boolean} pointerEnabled 可视对象是否接受交互事件。默认为接受交互事件，即true。
  * @property {Object} background 可视对象的背景样式。可以是CSS颜色值、canvas的gradient或pattern填充。
  * @property {Graphics} mask 可视对象的遮罩图形。
+ * @property {Number} tint 可视对象的附加颜色，默认0xFFFFFF，只支持WebGL模式。
  * @property {String|Function} align 可视对象相对于父容器的对齐方式。取值可查看Hilo.align枚举对象。
  * @property {Container} parent 可视对象的父容器。只读属性。
  * @property {Number} depth 可视对象的深度，也即z轴的序号。只读属性。
@@ -44,6 +45,7 @@ return Class.create(/** @lends View.prototype */{
         Hilo.copy(this, properties, true);
     },
 
+    tint:0xffffff,
     id: null,
     x: 0,
     y: 0,
