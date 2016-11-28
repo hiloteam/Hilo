@@ -63,6 +63,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     renderType:'webgl',
     gl:null,
     _isContextLost:false,
+    _cacheTexture:{},
     constructor: function(properties){
         WebGLRenderer.superclass.constructor.call(this, properties);
         var that = this;
@@ -95,7 +96,6 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 
         this.canvas.addEventListener('webglcontextrestored', function(e){
             that._isContextLost = false;
-            _cacheTexture = {};
             that.setupWebGLStateAndResource();
         }, false);
 
@@ -109,6 +109,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         gl.disable(gl.CULL_FACE);
         gl.enable(gl.BLEND);
 
+        this._cacheTexture = {};
         this._initShaders();
         this.defaultShader.active();
 
@@ -255,7 +256,8 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
                 target.updateViewport();
             }
             target.__webglWorldMatrix = target.__webglWorldMatrix||new Matrix(1, 0, 0, 1, 0, 0);
-        }else{
+        }
+        else if(target.parent){
             target.__webglWorldMatrix = target.__webglWorldMatrix||new Matrix(1, 0, 0, 1, 0, 0);
             this._setConcatenatedMatrix(target, target.parent);
         }
@@ -443,7 +445,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     },
     _getTexture:function(sprite){
         var image = sprite.__textureImage;
-        var texture = _cacheTexture[image.src];
+        var texture = this._cacheTexture[image.src];
         if(!texture){
             texture = this.activeShader.uploadTexture(image);
         }
@@ -462,7 +464,6 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
  * @param {Array} attr.attributes attribute数组
  * @param {Array} attr.uniforms uniform数组
  */
-var _cacheTexture = {};
 var Shader = function(renderer, source, attr){
     this.renderer = renderer;
     this.gl = renderer.gl;
@@ -519,7 +520,7 @@ Shader.prototype = {
         gl.uniform1i(u_Sampler, 0);
         gl.bindTexture(gl.TEXTURE_2D, null);
 
-        _cacheTexture[image.src] = texture;
+        this.renderer._cacheTexture[image.src] = texture;
         return texture;
     },
     _createProgram:function(gl, vshader, fshader){
