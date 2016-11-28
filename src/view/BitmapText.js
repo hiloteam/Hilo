@@ -18,7 +18,7 @@
  * @requires hilo/view/Bitmap
  * @property {Object} glyphs font glyph set of bitmap. format:{letter:{image:img, rect:[0,0,100,100]}}
  * @property {Number} letterSpacing spacing of letter. default:0
- * @property {String} text content of bitmap text. Not writable,set this value by 'setFont'
+ * @property {String} text content of bitmap text. Not writable,set this value by 'setText'
  * @property {String} textAlign property values:left、center、right, default:left,Not writable,set this property by 'setTextAlign'
  */
 /**
@@ -35,8 +35,8 @@
  * @requires hilo/view/Bitmap
  * @property {Object} glyphs 位图字体的字形集合。格式为：{letter:{image:img, rect:[0,0,100,100]}}。
  * @property {Number} letterSpacing 字距，即字符间的间隔。默认值为0。
- * @property {String} text 位图文本的文本内容。只读属性。设置文本请使用setFont方法。
- * @property {String} textAlign 文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本请使用setTextAlign方法。
+ * @property {String} text 位图文本的文本内容。只读属性。设置文本请使用setText方法。
+ * @property {String} textAlign 文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本对齐方式请使用setTextAlign方法。
  */
 var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     Extends: Container,

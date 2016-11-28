@@ -4326,7 +4326,7 @@ var Bitmap = Hilo.Bitmap;
  * @requires hilo/view/Bitmap
  * @property {Object} glyphs font glyph set of bitmap. format:{letter:{image:img, rect:[0,0,100,100]}}
  * @property {Number} letterSpacing spacing of letter. default:0
- * @property {String} text content of bitmap text. Not writable,set this value by 'setFont'
+ * @property {String} text content of bitmap text. Not writable,set this value by 'setText'
  * @property {String} textAlign property values:left、center、right, default:left,Not writable,set this property by 'setTextAlign'
  */
 var BitmapText = Class.create(/** @lends BitmapText.prototype */{
