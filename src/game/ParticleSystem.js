@@ -268,7 +268,7 @@ var ParticleSystem = (function(){
         onUpdate: function(dt) {
             dt *= .001;
             if(this._died){
-                return;
+                return false;
             }
             var ax = this.ax + this.system.gx;
             var ay = this.ay + this.system.gy;
@@ -288,8 +288,9 @@ var ParticleSystem = (function(){
             this.scaleX = this.scaleY = this.scale;
 
             this._time += dt;
-            if (this._time >= this.life || this.alpha < 0) {
+            if (this._time >= this.life || this.alpha <= 0) {
                 this.destroy();
+                return false;
             }
         },
         /**
@@ -318,7 +319,8 @@ var ParticleSystem = (function(){
          * 销毁粒子
         */
         destroy: function() {
-            this.died = true;
+            this._died = true;
+            this.alpha = 0;
             this.removeFromParent();
             diedParticles.push(this);
         },
