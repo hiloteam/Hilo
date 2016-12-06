@@ -230,6 +230,22 @@ gulp.task('watch', ['setIsWatch', 'standalone', 'flash', 'extensions'], function
     gulp.watch('src/extensions/**/*.js', ['extensions']);
 });
 
+gulp.task('npm', ['commonjs-format', 'standalone-format'], function(){
+    var standaloneStream = gulp.src('build/standalone/hilo-standalone.js')
+        .pipe(footer(`
+            if(typeof module !== 'undefined' && module.exports){
+                module.exports = Hilo;
+            }
+        `))
+        .pipe(gulp.dest('build/commonjs'));
+
+    var packageStream = gulp.src(['package.json', '.npmignore', 'LICENSE', 'README.md'])
+        .pipe(replace('"name": "Hilo"', '"name": "hilojs"'))
+        .pipe(gulp.dest('build/commonjs'));
+
+    return merge(standaloneStream, packageStream);
+});
+
 //test
 gulp.task('test', ['setIsWatch', 'standalone', 'flash'], function () {
     return gulp

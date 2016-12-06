@@ -1,10 +1,10 @@
 {
   "name": "Hilo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Hilo Game Framework",
   "author": "Hilo Dev Team",
   "license": "MIT",
-  "main": "gulpfile.js",
+  "main": "hilo-standalone.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:hiloteam/hilo.git"

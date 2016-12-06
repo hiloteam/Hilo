@@ -1,4 +1,4 @@
-# Hilo - HTML5 互动游戏引擎 [![Build Status][travis-image]][travis-url] [![gitter.im][gitter-image]][gitter-url]
+# Hilo - HTML5 互动游戏引擎 [![npm][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![gitter.im][gitter-image]][gitter-url]
 
 [English Version](./README.md)
 
@@ -89,5 +89,7 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
 [travis-url]: https://travis-ci.org/hiloteam/Hilo
 [gitter-image]: https://img.shields.io/badge/GITTER-join%20chat-green.svg?style=flat-square
 [gitter-url]: https://gitter.im/hiloteam/Hilo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+[npm-image]: https://img.shields.io/npm/v/hilojs.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/hilojs
 [example-image]: https://img.alicdn.com/tps/TB1vDlBLVXXXXcDXVXXXXXXXXXX-850-806.png
 [example-url]: http://hiloteam.github.io/examples/index.html
