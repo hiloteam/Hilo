@@ -18,8 +18,8 @@
  * @requires hilo/view/CacheMixin
  * @property {String} text Text to display.
  * @property {String} color Color of the text.
- * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'。
- * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'。
+ * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'. Note:Need to specify the width property of the text to take effect
+ * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'. Note:Need to specify the height property of the text to take effect.
  * @property {Boolean} outline Draw the outline of the text or fill the text.
  * @property {Number} lineSpacing The spacing between lines. Measured in px, default value is 0.
  * @property {Number} maxWidth The max length of the text, default value is 200.

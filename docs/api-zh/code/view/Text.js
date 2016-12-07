@@ -18,8 +18,8 @@
  * @requires hilo/view/CacheMixin
  * @property {String} text 指定要显示的文本内容。
  * @property {String} color 指定使用的字体颜色。
- * @property {String} textAlign 指定文本的对齐方式。可以是以下任意一个值：'start', 'end', 'left', 'right', and 'center'。
- * @property {String} textVAlign 指定文本的垂直对齐方式。可以是以下任意一个值：'top', 'middle', 'bottom'。
+ * @property {String} textAlign 指定文本的对齐方式。可以是以下任意一个值：'start', 'end', 'left', 'right', and 'center'。注意：必须设置文本的 width 属性才能生效。
+ * @property {String} textVAlign 指定文本的垂直对齐方式。可以是以下任意一个值：'top', 'middle', 'bottom'。注意：必须设置文本的 height 属性才能生效。
  * @property {Boolean} outline 指定文本是绘制边框还是填充。
  * @property {Number} lineSpacing 指定文本的行距。单位为像素。默认值为0。
  * @property {Number} maxWidth 指定文本的最大宽度。默认值为200。
