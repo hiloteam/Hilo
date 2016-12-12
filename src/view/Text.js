@@ -107,7 +107,7 @@ var Text = Class.create(/** @lends Text.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
 
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
@@ -226,8 +226,8 @@ var Text = Class.create(/** @lends Text.prototype */{
         else context.fillStyle = me.color;
 
         //draw text lines
-        for(var i = 0; i < drawLines.length; i++){
-            var line = drawLines[i];
+        for(i = 0; i < drawLines.length; i++){
+            line = drawLines[i];
             me._drawTextLine(context, line.text, startY + line.y);
         }
     },
@@ -253,7 +253,7 @@ var Text = Class.create(/** @lends Text.prototype */{
             case 'end':
                 x = width;
                 break;
-        };
+        }
 
         if(me.outline) context.strokeText(text, x, y);
         else context.fillText(text, x, y);

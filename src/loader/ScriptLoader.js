@@ -30,11 +30,12 @@ var ScriptLoader = Class.create({
             if(!win[callback]){
                 win[callback] = function(result){
                     delete win[callback];
-                }
+                };
             }
+
+            src += (src.indexOf('?') == -1 ? '?' : '&') + callbackName + '=' + callback;
         }
 
-        if(isJSONP) src += (src.indexOf('?') == -1 ? '?' : '&') + callbackName + '=' + callback;
         if(data.noCache) src += (src.indexOf('?') == -1 ? '?' : '&') + 't=' + (+new Date());
 
         var script = document.createElement('script');

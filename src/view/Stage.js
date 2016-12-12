@@ -139,6 +139,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
                 }
                 break;
             case 'canvas':
+	        /* falls through */
             default:
                 this.renderer = new CanvasRenderer(props);
                 break;
@@ -195,12 +196,13 @@ var Stage = Class.create(/** @lends Stage.prototype */{
      * @param {Boolean} enabled 指定开启还是关闭。如果不传此参数，则默认为开启。
      * @returns {Stage} 舞台本身。链式调用支持。
      */
-    enableDOMEvent: function(type, enabled){
+    enableDOMEvent: function(types, enabled){
         var me = this,
             canvas = me.canvas,
-            types = typeof type === 'string' ? [type] : type,
-            enabled = enabled !== false,
-            handler = me._domListener || (me._domListener = function(e){me._onDOMEvent(e)});
+            handler = me._domListener || (me._domListener = function(e){me._onDOMEvent(e);});
+
+        types = typeof types === 'string' ? [types] : types;
+        enabled = enabled !== false;
 
         for(var i = 0; i < types.length; i++){
             var type = types[i];

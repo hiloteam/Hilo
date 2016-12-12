@@ -175,5 +175,5 @@ if(RawEvent){
     proto.stopImmediatePropagation = function(){
         stop && stop.call(this);
         this._stopped = true;
-    }
+    };
 }

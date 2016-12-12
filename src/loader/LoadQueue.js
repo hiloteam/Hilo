@@ -191,7 +191,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
      * @private
      */
     _getLoader: function(item){
-        var me = this, loader = item.loader;
+        var loader = item.loader;
         if(loader) return loader;
 
         var type = item.type || getExtension(item.src);

@@ -14,7 +14,6 @@
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Container
- * @requires hilo/view/Bitmap
  * @requires hilo/view/Drawable
  * @property {Number} emitTime Emit time interval.
  * @property {Number} emitTimeVar Emit time interval variances.
@@ -303,7 +302,7 @@ var ParticleSystem = (function(){
         */
         setImage: function(img, frame) {
             this.drawable = this.drawable||new Drawable();
-            var frame = frame || [0, 0, img.width, img.height];
+            frame = frame || [0, 0, img.width, img.height];
 
             this.width = frame[2];
             this.height = frame[3];
