@@ -69,8 +69,9 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
      */
     load: function(){
         if(!this._element){
+            var elem;
             try{
-                var elem = this._element = new Audio();
+                elem = this._element = new Audio();
                 elem.addEventListener('canplaythrough', this._onAudioEvent, false);
                 elem.addEventListener('ended', this._onAudioEvent, false);
                 elem.addEventListener('error', this._onAudioEvent, false);
@@ -80,7 +81,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
             }
             catch(err){
                 //ie9 某些版本有Audio对象，但是执行play,pause会报错！
-                var elem = this._element = {};
+                elem = this._element = {};
                 elem.play = elem.pause = function(){
 
                 };

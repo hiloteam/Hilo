@@ -192,7 +192,7 @@ var Circ = createEase(null,
     },
 
     function(k){
-        return sqrt(1 - --k * k);
+        return sqrt(1 - (--k * k));
     },
 
     function(k){
@@ -310,6 +310,6 @@ return {
     Elastic: Elastic,
     Back: Back,
     Bounce: Bounce
-}
+};
 
 })();

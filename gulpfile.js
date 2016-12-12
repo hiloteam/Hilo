@@ -12,7 +12,7 @@ var zip = require('gulp-zip');
 var shell = require('gulp-shell');
 var uitest = require('gulp-uitest');
 var transformModule = require('gulp-transform-module');
-
+var jshint = require('gulp-jshint');
 var pkg = require('./package.json');
 
 var isWatch = false;
@@ -246,8 +246,16 @@ gulp.task('npm', ['commonjs-format', 'standalone-format'], function(){
     return merge(standaloneStream, packageStream);
 });
 
+gulp.task('jshint', ['setIsWatch', 'standalone'], function(){
+    return gulp.src(['build/standalone/hilo/**/*.js', '!build/standalone/hilo/**/*.min.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('fail'))
+
+});
+
 //test
-gulp.task('test', ['setIsWatch', 'standalone', 'flash'], function () {
+gulp.task('test', ['jshint'], function () {
     return gulp
       .src('test/html/index.html')
       .pipe(uitest({

@@ -18,7 +18,6 @@
  * @mixin
  * @static
  * @module hilo/util/drag
- * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  */
 /**
@@ -35,7 +34,6 @@
  * @mixin
  * @static
  * @module hilo/util/drag
- * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  */
 var drag = {
@@ -52,7 +50,7 @@ var drag = {
     startDrag:function(bounds){
         var that = this;
         var stage;
-        var bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
+        bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
         var mouse = {
             x:0,
             y:0,

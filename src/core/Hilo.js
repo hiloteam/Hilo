@@ -149,7 +149,7 @@ return {
             localStorage.setItem(value, value);
             localStorage.removeItem(value);
             data.supportStorage = true;
-        }catch(e){ };
+        }catch(e){}
 
         //vendor prefix
         var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'moz' : data.opera ? 'o' : data.ie ? 'ms' : '';
@@ -169,7 +169,7 @@ return {
             supportTransform3D = testElem.offsetHeight == 3;
             doc.head.removeChild(style);
             docElem.removeChild(testElem);
-        };
+        }
         data.supportTransform = supportTransform;
         data.supportTransform3D = supportTransform3D;
 
@@ -258,9 +258,10 @@ return {
      * @returns {Object} DOM元素的可视区域。格式为：{left:0, top:0, width:100, height:100}。
      */
     getElementRect: function(elem){
+        var bounds;
         try{
             //this fails if it's a disconnected DOM node
-            var bounds = elem.getBoundingClientRect();
+            bounds = elem.getBoundingClientRect();
         }catch(e){
             bounds = {top:elem.offsetTop, left:elem.offsetLeft, right:elem.offsetLeft + elem.offsetWidth, bottom:elem.offsetTop + elem.offsetHeight};
         }

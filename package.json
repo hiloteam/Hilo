@@ -20,6 +20,7 @@
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.2.2",
     "gulp-if": "^1.2.5",
+    "gulp-jshint": "^2.0.4",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "~0.5.4",
     "gulp-shell": "^0.4.2",

@@ -575,7 +575,7 @@ return Class.create(/** @lends Graphics.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
         }else{

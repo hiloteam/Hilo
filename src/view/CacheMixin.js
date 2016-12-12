@@ -13,7 +13,6 @@ var _cacheContext = _cacheCanvas.getContext('2d');
  * @static
  * @module hilo/view/CacheMixin
  * @requires hilo/core/Hilo
- * @requires hilo/core/Class
  * @requires hilo/view/Drawable
  */
 /**
@@ -23,7 +22,6 @@ var _cacheContext = _cacheCanvas.getContext('2d');
  * @static
  * @module hilo/view/CacheMixin
  * @requires hilo/core/Hilo
- * @requires hilo/core/Class
  * @requires hilo/view/Drawable
  */
 var CacheMixin = {
