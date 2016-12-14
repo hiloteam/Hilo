@@ -5,10 +5,10 @@
  */
 
 /**
- * @language=zh
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class 粒子系统
+ * @augments Container
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
@@ -98,7 +98,6 @@ var ParticleSystem = (function(){
             diedParticles:diedParticles
         },
         /**
-         * @language=zh
          * 重置属性
          * @param {Object} cfg
         */
@@ -110,7 +109,6 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * @language=zh
          * 更新
          * @param {Number} dt 间隔时间 单位ms
         */
@@ -131,7 +129,6 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * @language=zh
          * 发射粒子
         */
         _emit: function() {
@@ -141,7 +138,6 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * @language=zh
          * 开始发射粒子
         */
         start: function() {
@@ -152,7 +148,6 @@ var ParticleSystem = (function(){
             this._emitTime = getRandomValue(this.emitTime, this.emitTimeVar);
         },
         /**
-         * @language=zh
          * 停止发射粒子
          * @param {Boolean} clear 是否清除所有粒子
         */
@@ -167,7 +162,6 @@ var ParticleSystem = (function(){
     });
 
     /**
-     * @language=zh
      * @class 粒子
      * @inner
      * @param {Number} vx x速度
@@ -187,7 +181,6 @@ var ParticleSystem = (function(){
             this.init(properties);
         },
         /**
-         * @language=zh
          * 更新粒子。
         */
         onUpdate: function(dt) {
@@ -219,12 +212,11 @@ var ParticleSystem = (function(){
             }
         },
         /**
-         * @language=zh
          * 设置粒子图像。
         */
         setImage: function(img, frame) {
             this.drawable = this.drawable||new Drawable();
-            var frame = frame || [0, 0, img.width, img.height];
+            frame = frame || [0, 0, img.width, img.height];
 
             this.width = frame[2];
             this.height = frame[3];
@@ -232,7 +224,6 @@ var ParticleSystem = (function(){
             this.drawable.image = img;
         },
         /**
-         * @language=zh
          * 销毁粒子
         */
         destroy: function() {
@@ -242,7 +233,6 @@ var ParticleSystem = (function(){
             diedParticles.push(this);
         },
         /**
-         * @language=zh
          * 初始化粒子。
         */
         init: function(cfg) {
@@ -275,7 +265,6 @@ var ParticleSystem = (function(){
         },
         Statics:{
             /**
-             * @language=zh
              * 生成粒子。
              * @param {Object} cfg 粒子参数。
             */

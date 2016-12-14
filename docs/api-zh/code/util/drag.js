@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -18,19 +17,17 @@
  * @mixin
  * @static
  * @module hilo/util/drag
- * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  */
 var drag = {
     /**
-     * @language=zh
      * 开始拖拽。
       * @param {Array} bounds 拖拽范围，基于父容器坐标系，[x, y, width, height]， 默认无限制
     */
     startDrag:function(bounds){
         var that = this;
         var stage;
-        var bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
+        bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
         var mouse = {
             x:0,
             y:0,
@@ -96,7 +93,6 @@ var drag = {
         that.stopDrag = stopDrag;
     },
     /**
-     * @language=zh
      * 停止拖拽。
     */
     stopDrag:function(){

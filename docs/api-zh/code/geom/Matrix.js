@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * @class Matrix类表示一个转换矩阵，它确定如何将点从一个坐标空间映射到另一个坐标空间。
  * @param {Number} a 缩放或旋转图像时影响像素沿 x 轴定位的值。
  * @param {Number} b 旋转或倾斜图像时影响像素沿 y 轴定位的值。
@@ -27,7 +26,6 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * @language=zh
      * 将某个矩阵与当前矩阵连接，从而将这两个矩阵的几何效果有效地结合在一起。
      * @param {Matrix} mtx 要连接到源矩阵的矩阵。
      * @returns {Matrix} 一个Matrix对象。
@@ -37,10 +35,16 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
             a = this.a, b = this.b, c = this.c, d = this.d,
             tx = this.tx, ty = this.ty;
 
+        var ma, mb, mc, md, mx, my;
         if(args.length >= 6){
-            var ma = args[0], mb = args[1], mc = args[2],
-                md = args[3], mx = args[4], my = args[5];
-        }else{
+            ma = args[0];
+            mb = args[1];
+            mc = args[2];
+            md = args[3];
+            mx = args[4];
+            my = args[5];
+        }
+        else{
             ma = mtx.a;
             mb = mtx.b;
             mc = mtx.c;
@@ -59,7 +63,6 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * @language=zh
      * 对 Matrix 对象应用旋转转换。
      * @param {Number} angle 旋转的角度。
      * @returns {Matrix} 一个Matrix对象。
@@ -79,7 +82,6 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * @language=zh
      * 对矩阵应用缩放转换。
      * @param {Number} sx 用于沿 x 轴缩放对象的乘数。
      * @param {Number} sy 用于沿 y 轴缩放对象的乘数。
@@ -96,7 +98,6 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * @language=zh
      * 沿 x 和 y 轴平移矩阵，由 dx 和 dy 参数指定。
      * @param {Number} dx 沿 x 轴向右移动的量（以像素为单位）。
      * @param {Number} dy 沿 y 轴向右移动的量（以像素为单位）。
@@ -109,7 +110,6 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * @language=zh
      * 为每个矩阵属性设置一个值，该值将导致 null 转换。通过应用恒等矩阵转换的对象将与原始对象完全相同。
      * @returns {Matrix} 一个Matrix对象。
      */
@@ -120,7 +120,6 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * @language=zh
      * 执行原始矩阵的逆转换。您可以将一个逆矩阵应用于对象来撤消在应用原始矩阵时执行的转换。
      * @returns {Matrix} 一个Matrix对象。
      */
@@ -142,7 +141,6 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
-     * @language=zh
      * 返回将 Matrix 对象表示的几何转换应用于指定点所产生的结果。
      * @param {Object} point 想要获得其矩阵转换结果的点。
      * @param {Boolean} round 是否对点的坐标进行向上取整。

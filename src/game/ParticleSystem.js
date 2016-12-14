@@ -9,6 +9,7 @@
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class ParticleSystem A particle system.
+ * @augments Container
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
@@ -43,6 +44,7 @@
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class 粒子系统
+ * @augments Container
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class

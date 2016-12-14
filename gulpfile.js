@@ -189,6 +189,7 @@ var createDocTask = function(languages){
                 base:pkg.sources.dir
             })
             .pipe(replace(apiCommentReg, '$' + (i+1)))
+            .pipe(replace(/\*[\s]*@language=[a-z]+[\s]*/g, ''))
             .pipe(gulp.dest(codeSrc));
         });
 

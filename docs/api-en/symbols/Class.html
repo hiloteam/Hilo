@@ -216,6 +216,29 @@
         <br>
         Class Class is created to aid the developer.
         
+            <br><br>Create Example Class:
+<pre>
+var Bird = Hilo.Class.create({
+    Extends: Animal,
+    Mixes: EventMixin,
+    constructor: function(name){
+        this.name = name;
+    },
+    fly: function(){
+        console.log('I am flying');
+    },
+    Statics: {
+        isBird: function(bird){
+            return bird instanceof Bird;
+        }
+    }
+});
+
+var swallow = new Bird('swallow');
+swallow.fly();
+Bird.isBird(swallow);
+</pre>
+        
 
     </p>
 
@@ -252,7 +275,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Create a class based on the parameters, properties and methods specified.
                         </div>
                     </td>
                     <td>
@@ -270,7 +293,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Mixed property or method.
                         </div>
                     </td>
                     <td>
@@ -317,7 +340,7 @@
         [Static] 
         <b>create</b>(properties:Object):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Create a class based on the parameters, properties and methods specified.</div>
 
         
 
@@ -361,7 +384,7 @@
         [Static] 
         <b>mix</b>(target:Object, source:Object):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Mixed property or method.</div>
 
         
 

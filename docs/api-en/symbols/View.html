@@ -434,7 +434,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            This method will call while the view need update(usually caused by ticker update).
                         </div>
                     </td>
                     <td>
@@ -745,7 +745,25 @@
                         </div>
                         <div class="description">
                             
+                            Add current view to a Contaner.
+                        </div>
+                    </td>
+                    <td>
+                        View
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
                             
+                            Send events.
                         </div>
                     </td>
                     <td>
@@ -763,7 +781,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
                         </div>
                     </td>
                     <td>
@@ -781,7 +799,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the scaled height of the view.
                         </div>
                     </td>
                     <td>
@@ -799,7 +817,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the scaled width of the view.
                         </div>
                     </td>
                     <td>
@@ -817,7 +835,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the stage object of the view.
                         </div>
                     </td>
                     <td>
@@ -835,7 +853,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Determining whether an object is in the circumscribed rectangle of current view.
                         </div>
                     </td>
                     <td>
@@ -853,7 +871,43 @@
                         </div>
                         <div class="description">
                             
+                            Determining whether a point is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        View
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            Remove one event listener.
+                        </div>
+                    </td>
+                    <td>
+                        View
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            Add an event listenser.
                         </div>
                     </td>
                     <td>
@@ -871,7 +925,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Remove current view from it's parent container
                         </div>
                     </td>
                     <td>
@@ -889,7 +943,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            The render method of current view.
                         </div>
                     </td>
                     <td>
@@ -907,7 +961,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get a string representing current view.
                         </div>
                     </td>
                     <td>
@@ -1122,7 +1176,8 @@
 
         </div>
         <div class="description">
-            
+            This method will call while the view need update(usually caused by ticker update). This method can return a Boolean value, if return false, the view will not be drawn.
+Limit: If you change the index in it's parent, it will not be drawn correct in current frame but next frame is correct.
         </div>
 
         
@@ -1410,7 +1465,7 @@
         
         <b>addTo</b>(container:<a href="../symbols/Container.html">Container</a>, index:Uint):<span class="light"><a href="../symbols/View.html">View</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Add current view to a Contaner.</div>
 
         
 
@@ -1446,13 +1501,55 @@
 
         </div>
     
+        <a class="anchor" name="fire"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>fire</b>(type:String, detail:Object):<span class="light">Boolean</span>
+        </div>
+        <div class="description">Send events. If the first parameter is an Object, take it  as an Event Object.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — Event type to send.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>detail</b>:<span>Object</span> 
+                     — The detail (parameters go with the event) of Event to send.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Boolean</span>  — Whether Event call successfully.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name="getBounds"> </a>
         <div class="member-box">
         <div class="member-header">
         
         <b>getBounds</b>():<span class="light">Array</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.</div>
 
         
 
@@ -1485,7 +1582,7 @@
         
         <b>getScaledHeight</b>():<span class="light">Number</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Get the scaled height of the view.</div>
 
         
 
@@ -1512,7 +1609,7 @@
         
         <b>getScaledWidth</b>():<span class="light">Number</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Get the scaled width of the view.</div>
 
         
 
@@ -1539,7 +1636,7 @@
         
         <b>getStage</b>():<span class="light"><a href="../symbols/Stage.html">Stage</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Get the stage object of the view. If the view doesn't add to any stage, null will be returned.</div>
 
         
 
@@ -1566,7 +1663,7 @@
         
         <b>hitTestObject</b>(object:<a href="../symbols/View.html">View</a>, usePolyCollision:Boolean)
         </div>
-        <div class="description"></div>
+        <div class="description">Determining whether an object is in the circumscribed rectangle of current view.</div>
 
         
 
@@ -1601,7 +1698,7 @@
         
         <b>hitTestPoint</b>(x:Number, y:Number, usePolyCollision:Boolean):<span class="light">Boolean</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Determining whether a point is in the circumscribed rectangle of current view.</div>
 
         
 
@@ -1642,13 +1739,102 @@
 
         </div>
     
+        <a class="anchor" name="off"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>off</b>(type:String, listener:Function):<span class="light">Object</span>
+        </div>
+        <div class="description">Remove one event listener. Remove all event listeners if no parameter provided, and remove all event listeners on one type which is provided as the only parameter.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — The type of event listener that want to remove.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>listener</b>:<span>Function</span> 
+                     — Event listener callback function to be removed.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — The Event itself. Functions chain call supported.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="on"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>on</b>(type:String, listener:Function, once:Boolean):<span class="light">Object</span>
+        </div>
+        <div class="description">Add an event listenser.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — Event type to listen.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>listener</b>:<span>Function</span> 
+                     — Callback function of event listening.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>once</b>:<span>Boolean</span> 
+                     — Listen on event only once and no more response after the first response?
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — The Event itself. Functions chain call supported.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name="removeFromParent"> </a>
         <div class="member-box">
         <div class="member-header">
         
         <b>removeFromParent</b>():<span class="light"><a href="../symbols/View.html">View</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Remove current view from it's parent container</div>
 
         
 
@@ -1675,7 +1861,7 @@
         
         <b>render</b>(renderer:<a href="../symbols/Renderer.html">Renderer</a>, delta:Number)
         </div>
-        <div class="description"></div>
+        <div class="description">The render method of current view. The subclass can implement it's own render logic by rewrite this function.</div>
 
         
 
@@ -1710,7 +1896,7 @@
         
         <b>toString</b>():<span class="light">String</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Get a string representing current view.</div>
 
         
 

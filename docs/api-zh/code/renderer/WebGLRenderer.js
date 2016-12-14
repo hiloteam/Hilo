@@ -11,7 +11,6 @@
 
 var DEG2RAD = Math.PI / 180;
 /**
- * @language=zh
  * @class webgl画布渲染器。所有可视对象将渲染在canvas画布上。
  * @augments Renderer
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -25,19 +24,16 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     Extends: Renderer,
     Statics:/** @lends WebGLRenderer */{
         /**
-         * @language=zh
          * 最大批渲染数量。
          * @type {Number}
          */
         MAX_BATCH_NUM:2000,
         /**
-         * @language=zh
          * 顶点属性数。只读属性。
          * @type {Number}
          */
         ATTRIBUTE_NUM:5,
         /**
-         * @language=zh
          * 是否支持WebGL。只读属性。
          * @type {Boolean}
          */
@@ -61,7 +57,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     constructor: function(properties){
         WebGLRenderer.superclass.constructor.call(this, properties);
         var that = this;
-        var gl = this.gl = this.canvas.getContext("webgl")||this.canvas.getContext('experimental-webgl');
+        this.gl = this.canvas.getContext("webgl")||this.canvas.getContext('experimental-webgl');
 
         this.maxBatchNum = WebGLRenderer.MAX_BATCH_NUM;
         this.positionStride = WebGLRenderer.ATTRIBUTE_NUM * 4;
@@ -141,16 +137,16 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
      * @see Renderer#draw
      */
     draw: function(target){
-        var ctx = this.context, w = target.width, h = target.height;
+        var w = target.width,
+            h = target.height;
 
         //TODO:draw background
-        var bg = target.background;
+        var bg = target.background; // jshint ignore:line
 
         //draw image
         var drawable = target.drawable, image = drawable && drawable.image;
         if(image){
-            var gl = this.gl;
-            var rect = drawable.rect, sw = rect[2], sh = rect[3], offsetX = rect[4], offsetY = rect[5];
+            var rect = drawable.rect, sw = rect[2], sh = rect[3];
             if(!w && !h){
                 //fix width/height TODO: how to get rid of this?
                 w = target.width = sw;
@@ -180,16 +176,16 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             float32Array[index + 8] = vertexs[7];
             uint32Array[index + 9] = tint;
 
-            float32Array[index + 10] = vertexs[8]
-            float32Array[index + 11] = vertexs[9]
-            float32Array[index + 12] = vertexs[10]
-            float32Array[index + 13] = vertexs[11]
+            float32Array[index + 10] = vertexs[8];
+            float32Array[index + 11] = vertexs[9];
+            float32Array[index + 12] = vertexs[10];
+            float32Array[index + 13] = vertexs[11];
             uint32Array[index + 14] = tint;
 
-            float32Array[index + 15] = vertexs[12]
-            float32Array[index + 16] = vertexs[13]
-            float32Array[index + 17] = vertexs[14]
-            float32Array[index + 18] = vertexs[15]
+            float32Array[index + 15] = vertexs[12];
+            float32Array[index + 16] = vertexs[13];
+            float32Array[index + 17] = vertexs[14];
+            float32Array[index + 18] = vertexs[15];
             uint32Array[index + 19] = tint;
 
             var matrix = target.__webglWorldMatrix;
@@ -197,8 +193,8 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
                 var x = float32Array[index + i*5];
                 var y = float32Array[index + i*5 + 1];
 
-                float32Array[index + i*5] = matrix.a*x+matrix.c*y + matrix.tx;
-                float32Array[index + i*5 + 1] = matrix.b*x+matrix.d*y + matrix.ty;
+                float32Array[index + i*5] = matrix.a*x + matrix.c*y + matrix.tx;
+                float32Array[index + i*5 + 1] = matrix.b*x + matrix.d*y + matrix.ty;
             }
 
             target.__textureImage = image;
@@ -226,8 +222,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             return;
         }
 
-        var ctx = this.context,
-            scaleX = target.scaleX,
+        var scaleX = target.scaleX,
             scaleY = target.scaleY;
 
         if(target === this.stage){
@@ -448,7 +443,6 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
 });
 
 /**
- * @language=zh
  * shader
  * @param {WebGLRenderer} renderer [description]
  * @param {Object} source
@@ -466,7 +460,7 @@ var Shader = function(renderer, source, attr){
     attr = attr||{};
     this.attributes = attr.attributes||[];
     this.uniforms = attr.uniforms||[];
-}
+};
 
 Shader.prototype = {
     active:function(){

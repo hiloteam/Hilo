@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * Create Example Class:
  * <pre>
  * var Bird = Hilo.Class.create({
@@ -35,7 +34,6 @@
 var Class = (function(){
 
 /**
- * @language=en
  * Create a class based on the parameters, properties and methods specified.
  * @param {Object} properties Properties and methods to create the class.
  * <ul>
@@ -52,10 +50,9 @@ var create = function(properties){
     var clazz = properties.hasOwnProperty('constructor') ? properties.constructor : function(){};
     implement.call(clazz, properties);
     return clazz;
-}
+};
 
 /**
- * @language=en
  * @private
  */
 var implement = function(properties){
@@ -102,25 +99,23 @@ var classMutators = /** @ignore */{
 };
 
 /**
- * @language=en
  * @private
  */
 var createProto = (function(){
     if(Object.__proto__){
         return function(proto){
             return {__proto__: proto};
-        }
+        };
     }else{
         var Ctor = function(){};
         return function(proto){
             Ctor.prototype = proto;
             return new Ctor();
-        }
+        };
     }
 })();
 
 /**
- * @language=en
  * Mixed property or method.
  * @param {Object} target Mixed audiences.
  * @param {Object} source The source whose methods and properties are to be mixed. It can support multiple source parameters.
@@ -146,9 +141,10 @@ var mix = function(target){
     return target;
 };
 
+var defineProperty, defineProperties;
 try{
-    var defineProperty = Object.defineProperty,
-        defineProperties = Object.defineProperties;
+    defineProperty = Object.defineProperty;
+    defineProperties = Object.defineProperties;
     defineProperty({}, '$', {value:0});
 }catch(e){
     if('__defineGetter__' in Object){

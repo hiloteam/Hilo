@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * @class Ticker是一个定时器类。它可以按指定帧率重复运行，从而按计划执行代码。
  * @param {Number} fps 指定定时器的运行帧率。
  * @module hilo/util/Ticker
@@ -30,7 +29,6 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     _measuredFPS: 0,
 
     /**
-     * @language=zh
      * 启动定时器。
      * @param {Boolean} userRAF 是否使用requestAnimationFrame，默认为false。
      */
@@ -42,11 +40,12 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
             raf = window.requestAnimationFrame ||
                   window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
 
+        var runLoop;
         if(useRAF && raf){
             var tick = function(){
                 self._tick();
-            }
-            var runLoop = function(){
+            };
+            runLoop = function(){
                 self._intervalId = setTimeout(runLoop, interval);
                 raf(tick);
             };
@@ -61,7 +60,6 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * @language=zh
      * 停止定时器。
      */
     stop: function(){
@@ -71,7 +69,6 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * @language=zh
      * 暂停定时器。
      */
     pause: function(){
@@ -79,7 +76,6 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * @language=zh
      * 恢复定时器。
      */
     resume: function(){
@@ -112,7 +108,6 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * @language=zh
      * 获得测定的运行时帧率。
      */
     getMeasuredFPS: function(){
@@ -120,7 +115,6 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * @language=zh
      * 添加定时器对象。定时器对象必须实现 tick 方法。
      * @param {Object} tickObject 要添加的定时器对象。此对象必须包含 tick 方法。
      */
@@ -132,7 +126,6 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     },
 
     /**
-     * @language=zh
      * 删除定时器对象。
      * @param {Object} tickObject 要删除的定时器对象。
      */

@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * @class TextureAtlas纹理集是将许多小的纹理图片整合到一起的一张大图。这个类可根据一个纹理集数据读取纹理小图、精灵动画等。
  * @param {Object} atlasData 纹理集数据。它可包含如下数据：
  * <ul>
@@ -41,7 +40,6 @@ return Class.create(/** @lends TextureAtlas.prototype */{
     _sprites: null,
 
     /**
-     * @language=zh
      * 获取指定索引位置index的帧数据。
      * @param {Int} index 要获取帧的索引位置。
      * @returns {Object} 帧数据。
@@ -52,7 +50,6 @@ return Class.create(/** @lends TextureAtlas.prototype */{
     },
 
     /**
-     * @language=zh
      * 获取指定id的精灵数据。
      * @param {String} id 要获取精灵的id。
      * @returns {Object} 精灵数据。
@@ -64,7 +61,6 @@ return Class.create(/** @lends TextureAtlas.prototype */{
 
     Statics: /** @lends TextureAtlas */ {
         /**
-         * @language=zh
          * 创建精灵帧数据的快捷方法。
          * @param {String|Array} name 动画名称|一组动画数据
          * @param {String} frames 帧数据 eg:"0-5"代表第0到第5帧
@@ -82,12 +78,13 @@ return Class.create(/** @lends TextureAtlas.prototype */{
          *  ]);
         */
         createSpriteFrames:function(name, frames, img, w, h, loop, duration){
+            var i, l;
             if(Object.prototype.toString.call(name) === "[object Array]"){
-                var frames = [];
-                for(var i = 0, l = name.length;i < l;i ++){
-                    frames = frames.concat(this.createSpriteFrames.apply(this, name[i]));
+                var res = [];
+                for(i = 0, l = name.length;i < l;i ++){
+                    res = res.concat(this.createSpriteFrames.apply(this, name[i]));
                 }
-                return frames;
+                return res;
             }
             else{
                 if(typeof(frames) === "string"){
@@ -99,7 +96,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
                             frames.push(parseInt(temp[0]));
                         }
                         else{
-                            for(var i = parseInt(temp[0]), l = parseInt(temp[1]);i <= l;i ++){
+                            for(i = parseInt(temp[0]), l = parseInt(temp[1]);i <= l;i ++){
                                 frames.push(i);
                             }
                         }
@@ -107,13 +104,13 @@ return Class.create(/** @lends TextureAtlas.prototype */{
                 }
 
                 var col = Math.floor(img.width/w);
-                for(var i = 0;i < frames.length;i ++){
+                for(i = 0;i < frames.length;i ++){
                     var n = frames[i];
                     frames[i] = {
                         rect:[w*(n%col), h*Math.floor(n/col), w, h],
                         image:img,
                         duration:duration
-                    }
+                    };
                 }
                 frames[0].name = name;
                 if(loop){
@@ -129,18 +126,18 @@ return Class.create(/** @lends TextureAtlas.prototype */{
 });
 
 /**
- * @language=zh
  * 解析纹理集帧数据。
  * @private
  */
 function parseTextureFrames(atlasData){
+    var i, len;
     var frameData = atlasData.frames;
     if(!frameData) return null;
 
     var frames = [], obj;
 
     if(frameData instanceof Array){ //frames by array
-        for(var i = 0, len = frameData.length; i < len; i++){
+        for(i = 0, len = frameData.length; i < len; i++){
             obj = frameData[i];
             frames[i] = {
                 image: atlasData.image,
@@ -153,11 +150,11 @@ function parseTextureFrames(atlasData){
         var cols = atlasData.width / frameWidth | 0;
         var rows = atlasData.height / frameHeight | 0;
         var numFrames = frameData.numFrames || cols * rows;
-        for(var i = 0; i < numFrames; i++){
+        for(i = 0; i < numFrames; i++){
             frames[i] = {
                 image: atlasData.image,
                 rect: [i%cols*frameWidth, (i/cols|0)*frameHeight, frameWidth, frameHeight]
-            }
+            };
         }
     }
 
@@ -165,11 +162,11 @@ function parseTextureFrames(atlasData){
 }
 
 /**
- * @language=zh
  * 解析精灵数据。
  * @private
  */
 function parseTextureSprites(atlasData, frames){
+    var i, len;
     var spriteData = atlasData.sprites;
     if(!spriteData) return null;
 
@@ -181,7 +178,7 @@ function parseTextureSprites(atlasData, frames){
             spriteFrames = translateSpriteFrame(frames[sprite]);
         }else if(sprite instanceof Array){ //frames by array
             spriteFrames = [];
-            for(var i = 0, len = sprite.length; i < len; i++){
+            for(i = 0, len = sprite.length; i < len; i++){
                 var spriteObj = sprite[i], frameObj;
                 if(isNumber(spriteObj)){
                     spriteFrame = translateSpriteFrame(frames[spriteObj]);
@@ -194,7 +191,7 @@ function parseTextureSprites(atlasData, frames){
             }
         }else{ //frames by object
             spriteFrames = [];
-            for(var i = sprite.from; i <= sprite.to; i++){
+            for(i = sprite.from; i <= sprite.to; i++){
                 spriteFrames[i - sprite.from] = translateSpriteFrame(frames[i], sprite[i]);
             }
         }

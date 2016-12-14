@@ -253,11 +253,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/EventMixin.html#.on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        <div><b><a href="../symbols/EventMixin.html#fire">fire</a></b>(type:String, detail:Object):Boolean
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Send events.
                         </div>
                     </td>
                     <td>
@@ -271,11 +271,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/EventMixin.html#.off">off</a></b>(type:String, listener:Function):Object
+                        <div><b><a href="../symbols/EventMixin.html#off">off</a></b>(type:String, listener:Function):Object
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Remove one event listener.
                         </div>
                     </td>
                     <td>
@@ -289,11 +289,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/EventMixin.html#.fire">fire</a></b>(type:String, detail:Object):Boolean
+                        <div><b><a href="../symbols/EventMixin.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Add an event listenser.
                         </div>
                     </td>
                     <td>
@@ -334,13 +334,13 @@
     <br/>
     <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
     
-        <a class="anchor" name=".fire"> </a>
+        <a class="anchor" name="fire"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>fire</b>(type:String, detail:Object):<span class="light">Boolean</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Send events. If the first parameter is an Object, take it  as an Event Object.</div>
 
         
 
@@ -376,13 +376,13 @@
 
         </div>
     
-        <a class="anchor" name=".off"> </a>
+        <a class="anchor" name="off"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>off</b>(type:String, listener:Function):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Remove one event listener. Remove all event listeners if no parameter provided, and remove all event listeners on one type which is provided as the only parameter.</div>
 
         
 
@@ -418,13 +418,13 @@
 
         </div>
     
-        <a class="anchor" name=".on"> </a>
+        <a class="anchor" name="on"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>on</b>(type:String, listener:Function, once:Boolean):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Add an event listenser.</div>
 
         
 

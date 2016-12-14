@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * @class Ease class provides multiple easing functions for Tween.
  * @module hilo/tween/Ease
  * @static
@@ -22,7 +21,6 @@ function createEase(obj, easeInFn, easeOutFn, easeInOutFn, easeNoneFn){
 }
 
 /**
- * @language=en
  * Linear easing function.Include EaseNone.
  */
 var Linear = createEase(null, null, null, null, function(k){
@@ -30,7 +28,6 @@ var Linear = createEase(null, null, null, null, function(k){
 });
 
 /**
- * @language=en
  * Quad easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quad = createEase(null,
@@ -48,7 +45,6 @@ var Quad = createEase(null,
 );
 
 /**
- * @language=en
  * Cubic easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Cubic = createEase(null,
@@ -66,7 +62,6 @@ var Cubic = createEase(null,
 );
 
 /**
- * @language=en
  * Quart easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quart = createEase(null,
@@ -84,7 +79,6 @@ var Quart = createEase(null,
 );
 
 /**
- * @language=en
  * Quint easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Quint = createEase(null,
@@ -107,7 +101,6 @@ var math = Math,
     pow = math.pow, sqrt = math.sqrt;
 
 /**
- * @language=en
  * Sine easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Sine = createEase(null,
@@ -125,7 +118,6 @@ var Sine = createEase(null,
 );
 
 /**
- * @language=en
  * Expo easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Expo = createEase(null,
@@ -145,7 +137,6 @@ var Expo = createEase(null,
 );
 
 /**
- * @language=en
  * Circ easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Circ = createEase(null,
@@ -154,7 +145,7 @@ var Circ = createEase(null,
     },
 
     function(k){
-        return sqrt(1 - --k * k);
+        return sqrt(1 - (--k * k));
     },
 
     function(k){
@@ -164,7 +155,6 @@ var Circ = createEase(null,
 );
 
 /**
- * @language=en
  * Elastic easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Elastic = createEase(
@@ -195,7 +185,6 @@ var Elastic = createEase(
 );
 
 /**
- * @language=en
  * Back easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Back = createEase(
@@ -223,7 +212,6 @@ var Back = createEase(
 );
 
 /**
- * @language=en
  * Bounce easing function.Include EaseIn, EaseOut, EaseInOut.
  */
 var Bounce = createEase(null,
@@ -260,6 +248,6 @@ return {
     Elastic: Elastic,
     Back: Back,
     Bounce: Bounce
-}
+};
 
 })();

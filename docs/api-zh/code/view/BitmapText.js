@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * <iframe src='../../../examples/BitmapText.html?noHeader' width = '550' height = '80' scrolling='no'></iframe>
  * <br/>
  * @class BitmapText类提供使用位图文本的功能。当前仅支持单行文本。
@@ -43,7 +42,6 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     textAlign:'left',
 
     /**
-     * @language=zh
      * 设置位图文本的文本内容。
      * @param {String} text 要设置的文本内容。
      * @returns {BitmapText} BitmapText对象本身。链式调用支持。
@@ -102,7 +100,6 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     },
 
      /**
-      * @language=zh
       * 设置位图文本的对齐方式。
      * @param textAlign 文本对齐方式，值为left、center、right
      * @returns {BitmapText} BitmapText对象本身。链式调用支持。
@@ -117,6 +114,7 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
                 this.pivotX = this.width;
                 break;
             case "left":
+                /* falls through */
             default:
                 this.pivotX = 0;
                 break;
@@ -125,7 +123,6 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     },
 
     /**
-     * @language=zh
      * 返回能否使用当前指定的字体显示提供的字符串。
      * @param {String} str 要检测的字符串。
      * @returns {Boolean} 是否能使用指定字体。
@@ -134,7 +131,8 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
         var glyphs = this.glyphs;
         if(!glyphs) return false;
 
-        var str = str.toString(), len = str.length, i;
+        str = str.toString();
+        var len = str.length, i;
         for(i = 0; i < len; i++){
             if(!glyphs[str.charAt(i)]) return false;
         }
@@ -144,7 +142,6 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     Statics:/** @lends BitmapText */{
         _pool:[],
         /**
-         * @language=zh
          * 简易方式生成字形集合。
          * @static
          * @param {String} text 字符文本。
@@ -161,11 +158,11 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
             var h = image.height/row;
             var glyphs = {};
             for(var i = 0, l = text.length;i < l;i ++){
-                charStr = str.charAt(i);
+                var charStr = str.charAt(i);
                 glyphs[charStr] = {
                     image:image,
                     rect:[w * (i % col), h * Math.floor(i / col), w, h]
-                }
+                };
             }
             return glyphs;
         }

@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * 创建类示例：
  * <pre>
  * var Bird = Hilo.Class.create({
@@ -35,7 +34,6 @@
 var Class = (function(){
 
 /**
- * @language=zh
  * 根据参数指定的属性和方法创建类。
  * @param {Object} properties 要创建的类的相关属性和方法。主要有：
  * <ul>
@@ -52,10 +50,9 @@ var create = function(properties){
     var clazz = properties.hasOwnProperty('constructor') ? properties.constructor : function(){};
     implement.call(clazz, properties);
     return clazz;
-}
+};
 
 /**
- * @language=zh
  * @private
  */
 var implement = function(properties){
@@ -102,25 +99,23 @@ var classMutators = /** @ignore */{
 };
 
 /**
- * @language=zh
  * @private
  */
 var createProto = (function(){
     if(Object.__proto__){
         return function(proto){
             return {__proto__: proto};
-        }
+        };
     }else{
         var Ctor = function(){};
         return function(proto){
             Ctor.prototype = proto;
             return new Ctor();
-        }
+        };
     }
 })();
 
 /**
- * @language=zh
  * 混入属性或方法。
  * @param {Object} target 混入目标对象。
  * @param {Object} source 要混入的属性和方法来源。可支持多个来源参数。
@@ -146,9 +141,10 @@ var mix = function(target){
     return target;
 };
 
+var defineProperty, defineProperties;
 try{
-    var defineProperty = Object.defineProperty,
-        defineProperties = Object.defineProperties;
+    defineProperty = Object.defineProperty;
+    defineProperties = Object.defineProperties;
     defineProperty({}, '$', {value:0});
 }catch(e){
     if('__defineGetter__' in Object){

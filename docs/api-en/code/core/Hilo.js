@@ -6,7 +6,6 @@
 
 
 /**
- * @language=en
  * @namespace Hilo The underlying core set of methods.
  * @static
  * @module hilo/core/Hilo
@@ -23,7 +22,6 @@ return {
      */
     version:'{{$version}}',
     /**
-     * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
      * @param {String} prefix Generated id's prefix.
      * @returns {String} Globally unique id.
@@ -39,7 +37,6 @@ return {
     },
 
     /**
-     * @language=en
      * Generates a string representation that contains a path to the specified visual object. Such as Stage1.Container2.Bitmap3.
      * @param {View} view Specified visual object.
      * @returns {String} String representation of the visual object.
@@ -54,7 +51,6 @@ return {
     },
 
     /**
-     * @language=en
      * Simple shallow copy objects.
      * @param {Object} target Target object to copy to.
      * @param {Object} source Source object to copy.
@@ -71,7 +67,6 @@ return {
     },
 
     /**
-     * @language=en
      * Browser feature set includes:
      * <ul>
      * <li><b>jsVendor</b> - Browser vendors js value CSS prefix. For example: webkit.</li>
@@ -110,7 +105,7 @@ return {
             localStorage.setItem(value, value);
             localStorage.removeItem(value);
             data.supportStorage = true;
-        }catch(e){ };
+        }catch(e){}
 
         //vendor prefix
         var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'moz' : data.opera ? 'o' : data.ie ? 'ms' : '';
@@ -130,7 +125,7 @@ return {
             supportTransform3D = testElem.offsetHeight == 3;
             doc.head.removeChild(style);
             docElem.removeChild(testElem);
-        };
+        }
         data.supportTransform = supportTransform;
         data.supportTransform3D = supportTransform3D;
 
@@ -138,7 +133,6 @@ return {
     })(),
 
     /**
-     * @language=en
      * Event enumeration objects include:
      * <ul>
      * <li><b>POINTER_START</b> - Mouse or touch start event. Corresponds to touchstart or mousedown.</li>
@@ -156,7 +150,6 @@ return {
     })(),
 
     /**
-     * @language=en
      * Visual object alinment enumeration objects include:
      * <ul>
      * <li><b>TOP_LEFT</b> - Align the top left corner.</li>
@@ -183,15 +176,15 @@ return {
     },
 
     /**
-     * @language=en
      * Get DOM element content in the page display area.
      * @param {HTMLElement} elem DOM elements.
      * @returns {Object} Viewable area DOM elements. Format is: {left:0, top:0, width:100, height:100}.
      */
     getElementRect: function(elem){
+        var bounds;
         try{
             //this fails if it's a disconnected DOM node
-            var bounds = elem.getBoundingClientRect();
+            bounds = elem.getBoundingClientRect();
         }catch(e){
             bounds = {top:elem.offsetTop, left:elem.offsetLeft, right:elem.offsetLeft + elem.offsetWidth, bottom:elem.offsetTop + elem.offsetHeight};
         }
@@ -220,7 +213,6 @@ return {
     },
 
     /**
-     * @language=en
      * Create a DOM element. You can specify properties and styles.
      * @param {String} type DOM element type to be created. Such as: 'div'.
      * @param {Object} properties Properties and styles for DOM element.
@@ -240,7 +232,6 @@ return {
     },
 
     /**
-     * @language=en
      * Gets a DOM element according to the parameter id. This method is equivalent to document.getElementById(id).
      * @param {String} id id of the DOM element you want to get.
      * @returns {HTMLElement} A DOM element.
@@ -250,7 +241,6 @@ return {
     },
 
     /**
-     * @language=en
      * Set visual object DOM element CSS style.
      * @param {View} obj Specifies the CSS style to set the visual object.
      * @private
@@ -350,7 +340,6 @@ return {
     },
 
     /**
-     * @language=en
      * Generated visual object CSS style transformation.
      * @param {View} obj Specifies visual object whose CSS style must be got.
      * @returns {String} String representation of the CSS style.

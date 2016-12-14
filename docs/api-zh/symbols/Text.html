@@ -226,6 +226,9 @@
         <br>
         Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。
         
+            <br><br><iframe src='../../../examples/Text.html?noHeader' width = '320' height = '240' scrolling='no'></iframe>
+<br/>
+        
 
     </p>
 
@@ -641,7 +644,8 @@
                         </div>
                         <div class="description">
                             
-                            
+                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
                         </div>
                     </td>
                     <td>
@@ -950,11 +954,65 @@
                         
                     </td>
                     <td class="fixedFont">
+                        <div><b><a href="../symbols/Text.html#cache">cache</a></b>(forceUpdate:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            缓存到图片里。可用来提高渲染效率。
+                        </div>
+                    </td>
+                    <td>
+                        Text
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Text.html#setCacheDirty">setCacheDirty</a></b>(dirty:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            设置缓存是否dirty
+                        </div>
+                    </td>
+                    <td>
+                        Text
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
                         <div><b><a href="../symbols/Text.html#setFont">setFont</a></b>(font:String):Text
                         </div>
                         <div class="description">
                             
+                            设置文本的字体CSS样式。
+                        </div>
+                    </td>
+                    <td>
+                        Text
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Text.html#updateCache">updateCache</a></b>()
+                        </div>
+                        <div class="description">
                             
+                            更新缓存
                         </div>
                     </td>
                     <td>
@@ -972,7 +1030,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            测算指定字体样式的行高。
                         </div>
                     </td>
                     <td>
@@ -990,7 +1048,25 @@
                         </div>
                         <div class="description">
                             
+                            添加此对象到父容器。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
                             
+                            发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
                         </div>
                     </td>
                     <td>
@@ -1008,7 +1084,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
                         </div>
                     </td>
                     <td>
@@ -1026,7 +1102,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的高度。
                         </div>
                     </td>
                     <td>
@@ -1044,7 +1120,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的宽度。
                         </div>
                     </td>
                     <td>
@@ -1062,7 +1138,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
                         </div>
                     </td>
                     <td>
@@ -1080,7 +1156,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            检测object参数指定的对象是否与其相交。
                         </div>
                     </td>
                     <td>
@@ -1098,7 +1174,43 @@
                         </div>
                         <div class="description">
                             
+                            检测由x和y参数指定的点是否在其外接矩形之内。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            增加一个事件监听。
                         </div>
                     </td>
                     <td>
@@ -1116,7 +1228,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            从父容器里删除此对象。
                         </div>
                     </td>
                     <td>
@@ -1134,7 +1246,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
                         </div>
                     </td>
                     <td>
@@ -1152,7 +1264,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的字符串表示。
                         </div>
                     </td>
                     <td>
@@ -1414,13 +1526,43 @@
     <br/>
     <div class=""><h3 style="margin-bottom:15px;">方法详情</h3></div>
     
+        <a class="anchor" name="cache"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>cache</b>(forceUpdate:Boolean)
+        </div>
+        <div class="description">缓存到图片里。可用来提高渲染效率。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>forceUpdate</b>:<span>Boolean</span> 
+                     — 是否强制更新缓存
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name=".measureFontHeight"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>measureFontHeight</b>(font:String):<span class="light">Number</span>
         </div>
-        <div class="description"></div>
+        <div class="description">测算指定字体样式的行高。</div>
 
         
 
@@ -1451,13 +1593,43 @@
 
         </div>
     
+        <a class="anchor" name="setCacheDirty"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setCacheDirty</b>(dirty:Boolean)
+        </div>
+        <div class="description">设置缓存是否dirty</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>dirty</b>:<span>Boolean</span> 
+                     — 是否dirty
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name="setFont"> </a>
         <div class="member-box">
         <div class="member-header">
         
         <b>setFont</b>(font:String):<span class="light"><a href="../symbols/Text.html">Text</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">设置文本的字体CSS样式。</div>
 
         
 
@@ -1482,6 +1654,26 @@
                 <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Text.html">Text</a></span>  — Text对象本身。链式调用支持。</dd>
             
             </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="updateCache"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>updateCache</b>()
+        </div>
+        <div class="description">更新缓存</div>
+
+        
+
+        
+        
+        
+        
         
         
         

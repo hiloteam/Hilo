@@ -226,6 +226,9 @@
         <br>
         Graphics类包含一组创建矢量图形的方法。
         
+            <br><br><iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+<br/>
+        
 
     </p>
 
@@ -601,7 +604,8 @@
                         </div>
                         <div class="description">
                             
-                            
+                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
                         </div>
                     </td>
                     <td>
@@ -914,7 +918,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            开始一个位图填充样式。
                         </div>
                     </td>
                     <td>
@@ -932,7 +936,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            指定绘制图形的填充样式和透明度。
                         </div>
                     </td>
                     <td>
@@ -950,7 +954,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            指定绘制图形的线性渐变填充样式。
                         </div>
                     </td>
                     <td>
@@ -968,7 +972,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            开始一个新的路径。
                         </div>
                     </td>
                     <td>
@@ -986,7 +990,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            指定绘制图形的放射性渐变填充样式。
                         </div>
                     </td>
                     <td>
@@ -1004,7 +1008,25 @@
                         </div>
                         <div class="description">
                             
+                            绘制从当前位置开始到点(x, y)结束的贝塞尔曲线。
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#cache">cache</a></b>(forceUpdate:Boolean)
+                        </div>
+                        <div class="description">
                             
+                            缓存到图片里。可用来提高渲染效率。
                         </div>
                     </td>
                     <td>
@@ -1022,7 +1044,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            清除所有绘制动作并复原所有初始状态。
                         </div>
                     </td>
                     <td>
@@ -1040,7 +1062,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            关闭当前的路径。
                         </div>
                     </td>
                     <td>
@@ -1058,7 +1080,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            绘制一个圆。
                         </div>
                     </td>
                     <td>
@@ -1076,7 +1098,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            绘制一个椭圆。
                         </div>
                     </td>
                     <td>
@@ -1094,7 +1116,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            绘制一个矩形。
                         </div>
                     </td>
                     <td>
@@ -1112,7 +1134,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            绘制一个圆角矩形。
                         </div>
                     </td>
                     <td>
@@ -1130,7 +1152,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            绘制一个复杂的圆角矩形。
                         </div>
                     </td>
                     <td>
@@ -1148,7 +1170,11 @@
                         </div>
                         <div class="description">
                             
-                            
+                            根据参数指定的SVG数据绘制一条路径。
+代码示例:
+<p>var path = 'M250 150 L150 350 L350 350 Z';</p>
+<p>var shape = new Hilo.Graphics({width:500, height:500});</p>
+<p>shape.drawSVGPath(path).beginFill('#0ff').endFill();</p>
                         </div>
                     </td>
                     <td>
@@ -1166,7 +1192,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            应用并结束笔画的绘制和图形样式的填充。
                         </div>
                     </td>
                     <td>
@@ -1184,7 +1210,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            指定绘制图形的线条样式。
                         </div>
                     </td>
                     <td>
@@ -1202,7 +1228,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            绘制从当前位置开始到点(x, y)结束的直线。
                         </div>
                     </td>
                     <td>
@@ -1220,7 +1246,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            将当前绘制位置移动到点(x, y)。
                         </div>
                     </td>
                     <td>
@@ -1238,7 +1264,43 @@
                         </div>
                         <div class="description">
                             
+                            绘制从当前位置开始到点(x, y)结束的二次曲线。
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#setCacheDirty">setCacheDirty</a></b>(dirty:Boolean)
+                        </div>
+                        <div class="description">
                             
+                            设置缓存是否dirty
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#updateCache">updateCache</a></b>()
+                        </div>
+                        <div class="description">
+                            
+                            更新缓存
                         </div>
                     </td>
                     <td>
@@ -1256,7 +1318,25 @@
                         </div>
                         <div class="description">
                             
+                            添加此对象到父容器。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
                             
+                            发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
                         </div>
                     </td>
                     <td>
@@ -1274,7 +1354,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
                         </div>
                     </td>
                     <td>
@@ -1292,7 +1372,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的高度。
                         </div>
                     </td>
                     <td>
@@ -1310,7 +1390,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的宽度。
                         </div>
                     </td>
                     <td>
@@ -1328,7 +1408,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
                         </div>
                     </td>
                     <td>
@@ -1346,7 +1426,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            检测object参数指定的对象是否与其相交。
                         </div>
                     </td>
                     <td>
@@ -1364,7 +1444,43 @@
                         </div>
                         <div class="description">
                             
+                            检测由x和y参数指定的点是否在其外接矩形之内。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            增加一个事件监听。
                         </div>
                     </td>
                     <td>
@@ -1382,7 +1498,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            从父容器里删除此对象。
                         </div>
                     </td>
                     <td>
@@ -1400,7 +1516,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
                         </div>
                     </td>
                     <td>
@@ -1418,7 +1534,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的字符串表示。
                         </div>
                     </td>
                     <td>
@@ -1648,7 +1764,7 @@
         
         <b>beginBitmapFill</b>(image:HTMLImageElement, repetition:String):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">开始一个位图填充样式。</div>
 
         
 
@@ -1690,7 +1806,7 @@
         
         <b>beginFill</b>(fill:String, alpha:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">指定绘制图形的填充样式和透明度。</div>
 
         
 
@@ -1732,7 +1848,7 @@
         
         <b>beginLinearGradientFill</b>(x0:Number, y0:Number, x1:Number, y1:Number, colors:Array, ratios:Array):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">指定绘制图形的线性渐变填充样式。</div>
 
         
 
@@ -1794,7 +1910,7 @@
         
         <b>beginPath</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">开始一个新的路径。</div>
 
         
 
@@ -1821,7 +1937,7 @@
         
         <b>beginRadialGradientFill</b>(x0:Number, y0:Number, r0:Number, x1:Number, y1:Number, r1:Number, colors:Array, ratios:Array):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">指定绘制图形的放射性渐变填充样式。</div>
 
         
 
@@ -1893,7 +2009,7 @@
         
         <b>bezierCurveTo</b>(cp1x:Number, cp1y:Number, cp2x:Number, cp2y:Number, x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">绘制从当前位置开始到点(x, y)结束的贝塞尔曲线。</div>
 
         
 
@@ -1949,13 +2065,43 @@
 
         </div>
     
+        <a class="anchor" name="cache"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>cache</b>(forceUpdate:Boolean)
+        </div>
+        <div class="description">缓存到图片里。可用来提高渲染效率。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>forceUpdate</b>:<span>Boolean</span> 
+                     — 是否强制更新缓存
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name="clear"> </a>
         <div class="member-box">
         <div class="member-header">
         
         <b>clear</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">清除所有绘制动作并复原所有初始状态。</div>
 
         
 
@@ -1982,7 +2128,7 @@
         
         <b>closePath</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">关闭当前的路径。</div>
 
         
 
@@ -2009,7 +2155,7 @@
         
         <b>drawCircle</b>(x:Number, y:Number, radius:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">绘制一个圆。</div>
 
         
 
@@ -2056,7 +2202,7 @@
         
         <b>drawEllipse</b>(x:Number, y:Number, width:Number, height:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">绘制一个椭圆。</div>
 
         
 
@@ -2108,7 +2254,7 @@
         
         <b>drawRect</b>(x:Number, y:Number, width:Number, height:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">绘制一个矩形。</div>
 
         
 
@@ -2160,7 +2306,7 @@
         
         <b>drawRoundRect</b>(x:Number, y:Number, width:Number, height:Number, cornerSize:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">绘制一个圆角矩形。</div>
 
         
 
@@ -2217,7 +2363,7 @@
         
         <b>drawRoundRectComplex</b>(x:Number, y:Number, width:Number, height:Number, cornerTL:Number, cornerTR:Number, cornerBR:Number, cornerBL:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">绘制一个复杂的圆角矩形。</div>
 
         
 
@@ -2289,7 +2435,11 @@
         
         <b>drawSVGPath</b>(pathData:String):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">根据参数指定的SVG数据绘制一条路径。
+代码示例:
+<p>var path = 'M250 150 L150 350 L350 350 Z';</p>
+<p>var shape = new Hilo.Graphics({width:500, height:500});</p>
+<p>shape.drawSVGPath(path).beginFill('#0ff').endFill();</p></div>
 
         
 
@@ -2326,7 +2476,7 @@
         
         <b>endFill</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">应用并结束笔画的绘制和图形样式的填充。</div>
 
         
 
@@ -2353,7 +2503,7 @@
         
         <b>lineStyle</b>(thickness:Number, lineColor:String, lineAlpha:Number, lineCap:String, lineJoin:String, miterLimit:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">指定绘制图形的线条样式。</div>
 
         
 
@@ -2415,7 +2565,7 @@
         
         <b>lineTo</b>(x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">绘制从当前位置开始到点(x, y)结束的直线。</div>
 
         
 
@@ -2457,7 +2607,7 @@
         
         <b>moveTo</b>(x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">将当前绘制位置移动到点(x, y)。</div>
 
         
 
@@ -2499,7 +2649,7 @@
         
         <b>quadraticCurveTo</b>(cpx:Number, cpy:Number, x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">绘制从当前位置开始到点(x, y)结束的二次曲线。</div>
 
         
 
@@ -2539,6 +2689,56 @@
                 <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — Graphics对象本身。</dd>
             
             </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setCacheDirty"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setCacheDirty</b>(dirty:Boolean)
+        </div>
+        <div class="description">设置缓存是否dirty</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>dirty</b>:<span>Boolean</span> 
+                     — 是否dirty
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="updateCache"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>updateCache</b>()
+        </div>
+        <div class="description">更新缓存</div>
+
+        
+
+        
+        
+        
+        
         
         
         

@@ -226,6 +226,16 @@
         <br>
         Stage is the root of all visual object tree, any visual object will be render only after being added to Stage or any children elements of Stage. Normally, every hilo application start with an stage instance.
         
+            <br><br>Demo:
+<pre>
+var stage = new Hilo.Stage({
+    renderType:'canvas',
+    container: containerElement,
+    width: 320,
+    height: 480
+});
+</pre>
+        
 
     </p>
 
@@ -561,7 +571,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            This method will call while the view need update(usually caused by ticker update).
                         </div>
                     </td>
                     <td>
@@ -894,7 +904,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Add Stage canvas to DOM container.
                         </div>
                     </td>
                     <td>
@@ -912,7 +922,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Turn on/off Stage response to DOM event.
                         </div>
                     </td>
                     <td>
@@ -930,7 +940,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Resize the Stage.
                         </div>
                     </td>
                     <td>
@@ -948,7 +958,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Invoke tick function and Stage will update and render.
                         </div>
                     </td>
                     <td>
@@ -966,7 +976,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Update the viewport (rendering area) which Stage show on the page.
                         </div>
                     </td>
                     <td>
@@ -984,7 +994,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Add child element at the top.
                         </div>
                     </td>
                     <td>
@@ -1002,7 +1012,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Add child element at given index.
                         </div>
                     </td>
                     <td>
@@ -1020,7 +1030,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Return whether this container contains the parameter described child element.
                         </div>
                     </td>
                     <td>
@@ -1034,11 +1044,29 @@
                         <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
                     </td>
                     <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Send events.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
                         <div><b><a href="../symbols/View.html#getBounds">getBounds</a></b>():Array
                         </div>
                         <div class="description">
                             
-                            
+                            Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
                         </div>
                     </td>
                     <td>
@@ -1056,7 +1084,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Return child element at the given index.
                         </div>
                     </td>
                     <td>
@@ -1074,7 +1102,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Return child element at the given id.
                         </div>
                     </td>
                     <td>
@@ -1092,7 +1120,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Return index value of the given child element.
                         </div>
                     </td>
                     <td>
@@ -1110,7 +1138,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Return the amount of the children elements of the container.
                         </div>
                     </td>
                     <td>
@@ -1128,7 +1156,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the scaled height of the view.
                         </div>
                     </td>
                     <td>
@@ -1146,7 +1174,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the scaled width of the view.
                         </div>
                     </td>
                     <td>
@@ -1164,7 +1192,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the stage object of the view.
                         </div>
                     </td>
                     <td>
@@ -1182,7 +1210,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Return object at the point positioned by given values on x axis and y axis.
                         </div>
                     </td>
                     <td>
@@ -1200,7 +1228,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Determining whether an object is in the circumscribed rectangle of current view.
                         </div>
                     </td>
                     <td>
@@ -1218,7 +1246,43 @@
                         </div>
                         <div class="description">
                             
+                            Determining whether a point is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            Remove one event listener.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            Add an event listenser.
                         </div>
                     </td>
                     <td>
@@ -1236,7 +1300,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Remove all children elements.
                         </div>
                     </td>
                     <td>
@@ -1254,7 +1318,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Remove the given child element.
                         </div>
                     </td>
                     <td>
@@ -1272,7 +1336,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Remove element at the index.
                         </div>
                     </td>
                     <td>
@@ -1290,7 +1354,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Remove child element by its id.
                         </div>
                     </td>
                     <td>
@@ -1308,7 +1372,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Remove current view from it's parent container
                         </div>
                     </td>
                     <td>
@@ -1326,7 +1390,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            The render method of current view.
                         </div>
                     </td>
                     <td>
@@ -1344,7 +1408,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Set the index of child element.
                         </div>
                     </td>
                     <td>
@@ -1362,7 +1426,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Sort children elements by the given key or function.
                         </div>
                     </td>
                     <td>
@@ -1380,7 +1444,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Swap index between two child elements.
                         </div>
                     </td>
                     <td>
@@ -1398,7 +1462,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Swap two children elements at given indexes.
                         </div>
                     </td>
                     <td>
@@ -1416,7 +1480,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get a string representing current view.
                         </div>
                     </td>
                     <td>
@@ -1578,7 +1642,7 @@
         
         <b>addTo</b>(domElement:HTMLElement):<span class="light"><a href="../symbols/Stage.html">Stage</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Add Stage canvas to DOM container. Note: this function overwrite View.addTo function.</div>
 
         
 
@@ -1615,7 +1679,7 @@
         
         <b>enableDOMEvent</b>(type:String|Array, enabled:Boolean):<span class="light"><a href="../symbols/Stage.html">Stage</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Turn on/off Stage response to DOM event. To make visual objects on the Stage interactive, use this function to turn on Stage's responses to events.</div>
 
         
 
@@ -1657,7 +1721,7 @@
         
         <b>resize</b>(width:Number, height:Number, forceResize:Boolean)
         </div>
-        <div class="description"></div>
+        <div class="description">Resize the Stage.</div>
 
         
 
@@ -1697,7 +1761,7 @@
         
         <b>tick</b>(delta:Number)
         </div>
-        <div class="description"></div>
+        <div class="description">Invoke tick function and Stage will update and render. Developer may not need to use this funciton.</div>
 
         
 
@@ -1727,7 +1791,7 @@
         
         <b>updateViewport</b>():<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">Update the viewport (rendering area) which Stage show on the page. Invoke this function to update viewport when Stage canvas changes border, margin or padding properties.</div>
 
         
 

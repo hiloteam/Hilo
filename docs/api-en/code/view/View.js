@@ -5,8 +5,11 @@
  */
 
 /**
- * @language=en
  * @class View View is the base class of all display objects
+ * @mixes EventMixin
+ * @borrows EventMixin#on as #on
+ * @borrows EventMixin#off as #off
+ * @borrows EventMixin#fire as #fire
  * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/view/View
  * @requires hilo/core/Hilo
@@ -68,7 +71,6 @@ return Class.create(/** @lends View.prototype */{
     depth: -1,
 
     /**
-     * @language=en
      * Get the stage object of the view. If the view doesn't add to any stage, null will be returned.
      * @returns {Stage} The stage object of the view.
      */
@@ -82,7 +84,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Get the scaled width of the view.
      * @returns {Number} scaled width of the view.
      */
@@ -91,7 +92,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Get the scaled height of the view.
      * @returns {Number} scaled height of the view.
      */
@@ -100,7 +100,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Add current view to a Contaner.
      * @param {Container} container Container object.
      * @param {Uint} index The index of the view in container.
@@ -113,7 +112,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Remove current view from it's parent container
      * @returns {View} Current view.
      */
@@ -124,7 +122,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
      * @returns {Array} The vertex points array, and the array contains the following properties:
      * <ul>
@@ -165,7 +162,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Get the matrix that can transform points from current view coordinates to the ancestor container coordinates.
      * @param {View} ancestor The ancestor of current view, default value is the top container.
      * @private
@@ -193,7 +189,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Determining whether a point is in the circumscribed rectangle of current view.
      * @param {Number} x The x axis relative to the stage coordinates.
      * @param {Number} y The y axis relative to the stage coordinates.
@@ -212,7 +207,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Determining whether an object is in the circumscribed rectangle of current view.
      * @param {View} object The object need to determining.
      * @param {Boolean} usePolyCollision Is use polygon collision, default value is false.
@@ -230,7 +224,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * The method to render current display object. Only for advanced develop.
      * @param {Renderer} renderer Renderer object.
      * @param {Number} delta The delta time of render.
@@ -244,7 +237,6 @@ return Class.create(/** @lends View.prototype */{
         }
     },
     /**
-     * @language=en
      * Mouse event
     */
     _fireMouseEvent:function(e){
@@ -281,7 +273,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * This method will call while the view need update(usually caused by ticker update). This method can return a Boolean value, if return false, the view will not be drawn.
      * Limit: If you change the index in it's parent, it will not be drawn correct in current frame but next frame is correct.
      * @type Function
@@ -290,7 +281,6 @@ return Class.create(/** @lends View.prototype */{
     onUpdate: null,
 
     /**
-     * @language=en
      * The render method of current view. The subclass can implement it's own render logic by rewrite this function.
      * @param {Renderer} renderer Renderer object.
      * @param {Number} delta The delta time of render.
@@ -300,7 +290,6 @@ return Class.create(/** @lends View.prototype */{
     },
 
     /**
-     * @language=en
      * Get a string representing current view.
      * @returns {String} string representing current view.
      */
@@ -310,7 +299,6 @@ return Class.create(/** @lends View.prototype */{
 });
 
 /**
- * @language=en
  * @private
  */
 function pointInPolygon(x, y, poly){
@@ -348,7 +336,6 @@ function pointInPolygon(x, y, poly){
 }
 
 /**
- * @language=en
  * @private
  */
 function polygonCollision(poly1, poly2){
@@ -358,7 +345,6 @@ function polygonCollision(poly1, poly2){
 }
 
 /**
- * @language=en
  * @private
  */
 function doSATCheck(poly1, poly2, result){

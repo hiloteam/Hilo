@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * @class CanvasRenderer CanvasRenderer, all the visual object is drawing on the canvas element.The stage will create different renderer depend on the canvas and renderType properties, developer need not use this class directly.
  * @augments Renderer
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.

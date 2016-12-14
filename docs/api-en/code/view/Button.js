@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * <iframe src='../../../examples/Button.html?noHeader' width = '320' height = '170' scrolling='no'></iframe>
  * <br/>
  * demo:
@@ -58,7 +57,6 @@
     useHandCursor: true,
 
     /**
-     * @language=en
      * Set whether the button is enabled.
      * @param {Boolean} enabled Show whether the button is enabled.
      * @returns {Button} Return the button itself.
@@ -75,7 +73,6 @@
     },
 
     /**
-     * @language=en
      * Set the state of the button. Invoke inside the Button and may not be used.
      * @param {String} state New state of the button.
      * @returns {Button} Return the button itself.
@@ -111,7 +108,6 @@
     },
 
     /**
-     * @language=en
      * overwrite
      * @private
      */
@@ -144,25 +140,21 @@
 
     Statics: /** @lends Button */ {
         /**
-         * @language=en
          * Statics value of Button's 'up' state.
          * @type String
          */
         UP: 'up',
         /**
-         * @language=en
          * Statics value of Button's 'over' state.
          * @type String
          */
         OVER: 'over',
         /**
-         * @language=en
          * Statics value of Button's 'down' state.
          * @type String
          */
         DOWN: 'down',
         /**
-         * @language=en
          * Statics value of Button's 'disabled' state.
          * @type String
          */

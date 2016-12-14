@@ -5,11 +5,14 @@
  */
 
 /**
- * @language=en
  * <iframe src='../../../examples/Text.html?noHeader' width = '320' height = '240' scrolling='no'></iframe>
  * <br/>
  * @class Text class provide basic text-display function, use DOMElement for complex text-display.
  * @augments View
+ * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties Properties parameters for the object. Includes all writable properties.
  * @module hilo/view/Text
  * @requires hilo/core/Class
@@ -52,7 +55,6 @@ var Text = Class.create(/** @lends Text.prototype */{
     textHeight: 0, //read-only
 
     /**
-     * @language=en
      * Set text CSS font style.
      * @param {String} font Text CSS font style to set.
      * @returns {Text} the Text object, chained call supported.
@@ -68,12 +70,11 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * @language=en
      * Overwrite render function.
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
 
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
@@ -101,7 +102,6 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * @language=en
      * Draw text under the assigned render context.
      * @private
      */
@@ -187,14 +187,13 @@ var Text = Class.create(/** @lends Text.prototype */{
         else context.fillStyle = me.color;
 
         //draw text lines
-        for(var i = 0; i < drawLines.length; i++){
-            var line = drawLines[i];
+        for(i = 0; i < drawLines.length; i++){
+            line = drawLines[i];
             me._drawTextLine(context, line.text, startY + line.y);
         }
     },
 
     /**
-     * @language=en
      * Draw a line of text under the assigned render context.
      * @private
      */
@@ -209,7 +208,7 @@ var Text = Class.create(/** @lends Text.prototype */{
             case 'end':
                 x = width;
                 break;
-        };
+        }
 
         if(me.outline) context.strokeText(text, x, y);
         else context.fillText(text, x, y);
@@ -217,7 +216,6 @@ var Text = Class.create(/** @lends Text.prototype */{
 
     Statics: /** @lends Text */{
         /**
-         * @language=en
          * Measure the line height of the assigned text font style.
          * @param {String} font Font style to measure.
          * @return {Number} Return line height of the assigned font style.

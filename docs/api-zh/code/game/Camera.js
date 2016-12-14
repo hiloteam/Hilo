@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * @class Camera类表示摄像机。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/game/Camera
@@ -35,7 +34,6 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         Hilo.copy(this, properties);
     },
     /**
-     * @language=zh
      * 更新
      * @param {Number} deltaTime
     */
@@ -70,7 +68,6 @@ var Camera = Class.create(/** @lends Camera.prototype */{
         }
     },
     /**
-     * @language=zh
      * 跟随目标
      * @param {Object} target 跟随的目标，必须是有x,y属性的对象
      * @param {Array} deadzone 摄像机不移动的矩形区域 [ x, y, width, height]

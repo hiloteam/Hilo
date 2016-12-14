@@ -253,11 +253,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/EventMixin.html#.on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        <div><b><a href="../symbols/EventMixin.html#fire">fire</a></b>(type:String, detail:Object):Boolean
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
                         </div>
                     </td>
                     <td>
@@ -271,11 +271,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/EventMixin.html#.off">off</a></b>(type:String, listener:Function):Object
+                        <div><b><a href="../symbols/EventMixin.html#off">off</a></b>(type:String, listener:Function):Object
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
                         </div>
                     </td>
                     <td>
@@ -289,11 +289,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/EventMixin.html#.fire">fire</a></b>(type:String, detail:Object):Boolean
+                        <div><b><a href="../symbols/EventMixin.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            增加一个事件监听。
                         </div>
                     </td>
                     <td>
@@ -334,13 +334,13 @@
     <br/>
     <div class=""><h3 style="margin-bottom:15px;">方法详情</h3></div>
     
-        <a class="anchor" name=".fire"> </a>
+        <a class="anchor" name="fire"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>fire</b>(type:String, detail:Object):<span class="light">Boolean</span>
         </div>
-        <div class="description"></div>
+        <div class="description">发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。</div>
 
         
 
@@ -376,13 +376,13 @@
 
         </div>
     
-        <a class="anchor" name=".off"> </a>
+        <a class="anchor" name="off"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>off</b>(type:String, listener:Function):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。</div>
 
         
 
@@ -418,13 +418,13 @@
 
         </div>
     
-        <a class="anchor" name=".on"> </a>
+        <a class="anchor" name="on"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>on</b>(type:String, listener:Function, once:Boolean):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">增加一个事件监听。</div>
 
         
 

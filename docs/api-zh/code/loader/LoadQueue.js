@@ -7,7 +7,6 @@
 //TODO: 超时timeout，失败重连次数maxTries，更多的下载器Loader，队列暂停恢复等。
 
 /**
- * @language=zh
  * @class LoadQueue是一个队列下载工具。
  * @param {Object} source 要下载的资源。可以是单个资源对象或多个资源的数组。
  * @module hilo/loader/LoadQueue
@@ -32,7 +31,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     _currentIndex: -1,
 
     /**
-     * @language=zh
      * 增加要下载的资源。可以是单个资源对象或多个资源的数组。
      * @param {Object|Array} source 资源对象或资源对象数组。每个资源对象包含以下属性：
      * <ul>
@@ -55,7 +53,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * 根据id或src地址获取资源对象。
      * @param {String} id 指定资源的id或src。
      * @returns {Object} 资源对象。
@@ -74,7 +71,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * 根据id或src地址获取资源内容。
      * @param {String} id 指定资源的id或src。
      * @returns {Object} 资源内容。
@@ -85,7 +81,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * 开始下载队列。
      * @returns {LoadQueue} 下载队列实例本身。
      */
@@ -96,7 +91,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * @private
      */
     _loadNext: function(){
@@ -137,11 +131,10 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * @private
      */
     _getLoader: function(item){
-        var me = this, loader = item.loader;
+        var loader = item.loader;
         if(loader) return loader;
 
         var type = item.type || getExtension(item.src);
@@ -163,7 +156,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * @private
      */
     _onItemLoad: function(index, content){
@@ -177,7 +169,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * @private
      */
     _onItemError: function(index, e){
@@ -190,7 +181,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * 获取全部或已下载的资源的字节大小。
      * @param {Boolean} loaded 指示是已下载的资源还是全部资源。默认为全部。
      * @returns {Number} 指定资源的字节大小。
@@ -205,7 +195,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * 获取已下载的资源数量。
      * @returns {Uint} 已下载的资源数量。
      */
@@ -214,7 +203,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     },
 
     /**
-     * @language=zh
      * 获取所有资源的数量。
      * @returns {Uint} 所有资源的数量。
      */
@@ -225,7 +213,6 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
 });
 
 /**
- * @language=zh
  * @private
  */
 function getExtension(src){
