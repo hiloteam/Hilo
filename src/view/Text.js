@@ -10,6 +10,10 @@
  * <br/>
  * @class Text class provide basic text-display function, use DOMElement for complex text-display.
  * @augments View
+ * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties Properties parameters for the object. Includes all writable properties.
  * @module hilo/view/Text
  * @requires hilo/core/Class
@@ -33,6 +37,10 @@
  * <br/>
  * @class Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。
  * @augments View
+ * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/view/Text
  * @requires hilo/core/Class

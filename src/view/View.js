@@ -7,6 +7,10 @@
 /**
  * @language=en
  * @class View View is the base class of all display objects
+ * @mixes EventMixin
+ * @borrows EventMixin#on as #on
+ * @borrows EventMixin#off as #off
+ * @borrows EventMixin#fire as #fire
  * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/view/View
  * @requires hilo/core/Hilo
@@ -38,6 +42,10 @@
 /**
  * @language=zh
  * @class View类是所有可视对象或组件的基类。
+ * @mixes EventMixin
+ * @borrows EventMixin#on as #on
+ * @borrows EventMixin#off as #off
+ * @borrows EventMixin#fire as #fire
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/view/View
  * @requires hilo/core/Hilo
