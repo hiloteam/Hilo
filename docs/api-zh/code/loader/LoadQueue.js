@@ -3,11 +3,15 @@
  * Copyright 2015 alibaba.com
  * Licensed under the MIT License
  */
- 
+
 //TODO: 超时timeout，失败重连次数maxTries，更多的下载器Loader，队列暂停恢复等。
 
 /**
  * @class LoadQueue是一个队列下载工具。
+ * @mixes EventMixin
+ * @borrows EventMixin#on as #on
+ * @borrows EventMixin#off as #off
+ * @borrows EventMixin#fire as #fire
  * @param {Object} source 要下载的资源。可以是单个资源对象或多个资源的数组。
  * @module hilo/loader/LoadQueue
  * @requires hilo/core/Class

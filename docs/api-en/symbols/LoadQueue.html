@@ -254,7 +254,7 @@
                         </div>
                         <div class="description">
                             
-                            ,the limited concurrent connections.
+                            the limited concurrent connections.
                         </div>
                     </td>
                     <td>
@@ -326,6 +326,24 @@
                         <div class="description">
                             
                             Add desired resource,could be a single object or array resource.
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Send events.
                         </div>
                     </td>
                     <td>
@@ -429,6 +447,42 @@
                         
                     </td>
                     <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
+                            
+                            Remove one event listener.
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/LoadQueue.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            Add an event listenser.
+                        </div>
+                    </td>
+                    <td>
+                        LoadQueue
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
                         <div><b><a href="../symbols/LoadQueue.html#start">start</a></b>():LoadQueue
                         </div>
                         <div class="description">
@@ -477,7 +531,7 @@
 
         </div>
         <div class="description">
-            ,the limited concurrent connections. default value  2.
+            the limited concurrent connections. default value  2.
         </div>
 
         
@@ -510,7 +564,7 @@
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>source</b>:<span>Object</span> 
-                     — ,resource that need to be loaded,could be a single object or array resource.
+                     — resource that need to be loaded,could be a single object or array resource.
                 </dt>
             
             </dl>
@@ -561,6 +615,48 @@
             <dt class="heading"><span class="label">return</span></dt>
             
                 <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/LoadQueue.html">LoadQueue</a></span>  — 下载队列实例本身。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="fire"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>fire</b>(type:String, detail:Object):<span class="light">Boolean</span>
+        </div>
+        <div class="description">Send events. If the first parameter is an Object, take it  as an Event Object.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — Event type to send.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>detail</b>:<span>Object</span> 
+                     — The detail (parameters go with the event) of Event to send.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Boolean</span>  — Whether Event call successfully.</dd>
             
             </dl>
         
@@ -726,6 +822,95 @@
             <dt class="heading"><span class="label">return</span></dt>
             
                 <dd style="margin-left:20px;font-weight:normal;"><span>Uint</span>  — all resource count</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="off"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>off</b>(type:String, listener:Function):<span class="light">Object</span>
+        </div>
+        <div class="description">Remove one event listener. Remove all event listeners if no parameter provided, and remove all event listeners on one type which is provided as the only parameter.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — The type of event listener that want to remove.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>listener</b>:<span>Function</span> 
+                     — Event listener callback function to be removed.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — The Event itself. Functions chain call supported.</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="on"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>on</b>(type:String, listener:Function, once:Boolean):<span class="light">Object</span>
+        </div>
+        <div class="description">Add an event listenser.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — Event type to listen.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>listener</b>:<span>Function</span> 
+                     — Callback function of event listening.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>once</b>:<span>Boolean</span> 
+                     — Listen on event only once and no more response after the first response?
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — The Event itself. Functions chain call supported.</dd>
             
             </dl>
         
