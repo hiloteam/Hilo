@@ -16,28 +16,28 @@
  * @requires hilo/view/View
  * @requires hilo/view/Container
  * @requires hilo/view/Drawable
- * @property {Number} emitTime Emit time interval.
- * @property {Number} emitTimeVar Emit time interval variances.
- * @property {Number} emitNum Emit number.
- * @property {Number} emitNumVar Emit number variances.
- * @property {Number} emitterX The emitter x position.
- * @property {Number} emitterY The emitter y position.
- * @property {Number} totalTime Total time.
- * @property {Number} gx The gravity x value.
- * @property {Number} gy The gravity y value.
+ * @property {Number} [emitTime=0.2] Emit time interval(in second).
+ * @property {Number} [emitTimeVar=0] Emit time interval variances.
+ * @property {Number} [emitNum=10] Emit number.
+ * @property {Number} [emitNumVar=0] Emit number variances.
+ * @property {Number} [emitterX=0] The emitter x position.
+ * @property {Number} [emitterY=0] The emitter y position.
+ * @property {Number} [totalTime=Infinity] Total time.
+ * @property {Number} [gx=0] The gravity x value.
+ * @property {Number} [gy=0] The gravity y value.
  * @param {Object} properties properties The properties to create a view object, contains all writeable props of this class
  * @param {Object} properties.particle The config of particle.
- * @param {Number} properties.particle.x The x position.
- * @param {Number} properties.particle.y The y position
- * @param {Number} properties.particle.vx The x velocity.
- * @param {Number} properties.particle.vy The y velocity.
- * @param {Number} properties.particle.ax The x acceleration.
- * @param {Number} properties.particle.ay The y acceleration.
- * @param {Number} properties.particle.life The time particle lives(in second).
- * @param {Number} properties.particle.alpha The alpha.
- * @param {Number} properties.particle.alphaV The alpha decline rate.
- * @param {Number} properties.particle.scale The scale.
- * @param {Number} properties.particle.scaleV The scale decline rate.
+ * @param {Number} [properties.particle.x=0] The x position.
+ * @param {Number} [properties.particle.y=0] The y position
+ * @param {Number} [properties.particle.vx=0] The x velocity.
+ * @param {Number} [properties.particle.vy=0] The y velocity.
+ * @param {Number} [properties.particle.ax=0] The x acceleration.
+ * @param {Number} [properties.particle.ay=0] The y acceleration.
+ * @param {Number} [properties.particle.life=1] The time particle lives(in second).
+ * @param {Number} [properties.particle.alpha=1] The alpha.
+ * @param {Number} [properties.particle.alphaV=0] The alpha decline rate.
+ * @param {Number} [properties.particle.scale=1] The scale.
+ * @param {Number} [properties.particle.scaleV=0] The scale decline rate.
 */
 /**
  * @language=zh
@@ -52,28 +52,28 @@
  * @requires hilo/view/Container
  * @requires hilo/view/Bitmap
  * @requires hilo/view/Drawable
- * @property {Number} emitTime 发射间隔
- * @property {Number} emitTimeVar 发射间隔变化量
- * @property {Number} emitNum 每次发射数量变化量
- * @property {Number} emitNumVar 每次发射数量
- * @property {Number} emitterX 发射器位置x
- * @property {Number} emitterY 发射器位置y
- * @property {Number} totalTime 总时间
- * @property {Number} gx 重力加速度x
- * @property {Number} gy 重力加速度y
+ * @property {Number} [emitTime=0.2] 发射间隔
+ * @property {Number} [emitTimeVar=0] 发射间隔变化量
+ * @property {Number} [emitNum=10] 每次发射数量
+ * @property {Number} [emitNumVar=0] 每次发射数量变化量
+ * @property {Number} [emitterX=0] 发射器位置x
+ * @property {Number} [emitterY=0] 发射器位置y
+ * @property {Number} [totalTime=Infinity] 总时间
+ * @property {Number} [gx=0] 重力加速度x
+ * @property {Number} [gy=0] 重力加速度y
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @param {Object} properties.particle 粒子属性配置
- * @param {Number} properties.particle.x x位置
- * @param {Number} properties.particle.y y位置
- * @param {Number} properties.particle.vx x速度
- * @param {Number} properties.particle.vy y速度
- * @param {Number} properties.particle.ax x加速度
- * @param {Number} properties.particle.ay y加速度
- * @param {Number} properties.particle.life 粒子存活时间 单位s
- * @param {Number} properties.particle.alpha 透明度
- * @param {Number} properties.particle.alphaV 透明度变化
- * @param {Number} properties.particle.scale 缩放
- * @param {Number} properties.particle.scaleV 缩放变化速度
+ * @param {Number} [properties.particle.x=0] x位置
+ * @param {Number} [properties.particle.y=0] y位置
+ * @param {Number} [properties.particle.vx=0] x速度
+ * @param {Number} [properties.particle.vy=0] y速度
+ * @param {Number} [properties.particle.ax=0] x加速度
+ * @param {Number} [properties.particle.ay=0] y加速度
+ * @param {Number} [properties.particle.life=1] 粒子存活时间，单位s
+ * @param {Number} [properties.particle.alpha=1] 透明度
+ * @param {Number} [properties.particle.alphaV=0] 透明度变化
+ * @param {Number} [properties.particle.scale=1] 缩放
+ * @param {Number} [properties.particle.scaleV=0] 缩放变化速度
 */
 var ParticleSystem = (function(){
     //粒子属性

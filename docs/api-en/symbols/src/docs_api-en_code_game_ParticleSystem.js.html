@@ -22,28 +22,28 @@
 <span class='line'> 15</span>  * @requires hilo/view/View
 <span class='line'> 16</span>  * @requires hilo/view/Container
 <span class='line'> 17</span>  * @requires hilo/view/Drawable
-<span class='line'> 18</span>  * @property {Number} emitTime Emit time interval.
-<span class='line'> 19</span>  * @property {Number} emitTimeVar Emit time interval variances.
-<span class='line'> 20</span>  * @property {Number} emitNum Emit number.
-<span class='line'> 21</span>  * @property {Number} emitNumVar Emit number variances.
-<span class='line'> 22</span>  * @property {Number} emitterX The emitter x position.
-<span class='line'> 23</span>  * @property {Number} emitterY The emitter y position.
-<span class='line'> 24</span>  * @property {Number} totalTime Total time.
-<span class='line'> 25</span>  * @property {Number} gx The gravity x value.
-<span class='line'> 26</span>  * @property {Number} gy The gravity y value.
+<span class='line'> 18</span>  * @property {Number} [emitTime=0.2] Emit time interval(in second).
+<span class='line'> 19</span>  * @property {Number} [emitTimeVar=0] Emit time interval variances.
+<span class='line'> 20</span>  * @property {Number} [emitNum=10] Emit number.
+<span class='line'> 21</span>  * @property {Number} [emitNumVar=0] Emit number variances.
+<span class='line'> 22</span>  * @property {Number} [emitterX=0] The emitter x position.
+<span class='line'> 23</span>  * @property {Number} [emitterY=0] The emitter y position.
+<span class='line'> 24</span>  * @property {Number} [totalTime=Infinity] Total time.
+<span class='line'> 25</span>  * @property {Number} [gx=0] The gravity x value.
+<span class='line'> 26</span>  * @property {Number} [gy=0] The gravity y value.
 <span class='line'> 27</span>  * @param {Object} properties properties The properties to create a view object, contains all writeable props of this class
 <span class='line'> 28</span>  * @param {Object} properties.particle The config of particle.
-<span class='line'> 29</span>  * @param {Number} properties.particle.x The x position.
-<span class='line'> 30</span>  * @param {Number} properties.particle.y The y position
-<span class='line'> 31</span>  * @param {Number} properties.particle.vx The x velocity.
-<span class='line'> 32</span>  * @param {Number} properties.particle.vy The y velocity.
-<span class='line'> 33</span>  * @param {Number} properties.particle.ax The x acceleration.
-<span class='line'> 34</span>  * @param {Number} properties.particle.ay The y acceleration.
-<span class='line'> 35</span>  * @param {Number} properties.particle.life The time particle lives(in second).
-<span class='line'> 36</span>  * @param {Number} properties.particle.alpha The alpha.
-<span class='line'> 37</span>  * @param {Number} properties.particle.alphaV The alpha decline rate.
-<span class='line'> 38</span>  * @param {Number} properties.particle.scale The scale.
-<span class='line'> 39</span>  * @param {Number} properties.particle.scaleV The scale decline rate.
+<span class='line'> 29</span>  * @param {Number} [properties.particle.x=0] The x position.
+<span class='line'> 30</span>  * @param {Number} [properties.particle.y=0] The y position
+<span class='line'> 31</span>  * @param {Number} [properties.particle.vx=0] The x velocity.
+<span class='line'> 32</span>  * @param {Number} [properties.particle.vy=0] The y velocity.
+<span class='line'> 33</span>  * @param {Number} [properties.particle.ax=0] The x acceleration.
+<span class='line'> 34</span>  * @param {Number} [properties.particle.ay=0] The y acceleration.
+<span class='line'> 35</span>  * @param {Number} [properties.particle.life=1] The time particle lives(in second).
+<span class='line'> 36</span>  * @param {Number} [properties.particle.alpha=1] The alpha.
+<span class='line'> 37</span>  * @param {Number} [properties.particle.alphaV=0] The alpha decline rate.
+<span class='line'> 38</span>  * @param {Number} [properties.particle.scale=1] The scale.
+<span class='line'> 39</span>  * @param {Number} [properties.particle.scaleV=0] The scale decline rate.
 <span class='line'> 40</span> */</span><span class="WHIT">
 <span class='line'> 41</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ParticleSystem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 42</span> </span><span class="WHIT">    </span><span class="COMM">//粒子属性</span><span class="WHIT">
