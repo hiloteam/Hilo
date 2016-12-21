@@ -226,6 +226,9 @@
         <br>
         Graphics class contains a group of functions for creating vector graphics.
         
+            <br><br><iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+<br/>
+        
 
     </p>
 
@@ -601,7 +604,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            This method will call while the view need update(usually caused by ticker update).
                         </div>
                     </td>
                     <td>
@@ -757,6 +760,26 @@
                     <td class="fixedFont">
                         <div>
                             <!--  -->
+                            <b><a href="../symbols/View.html#tint">tint</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The tint applied to the view，default is 0xFFFFFF.Only support in WebGL mode.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
                             <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
                         </div>
                         <div class="description">
@@ -894,7 +917,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Begin an image filling pattern.
                         </div>
                     </td>
                     <td>
@@ -912,7 +935,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Set how to fill shapes and the transparency.
                         </div>
                     </td>
                     <td>
@@ -930,7 +953,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Set linear gradient filling style to draw shapes.
                         </div>
                     </td>
                     <td>
@@ -948,7 +971,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Begin a new path.
                         </div>
                     </td>
                     <td>
@@ -966,7 +989,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Set radial gradient filling style to draw shapes.
                         </div>
                     </td>
                     <td>
@@ -984,7 +1007,25 @@
                         </div>
                         <div class="description">
                             
+                            Draw a Bézier curve from current point to the point on coordinate (x, y).
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#cache">cache</a></b>(forceUpdate:Boolean)
+                        </div>
+                        <div class="description">
                             
+                            Cache the view.
                         </div>
                     </td>
                     <td>
@@ -1002,7 +1043,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Clear all draw actions and reset to the initial state.
                         </div>
                     </td>
                     <td>
@@ -1020,7 +1061,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Close current path.
                         </div>
                     </td>
                     <td>
@@ -1038,7 +1079,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Draw a circle.
                         </div>
                     </td>
                     <td>
@@ -1056,7 +1097,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Draw an ellipse.
                         </div>
                     </td>
                     <td>
@@ -1074,7 +1115,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Draw a rectangle.
                         </div>
                     </td>
                     <td>
@@ -1092,7 +1133,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Draw a rounded rectangle.
                         </div>
                     </td>
                     <td>
@@ -1110,7 +1151,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Draw a complex rounded rectangle.
                         </div>
                     </td>
                     <td>
@@ -1128,7 +1169,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Draw a path from the SVG data given by parameters.
                         </div>
                     </td>
                     <td>
@@ -1146,7 +1187,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Apply and end lines-drawing and shapes-filling.
                         </div>
                     </td>
                     <td>
@@ -1164,7 +1205,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Set the lines style for drawing shapes.
                         </div>
                     </td>
                     <td>
@@ -1182,7 +1223,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Draw a line from current point to the point on the coordinate value (x, y).
                         </div>
                     </td>
                     <td>
@@ -1200,7 +1241,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Move current drawing point to a new point on coordinate values (x, y).
                         </div>
                     </td>
                     <td>
@@ -1218,7 +1259,43 @@
                         </div>
                         <div class="description">
                             
+                            Draw a quadratic Bézier curve from current point to the point on coordinate (x, y).
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#setCacheDirty">setCacheDirty</a></b>(dirty:Boolean)
+                        </div>
+                        <div class="description">
                             
+                            set the cache state diry.
+                        </div>
+                    </td>
+                    <td>
+                        Graphics
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Graphics.html#updateCache">updateCache</a></b>()
+                        </div>
+                        <div class="description">
+                            
+                            Update the cache.
                         </div>
                     </td>
                     <td>
@@ -1236,7 +1313,25 @@
                         </div>
                         <div class="description">
                             
+                            Add current view to a Contaner.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
                             
+                            Send events.
                         </div>
                     </td>
                     <td>
@@ -1254,7 +1349,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
                         </div>
                     </td>
                     <td>
@@ -1272,7 +1367,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the scaled height of the view.
                         </div>
                     </td>
                     <td>
@@ -1290,7 +1385,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the scaled width of the view.
                         </div>
                     </td>
                     <td>
@@ -1308,7 +1403,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the stage object of the view.
                         </div>
                     </td>
                     <td>
@@ -1326,7 +1421,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Determining whether an object is in the circumscribed rectangle of current view.
                         </div>
                     </td>
                     <td>
@@ -1344,7 +1439,43 @@
                         </div>
                         <div class="description">
                             
+                            Determining whether a point is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            Remove one event listener.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            Add an event listenser.
                         </div>
                     </td>
                     <td>
@@ -1362,7 +1493,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Remove current view from it's parent container
                         </div>
                     </td>
                     <td>
@@ -1380,7 +1511,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            The render method of current view.
                         </div>
                     </td>
                     <td>
@@ -1398,7 +1529,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get a string representing current view.
                         </div>
                     </td>
                     <td>
@@ -1628,7 +1759,7 @@
         
         <b>beginBitmapFill</b>(image:HTMLImageElement, repetition:String):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Begin an image filling pattern.</div>
 
         
 
@@ -1670,7 +1801,7 @@
         
         <b>beginFill</b>(fill:String, alpha:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Set how to fill shapes and the transparency.</div>
 
         
 
@@ -1712,7 +1843,7 @@
         
         <b>beginLinearGradientFill</b>(x0:Number, y0:Number, x1:Number, y1:Number, colors:Array, ratios:Array):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Set linear gradient filling style to draw shapes.</div>
 
         
 
@@ -1774,7 +1905,7 @@
         
         <b>beginPath</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Begin a new path.</div>
 
         
 
@@ -1801,7 +1932,7 @@
         
         <b>beginRadialGradientFill</b>(x0:Number, y0:Number, r0:Number, x1:Number, y1:Number, r1:Number, colors:Array, ratios:Array):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Set radial gradient filling style to draw shapes.</div>
 
         
 
@@ -1873,7 +2004,7 @@
         
         <b>bezierCurveTo</b>(cp1x:Number, cp1y:Number, cp2x:Number, cp2y:Number, x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw a Bézier curve from current point to the point on coordinate (x, y).</div>
 
         
 
@@ -1929,13 +2060,43 @@
 
         </div>
     
+        <a class="anchor" name="cache"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>cache</b>(forceUpdate:Boolean)
+        </div>
+        <div class="description">Cache the view.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>forceUpdate</b>:<span>Boolean</span> 
+                     — is force update cache.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name="clear"> </a>
         <div class="member-box">
         <div class="member-header">
         
         <b>clear</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Clear all draw actions and reset to the initial state.</div>
 
         
 
@@ -1962,7 +2123,7 @@
         
         <b>closePath</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Close current path.</div>
 
         
 
@@ -1989,7 +2150,7 @@
         
         <b>drawCircle</b>(x:Number, y:Number, radius:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw a circle.</div>
 
         
 
@@ -2036,7 +2197,7 @@
         
         <b>drawEllipse</b>(x:Number, y:Number, width:Number, height:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw an ellipse.</div>
 
         
 
@@ -2088,7 +2249,7 @@
         
         <b>drawRect</b>(x:Number, y:Number, width:Number, height:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw a rectangle.</div>
 
         
 
@@ -2140,7 +2301,7 @@
         
         <b>drawRoundRect</b>(x:Number, y:Number, width:Number, height:Number, cornerSize:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw a rounded rectangle.</div>
 
         
 
@@ -2197,7 +2358,7 @@
         
         <b>drawRoundRectComplex</b>(x:Number, y:Number, width:Number, height:Number, cornerTL:Number, cornerTR:Number, cornerBR:Number, cornerBL:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw a complex rounded rectangle.</div>
 
         
 
@@ -2269,7 +2430,11 @@
         
         <b>drawSVGPath</b>(pathData:String):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw a path from the SVG data given by parameters.
+Demo:
+<p>var path = 'M250 150 L150 350 L350 350 Z';</p>
+<p>var shape = new Hilo.Graphics({width:500, height:500});</p>
+<p>shape.drawSVGPath(path).beginFill('#0ff').endFill();</p></div>
 
         
 
@@ -2306,7 +2471,7 @@
         
         <b>endFill</b>():<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Apply and end lines-drawing and shapes-filling.</div>
 
         
 
@@ -2333,7 +2498,7 @@
         
         <b>lineStyle</b>(thickness:Number, lineColor:String, lineAlpha:Number, lineCap:String, lineJoin:String, miterLimit:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Set the lines style for drawing shapes.</div>
 
         
 
@@ -2395,7 +2560,7 @@
         
         <b>lineTo</b>(x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw a line from current point to the point on the coordinate value (x, y).</div>
 
         
 
@@ -2437,7 +2602,7 @@
         
         <b>moveTo</b>(x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Move current drawing point to a new point on coordinate values (x, y).</div>
 
         
 
@@ -2479,7 +2644,7 @@
         
         <b>quadraticCurveTo</b>(cpx:Number, cpy:Number, x:Number, y:Number):<span class="light"><a href="../symbols/Graphics.html">Graphics</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Draw a quadratic Bézier curve from current point to the point on coordinate (x, y).</div>
 
         
 
@@ -2519,6 +2684,56 @@
                 <dd style="margin-left:20px;font-weight:normal;"><span><a href="../symbols/Graphics.html">Graphics</a></span>  — The Graphics Object.</dd>
             
             </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="setCacheDirty"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>setCacheDirty</b>(dirty:Boolean)
+        </div>
+        <div class="description">set the cache state diry.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>dirty</b>:<span>Boolean</span> 
+                     — is cache dirty
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="updateCache"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>updateCache</b>()
+        </div>
+        <div class="description">Update the cache.</div>
+
+        
+
+        
+        
+        
+        
         
         
         

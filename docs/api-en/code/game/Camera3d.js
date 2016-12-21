@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * @class Camera3d is a pseudo-3d camera.
  * @module hilo/game/Camera3d
  * @requires hilo/core/Hilo
@@ -62,7 +61,6 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * @language=en
          * Translate the camera，used for Zoomin/out feature.
 	     * @param {Number} x The x position.
 	     * @param {Number} y The y position.
@@ -75,7 +73,6 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * @language=en
          * Rotate by the x axis.
 	     * @param {Number} angle The rotate degree.
 	     */
@@ -84,7 +81,6 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * @language=en
          * Rotate by the y axis.
 	     * @param {Number} angle The rotate degree.
 	     */
@@ -93,7 +89,6 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * @language=en
          * Rotate by the z axis.
 	     * @param {Number} angle The rotate degree.
 	     */
@@ -102,7 +97,6 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * @language=en
          * Project the 3d point to 2d point.
 	     * @param {object} vector3D The 3d position, it must have x, y and z properties.
 	     * @param {View} view The view related to the 3d position.It'll be auto translated by the 3d position.
@@ -156,7 +150,6 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * @language=en
          * Sort by z axis.
 	     */
 		sortZ : function(){
@@ -166,7 +159,6 @@ var Camera3d = (function(){
 		},
 
 	    /**
-         * @language=en
          * Used for the ticker.
 	     */
 		tick : function(){

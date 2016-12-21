@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
  * <br/>
  * demo:
@@ -31,7 +30,6 @@ var WebSound = {
     _audios: {},
 
     /**
-     * @language=en
      * Activate audio function. Note: Require user action events to activate. Currently support WebAudio.
      */
     enableAudio: function(){
@@ -41,7 +39,6 @@ var WebSound = {
     },
 
     /**
-     * @language=en
      * Get audio element. Use WebAudio if supported.
      * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
      * @returns {WebAudio|HTMLAudio} Audio playing instance.
@@ -62,7 +59,6 @@ var WebSound = {
     },
 
     /**
-     * @language=en
      * Remove audio element.
      * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
      */
@@ -78,7 +74,6 @@ var WebSound = {
     },
 
     /**
-     * @language=en
      * @private
      */
     _normalizeSource: function(source){

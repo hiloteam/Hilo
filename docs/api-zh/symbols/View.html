@@ -434,7 +434,8 @@
                         </div>
                         <div class="description">
                             
-                            
+                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
                         </div>
                     </td>
                     <td>
@@ -590,6 +591,26 @@
                     <td class="fixedFont">
                         <div>
                             <!--  -->
+                            <b><a href="../symbols/View.html#tint">tint</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的附加颜色，默认0xFFFFFF，只支持WebGL模式。
+                        </div>
+                    </td>
+                    <td>
+                        View
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
                             <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
                         </div>
                         <div class="description">
@@ -725,7 +746,25 @@
                         </div>
                         <div class="description">
                             
+                            添加此对象到父容器。
+                        </div>
+                    </td>
+                    <td>
+                        View
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
                             
+                            发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
                         </div>
                     </td>
                     <td>
@@ -743,7 +782,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
                         </div>
                     </td>
                     <td>
@@ -761,7 +800,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的高度。
                         </div>
                     </td>
                     <td>
@@ -779,7 +818,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的宽度。
                         </div>
                     </td>
                     <td>
@@ -797,7 +836,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
                         </div>
                     </td>
                     <td>
@@ -815,7 +854,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            检测object参数指定的对象是否与其相交。
                         </div>
                     </td>
                     <td>
@@ -833,7 +872,43 @@
                         </div>
                         <div class="description">
                             
+                            检测由x和y参数指定的点是否在其外接矩形之内。
+                        </div>
+                    </td>
+                    <td>
+                        View
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
+                        </div>
+                    </td>
+                    <td>
+                        View
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            增加一个事件监听。
                         </div>
                     </td>
                     <td>
@@ -851,7 +926,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            从父容器里删除此对象。
                         </div>
                     </td>
                     <td>
@@ -869,7 +944,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
                         </div>
                     </td>
                     <td>
@@ -887,7 +962,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的字符串表示。
                         </div>
                     </td>
                     <td>
@@ -1102,7 +1177,8 @@
 
         </div>
         <div class="description">
-            
+            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
         </div>
 
         
@@ -1254,6 +1330,25 @@
 
         </div>
     
+        <a class="anchor" name="tint"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        <b>tint</b><span class="light">:Number</span>
+
+        </div>
+        <div class="description">
+            可视对象的附加颜色，默认0xFFFFFF，只支持WebGL模式。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name="visible"> </a>
         <div class="member-box">
         <div class="member-header">
@@ -1371,7 +1466,7 @@
         
         <b>addTo</b>(container:<a href="../symbols/Container.html">Container</a>, index:Uint):<span class="light"><a href="../symbols/View.html">View</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">添加此对象到父容器。</div>
 
         
 
@@ -1407,13 +1502,55 @@
 
         </div>
     
+        <a class="anchor" name="fire"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>fire</b>(type:String, detail:Object):<span class="light">Boolean</span>
+        </div>
+        <div class="description">发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — 要发送的事件类型。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>detail</b>:<span>Object</span> 
+                     — 要发送的事件的具体信息，即事件随带参数。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Boolean</span>  — 是否成功调度事件。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name="getBounds"> </a>
         <div class="member-box">
         <div class="member-header">
         
         <b>getBounds</b>():<span class="light">Array</span>
         </div>
-        <div class="description"></div>
+        <div class="description">获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。</div>
 
         
 
@@ -1446,7 +1583,7 @@
         
         <b>getScaledHeight</b>():<span class="light">Number</span>
         </div>
-        <div class="description"></div>
+        <div class="description">返回可视对象缩放后的高度。</div>
 
         
 
@@ -1473,7 +1610,7 @@
         
         <b>getScaledWidth</b>():<span class="light">Number</span>
         </div>
-        <div class="description"></div>
+        <div class="description">返回可视对象缩放后的宽度。</div>
 
         
 
@@ -1500,7 +1637,7 @@
         
         <b>getStage</b>():<span class="light"><a href="../symbols/Stage.html">Stage</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。</div>
 
         
 
@@ -1527,7 +1664,7 @@
         
         <b>hitTestObject</b>(object:<a href="../symbols/View.html">View</a>, usePolyCollision:Boolean)
         </div>
-        <div class="description"></div>
+        <div class="description">检测object参数指定的对象是否与其相交。</div>
 
         
 
@@ -1562,7 +1699,7 @@
         
         <b>hitTestPoint</b>(x:Number, y:Number, usePolyCollision:Boolean):<span class="light">Boolean</span>
         </div>
-        <div class="description"></div>
+        <div class="description">检测由x和y参数指定的点是否在其外接矩形之内。</div>
 
         
 
@@ -1603,13 +1740,102 @@
 
         </div>
     
+        <a class="anchor" name="off"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>off</b>(type:String, listener:Function):<span class="light">Object</span>
+        </div>
+        <div class="description">删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — 要删除监听的事件类型。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>listener</b>:<span>Function</span> 
+                     — 要删除监听的回调函数。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — 对象本身。链式调用支持。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="on"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        
+        <b>on</b>(type:String, listener:Function, once:Boolean):<span class="light">Object</span>
+        </div>
+        <div class="description">增加一个事件监听。</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>type</b>:<span>String</span> 
+                     — 要监听的事件类型。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>listener</b>:<span>Function</span> 
+                     — 事件监听回调函数。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>once</b>:<span>Boolean</span> 
+                     — 是否是一次性监听，即回调函数响应一次后即删除，不再响应。
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">return</span></dt>
+            
+                <dd style="margin-left:20px;font-weight:normal;"><span>Object</span>  — 对象本身。链式调用支持。</dd>
+            
+            </dl>
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name="removeFromParent"> </a>
         <div class="member-box">
         <div class="member-header">
         
         <b>removeFromParent</b>():<span class="light"><a href="../symbols/View.html">View</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">从父容器里删除此对象。</div>
 
         
 
@@ -1636,7 +1862,7 @@
         
         <b>render</b>(renderer:<a href="../symbols/Renderer.html">Renderer</a>, delta:Number)
         </div>
-        <div class="description"></div>
+        <div class="description">可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。</div>
 
         
 
@@ -1671,7 +1897,7 @@
         
         <b>toString</b>():<span class="light">String</span>
         </div>
-        <div class="description"></div>
+        <div class="description">返回可视对象的字符串表示。</div>
 
         
 

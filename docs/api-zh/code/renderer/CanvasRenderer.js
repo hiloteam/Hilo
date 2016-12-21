@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * @class canvas画布渲染器。所有可视对象将渲染在canvas画布上。舞台Stage会根据参数canvas选择不同的渲染器，开发者无需直接使用此类。
  * @augments Renderer
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -99,15 +98,21 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
         if(target === this.stage){
             var style = this.canvas.style,
                 oldScaleX = target._scaleX,
-                oldScaleY = target._scaleY;
+                oldScaleY = target._scaleY,
+                isStyleChange = false;
 
             if((!oldScaleX && scaleX != 1) || (oldScaleX && oldScaleX != scaleX)){
                 target._scaleX = scaleX;
                 style.width = scaleX * target.width + "px";
+                isStyleChange = true;
             }
             if((!oldScaleY && scaleY != 1) || (oldScaleY && oldScaleY != scaleY)){
                 target._scaleY = scaleY;
                 style.height = scaleY * target.height + "px";
+                isStyleChange = true;
+            }
+            if(isStyleChange){
+                target.updateViewport();
             }
         }else{
             var x = target.x,
@@ -212,8 +217,15 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
      * @see Renderer#resize
      */
     resize: function(width, height){
-        this.canvas.width = width;
-        this.canvas.height = height;
+        var canvas = this.canvas;
+        var stage = this.stage;
+        var style = canvas.style;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        style.width = stage.width * stage.scaleX + 'px';
+        style.height = stage.height * stage.scaleY + 'px';
     }
 
 });

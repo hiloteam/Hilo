@@ -209,7 +209,7 @@
         
             <span style="display:block;margin:0 0 2px 0;">
                 <b style="margin-right:10px;">依赖</b>
-                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>
+                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>
             </span>
         
 
@@ -220,6 +220,15 @@
 
         <br>
         drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.copy(view, drag)来为view增加拖拽功能。
+        
+            <br><br><iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
+<br/>
+使用示例:
+<pre>
+var bmp = new Bitmap({image:img});
+Hilo.copy(bmp, Hilo.drag);
+bmp.startDrag([0, 0, 550, 400]);
+</pre>
         
 
     </p>
@@ -257,7 +266,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            开始拖拽。
                         </div>
                     </td>
                     <td>
@@ -275,7 +284,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            停止拖拽。
                         </div>
                     </td>
                     <td>
@@ -322,7 +331,7 @@
         [Static] 
         <b>startDrag</b>(bounds:Array)
         </div>
-        <div class="description"></div>
+        <div class="description">开始拖拽。</div>
 
         
 
@@ -352,7 +361,7 @@
         [Static] 
         <b>stopDrag</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">停止拖拽。</div>
 
         
 

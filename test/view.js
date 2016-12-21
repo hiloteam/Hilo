@@ -1,10 +1,14 @@
-describe('view', function() {
+var needTestRenderTypes = window._IS_TRAVIS?['canvas']:['canvas', 'webgl', 'dom'];
+
+needTestRenderTypes.forEach(function(stageRenderType){
+
+describe('view:' + stageRenderType, function() {
     var stage, ticker;
     var stageElem = document.getElementById('stage');
     beforeEach('init stage', function() {
         stage = new Hilo.Stage({
             container:stageElem,
-            renderType:'canvas',
+            renderType:stageRenderType,
             width:550,
             height:400
         });
@@ -43,7 +47,7 @@ describe('view', function() {
             utils.diffWithScreenshot('Bitmap-new', done);
         });
 
-        it('transform & alpha', function(done){
+        it('transform', function(done){
             bmp.x = stage.width * .5;
             bmp.y = stage.height * .5;
             bmp.pivotX = bmp.width * .4;
@@ -51,8 +55,19 @@ describe('view', function() {
             bmp.scaleX = 0.5;
             bmp.scaleY = -2;
             bmp.rotation = 30;
+            if(stageRenderType === 'dom'){
+                utils.diffWithScreenshot('Bitmap-transform-dom', done);
+            }
+            else{
+                utils.diffWithScreenshot('Bitmap-transform', done);
+            }
+        });
+
+        it('alpha', function(done){
+            bmp.x = stage.width * .5;
+            bmp.y = stage.height * .5;
             bmp.alpha = 0.5;
-            utils.diffWithScreenshot('Bitmap-transform-alpha', done);
+            utils.diffWithScreenshot('Bitmap-alpha', done);
         });
 
         it('setImage', function(done){
@@ -427,34 +442,36 @@ describe('view', function() {
         });
 
         it('resize', function(){
-            stage.canvas.width.should.equal(550);
-            stage.canvas.height.should.equal(400);
-            stage.canvas.style.width.should.equal('550px');
-            stage.canvas.style.height.should.equal('400px');
-            stage.viewport.should.eql({left:0, top:0, width:550, height:400});
+            if(stageRenderType !== 'dom'){
+                stage.canvas.width.should.equal(550);
+                stage.canvas.height.should.equal(400);
+                stage.canvas.style.width.should.equal('550px');
+                stage.canvas.style.height.should.equal('400px');
+                stage.viewport.should.eql({left:0, top:0, width:550, height:400});
 
-            stage.resize(400, 300);
-            stage.canvas.width.should.equal(400);
-            stage.canvas.height.should.equal(300);
-            stage.canvas.style.width.should.equal('400px');
-            stage.canvas.style.height.should.equal('300px');
-            stage.viewport.should.eql({left:0, top:0, width:400, height:300});
+                stage.resize(400, 300);
+                stage.canvas.width.should.equal(400);
+                stage.canvas.height.should.equal(300);
+                stage.canvas.style.width.should.equal('400px');
+                stage.canvas.style.height.should.equal('300px');
+                stage.viewport.should.eql({left:0, top:0, width:400, height:300});
 
-            stage.scaleX = 0.5;
-            stage.scaleY = 2;
-            stage.tick(0);
-            stage.canvas.width.should.equal(400);
-            stage.canvas.height.should.equal(300);
-            stage.canvas.style.width.should.equal('200px');
-            stage.canvas.style.height.should.equal('600px');
-            stage.viewport.should.eql({left:0, top:0, width:200, height:600});
+                stage.scaleX = 0.5;
+                stage.scaleY = 2;
+                stage.tick(0);
+                stage.canvas.width.should.equal(400);
+                stage.canvas.height.should.equal(300);
+                stage.canvas.style.width.should.equal('200px');
+                stage.canvas.style.height.should.equal('600px');
+                stage.viewport.should.eql({left:0, top:0, width:200, height:600});
 
-            stage.resize(300, 200);
-            stage.canvas.width.should.equal(300);
-            stage.canvas.height.should.equal(200);
-            stage.canvas.style.width.should.equal('150px');
-            stage.canvas.style.height.should.equal('400px');
-            stage.viewport.should.eql({left:0, top:0, width:150, height:400});
+                stage.resize(300, 200);
+                stage.canvas.width.should.equal(300);
+                stage.canvas.height.should.equal(200);
+                stage.canvas.style.width.should.equal('150px');
+                stage.canvas.style.height.should.equal('400px');
+                stage.viewport.should.eql({left:0, top:0, width:150, height:400});
+            }
         });
 
         it('canvasRenderer', function(){
@@ -491,7 +508,7 @@ describe('view', function() {
                 renderType:'webgl'
             });
 
-            if(Hilo.WebGLRenderer.isSupported){
+            if(Hilo.WebGLRenderer.isSupport()){
                 stage.renderer.should.instanceOf(Hilo.WebGLRenderer);
             }
             else{
@@ -503,7 +520,7 @@ describe('view', function() {
                 renderType:'webgl'
             });
 
-            if(Hilo.WebGLRenderer.isSupported){
+            if(Hilo.WebGLRenderer.isSupport()){
                 stage.renderer.should.instanceOf(Hilo.WebGLRenderer);
             }
             else{
@@ -628,4 +645,6 @@ describe('view', function() {
 
         });
     });
+});
+
 });

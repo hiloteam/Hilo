@@ -209,7 +209,7 @@
         
             <span style="display:block;margin:0 0 2px 0;">
                 <b style="margin-right:10px;">Requires</b>
-                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/Drawable.html">hilo/view/Drawable</a></span>
+                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Drawable.html">hilo/view/Drawable</a></span>
             </span>
         
 
@@ -253,11 +253,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/CacheMixin.html#.cache">cache</a></b>(forceUpdate:Boolean)
+                        <div><b><a href="../symbols/CacheMixin.html#cache">cache</a></b>(forceUpdate:Boolean)
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Cache the view.
                         </div>
                     </td>
                     <td>
@@ -271,11 +271,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/CacheMixin.html#.updateCache">updateCache</a></b>()
+                        <div><b><a href="../symbols/CacheMixin.html#setCacheDirty">setCacheDirty</a></b>(dirty:Boolean)
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            set the cache state diry.
                         </div>
                     </td>
                     <td>
@@ -289,11 +289,11 @@
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/CacheMixin.html#.setCacheDirty">setCacheDirty</a></b>(dirty)
+                        <div><b><a href="../symbols/CacheMixin.html#updateCache">updateCache</a></b>()
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Update the cache.
                         </div>
                     </td>
                     <td>
@@ -334,13 +334,13 @@
     <br/>
     <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
     
-        <a class="anchor" name=".cache"> </a>
+        <a class="anchor" name="cache"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>cache</b>(forceUpdate:Boolean)
         </div>
-        <div class="description"></div>
+        <div class="description">Cache the view.</div>
 
         
 
@@ -364,13 +364,13 @@
 
         </div>
     
-        <a class="anchor" name=".setCacheDirty"> </a>
+        <a class="anchor" name="setCacheDirty"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
-        <b>setCacheDirty</b>(dirty)
+        <b>setCacheDirty</b>(dirty:Boolean)
         </div>
-        <div class="description"></div>
+        <div class="description">set the cache state diry.</div>
 
         
 
@@ -379,8 +379,8 @@
             <dt class="heading"><span class="label">parameters</span></dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
-                    <b>dirty</b>
-                     — 
+                    <b>dirty</b>:<span>Boolean</span> 
+                     — is cache dirty
                 </dt>
             
             </dl>
@@ -394,13 +394,13 @@
 
         </div>
     
-        <a class="anchor" name=".updateCache"> </a>
+        <a class="anchor" name="updateCache"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>updateCache</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Update the cache.</div>
 
         
 

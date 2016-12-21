@@ -221,6 +221,21 @@
         <br>
         声音播放管理器。
         
+            <br><br><iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
+<br/>
+使用示例:
+<pre>
+var audio = WebSound.getAudio({
+    src: 'test.mp3',
+    loop: false,
+    volume: 1
+}).on('load', function(e){
+    console.log('load');
+}).on('end', function(e){
+    console.log('end');
+}).play();
+</pre>
+        
 
     </p>
 
@@ -257,7 +272,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            激活音频功能。注意：需用户事件触发此方法才有效。目前仅对WebAudio有效。
                         </div>
                     </td>
                     <td>
@@ -275,7 +290,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            获取音频对象。优先使用WebAudio。
                         </div>
                     </td>
                     <td>
@@ -293,7 +308,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            删除音频对象。
                         </div>
                     </td>
                     <td>
@@ -340,7 +355,7 @@
         [Static] 
         <b>enableAudio</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">激活音频功能。注意：需用户事件触发此方法才有效。目前仅对WebAudio有效。</div>
 
         
 
@@ -360,7 +375,7 @@
         [Static] 
         <b>getAudio</b>(source:String|Object):<span class="light"><a href="../symbols/WebAudio.html">WebAudio</a>|<a href="../symbols/HTMLAudio.html">HTMLAudio</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">获取音频对象。优先使用WebAudio。</div>
 
         
 
@@ -397,7 +412,7 @@
         [Static] 
         <b>removeAudio</b>(source:String|Object)
         </div>
-        <div class="description"></div>
+        <div class="description">删除音频对象。</div>
 
         
 

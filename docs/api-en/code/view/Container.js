@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * @class Container is the base class to all container classes. Each Container can add other view object as children.
  * @augments View
  * @param {Object} properties Properties parameters of the object to create. Contains all writable properties of this class.
@@ -33,7 +32,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     clipChildren: false,
 
     /**
-     * @language=en
      * Return the amount of the children elements of the container.
      * @returns {Uint} The amount of the children elements of the container.
      */
@@ -42,7 +40,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Add child element at given index.
      * @param {View} child Element to add.
      * @param {Number} index The given index position, range from 0.
@@ -74,7 +71,7 @@ var Container = Class.create(/** @lends Container.prototype */{
         //Will affect depth of elements in the middle during moving
         else{
             var startIndex = childIndex < index ? childIndex : index;
-            var endIndex = childIndex < index ? index : childIndex;;
+            var endIndex = childIndex < index ? index : childIndex;
             this._updateChildren(startIndex, endIndex + 1);
         }
 
@@ -82,7 +79,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Add child element at the top.
      * @param {View} child Elements to add.
      */
@@ -97,7 +93,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Remove element at the index.
      * @param {Int} index Index of the element to remove, range from 0.
      * @returns {View} Element had been removed.
@@ -140,7 +135,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Remove the given child element.
      * @param {View} child The child element to remove.
      * @returns {View} Element had been removed.
@@ -150,7 +144,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Remove child element by its id.
      * @param {String} id The id of element to remove.
      * @returns {View} Element had been removed.
@@ -168,7 +161,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Remove all children elements.
      * @returns {Container} Container itself.
      */
@@ -178,7 +170,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Return child element at the given index.
      * @param {Number} index The index of the element, range from 0.
      */
@@ -189,7 +180,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Return child element at the given id.
      * @param {String} id The id of child element to return.
      */
@@ -203,7 +193,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Return index value of the given child element.
      * @param {View} child The child element need to get its index.
      */
@@ -212,7 +201,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Set the index of child element.
      * @param {View} child The child element need to set index.
      * @param {Number} index The index to set to the element.
@@ -232,7 +220,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Swap index between two child elements.
      * @param {View} child1 Child element A.
      * @param {View} child2 Child element B.
@@ -249,7 +236,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Swap two children elements at given indexes.
      * @param {Number} index1 Given index A.
      * @param {Number} index2 Given index B.
@@ -266,7 +252,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Sort children elements by the given key or function.
      * @param {Object} keyOrFunction If is String, sort children elements by the given property string; If is Function, sort by the function.
      */
@@ -284,14 +269,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Update children elements.
      * @private
      */
     _updateChildren: function(start, end){
-        var children = this.children, child,
-            start = start || 0,
-            end = end || children.length;
+        var children = this.children, child;
+        start = start || 0;
+        end = end || children.length;
         for(var i = start; i < end; i++){
             child = children[i];
             child.depth = i + 1;
@@ -300,7 +284,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Return whether this container contains the parameter described child element.
      * @param {View} child The child element to test.
      */
@@ -314,7 +297,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Return object at the point positioned by given values on x axis and y axis.
      * @param {Number} x The point's value on the coordinate's x axis.
      * @param {Number} y The point's value on the coordinate's y asix.
@@ -348,7 +330,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=en
      * Rewrite render method.
      * @private
      */

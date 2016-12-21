@@ -221,6 +221,27 @@
         <br>
         Tween类提供缓动功能。
         
+            <br><br><iframe src='../../../examples/Tween.html?noHeader' width = '550' height = '130' scrolling='no'></iframe>
+<br/>
+使用示例:
+<pre>
+ticker.addTick(Hilo.Tween);//需要把Tween加到ticker里才能使用
+
+var view = new View({x:5, y:10});
+Hilo.Tween.to(view, {
+    x:100,
+    y:20,
+    alpha:0
+}, {
+    duration:1000,
+    delay:500,
+    ease:Hilo.Ease.Quad.EaseIn,
+    onComplete:function(){
+        console.log('complete');
+    }
+});
+</pre>
+        
 
     </p>
 
@@ -565,7 +586,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            连接下一个Tween变换。其开始时间根据delay值不同而不同。当delay值为字符串且以'+'或'-'开始时，Tween的开始时间从当前变换结束点计算，否则以当前变换起始点计算。
                         </div>
                     </td>
                     <td>
@@ -583,7 +604,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            暂停缓动动画的播放。
                         </div>
                     </td>
                     <td>
@@ -601,7 +622,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            恢复缓动动画的播放。
                         </div>
                     </td>
                     <td>
@@ -619,7 +640,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            跳转Tween到指定的时间。
                         </div>
                     </td>
                     <td>
@@ -637,7 +658,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            设置缓动对象的初始和目标属性。
                         </div>
                     </td>
                     <td>
@@ -655,7 +676,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            启动缓动动画的播放。
                         </div>
                     </td>
                     <td>
@@ -673,7 +694,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            停止缓动动画的播放。
                         </div>
                     </td>
                     <td>
@@ -691,7 +712,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            更新所有Tween实例。
                         </div>
                     </td>
                     <td>
@@ -709,7 +730,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            添加Tween实例。
                         </div>
                     </td>
                     <td>
@@ -727,7 +748,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            删除Tween实例。
                         </div>
                     </td>
                     <td>
@@ -745,7 +766,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            删除所有Tween实例。
                         </div>
                     </td>
                     <td>
@@ -763,7 +784,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            创建一个缓动动画，让目标对象从开始属性变换到目标属性。
                         </div>
                     </td>
                     <td>
@@ -781,7 +802,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            创建一个缓动动画，让目标对象从当前属性变换到目标属性。
                         </div>
                     </td>
                     <td>
@@ -799,7 +820,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            创建一个缓动动画，让目标对象从指定的起始属性变换到当前属性。
                         </div>
                     </td>
                     <td>
@@ -1139,7 +1160,7 @@
         [Static] 
         <b>add</b>(tween:<a href="../symbols/Tween.html">Tween</a>):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">添加Tween实例。</div>
 
         
 
@@ -1176,7 +1197,7 @@
         [Static] 
         <b>from</b>(target:Object|Array, fromProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
         </div>
-        <div class="description"></div>
+        <div class="description">创建一个缓动动画，让目标对象从指定的起始属性变换到当前属性。</div>
 
         
 
@@ -1223,7 +1244,7 @@
         [Static] 
         <b>fromTo</b>(target:Object|Array, fromProps, toProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
         </div>
-        <div class="description"></div>
+        <div class="description">创建一个缓动动画，让目标对象从开始属性变换到目标属性。</div>
 
         
 
@@ -1275,7 +1296,7 @@
         
         <b>link</b>(tween:<a href="../symbols/Tween.html">Tween</a>):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">连接下一个Tween变换。其开始时间根据delay值不同而不同。当delay值为字符串且以'+'或'-'开始时，Tween的开始时间从当前变换结束点计算，否则以当前变换起始点计算。</div>
 
         
 
@@ -1312,7 +1333,7 @@
         
         <b>pause</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">暂停缓动动画的播放。</div>
 
         
 
@@ -1339,7 +1360,7 @@
         [Static] 
         <b>remove</b>(tweenOrTarget:<a href="../symbols/Tween.html">Tween</a>|Object|Array):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">删除Tween实例。</div>
 
         
 
@@ -1376,7 +1397,7 @@
         [Static] 
         <b>removeAll</b>():<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">删除所有Tween实例。</div>
 
         
 
@@ -1403,7 +1424,7 @@
         
         <b>resume</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">恢复缓动动画的播放。</div>
 
         
 
@@ -1430,7 +1451,7 @@
         
         <b>seek</b>(time:Number, pause:Boolean):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">跳转Tween到指定的时间。</div>
 
         
 
@@ -1472,7 +1493,7 @@
         
         <b>setProps</b>(fromProps:Object, toProps:Object):<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">设置缓动对象的初始和目标属性。</div>
 
         
 
@@ -1514,7 +1535,7 @@
         
         <b>start</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">启动缓动动画的播放。</div>
 
         
 
@@ -1541,7 +1562,7 @@
         
         <b>stop</b>():<span class="light"><a href="../symbols/Tween.html">Tween</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">停止缓动动画的播放。</div>
 
         
 
@@ -1568,7 +1589,7 @@
         [Static] 
         <b>tick</b>():<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">更新所有Tween实例。</div>
 
         
 
@@ -1595,7 +1616,7 @@
         [Static] 
         <b>to</b>(target:Object|Array, toProps, params):<span class="light"><a href="../symbols/Tween.html">Tween</a>|Array</span>
         </div>
-        <div class="description"></div>
+        <div class="description">创建一个缓动动画，让目标对象从当前属性变换到目标属性。</div>
 
         
 

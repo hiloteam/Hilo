@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * <iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
  * <br/>
  * demo:
@@ -53,7 +52,6 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
     },
 
     /**
-     * @language=en
      * Overwrite render method.
      * @private
      */
@@ -67,7 +65,6 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
     },
 
     /**
-     * @language=en
      * Overwrite render method.
      * @private
      */

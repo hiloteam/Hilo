@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * <iframe src='../../../examples/Button.html?noHeader' width = '320' height = '170' scrolling='no'></iframe>
  * <br/>
  * 示例:
@@ -58,7 +57,6 @@
     useHandCursor: true,
 
     /**
-     * @language=zh
      * 设置按钮是否可用。
      * @param {Boolean} enabled 指示按钮是否可用。
      * @returns {Button} 按钮本身。
@@ -75,7 +73,6 @@
     },
 
     /**
-     * @language=zh
      * 设置按钮的状态。此方法由Button内部调用，一般无需使用此方法。
      * @param {String} state 按钮的新的状态。
      * @returns {Button} 按钮本身。
@@ -111,7 +108,6 @@
     },
 
     /**
-     * @language=zh
      * overwrite
      * @private
      */
@@ -144,25 +140,21 @@
 
     Statics: /** @lends Button */ {
         /**
-         * @language=zh
          * 按钮弹起状态的常量值，即：'up'。
          * @type String
          */
         UP: 'up',
         /**
-         * @language=zh
          * 按钮经过状态的常量值，即：'over'。
          * @type String
          */
         OVER: 'over',
         /**
-         * @language=zh
          * 按钮按下状态的常量值，即：'down'。
          * @type String
          */
         DOWN: 'down',
         /**
-         * @language=zh
          * 按钮不可用状态的常量值，即：'disabled'。
          * @type String
          */

@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * @class Container是所有容器类的基类。每个Container都可以添加其他可视对象为子级。
  * @augments View
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
@@ -33,7 +32,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     clipChildren: false,
 
     /**
-     * @language=zh
      * 返回容器的子元素的数量。
      * @returns {Uint} 容器的子元素的数量。
      */
@@ -42,7 +40,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 在指定索引位置添加子元素。
      * @param {View} child 要添加的子元素。
      * @param {Number} index 指定的索引位置，从0开始。
@@ -74,7 +71,7 @@ var Container = Class.create(/** @lends Container.prototype */{
         //Will affect depth of elements in the middle during moving
         else{
             var startIndex = childIndex < index ? childIndex : index;
-            var endIndex = childIndex < index ? index : childIndex;;
+            var endIndex = childIndex < index ? index : childIndex;
             this._updateChildren(startIndex, endIndex + 1);
         }
 
@@ -82,7 +79,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 在最上面添加子元素。
      * @param {View} child 要添加的子元素。
      */
@@ -97,7 +93,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 在指定索引位置删除子元素。
      * @param {Int} index 指定删除元素的索引位置，从0开始。
      * @returns {View} 被删除的对象。
@@ -140,7 +135,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 删除指定的子元素。
      * @param {View} child 指定要删除的子元素。
      * @returns {View} 被删除的对象。
@@ -150,7 +144,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 删除指定id的子元素。
      * @param {String} id 指定要删除的子元素的id。
      * @returns {View} 被删除的对象。
@@ -168,7 +161,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 删除所有的子元素。
      * @returns {Container} 容器本身。
      */
@@ -178,7 +170,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 返回指定索引位置的子元素。
      * @param {Number} index 指定要返回的子元素的索引值，从0开始。
      */
@@ -189,7 +180,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 返回指定id的子元素。
      * @param {String} id 指定要返回的子元素的id。
      */
@@ -203,7 +193,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 返回指定子元素的索引值。
      * @param {View} child 指定要返回索引值的子元素。
      */
@@ -212,7 +201,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 设置子元素的索引位置。
      * @param {View} child 指定要设置的子元素。
      * @param {Number} index 指定要设置的索引值。
@@ -232,7 +220,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 交换两个子元素的索引位置。
      * @param {View} child1 指定要交换的子元素A。
      * @param {View} child2 指定要交换的子元素B。
@@ -249,7 +236,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 交换两个指定索引位置的子元素。
      * @param {Number} index1 指定要交换的索引位置A。
      * @param {Number} index2 指定要交换的索引位置B。
@@ -266,7 +252,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 根据指定键值或函数对子元素进行排序。
      * @param {Object} keyOrFunction 如果此参数为String时，则根据子元素的某个属性值进行排序；如果此参数为Function时，则根据此函数进行排序。
      */
@@ -284,14 +269,13 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 更新子元素。
      * @private
      */
     _updateChildren: function(start, end){
-        var children = this.children, child,
-            start = start || 0,
-            end = end || children.length;
+        var children = this.children, child;
+        start = start || 0;
+        end = end || children.length;
         for(var i = start; i < end; i++){
             child = children[i];
             child.depth = i + 1;
@@ -300,7 +284,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 返回是否包含参数指定的子元素。
      * @param {View} child 指定要测试的子元素。
      */
@@ -314,7 +297,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 返回由x和y指定的点下的对象。
      * @param {Number} x 指定点的x轴坐标。
      * @param {Number} y 指定点的y轴坐标。
@@ -348,7 +330,6 @@ var Container = Class.create(/** @lends Container.prototype */{
     },
 
     /**
-     * @language=zh
      * 覆盖渲染方法。
      * @private
      */

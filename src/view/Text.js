@@ -10,6 +10,10 @@
  * <br/>
  * @class Text class provide basic text-display function, use DOMElement for complex text-display.
  * @augments View
+ * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties Properties parameters for the object. Includes all writable properties.
  * @module hilo/view/Text
  * @requires hilo/core/Class
@@ -18,8 +22,8 @@
  * @requires hilo/view/CacheMixin
  * @property {String} text Text to display.
  * @property {String} color Color of the text.
- * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'。
- * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'。
+ * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'. Note:Need to specify the width property of the text to take effect
+ * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'. Note:Need to specify the height property of the text to take effect.
  * @property {Boolean} outline Draw the outline of the text or fill the text.
  * @property {Number} lineSpacing The spacing between lines. Measured in px, default value is 0.
  * @property {Number} maxWidth The max length of the text, default value is 200.
@@ -33,6 +37,10 @@
  * <br/>
  * @class Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。
  * @augments View
+ * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/view/Text
  * @requires hilo/core/Class
@@ -41,8 +49,8 @@
  * @requires hilo/view/CacheMixin
  * @property {String} text 指定要显示的文本内容。
  * @property {String} color 指定使用的字体颜色。
- * @property {String} textAlign 指定文本的对齐方式。可以是以下任意一个值：'start', 'end', 'left', 'right', and 'center'。
- * @property {String} textVAlign 指定文本的垂直对齐方式。可以是以下任意一个值：'top', 'middle', 'bottom'。
+ * @property {String} textAlign 指定文本的对齐方式。可以是以下任意一个值：'start', 'end', 'left', 'right', and 'center'。注意：必须设置文本的 width 属性才能生效。
+ * @property {String} textVAlign 指定文本的垂直对齐方式。可以是以下任意一个值：'top', 'middle', 'bottom'。注意：必须设置文本的 height 属性才能生效。
  * @property {Boolean} outline 指定文本是绘制边框还是填充。
  * @property {Number} lineSpacing 指定文本的行距。单位为像素。默认值为0。
  * @property {Number} maxWidth 指定文本的最大宽度。默认值为200。
@@ -107,7 +115,7 @@ var Text = Class.create(/** @lends Text.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
 
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
@@ -226,8 +234,8 @@ var Text = Class.create(/** @lends Text.prototype */{
         else context.fillStyle = me.color;
 
         //draw text lines
-        for(var i = 0; i < drawLines.length; i++){
-            var line = drawLines[i];
+        for(i = 0; i < drawLines.length; i++){
+            line = drawLines[i];
             me._drawTextLine(context, line.text, startY + line.y);
         }
     },
@@ -253,7 +261,7 @@ var Text = Class.create(/** @lends Text.prototype */{
             case 'end':
                 x = width;
                 break;
-        };
+        }
 
         if(me.outline) context.strokeText(text, x, y);
         else context.fillText(text, x, y);

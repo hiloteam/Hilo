@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * <iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -31,7 +30,6 @@ var WebSound = {
     _audios: {},
 
     /**
-     * @language=zh
      * 激活音频功能。注意：需用户事件触发此方法才有效。目前仅对WebAudio有效。
      */
     enableAudio: function(){
@@ -41,7 +39,6 @@ var WebSound = {
     },
 
     /**
-     * @language=zh
      * 获取音频对象。优先使用WebAudio。
      * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
      * @returns {WebAudio|HTMLAudio} 音频播放对象实例。
@@ -62,7 +59,6 @@ var WebSound = {
     },
 
     /**
-     * @language=zh
      * 删除音频对象。
      * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
      */
@@ -78,7 +74,6 @@ var WebSound = {
     },
 
     /**
-     * @language=zh
      * @private
      */
     _normalizeSource: function(source){

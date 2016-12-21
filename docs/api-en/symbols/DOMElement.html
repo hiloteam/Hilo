@@ -226,6 +226,24 @@
         <br>
         DOMElement is a wrapper of dom element.
         
+            <br><br><iframe src='../../../examples/DOMElement.html?noHeader' width = '330' height = '250' scrolling='no'></iframe>
+<br/>
+demo:
+<pre>
+var domView = new Hilo.DOMElement({
+    element: Hilo.createElement('div', {
+        style: {
+            backgroundColor: '#004eff',
+            position: 'absolute'
+        }
+    }),
+    width: 100,
+    height: 100,
+    x: 50,
+    y: 70
+}).addTo(stage);
+</pre>
+        
 
     </p>
 
@@ -441,7 +459,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            This method will call while the view need update(usually caused by ticker update).
                         </div>
                     </td>
                     <td>
@@ -597,6 +615,26 @@
                     <td class="fixedFont">
                         <div>
                             <!--  -->
+                            <b><a href="../symbols/View.html#tint">tint</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The tint applied to the view，default is 0xFFFFFF.Only support in WebGL mode.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
                             <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
                         </div>
                         <div class="description">
@@ -734,7 +772,25 @@
                         </div>
                         <div class="description">
                             
+                            Add current view to a Contaner.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
                             
+                            Send events.
                         </div>
                     </td>
                     <td>
@@ -752,7 +808,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
                         </div>
                     </td>
                     <td>
@@ -770,7 +826,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the scaled height of the view.
                         </div>
                     </td>
                     <td>
@@ -788,7 +844,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the scaled width of the view.
                         </div>
                     </td>
                     <td>
@@ -806,7 +862,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get the stage object of the view.
                         </div>
                     </td>
                     <td>
@@ -824,7 +880,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Determining whether an object is in the circumscribed rectangle of current view.
                         </div>
                     </td>
                     <td>
@@ -842,7 +898,43 @@
                         </div>
                         <div class="description">
                             
+                            Determining whether a point is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            Remove one event listener.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            Add an event listenser.
                         </div>
                     </td>
                     <td>
@@ -860,7 +952,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Remove current view from it's parent container
                         </div>
                     </td>
                     <td>
@@ -878,7 +970,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            The render method of current view.
                         </div>
                     </td>
                     <td>
@@ -896,7 +988,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Get a string representing current view.
                         </div>
                     </td>
                     <td>

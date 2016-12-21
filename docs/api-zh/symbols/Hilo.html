@@ -251,29 +251,16 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
-                        </div>
-                    </td>
-                    <td>
-                        Hilo
-                    </td>
-                </tr>
-            
-                
-                <tr >
-                    <td>
-                        
-                    </td>
-                    <td class="fixedFont">
-                        <div>
-                            <!-- 
-                                Hilo.
-                             -->
-                            <b><a href="../symbols/Hilo.html#.event">event</a></b>
-                        </div>
-                        <div class="description">
-                            <span class="label">static</span> 
-                            
+                            浏览器特性集合。包括：
+<ul>
+<li><b>jsVendor</b> - 浏览器厂商CSS前缀的js值。比如：webkit。</li>
+<li><b>cssVendor</b> - 浏览器厂商CSS前缀的css值。比如：-webkit-。</li>
+<li><b>supportTransform</b> - 是否支持CSS Transform变换。</li>
+<li><b>supportTransform3D</b> - 是否支持CSS Transform 3D变换。</li>
+<li><b>supportStorage</b> - 是否支持本地存储localStorage。</li>
+<li><b>supportTouch</b> - 是否支持触碰事件。</li>
+<li><b>supportCanvas</b> - 是否支持canvas元素。</li>
+</ul>
                         </div>
                     </td>
                     <td>
@@ -295,7 +282,67 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            可视对象对齐方式枚举对象。包括：
+<ul>
+<li><b>TOP_LEFT</b> - 左上角对齐。</li>
+<li><b>TOP</b> - 顶部居中对齐。</li>
+<li><b>TOP_RIGHT</b> - 右上角对齐。</li>
+<li><b>LEFT</b> - 左边居中对齐。</li>
+<li><b>CENTER</b> - 居中对齐。</li>
+<li><b>RIGHT</b> - 右边居中对齐。</li>
+<li><b>BOTTOM_LEFT</b> - 左下角对齐。</li>
+<li><b>BOTTOM</b> - 底部居中对齐。</li>
+<li><b>BOTTOM_RIGHT</b> - 右下角对齐。</li>
+</ul>
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                Hilo.
+                             -->
+                            <b><a href="../symbols/Hilo.html#.version">version</a></b>:String
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Hilo version
+                        </div>
+                    </td>
+                    <td>
+                        Hilo
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                Hilo.
+                             -->
+                            <b><a href="../symbols/Hilo.html#.event">event</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            事件类型枚举对象。包括：
+<ul>
+<li><b>POINTER_START</b> - 鼠标或触碰开始事件。对应touchstart或mousedown。</li>
+<li><b>POINTER_MOVE</b> - 鼠标或触碰移动事件。对应touchmove或mousemove。</li>
+<li><b>POINTER_END</b> - 鼠标或触碰结束事件。对应touchend或mouseup。</li>
+</ul>
                         </div>
                     </td>
                     <td>
@@ -355,7 +402,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            获取DOM元素在页面中的内容显示区域。
                         </div>
                     </td>
                     <td>
@@ -373,7 +420,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            创建一个DOM元素。可指定属性和样式。
                         </div>
                     </td>
                     <td>
@@ -391,7 +438,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            为指定的可视对象生成一个包含路径的字符串表示形式。如Stage1.Container2.Bitmap3。
                         </div>
                     </td>
                     <td>
@@ -409,7 +456,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            获取一个全局唯一的id。如Stage1，Bitmap2等。
                         </div>
                     </td>
                     <td>
@@ -427,7 +474,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            根据参数id获取一个DOM元素。此方法等价于document.getElementById(id)。
                         </div>
                     </td>
                     <td>
@@ -445,7 +492,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            简单的浅复制对象。
                         </div>
                     </td>
                     <td>
@@ -463,7 +510,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            生成可视对象的CSS变换样式。
                         </div>
                     </td>
                     <td>
@@ -507,7 +554,18 @@
 
         </div>
         <div class="description">
-            
+            可视对象对齐方式枚举对象。包括：
+<ul>
+<li><b>TOP_LEFT</b> - 左上角对齐。</li>
+<li><b>TOP</b> - 顶部居中对齐。</li>
+<li><b>TOP_RIGHT</b> - 右上角对齐。</li>
+<li><b>LEFT</b> - 左边居中对齐。</li>
+<li><b>CENTER</b> - 居中对齐。</li>
+<li><b>RIGHT</b> - 右边居中对齐。</li>
+<li><b>BOTTOM_LEFT</b> - 左下角对齐。</li>
+<li><b>BOTTOM</b> - 底部居中对齐。</li>
+<li><b>BOTTOM_RIGHT</b> - 右下角对齐。</li>
+</ul>
         </div>
 
         
@@ -526,7 +584,16 @@
 
         </div>
         <div class="description">
-            
+            浏览器特性集合。包括：
+<ul>
+<li><b>jsVendor</b> - 浏览器厂商CSS前缀的js值。比如：webkit。</li>
+<li><b>cssVendor</b> - 浏览器厂商CSS前缀的css值。比如：-webkit-。</li>
+<li><b>supportTransform</b> - 是否支持CSS Transform变换。</li>
+<li><b>supportTransform3D</b> - 是否支持CSS Transform 3D变换。</li>
+<li><b>supportStorage</b> - 是否支持本地存储localStorage。</li>
+<li><b>supportTouch</b> - 是否支持触碰事件。</li>
+<li><b>supportCanvas</b> - 是否支持canvas元素。</li>
+</ul>
         </div>
 
         
@@ -545,7 +612,31 @@
 
         </div>
         <div class="description">
-            
+            事件类型枚举对象。包括：
+<ul>
+<li><b>POINTER_START</b> - 鼠标或触碰开始事件。对应touchstart或mousedown。</li>
+<li><b>POINTER_MOVE</b> - 鼠标或触碰移动事件。对应touchmove或mousemove。</li>
+<li><b>POINTER_END</b> - 鼠标或触碰结束事件。对应touchend或mouseup。</li>
+</ul>
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".version"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>version</b><span class="light">:String</span>
+
+        </div>
+        <div class="description">
+            Hilo version
         </div>
 
         
@@ -573,7 +664,7 @@
         [Static] 
         <b>copy</b>(target:Object, source:Object, strict:Boolean):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">简单的浅复制对象。</div>
 
         
 
@@ -620,7 +711,7 @@
         [Static] 
         <b>createElement</b>(type:String, properties:Object):<span class="light">HTMLElement</span>
         </div>
-        <div class="description"></div>
+        <div class="description">创建一个DOM元素。可指定属性和样式。</div>
 
         
 
@@ -662,7 +753,7 @@
         [Static] 
         <b>getElement</b>(id:String):<span class="light">HTMLElement</span>
         </div>
-        <div class="description"></div>
+        <div class="description">根据参数id获取一个DOM元素。此方法等价于document.getElementById(id)。</div>
 
         
 
@@ -699,7 +790,7 @@
         [Static] 
         <b>getElementRect</b>(elem:HTMLElement):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">获取DOM元素在页面中的内容显示区域。</div>
 
         
 
@@ -736,7 +827,7 @@
         [Static] 
         <b>getTransformCSS</b>(obj:<a href="../symbols/View.html">View</a>):<span class="light">String</span>
         </div>
-        <div class="description"></div>
+        <div class="description">生成可视对象的CSS变换样式。</div>
 
         
 
@@ -773,7 +864,7 @@
         [Static] 
         <b>getUid</b>(prefix:String):<span class="light">String</span>
         </div>
-        <div class="description"></div>
+        <div class="description">获取一个全局唯一的id。如Stage1，Bitmap2等。</div>
 
         
 
@@ -810,7 +901,7 @@
         [Static] 
         <b>viewToString</b>(view:<a href="../symbols/View.html">View</a>):<span class="light">String</span>
         </div>
-        <div class="description"></div>
+        <div class="description">为指定的可视对象生成一个包含路径的字符串表示形式。如Stage1.Container2.Bitmap3。</div>
 
         
 

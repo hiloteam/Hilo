@@ -7,20 +7,20 @@
 /**
  * @language=en
  * @class EventMixin is a mixin on event related functions. Use Class.mix(target, EventMixin) to add event function onto target.
- * @mixin
  * @static
+ * @mixin
  * @module hilo/event/EventMixin
  * @requires hilo/core/Class
  */
 /**
  * @language=zh
  * @class EventMixin是一个包含事件相关功能的mixin。可以通过 Class.mix(target, EventMixin) 来为target增加事件功能。
- * @mixin
  * @static
+ * @mixin
  * @module hilo/event/EventMixin
  * @requires hilo/core/Class
  */
-var EventMixin = {
+var EventMixin = /** @lends EventMixin# */{
     _listeners: null,
 
     /**
@@ -175,5 +175,5 @@ if(RawEvent){
     proto.stopImmediatePropagation = function(){
         stop && stop.call(this);
         this._stopped = true;
-    }
+    };
 }

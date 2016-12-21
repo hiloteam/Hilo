@@ -417,7 +417,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Does the browser supports HTMLAudio.
                         </div>
                     </td>
                     <td>
@@ -488,7 +488,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
                         </div>
                         <div class="description">
                             
-                            
+                            Load audio file.
                         </div>
                     </td>
                     <td>
@@ -506,7 +506,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
                         </div>
                         <div class="description">
                             
-                            
+                            Pause (halt) the currently playing audio.
                         </div>
                     </td>
                     <td>
@@ -524,7 +524,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
                         </div>
                         <div class="description">
                             
-                            
+                            Start playing the audio.
                         </div>
                     </td>
                     <td>
@@ -542,7 +542,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
                         </div>
                         <div class="description">
                             
-                            
+                            Continue to play the audio.
                         </div>
                     </td>
                     <td>
@@ -560,7 +560,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
                         </div>
                         <div class="description">
                             
-                            
+                            Set mute mode.
                         </div>
                     </td>
                     <td>
@@ -578,7 +578,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
                         </div>
                         <div class="description">
                             
-                            
+                            Set the volume.
                         </div>
                     </td>
                     <td>
@@ -596,7 +596,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
                         </div>
                         <div class="description">
                             
-                            
+                            Stop playing the audio.
                         </div>
                     </td>
                     <td>
@@ -678,7 +678,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
 
         </div>
         <div class="description">
-            
+            Does the browser supports HTMLAudio.
         </div>
 
         
@@ -845,7 +845,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
         
         <b>load</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Load audio file.</div>
 
         
 
@@ -865,7 +865,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
         
         <b>pause</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Pause (halt) the currently playing audio.</div>
 
         
 
@@ -885,7 +885,8 @@ Limits: iOS platform requires user action events to start playing, and many Andr
         
         <b>play</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Start playing the audio. And play the audio from the beginning if the audio is already playing.
+Note: To prevent failing to play at the first time, play when the audio is loaded.</div>
 
         
 
@@ -905,7 +906,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
         
         <b>resume</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Continue to play the audio.</div>
 
         
 
@@ -925,7 +926,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
         
         <b>setMute</b>(muted)
         </div>
-        <div class="description"></div>
+        <div class="description">Set mute mode. Note: iOS devices cannot set mute mode.</div>
 
         
 
@@ -955,7 +956,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
         
         <b>setVolume</b>(volume)
         </div>
-        <div class="description"></div>
+        <div class="description">Set the volume. Note: iOS devices cannot set volume.</div>
 
         
 
@@ -985,7 +986,7 @@ Limits: iOS platform requires user action events to start playing, and many Andr
         
         <b>stop</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Stop playing the audio.</div>
 
         
 

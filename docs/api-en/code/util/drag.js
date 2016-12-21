@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * <iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
  * <br/>
  * example:
@@ -18,19 +17,17 @@
  * @mixin
  * @static
  * @module hilo/util/drag
- * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  */
 var drag = {
     /**
-     * @language=en
      * start drag.
       * @param {Array} bounds The bounds area that the view can move, relative to the coordinates of the view's parent, [x, y, width, height]， default is no limit.
     */
     startDrag:function(bounds){
         var that = this;
         var stage;
-        var bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
+        bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
         var mouse = {
             x:0,
             y:0,
@@ -96,7 +93,6 @@ var drag = {
         that.stopDrag = stopDrag;
     },
     /**
-     * @language=en
      * stop drag.
     */
     stopDrag:function(){

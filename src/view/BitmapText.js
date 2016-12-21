@@ -18,7 +18,7 @@
  * @requires hilo/view/Bitmap
  * @property {Object} glyphs font glyph set of bitmap. format:{letter:{image:img, rect:[0,0,100,100]}}
  * @property {Number} letterSpacing spacing of letter. default:0
- * @property {String} text content of bitmap text. Not writable,set this value by 'setFont'
+ * @property {String} text content of bitmap text. Not writable,set this value by 'setText'
  * @property {String} textAlign property values:left、center、right, default:left,Not writable,set this property by 'setTextAlign'
  */
 /**
@@ -35,8 +35,8 @@
  * @requires hilo/view/Bitmap
  * @property {Object} glyphs 位图字体的字形集合。格式为：{letter:{image:img, rect:[0,0,100,100]}}。
  * @property {Number} letterSpacing 字距，即字符间的间隔。默认值为0。
- * @property {String} text 位图文本的文本内容。只读属性。设置文本请使用setFont方法。
- * @property {String} textAlign 文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本请使用setTextAlign方法。
+ * @property {String} text 位图文本的文本内容。只读属性。设置文本请使用setText方法。
+ * @property {String} textAlign 文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本对齐方式请使用setTextAlign方法。
  */
 var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     Extends: Container,
@@ -146,6 +146,7 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
                 this.pivotX = this.width;
                 break;
             case "left":
+                /* falls through */
             default:
                 this.pivotX = 0;
                 break;
@@ -169,7 +170,8 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
         var glyphs = this.glyphs;
         if(!glyphs) return false;
 
-        var str = str.toString(), len = str.length, i;
+        str = str.toString();
+        var len = str.length, i;
         for(i = 0; i < len; i++){
             if(!glyphs[str.charAt(i)]) return false;
         }
@@ -206,11 +208,11 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
             var h = image.height/row;
             var glyphs = {};
             for(var i = 0, l = text.length;i < l;i ++){
-                charStr = str.charAt(i);
+                var charStr = str.charAt(i);
                 glyphs[charStr] = {
                     image:image,
                     rect:[w * (i % col), h * Math.floor(i / col), w, h]
-                }
+                };
             }
             return glyphs;
         }

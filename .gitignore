@@ -5,3 +5,9 @@ test/screenshot/
 .idea/
 *.sw*
 *.un~
+
+build/commonjs/.npmignore
+build/commonjs/LICENSE
+build/commonjs/README.md
+build/commonjs/package.json
+build/commonjs/hilo-standalone.js

@@ -209,7 +209,7 @@
         
             <span style="display:block;margin:0 0 2px 0;">
                 <b style="margin-right:10px;">Requires</b>
-                <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>
+                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>
             </span>
         
 
@@ -220,6 +220,15 @@
 
         <br>
         drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.copy(target, drag).
+        
+            <br><br><iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
+<br/>
+example:
+<pre>
+var bmp = new Bitmap({image:img});
+Hilo.copy(bmp, Hilo.drag);
+bmp.startDrag([0, 0, 550, 400]);
+</pre>
         
 
     </p>
@@ -257,7 +266,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            start drag.
                         </div>
                     </td>
                     <td>
@@ -275,7 +284,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            stop drag.
                         </div>
                     </td>
                     <td>
@@ -322,7 +331,7 @@
         [Static] 
         <b>startDrag</b>(bounds:Array)
         </div>
-        <div class="description"></div>
+        <div class="description">start drag.</div>
 
         
 
@@ -352,7 +361,7 @@
         [Static] 
         <b>stopDrag</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">stop drag.</div>
 
         
 

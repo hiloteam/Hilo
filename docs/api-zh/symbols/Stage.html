@@ -226,6 +226,16 @@
         <br>
         舞台是可视对象树的根，可视对象只有添加到舞台或其子对象后才会被渲染出来。创建一个hilo应用一般都是从创建一个stage开始的。
         
+            <br><br>示例:
+<pre>
+var stage = new Hilo.Stage({
+    renderType:'canvas',
+    container: containerElement,
+    width: 320,
+    height: 480
+});
+</pre>
+        
 
     </p>
 
@@ -561,7 +571,8 @@
                         </div>
                         <div class="description">
                             
-                            
+                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
                         </div>
                     </td>
                     <td>
@@ -737,6 +748,26 @@
                     <td class="fixedFont">
                         <div>
                             <!--  -->
+                            <b><a href="../symbols/View.html#tint">tint</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的附加颜色，默认0xFFFFFF，只支持WebGL模式。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
                             <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
                         </div>
                         <div class="description">
@@ -874,7 +905,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            添加舞台画布到DOM容器中。注意：此方法覆盖了View.addTo方法。
                         </div>
                     </td>
                     <td>
@@ -892,7 +923,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            开启/关闭舞台的DOM事件响应。要让舞台上的可视对象响应用户交互，必须先使用此方法开启舞台的相应事件的响应。
                         </div>
                     </td>
                     <td>
@@ -910,7 +941,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            改变舞台的大小。
                         </div>
                     </td>
                     <td>
@@ -928,7 +959,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            调用tick会触发舞台的更新和渲染。开发者一般无需使用此方法。
                         </div>
                     </td>
                     <td>
@@ -946,7 +977,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            更新舞台在页面中的可视区域，即渲染区域。当舞台canvas的样式border、margin、padding等属性更改后，需要调用此方法更新舞台渲染区域。
                         </div>
                     </td>
                     <td>
@@ -964,7 +995,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            在最上面添加子元素。
                         </div>
                     </td>
                     <td>
@@ -982,7 +1013,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            在指定索引位置添加子元素。
                         </div>
                     </td>
                     <td>
@@ -1000,7 +1031,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回是否包含参数指定的子元素。
                         </div>
                     </td>
                     <td>
@@ -1014,11 +1045,29 @@
                         <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
                     </td>
                     <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
                         <div><b><a href="../symbols/View.html#getBounds">getBounds</a></b>():Array
                         </div>
                         <div class="description">
                             
-                            
+                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
                         </div>
                     </td>
                     <td>
@@ -1036,7 +1085,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回指定索引位置的子元素。
                         </div>
                     </td>
                     <td>
@@ -1054,7 +1103,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回指定id的子元素。
                         </div>
                     </td>
                     <td>
@@ -1072,7 +1121,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回指定子元素的索引值。
                         </div>
                     </td>
                     <td>
@@ -1090,7 +1139,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回容器的子元素的数量。
                         </div>
                     </td>
                     <td>
@@ -1108,7 +1157,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的高度。
                         </div>
                     </td>
                     <td>
@@ -1126,7 +1175,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的宽度。
                         </div>
                     </td>
                     <td>
@@ -1144,7 +1193,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
                         </div>
                     </td>
                     <td>
@@ -1162,7 +1211,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回由x和y指定的点下的对象。
                         </div>
                     </td>
                     <td>
@@ -1180,7 +1229,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            检测object参数指定的对象是否与其相交。
                         </div>
                     </td>
                     <td>
@@ -1198,7 +1247,43 @@
                         </div>
                         <div class="description">
                             
+                            检测由x和y参数指定的点是否在其外接矩形之内。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            增加一个事件监听。
                         </div>
                     </td>
                     <td>
@@ -1216,7 +1301,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            删除所有的子元素。
                         </div>
                     </td>
                     <td>
@@ -1234,7 +1319,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            删除指定的子元素。
                         </div>
                     </td>
                     <td>
@@ -1252,7 +1337,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            在指定索引位置删除子元素。
                         </div>
                     </td>
                     <td>
@@ -1270,7 +1355,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            删除指定id的子元素。
                         </div>
                     </td>
                     <td>
@@ -1288,7 +1373,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            从父容器里删除此对象。
                         </div>
                     </td>
                     <td>
@@ -1306,7 +1391,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
                         </div>
                     </td>
                     <td>
@@ -1324,7 +1409,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            设置子元素的索引位置。
                         </div>
                     </td>
                     <td>
@@ -1342,7 +1427,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            根据指定键值或函数对子元素进行排序。
                         </div>
                     </td>
                     <td>
@@ -1360,7 +1445,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            交换两个子元素的索引位置。
                         </div>
                     </td>
                     <td>
@@ -1378,7 +1463,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            交换两个指定索引位置的子元素。
                         </div>
                     </td>
                     <td>
@@ -1396,7 +1481,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的字符串表示。
                         </div>
                     </td>
                     <td>
@@ -1558,7 +1643,7 @@
         
         <b>addTo</b>(domElement:HTMLElement):<span class="light"><a href="../symbols/Stage.html">Stage</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">添加舞台画布到DOM容器中。注意：此方法覆盖了View.addTo方法。</div>
 
         
 
@@ -1595,7 +1680,7 @@
         
         <b>enableDOMEvent</b>(type:String|Array, enabled:Boolean):<span class="light"><a href="../symbols/Stage.html">Stage</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">开启/关闭舞台的DOM事件响应。要让舞台上的可视对象响应用户交互，必须先使用此方法开启舞台的相应事件的响应。</div>
 
         
 
@@ -1637,7 +1722,7 @@
         
         <b>resize</b>(width:Number, height:Number, forceResize:Boolean)
         </div>
-        <div class="description"></div>
+        <div class="description">改变舞台的大小。</div>
 
         
 
@@ -1677,7 +1762,7 @@
         
         <b>tick</b>(delta:Number)
         </div>
-        <div class="description"></div>
+        <div class="description">调用tick会触发舞台的更新和渲染。开发者一般无需使用此方法。</div>
 
         
 
@@ -1707,7 +1792,7 @@
         
         <b>updateViewport</b>():<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">更新舞台在页面中的可视区域，即渲染区域。当舞台canvas的样式border、margin、padding等属性更改后，需要调用此方法更新舞台渲染区域。</div>
 
         
 

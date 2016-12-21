@@ -5,11 +5,14 @@
  */
 
 /**
- * @language=zh
  * <iframe src='../../../examples/Text.html?noHeader' width = '320' height = '240' scrolling='no'></iframe>
  * <br/>
  * @class Text类提供简单的文字显示功能。复杂的文本功能可以使用DOMElement。
  * @augments View
+ * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/view/Text
  * @requires hilo/core/Class
@@ -18,8 +21,8 @@
  * @requires hilo/view/CacheMixin
  * @property {String} text 指定要显示的文本内容。
  * @property {String} color 指定使用的字体颜色。
- * @property {String} textAlign 指定文本的对齐方式。可以是以下任意一个值：'start', 'end', 'left', 'right', and 'center'。
- * @property {String} textVAlign 指定文本的垂直对齐方式。可以是以下任意一个值：'top', 'middle', 'bottom'。
+ * @property {String} textAlign 指定文本的对齐方式。可以是以下任意一个值：'start', 'end', 'left', 'right', and 'center'。注意：必须设置文本的 width 属性才能生效。
+ * @property {String} textVAlign 指定文本的垂直对齐方式。可以是以下任意一个值：'top', 'middle', 'bottom'。注意：必须设置文本的 height 属性才能生效。
  * @property {Boolean} outline 指定文本是绘制边框还是填充。
  * @property {Number} lineSpacing 指定文本的行距。单位为像素。默认值为0。
  * @property {Number} maxWidth 指定文本的最大宽度。默认值为200。
@@ -52,7 +55,6 @@ var Text = Class.create(/** @lends Text.prototype */{
     textHeight: 0, //read-only
 
     /**
-     * @language=zh
      * 设置文本的字体CSS样式。
      * @param {String} font 要设置的字体CSS样式。
      * @returns {Text} Text对象本身。链式调用支持。
@@ -68,12 +70,11 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * @language=zh
      * 覆盖渲染方法。
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
 
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
@@ -101,7 +102,6 @@ var Text = Class.create(/** @lends Text.prototype */{
     },
 
     /**
-     * @language=zh
      * 在指定的渲染上下文上绘制文本。
      * @private
      */
@@ -187,14 +187,13 @@ var Text = Class.create(/** @lends Text.prototype */{
         else context.fillStyle = me.color;
 
         //draw text lines
-        for(var i = 0; i < drawLines.length; i++){
-            var line = drawLines[i];
+        for(i = 0; i < drawLines.length; i++){
+            line = drawLines[i];
             me._drawTextLine(context, line.text, startY + line.y);
         }
     },
 
     /**
-     * @language=zh
      * 在指定的渲染上下文上绘制一行文本。
      * @private
      */
@@ -209,7 +208,7 @@ var Text = Class.create(/** @lends Text.prototype */{
             case 'end':
                 x = width;
                 break;
-        };
+        }
 
         if(me.outline) context.strokeText(text, x, y);
         else context.fillText(text, x, y);
@@ -217,7 +216,6 @@ var Text = Class.create(/** @lends Text.prototype */{
 
     Statics: /** @lends Text */{
         /**
-         * @language=zh
          * 测算指定字体样式的行高。
          * @param {String} font 指定要测算的字体样式。
          * @return {Number} 返回指定字体的行高。

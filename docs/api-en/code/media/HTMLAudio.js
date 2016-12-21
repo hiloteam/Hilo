@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=en
  * @class HTMLAudio is an audio playing module, which uses HTMLAudioElement to play audio.
  * Limits: iOS platform requires user action events to start playing, and many Android browser can only play one audio at a time.
  * @param {Object} properties create object properties, include all writable properties of this class.
@@ -42,13 +41,13 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     _element: null, //HTMLAudioElement对象
 
     /**
-     * @language=en
      * Load audio file.
      */
     load: function(){
         if(!this._element){
+            var elem;
             try{
-                var elem = this._element = new Audio();
+                elem = this._element = new Audio();
                 elem.addEventListener('canplaythrough', this._onAudioEvent, false);
                 elem.addEventListener('ended', this._onAudioEvent, false);
                 elem.addEventListener('error', this._onAudioEvent, false);
@@ -58,7 +57,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
             }
             catch(err){
                 //ie9 某些版本有Audio对象，但是执行play,pause会报错！
-                var elem = this._element = {};
+                elem = this._element = {};
                 elem.play = elem.pause = function(){
 
                 };
@@ -68,7 +67,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * @language=en
      * @private
      */
     _onAudioEvent: function(e){
@@ -95,7 +93,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * @language=en
      * @private
      */
     _doPlay: function(){
@@ -107,7 +104,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * @language=en
      * Start playing the audio. And play the audio from the beginning if the audio is already playing.
      * Note: To prevent failing to play at the first time, play when the audio is loaded.
      */
@@ -125,7 +121,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * @language=en
      * Pause (halt) the currently playing audio.
      */
     pause: function(){
@@ -137,7 +132,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * @language=en
      * Continue to play the audio.
      */
     resume: function(){
@@ -148,7 +142,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * @language=en
      * Stop playing the audio.
      */
     stop: function(){
@@ -161,7 +154,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * @language=en
      * Set the volume. Note: iOS devices cannot set volume.
      */
     setVolume: function(volume){
@@ -173,7 +165,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     },
 
     /**
-     * @language=en
      * Set mute mode. Note: iOS devices cannot set mute mode.
      */
     setMute: function(muted){
@@ -186,7 +177,6 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
 
     Statics: /** @lends HTMLAudio */ {
         /**
-         * @language=en
          * Does the browser supports HTMLAudio.
          */
         isSupported: window.Audio !== null

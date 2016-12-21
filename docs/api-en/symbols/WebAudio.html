@@ -417,7 +417,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Does the browser support WebAudio.
                         </div>
                     </td>
                     <td>
@@ -439,7 +439,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Does browser activate WebAudio already.
                         </div>
                     </td>
                     <td>
@@ -510,7 +510,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             
-                            
+                            Load audio file.
                         </div>
                     </td>
                     <td>
@@ -528,7 +528,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             
-                            
+                            Pause (halt) playing the audio.
                         </div>
                     </td>
                     <td>
@@ -546,7 +546,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             
-                            
+                            Play the audio.
                         </div>
                     </td>
                     <td>
@@ -564,7 +564,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             
-                            
+                            Continue to play the audio.
                         </div>
                     </td>
                     <td>
@@ -582,7 +582,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             
-                            
+                            Set mute mode.
                         </div>
                     </td>
                     <td>
@@ -600,7 +600,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             
-                            
+                            Set the volume.
                         </div>
                     </td>
                     <td>
@@ -618,7 +618,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             
-                            
+                            Stop playing the audio.
                         </div>
                     </td>
                     <td>
@@ -636,7 +636,25 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Activate WebAudio.
+                        </div>
+                    </td>
+                    <td>
+                        WebAudio
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/WebAudio.html#.clearBufferCache">clearBufferCache</a></b>(url:String)
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            Clear the audio buffer cache.
                         </div>
                     </td>
                     <td>
@@ -718,7 +736,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
 
         </div>
         <div class="description">
-            
+            Does browser activate WebAudio already.
         </div>
 
         
@@ -737,7 +755,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
 
         </div>
         <div class="description">
-            
+            Does the browser support WebAudio.
         </div>
 
         
@@ -898,13 +916,43 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
     <br/>
     <div class=""><h3 style="margin-bottom:15px;">Method Detail</h3></div>
     
+        <a class="anchor" name=".clearBufferCache"> </a>
+        <div class="member-box">
+        <div class="member-header">
+        [Static] 
+        <b>clearBufferCache</b>(url:String)
+        </div>
+        <div class="description">Clear the audio buffer cache.</div>
+
+        
+
+        
+            <dl class="detailList">
+            <dt class="heading"><span class="label">parameters</span></dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>url</b>:<span>String</span> 
+                     — audio's url. if url is none, it will clear all buffer.
+                </dt>
+            
+            </dl>
+        
+        
+        
+        
+        
+        
+        
+
+        </div>
+    
         <a class="anchor" name=".enable"> </a>
         <div class="member-box">
         <div class="member-header">
         [Static] 
         <b>enable</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Activate WebAudio. Note: Require user action events to activate. Once activated, can play audio without user action events.</div>
 
         
 
@@ -924,7 +972,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
         
         <b>load</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Load audio file. Note: use XMLHttpRequest to load the audio, should pay attention to cross-origin problem.</div>
 
         
 
@@ -944,7 +992,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
         
         <b>pause</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Pause (halt) playing the audio.</div>
 
         
 
@@ -964,7 +1012,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
         
         <b>play</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Play the audio. Restart playing the audio from the beginning if already playing.</div>
 
         
 
@@ -984,7 +1032,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
         
         <b>resume</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Continue to play the audio.</div>
 
         
 
@@ -1004,7 +1052,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
         
         <b>setMute</b>(muted)
         </div>
-        <div class="description"></div>
+        <div class="description">Set mute mode.</div>
 
         
 
@@ -1034,7 +1082,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
         
         <b>setVolume</b>(volume)
         </div>
-        <div class="description"></div>
+        <div class="description">Set the volume.</div>
 
         
 
@@ -1064,7 +1112,7 @@ Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android brows
         
         <b>stop</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Stop playing the audio.</div>
 
         
 

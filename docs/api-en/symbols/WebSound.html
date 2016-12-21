@@ -221,6 +221,21 @@
         <br>
         Audio playing manager.
         
+            <br><br><iframe src='../../../examples/WebSound.html?noHeader' width = '320' height = '310' scrolling='no'></iframe>
+<br/>
+demo:
+<pre>
+var audio = WebSound.getAudio({
+    src: 'test.mp3',
+    loop: false,
+    volume: 1
+}).on('load', function(e){
+    console.log('load');
+}).on('end', function(e){
+    console.log('end');
+}).play();
+</pre>
+        
 
     </p>
 
@@ -257,7 +272,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Activate audio function.
                         </div>
                     </td>
                     <td>
@@ -275,7 +290,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Get audio element.
                         </div>
                     </td>
                     <td>
@@ -293,7 +308,7 @@
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            
+                            Remove audio element.
                         </div>
                     </td>
                     <td>
@@ -340,7 +355,7 @@
         [Static] 
         <b>enableAudio</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Activate audio function. Note: Require user action events to activate. Currently support WebAudio.</div>
 
         
 
@@ -360,7 +375,7 @@
         [Static] 
         <b>getAudio</b>(source:String|Object):<span class="light"><a href="../symbols/WebAudio.html">WebAudio</a>|<a href="../symbols/HTMLAudio.html">HTMLAudio</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">Get audio element. Use WebAudio if supported.</div>
 
         
 
@@ -397,7 +412,7 @@
         [Static] 
         <b>removeAudio</b>(source:String|Object)
         </div>
-        <div class="description"></div>
+        <div class="description">Remove audio element.</div>
 
         
 

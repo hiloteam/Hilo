@@ -226,6 +226,9 @@
         <br>
         动画精灵类。
         
+            <br><br><iframe src='../../../examples/Sprite.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+<br/>
+        
 
     </p>
 
@@ -321,7 +324,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            精灵动画的播放头进入新帧时的回调方法。默认值为null。此方法已废弃，请使用addFrameCallback方法。
                         </div>
                     </td>
                     <td>
@@ -561,7 +564,8 @@
                         </div>
                         <div class="description">
                             
-                            
+                            更新可视对象，此方法会在可视对象渲染之前调用。此函数可以返回一个Boolean值。若返回false，则此对象不会渲染。默认值为null。
+限制：如果在此函数中改变了可视对象在其父容器中的层级，当前渲染帧并不会正确渲染，而是在下一渲染帧。可在其父容器的onUpdate方法中来实现。
                         </div>
                     </td>
                     <td>
@@ -717,6 +721,26 @@
                     <td class="fixedFont">
                         <div>
                             <!--  -->
+                            <b><a href="../symbols/View.html#tint">tint</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            可视对象的附加颜色，默认0xFFFFFF，只支持WebGL模式。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
                             <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
                         </div>
                         <div class="description">
@@ -854,7 +878,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            往精灵动画序列中增加帧。
                         </div>
                     </td>
                     <td>
@@ -872,7 +896,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            获取精灵动画序列中指定的帧。
                         </div>
                     </td>
                     <td>
@@ -890,7 +914,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            获取精灵动画序列中指定帧的索引位置。
                         </div>
                     </td>
                     <td>
@@ -908,7 +932,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回精灵动画的总帧数。
                         </div>
                     </td>
                     <td>
@@ -926,7 +950,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            跳转精灵动画到指定的帧。
                         </div>
                     </td>
                     <td>
@@ -944,7 +968,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            播放精灵动画。
                         </div>
                     </td>
                     <td>
@@ -962,7 +986,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            设置精灵动画序列指定索引位置的帧。
                         </div>
                     </td>
                     <td>
@@ -980,7 +1004,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            设置指定帧的回调函数。即每当播放头进入指定帧时调用callback函数。若callback为空，则会删除回调函数。
                         </div>
                     </td>
                     <td>
@@ -998,7 +1022,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            暂停播放精灵动画。
                         </div>
                     </td>
                     <td>
@@ -1016,7 +1040,25 @@
                         </div>
                         <div class="description">
                             
+                            添加此对象到父容器。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
                             
+                            发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
                         </div>
                     </td>
                     <td>
@@ -1034,7 +1076,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            获取可视对象在舞台全局坐标系内的外接矩形以及所有顶点坐标。
                         </div>
                     </td>
                     <td>
@@ -1052,7 +1094,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的高度。
                         </div>
                     </td>
                     <td>
@@ -1070,7 +1112,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象缩放后的宽度。
                         </div>
                     </td>
                     <td>
@@ -1088,7 +1130,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的舞台引用。若对象没有被添加到舞台，则返回null。
                         </div>
                     </td>
                     <td>
@@ -1106,7 +1148,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            检测object参数指定的对象是否与其相交。
                         </div>
                     </td>
                     <td>
@@ -1124,7 +1166,43 @@
                         </div>
                         <div class="description">
                             
+                            检测由x和y参数指定的点是否在其外接矩形之内。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
                             
+                            删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            增加一个事件监听。
                         </div>
                     </td>
                     <td>
@@ -1142,7 +1220,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            从父容器里删除此对象。
                         </div>
                     </td>
                     <td>
@@ -1160,7 +1238,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            可视对象的具体渲染逻辑。子类可通过覆盖此方法实现自己的渲染。
                         </div>
                     </td>
                     <td>
@@ -1178,7 +1256,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            返回可视对象的字符串表示。
                         </div>
                     </td>
                     <td>
@@ -1279,7 +1357,7 @@
 
         </div>
         <div class="description">
-            
+            精灵动画的播放头进入新帧时的回调方法。默认值为null。此方法已废弃，请使用addFrameCallback方法。
         </div>
 
         
@@ -1373,7 +1451,7 @@
         
         <b>addFrame</b>(frame:Object, startIndex:Int):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">往精灵动画序列中增加帧。</div>
 
         
 
@@ -1415,7 +1493,7 @@
         
         <b>getFrame</b>(indexOrName:Object):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">获取精灵动画序列中指定的帧。</div>
 
         
 
@@ -1452,7 +1530,7 @@
         
         <b>getFrameIndex</b>(frameValue:Object):<span class="light">Object</span>
         </div>
-        <div class="description"></div>
+        <div class="description">获取精灵动画序列中指定帧的索引位置。</div>
 
         
 
@@ -1489,7 +1567,7 @@
         
         <b>getNumFrames</b>():<span class="light">Uint</span>
         </div>
-        <div class="description"></div>
+        <div class="description">返回精灵动画的总帧数。</div>
 
         
 
@@ -1516,7 +1594,7 @@
         
         <b>goto</b>(indexOrName:Object, pause:Boolean):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">跳转精灵动画到指定的帧。</div>
 
         
 
@@ -1558,7 +1636,7 @@
         
         <b>play</b>():<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">播放精灵动画。</div>
 
         
 
@@ -1585,7 +1663,7 @@
         
         <b>setFrame</b>(frame:Object, index:Int):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">设置精灵动画序列指定索引位置的帧。</div>
 
         
 
@@ -1627,7 +1705,7 @@
         
         <b>setFrameCallback</b>(frame:Int|String, callback:Function):<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">设置指定帧的回调函数。即每当播放头进入指定帧时调用callback函数。若callback为空，则会删除回调函数。</div>
 
         
 
@@ -1669,7 +1747,7 @@
         
         <b>stop</b>():<span class="light"><a href="../symbols/Sprite.html">Sprite</a></span>
         </div>
-        <div class="description"></div>
+        <div class="description">暂停播放精灵动画。</div>
 
         
 

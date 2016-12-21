@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * 示例:
  * <pre>
  * var stage = new Hilo.Stage({
@@ -61,7 +60,6 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     viewport: null,
 
     /**
-     * @language=zh
      * @private
      */
     _initRenderer: function(properties){
@@ -93,7 +91,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
                 this.renderer = new DOMRenderer(props);
                 break;
             case 'webgl':
-                if(WebGLRenderer.isSupported){
+                if(WebGLRenderer.isSupport()){
                     this.renderer = new WebGLRenderer(props);
                 }
                 else{
@@ -101,6 +99,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
                 }
                 break;
             case 'canvas':
+	        /* falls through */
             default:
                 this.renderer = new CanvasRenderer(props);
                 break;
@@ -108,7 +107,6 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * @language=zh
      * 添加舞台画布到DOM容器中。注意：此方法覆盖了View.addTo方法。
      * @param {HTMLElement} domElement 一个dom元素。
      * @returns {Stage} 舞台本身，可用于链式调用。
@@ -122,7 +120,6 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * @language=zh
      * 调用tick会触发舞台的更新和渲染。开发者一般无需使用此方法。
      * @param {Number} delta 调度器当前调度与上次调度tick之间的时间差。
      */
@@ -133,18 +130,18 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * @language=zh
      * 开启/关闭舞台的DOM事件响应。要让舞台上的可视对象响应用户交互，必须先使用此方法开启舞台的相应事件的响应。
      * @param {String|Array} type 要开启/关闭的事件名称或数组。
      * @param {Boolean} enabled 指定开启还是关闭。如果不传此参数，则默认为开启。
      * @returns {Stage} 舞台本身。链式调用支持。
      */
-    enableDOMEvent: function(type, enabled){
+    enableDOMEvent: function(types, enabled){
         var me = this,
             canvas = me.canvas,
-            types = typeof type === 'string' ? [type] : type,
-            enabled = enabled !== false,
-            handler = me._domListener || (me._domListener = function(e){me._onDOMEvent(e)});
+            handler = me._domListener || (me._domListener = function(e){me._onDOMEvent(e);});
+
+        types = typeof types === 'string' ? [types] : types;
+        enabled = enabled !== false;
 
         for(var i = 0; i < types.length; i++){
             var type = types[i];
@@ -160,7 +157,6 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * @language=zh
      * DOM事件处理函数。此方法会把事件调度到事件的坐标点所对应的可视对象。
      * @private
      */
@@ -224,7 +220,6 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * @language=zh
      * 更新舞台在页面中的可视区域，即渲染区域。当舞台canvas的样式border、margin、padding等属性更改后，需要调用此方法更新舞台渲染区域。
      * @returns {Object} 舞台的可视区域。即viewport属性。
      */
@@ -237,7 +232,6 @@ var Stage = Class.create(/** @lends Stage.prototype */{
     },
 
     /**
-     * @language=zh
      * 改变舞台的大小。
      * @param {Number} width 指定舞台新的宽度。
      * @param {Number} height 指定舞台新的高度。

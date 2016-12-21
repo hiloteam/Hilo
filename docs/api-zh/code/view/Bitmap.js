@@ -5,7 +5,6 @@
  */
 
 /**
- * @language=zh
  * <iframe src='../../../examples/Bitmap.html?noHeader' width = '300' height = '200' scrolling='no'></iframe>
  * <br/>
  * 使用示例:
@@ -46,7 +45,6 @@
     },
 
     /**
-     * @language=zh
      * 设置位图的图片。
      * @param {Image|String} image 图片对象或地址。
      * @param {Array} rect 指定位图在图片image的矩形区域。
@@ -59,7 +57,7 @@
             this.height = rect[3];
         }
         else if(!this.width && !this.height){
-            var rect = this.drawable.rect;
+            rect = this.drawable.rect;
             if(rect){
                 this.width = rect[2];
                 this.height = rect[3];

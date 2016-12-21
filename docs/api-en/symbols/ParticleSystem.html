@@ -198,6 +198,11 @@
 
         
         
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Inheritance</b> ParticleSystem
+                 <i class="glyphicon glyphicon-arrow-right"></i> <a href="../symbols/Container.html">Container</a>  <i class="glyphicon glyphicon-arrow-right"></i> <a href="../symbols/View.html">View</a>
+            </span>
+        
 
         
         
@@ -209,7 +214,7 @@
         
             <span style="display:block;margin:0 0 2px 0;">
                 <b style="margin-right:10px;">Requires</b>
-                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/View.html">hilo/view/View</a></span>, <span><a href="../symbols/Container.html">hilo/view/Container</a></span>, <span><a href="../symbols/Bitmap.html">hilo/view/Bitmap</a></span>, <span><a href="../symbols/Drawable.html">hilo/view/Drawable</a></span>
+                <span><a href="../symbols/Hilo.html">hilo/core/Hilo</a></span>, <span><a href="../symbols/Class.html">hilo/core/Class</a></span>, <span><a href="../symbols/View.html">hilo/view/View</a></span>, <span><a href="../symbols/Container.html">hilo/view/Container</a></span>, <span><a href="../symbols/Drawable.html">hilo/view/Drawable</a></span>
             </span>
         
 
@@ -221,6 +226,9 @@
         <br>
         ParticleSystem A particle system.
         
+            <br><br><iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
+<br/>
+        
 
     </p>
 
@@ -230,6 +238,8 @@
         
         <div style="margin:30px 0 5px 0;">
             <h3 style="display:inline;margin-right:10px;">Properties</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleProperties()"><i class="glyphicon glyphicon-circle-arrow-right" id="propToggleIcon"></i><span id="propToggleTip">Show Inherited Properties</span></a>
             
         </div>
         <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
@@ -334,7 +344,7 @@
                         </div>
                         <div class="description">
                             
-                            Emit time interval.
+                            Emit time interval(in second).
                         </div>
                     </td>
                     <td>
@@ -422,6 +432,486 @@
                     </td>
                 </tr>
             
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#align">align</a></b>:String|Function
+                        </div>
+                        <div class="description">
+                            
+                            The alignment of the view, the value must be one of Hilo.align enum.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#alpha">alpha</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The opacity of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#background">background</a></b>:Object
+                        </div>
+                        <div class="description">
+                            
+                            The background style to fill the view, can be css color, gradient or pattern of canvas
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#boundsArea">boundsArea</a></b>:Array
+                        </div>
+                        <div class="description">
+                            
+                            The vertex points of the view, the points are relative to the center point.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Container.html#children">children</a></b>:Array
+                        </div>
+                        <div class="description">
+                            
+                            List of children elements of the container, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Container.html#clipChildren">clipChildren</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Whether clip children elements which are out of the container, default value is false.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#depth">depth</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The z index of the view, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#drawable">drawable</a></b>:Drawable
+                        </div>
+                        <div class="description">
+                            
+                            The drawable object of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#height">height</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The height of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#id">id</a></b>:String
+                        </div>
+                        <div class="description">
+                            
+                            The identifier for the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#mask">mask</a></b>:Graphics
+                        </div>
+                        <div class="description">
+                            
+                            Sets a mask for the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#parent">parent</a></b>:Container
+                        </div>
+                        <div class="description">
+                            
+                            The parent view of this view, readonly!
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotX">pivotX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            Position of the center point on the x axis of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pivotY">pivotY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            Position of the center point on the y axis of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/Container.html#pointerChildren">pointerChildren</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Whether children elements of the container can response to user interactive events, default value is true.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#pointerEnabled">pointerEnabled</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Is the view can receive DOM events, default value is true.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#rotation">rotation</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The rotation of the view in angles, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleX">scaleX</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The x axis scale factor of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#scaleY">scaleY</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The y axis scale factor of the view, default value is 1.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#tint">tint</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The tint applied to the view，default is 0xFFFFFF.Only support in WebGL mode.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#visible">visible</a></b>:Boolean
+                        </div>
+                        <div class="description">
+                            
+                            The visibility of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#width">width</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The width of the view, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#x">x</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The position of the view on the x axis relative to the local coordinates of the parent, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritProp' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/View.html#y">y</a></b>:Number
+                        </div>
+                        <div class="description">
+                            
+                            The position of the view on the y axis relative to the local coordinates of the parent, default value is 0.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
             </tbody>
         </table>
         
@@ -450,6 +940,8 @@
         
         <div style="margin:30px 0 5px; 0">
             <h3 style="display:inline;margin-right:10px;">Methods</h3>
+            
+                <a style="color:#666;text-decoration:none;cursor:pointer;" onclick="toggleMethods()"><i class="glyphicon glyphicon-circle-arrow-right" id="methodToggleIcon"></i><span id="methodToggleTip">Show Inherited Methods</span></a>
             
         </div>
         <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
@@ -485,7 +977,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            更新
                         </div>
                     </td>
                     <td>
@@ -503,7 +995,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Reset the properties.
                         </div>
                     </td>
                     <td>
@@ -521,7 +1013,7 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Start emit particles.
                         </div>
                     </td>
                     <td>
@@ -539,11 +1031,533 @@
                         </div>
                         <div class="description">
                             
-                            
+                            Stop emit particles.
                         </div>
                     </td>
                     <td>
                         ParticleSystem
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#addChild">addChild</a></b>(child:<a href="../symbols/View.html">View</a>)
+                        </div>
+                        <div class="description">
+                            
+                            Add child element at the top.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#addChildAt">addChildAt</a></b>(child:<a href="../symbols/View.html">View</a>, index:Number)
+                        </div>
+                        <div class="description">
+                            
+                            Add child element at given index.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#addTo">addTo</a></b>(container:<a href="../symbols/Container.html">Container</a>, index:Uint):View
+                        </div>
+                        <div class="description">
+                            
+                            Add current view to a Contaner.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#contains">contains</a></b>(child:<a href="../symbols/View.html">View</a>)
+                        </div>
+                        <div class="description">
+                            
+                            Return whether this container contains the parameter described child element.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#fire">fire</a></b>(type:String, detail:Object):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Send events.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getBounds">getBounds</a></b>():Array
+                        </div>
+                        <div class="description">
+                            
+                            Get the bounds of the view as a circumscribed rectangle and all vertex points relative to the coordinates of the stage.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getChildAt">getChildAt</a></b>(index:Number)
+                        </div>
+                        <div class="description">
+                            
+                            Return child element at the given index.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getChildById">getChildById</a></b>(id:String)
+                        </div>
+                        <div class="description">
+                            
+                            Return child element at the given id.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getChildIndex">getChildIndex</a></b>(child:<a href="../symbols/View.html">View</a>)
+                        </div>
+                        <div class="description">
+                            
+                            Return index value of the given child element.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getNumChildren">getNumChildren</a></b>():Uint
+                        </div>
+                        <div class="description">
+                            
+                            Return the amount of the children elements of the container.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledHeight">getScaledHeight</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            Get the scaled height of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getScaledWidth">getScaledWidth</a></b>():Number
+                        </div>
+                        <div class="description">
+                            
+                            Get the scaled width of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#getStage">getStage</a></b>():Stage
+                        </div>
+                        <div class="description">
+                            
+                            Get the stage object of the view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#getViewAtPoint">getViewAtPoint</a></b>(x:Number, y:Number, usePolyCollision:Boolean, global:Boolean, eventMode:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            Return object at the point positioned by given values on x axis and y axis.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestObject">hitTestObject</a></b>(object:<a href="../symbols/View.html">View</a>, usePolyCollision:Boolean)
+                        </div>
+                        <div class="description">
+                            
+                            Determining whether an object is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#hitTestPoint">hitTestPoint</a></b>(x:Number, y:Number, usePolyCollision:Boolean):Boolean
+                        </div>
+                        <div class="description">
+                            
+                            Determining whether a point is in the circumscribed rectangle of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#off">off</a></b>(type:String, listener:Function):Object
+                        </div>
+                        <div class="description">
+                            
+                            Remove one event listener.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#on">on</a></b>(type:String, listener:Function, once:Boolean):Object
+                        </div>
+                        <div class="description">
+                            
+                            Add an event listenser.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#removeAllChildren">removeAllChildren</a></b>():Container
+                        </div>
+                        <div class="description">
+                            
+                            Remove all children elements.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#removeChild">removeChild</a></b>(child:<a href="../symbols/View.html">View</a>):View
+                        </div>
+                        <div class="description">
+                            
+                            Remove the given child element.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#removeChildAt">removeChildAt</a></b>(index:Int):View
+                        </div>
+                        <div class="description">
+                            
+                            Remove element at the index.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#removeChildById">removeChildById</a></b>(id:String):View
+                        </div>
+                        <div class="description">
+                            
+                            Remove child element by its id.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#removeFromParent">removeFromParent</a></b>():View
+                        </div>
+                        <div class="description">
+                            
+                            Remove current view from it's parent container
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#render">render</a></b>(renderer:<a href="../symbols/Renderer.html">Renderer</a>, delta:Number)
+                        </div>
+                        <div class="description">
+                            
+                            The render method of current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#setChildIndex">setChildIndex</a></b>(child:<a href="../symbols/View.html">View</a>, index:Number)
+                        </div>
+                        <div class="description">
+                            
+                            Set the index of child element.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#sortChildren">sortChildren</a></b>(keyOrFunction:Object)
+                        </div>
+                        <div class="description">
+                            
+                            Sort children elements by the given key or function.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#swapChildren">swapChildren</a></b>(child1:<a href="../symbols/View.html">View</a>, child2:<a href="../symbols/View.html">View</a>)
+                        </div>
+                        <div class="description">
+                            
+                            Swap index between two child elements.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/Container.html#swapChildrenAt">swapChildrenAt</a></b>(index1:Number, index2:Number)
+                        </div>
+                        <div class="description">
+                            
+                            Swap two children elements at given indexes.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/Container.html">Container</a>
+                    </td>
+                </tr>
+            
+                
+                <tr class='inheritMethod' style='display:none;'>
+                    <td>
+                        <i class="icon-arrow-up" style="margin:12px 0 0 4px;"></i>
+                    </td>
+                    <td class="fixedFont">
+                        <div><b><a href="../symbols/View.html#toString">toString</a></b>():String
+                        </div>
+                        <div class="description">
+                            
+                            Get a string representing current view.
+                        </div>
+                    </td>
+                    <td>
+                        <a href="../symbols/View.html">View</a>
                     </td>
                 </tr>
             
@@ -592,6 +1606,13 @@
         
         
         
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>10</span>
+                </dd>
+            </dl>
+        
 
         </div>
     
@@ -610,6 +1631,13 @@
         
         
         
+        
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>0</span>
+                </dd>
+            </dl>
         
 
         </div>
@@ -630,6 +1658,13 @@
         
         
         
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>0</span>
+                </dd>
+            </dl>
+        
 
         </div>
     
@@ -649,6 +1684,13 @@
         
         
         
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>0</span>
+                </dd>
+            </dl>
+        
 
         </div>
     
@@ -659,7 +1701,7 @@
 
         </div>
         <div class="description">
-            Emit time interval.
+            Emit time interval(in second).
         </div>
 
         
@@ -667,6 +1709,13 @@
         
         
         
+        
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>0.2</span>
+                </dd>
+            </dl>
         
 
         </div>
@@ -687,6 +1736,13 @@
         
         
         
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>0</span>
+                </dd>
+            </dl>
+        
 
         </div>
     
@@ -705,6 +1761,13 @@
         
         
         
+        
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>0</span>
+                </dd>
+            </dl>
         
 
         </div>
@@ -725,6 +1788,13 @@
         
         
         
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>0</span>
+                </dd>
+            </dl>
+        
 
         </div>
     
@@ -743,6 +1813,13 @@
         
         
         
+        
+            <dl class="detailList">
+                <dd>
+                    <b>Default:</b>
+                    <span>Infinity</span>
+                </dd>
+            </dl>
         
 
         </div>
@@ -778,57 +1855,57 @@
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.x</b>:<span>Number</span> 
-                     — The x position.
+                    <i>Optional, Default: 0</i> — The x position.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.y</b>:<span>Number</span> 
-                     — The y position
+                    <i>Optional, Default: 0</i> — The y position
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.vx</b>:<span>Number</span> 
-                     — The x velocity.
+                    <i>Optional, Default: 0</i> — The x velocity.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.vy</b>:<span>Number</span> 
-                     — The y velocity.
+                    <i>Optional, Default: 0</i> — The y velocity.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.ax</b>:<span>Number</span> 
-                     — The x acceleration.
+                    <i>Optional, Default: 0</i> — The x acceleration.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.ay</b>:<span>Number</span> 
-                     — The y acceleration.
+                    <i>Optional, Default: 0</i> — The y acceleration.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.life</b>:<span>Number</span> 
-                     — The time particle lives(in second).
+                    <i>Optional, Default: 1</i> — The time particle lives(in second).
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.alpha</b>:<span>Number</span> 
-                     — The alpha.
+                    <i>Optional, Default: 1</i> — The alpha.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.alphaV</b>:<span>Number</span> 
-                     — The alpha decline rate.
+                    <i>Optional, Default: 0</i> — The alpha decline rate.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.scale</b>:<span>Number</span> 
-                     — The scale.
+                    <i>Optional, Default: 1</i> — The scale.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>properties.particle.scaleV</b>:<span>Number</span> 
-                     — The scale decline rate.
+                    <i>Optional, Default: 0</i> — The scale decline rate.
                 </dt>
             
             </dl>
@@ -848,7 +1925,7 @@
         
         <b>onUpdate</b>(dt:Number)
         </div>
-        <div class="description"></div>
+        <div class="description">更新</div>
 
         
 
@@ -878,7 +1955,7 @@
         
         <b>reset</b>(cfg:Object)
         </div>
-        <div class="description"></div>
+        <div class="description">Reset the properties.</div>
 
         
 
@@ -908,7 +1985,7 @@
         
         <b>start</b>()
         </div>
-        <div class="description"></div>
+        <div class="description">Start emit particles.</div>
 
         
 
@@ -928,7 +2005,7 @@
         
         <b>stop</b>(clear:Boolean)
         </div>
-        <div class="description"></div>
+        <div class="description">Stop emit particles.</div>
 
         
 

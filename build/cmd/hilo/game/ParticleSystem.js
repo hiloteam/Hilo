@@ -167,7 +167,7 @@ var ParticleSystem = (function(){
          * @param {Boolean} clear Whether or not clear all the particles.
         */
         stop: function(clear) {
-            this.isRun = false;
+            this._isRun = false;
             if (clear) {
                 for (var i = this.children.length - 1; i >= 0; i--) {
                     this.children[i].destroy();
@@ -203,7 +203,7 @@ var ParticleSystem = (function(){
         onUpdate: function(dt) {
             dt *= .001;
             if(this._died){
-                return;
+                return false;
             }
             var ax = this.ax + this.system.gx;
             var ay = this.ay + this.system.gy;
@@ -223,8 +223,9 @@ var ParticleSystem = (function(){
             this.scaleX = this.scaleY = this.scale;
 
             this._time += dt;
-            if (this._time >= this.life || this.alpha < 0) {
+            if (this._time >= this.life || this.alpha <= 0) {
                 this.destroy();
+                return false;
             }
         },
         /**
@@ -245,7 +246,8 @@ var ParticleSystem = (function(){
          * Destroy the particle.
         */
         destroy: function() {
-            this.died = true;
+            this._died = true;
+            this.alpha = 0;
             this.removeFromParent();
             diedParticles.push(this);
         },
