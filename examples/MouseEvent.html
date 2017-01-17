@@ -10,12 +10,12 @@
     <script type="text/javascript" src="../src/util/debug.js" data-auto="true"></script>
 </head>
 <body onload="init();">
-    <header>
+    <div id="header">
         <h1>MouseEvent</h1>
         <p>目前支持mousemove, mouseup, mousedown, mouseover, mouseout, 支持事件冒泡</p>
         <p>可以通过e.eventTarget和e.eventCurrentTarget获得触发鼠标事件的对象</p>
         <p>建议使用Hilo.event.POINTER_START, Hilo.event.POINTER_MOVE, Hilo.event.POINTER_END，它在pc上对应mousemove, mouseup, mousedonw, 在手机上对应touchstart, touchmove, touchend</p>
-    </header>
+    </div>
     <div id="game-container"></div>
     <script type="text/javascript" src="js/demo.js"></script>
     <script type="text/javascript">

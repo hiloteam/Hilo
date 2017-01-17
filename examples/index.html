@@ -106,8 +106,11 @@
             })(examples[i], i);
         }
 
-        iframeElem.width = innerWidth - 220;
-        iframeElem.height = innerHeight - 20;
+        var winWidth = window.innerWidth || document.documentElement.clientWidth;
+        var winHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        iframeElem.width = winWidth - 220;
+        iframeElem.height = winHeight - 20;
         var iframeWindow = iframeElem.contentWindow;
 
         var hashName = location.hash.slice(1);

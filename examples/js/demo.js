@@ -1,3 +1,10 @@
+window.console = window.console||{log:function(){}};
+Array.prototype.forEach = Array.prototype.each = Array.prototype.forEach || function(callback){
+    for(var i = 0;i < this.length;i ++){
+        callback(this[i], i, this);
+    }
+};
+
 var renderTypeDict = {
      'canvas':'canvas',
      'dom':'dom',
@@ -13,7 +20,7 @@ if(!renderTypeDict[renderType]){
 var winWidth = window.innerWidth || document.documentElement.clientWidth;
 var winHeight = window.innerHeight || document.documentElement.clientHeight;
 
-var headerElem = document.getElementsByTagName('header')[0];
+var headerElem = document.getElementById('header');
 if(location.search.indexOf('noHeader') < 0){
     headerElem.style.display = 'block';
     var renderTypeElem = document.createElement('div');
@@ -48,13 +55,6 @@ var stageWidth = window.stageWidth||winWidth;
 var stageHeight = window.stageHeight||(winHeight - gameContainer.offsetTop);
 gameContainer.style.height = stageHeight + 'px';
 gameContainer.style.width = stageWidth + 'px';
-
-window.console = window.console||{log:function(){}};
-Array.prototype.forEach = Array.prototype.each = Array.prototype.forEach || function(callback){
-    for(var i = 0;i < this.length;i ++){
-        callback(this[i], i, this);
-    }
-};
 
 
 

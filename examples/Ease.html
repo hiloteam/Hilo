@@ -9,10 +9,10 @@
     <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
 </head>
 <body onload="init();">
-    <header>
+    <div id="header">
         <h1>Ease</h1>
         <p>Ease是Hilo中的缓动函数，它代表缓动的变化率</p>
-    </header>
+    </div>
     <div id="game-container"></div>
     <script type="text/javascript" src="js/demo.js"></script>
     <script type="text/javascript">
@@ -42,7 +42,7 @@
                         var size = 80;
                         var ceilSize = 130;
                         var margin = (ceilSize - size) * .5;
-                        var col = ((innerWidth-5)/ceilSize)>>0;
+                        var col = ((winWidth)/ceilSize)>>0;
                         var g = new Graphics({
                             width:ceilSize,
                             height:ceilSize,

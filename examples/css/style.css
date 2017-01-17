@@ -8,7 +8,7 @@ html, body{
     height: 100%;
 }
 
-header{
+#header{
     display: none;
     color: #fff;
     font-family: arial;
@@ -16,13 +16,13 @@ header{
     padding: 5px 10px;
 }
 
-header h1{
+#header h1{
     font-size: 18px;
     height: 26px;
     line-height: 26px;
 }
 
-header p{
+#header p{
     color: #e1e1e1;
     font-size: 14px;
 }
