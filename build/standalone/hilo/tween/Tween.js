@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -200,8 +200,10 @@ return Class.create(/** @lends Tween.prototype */{
     link: function(tween){
         var me = this, delay = tween.delay, startTime = me._startTime;
 
+        var plus, minus;
         if(typeof delay === 'string'){
-            var plus = delay.indexOf('+') == 0, minus = delay.indexOf('-') == 0;
+            plus = delay.indexOf('+') == 0;
+            minus = delay.indexOf('-') == 0;
             delay = plus || minus ? Number(delay.substr(1)) * (plus ? 1 : -1) : Number(delay);
         }
         tween.delay = delay;
@@ -343,14 +345,15 @@ return Class.create(/** @lends Tween.prototype */{
          * @returns {Object} Tween。
          */
         remove: function(tweenOrTarget){
+            var i, l;
             if(tweenOrTarget instanceof Array){
-                for(var i = 0, l = tweenOrTarget.length;i < l;i ++){
+                for(i = 0, l = tweenOrTarget.length;i < l;i ++){
                     Tween.remove(tweenOrTarget[i]);
                 }
                 return Tween;
             }
 
-            var tweens = Tween._tweens, i;
+            var tweens = Tween._tweens;
             if(tweenOrTarget instanceof Tween){
                 i = tweens.indexOf(tweenOrTarget);
                 if(i > -1) tweens.splice(i, 1);

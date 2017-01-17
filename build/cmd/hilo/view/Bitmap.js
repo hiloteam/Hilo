@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -67,7 +67,7 @@ var Drawable = require('hilo/view/Drawable');
             this.height = rect[3];
         }
         else if(!this.width && !this.height){
-            var rect = this.drawable.rect;
+            rect = this.drawable.rect;
             if(rect){
                 this.width = rect[2];
                 this.height = rect[3];

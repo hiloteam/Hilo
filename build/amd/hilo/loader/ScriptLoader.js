@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for amd
+ * Hilo 1.0.2 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -26,11 +26,12 @@ var ScriptLoader = Class.create({
             if(!win[callback]){
                 win[callback] = function(result){
                     delete win[callback];
-                }
+                };
             }
+
+            src += (src.indexOf('?') == -1 ? '?' : '&') + callbackName + '=' + callback;
         }
 
-        if(isJSONP) src += (src.indexOf('?') == -1 ? '?' : '&') + callbackName + '=' + callback;
         if(data.noCache) src += (src.indexOf('?') == -1 ? '?' : '&') + 't=' + (+new Date());
 
         var script = document.createElement('script');

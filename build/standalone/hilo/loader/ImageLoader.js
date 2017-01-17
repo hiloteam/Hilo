@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -24,17 +24,14 @@ var ImageLoader = Class.create({
             image.crossOrigin = data.crossOrigin;
         }
 
-        image.onload = //me.onLoad.bind(image);
-        function(){
-            me.onLoad(image)
+        image.onload = function(){
+            me.onLoad(image);
         };
         image.onerror = image.onabort = me.onError.bind(image);
-        image.src = data.src + (data.noCache ? (data.src.indexOf('?') == -1 ? '?' : '&') + 't=' + (+new Date) : '');
+        image.src = data.src + (data.noCache ? (data.src.indexOf('?') == -1 ? '?' : '&') + 't=' + (+new Date()) : '');
     },
 
-    onLoad: function(e){
-        e = e||window.event;
-        var image = e//e.target;
+    onLoad: function(image){
         image.onload = image.onerror = image.onabort = null;
         return image;
     },

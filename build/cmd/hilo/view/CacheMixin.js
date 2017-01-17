@@ -1,29 +1,26 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
 var Hilo = require('hilo/core/Hilo');
-var Class = require('hilo/core/Class');
 var Drawable = require('hilo/view/Drawable');
 
 
 
-var _cacheCanvas = Hilo.createElement('canvas');
-var _cacheContext = _cacheCanvas.getContext('2d');
+var _cacheCanvas, _cacheContext;
 /**
  * @language=en
  * @class CacheMixin A mixin that contains cache method.You can mix cache method to the target by use Class.mix(target, CacheMixin).
- * @mixin
  * @static
+ * @mixin
  * @module hilo/view/CacheMixin
  * @requires hilo/core/Hilo
- * @requires hilo/core/Class
  * @requires hilo/view/Drawable
  */
-var CacheMixin = {
+var CacheMixin = /** @lends CacheMixin# */ {
     _cacheDirty:true,
     /**
      * @language=en
@@ -40,19 +37,27 @@ var CacheMixin = {
      * Update the cache.
      */
     updateCache:function(){
-        //TODO:width, height自动判断
-        _cacheCanvas.width = this.width;
-        _cacheCanvas.height = this.height;
-        this._draw(_cacheContext);
-        this._cacheImage = new Image();
-        this._cacheImage.src = _cacheCanvas.toDataURL();
-        this.drawable = this.drawable||new Drawable();
-        this.drawable.init(this._cacheImage);
-        this._cacheDirty = false;
+        if(Hilo.browser.supportCanvas){
+            if(!_cacheCanvas){
+                _cacheCanvas = document.createElement('canvas');
+                _cacheContext = _cacheCanvas.getContext('2d');
+            }
+
+            //TODO:width, height自动判断
+            _cacheCanvas.width = this.width;
+            _cacheCanvas.height = this.height;
+            this._draw(_cacheContext);
+            this._cacheImage = new Image();
+            this._cacheImage.src = _cacheCanvas.toDataURL();
+            this.drawable = this.drawable||new Drawable();
+            this.drawable.init(this._cacheImage);
+            this._cacheDirty = false;
+        }
     },
     /**
      * @language=en
      * set the cache state diry.
+     * @param {Boolean} dirty is cache dirty
      */
     setCacheDirty:function(dirty){
         this._cacheDirty = dirty;

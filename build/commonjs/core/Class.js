@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for commonjs
+ * Hilo 1.0.2 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -53,7 +53,7 @@ var create = function(properties){
     var clazz = properties.hasOwnProperty('constructor') ? properties.constructor : function(){};
     implement.call(clazz, properties);
     return clazz;
-}
+};
 
 /**
  * @language=en
@@ -110,13 +110,13 @@ var createProto = (function(){
     if(Object.__proto__){
         return function(proto){
             return {__proto__: proto};
-        }
+        };
     }else{
         var Ctor = function(){};
         return function(proto){
             Ctor.prototype = proto;
             return new Ctor();
-        }
+        };
     }
 })();
 
@@ -147,9 +147,10 @@ var mix = function(target){
     return target;
 };
 
+var defineProperty, defineProperties;
 try{
-    var defineProperty = Object.defineProperty,
-        defineProperties = Object.defineProperties;
+    defineProperty = Object.defineProperty;
+    defineProperties = Object.defineProperties;
     defineProperty({}, '$', {value:0});
 }catch(e){
     if('__defineGetter__' in Object){

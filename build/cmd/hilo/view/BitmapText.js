@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -125,6 +125,7 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
                 this.pivotX = this.width;
                 break;
             case "left":
+                /* falls through */
             default:
                 this.pivotX = 0;
                 break;
@@ -142,7 +143,8 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
         var glyphs = this.glyphs;
         if(!glyphs) return false;
 
-        var str = str.toString(), len = str.length, i;
+        str = str.toString();
+        var len = str.length, i;
         for(i = 0; i < len; i++){
             if(!glyphs[str.charAt(i)]) return false;
         }
@@ -169,11 +171,11 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
             var h = image.height/row;
             var glyphs = {};
             for(var i = 0, l = text.length;i < l;i ++){
-                charStr = str.charAt(i);
+                var charStr = str.charAt(i);
                 glyphs[charStr] = {
                     image:image,
                     rect:[w * (i % col), h * Math.floor(i / col), w, h]
-                }
+                };
             }
             return glyphs;
         }

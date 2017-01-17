@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -18,6 +18,10 @@ var CacheMixin = require('hilo/view/CacheMixin');
  * <br/>
  * @class Text class provide basic text-display function, use DOMElement for complex text-display.
  * @augments View
+ * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties Properties parameters for the object. Includes all writable properties.
  * @module hilo/view/Text
  * @requires hilo/core/Class
@@ -26,8 +30,8 @@ var CacheMixin = require('hilo/view/CacheMixin');
  * @requires hilo/view/CacheMixin
  * @property {String} text Text to display.
  * @property {String} color Color of the text.
- * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'。
- * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'。
+ * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'. Note:Need to specify the width property of the text to take effect
+ * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'. Note:Need to specify the height property of the text to take effect.
  * @property {Boolean} outline Draw the outline of the text or fill the text.
  * @property {Number} lineSpacing The spacing between lines. Measured in px, default value is 0.
  * @property {Number} maxWidth The max length of the text, default value is 200.
@@ -81,7 +85,7 @@ var Text = Class.create(/** @lends Text.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
 
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
@@ -195,8 +199,8 @@ var Text = Class.create(/** @lends Text.prototype */{
         else context.fillStyle = me.color;
 
         //draw text lines
-        for(var i = 0; i < drawLines.length; i++){
-            var line = drawLines[i];
+        for(i = 0; i < drawLines.length; i++){
+            line = drawLines[i];
             me._drawTextLine(context, line.text, startY + line.y);
         }
     },
@@ -217,7 +221,7 @@ var Text = Class.create(/** @lends Text.prototype */{
             case 'end':
                 x = width;
                 break;
-        };
+        }
 
         if(me.outline) context.strokeText(text, x, y);
         else context.fillText(text, x, y);

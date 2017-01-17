@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for kissy
+ * Hilo 1.0.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -40,10 +40,16 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
             a = this.a, b = this.b, c = this.c, d = this.d,
             tx = this.tx, ty = this.ty;
 
+        var ma, mb, mc, md, mx, my;
         if(args.length >= 6){
-            var ma = args[0], mb = args[1], mc = args[2],
-                md = args[3], mx = args[4], my = args[5];
-        }else{
+            ma = args[0];
+            mb = args[1];
+            mc = args[2];
+            md = args[3];
+            mx = args[4];
+            my = args[5];
+        }
+        else{
             ma = mtx.a;
             mb = mtx.b;
             mc = mtx.c;

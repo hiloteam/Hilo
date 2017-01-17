@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for commonjs
+ * Hilo 1.0.2 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -10,12 +10,12 @@ var Class = require('../core/Class');
 /**
  * @language=en
  * @class EventMixin is a mixin on event related functions. Use Class.mix(target, EventMixin) to add event function onto target.
- * @mixin
  * @static
+ * @mixin
  * @module hilo/event/EventMixin
  * @requires hilo/core/Class
  */
-var EventMixin = {
+var EventMixin = /** @lends EventMixin# */{
     _listeners: null,
 
     /**
@@ -144,7 +144,7 @@ if(RawEvent){
     proto.stopImmediatePropagation = function(){
         stop && stop.call(this);
         this._stopped = true;
-    }
+    };
 }
 
 

@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -15,6 +15,10 @@ var Matrix = require('hilo/geom/Matrix');
 /**
  * @language=en
  * @class View View is the base class of all display objects
+ * @mixes EventMixin
+ * @borrows EventMixin#on as #on
+ * @borrows EventMixin#off as #off
+ * @borrows EventMixin#fire as #fire
  * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/view/View
  * @requires hilo/core/Hilo

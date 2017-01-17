@@ -1,24 +1,28 @@
 /**
- * Hilo 1.0.1 for kissy
+ * Hilo 1.0.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 KISSY.add('hilo/loader/LoadQueue', function(S, Class, EventMixin, ImageLoader, ScriptLoader){
 
 
- 
+
 //TODO: 超时timeout，失败重连次数maxTries，更多的下载器Loader，队列暂停恢复等。
 
 /**
  * @language=en
  * @class LoadQueue is a queue-like loader.
- * @param {Object} source ,resource that need to be loaded,could be a single object or array resource.
+ * @mixes EventMixin
+ * @borrows EventMixin#on as #on
+ * @borrows EventMixin#off as #off
+ * @borrows EventMixin#fire as #fire
+ * @param {Object} source resource that need to be loaded,could be a single object or array resource.
  * @module hilo/loader/LoadQueue
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/loader/ImageLoader
  * @requires hilo/loader/ScriptLoader
- * @property {Int} maxConnections ,the limited concurrent connections. default value  2.
+ * @property {Int} maxConnections the limited concurrent connections. default value  2.
  */
 var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     Mixes: EventMixin,
@@ -144,7 +148,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
      * @private
      */
     _getLoader: function(item){
-        var me = this, loader = item.loader;
+        var loader = item.loader;
         if(loader) return loader;
 
         var type = item.type || getExtension(item.src);

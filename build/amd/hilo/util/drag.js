@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.1 for amd
+ * Hilo 1.0.2 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-define('hilo/util/drag', ['hilo/core/Class', 'hilo/core/Hilo'], function(Class, Hilo){
+define('hilo/util/drag', ['hilo/core/Hilo'], function(Hilo){
 
 
 
@@ -21,7 +21,6 @@ define('hilo/util/drag', ['hilo/core/Class', 'hilo/core/Hilo'], function(Class, 
  * @mixin
  * @static
  * @module hilo/util/drag
- * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  */
 var drag = {
@@ -33,7 +32,7 @@ var drag = {
     startDrag:function(bounds){
         var that = this;
         var stage;
-        var bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
+        bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
         var mouse = {
             x:0,
             y:0,

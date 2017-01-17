@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -81,7 +81,7 @@ var Container = Class.create(/** @lends Container.prototype */{
         //Will affect depth of elements in the middle during moving
         else{
             var startIndex = childIndex < index ? childIndex : index;
-            var endIndex = childIndex < index ? index : childIndex;;
+            var endIndex = childIndex < index ? index : childIndex;
             this._updateChildren(startIndex, endIndex + 1);
         }
 
@@ -296,9 +296,9 @@ var Container = Class.create(/** @lends Container.prototype */{
      * @private
      */
     _updateChildren: function(start, end){
-        var children = this.children, child,
-            start = start || 0,
-            end = end || children.length;
+        var children = this.children, child;
+        start = start || 0;
+        end = end || children.length;
         for(var i = start; i < end; i++){
             child = children[i];
             child.depth = i + 1;

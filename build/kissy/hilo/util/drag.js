@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.1 for kissy
+ * Hilo 1.0.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/util/drag', function(S, Class, Hilo){
+KISSY.add('hilo/util/drag', function(S, Hilo){
 
 
 
@@ -21,7 +21,6 @@ KISSY.add('hilo/util/drag', function(S, Class, Hilo){
  * @mixin
  * @static
  * @module hilo/util/drag
- * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  */
 var drag = {
@@ -33,7 +32,7 @@ var drag = {
     startDrag:function(bounds){
         var that = this;
         var stage;
-        var bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
+        bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
         var mouse = {
             x:0,
             y:0,
@@ -110,5 +109,5 @@ var drag = {
 return drag;
 
 }, {
-    requires: ['hilo/core/Class', 'hilo/core/Hilo']
+    requires: ['hilo/core/Hilo']
 });

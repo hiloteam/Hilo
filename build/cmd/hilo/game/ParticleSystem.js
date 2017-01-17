@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -9,7 +9,6 @@ var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 var Container = require('hilo/view/Container');
-var Bitmap = require('hilo/view/Bitmap');
 var Drawable = require('hilo/view/Drawable');
 
 
@@ -19,35 +18,35 @@ var Drawable = require('hilo/view/Drawable');
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class ParticleSystem A particle system.
+ * @augments Container
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Container
- * @requires hilo/view/Bitmap
  * @requires hilo/view/Drawable
- * @property {Number} emitTime Emit time interval.
- * @property {Number} emitTimeVar Emit time interval variances.
- * @property {Number} emitNum Emit number.
- * @property {Number} emitNumVar Emit number variances.
- * @property {Number} emitterX The emitter x position.
- * @property {Number} emitterY The emitter y position.
- * @property {Number} totalTime Total time.
- * @property {Number} gx The gravity x value.
- * @property {Number} gy The gravity y value.
+ * @property {Number} [emitTime=0.2] Emit time interval(in second).
+ * @property {Number} [emitTimeVar=0] Emit time interval variances.
+ * @property {Number} [emitNum=10] Emit number.
+ * @property {Number} [emitNumVar=0] Emit number variances.
+ * @property {Number} [emitterX=0] The emitter x position.
+ * @property {Number} [emitterY=0] The emitter y position.
+ * @property {Number} [totalTime=Infinity] Total time.
+ * @property {Number} [gx=0] The gravity x value.
+ * @property {Number} [gy=0] The gravity y value.
  * @param {Object} properties properties The properties to create a view object, contains all writeable props of this class
  * @param {Object} properties.particle The config of particle.
- * @param {Number} properties.particle.x The x position.
- * @param {Number} properties.particle.y The y position
- * @param {Number} properties.particle.vx The x velocity.
- * @param {Number} properties.particle.vy The y velocity.
- * @param {Number} properties.particle.ax The x acceleration.
- * @param {Number} properties.particle.ay The y acceleration.
- * @param {Number} properties.particle.life The time particle lives(in second).
- * @param {Number} properties.particle.alpha The alpha.
- * @param {Number} properties.particle.alphaV The alpha decline rate.
- * @param {Number} properties.particle.scale The scale.
- * @param {Number} properties.particle.scaleV The scale decline rate.
+ * @param {Number} [properties.particle.x=0] The x position.
+ * @param {Number} [properties.particle.y=0] The y position
+ * @param {Number} [properties.particle.vx=0] The x velocity.
+ * @param {Number} [properties.particle.vy=0] The y velocity.
+ * @param {Number} [properties.particle.ax=0] The x acceleration.
+ * @param {Number} [properties.particle.ay=0] The y acceleration.
+ * @param {Number} [properties.particle.life=1] The time particle lives(in second).
+ * @param {Number} [properties.particle.alpha=1] The alpha.
+ * @param {Number} [properties.particle.alphaV=0] The alpha decline rate.
+ * @param {Number} [properties.particle.scale=1] The scale.
+ * @param {Number} [properties.particle.scaleV=0] The scale decline rate.
 */
 var ParticleSystem = (function(){
     //粒子属性
@@ -80,7 +79,7 @@ var ParticleSystem = (function(){
 
     var ParticleSystem = Class.create(/** @lends ParticleSystem.prototype */{
         Extends:Container,
-        constructor:function ParticleSystem(properties){
+        constructor:function(properties){
             this.id = this.id || properties.id || Hilo.getUid("ParticleSystem");
 
             this.emitterX = 0;
@@ -191,7 +190,7 @@ var ParticleSystem = (function(){
     */
     var Particle = Class.create({
         Extends:View,
-        constructor:function Particle(properties){
+        constructor:function(properties){
             this.id = this.id || properties.id || Hilo.getUid("Particle");
             Particle.superclass.constructor.call(this, properties);
             this.init(properties);
@@ -234,7 +233,7 @@ var ParticleSystem = (function(){
         */
         setImage: function(img, frame) {
             this.drawable = this.drawable||new Drawable();
-            var frame = frame || [0, 0, img.width, img.height];
+            frame = frame || [0, 0, img.width, img.height];
 
             this.width = frame[2];
             this.height = frame[3];

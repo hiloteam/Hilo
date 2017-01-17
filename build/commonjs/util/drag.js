@@ -1,9 +1,8 @@
 /**
- * Hilo 1.0.1 for commonjs
+ * Hilo 1.0.2 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Class = require('../core/Class');
 var Hilo = require('../core/Hilo');
 
 
@@ -22,7 +21,6 @@ var Hilo = require('../core/Hilo');
  * @mixin
  * @static
  * @module hilo/util/drag
- * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  */
 var drag = {
@@ -34,7 +32,7 @@ var drag = {
     startDrag:function(bounds){
         var that = this;
         var stage;
-        var bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
+        bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
         var mouse = {
             x:0,
             y:0,

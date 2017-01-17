@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for kissy
+ * Hilo 1.0.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -104,6 +104,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
                 }
                 break;
             case 'canvas':
+	        /* falls through */
             default:
                 this.renderer = new CanvasRenderer(props);
                 break;
@@ -142,12 +143,13 @@ var Stage = Class.create(/** @lends Stage.prototype */{
      * @param {Boolean} enabled Whether turn on or off the response method of stage DOM event. If not provided, default value is true.
      * @returns {Stage} The Stage Object, chained call supported.
      */
-    enableDOMEvent: function(type, enabled){
+    enableDOMEvent: function(types, enabled){
         var me = this,
             canvas = me.canvas,
-            types = typeof type === 'string' ? [type] : type,
-            enabled = enabled !== false,
-            handler = me._domListener || (me._domListener = function(e){me._onDOMEvent(e)});
+            handler = me._domListener || (me._domListener = function(e){me._onDOMEvent(e);});
+
+        types = typeof types === 'string' ? [types] : types;
+        enabled = enabled !== false;
 
         for(var i = 0; i < types.length; i++){
             var type = types[i];

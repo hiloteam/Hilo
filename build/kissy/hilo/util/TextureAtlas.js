@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for kissy
+ * Hilo 1.0.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -85,12 +85,13 @@ return Class.create(/** @lends TextureAtlas.prototype */{
          *  ]);
         */
         createSpriteFrames:function(name, frames, img, w, h, loop, duration){
+            var i, l;
             if(Object.prototype.toString.call(name) === "[object Array]"){
-                var frames = [];
-                for(var i = 0, l = name.length;i < l;i ++){
-                    frames = frames.concat(this.createSpriteFrames.apply(this, name[i]));
+                var res = [];
+                for(i = 0, l = name.length;i < l;i ++){
+                    res = res.concat(this.createSpriteFrames.apply(this, name[i]));
                 }
-                return frames;
+                return res;
             }
             else{
                 if(typeof(frames) === "string"){
@@ -102,7 +103,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
                             frames.push(parseInt(temp[0]));
                         }
                         else{
-                            for(var i = parseInt(temp[0]), l = parseInt(temp[1]);i <= l;i ++){
+                            for(i = parseInt(temp[0]), l = parseInt(temp[1]);i <= l;i ++){
                                 frames.push(i);
                             }
                         }
@@ -110,13 +111,13 @@ return Class.create(/** @lends TextureAtlas.prototype */{
                 }
 
                 var col = Math.floor(img.width/w);
-                for(var i = 0;i < frames.length;i ++){
+                for(i = 0;i < frames.length;i ++){
                     var n = frames[i];
                     frames[i] = {
                         rect:[w*(n%col), h*Math.floor(n/col), w, h],
                         image:img,
                         duration:duration
-                    }
+                    };
                 }
                 frames[0].name = name;
                 if(loop){
@@ -137,13 +138,14 @@ return Class.create(/** @lends TextureAtlas.prototype */{
  * @private
  */
 function parseTextureFrames(atlasData){
+    var i, len;
     var frameData = atlasData.frames;
     if(!frameData) return null;
 
     var frames = [], obj;
 
     if(frameData instanceof Array){ //frames by array
-        for(var i = 0, len = frameData.length; i < len; i++){
+        for(i = 0, len = frameData.length; i < len; i++){
             obj = frameData[i];
             frames[i] = {
                 image: atlasData.image,
@@ -156,11 +158,11 @@ function parseTextureFrames(atlasData){
         var cols = atlasData.width / frameWidth | 0;
         var rows = atlasData.height / frameHeight | 0;
         var numFrames = frameData.numFrames || cols * rows;
-        for(var i = 0; i < numFrames; i++){
+        for(i = 0; i < numFrames; i++){
             frames[i] = {
                 image: atlasData.image,
                 rect: [i%cols*frameWidth, (i/cols|0)*frameHeight, frameWidth, frameHeight]
-            }
+            };
         }
     }
 
@@ -173,6 +175,7 @@ function parseTextureFrames(atlasData){
  * @private
  */
 function parseTextureSprites(atlasData, frames){
+    var i, len;
     var spriteData = atlasData.sprites;
     if(!spriteData) return null;
 
@@ -184,7 +187,7 @@ function parseTextureSprites(atlasData, frames){
             spriteFrames = translateSpriteFrame(frames[sprite]);
         }else if(sprite instanceof Array){ //frames by array
             spriteFrames = [];
-            for(var i = 0, len = sprite.length; i < len; i++){
+            for(i = 0, len = sprite.length; i < len; i++){
                 var spriteObj = sprite[i], frameObj;
                 if(isNumber(spriteObj)){
                     spriteFrame = translateSpriteFrame(frames[spriteObj]);
@@ -197,7 +200,7 @@ function parseTextureSprites(atlasData, frames){
             }
         }else{ //frames by object
             spriteFrames = [];
-            for(var i = sprite.from; i <= sprite.to; i++){
+            for(i = sprite.from; i <= sprite.to; i++){
                 spriteFrames[i - sprite.from] = translateSpriteFrame(frames[i], sprite[i]);
             }
         }

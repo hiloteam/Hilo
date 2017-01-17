@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -19,6 +19,9 @@ var CacheMixin = require('hilo/view/CacheMixin');
  * @class Graphics class contains a group of functions for creating vector graphics.
  * @augments View
  * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties Properties parameters of the object to create. Contains all writable properties of this class.
  * @module hilo/view/Graphics
  * @requires hilo/core/Hilo
@@ -394,7 +397,7 @@ return Class.create(/** @lends Graphics.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
         }else{

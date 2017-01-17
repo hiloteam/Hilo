@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for amd
+ * Hilo 1.0.2 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -23,7 +23,7 @@ return {
      * Hilo version
      * @type String
      */
-    version:'1.0.1',
+    version:'1.0.2',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -112,7 +112,7 @@ return {
             localStorage.setItem(value, value);
             localStorage.removeItem(value);
             data.supportStorage = true;
-        }catch(e){ };
+        }catch(e){}
 
         //vendor prefix
         var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'moz' : data.opera ? 'o' : data.ie ? 'ms' : '';
@@ -132,7 +132,7 @@ return {
             supportTransform3D = testElem.offsetHeight == 3;
             doc.head.removeChild(style);
             docElem.removeChild(testElem);
-        };
+        }
         data.supportTransform = supportTransform;
         data.supportTransform3D = supportTransform3D;
 
@@ -191,9 +191,10 @@ return {
      * @returns {Object} Viewable area DOM elements. Format is: {left:0, top:0, width:100, height:100}.
      */
     getElementRect: function(elem){
+        var bounds;
         try{
             //this fails if it's a disconnected DOM node
-            var bounds = elem.getBoundingClientRect();
+            bounds = elem.getBoundingClientRect();
         }catch(e){
             bounds = {top:elem.offsetTop, left:elem.offsetLeft, right:elem.offsetLeft + elem.offsetWidth, bottom:elem.offsetTop + elem.offsetHeight};
         }
@@ -372,7 +373,7 @@ return {
 window.Hilo = Hilo;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -428,7 +429,7 @@ var create = function(properties){
     var clazz = properties.hasOwnProperty('constructor') ? properties.constructor : function(){};
     implement.call(clazz, properties);
     return clazz;
-}
+};
 
 /**
  * @language=en
@@ -485,13 +486,13 @@ var createProto = (function(){
     if(Object.__proto__){
         return function(proto){
             return {__proto__: proto};
-        }
+        };
     }else{
         var Ctor = function(){};
         return function(proto){
             Ctor.prototype = proto;
             return new Ctor();
-        }
+        };
     }
 })();
 
@@ -522,9 +523,10 @@ var mix = function(target){
     return target;
 };
 
+var defineProperty, defineProperties;
 try{
-    var defineProperty = Object.defineProperty,
-        defineProperties = Object.defineProperties;
+    defineProperty = Object.defineProperty;
+    defineProperties = Object.defineProperties;
     defineProperty({}, '$', {value:0});
 }catch(e){
     if('__defineGetter__' in Object){
@@ -552,7 +554,7 @@ return {create:create, mix:mix};
 Hilo.Class = Class;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -594,10 +596,16 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
             a = this.a, b = this.b, c = this.c, d = this.d,
             tx = this.tx, ty = this.ty;
 
+        var ma, mb, mc, md, mx, my;
         if(args.length >= 6){
-            var ma = args[0], mb = args[1], mc = args[2],
-                md = args[3], mx = args[4], my = args[5];
-        }else{
+            ma = args[0];
+            mb = args[1];
+            mc = args[2];
+            md = args[3];
+            mx = args[4];
+            my = args[5];
+        }
+        else{
             ma = mtx.a;
             mb = mtx.b;
             mc = mtx.c;
@@ -725,7 +733,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
 Hilo.Matrix = Matrix;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -737,12 +745,12 @@ var Class = Hilo.Class;
 /**
  * @language=en
  * @class EventMixin is a mixin on event related functions. Use Class.mix(target, EventMixin) to add event function onto target.
- * @mixin
  * @static
+ * @mixin
  * @module hilo/event/EventMixin
  * @requires hilo/core/Class
  */
-var EventMixin = {
+var EventMixin = /** @lends EventMixin# */{
     _listeners: null,
 
     /**
@@ -871,13 +879,13 @@ if(RawEvent){
     proto.stopImmediatePropagation = function(){
         stop && stop.call(this);
         this._stopped = true;
-    }
+    };
 }
 
 Hilo.EventMixin = EventMixin;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -954,7 +962,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
 Hilo.Drawable = Drawable;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1046,7 +1054,7 @@ var Renderer = Class.create(/** @lends Renderer.prototype */{
 Hilo.Renderer = Renderer;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1285,7 +1293,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
 Hilo.CanvasRenderer = CanvasRenderer;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1468,7 +1476,7 @@ function createDOMDrawable(view, imageObj){
 Hilo.DOMRenderer = DOMRenderer;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1536,7 +1544,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     constructor: function(properties){
         WebGLRenderer.superclass.constructor.call(this, properties);
         var that = this;
-        var gl = this.gl = this.canvas.getContext("webgl")||this.canvas.getContext('experimental-webgl');
+        this.gl = this.canvas.getContext("webgl")||this.canvas.getContext('experimental-webgl');
 
         this.maxBatchNum = WebGLRenderer.MAX_BATCH_NUM;
         this.positionStride = WebGLRenderer.ATTRIBUTE_NUM * 4;
@@ -1616,16 +1624,16 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
      * @see Renderer#draw
      */
     draw: function(target){
-        var ctx = this.context, w = target.width, h = target.height;
+        var w = target.width,
+            h = target.height;
 
         //TODO:draw background
-        var bg = target.background;
+        var bg = target.background; // jshint ignore:line
 
         //draw image
         var drawable = target.drawable, image = drawable && drawable.image;
         if(image){
-            var gl = this.gl;
-            var rect = drawable.rect, sw = rect[2], sh = rect[3], offsetX = rect[4], offsetY = rect[5];
+            var rect = drawable.rect, sw = rect[2], sh = rect[3];
             if(!w && !h){
                 //fix width/height TODO: how to get rid of this?
                 w = target.width = sw;
@@ -1655,16 +1663,16 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             float32Array[index + 8] = vertexs[7];
             uint32Array[index + 9] = tint;
 
-            float32Array[index + 10] = vertexs[8]
-            float32Array[index + 11] = vertexs[9]
-            float32Array[index + 12] = vertexs[10]
-            float32Array[index + 13] = vertexs[11]
+            float32Array[index + 10] = vertexs[8];
+            float32Array[index + 11] = vertexs[9];
+            float32Array[index + 12] = vertexs[10];
+            float32Array[index + 13] = vertexs[11];
             uint32Array[index + 14] = tint;
 
-            float32Array[index + 15] = vertexs[12]
-            float32Array[index + 16] = vertexs[13]
-            float32Array[index + 17] = vertexs[14]
-            float32Array[index + 18] = vertexs[15]
+            float32Array[index + 15] = vertexs[12];
+            float32Array[index + 16] = vertexs[13];
+            float32Array[index + 17] = vertexs[14];
+            float32Array[index + 18] = vertexs[15];
             uint32Array[index + 19] = tint;
 
             var matrix = target.__webglWorldMatrix;
@@ -1672,8 +1680,8 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
                 var x = float32Array[index + i*5];
                 var y = float32Array[index + i*5 + 1];
 
-                float32Array[index + i*5] = matrix.a*x+matrix.c*y + matrix.tx;
-                float32Array[index + i*5 + 1] = matrix.b*x+matrix.d*y + matrix.ty;
+                float32Array[index + i*5] = matrix.a*x + matrix.c*y + matrix.tx;
+                float32Array[index + i*5 + 1] = matrix.b*x + matrix.d*y + matrix.ty;
             }
 
             target.__textureImage = image;
@@ -1701,8 +1709,7 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             return;
         }
 
-        var ctx = this.context,
-            scaleX = target.scaleX,
+        var scaleX = target.scaleX,
             scaleY = target.scaleY;
 
         if(target === this.stage){
@@ -1941,7 +1948,7 @@ var Shader = function(renderer, source, attr){
     attr = attr||{};
     this.attributes = attr.attributes||[];
     this.uniforms = attr.uniforms||[];
-}
+};
 
 Shader.prototype = {
     active:function(){
@@ -2038,7 +2045,7 @@ Shader.prototype = {
 Hilo.WebGLRenderer = WebGLRenderer;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2052,6 +2059,10 @@ var Matrix = Hilo.Matrix;
 /**
  * @language=en
  * @class View View is the base class of all display objects
+ * @mixes EventMixin
+ * @borrows EventMixin#on as #on
+ * @borrows EventMixin#off as #off
+ * @borrows EventMixin#fire as #fire
  * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/view/View
  * @requires hilo/core/Hilo
@@ -2460,29 +2471,26 @@ function doSATCheck(poly1, poly2, result){
 Hilo.View = View;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
-var Class = Hilo.Class;
 var Drawable = Hilo.Drawable;
 
 
-var _cacheCanvas = Hilo.createElement('canvas');
-var _cacheContext = _cacheCanvas.getContext('2d');
+var _cacheCanvas, _cacheContext;
 /**
  * @language=en
  * @class CacheMixin A mixin that contains cache method.You can mix cache method to the target by use Class.mix(target, CacheMixin).
- * @mixin
  * @static
+ * @mixin
  * @module hilo/view/CacheMixin
  * @requires hilo/core/Hilo
- * @requires hilo/core/Class
  * @requires hilo/view/Drawable
  */
-var CacheMixin = {
+var CacheMixin = /** @lends CacheMixin# */ {
     _cacheDirty:true,
     /**
      * @language=en
@@ -2499,19 +2507,27 @@ var CacheMixin = {
      * Update the cache.
      */
     updateCache:function(){
-        //TODO:width, height自动判断
-        _cacheCanvas.width = this.width;
-        _cacheCanvas.height = this.height;
-        this._draw(_cacheContext);
-        this._cacheImage = new Image();
-        this._cacheImage.src = _cacheCanvas.toDataURL();
-        this.drawable = this.drawable||new Drawable();
-        this.drawable.init(this._cacheImage);
-        this._cacheDirty = false;
+        if(Hilo.browser.supportCanvas){
+            if(!_cacheCanvas){
+                _cacheCanvas = document.createElement('canvas');
+                _cacheContext = _cacheCanvas.getContext('2d');
+            }
+
+            //TODO:width, height自动判断
+            _cacheCanvas.width = this.width;
+            _cacheCanvas.height = this.height;
+            this._draw(_cacheContext);
+            this._cacheImage = new Image();
+            this._cacheImage.src = _cacheCanvas.toDataURL();
+            this.drawable = this.drawable||new Drawable();
+            this.drawable.init(this._cacheImage);
+            this._cacheDirty = false;
+        }
     },
     /**
      * @language=en
      * set the cache state diry.
+     * @param {Boolean} dirty is cache dirty
      */
     setCacheDirty:function(dirty){
         this._cacheDirty = dirty;
@@ -2520,7 +2536,7 @@ var CacheMixin = {
 Hilo.CacheMixin = CacheMixin;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2600,7 +2616,7 @@ var Container = Class.create(/** @lends Container.prototype */{
         //Will affect depth of elements in the middle during moving
         else{
             var startIndex = childIndex < index ? childIndex : index;
-            var endIndex = childIndex < index ? index : childIndex;;
+            var endIndex = childIndex < index ? index : childIndex;
             this._updateChildren(startIndex, endIndex + 1);
         }
 
@@ -2815,9 +2831,9 @@ var Container = Class.create(/** @lends Container.prototype */{
      * @private
      */
     _updateChildren: function(start, end){
-        var children = this.children, child,
-            start = start || 0,
-            end = end || children.length;
+        var children = this.children, child;
+        start = start || 0;
+        end = end || children.length;
         for(var i = start; i < end; i++){
             child = children[i];
             child.depth = i + 1;
@@ -2894,7 +2910,7 @@ var Container = Class.create(/** @lends Container.prototype */{
 Hilo.Container = Container;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3004,6 +3020,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
                 }
                 break;
             case 'canvas':
+	        /* falls through */
             default:
                 this.renderer = new CanvasRenderer(props);
                 break;
@@ -3042,12 +3059,13 @@ var Stage = Class.create(/** @lends Stage.prototype */{
      * @param {Boolean} enabled Whether turn on or off the response method of stage DOM event. If not provided, default value is true.
      * @returns {Stage} The Stage Object, chained call supported.
      */
-    enableDOMEvent: function(type, enabled){
+    enableDOMEvent: function(types, enabled){
         var me = this,
             canvas = me.canvas,
-            types = typeof type === 'string' ? [type] : type,
-            enabled = enabled !== false,
-            handler = me._domListener || (me._domListener = function(e){me._onDOMEvent(e)});
+            handler = me._domListener || (me._domListener = function(e){me._onDOMEvent(e);});
+
+        types = typeof types === 'string' ? [types] : types;
+        enabled = enabled !== false;
 
         for(var i = 0; i < types.length; i++){
             var type = types[i];
@@ -3160,7 +3178,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
 Hilo.Stage = Stage;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3226,7 +3244,7 @@ var Drawable = Hilo.Drawable;
             this.height = rect[3];
         }
         else if(!this.width && !this.height){
-            var rect = this.drawable.rect;
+            rect = this.drawable.rect;
             if(rect){
                 this.width = rect[2];
                 this.height = rect[3];
@@ -3239,7 +3257,7 @@ var Drawable = Hilo.Drawable;
 Hilo.Bitmap = Bitmap;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3511,7 +3529,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
 Hilo.Sprite = Sprite;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3613,7 +3631,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
 Hilo.DOMElement = DOMElement;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3631,6 +3649,9 @@ var CacheMixin = Hilo.CacheMixin;
  * @class Graphics class contains a group of functions for creating vector graphics.
  * @augments View
  * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties Properties parameters of the object to create. Contains all writable properties of this class.
  * @module hilo/view/Graphics
  * @requires hilo/core/Hilo
@@ -4006,7 +4027,7 @@ return Class.create(/** @lends Graphics.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
         }else{
@@ -4057,7 +4078,7 @@ return Class.create(/** @lends Graphics.prototype */{
 Hilo.Graphics = Graphics;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4074,6 +4095,10 @@ var CacheMixin = Hilo.CacheMixin;
  * <br/>
  * @class Text class provide basic text-display function, use DOMElement for complex text-display.
  * @augments View
+ * @mixes CacheMixin
+ * @borrows CacheMixin#cache as #cache
+ * @borrows CacheMixin#updateCache as #updateCache
+ * @borrows CacheMixin#setCacheDirty as #setCacheDirty
  * @param {Object} properties Properties parameters for the object. Includes all writable properties.
  * @module hilo/view/Text
  * @requires hilo/core/Class
@@ -4082,8 +4107,8 @@ var CacheMixin = Hilo.CacheMixin;
  * @requires hilo/view/CacheMixin
  * @property {String} text Text to display.
  * @property {String} color Color of the text.
- * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'。
- * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'。
+ * @property {String} textAlign Horizontal alignment way of the text. May be one of the following value:'start', 'end', 'left', 'right', and 'center'. Note:Need to specify the width property of the text to take effect
+ * @property {String} textVAlign Vertical alignment way of the text. May be one of the following value:'top', 'middle', 'bottom'. Note:Need to specify the height property of the text to take effect.
  * @property {Boolean} outline Draw the outline of the text or fill the text.
  * @property {Number} lineSpacing The spacing between lines. Measured in px, default value is 0.
  * @property {Number} maxWidth The max length of the text, default value is 200.
@@ -4137,7 +4162,7 @@ var Text = Class.create(/** @lends Text.prototype */{
      * @private
      */
     render: function(renderer, delta){
-        var me = this, canvas = renderer.canvas;
+        var me = this;
 
         if(renderer.renderType === 'canvas'){
             me._draw(renderer.context);
@@ -4251,8 +4276,8 @@ var Text = Class.create(/** @lends Text.prototype */{
         else context.fillStyle = me.color;
 
         //draw text lines
-        for(var i = 0; i < drawLines.length; i++){
-            var line = drawLines[i];
+        for(i = 0; i < drawLines.length; i++){
+            line = drawLines[i];
             me._drawTextLine(context, line.text, startY + line.y);
         }
     },
@@ -4273,7 +4298,7 @@ var Text = Class.create(/** @lends Text.prototype */{
             case 'end':
                 x = width;
                 break;
-        };
+        }
 
         if(me.outline) context.strokeText(text, x, y);
         else context.fillText(text, x, y);
@@ -4302,7 +4327,7 @@ var Text = Class.create(/** @lends Text.prototype */{
 Hilo.Text = Text;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4426,6 +4451,7 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
                 this.pivotX = this.width;
                 break;
             case "left":
+                /* falls through */
             default:
                 this.pivotX = 0;
                 break;
@@ -4443,7 +4469,8 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
         var glyphs = this.glyphs;
         if(!glyphs) return false;
 
-        var str = str.toString(), len = str.length, i;
+        str = str.toString();
+        var len = str.length, i;
         for(i = 0; i < len; i++){
             if(!glyphs[str.charAt(i)]) return false;
         }
@@ -4470,11 +4497,11 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
             var h = image.height/row;
             var glyphs = {};
             for(var i = 0, l = text.length;i < l;i ++){
-                charStr = str.charAt(i);
+                var charStr = str.charAt(i);
                 glyphs[charStr] = {
                     image:image,
                     rect:[w * (i % col), h * Math.floor(i / col), w, h]
-                }
+                };
             }
             return glyphs;
         }
@@ -4485,7 +4512,7 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
 Hilo.BitmapText = BitmapText;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4664,7 +4691,7 @@ var Drawable = Hilo.Drawable;
 Hilo.Button = Button;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4751,12 +4778,13 @@ return Class.create(/** @lends TextureAtlas.prototype */{
          *  ]);
         */
         createSpriteFrames:function(name, frames, img, w, h, loop, duration){
+            var i, l;
             if(Object.prototype.toString.call(name) === "[object Array]"){
-                var frames = [];
-                for(var i = 0, l = name.length;i < l;i ++){
-                    frames = frames.concat(this.createSpriteFrames.apply(this, name[i]));
+                var res = [];
+                for(i = 0, l = name.length;i < l;i ++){
+                    res = res.concat(this.createSpriteFrames.apply(this, name[i]));
                 }
-                return frames;
+                return res;
             }
             else{
                 if(typeof(frames) === "string"){
@@ -4768,7 +4796,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
                             frames.push(parseInt(temp[0]));
                         }
                         else{
-                            for(var i = parseInt(temp[0]), l = parseInt(temp[1]);i <= l;i ++){
+                            for(i = parseInt(temp[0]), l = parseInt(temp[1]);i <= l;i ++){
                                 frames.push(i);
                             }
                         }
@@ -4776,13 +4804,13 @@ return Class.create(/** @lends TextureAtlas.prototype */{
                 }
 
                 var col = Math.floor(img.width/w);
-                for(var i = 0;i < frames.length;i ++){
+                for(i = 0;i < frames.length;i ++){
                     var n = frames[i];
                     frames[i] = {
                         rect:[w*(n%col), h*Math.floor(n/col), w, h],
                         image:img,
                         duration:duration
-                    }
+                    };
                 }
                 frames[0].name = name;
                 if(loop){
@@ -4803,13 +4831,14 @@ return Class.create(/** @lends TextureAtlas.prototype */{
  * @private
  */
 function parseTextureFrames(atlasData){
+    var i, len;
     var frameData = atlasData.frames;
     if(!frameData) return null;
 
     var frames = [], obj;
 
     if(frameData instanceof Array){ //frames by array
-        for(var i = 0, len = frameData.length; i < len; i++){
+        for(i = 0, len = frameData.length; i < len; i++){
             obj = frameData[i];
             frames[i] = {
                 image: atlasData.image,
@@ -4822,11 +4851,11 @@ function parseTextureFrames(atlasData){
         var cols = atlasData.width / frameWidth | 0;
         var rows = atlasData.height / frameHeight | 0;
         var numFrames = frameData.numFrames || cols * rows;
-        for(var i = 0; i < numFrames; i++){
+        for(i = 0; i < numFrames; i++){
             frames[i] = {
                 image: atlasData.image,
                 rect: [i%cols*frameWidth, (i/cols|0)*frameHeight, frameWidth, frameHeight]
-            }
+            };
         }
     }
 
@@ -4839,6 +4868,7 @@ function parseTextureFrames(atlasData){
  * @private
  */
 function parseTextureSprites(atlasData, frames){
+    var i, len;
     var spriteData = atlasData.sprites;
     if(!spriteData) return null;
 
@@ -4850,7 +4880,7 @@ function parseTextureSprites(atlasData, frames){
             spriteFrames = translateSpriteFrame(frames[sprite]);
         }else if(sprite instanceof Array){ //frames by array
             spriteFrames = [];
-            for(var i = 0, len = sprite.length; i < len; i++){
+            for(i = 0, len = sprite.length; i < len; i++){
                 var spriteObj = sprite[i], frameObj;
                 if(isNumber(spriteObj)){
                     spriteFrame = translateSpriteFrame(frames[spriteObj]);
@@ -4863,7 +4893,7 @@ function parseTextureSprites(atlasData, frames){
             }
         }else{ //frames by object
             spriteFrames = [];
-            for(var i = sprite.from; i <= sprite.to; i++){
+            for(i = sprite.from; i <= sprite.to; i++){
                 spriteFrames[i - sprite.from] = translateSpriteFrame(frames[i], sprite[i]);
             }
         }
@@ -4897,7 +4927,7 @@ function isNumber(value){
 Hilo.TextureAtlas = TextureAtlas;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4944,11 +4974,12 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
             raf = window.requestAnimationFrame ||
                   window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
 
+        var runLoop;
         if(useRAF && raf){
             var tick = function(){
                 self._tick();
-            }
-            var runLoop = function(){
+            };
+            runLoop = function(){
                 self._intervalId = setTimeout(runLoop, interval);
                 raf(tick);
             };
@@ -5113,7 +5144,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 Hilo.Ticker = Ticker;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5157,13 +5188,12 @@ fnProto.bind = fnProto.bind || function(thisArg){
 Hilo.undefined = undefined;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
-var Class = Hilo.Class;
 
 
 /**
@@ -5180,7 +5210,6 @@ var Class = Hilo.Class;
  * @mixin
  * @static
  * @module hilo/util/drag
- * @requires hilo/core/Class
  * @requires hilo/core/Hilo
  */
 var drag = {
@@ -5192,7 +5221,7 @@ var drag = {
     startDrag:function(bounds){
         var that = this;
         var stage;
-        var bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
+        bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
         var mouse = {
             x:0,
             y:0,
@@ -5268,7 +5297,7 @@ var drag = {
 Hilo.drag = drag;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5469,8 +5498,10 @@ return Class.create(/** @lends Tween.prototype */{
     link: function(tween){
         var me = this, delay = tween.delay, startTime = me._startTime;
 
+        var plus, minus;
         if(typeof delay === 'string'){
-            var plus = delay.indexOf('+') == 0, minus = delay.indexOf('-') == 0;
+            plus = delay.indexOf('+') == 0;
+            minus = delay.indexOf('-') == 0;
             delay = plus || minus ? Number(delay.substr(1)) * (plus ? 1 : -1) : Number(delay);
         }
         tween.delay = delay;
@@ -5612,14 +5643,15 @@ return Class.create(/** @lends Tween.prototype */{
          * @returns {Object} Tween。
          */
         remove: function(tweenOrTarget){
+            var i, l;
             if(tweenOrTarget instanceof Array){
-                for(var i = 0, l = tweenOrTarget.length;i < l;i ++){
+                for(i = 0, l = tweenOrTarget.length;i < l;i ++){
                     Tween.remove(tweenOrTarget[i]);
                 }
                 return Tween;
             }
 
-            var tweens = Tween._tweens, i;
+            var tweens = Tween._tweens;
             if(tweenOrTarget instanceof Tween){
                 i = tweens.indexOf(tweenOrTarget);
                 if(i > -1) tweens.splice(i, 1);
@@ -5701,7 +5733,7 @@ return Class.create(/** @lends Tween.prototype */{
 Hilo.Tween = Tween;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5859,7 +5891,7 @@ var Circ = createEase(null,
     },
 
     function(k){
-        return sqrt(1 - --k * k);
+        return sqrt(1 - (--k * k));
     },
 
     function(k){
@@ -5965,13 +5997,13 @@ return {
     Elastic: Elastic,
     Back: Back,
     Bounce: Bounce
-}
+};
 
 })();
 Hilo.Ease = Ease;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5996,17 +6028,14 @@ var ImageLoader = Class.create({
             image.crossOrigin = data.crossOrigin;
         }
 
-        image.onload = //me.onLoad.bind(image);
-        function(){
-            me.onLoad(image)
+        image.onload = function(){
+            me.onLoad(image);
         };
         image.onerror = image.onabort = me.onError.bind(image);
-        image.src = data.src + (data.noCache ? (data.src.indexOf('?') == -1 ? '?' : '&') + 't=' + (+new Date) : '');
+        image.src = data.src + (data.noCache ? (data.src.indexOf('?') == -1 ? '?' : '&') + 't=' + (+new Date()) : '');
     },
 
-    onLoad: function(e){
-        e = e||window.event;
-        var image = e//e.target;
+    onLoad: function(image){
         image.onload = image.onerror = image.onabort = null;
         return image;
     },
@@ -6021,7 +6050,7 @@ var ImageLoader = Class.create({
 Hilo.ImageLoader = ImageLoader;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6049,11 +6078,12 @@ var ScriptLoader = Class.create({
             if(!win[callback]){
                 win[callback] = function(result){
                     delete win[callback];
-                }
+                };
             }
+
+            src += (src.indexOf('?') == -1 ? '?' : '&') + callbackName + '=' + callback;
         }
 
-        if(isJSONP) src += (src.indexOf('?') == -1 ? '?' : '&') + callbackName + '=' + callback;
         if(data.noCache) src += (src.indexOf('?') == -1 ? '?' : '&') + 't=' + (+new Date());
 
         var script = document.createElement('script');
@@ -6086,7 +6116,7 @@ var ScriptLoader = Class.create({
 Hilo.ScriptLoader = ScriptLoader;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6097,19 +6127,23 @@ var EventMixin = Hilo.EventMixin;
 var ImageLoader = Hilo.ImageLoader;
 var ScriptLoader = Hilo.ScriptLoader;
 
- 
+
 //TODO: 超时timeout，失败重连次数maxTries，更多的下载器Loader，队列暂停恢复等。
 
 /**
  * @language=en
  * @class LoadQueue is a queue-like loader.
- * @param {Object} source ,resource that need to be loaded,could be a single object or array resource.
+ * @mixes EventMixin
+ * @borrows EventMixin#on as #on
+ * @borrows EventMixin#off as #off
+ * @borrows EventMixin#fire as #fire
+ * @param {Object} source resource that need to be loaded,could be a single object or array resource.
  * @module hilo/loader/LoadQueue
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/loader/ImageLoader
  * @requires hilo/loader/ScriptLoader
- * @property {Int} maxConnections ,the limited concurrent connections. default value  2.
+ * @property {Int} maxConnections the limited concurrent connections. default value  2.
  */
 var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     Mixes: EventMixin,
@@ -6235,7 +6269,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
      * @private
      */
     _getLoader: function(item){
-        var me = this, loader = item.loader;
+        var loader = item.loader;
         if(loader) return loader;
 
         var type = item.type || getExtension(item.src);
@@ -6332,7 +6366,7 @@ function getExtension(src){
 Hilo.LoadQueue = LoadQueue;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6385,8 +6419,9 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
      */
     load: function(){
         if(!this._element){
+            var elem;
             try{
-                var elem = this._element = new Audio();
+                elem = this._element = new Audio();
                 elem.addEventListener('canplaythrough', this._onAudioEvent, false);
                 elem.addEventListener('ended', this._onAudioEvent, false);
                 elem.addEventListener('error', this._onAudioEvent, false);
@@ -6396,7 +6431,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
             }
             catch(err){
                 //ie9 某些版本有Audio对象，但是执行play,pause会报错！
-                var elem = this._element = {};
+                elem = this._element = {};
                 elem.play = elem.pause = function(){
 
                 };
@@ -6534,7 +6569,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
 Hilo.HTMLAudio = HTMLAudio;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6851,7 +6886,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 Hilo.WebAudio = WebAudio;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6949,7 +6984,7 @@ var WebSound = {
 Hilo.WebSound = WebSound;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7041,7 +7076,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
 Hilo.Camera = Camera;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7227,7 +7262,7 @@ var Camera3d = (function(){
 Hilo.Camera3d = Camera3d;
 })(window);
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7236,7 +7271,6 @@ var Hilo = window.Hilo;
 var Class = Hilo.Class;
 var View = Hilo.View;
 var Container = Hilo.Container;
-var Bitmap = Hilo.Bitmap;
 var Drawable = Hilo.Drawable;
 
 
@@ -7245,35 +7279,35 @@ var Drawable = Hilo.Drawable;
  * <iframe src='../../../examples/ParticleSystem.html?noHeader' width = '550' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class ParticleSystem A particle system.
+ * @augments Container
  * @module hilo/game/ParticleSystem
  * @requires hilo/core/Hilo
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Container
- * @requires hilo/view/Bitmap
  * @requires hilo/view/Drawable
- * @property {Number} emitTime Emit time interval.
- * @property {Number} emitTimeVar Emit time interval variances.
- * @property {Number} emitNum Emit number.
- * @property {Number} emitNumVar Emit number variances.
- * @property {Number} emitterX The emitter x position.
- * @property {Number} emitterY The emitter y position.
- * @property {Number} totalTime Total time.
- * @property {Number} gx The gravity x value.
- * @property {Number} gy The gravity y value.
+ * @property {Number} [emitTime=0.2] Emit time interval(in second).
+ * @property {Number} [emitTimeVar=0] Emit time interval variances.
+ * @property {Number} [emitNum=10] Emit number.
+ * @property {Number} [emitNumVar=0] Emit number variances.
+ * @property {Number} [emitterX=0] The emitter x position.
+ * @property {Number} [emitterY=0] The emitter y position.
+ * @property {Number} [totalTime=Infinity] Total time.
+ * @property {Number} [gx=0] The gravity x value.
+ * @property {Number} [gy=0] The gravity y value.
  * @param {Object} properties properties The properties to create a view object, contains all writeable props of this class
  * @param {Object} properties.particle The config of particle.
- * @param {Number} properties.particle.x The x position.
- * @param {Number} properties.particle.y The y position
- * @param {Number} properties.particle.vx The x velocity.
- * @param {Number} properties.particle.vy The y velocity.
- * @param {Number} properties.particle.ax The x acceleration.
- * @param {Number} properties.particle.ay The y acceleration.
- * @param {Number} properties.particle.life The time particle lives(in second).
- * @param {Number} properties.particle.alpha The alpha.
- * @param {Number} properties.particle.alphaV The alpha decline rate.
- * @param {Number} properties.particle.scale The scale.
- * @param {Number} properties.particle.scaleV The scale decline rate.
+ * @param {Number} [properties.particle.x=0] The x position.
+ * @param {Number} [properties.particle.y=0] The y position
+ * @param {Number} [properties.particle.vx=0] The x velocity.
+ * @param {Number} [properties.particle.vy=0] The y velocity.
+ * @param {Number} [properties.particle.ax=0] The x acceleration.
+ * @param {Number} [properties.particle.ay=0] The y acceleration.
+ * @param {Number} [properties.particle.life=1] The time particle lives(in second).
+ * @param {Number} [properties.particle.alpha=1] The alpha.
+ * @param {Number} [properties.particle.alphaV=0] The alpha decline rate.
+ * @param {Number} [properties.particle.scale=1] The scale.
+ * @param {Number} [properties.particle.scaleV=0] The scale decline rate.
 */
 var ParticleSystem = (function(){
     //粒子属性
@@ -7306,7 +7340,7 @@ var ParticleSystem = (function(){
 
     var ParticleSystem = Class.create(/** @lends ParticleSystem.prototype */{
         Extends:Container,
-        constructor:function ParticleSystem(properties){
+        constructor:function(properties){
             this.id = this.id || properties.id || Hilo.getUid("ParticleSystem");
 
             this.emitterX = 0;
@@ -7417,7 +7451,7 @@ var ParticleSystem = (function(){
     */
     var Particle = Class.create({
         Extends:View,
-        constructor:function Particle(properties){
+        constructor:function(properties){
             this.id = this.id || properties.id || Hilo.getUid("Particle");
             Particle.superclass.constructor.call(this, properties);
             this.init(properties);
@@ -7460,7 +7494,7 @@ var ParticleSystem = (function(){
         */
         setImage: function(img, frame) {
             this.drawable = this.drawable||new Drawable();
-            var frame = frame || [0, 0, img.width, img.height];
+            frame = frame || [0, 0, img.width, img.height];
 
             this.width = frame[2];
             this.height = frame[3];

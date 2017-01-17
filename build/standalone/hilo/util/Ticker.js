@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for standalone
+ * Hilo 1.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -46,11 +46,12 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
             raf = window.requestAnimationFrame ||
                   window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
 
+        var runLoop;
         if(useRAF && raf){
             var tick = function(){
                 self._tick();
-            }
-            var runLoop = function(){
+            };
+            runLoop = function(){
                 self._intervalId = setTimeout(runLoop, interval);
                 raf(tick);
             };

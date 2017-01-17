@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.1 for cmd
+ * Hilo 1.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -157,7 +157,7 @@ var Circ = createEase(null,
     },
 
     function(k){
-        return sqrt(1 - --k * k);
+        return sqrt(1 - (--k * k));
     },
 
     function(k){
@@ -263,7 +263,7 @@ return {
     Elastic: Elastic,
     Back: Back,
     Bounce: Bounce
-}
+};
 
 })();
 
