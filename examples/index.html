@@ -90,19 +90,21 @@
         }
 
         var examplesDict = {};
-        examples.forEach(function(originName, i){
-            var name = getExampleName(originName);
-            var elem = document.createElement('li');
-            examplesDict[name] = {
-                elem:elem,
-                originName:originName
-            };
-            elem.innerHTML = name;
-            listElem.appendChild(elem);
-            elem.onclick = function(){
-                setDemo(originName);
-            };
-        });
+        for(var i = 0;i < examples.length;i ++){
+            (function(originName, i){
+                var name = getExampleName(originName);
+                var elem = document.createElement('li');
+                examplesDict[name] = {
+                    elem:elem,
+                    originName:originName
+                };
+                elem.innerHTML = name;
+                listElem.appendChild(elem);
+                elem.onclick = function(){
+                    setDemo(originName);
+                };
+            })(examples[i], i);
+        }
 
         iframeElem.width = innerWidth - 220;
         iframeElem.height = innerHeight - 20;

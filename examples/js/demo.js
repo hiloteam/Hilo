@@ -1,11 +1,12 @@
-var renderTypes = {
-     'canvas':1,
-     'dom':1,
-     'webgl':1
+var renderTypeDict = {
+     'canvas':'canvas',
+     'dom':'dom',
+     'webgl':'webgl',
+     'forceFlash':'flash'
 };
 
 var renderType = location.search.slice(1);
-if(!renderTypes[renderType]){
+if(!renderTypeDict[renderType]){
     renderType = 'canvas';
 }
 
@@ -17,23 +18,24 @@ if(location.search.indexOf('noHeader') < 0){
     headerElem.style.display = 'block';
     var renderTypeElem = document.createElement('div');
     headerElem.appendChild(renderTypeElem);
-    var renderTypes = ['canvas', 'dom', 'webgl'];
-    renderTypes.forEach(function(type){
-        var typeElem = document.createElement('div');
-        typeElem.innerHTML = '<input type="radio" data-type="{type}">{type}</input>'.replace(/{type}/g, type);
-        typeElem.setAttribute('data-type', type);
-        typeElem.style.cssText = 'display:inline;margin-left:10px;line-height:20px;cursor:pointer;height:40px;';
-        typeElem.input = typeElem.children[0];
-        renderTypeElem.appendChild(typeElem);
-        if(type === renderType){
-            typeElem.input.checked = true;
-        }
-        typeElem.onclick = function(){
-            if(renderType !== type){
-                location.search = type;
+    for(var type in renderTypeDict){
+        (function(type){
+            var typeElem = document.createElement('div');
+            typeElem.innerHTML = '<input type="radio" data-type="{type}">{type}</input>'.replace(/{type}/g, renderTypeDict[type]);
+            typeElem.setAttribute('data-type', type);
+            typeElem.style.cssText = 'display:inline;margin-left:10px;line-height:20px;cursor:pointer;height:40px;';
+            typeElem.input = typeElem.children[0];
+            renderTypeElem.appendChild(typeElem);
+            if(type === renderType){
+                typeElem.input.checked = true;
             }
-        }
-    });
+            typeElem.onclick = function(){
+                if(renderType !== type){
+                    location.search = type;
+                }
+            }
+        })(type);
+    }
     renderTypeElem.style.cssText = 'position:absolute;right:5px;top:5px;';
 }
 else{
@@ -48,6 +50,11 @@ gameContainer.style.height = stageHeight + 'px';
 gameContainer.style.width = stageWidth + 'px';
 
 window.console = window.console||{log:function(){}};
+Array.prototype.forEach = Array.prototype.each = Array.prototype.forEach || function(callback){
+    for(var i = 0;i < this.length;i ++){
+        callback(this[i], i, this);
+    }
+};
 
 
 
