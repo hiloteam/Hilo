@@ -60,15 +60,15 @@
  */
 var Text = Class.create(/** @lends Text.prototype */{
     Extends: View,
-    Mixes:CacheMixin,
-    constructor: function(properties){
+    Mixes: CacheMixin,
+    constructor: function (properties) {
         properties = properties || {};
         this.id = this.id || properties.id || Hilo.getUid('Text');
         Text.superclass.constructor.call(this, properties);
 
         // if(!properties.width) this.width = 200; //default width
-        if(!properties.font) this.font = '12px arial'; //default font style
-        this._fontHeight = Text.measureFontHeight(this.font);
+        if (!properties.font) this.font = '12px arial'; //default font style
+        this._fontHeight = Text.measureFontHeight.call(this, this.font);
     },
 
     text: null,
@@ -94,11 +94,11 @@ var Text = Class.create(/** @lends Text.prototype */{
      * @param {String} font 要设置的字体CSS样式。
      * @returns {Text} Text对象本身。链式调用支持。
      */
-    setFont: function(font){
+    setFont: function (font) {
         var me = this;
-        if(me.font !== font){
+        if (me.font !== font) {
             me.font = font;
-            me._fontHeight = Text.measureFontHeight(font);
+            me._fontHeight = Text.measureFontHeight.call(this, font);
         }
 
         return me;
@@ -114,13 +114,18 @@ var Text = Class.create(/** @lends Text.prototype */{
      * 覆盖渲染方法。
      * @private
      */
-    render: function(renderer, delta){
+    render: function (renderer, delta) {
         var me = this;
 
-        if(renderer.renderType === 'canvas'){
-            me._draw(renderer.context);
+        if (renderer.renderType === 'canvas') {
+            if (me._cacheDirty) {
+                me._draw(renderer.context);
+            } else {
+                // we should use cache to draw to improve performance
+                renderer.draw(me);
+            }
         }
-        else if(renderer.renderType === 'dom'){
+        else if (renderer.renderType === 'dom') {
             var drawable = me.drawable;
             var domElement = drawable.domElement;
             var style = domElement.style;
@@ -135,9 +140,7 @@ var Text = Class.create(/** @lends Text.prototype */{
             domElement.innerHTML = me.text;
             renderer.draw(this);
         }
-        else{
-            //TODO:自动更新cache  TODO:auto update cache
-            me.cache();
+        else {
             renderer.draw(me);
         }
     },
@@ -152,9 +155,9 @@ var Text = Class.create(/** @lends Text.prototype */{
      * 在指定的渲染上下文上绘制文本。
      * @private
      */
-    _draw: function(context){
+    _draw: function (context) {
         var me = this, text = me.text.toString();
-        if(!text) return;
+        if (!text) return;
 
         //set drawing style
         context.font = me.font;
@@ -168,40 +171,40 @@ var Text = Class.create(/** @lends Text.prototype */{
         var i, line, w, len, wlen;
         var drawLines = [];
 
-        for(i = 0, len = lines.length; i < len; i++){
+        for (i = 0, len = lines.length; i < len; i++) {
             line = lines[i];
             w = context.measureText(line).width;
 
             //check if the line need to split
-            if(w <= me.maxWidth){
-                drawLines.push({text:line, y:height});
+            if (w <= me.maxWidth) {
+                drawLines.push({text: line, y: height});
                 // me._drawTextLine(context, line, height);
-                if(width < w) width = w;
+                if (width < w) width = w;
                 height += lineHeight;
                 continue;
             }
 
             var str = '', oldWidth = 0, newWidth, j, word;
 
-            for(j = 0, wlen = line.length; j < wlen; j++){
+            for (j = 0, wlen = line.length; j < wlen; j++) {
                 word = line[j];
                 newWidth = context.measureText(str + word).width;
 
-                if(newWidth > me.maxWidth){
-                    drawLines.push({text:str, y:height});
+                if (newWidth > me.maxWidth) {
+                    drawLines.push({text: str, y: height});
                     // me._drawTextLine(context, str, height);
-                    if(width < oldWidth) width = oldWidth;
+                    if (width < oldWidth) width = oldWidth;
                     height += lineHeight;
                     str = word;
-                }else{
+                } else {
                     oldWidth = newWidth;
                     str += word;
                 }
 
-                if(j == wlen - 1){
-                    drawLines.push({text:str, y:height});
+                if (j == wlen - 1) {
+                    drawLines.push({text: str, y: height});
                     // me._drawTextLine(context, str, height);
-                    if(str !== word && width < newWidth) width = newWidth;
+                    if (str !== word && width < newWidth) width = newWidth;
                     height += lineHeight;
                 }
             }
@@ -209,12 +212,12 @@ var Text = Class.create(/** @lends Text.prototype */{
 
         me.textWidth = width;
         me.textHeight = height;
-        if(!me.width) me.width = width;
-        if(!me.height) me.height = height;
+        if (!me.width) me.width = width;
+        if (!me.height) me.height = height;
 
         //vertical alignment
         var startY = 0;
-        switch(me.textVAlign){
+        switch (me.textVAlign) {
             case 'middle':
                 startY = me.height - me.textHeight >> 1;
                 break;
@@ -225,16 +228,16 @@ var Text = Class.create(/** @lends Text.prototype */{
 
         //draw background
         var bg = me.background;
-        if(bg){
+        if (bg) {
             context.fillStyle = bg;
             context.fillRect(0, 0, me.width, me.height);
         }
 
-        if(me.outline) context.strokeStyle = me.color;
+        if (me.outline) context.strokeStyle = me.color;
         else context.fillStyle = me.color;
 
         //draw text lines
-        for(i = 0; i < drawLines.length; i++){
+        for (i = 0; i < drawLines.length; i++) {
             line = drawLines[i];
             me._drawTextLine(context, line.text, startY + line.y);
         }
@@ -250,10 +253,10 @@ var Text = Class.create(/** @lends Text.prototype */{
      * 在指定的渲染上下文上绘制一行文本。
      * @private
      */
-    _drawTextLine: function(context, text, y){
+    _drawTextLine: function (context, text, y) {
         var me = this, x = 0, width = me.width;
 
-        switch(me.textAlign){
+        switch (me.textAlign) {
             case 'center':
                 x = width >> 1;
                 break;
@@ -263,7 +266,7 @@ var Text = Class.create(/** @lends Text.prototype */{
                 break;
         }
 
-        if(me.outline) context.strokeText(text, x, y);
+        if (me.outline) context.strokeText(text, x, y);
         else context.fillText(text, x, y);
     },
 
@@ -280,13 +283,94 @@ var Text = Class.create(/** @lends Text.prototype */{
          * @param {String} font 指定要测算的字体样式。
          * @return {Number} 返回指定字体的行高。
          */
-        measureFontHeight: function(font){
-            var docElement = document.documentElement, fontHeight;
-            var elem = Hilo.createElement('div', {style:{font:font, position:'absolute'}, innerHTML:'M'});
+        measureFontHeight: function (font) {
+            var me = this;
+            var fontHeight = 0;
+            
+            if (Hilo.browser.supportCanvas) {
+                var canvas = me._cacheCanvas;
+                var context = me._cacheContext;
 
-            docElement.appendChild(elem);
-            fontHeight = elem.offsetHeight;
-            docElement.removeChild(elem);
+                if (!canvas) {
+                    canvas = this._cacheCanvas = document.createElement('canvas');
+                    context = this._cacheContext = this._cacheCanvas.getContext('2d');
+                }
+
+                var width = Math.ceil(context.measureText('|MÉq').width);
+                var baseline = Math.ceil(context.measureText('M').width);
+                var height = 2 * baseline;
+
+                baseline = baseline * 1.4 | 0;
+
+                canvas.width = width;
+                canvas.height = height;
+
+                context.fillStyle = '#f00';
+                context.fillRect(0, 0, width, height);
+
+                context.font = font;
+
+                context.textBaseline = 'alphabetic';
+                context.fillStyle = '#000';
+                context.fillText('|MÉq', 0, baseline);
+
+                var imagedata = context.getImageData(0, 0, width, height).data;
+                var pixels = imagedata.length;
+                var line = width * 4;
+
+                var i = 0;
+                var j = 0;
+                var idx = 0;
+                var stop = false;
+
+                // scan pixel to find text ascent
+                for (i = 0; i < baseline; ++i) {
+                    for (j = 0; j < line; j += 4) {
+                        if (imagedata[idx + j] !== 255) {
+                            stop = true;
+                            break;
+                        }
+                    }
+
+                    if (!stop) {
+                        idx += line;
+                    } else {
+                        break;
+                    }
+                }
+
+                var ascent = baseline - i;
+
+                idx = pixels - line;
+                stop = false;
+
+                // scan pixel to find text descent.
+                for (i = height; i > baseline; --i) {
+                    for (j = 0; j < line; j += 4) {
+                        if (imagedata[idx + j] !== 255) {
+                            stop = true;
+                            break;
+                        }
+                    }
+
+                    if (!stop) {
+                        idx -= line;
+                    } else {
+                        break;
+                    }
+                }
+
+                fontHeight = (i - baseline) + ascent;
+
+            } else {
+                var docElement = document.documentElement;
+                var elem = Hilo.createElement('div', {style: {font: font, position: 'absolute'}, innerHTML: 'M'});
+
+                docElement.appendChild(elem);
+                fontHeight = elem.offsetHeight;
+                docElement.removeChild(elem);
+            }
+
             return fontHeight;
         }
     }
