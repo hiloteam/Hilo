@@ -4190,9 +4190,14 @@ var Text = Class.create(/** @lends Text.prototype */{
      */
     render: function(renderer, delta){
         var me = this;
-
+        
         if(renderer.renderType === 'canvas'){
-            me._draw(renderer.context);
+            if( me._cacheDirty){
+                me._draw(renderer.context);
+            }else{
+                // we should use cache to draw to improve performance
+                renderer.draw(me);
+            }
         }
         else if(renderer.renderType === 'dom'){
             var drawable = me.drawable;

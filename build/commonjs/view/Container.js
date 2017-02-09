@@ -3,8 +3,8 @@
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Hilo = require('../core/Hilo');
-var Class = require('../core/Class');
+var Hilo = require('..\core\Hilo');
+var Class = require('..\core\Class');
 var View = require('./View');
 
 

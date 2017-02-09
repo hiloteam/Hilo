@@ -3,8 +3,8 @@
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Class = require('../core/Class');
-var EventMixin = require('../event/EventMixin');
+var Class = require('..\core\Class');
+var EventMixin = require('..\event\EventMixin');
 var ImageLoader = require('./ImageLoader');
 var ScriptLoader = require('./ScriptLoader');
 
