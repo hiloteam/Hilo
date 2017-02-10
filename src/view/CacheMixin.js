@@ -60,9 +60,10 @@ var CacheMixin = /** @lends CacheMixin# */ {
                 cacheContext = this._cacheContext = this._cacheCanvas.getContext('2d');
             }
 
-            cacheCanvas.width = this.width;
-            cacheCanvas.height = this.height;
-            cacheContext.clearRect(0, 0, this.width, this.height);
+            cacheCanvas.width = Math.max(cacheCanvas.width, this.width);
+            cacheCanvas.height = Math.max(cacheCanvas.height, this.height);
+            cacheContext.clearRect(0, 0, cacheCanvas.width, cacheCanvas.height);
+
             this._draw(cacheContext);
             this._cacheImage = new Image();
             this._cacheImage.src = cacheCanvas.toDataURL();

@@ -3,7 +3,7 @@
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Class = require('../core/Class');
+var Class = require('..\core\Class');
 
 
 

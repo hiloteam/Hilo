@@ -68,7 +68,6 @@ var Text = Class.create(/** @lends Text.prototype */{
 
         // if(!properties.width) this.width = 200; //default width
         if (!properties.font) this.font = '12px arial'; //default font style
-        this._fontHeight = Text.measureFontHeight.call(this, this.font);
     },
 
     text: null,
@@ -81,6 +80,8 @@ var Text = Class.create(/** @lends Text.prototype */{
     font: null, //ready-only
     textWidth: 0, //read-only
     textHeight: 0, //read-only
+    _props: null,
+    _wordWidthCache: {},
 
     /**
      * @language=en
@@ -98,7 +99,14 @@ var Text = Class.create(/** @lends Text.prototype */{
         var me = this;
         if (me.font !== font) {
             me.font = font;
-            me._fontHeight = Text.measureFontHeight.call(this, font);
+            me._props = null;
+            me._wordWidthCache = {};
+
+            // delay the update cache
+            // so you can set text properties after text.setFont call
+            setTimeout(function(){
+                me.cache();
+            },0);
         }
 
         return me;
@@ -137,12 +145,50 @@ var Text = Class.create(/** @lends Text.prototype */{
             style.height = me.height + 'px';
             style.lineHeight = (me._fontHeight + me.lineSpacing) + 'px';
 
-            domElement.innerHTML = me.text;
             renderer.draw(this);
+
+            // when support canvas and cache = true, 
+            // we cache text into a image, 
+            // so dont need to set innerHTML again
+            if(me._cacheDirty){
+                domElement.style.backgroundImage = '';
+                domElement.innerHTML = me.text;
+            }else{
+                domElement.innerHTML = '';
+            }
         }
         else {
             renderer.draw(me);
         }
+    },
+    /**
+     * @language=en
+     * overwrite CacheMixin cache method.
+     * @param {Boolean} forceUpdate is force update cache.
+     */
+    /**
+     * @language=zh
+     * 重写CacheMixin的cache方法
+     * @param {Boolean} forceUpdate 是否强制更新缓存
+     */
+    cache: function(forceUpdate){
+        var me = this;
+        if(forceUpdate || me._cacheDirty || !me._cacheImage){
+            if(Hilo.browser.supportCanvas){
+                me._cacheCanvas = document.createElement('canvas');
+                me._cacheContext = me._cacheCanvas.getContext('2d');
+                me._setDrawingStyle(me._cacheContext);
+
+                var props = me._getTextProps(me._cacheContext, me.text);
+                me._cacheCanvas.width = props.width;
+                me._cacheCanvas.height = props.height;
+                me._props = props;
+            }
+
+            me.updateCache();
+        }
+        
+        me._cacheDirty = !forceUpdate;
     },
 
     /**
@@ -159,56 +205,15 @@ var Text = Class.create(/** @lends Text.prototype */{
         var me = this, text = me.text.toString();
         if (!text) return;
 
-        //set drawing style
-        context.font = me.font;
-        context.textAlign = me.textAlign;
-        context.textBaseline = 'top';
+        me._setDrawingStyle(context);
 
-        //find and draw all explicit lines
-        var lines = text.split(/\r\n|\r|\n|<br(?:[ \/])*>/);
-        var width = 0, height = 0;
-        var lineHeight = me._fontHeight + me.lineSpacing;
-        var i, line, w, len, wlen;
-        var drawLines = [];
-
-        for (i = 0, len = lines.length; i < len; i++) {
-            line = lines[i];
-            w = context.measureText(line).width;
-
-            //check if the line need to split
-            if (w <= me.maxWidth) {
-                drawLines.push({text: line, y: height});
-                // me._drawTextLine(context, line, height);
-                if (width < w) width = w;
-                height += lineHeight;
-                continue;
-            }
-
-            var str = '', oldWidth = 0, newWidth, j, word;
-
-            for (j = 0, wlen = line.length; j < wlen; j++) {
-                word = line[j];
-                newWidth = context.measureText(str + word).width;
-
-                if (newWidth > me.maxWidth) {
-                    drawLines.push({text: str, y: height});
-                    // me._drawTextLine(context, str, height);
-                    if (width < oldWidth) width = oldWidth;
-                    height += lineHeight;
-                    str = word;
-                } else {
-                    oldWidth = newWidth;
-                    str += word;
-                }
-
-                if (j == wlen - 1) {
-                    drawLines.push({text: str, y: height});
-                    // me._drawTextLine(context, str, height);
-                    if (str !== word && width < newWidth) width = newWidth;
-                    height += lineHeight;
-                }
-            }
+        if(!this._props){
+            this._props = this._getTextProps(context, text);
         }
+
+        var drawLines = this._props.drawLines;
+        var width = this._props.width;
+        var height = this._props.height;
 
         me.textWidth = width;
         me.textHeight = height;
@@ -237,8 +242,8 @@ var Text = Class.create(/** @lends Text.prototype */{
         else context.fillStyle = me.color;
 
         //draw text lines
-        for (i = 0; i < drawLines.length; i++) {
-            line = drawLines[i];
+        for (var i = 0; i < drawLines.length; i++) {
+            var line = drawLines[i];
             me._drawTextLine(context, line.text, startY + line.y);
         }
     },
@@ -269,7 +274,212 @@ var Text = Class.create(/** @lends Text.prototype */{
         if (me.outline) context.strokeText(text, x, y);
         else context.fillText(text, x, y);
     },
+    /**
+     * @language=en
+     * set drawing style
+     * @private
+     */
+    /**
+     * @language=zh
+     * 设置渲染样式
+     * @private
+     */
+    _setDrawingStyle: function(context){
+        //set drawing style
+        var me = this;
+        context.font = me.font;
+        context.textAlign = me.textAlign;
+        context.textBaseline = 'top';
+    },
+     /**
+     * @language=en
+     * get the text properties(width, height, line)
+     * @private
+     * @return {} return the text properties。
+     */
+    /**
+     * @language=zh
+     * 获取文本属性(width, height, line)
+     * @private
+     * @return {} 返回文本的对应属性 
+     */
+    _getTextProps: function(context, text){
+        var me = this;
+        me._fontHeight = this._measureFontHeight();
 
+        //find and draw all explicit lines
+        var lines = text.split(/\r\n|\r|\n|<br(?:[ \/])*>/);
+        var width = 0, height = 0;
+        var lineHeight = me._fontHeight + me.lineSpacing;
+        var i, line, w, len, wlen;
+        var drawLines = [];
+
+        for (i = 0, len = lines.length; i < len; i++) {
+            line = lines[i];
+            w = me._measureTextWidth(context, text);
+
+            //check if the line need to split
+            if (w <= me.maxWidth) {
+                drawLines.push({text: line, y: height});
+                // me._drawTextLine(context, line, height);
+                if (width < w) width = w;
+                height += lineHeight;
+                continue;
+            }
+
+            var str = '', oldWidth = 0, newWidth, j, word;
+
+            for (j = 0, wlen = line.length; j < wlen; j++) {
+                word = line[j];
+                newWidth = me._measureTextWidth(context, str + word);
+
+                if (newWidth > me.maxWidth) {
+                    drawLines.push({text: str, y: height});
+                    // me._drawTextLine(context, str, height);
+                    if (width < oldWidth) width = oldWidth;
+                    height += lineHeight;
+                    str = word;
+                } else {
+                    oldWidth = newWidth;
+                    str += word;
+                }
+
+                if (j == wlen - 1) {
+                    drawLines.push({text: str, y: height});
+                    // me._drawTextLine(context, str, height);
+                    if (str !== word && width < newWidth) width = newWidth;
+                    height += lineHeight;
+                }
+            }
+        }
+
+        return {
+            drawLines: drawLines,
+            width: width,
+            height: height
+        };
+    },
+     /**
+     * @language=en
+     * Measure the char width of text
+     * @private
+     * @return {Number} Return char width
+     */
+    /**
+     * @language=zh
+     * 测算单字符的宽度
+     * @private
+     * @return {Number} 返回指定字符的宽度
+     */
+    _measureTextWidth: function(context, text){
+        var width = 0;
+
+        for (var i = 0, len = text.length; i < len; i += 1) {
+            var char = text[i];
+            if (this._wordWidthCache[char]) {
+                width += this._wordWidthCache[char];
+            } else {
+                width += context.measureText(char).width;
+            }
+        }
+
+        return width;
+    },
+    /**
+     * @language=en
+     * Measure the line height of the assigned text font style.
+     * @private
+     * @return {Number} Return line height of the assigned font style.
+     */
+    /**
+     * @language=zh
+     * 测算指定字体样式的行高。
+     * @private
+     * @return {Number} 返回指定字体的行高。
+     */
+    _measureFontHeight: function () {
+        var me = this;
+        var fontHeight = 0;
+        
+        if (false){//Hilo.browser.supportCanvas) {
+            var canvas = me._cacheCanvas;
+            var context = me._cacheContext;
+
+            if (!canvas) {
+                canvas = this._cacheCanvas = document.createElement('canvas');
+                context = this._cacheContext = this._cacheCanvas.getContext('2d');
+            }
+
+            var width = Math.ceil(context.measureText('|MÉq').width);
+            var baseline = Math.ceil(context.measureText('M').width);
+            var height = 2 * baseline;
+
+            baseline = baseline * 1.4 | 0;
+
+            canvas.width = width;
+            canvas.height = height;
+
+            context.fillStyle = '#f00';
+            context.fillRect(0, 0, width, height);
+
+            context.font = this.font;
+
+            context.textBaseline = 'alphabetic';
+            context.fillStyle = '#000';
+            context.fillText('|MÉq', 0, baseline);
+
+            var imagedata = context.getImageData(0, 0, width, height).data;
+            var pixels = imagedata.length;
+            var line = width * 4;
+
+            var i = 0;
+            var j = 0;
+            var idx = 0;
+            var stop = false;
+
+            // scan pixel to find text ascent
+            for (i = 0; i < baseline; ++i) {
+                for (j = 0; j < line; j += 4) {
+                    if (imagedata[idx + j] !== 255) {
+                        stop = true;
+                        break;
+                    }
+                }
+
+                if (!stop) {
+                    idx += line;
+                } else {
+                    break;
+                }
+            }
+
+            var ascent = baseline - i;
+
+            idx = pixels - line;
+            stop = false;
+
+            // scan pixel to find text descent.
+            for (i = height; i > baseline; --i) {
+                for (j = 0; j < line; j += 4) {
+                    if (imagedata[idx + j] !== 255) {
+                        stop = true;
+                        break;
+                    }
+                }
+
+                if (!stop) {
+                    idx -= line;
+                } else {
+                    break;
+                }
+            }
+
+            return (i - baseline) + ascent;
+
+        }
+
+        return Text.measureFontHeight(me.text);
+    },
     Statics: /** @lends Text */{
         /**
          * @language=en
@@ -283,96 +493,15 @@ var Text = Class.create(/** @lends Text.prototype */{
          * @param {String} font 指定要测算的字体样式。
          * @return {Number} 返回指定字体的行高。
          */
-        measureFontHeight: function (font) {
-            var me = this;
-            var fontHeight = 0;
-            
-            if (Hilo.browser.supportCanvas) {
-                var canvas = me._cacheCanvas;
-                var context = me._cacheContext;
+        measureFontHeight: function(text){
+            var docElement = document.documentElement;
+            var elem = Hilo.createElement('div', {style: {font: this.font, position: 'absolute'}, innerHTML: '|MÉq'});
 
-                if (!canvas) {
-                    canvas = this._cacheCanvas = document.createElement('canvas');
-                    context = this._cacheContext = this._cacheCanvas.getContext('2d');
-                }
-
-                var width = Math.ceil(context.measureText('|MÉq').width);
-                var baseline = Math.ceil(context.measureText('M').width);
-                var height = 2 * baseline;
-
-                baseline = baseline * 1.4 | 0;
-
-                canvas.width = width;
-                canvas.height = height;
-
-                context.fillStyle = '#f00';
-                context.fillRect(0, 0, width, height);
-
-                context.font = font;
-
-                context.textBaseline = 'alphabetic';
-                context.fillStyle = '#000';
-                context.fillText('|MÉq', 0, baseline);
-
-                var imagedata = context.getImageData(0, 0, width, height).data;
-                var pixels = imagedata.length;
-                var line = width * 4;
-
-                var i = 0;
-                var j = 0;
-                var idx = 0;
-                var stop = false;
-
-                // scan pixel to find text ascent
-                for (i = 0; i < baseline; ++i) {
-                    for (j = 0; j < line; j += 4) {
-                        if (imagedata[idx + j] !== 255) {
-                            stop = true;
-                            break;
-                        }
-                    }
-
-                    if (!stop) {
-                        idx += line;
-                    } else {
-                        break;
-                    }
-                }
-
-                var ascent = baseline - i;
-
-                idx = pixels - line;
-                stop = false;
-
-                // scan pixel to find text descent.
-                for (i = height; i > baseline; --i) {
-                    for (j = 0; j < line; j += 4) {
-                        if (imagedata[idx + j] !== 255) {
-                            stop = true;
-                            break;
-                        }
-                    }
-
-                    if (!stop) {
-                        idx -= line;
-                    } else {
-                        break;
-                    }
-                }
-
-                fontHeight = (i - baseline) + ascent;
-
-            } else {
-                var docElement = document.documentElement;
-                var elem = Hilo.createElement('div', {style: {font: font, position: 'absolute'}, innerHTML: 'M'});
-
-                docElement.appendChild(elem);
-                fontHeight = elem.offsetHeight;
-                docElement.removeChild(elem);
-            }
+            docElement.appendChild(elem);
+            fontHeight = elem.offsetHeight;
+            docElement.removeChild(elem);
 
             return fontHeight;
         }
     }
-
 });
