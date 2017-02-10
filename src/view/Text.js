@@ -477,7 +477,7 @@ var Text = Class.create(/** @lends Text.prototype */{
 
         }
 
-        return Text.measureFontHeight(me.text);
+        return Text.measureFontHeight(me.font);
     },
     Statics: /** @lends Text */{
         /**
@@ -492,9 +492,9 @@ var Text = Class.create(/** @lends Text.prototype */{
          * @param {String} font 指定要测算的字体样式。
          * @return {Number} 返回指定字体的行高。
          */
-        measureFontHeight: function(text){
+        measureFontHeight: function(font){
             var docElement = document.documentElement;
-            var elem = Hilo.createElement('div', {style: {font: this.font, position: 'absolute'}, innerHTML: '|MÉq'});
+            var elem = Hilo.createElement('div', {style: {font: font, position: 'absolute'}, innerHTML: '|MÉq'});
 
             docElement.appendChild(elem);
             var fontHeight = elem.offsetHeight;
