@@ -67,7 +67,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
             this._draw(cacheContext);
             this._cacheImage = new Image();
             this._cacheImage.src = cacheCanvas.toDataURL();
-            this.drawable = this.drawable||new Drawable();
+            this.drawable = this.drawable || new Drawable();
             this.drawable.init(this._cacheImage);
             this._cacheDirty = false;
         }

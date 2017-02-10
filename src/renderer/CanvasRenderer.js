@@ -66,8 +66,10 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
         }
 
         //draw image
-        var drawable = target.drawable, image = drawable && drawable.image;
-        if(image){
+        var drawable = target.drawable;
+        var image = drawable && drawable.image;
+        var canvas = target._cacheCanvas;
+        if(canvas || image){
             var rect = drawable.rect, sw = rect[2], sh = rect[3], offsetX = rect[4], offsetY = rect[5];
             //ie9+浏览器宽高为0时会报错 fixed ie9 bug.
             if(!sw || !sh){
@@ -80,7 +82,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
             }
             //the pivot is the center of frame if has offset, otherwise is (0, 0)
             if(offsetX || offsetY) ctx.translate(offsetX - sw * 0.5, offsetY - sh * 0.5);
-            ctx.drawImage(image, rect[0], rect[1], sw, sh, 0, 0, w, h);
+            ctx.drawImage(canvas || image, rect[0], rect[1], sw, sh, 0, 0, w, h);
         }
     },
 
