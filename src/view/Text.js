@@ -399,9 +399,8 @@ var Text = Class.create(/** @lends Text.prototype */{
      */
     _measureFontHeight: function () {
         var me = this;
-        var fontHeight = 0;
         
-        if (false){//Hilo.browser.supportCanvas) {
+        if (Hilo.browser.supportCanvas) {
             var canvas = me._cacheCanvas;
             var context = me._cacheContext;
 
@@ -498,7 +497,7 @@ var Text = Class.create(/** @lends Text.prototype */{
             var elem = Hilo.createElement('div', {style: {font: this.font, position: 'absolute'}, innerHTML: '|MÉq'});
 
             docElement.appendChild(elem);
-            fontHeight = elem.offsetHeight;
+            var fontHeight = elem.offsetHeight;
             docElement.removeChild(elem);
 
             return fontHeight;
