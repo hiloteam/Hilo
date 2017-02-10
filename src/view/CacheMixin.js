@@ -67,6 +67,12 @@ var CacheMixin = /** @lends CacheMixin# */ {
             this._draw(cacheContext);
             this._cacheImage = new Image();
             this._cacheImage.src = cacheCanvas.toDataURL();
+
+            // firefox and safari dont read base64 image's width and height
+            // it's default to 0
+            this._cacheImage.width = cacheCanvas.width;
+            this._cacheImage.height = cacheCanvas.height;
+
             this.drawable = this.drawable || new Drawable();
             this.drawable.init(this._cacheImage);
             this._cacheDirty = false;
