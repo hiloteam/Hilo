@@ -4,7 +4,6 @@
  * Licensed under the MIT License
  */
 
-var _cacheCanvas, _cacheContext;
 /**
  * @language=en
  * @class CacheMixin A mixin that contains cache method.You can mix cache method to the target by use Class.mix(target, CacheMixin).
@@ -24,7 +23,9 @@ var _cacheCanvas, _cacheContext;
  * @requires hilo/view/Drawable
  */
 var CacheMixin = /** @lends CacheMixin# */ {
-    _cacheDirty:true,
+    _cacheDirty: true,
+    _cacheCanvas: null,
+    _cacheContext: null,
     /**
      * @language=en
      * Cache the view.
@@ -35,8 +36,8 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * 缓存到图片里。可用来提高渲染效率。
      * @param {Boolean} forceUpdate 是否强制更新缓存
      */
-    cache: function(forceUpdate){
-        if(forceUpdate || this._cacheDirty || !this._cacheImage){
+    cache: function (forceUpdate) {
+        if (forceUpdate || this._cacheDirty || !this._cacheImage) {
             this.updateCache();
         }
     },
@@ -48,20 +49,31 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * @language=zh
      * 更新缓存
      */
-    updateCache:function(){
-        if(Hilo.browser.supportCanvas){
-            if(!_cacheCanvas){
-                _cacheCanvas = document.createElement('canvas');
-                _cacheContext = _cacheCanvas.getContext('2d');
+    updateCache: function () {
+        var cacheCanvas = this._cacheCanvas;
+        var cacheContext = this._cacheContext;
+
+        if (Hilo.browser.supportCanvas) {
+            //TODO:width, height自动判断
+            if (!cacheCanvas) {
+                cacheCanvas = this._cacheCanvas = document.createElement('canvas');
+                cacheContext = this._cacheContext = this._cacheCanvas.getContext('2d');
             }
 
-            //TODO:width, height自动判断
-            _cacheCanvas.width = this.width;
-            _cacheCanvas.height = this.height;
-            this._draw(_cacheContext);
+            cacheCanvas.width = Math.max(cacheCanvas.width, this.width);
+            cacheCanvas.height = Math.max(cacheCanvas.height, this.height);
+            cacheContext.clearRect(0, 0, cacheCanvas.width, cacheCanvas.height);
+
+            this._draw(cacheContext);
             this._cacheImage = new Image();
-            this._cacheImage.src = _cacheCanvas.toDataURL();
-            this.drawable = this.drawable||new Drawable();
+            this._cacheImage.src = cacheCanvas.toDataURL();
+
+            // firefox and safari dont read base64 image's width and height
+            // it's default to 0
+            this._cacheImage.width = cacheCanvas.width;
+            this._cacheImage.height = cacheCanvas.height;
+
+            this.drawable = this.drawable || new Drawable();
             this.drawable.init(this._cacheImage);
             this._cacheDirty = false;
         }
@@ -76,7 +88,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * 设置缓存是否dirty
      * @param {Boolean} dirty 是否dirty
      */
-    setCacheDirty:function(dirty){
+    setCacheDirty: function (dirty) {
         this._cacheDirty = dirty;
     }
 };
