@@ -3,7 +3,7 @@
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Hilo = require('../core/Hilo');
+var Hilo = require('..\core\Hilo');
 var HTMLAudio = require('./HTMLAudio');
 var WebAudio = require('./WebAudio');
 

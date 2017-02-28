@@ -3,9 +3,9 @@
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Class = require('../core/Class');
+var Class = require('..\core\Class');
 var Renderer = require('./Renderer');
-var Matrix = require('../geom/Matrix');
+var Matrix = require('..\geom\Matrix');
 
 
 

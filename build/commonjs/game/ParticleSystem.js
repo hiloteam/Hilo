@@ -3,11 +3,11 @@
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Hilo = require('../core/Hilo');
-var Class = require('../core/Class');
-var View = require('../view/View');
-var Container = require('../view/Container');
-var Drawable = require('../view/Drawable');
+var Hilo = require('..\core\Hilo');
+var Class = require('..\core\Class');
+var View = require('..\view\View');
+var Container = require('..\view\Container');
+var Drawable = require('..\view\Drawable');
 
 
 
