@@ -4,7 +4,6 @@
  * Licensed under the MIT License
  */
 
-var _cacheCanvas, _cacheContext;
 /**
  * @language=en
  * @class CacheMixin A mixin that contains cache method.You can mix cache method to the target by use Class.mix(target, CacheMixin).
@@ -25,6 +24,8 @@ var _cacheCanvas, _cacheContext;
  */
 var CacheMixin = /** @lends CacheMixin# */ {
     _cacheDirty:true,
+    _cacheCanvas: null,
+    _cacheContext: null,
     /**
      * @language=en
      * Cache the view.
@@ -49,18 +50,22 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * 更新缓存
      */
     updateCache:function(){
+        var cacheCanvas = this._cacheCanvas;
+        var cacheContext = this._cacheContext;
+
         if(Hilo.browser.supportCanvas){
-            if(!_cacheCanvas){
-                _cacheCanvas = document.createElement('canvas');
-                _cacheContext = _cacheCanvas.getContext('2d');
+            //TODO:width, height自动判断
+            if (!cacheCanvas) {
+                cacheCanvas = this._cacheCanvas = document.createElement('canvas');
+                cacheContext = this._cacheContext = this._cacheCanvas.getContext('2d');
             }
 
-            //TODO:width, height自动判断
-            _cacheCanvas.width = this.width;
-            _cacheCanvas.height = this.height;
-            this._draw(_cacheContext);
+            cacheCanvas.width = this.width;
+            cacheCanvas.height = this.height;
+            cacheContext.clearRect(0, 0, this.width, this.height);
+            this._draw(cacheContext);
             this._cacheImage = new Image();
-            this._cacheImage.src = _cacheCanvas.toDataURL();
+            this._cacheImage.src = cacheCanvas.toDataURL();
             this.drawable = this.drawable||new Drawable();
             this.drawable.init(this._cacheImage);
             this._cacheDirty = false;

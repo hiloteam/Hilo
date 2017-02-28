@@ -3,10 +3,10 @@
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Class = require('../core/Class');
-var Hilo = require('../core/Hilo');
+var Class = require('..\core\Class');
+var Hilo = require('..\core\Hilo');
 var Renderer = require('./Renderer');
-var Drawable = require('../view/Drawable');
+var Drawable = require('..\view\Drawable');
 
 
 

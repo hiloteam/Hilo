@@ -3,8 +3,8 @@
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Class = require('../core/Class');
-var Hilo = require('../core/Hilo');
+var Class = require('..\core\Class');
+var Hilo = require('..\core\Hilo');
 var View = require('./View');
 var CacheMixin = require('./CacheMixin');
 
@@ -84,9 +84,14 @@ var Text = Class.create(/** @lends Text.prototype */{
      */
     render: function(renderer, delta){
         var me = this;
-
+        
         if(renderer.renderType === 'canvas'){
-            me._draw(renderer.context);
+            if( me._cacheDirty){
+                me._draw(renderer.context);
+            }else{
+                // we should use cache to draw to improve performance
+                renderer.draw(me);
+            }
         }
         else if(renderer.renderType === 'dom'){
             var drawable = me.drawable;
