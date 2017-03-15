@@ -235,7 +235,7 @@ gulp.task('npm', ['commonjs-format', 'standalone-format'], function(){
     var standaloneStream = gulp.src('build/standalone/hilo-standalone.js')
         .pipe(footer(`
             if(typeof module !== 'undefined' && module.exports){
-                module.exports = Hilo;
+                module.exports = window.Hilo;
             }
         `))
         .pipe(gulp.dest('build/commonjs'));
