@@ -162,6 +162,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
             case 'jpg':
             case 'jpeg':
             case 'gif':
+            case 'webp':
                 loader = new ImageLoader();
                 break;
             case 'js':

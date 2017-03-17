@@ -116,7 +116,7 @@ return {
         }catch(e){}
 
         //vendor prefix
-        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'moz' : data.opera ? 'o' : data.ie ? 'ms' : '';
+        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'webkit' : data.opera ? 'o' : data.ie ? 'ms' : '';
         var cssVendor = data.cssVendor = '-' + jsVendor + '-';
 
         //css transform/3d feature dectection
@@ -4229,7 +4229,12 @@ var Text = Class.create(/** @lends Text.prototype */{
         var me = this;
 
         if(renderer.renderType === 'canvas'){
-            me._draw(renderer.context);
+            if(this.drawable){
+                renderer.draw(me);
+            }
+            else{
+                me._draw(renderer.context);
+            }
         }
         else if(renderer.renderType === 'dom'){
             var drawable = me.drawable;
@@ -6376,6 +6381,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
             case 'jpg':
             case 'jpeg':
             case 'gif':
+            case 'webp':
                 loader = new ImageLoader();
                 break;
             case 'js':

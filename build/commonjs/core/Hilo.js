@@ -114,7 +114,7 @@ return {
         }catch(e){}
 
         //vendor prefix
-        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'moz' : data.opera ? 'o' : data.ie ? 'ms' : '';
+        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'webkit' : data.opera ? 'o' : data.ie ? 'ms' : '';
         var cssVendor = data.cssVendor = '-' + jsVendor + '-';
 
         //css transform/3d feature dectection
