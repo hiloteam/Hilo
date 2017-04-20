@@ -20,6 +20,8 @@
  * @property {Number} letterSpacing spacing of letter. default:0
  * @property {String} text content of bitmap text. Not writable,set this value by 'setText'
  * @property {String} textAlign property values:left、center、right, default:left,Not writable,set this property by 'setTextAlign'
+ * @property {String} textWidth property used to set text width
+ * @property {String} textHeight property used to set text height
  */
 /**
  * @language=zh
@@ -37,6 +39,8 @@
  * @property {Number} letterSpacing 字距，即字符间的间隔。默认值为0。
  * @property {String} text 位图文本的文本内容。只读属性。设置文本请使用setText方法。
  * @property {String} textAlign 文本对齐方式，值为left、center、right, 默认left。只读属性。设置文本对齐方式请使用setTextAlign方法。
+ * @property {String} textWidth 用于设置文本宽度
+ * @property {String} textHeight 用于设置文本高度
  */
 var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     Extends: Container,
@@ -46,6 +50,9 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
         BitmapText.superclass.constructor.call(this, properties);
 
         var text = properties.text + '';
+        this.textWidth = properties.width;
+        this.textHeight = properties.height;
+        
         if(text){
             this.text = '';
             this.setText(text);
@@ -58,6 +65,8 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
     letterSpacing: 0,
     text: '',
     textAlign:'left',
+    textWidth: '',
+    textHeight: '',
 
     /**
      * @language=en
@@ -115,7 +124,9 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
         else{
             bmp = new Bitmap({
                 image:cfg.image,
-                rect:cfg.rect
+                rect:cfg.rect,
+                width:this.textWidth,
+                height:this.textHeight
             });
         }
         return bmp;
