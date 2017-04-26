@@ -521,8 +521,7 @@ return Class.create(/** @lends Graphics.prototype */{
      */
     drawSVGPath: function(pathData){
         var me = this, addAction = me._addAction,
-            path = pathData.replace(/,/g, ' ').split(/(?=[a-zA-Z])/);
-
+            path = pathData.replace(/,/g, ' ').replace(/-/g, ' -').split(/(?=[a-zA-Z])/);
         addAction.call(me, ['beginPath']);
         var currentPoint = {x:0, y:0};
         var lastControlPoint = {x:0, y:0};
