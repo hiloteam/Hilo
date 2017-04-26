@@ -1,5 +1,4 @@
-var needTestRenderTypes = window._IS_TRAVIS?['canvas']:['canvas', 'webgl', 'dom'];
-
+var needTestRenderTypes = window._IS_TRAVIS?['canvas']:['canvas', 'webgl'];
 needTestRenderTypes.forEach(function(stageRenderType){
 
 describe('view:' + stageRenderType, function() {
@@ -9,8 +8,8 @@ describe('view:' + stageRenderType, function() {
         stage = new Hilo.Stage({
             container:stageElem,
             renderType:stageRenderType,
-            width:550,
-            height:400
+            width:600,
+            height:480
         });
         ticker = new Hilo.Ticker(60);
         ticker.addTick(stage);
@@ -380,6 +379,28 @@ describe('view:' + stageRenderType, function() {
             graphics.lineStyle(4, "#02d1d1").drawSVGPath(svgPath).closePath().endFill();
             utils.diffWithScreenshot('Graphics-drawSVGPath', done);
         });
+
+        !window._IS_TRAVIS && it('drawSVGPath2', function(done){
+            var svgPaths = ['M357.5,249.9c-1.8 -2.4-9,-7.5-18.7,3.9c-9.7,11.3-2.6,17.2-2.6,17.2s6.2,5.4,17-2.7 C364.1,260.2,359.3,252.3,357.5,249.9z M83.2,324.8l69.8-6.9c6.8-0.6,37.5,0.5,44.2,1.6l16.2,2.8l8.9-17.6c-80.7,8.4-145.2,0-145.2,0 C79.5,309.2,82,316.2,83.2,324.8zM347.6,183.9c0,0-27.5-0.3-58.4,17.5c-7.9,4.6-14.4,11.2-19.2,18.9 c-17.5,28.8-64.6,108.4-80.5,158.4c-19.7,61.9,53.4,30,74.1,21.6c0,0-74.5,29.5-44.5-39.4s63.3-135.5,83.4-150.9 S337.4,187.3,347.6,183.9zM96.2,216c0,0,36.2,4.4,66-3.4l1.9,4.5c0,0-104.8,176.9-106.6,190.8c0,0-14.6-3.9-36.4,8.2 c0,0,63.1-81.6,104.8-170c0,0,13.1-23.9-5.7-22.8c0,0-5.3,0-21.6,0.5L96.2,216z M453.5,365.4c0,0-135.6,114.4-51.9-38.7l17.1-26.6c0,0,166.2-114.7,147.7-184.6c0,0-15.4-8.1-46.8,15.2c-14.5,10.8-26.8,24.2-36.8,39.3c-25.5,38.7-92.2,140.9-118.8,192.4c0,0-131.1,114.1-39-38.3 c0,0,5.9-25.1-16,0c-21.9,25.1-33.8,52-37.5,66.4c-3.8,14.4,8.3,60,88.5-16.2c0,0-17.1,33.4,2.7,40.3c30.2,6.7,48.8,3.4,83.8-35.3 c0,0-10,24.4-0.6,31.9s40.6,16.2,80.6-60.6S478.5,324.1,453.5,365.4z M545.3,128.5c0,0,24.4,55.6-123.1,159.4 C422.2,287.9,506,134.1,545.3,128.5z M488.5,397.2c-5.6,4.5-11.8,6.7-16.6,7.8c-4.3,0.9-8.4-2.5-8-6.9c4.7-52.2,37.7-70,51.8-75.2 c3.1-1.1,6.2,1.4,5.8,4.6C517.8,360.5,503.3,385.3,488.5,397.2z', 'M10 10 H 90 V 90 H 10 L 10 10', 'M10 10 H 90 V 90 H 10Z', 'M10 10 h 80 v 80 h -80 Z', 'M10 10 C 20 20, 40 20, 50 10', 'M70 10 C 70 20, 120 20, 120 10', 'M130 10 C 120 20, 180 20, 170 10', 'M10 60 C 20 80, 40 80, 50 60', 'M70 60 C 70 80, 110 80, 110 60', 'M130 60 C 120 80, 180 80, 170 60', 'M10 110 C 20 140, 40 140, 50 110', 'M70 110 C 70 140, 110 140, 110 110', 'M130 110 C 120 140, 180 140, 170 110', 'M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80', 'M10 80 Q 95 10 180 80', 'M10 80 Q 52.5 10, 95 80 T 180 80'];
+            var w = 100;
+            var h = 40;
+            svgPaths.forEach(function(svgPath, index){
+                var x = (index-1) % 3 * w;
+                var y = Math.floor((index-1) / 3) * h;
+                var g = new Hilo.Graphics({width:300, height:300, x:x, y:y});
+                if(index === 0){
+                    g.width = 600;
+                    g.height = 600;
+                    g.x = g.y = 0;
+                    g.beginFill("#eb6057", 1);
+                }
+                else{
+                    g.lineStyle(3, "#69f");
+                }
+                g.drawSVGPath(svgPath).endFill().addTo(stage);
+            });
+            utils.diffWithScreenshot('Graphics-drawSVGPath2', done);
+        });
     });
 
     describe('Sprite', function() {
@@ -436,18 +457,18 @@ describe('view:' + stageRenderType, function() {
         it('updateViewport', function(){
             stageElem.style.left = '10px';
             stageElem.style.marginTop = '20px';
-            stage.updateViewport().should.eql({left:10, top:20, width:550, height:400});
+            stage.updateViewport().should.eql({left:10, top:20, width:600, height:480});
             stageElem.style.left = '';
             stageElem.style.marginTop = '';
         });
 
         it('resize', function(){
             if(stageRenderType !== 'dom'){
-                stage.canvas.width.should.equal(550);
-                stage.canvas.height.should.equal(400);
-                stage.canvas.style.width.should.equal('550px');
-                stage.canvas.style.height.should.equal('400px');
-                stage.viewport.should.eql({left:0, top:0, width:550, height:400});
+                stage.canvas.width.should.equal(600);
+                stage.canvas.height.should.equal(480);
+                stage.canvas.style.width.should.equal('600px');
+                stage.canvas.style.height.should.equal('480px');
+                stage.viewport.should.eql({left:0, top:0, width:600, height:480});
 
                 stage.resize(400, 300);
                 stage.canvas.width.should.equal(400);

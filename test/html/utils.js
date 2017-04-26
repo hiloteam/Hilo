@@ -56,11 +56,13 @@ var utils = {
      */
     takeScreenshot:function(name, callback) {
         var that = this;
-        _macaca_uitest.screenshot(name + '.png', function() {
-          if (callback) {
-            that.loadImage('../screenshot/' + name + '.png', callback);
-          }
-        });
+        setTimeout(function(){
+            _macaca_uitest.screenshot(name + '.png', function() {
+              if (callback) {
+                that.loadImage('../screenshot/' + name + '.png', callback);
+              }
+            });
+        }, window._IS_TRAVIS?1000:100);
     },
     /**
      * 加载图片
