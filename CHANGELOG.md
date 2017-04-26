@@ -1,3 +1,24 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/hiloteam/hilo/compare/v1.0.2...v1.0.3) (2017-04-26)
+
+
+### Bug Fixes
+
+* cacheMixin load image bug ([91affbb](https://github.com/hiloteam/hilo/commit/91affbb))
+* firefox use webkit vendor, close [#77](https://github.com/hiloteam/hilo/issues/77) ([7357c7d](https://github.com/hiloteam/hilo/commit/7357c7d)), closes [#77](https://github.com/hiloteam/hilo/issues/77)
+* graphics.drawSVGPath negative number bug ([560bdf8](https://github.com/hiloteam/hilo/commit/560bdf8))
+* npm module standalone bug ([2d4b369](https://github.com/hiloteam/hilo/commit/2d4b369))
+* polyfill use if to judge that some environments use Object.freeze to freeze the prototype will throw an exception ([ba4ac94](https://github.com/hiloteam/hilo/commit/ba4ac94))
+* ticker.start(true) use raf when fps >= 60 ([7d5e1a0](https://github.com/hiloteam/hilo/commit/7d5e1a0))
+* Tween.to & Tween.from params add default value ([653cf36](https://github.com/hiloteam/hilo/commit/653cf36))
+
+
+### Features
+
+* add typescript definitions ([#83](https://github.com/hiloteam/hilo/issues/83)) ([cd3f4d6](https://github.com/hiloteam/hilo/commit/cd3f4d6))
+* graphics.drawSVGPath supports all attributes except Arcs, close [#85](https://github.com/hiloteam/hilo/issues/85) ([2002f04](https://github.com/hiloteam/hilo/commit/2002f04)), closes [#85](https://github.com/hiloteam/hilo/issues/85)
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/hiloteam/hilo/compare/v1.0.1...v1.0.2) (2016-12-06)
 

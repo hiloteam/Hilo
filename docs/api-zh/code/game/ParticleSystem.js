@@ -70,7 +70,7 @@ var ParticleSystem = (function(){
 
     var ParticleSystem = Class.create(/** @lends ParticleSystem.prototype */{
         Extends:Container,
-        constructor:function ParticleSystem(properties){
+        constructor:function(properties){
             this.id = this.id || properties.id || Hilo.getUid("ParticleSystem");
 
             this.emitterX = 0;
@@ -175,7 +175,7 @@ var ParticleSystem = (function(){
     */
     var Particle = Class.create({
         Extends:View,
-        constructor:function Particle(properties){
+        constructor:function(properties){
             this.id = this.id || properties.id || Hilo.getUid("Particle");
             Particle.superclass.constructor.call(this, properties);
             this.init(properties);

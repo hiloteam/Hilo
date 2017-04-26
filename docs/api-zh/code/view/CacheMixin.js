@@ -4,8 +4,7 @@
  * Licensed under the MIT License
  */
 
-var _cacheCanvas = Hilo.createElement('canvas');
-var _cacheContext = _cacheCanvas.getContext('2d');
+var _cacheCanvas, _cacheContext;
 /**
  * @class CacheMixin是一个包含cache功能的mixin。可以通过 Class.mix(target, CacheMixin) 来为target增加cache功能。
  * @static
@@ -21,7 +20,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * @param {Boolean} forceUpdate 是否强制更新缓存
      */
     cache: function(forceUpdate){
-        if(forceUpdate || this._cacheDirty || !this._cacheImage){
+        if(forceUpdate || this._cacheDirty || !this.drawable){
             this.updateCache();
         }
     },
@@ -29,15 +28,22 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * 更新缓存
      */
     updateCache:function(){
-        //TODO:width, height自动判断
-        _cacheCanvas.width = this.width;
-        _cacheCanvas.height = this.height;
-        this._draw(_cacheContext);
-        this._cacheImage = new Image();
-        this._cacheImage.src = _cacheCanvas.toDataURL();
-        this.drawable = this.drawable||new Drawable();
-        this.drawable.init(this._cacheImage);
-        this._cacheDirty = false;
+        if(Hilo.browser.supportCanvas){
+            if(!_cacheCanvas){
+                _cacheCanvas = document.createElement('canvas');
+                _cacheContext = _cacheCanvas.getContext('2d');
+            }
+
+            //TODO:width, height自动判断
+            _cacheCanvas.width = this.width;
+            _cacheCanvas.height = this.height;
+            this._draw(_cacheContext);
+            this.drawable = this.drawable||new Drawable();
+            this.drawable.init({
+                image:_cacheCanvas.toDataURL()
+            });
+            this._cacheDirty = false;
+        }
     },
     /**
      * 设置缓存是否dirty

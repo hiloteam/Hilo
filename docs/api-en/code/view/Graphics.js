@@ -310,7 +310,7 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
-     * Draw a path from the SVG data given by parameters.
+     * Draw a path from the SVG data given by parameters. Not support Arcs.
      * Demo:
      * <p>var path = 'M250 150 L150 350 L350 350 Z';</p>
      * <p>var shape = new Hilo.Graphics({width:500, height:500});</p>
@@ -320,29 +320,136 @@ return Class.create(/** @lends Graphics.prototype */{
      */
     drawSVGPath: function(pathData){
         var me = this, addAction = me._addAction,
-            path = pathData.split(/,| (?=[a-zA-Z])/);
-
+            path = pathData.replace(/,/g, ' ').replace(/-/g, ' -').split(/(?=[a-zA-Z])/);
         addAction.call(me, ['beginPath']);
+        var currentPoint = {x:0, y:0};
+        var lastControlPoint = {x:0, y:0};
+        var lastCmd;
         for(var i = 0, len = path.length; i < len; i++){
-            var str = path[i], cmd = str[0].toUpperCase(), p = str.substring(1).split(/,| /);
-            if(p[0].length == 0) p.shift();
+            var str = path[i];
+            if(!str.length){
+                continue;
+            }
+            var realCmd = str[0];
+            var cmd = realCmd.toUpperCase();
+            var p = this._getSVGParams(str);
+            var useRelative = cmd !== realCmd;
 
             switch(cmd){
                 case 'M':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
                     addAction.call(me, ['moveTo', p[0], p[1]]);
+                    this._setCurrentPoint(currentPoint, p[0], p[1]);
                     break;
                 case 'L':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
                     addAction.call(me, ['lineTo', p[0], p[1]]);
+                    this._setCurrentPoint(currentPoint, p[0], p[1]);
                     break;
-                case 'C':
-                    addAction.call(me, ['bezierCurveTo', p[0], p[1], p[2], p[3], p[4], p[5]]);
+                case 'H':
+                    if(useRelative){
+                        p[0] += currentPoint.x;
+                    }
+                    addAction.call(me, ['lineTo', p[0], currentPoint.y]);
+                    currentPoint.x = p[0];
+                    break;
+                case 'V':
+                    if(useRelative){
+                        p[0] += currentPoint.y;
+                    }
+                    addAction.call(me, ['lineTo', currentPoint.x, p[0]]);
+                    currentPoint.y = p[0];
                     break;
                 case 'Z':
                     addAction.call(me, ['closePath']);
                     break;
+                case 'C':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
+                    addAction.call(me, ['bezierCurveTo', p[0], p[1], p[2], p[3], p[4], p[5]]);
+                    lastControlPoint.x = p[2];
+                    lastControlPoint.y = p[3];
+                    this._setCurrentPoint(currentPoint, p[4], p[5]);
+                    break;
+                case 'S':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
+                    if(lastCmd === 'C' || lastCmd === 'S'){
+                        controlPoint = this._getReflectionPoint(currentPoint, lastControlPoint);
+                    }
+                    else{
+                        controlPoint = currentPoint;
+                    }
+                    addAction.call(me, ['bezierCurveTo', controlPoint.x, controlPoint.y, p[0], p[1], p[2], p[3]]);
+                    lastControlPoint.x = p[0];
+                    lastControlPoint.y = p[1];
+                    this._setCurrentPoint(currentPoint, p[2], p[3]);
+                    break;
+                case 'Q':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
+                    addAction.call(me, ['quadraticCurveTo', p[0], p[1], p[2], p[3]]);
+                    lastControlPoint.x = p[0];
+                    lastControlPoint.y = p[1];
+                    this._setCurrentPoint(currentPoint, p[2], p[3]);
+                    break;
+                case 'T':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
+                    var controlPoint;
+                    if(lastCmd === 'Q' || lastCmd === 'T'){
+                        controlPoint = this._getReflectionPoint(currentPoint, lastControlPoint);
+                    }
+                    else{
+                        controlPoint = currentPoint;
+                    }
+                    addAction.call(me, ['quadraticCurveTo', controlPoint.x, controlPoint.y, p[0], p[1]]);
+                    lastControlPoint = controlPoint;
+                    this._setCurrentPoint(currentPoint, p[0], p[1]);
+                    break;                
             }
+            lastCmd = cmd;
+            
         }
         return me;
+    },
+    _getSVGParams:function(str){
+        var p = str.substring(1).replace(/[\s]+$|^[\s]+/g, '').split(/[\s]+/);
+        if(p[0].length == 0) {
+            p.shift();
+        }
+        for(var i = 0, l = p.length;i < l;i ++){
+            p[i] = parseFloat(p[i]);
+        }
+        return p;
+    },
+    _convertToAbsolute:function(currentPoint, data){
+        for(var i = 0, l = data.length;i < l;i ++){
+            if(i%2 === 0){
+                data[i] += currentPoint.x;
+            }
+            else{
+                data[i] += currentPoint.y;
+            }
+        }
+    },
+    _setCurrentPoint:function(currentPoint, x, y){
+        currentPoint.x = x;
+        currentPoint.y = y;
+    },
+    _getReflectionPoint:function(centerPoint, point){
+        return {
+            x:centerPoint.x * 2 - point.x,
+            y:centerPoint.y * 2 - point.y
+        };
     },
 
     /**

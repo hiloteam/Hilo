@@ -77,7 +77,12 @@ var Text = Class.create(/** @lends Text.prototype */{
         var me = this;
 
         if(renderer.renderType === 'canvas'){
-            me._draw(renderer.context);
+            if(this.drawable){
+                renderer.draw(me);
+            }
+            else{
+                me._draw(renderer.context);
+            }
         }
         else if(renderer.renderType === 'dom'){
             var drawable = me.drawable;

@@ -82,7 +82,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     target: null,
-    duration: 0,
+    duration: 1000,
     delay: 0,
     paused: false,
     loop: false,
@@ -369,6 +369,7 @@ return Class.create(/** @lends Tween.prototype */{
          * @returns {Tween|Array} 一个Tween实例对象或Tween实例数组。
          */
         fromTo: function(target, fromProps, toProps, params){
+            params = params || {};
             var isArray = target instanceof Array;
             target = isArray ? target : [target];
 
