@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.2 for amd
+ * Hilo 1.0.4 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -46,13 +46,11 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
                   window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
 
         var runLoop;
-        if(useRAF && raf){
-            var tick = function(){
-                self._tick();
-            };
+        if(useRAF && raf && interval < 17){
+            this._useRAF = true;
             runLoop = function(){
-                self._intervalId = setTimeout(runLoop, interval);
-                raf(tick);
+                self._intervalId = raf(runLoop);
+                self._tick();
             };
         }else{
             runLoop = function(){
@@ -61,6 +59,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
             };
         }
 
+        this._paused = false;
         runLoop();
     },
 
@@ -69,9 +68,17 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
      * Stop the ticker.
      */
     stop: function(){
-        clearTimeout(this._intervalId);
+        if(this._useRAF){
+            var cancelRAF = window.cancelAnimationFrame ||
+                  window[Hilo.browser.jsVendor + 'CancelAnimationFrame'];
+            cancelRAF(this._intervalId);
+        }
+        else{
+            clearTimeout(this._intervalId);
+        }
         this._intervalId = null;
         this._lastTime = 0;
+        this._paused = true;
     },
 
     /**

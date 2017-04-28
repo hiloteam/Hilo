@@ -1,3 +1,11 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/hiloteam/hilo/compare/v1.0.3...v1.0.4) (2017-04-28)
+
+
+### Bug Fixes
+
+* Tween Ease.Back bug ([1ecd93c](https://github.com/hiloteam/hilo/commit/1ecd93c))
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/hiloteam/hilo/compare/v1.0.2...v1.0.3) (2017-04-26)
 
@@ -15,6 +23,7 @@
 
 ### Features
 
+* loadQueue add support for webp (#76)([6b00c62](https://github.com/hiloteam/hilo/commit/6b00c62))
 * add typescript definitions ([#83](https://github.com/hiloteam/hilo/issues/83)) ([cd3f4d6](https://github.com/hiloteam/hilo/commit/cd3f4d6))
 * graphics.drawSVGPath supports all attributes except Arcs, close [#85](https://github.com/hiloteam/hilo/issues/85) ([2002f04](https://github.com/hiloteam/hilo/commit/2002f04)), closes [#85](https://github.com/hiloteam/hilo/issues/85)
 

@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -88,7 +88,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     target: null,
-    duration: 0,
+    duration: 1000,
     delay: 0,
     paused: false,
     loop: false,
@@ -240,11 +240,15 @@ return Class.create(/** @lends Tween.prototype */{
 
         //elapsed ratio
         var ratio = elapsed / me.duration, complete = false, callback;
-        ratio = ratio <= 0 ? 0 : ratio >= 1 ? 1 : me.ease ? me.ease(ratio) : ratio;
+        ratio = ratio <= 0 ? 0 : ratio >= 1 ? 1 : ratio;
+        var easeRatio = me.ease ? me.ease(ratio) : ratio;
 
         if(me.reverse){
             //backward
-            if(me._reverseFlag < 0) ratio = 1 - ratio;
+            if(me._reverseFlag < 0) {
+                ratio = 1 - ratio;
+                easeRatio = 1 - easeRatio;
+            }
             //forward
             if(ratio < 1e-7){
                 //repeat complete or not loop
@@ -263,7 +267,7 @@ return Class.create(/** @lends Tween.prototype */{
         me.time = elapsed;
 
         //render & update callback
-        me._render(ratio);
+        me._render(easeRatio);
         (callback = me.onUpdate) && callback.call(me, ratio, me);
 
         //check if complete
@@ -390,6 +394,7 @@ return Class.create(/** @lends Tween.prototype */{
          * @returns {Tween|Array} An tween instance or an array of tween instance.
          */
         fromTo: function(target, fromProps, toProps, params){
+            params = params || {};
             var isArray = target instanceof Array;
             target = isArray ? target : [target];
 

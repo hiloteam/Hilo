@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -24,7 +24,7 @@ return {
      * Hilo version
      * @type String
      */
-    version:'1.0.2',
+    version:'1.0.4',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -376,7 +376,7 @@ return Hilo;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -559,7 +559,7 @@ return Class;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -741,7 +741,7 @@ return Matrix;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -896,7 +896,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -977,7 +977,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1073,7 +1073,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1316,7 +1316,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1503,7 +1503,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2075,7 +2075,7 @@ return WebGLRenderer;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2505,7 +2505,7 @@ return View;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2534,7 +2534,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * @param {Boolean} forceUpdate is force update cache.
      */
     cache: function(forceUpdate){
-        if(forceUpdate || this._cacheDirty || !this._cacheImage){
+        if(forceUpdate || this._cacheDirty || !this.drawable){
             this.updateCache();
         }
     },
@@ -2553,10 +2553,10 @@ var CacheMixin = /** @lends CacheMixin# */ {
             _cacheCanvas.width = this.width;
             _cacheCanvas.height = this.height;
             this._draw(_cacheContext);
-            this._cacheImage = new Image();
-            this._cacheImage.src = _cacheCanvas.toDataURL();
             this.drawable = this.drawable||new Drawable();
-            this.drawable.init(this._cacheImage);
+            this.drawable.init({
+                image:_cacheCanvas.toDataURL()
+            });
             this._cacheDirty = false;
         }
     },
@@ -2574,7 +2574,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2952,7 +2952,7 @@ return Container;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3224,7 +3224,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3307,7 +3307,7 @@ return Bitmap;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3583,7 +3583,7 @@ return Sprite;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3689,7 +3689,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4027,7 +4027,7 @@ return Class.create(/** @lends Graphics.prototype */{
 
     /**
      * @language=en
-     * Draw a path from the SVG data given by parameters.
+     * Draw a path from the SVG data given by parameters. Not support Arcs.
      * Demo:
      * <p>var path = 'M250 150 L150 350 L350 350 Z';</p>
      * <p>var shape = new Hilo.Graphics({width:500, height:500});</p>
@@ -4037,29 +4037,136 @@ return Class.create(/** @lends Graphics.prototype */{
      */
     drawSVGPath: function(pathData){
         var me = this, addAction = me._addAction,
-            path = pathData.split(/,| (?=[a-zA-Z])/);
-
+            path = pathData.replace(/,/g, ' ').replace(/-/g, ' -').split(/(?=[a-zA-Z])/);
         addAction.call(me, ['beginPath']);
+        var currentPoint = {x:0, y:0};
+        var lastControlPoint = {x:0, y:0};
+        var lastCmd;
         for(var i = 0, len = path.length; i < len; i++){
-            var str = path[i], cmd = str[0].toUpperCase(), p = str.substring(1).split(/,| /);
-            if(p[0].length == 0) p.shift();
+            var str = path[i];
+            if(!str.length){
+                continue;
+            }
+            var realCmd = str[0];
+            var cmd = realCmd.toUpperCase();
+            var p = this._getSVGParams(str);
+            var useRelative = cmd !== realCmd;
 
             switch(cmd){
                 case 'M':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
                     addAction.call(me, ['moveTo', p[0], p[1]]);
+                    this._setCurrentPoint(currentPoint, p[0], p[1]);
                     break;
                 case 'L':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
                     addAction.call(me, ['lineTo', p[0], p[1]]);
+                    this._setCurrentPoint(currentPoint, p[0], p[1]);
                     break;
-                case 'C':
-                    addAction.call(me, ['bezierCurveTo', p[0], p[1], p[2], p[3], p[4], p[5]]);
+                case 'H':
+                    if(useRelative){
+                        p[0] += currentPoint.x;
+                    }
+                    addAction.call(me, ['lineTo', p[0], currentPoint.y]);
+                    currentPoint.x = p[0];
+                    break;
+                case 'V':
+                    if(useRelative){
+                        p[0] += currentPoint.y;
+                    }
+                    addAction.call(me, ['lineTo', currentPoint.x, p[0]]);
+                    currentPoint.y = p[0];
                     break;
                 case 'Z':
                     addAction.call(me, ['closePath']);
                     break;
+                case 'C':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
+                    addAction.call(me, ['bezierCurveTo', p[0], p[1], p[2], p[3], p[4], p[5]]);
+                    lastControlPoint.x = p[2];
+                    lastControlPoint.y = p[3];
+                    this._setCurrentPoint(currentPoint, p[4], p[5]);
+                    break;
+                case 'S':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
+                    if(lastCmd === 'C' || lastCmd === 'S'){
+                        controlPoint = this._getReflectionPoint(currentPoint, lastControlPoint);
+                    }
+                    else{
+                        controlPoint = currentPoint;
+                    }
+                    addAction.call(me, ['bezierCurveTo', controlPoint.x, controlPoint.y, p[0], p[1], p[2], p[3]]);
+                    lastControlPoint.x = p[0];
+                    lastControlPoint.y = p[1];
+                    this._setCurrentPoint(currentPoint, p[2], p[3]);
+                    break;
+                case 'Q':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
+                    addAction.call(me, ['quadraticCurveTo', p[0], p[1], p[2], p[3]]);
+                    lastControlPoint.x = p[0];
+                    lastControlPoint.y = p[1];
+                    this._setCurrentPoint(currentPoint, p[2], p[3]);
+                    break;
+                case 'T':
+                    if(useRelative){
+                        this._convertToAbsolute(currentPoint, p);
+                    }
+                    var controlPoint;
+                    if(lastCmd === 'Q' || lastCmd === 'T'){
+                        controlPoint = this._getReflectionPoint(currentPoint, lastControlPoint);
+                    }
+                    else{
+                        controlPoint = currentPoint;
+                    }
+                    addAction.call(me, ['quadraticCurveTo', controlPoint.x, controlPoint.y, p[0], p[1]]);
+                    lastControlPoint = controlPoint;
+                    this._setCurrentPoint(currentPoint, p[0], p[1]);
+                    break;                
             }
+            lastCmd = cmd;
+            
         }
         return me;
+    },
+    _getSVGParams:function(str){
+        var p = str.substring(1).replace(/[\s]+$|^[\s]+/g, '').split(/[\s]+/);
+        if(p[0].length == 0) {
+            p.shift();
+        }
+        for(var i = 0, l = p.length;i < l;i ++){
+            p[i] = parseFloat(p[i]);
+        }
+        return p;
+    },
+    _convertToAbsolute:function(currentPoint, data){
+        for(var i = 0, l = data.length;i < l;i ++){
+            if(i%2 === 0){
+                data[i] += currentPoint.x;
+            }
+            else{
+                data[i] += currentPoint.y;
+            }
+        }
+    },
+    _setCurrentPoint:function(currentPoint, x, y){
+        currentPoint.x = x;
+        currentPoint.y = y;
+    },
+    _getReflectionPoint:function(centerPoint, point){
+        return {
+            x:centerPoint.x * 2 - point.x,
+            y:centerPoint.y * 2 - point.y
+        };
     },
 
     /**
@@ -4140,7 +4247,7 @@ return Graphics;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4398,7 +4505,7 @@ return Text;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4587,7 +4694,7 @@ return BitmapText;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4770,7 +4877,7 @@ return Button;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5009,7 +5116,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5059,13 +5166,11 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
                   window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
 
         var runLoop;
-        if(useRAF && raf){
-            var tick = function(){
-                self._tick();
-            };
+        if(useRAF && raf && interval < 17){
+            this._useRAF = true;
             runLoop = function(){
-                self._intervalId = setTimeout(runLoop, interval);
-                raf(tick);
+                self._intervalId = raf(runLoop);
+                self._tick();
             };
         }else{
             runLoop = function(){
@@ -5074,6 +5179,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
             };
         }
 
+        this._paused = false;
         runLoop();
     },
 
@@ -5082,9 +5188,17 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
      * Stop the ticker.
      */
     stop: function(){
-        clearTimeout(this._intervalId);
+        if(this._useRAF){
+            var cancelRAF = window.cancelAnimationFrame ||
+                  window[Hilo.browser.jsVendor + 'CancelAnimationFrame'];
+            cancelRAF(this._intervalId);
+        }
+        else{
+            clearTimeout(this._intervalId);
+        }
         this._intervalId = null;
         this._lastTime = 0;
+        this._paused = true;
     },
 
     /**
@@ -5230,7 +5344,7 @@ return Ticker;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5278,7 +5392,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5391,7 +5505,7 @@ return drag;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5480,7 +5594,7 @@ return Class.create(/** @lends Tween.prototype */{
     },
 
     target: null,
-    duration: 0,
+    duration: 1000,
     delay: 0,
     paused: false,
     loop: false,
@@ -5632,11 +5746,15 @@ return Class.create(/** @lends Tween.prototype */{
 
         //elapsed ratio
         var ratio = elapsed / me.duration, complete = false, callback;
-        ratio = ratio <= 0 ? 0 : ratio >= 1 ? 1 : me.ease ? me.ease(ratio) : ratio;
+        ratio = ratio <= 0 ? 0 : ratio >= 1 ? 1 : ratio;
+        var easeRatio = me.ease ? me.ease(ratio) : ratio;
 
         if(me.reverse){
             //backward
-            if(me._reverseFlag < 0) ratio = 1 - ratio;
+            if(me._reverseFlag < 0) {
+                ratio = 1 - ratio;
+                easeRatio = 1 - easeRatio;
+            }
             //forward
             if(ratio < 1e-7){
                 //repeat complete or not loop
@@ -5655,7 +5773,7 @@ return Class.create(/** @lends Tween.prototype */{
         me.time = elapsed;
 
         //render & update callback
-        me._render(ratio);
+        me._render(easeRatio);
         (callback = me.onUpdate) && callback.call(me, ratio, me);
 
         //check if complete
@@ -5782,6 +5900,7 @@ return Class.create(/** @lends Tween.prototype */{
          * @returns {Tween|Array} An tween instance or an array of tween instance.
          */
         fromTo: function(target, fromProps, toProps, params){
+            params = params || {};
             var isArray = target instanceof Array;
             target = isArray ? target : [target];
 
@@ -5830,7 +5949,7 @@ return Tween;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6102,7 +6221,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6152,7 +6271,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6221,7 +6340,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6475,7 +6594,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6682,7 +6801,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7003,7 +7122,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7105,7 +7224,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7201,7 +7320,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7391,7 +7510,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

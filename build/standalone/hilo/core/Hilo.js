@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.2 for standalone
+ * Hilo 1.0.4 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -23,7 +23,7 @@ return {
      * Hilo version
      * @type String
      */
-    version:'1.0.2',
+    version:'1.0.4',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.

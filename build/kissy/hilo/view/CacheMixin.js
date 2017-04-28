@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.2 for kissy
+ * Hilo 1.0.4 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -25,7 +25,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * @param {Boolean} forceUpdate is force update cache.
      */
     cache: function(forceUpdate){
-        if(forceUpdate || this._cacheDirty || !this._cacheImage){
+        if(forceUpdate || this._cacheDirty || !this.drawable){
             this.updateCache();
         }
     },
@@ -44,10 +44,10 @@ var CacheMixin = /** @lends CacheMixin# */ {
             _cacheCanvas.width = this.width;
             _cacheCanvas.height = this.height;
             this._draw(_cacheContext);
-            this._cacheImage = new Image();
-            this._cacheImage.src = _cacheCanvas.toDataURL();
             this.drawable = this.drawable||new Drawable();
-            this.drawable.init(this._cacheImage);
+            this.drawable.init({
+                image:_cacheCanvas.toDataURL()
+            });
             this._cacheDirty = false;
         }
     },

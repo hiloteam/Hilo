@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.2 for cmd
+ * Hilo 1.0.4 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
