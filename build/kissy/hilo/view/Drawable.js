@@ -46,6 +46,9 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
                 me.image = null;
                 //load image dynamically
                 var img = new Image();
+                if(properties.crossOrigin){
+                    img.crossOrigin = properties.crossOrigin;
+                }
                 img.onload = function(){
                     img.onload = null;
                     me.init(img);

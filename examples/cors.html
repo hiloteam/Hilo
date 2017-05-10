@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>cors - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <script type="text/javascript" src="../src/util/debug.js" data-auto="true"></script>
+    <style type="text/css">
+    .hilo-log{
+        max-height: 200px !important;
+    }
+    </style>
+</head>
+<body onload="init();">
+    <div id="header">
+        <h1>cors</h1>
+        <p>WebGL渲染方式下，图片跨域需要设置crossDomain头。Loader和Bitmap都可以加crossOrigin:'Anonymous'来设置跨域头。</p>
+    </div>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(20);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //create a load queue
+            var queue = new Hilo.LoadQueue([{
+                    id:'hilo', 
+                    src:'//gw.alicdn.com/tfs/TB1hk4ERXXXXXc9aXXXXXXXXXXX-600-600.png_200x200.jpg',
+                    crossOrigin:'Anonymous'
+            }]).on('complete', function(e){
+                var bmp = new Hilo.Bitmap({
+                    image: queue.getContent('hilo')
+                }).addTo(stage);
+            });
+
+            var bmp = new Hilo.Bitmap({
+                image:'https://gw.alicdn.com/tfs/TB1iNtERXXXXXcBaXXXXXXXXXXX-600-600.png_200x200.jpg',
+                crossOrigin:'Anonymous',
+                y:200
+            }).addTo(stage);
+
+            //start load queue
+            queue.start();
+        }
+    </script>
+</body>
+</html>
