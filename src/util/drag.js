@@ -37,6 +37,7 @@
  * @requires hilo/core/Hilo
  */
 var drag = {
+    _isDragStart:false,
     /**
      * @language=en
      * start drag.
@@ -48,6 +49,11 @@ var drag = {
       * @param {Array} bounds 拖拽范围，基于父容器坐标系，[x, y, width, height]， 默认无限制
     */
     startDrag:function(bounds){
+        if(this._isDragStart){
+            this.stopDrag();
+        }
+        this._isDragStart = true;
+
         var that = this;
         var stage;
         bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
@@ -107,6 +113,7 @@ var drag = {
         }
 
         function stopDrag(){
+            this._isDragStart = false;
             document.removeEventListener(Hilo.event.POINTER_END, onStop);
             stage && stage.off(Hilo.event.POINTER_MOVE, onMove);
             that.off(Hilo.event.POINTER_START, onStart);
@@ -124,6 +131,6 @@ var drag = {
      * 停止拖拽。
     */
     stopDrag:function(){
-
+        this._isDragStart = false;
     }
 };
