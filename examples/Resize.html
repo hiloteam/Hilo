@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>resize - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <style>
+        #header{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            z-index: 999;
+            background: none;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        #header div{
+            display: none;
+        }
+    </style>
+</head>
+<body onload="init();">
+    <div id="header">
+        <p>屏幕自适应例子，通过缩放舞台宽高来实现</p>
+    </div>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            var gameWidth = 1440;
+            var gameHeight = 900;
+
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: gameWidth,
+                height: gameHeight,
+                scaleX:innerWidth/gameWidth,
+                scaleY:innerHeight/gameHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(20);
+            ticker.addTick(stage);
+            ticker.start();
+
+            //create a bitmap
+            var bmp = new Hilo.Bitmap({
+                image: 'images/map.jpg',
+            }).addTo(stage);
+
+            window.onresize = function(){
+                stage.scaleX = innerWidth/gameWidth;
+                stage.scaleY = innerHeight/gameHeight;
+                stage.resize(gameWidth, gameHeight, true);
+            };
+        }
+    </script>
+</body>
+</html>
