@@ -69,21 +69,27 @@ var WebSound = {
 
     /**
      * @language=en
-     * Get audio element. Use WebAudio if supported.
+     * Get audio element. Default use WebAudio if supported.
      * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
+     * @param {Boolean} [preferWebAudio=true] Whether or not to use WebAudio first, default is true.
      * @returns {WebAudio|HTMLAudio} Audio playing instance.
      */
     /**
      * @language=zh
-     * 获取音频对象。优先使用WebAudio。
+     * 获取音频对象。默认优先使用 WebAudio
      * @param {String|Object} source 若source为String，则为音频src地址；若为Object，则需包含src属性。
+     * @param {Boolean} [preferWebAudio=true] 是否优先使用WebAudio，默认 true 。
      * @returns {WebAudio|HTMLAudio} 音频播放对象实例。
      */
-    getAudio: function(source){
+    getAudio: function(source, preferWebAudio){
+        if(preferWebAudio === undefined){
+            preferWebAudio = true;
+        }
+
         source = this._normalizeSource(source);
         var audio = this._audios[source.src];
         if(!audio){
-            if(WebAudio.isSupported){
+            if(preferWebAudio && WebAudio.isSupported){
                 audio = new WebAudio(source);
             }else if(HTMLAudio.isSupported){
                 audio = new HTMLAudio(source);
