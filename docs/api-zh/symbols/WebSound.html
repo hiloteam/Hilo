@@ -286,11 +286,11 @@ var audio = WebSound.getAudio({
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/WebSound.html#.getAudio">getAudio</a></b>(source:String|Object):WebAudio|HTMLAudio
+                        <div><b><a href="../symbols/WebSound.html#.getAudio">getAudio</a></b>(source:String|Object, preferWebAudio:Boolean):WebAudio|HTMLAudio
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
-                            获取音频对象。优先使用WebAudio。
+                            获取音频对象。默认优先使用 WebAudio
                         </div>
                     </td>
                     <td>
@@ -373,9 +373,9 @@ var audio = WebSound.getAudio({
         <div class="member-box">
         <div class="member-header">
         [Static] 
-        <b>getAudio</b>(source:String|Object):<span class="light"><a href="../symbols/WebAudio.html">WebAudio</a>|<a href="../symbols/HTMLAudio.html">HTMLAudio</a></span>
+        <b>getAudio</b>(source:String|Object, preferWebAudio:Boolean):<span class="light"><a href="../symbols/WebAudio.html">WebAudio</a>|<a href="../symbols/HTMLAudio.html">HTMLAudio</a></span>
         </div>
-        <div class="description">获取音频对象。优先使用WebAudio。</div>
+        <div class="description">获取音频对象。默认优先使用 WebAudio</div>
 
         
 
@@ -386,6 +386,11 @@ var audio = WebSound.getAudio({
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>source</b>:<span>String|Object</span> 
                      — 若source为String，则为音频src地址；若为Object，则需包含src属性。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>preferWebAudio</b>:<span>Boolean</span> 
+                    <i>Optional, Default: true</i> — 是否优先使用WebAudio，默认 true 。
                 </dt>
             
             </dl>

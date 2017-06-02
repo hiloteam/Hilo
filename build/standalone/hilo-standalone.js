@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -23,7 +23,7 @@ return {
      * Hilo version
      * @type String
      */
-    version:'1.0.4',
+    version:'1.0.5',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -373,7 +373,7 @@ return {
 window.Hilo = Hilo;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -554,7 +554,7 @@ return {create:create, mix:mix};
 Hilo.Class = Class;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -733,7 +733,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
 Hilo.Matrix = Matrix;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -885,7 +885,7 @@ if(RawEvent){
 Hilo.EventMixin = EventMixin;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -965,7 +965,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
 Hilo.Drawable = Drawable;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1057,7 +1057,7 @@ var Renderer = Class.create(/** @lends Renderer.prototype */{
 Hilo.Renderer = Renderer;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1296,7 +1296,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
 Hilo.CanvasRenderer = CanvasRenderer;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1479,7 +1479,7 @@ function createDOMDrawable(view, imageObj){
 Hilo.DOMRenderer = DOMRenderer;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2048,7 +2048,7 @@ Shader.prototype = {
 Hilo.WebGLRenderer = WebGLRenderer;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2474,7 +2474,7 @@ function doSATCheck(poly1, poly2, result){
 Hilo.View = View;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2539,7 +2539,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
 Hilo.CacheMixin = CacheMixin;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2913,7 +2913,7 @@ var Container = Class.create(/** @lends Container.prototype */{
 Hilo.Container = Container;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3181,7 +3181,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
 Hilo.Stage = Stage;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3260,7 +3260,7 @@ var Drawable = Hilo.Drawable;
 Hilo.Bitmap = Bitmap;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3532,7 +3532,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
 Hilo.Sprite = Sprite;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3634,7 +3634,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
 Hilo.DOMElement = DOMElement;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4188,7 +4188,7 @@ return Class.create(/** @lends Graphics.prototype */{
 Hilo.Graphics = Graphics;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4442,7 +4442,7 @@ var Text = Class.create(/** @lends Text.prototype */{
 Hilo.Text = Text;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4627,7 +4627,7 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
 Hilo.BitmapText = BitmapText;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4806,7 +4806,7 @@ var Drawable = Hilo.Drawable;
 Hilo.Button = Button;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5042,7 +5042,7 @@ function isNumber(value){
 Hilo.TextureAtlas = TextureAtlas;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5266,7 +5266,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 Hilo.Ticker = Ticker;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5314,7 +5314,7 @@ if (!fnProto.bind) {
 Hilo.undefined = undefined;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5339,12 +5339,18 @@ var Hilo = window.Hilo;
  * @requires hilo/core/Hilo
  */
 var drag = {
+    _isDragStart:false,
     /**
      * @language=en
      * start drag.
       * @param {Array} bounds The bounds area that the view can move, relative to the coordinates of the view's parent, [x, y, width, height]， default is no limit.
     */
     startDrag:function(bounds){
+        if(this._isDragStart){
+            this.stopDrag();
+        }
+        this._isDragStart = true;
+
         var that = this;
         var stage;
         bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
@@ -5404,6 +5410,7 @@ var drag = {
         }
 
         function stopDrag(){
+            this._isDragStart = false;
             document.removeEventListener(Hilo.event.POINTER_END, onStop);
             stage && stage.off(Hilo.event.POINTER_MOVE, onMove);
             that.off(Hilo.event.POINTER_START, onStart);
@@ -5417,13 +5424,13 @@ var drag = {
      * stop drag.
     */
     stopDrag:function(){
-
+        this._isDragStart = false;
     }
 };
 Hilo.drag = drag;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5864,7 +5871,7 @@ return Class.create(/** @lends Tween.prototype */{
 Hilo.Tween = Tween;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6134,7 +6141,7 @@ return {
 Hilo.Ease = Ease;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6181,7 +6188,7 @@ var ImageLoader = Class.create({
 Hilo.ImageLoader = ImageLoader;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6247,7 +6254,7 @@ var ScriptLoader = Class.create({
 Hilo.ScriptLoader = ScriptLoader;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6498,7 +6505,7 @@ function getExtension(src){
 Hilo.LoadQueue = LoadQueue;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6701,7 +6708,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
 Hilo.HTMLAudio = HTMLAudio;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7018,7 +7025,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 Hilo.WebAudio = WebAudio;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7066,15 +7073,20 @@ var WebSound = {
 
     /**
      * @language=en
-     * Get audio element. Use WebAudio if supported.
+     * Get audio element. Default use WebAudio if supported.
      * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
+     * @param {Boolean} [preferWebAudio=true] Whether or not to use WebAudio first, default is true.
      * @returns {WebAudio|HTMLAudio} Audio playing instance.
      */
-    getAudio: function(source){
+    getAudio: function(source, preferWebAudio){
+        if(preferWebAudio === undefined){
+            preferWebAudio = true;
+        }
+
         source = this._normalizeSource(source);
         var audio = this._audios[source.src];
         if(!audio){
-            if(WebAudio.isSupported){
+            if(preferWebAudio && WebAudio.isSupported){
                 audio = new WebAudio(source);
             }else if(HTMLAudio.isSupported){
                 audio = new HTMLAudio(source);
@@ -7116,7 +7128,7 @@ var WebSound = {
 Hilo.WebSound = WebSound;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7208,7 +7220,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
 Hilo.Camera = Camera;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7394,7 +7406,7 @@ var Camera3d = (function(){
 Hilo.Camera3d = Camera3d;
 })(window);
 /**
- * Hilo 1.0.4 for standalone
+ * Hilo 1.0.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

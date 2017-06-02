@@ -39,15 +39,20 @@ var WebSound = {
     },
 
     /**
-     * Get audio element. Use WebAudio if supported.
+     * Get audio element. Default use WebAudio if supported.
      * @param {String|Object} source If String, it's the source of the audio; If Object, it should contains a src property.
+     * @param {Boolean} [preferWebAudio=true] Whether or not to use WebAudio first, default is true.
      * @returns {WebAudio|HTMLAudio} Audio playing instance.
      */
-    getAudio: function(source){
+    getAudio: function(source, preferWebAudio){
+        if(preferWebAudio === undefined){
+            preferWebAudio = true;
+        }
+
         source = this._normalizeSource(source);
         var audio = this._audios[source.src];
         if(!audio){
-            if(WebAudio.isSupported){
+            if(preferWebAudio && WebAudio.isSupported){
                 audio = new WebAudio(source);
             }else if(HTMLAudio.isSupported){
                 audio = new HTMLAudio(source);

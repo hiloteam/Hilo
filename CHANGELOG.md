@@ -1,3 +1,18 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/hiloteam/hilo/compare/v1.0.4...v1.0.5) (2017-06-02)
+
+
+### Bug Fixes
+
+* call drag.starDrag twice bug ([b74fb02](https://github.com/hiloteam/hilo/commit/b74fb02))
+
+
+### Features
+
+* add drawable crossOrigin support ([8f1da6b](https://github.com/hiloteam/hilo/commit/8f1da6b))
+* WebAudio.getAudio add the preferWebAudio option to select whether or not to use WebAudio first ([a4c5651](https://github.com/hiloteam/hilo/commit/a4c5651))
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/hiloteam/hilo/compare/v1.0.3...v1.0.4) (2017-04-28)
 

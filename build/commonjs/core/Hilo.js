@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.4 for commonjs
+ * Hilo 1.0.5 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -22,7 +22,7 @@ return {
      * Hilo version
      * @type String
      */
-    version:'1.0.4',
+    version:'1.0.5',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.

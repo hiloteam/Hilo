@@ -286,7 +286,7 @@ var audio = WebSound.getAudio({
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/WebSound.html#.getAudio">getAudio</a></b>(source:String|Object):WebAudio|HTMLAudio
+                        <div><b><a href="../symbols/WebSound.html#.getAudio">getAudio</a></b>(source:String|Object, preferWebAudio:Boolean):WebAudio|HTMLAudio
                         </div>
                         <div class="description">
                             <span class="label">static</span> 
@@ -373,9 +373,9 @@ var audio = WebSound.getAudio({
         <div class="member-box">
         <div class="member-header">
         [Static] 
-        <b>getAudio</b>(source:String|Object):<span class="light"><a href="../symbols/WebAudio.html">WebAudio</a>|<a href="../symbols/HTMLAudio.html">HTMLAudio</a></span>
+        <b>getAudio</b>(source:String|Object, preferWebAudio:Boolean):<span class="light"><a href="../symbols/WebAudio.html">WebAudio</a>|<a href="../symbols/HTMLAudio.html">HTMLAudio</a></span>
         </div>
-        <div class="description">Get audio element. Use WebAudio if supported.</div>
+        <div class="description">Get audio element. Default use WebAudio if supported.</div>
 
         
 
@@ -386,6 +386,11 @@ var audio = WebSound.getAudio({
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>source</b>:<span>String|Object</span> 
                      — If String, it's the source of the audio; If Object, it should contains a src property.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>preferWebAudio</b>:<span>Boolean</span> 
+                    <i>Optional, Default: true</i> — Whether or not to use WebAudio first, default is true.
                 </dt>
             
             </dl>

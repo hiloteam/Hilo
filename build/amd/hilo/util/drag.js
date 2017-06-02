@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.4 for amd
+ * Hilo 1.0.5 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -24,12 +24,18 @@ define('hilo/util/drag', ['hilo/core/Hilo'], function(Hilo){
  * @requires hilo/core/Hilo
  */
 var drag = {
+    _isDragStart:false,
     /**
      * @language=en
      * start drag.
       * @param {Array} bounds The bounds area that the view can move, relative to the coordinates of the view's parent, [x, y, width, height]， default is no limit.
     */
     startDrag:function(bounds){
+        if(this._isDragStart){
+            this.stopDrag();
+        }
+        this._isDragStart = true;
+
         var that = this;
         var stage;
         bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
@@ -89,6 +95,7 @@ var drag = {
         }
 
         function stopDrag(){
+            this._isDragStart = false;
             document.removeEventListener(Hilo.event.POINTER_END, onStop);
             stage && stage.off(Hilo.event.POINTER_MOVE, onMove);
             that.off(Hilo.event.POINTER_START, onStart);
@@ -102,7 +109,7 @@ var drag = {
      * stop drag.
     */
     stopDrag:function(){
-
+        this._isDragStart = false;
     }
 };
 
