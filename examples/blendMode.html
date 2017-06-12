@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>BlendMode - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        body{
+            background:#cef;
+        }
+    </style>
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+</head>
+<body onload="init();">
+    <div id="header">
+        <h1>BlendMode</h1>
+        <p>check https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation</p>
+    </div>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.start(true);
+
+            //create a bitmap
+            var map = new Hilo.Bitmap({
+                image: 'images/map.jpg'
+            }).addTo(stage);
+
+            var bmp = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: 162,
+                y: 113,
+                pivotX:87,
+                pivotY:63,
+                blendMode:'destination-out',
+                onUpdate:function(){
+                    this.rotation ++;
+                }
+            }).addTo(stage);
+
+            stage.enableDOMEvent([Hilo.event.POINTER_START, Hilo.event.POINTER_MOVE, Hilo.event.POINTER_END]);
+            brush = new Hilo.Graphics({
+                blendMode:'destination-out'
+            }).addTo(stage);
+            brush.lineStyle(60, '#fff', 1, 'round', 'round');
+            
+            var removeFill = function(brush){
+                brush._actions = brush._actions.filter(function(action){
+                    if(action[0] === 'stroke' || action[0] === 'fill'){
+                        return false;
+                    }
+                    return true;
+                });
+            };
+
+            var isDown = false;
+            stage.on(Hilo.event.POINTER_START, function(e){
+                if(!isDown){
+                    isDown = true;
+                    brush.moveTo(e.stageX, e.stageY);
+                }
+            });
+
+            stage.on(Hilo.event.POINTER_MOVE, function(e){
+                if(isDown){
+                    removeFill(brush);
+                    brush.lineTo(e.stageX, e.stageY);
+                    brush.endFill();
+                }
+            });
+
+            stage.on(Hilo.event.POINTER_END, function(e){
+                isDown = false;
+            });
+        }
+    </script>
+</body>
+</html>
