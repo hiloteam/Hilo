@@ -327,20 +327,19 @@ return Class.create(/** @lends Tween.prototype */{
         if(elapsed < 0) return;
 
         //elapsed ratio
-        var ratio = elapsed / me.duration, complete = false, callback;
+        var ratio = elapsed / me.duration, complete = false, completeDuration = elapsed >= me.duraion, callback;
         ratio = ratio <= 0 ? 0 : ratio >= 1 ? 1 : ratio;
         var easeRatio = me.ease ? me.ease(ratio) : ratio;
 
-        if(me.reverse){
-            //backward
-            if(me._reverseFlag < 0) {
-                ratio = 1 - ratio;
-                easeRatio = 1 - easeRatio;
-            }
+        if(me.reverse && me._reverseFlag < 0){
+            ratio = 1 - ratio;
+            easeRatio = 1 - easeRatio;
             //forward
-            if(ratio < 1e-7){
+            if(completeDuration){
                 //repeat complete or not loop
                 if((me.repeat > 0 && me._repeatCount++ >= me.repeat) || (me.repeat == 0 && !me.loop)){
+                    ratio = 0;
+                    easeRatio = 0;
                     complete = true;
                 }else{
                     me._startTime = now();
