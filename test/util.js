@@ -96,4 +96,14 @@ describe('util', function(){
             endFrame.rect[1].should.equal(882);
         });
     });
+
+    describe('browser', function(){
+        it('jsVendor', function(){
+            Hilo.browser.jsVendor.should.be.String();
+        });
+
+        it('cssVendor', function(){
+            Hilo.browser.cssVendor.should.be.String();
+        });
+    });
 });
