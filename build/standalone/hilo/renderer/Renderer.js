@@ -1,11 +1,12 @@
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var util = Hilo.util;
 
 
 /**
@@ -13,8 +14,8 @@ var Class = Hilo.Class;
  * @class Renderer Renderer is the base class of renderer.
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/Renderer
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} canvas The canvas of renderer. It can be a dom element, such as a div element, or a canvas element. readonly.
  * @property {Object} stage The stage of renderer, readonly.
  * @property {String} renderType The render type of renderer, readonly.
@@ -22,12 +23,13 @@ var Class = Hilo.Class;
 var Renderer = Class.create(/** @lends Renderer.prototype */{
     constructor: function(properties){
         properties = properties || {};
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
     },
 
     renderType:null,
     canvas: null,
     stage: null,
+    blendMode:'source-over',
 
     /**
      * @language=en

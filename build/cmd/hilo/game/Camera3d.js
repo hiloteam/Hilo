@@ -1,12 +1,12 @@
 /**
- * Hilo 1.0.5 for cmd
+ * Hilo 1.1.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
-var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
+var util = require('hilo/util/util');
 
 
 
@@ -14,8 +14,8 @@ var Class = require('hilo/core/Class');
  * @language=en
  * @class Camera3d is a pseudo-3d camera.
  * @module hilo/game/Camera3d
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Number} fv The distance of the fov(The distance between eyes and the Z plane，it determines the scale ratio of the 3d object).
  * @property {Number} fx The x position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the x axis).
  * @property {Number} fy The y position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the y axis).
@@ -64,7 +64,7 @@ var Camera3d = (function(){
 			properties.rotationY = properties.rotationY || 0;
 			properties.rotationZ = properties.rotationZ || 0;
 
-        	Hilo.copy(this, properties);
+        	util.copy(this, properties);
 		},
 
 	    /**

@@ -28,6 +28,7 @@
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Object} upState The property of button 'up' state or collections of its drawable properties.
  * @property {Object} overState The property of button 'over' state or collections of its drawable properties.
  * @property {Object} downState The property of button 'down' state or collections of its drawable properties.
@@ -100,7 +101,7 @@
 
             if(stateObj){
                 this.drawable.init(stateObj);
-                Hilo.copy(this, stateObj, true);
+                util.copy(this, stateObj, true);
             }
         }
 

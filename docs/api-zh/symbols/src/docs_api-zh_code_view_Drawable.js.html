@@ -15,8 +15,8 @@
 <span class='line'>  8</span>  * @class Drawable是可绘制图像的包装。
 <span class='line'>  9</span>  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
 <span class='line'> 10</span>  * @module hilo/view/Drawable
-<span class='line'> 11</span>  * @requires hilo/core/Hilo
-<span class='line'> 12</span>  * @requires hilo/core/Class
+<span class='line'> 11</span>  * @requires hilo/core/Class
+<span class='line'> 12</span>  * @requires hilo/util/util
 <span class='line'> 13</span>  * @property {Object} image 要绘制的图像。即可被CanvasRenderingContext2D.drawImage使用的对象类型，可以是HTMLImageElement、HTMLCanvasElement、HTMLVideoElement等对象。
 <span class='line'> 14</span>  * @property {array} rect 要绘制的图像的矩形区域。
 <span class='line'> 15</span>  */</span><span class="WHIT">
@@ -37,7 +37,7 @@
 <span class='line'> 30</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">Drawable.isDrawable</span><span class="PUNC">(</span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 31</span> </span><span class="WHIT">            </span><span class="NAME">me.image</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 32</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 33</span> </span><span class="WHIT">            </span><span class="NAME">Hilo.copy</span><span class="PUNC">(</span><span class="NAME">me</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">            </span><span class="NAME">util.copy</span><span class="PUNC">(</span><span class="NAME">me</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 34</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'> 35</span> 
 <span class='line'> 36</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">image</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">me.image</span><span class="PUNC">;</span><span class="WHIT">

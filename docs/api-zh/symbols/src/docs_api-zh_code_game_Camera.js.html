@@ -15,8 +15,8 @@
 <span class='line'>  8</span>  * @class Camera类表示摄像机。
 <span class='line'>  9</span>  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
 <span class='line'> 10</span>  * @module hilo/game/Camera
-<span class='line'> 11</span>  * @requires hilo/core/Hilo
-<span class='line'> 12</span>  * @requires hilo/core/Class
+<span class='line'> 11</span>  * @requires hilo/core/Class
+<span class='line'> 12</span>  * @requires hilo/util/util
 <span class='line'> 13</span>  * @property {Number} width 镜头宽
 <span class='line'> 14</span>  * @property {Number} height 镜头高
 <span class='line'> 15</span>  * @property {Object} scroll 滚动值 {x:0, y:0}
@@ -38,7 +38,7 @@
 <span class='line'> 31</span> </span><span class="WHIT">            </span><span class="NAME">y</span><span class="PUNC">:</span><span class="NUMB">0</span><span class="WHIT">
 <span class='line'> 32</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 33</span> 
-<span class='line'> 34</span> </span><span class="WHIT">        </span><span class="NAME">Hilo.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">        </span><span class="NAME">util.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 35</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 36</span> </span><span class="WHIT">    </span><span class="COMM">/**
 <span class='line'> 37</span>      * 更新

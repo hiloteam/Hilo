@@ -14,8 +14,8 @@
 <span class='line'>  7</span> </span><span class="COMM">/**
 <span class='line'>  8</span>  * @class Camera3d 伪3D虚拟摄像机。
 <span class='line'>  9</span>  * @module hilo/game/Camera3d
-<span class='line'> 10</span>  * @requires hilo/core/Hilo
-<span class='line'> 11</span>  * @requires hilo/core/Class
+<span class='line'> 10</span>  * @requires hilo/core/Class
+<span class='line'> 11</span>  * @requires hilo/util/util
 <span class='line'> 12</span>  * @property {Number} fv 镜头视点距离（屏幕视点相对眼睛距离，绝对了坐标缩放比例）。
 <span class='line'> 13</span>  * @property {Number} fx 镜头视点X（屏幕视点相对屏幕左上角X距离）。
 <span class='line'> 14</span>  * @property {Number} fy 镜头视点Y（屏幕视点相对屏幕左上角Y距离）。
@@ -64,7 +64,7 @@
 <span class='line'> 57</span> </span><span class="WHIT">			</span><span class="NAME">properties.rotationY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">properties.rotationY</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 58</span> </span><span class="WHIT">			</span><span class="NAME">properties.rotationZ</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">properties.rotationZ</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 59</span> 
-<span class='line'> 60</span> </span><span class="WHIT">        	</span><span class="NAME">Hilo.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">        	</span><span class="NAME">util.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 61</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 62</span> 
 <span class='line'> 63</span> </span><span class="WHIT">	    </span><span class="COMM">/**

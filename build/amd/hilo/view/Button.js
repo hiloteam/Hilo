@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.5 for amd
+ * Hilo 1.1.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-define('hilo/view/Button', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable'], function(Hilo, Class, View, Drawable){
+define('hilo/view/Button', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable', 'hilo/util/util'], function(Hilo, Class, View, Drawable, util){
 
 
 
@@ -32,6 +32,7 @@ define('hilo/view/Button', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Object} upState The property of button 'up' state or collections of its drawable properties.
  * @property {Object} overState The property of button 'over' state or collections of its drawable properties.
  * @property {Object} downState The property of button 'down' state or collections of its drawable properties.
@@ -106,7 +107,7 @@ define('hilo/view/Button', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View
 
             if(stateObj){
                 this.drawable.init(stateObj);
-                Hilo.copy(this, stateObj, true);
+                util.copy(this, stateObj, true);
             }
         }
 

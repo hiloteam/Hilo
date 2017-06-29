@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -8,6 +8,7 @@ var Hilo = window.Hilo;
 var Class = Hilo.Class;
 var View = Hilo.View;
 var Drawable = Hilo.Drawable;
+var util = Hilo.util;
 
 
 /**
@@ -35,6 +36,7 @@ var Drawable = Hilo.Drawable;
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Object} upState The property of button 'up' state or collections of its drawable properties.
  * @property {Object} overState The property of button 'over' state or collections of its drawable properties.
  * @property {Object} downState The property of button 'down' state or collections of its drawable properties.
@@ -109,7 +111,7 @@ var Drawable = Hilo.Drawable;
 
             if(stateObj){
                 this.drawable.init(stateObj);
-                Hilo.copy(this, stateObj, true);
+                util.copy(this, stateObj, true);
             }
         }
 

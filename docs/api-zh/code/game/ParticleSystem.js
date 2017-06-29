@@ -16,6 +16,7 @@
  * @requires hilo/view/Container
  * @requires hilo/view/Bitmap
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Number} [emitTime=0.2] 发射间隔
  * @property {Number} [emitTimeVar=0] 发射间隔变化量
  * @property {Number} [emitNum=10] 每次发射数量
@@ -102,7 +103,7 @@ var ParticleSystem = (function(){
          * @param {Object} cfg
         */
         reset: function(cfg) {
-            Hilo.copy(this, cfg);
+            util.copy(this, cfg);
             this.particle.system = this;
             if(this.totalTime <= 0){
                 this.totalTime = Infinity;

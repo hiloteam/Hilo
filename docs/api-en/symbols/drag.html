@@ -131,7 +131,15 @@
     
     
     
+    <li class="nav-class"><a href="../symbols/browser.html">browser</a></li>
+    
+    
+    
     <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/util.html">util</a></li>
     
     
     <li class="nav-pkg">view<span></span></li>
@@ -219,14 +227,14 @@
         </span>
 
         <br>
-        drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.copy(target, drag).
+        drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.util.copy(target, drag).
         
             <br><br><iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
 <br/>
 example:
 <pre>
 var bmp = new Bitmap({image:img});
-Hilo.copy(bmp, Hilo.drag);
+Hilo.util.copy(bmp, Hilo.drag);
 bmp.startDrag([0, 0, 550, 400]);
 </pre>
         

@@ -1,3 +1,14 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/hiloteam/hilo/compare/v1.0.5...v1.1.0) (2017-06-29)
+
+
+### Features
+
+* add CanvasRenderer blendmode support ([38f3b6d](https://github.com/hiloteam/hilo/commit/38f3b6d))
+* add util/util ([5397509](https://github.com/hiloteam/hilo/commit/5397509))
+* add utils/browser ([7fc585a](https://github.com/hiloteam/hilo/commit/7fc585a))
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/hiloteam/hilo/compare/v1.0.4...v1.0.5) (2017-06-02)
 

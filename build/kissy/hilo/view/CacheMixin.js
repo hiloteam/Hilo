@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.5 for kissy
+ * Hilo 1.1.0 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/view/CacheMixin', function(S, Hilo, Drawable){
+KISSY.add('hilo/view/CacheMixin', function(S, Drawable, browser){
 
 
 
@@ -14,8 +14,8 @@ var _cacheCanvas, _cacheContext;
  * @static
  * @mixin
  * @module hilo/view/CacheMixin
- * @requires hilo/core/Hilo
  * @requires hilo/view/Drawable
+ * @requires hilo/util/browser
  */
 var CacheMixin = /** @lends CacheMixin# */ {
     _cacheDirty:true,
@@ -34,7 +34,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * Update the cache.
      */
     updateCache:function(){
-        if(Hilo.browser.supportCanvas){
+        if(browser.supportCanvas){
             if(!_cacheCanvas){
                 _cacheCanvas = document.createElement('canvas');
                 _cacheContext = _cacheCanvas.getContext('2d');
@@ -64,5 +64,5 @@ var CacheMixin = /** @lends CacheMixin# */ {
 return CacheMixin;
 
 }, {
-    requires: ['hilo/core/Hilo', 'hilo/view/Drawable']
+    requires: ['hilo/view/Drawable', 'hilo/util/browser']
 });

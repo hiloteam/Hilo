@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for flashAdaptor
+ * Hilo 1.1.0 for flashAdaptor
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -231,9 +231,9 @@ var Adaptor = {
      */
     init:function(option){
         var mixOption = {};
-        Hilo.copy(mixOption, defaultOption);
-        Hilo.copy(mixOption, window.hiloFlashOption||{});
-        Hilo.copy(mixOption, option||{});
+        Hilo.util.copy(mixOption, defaultOption);
+        Hilo.util.copy(mixOption, window.hiloFlashOption||{});
+        Hilo.util.copy(mixOption, option||{});
 
         var that = this;
 
@@ -308,7 +308,7 @@ var Adaptor = {
             if(!properties.width) width = (viewport && viewport.width) || 320;
             if(!properties.height) height = (viewport && viewport.height) || 480;
 
-            that._insertSwf(Hilo.copy(option, {
+            that._insertSwf(Hilo.util.copy(option, {
                 container:container,
                 width:width * (this.scaleX||1),
                 height:height * (this.scaleY||1)

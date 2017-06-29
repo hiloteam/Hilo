@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="JsDoc Toolkit"/>
+
+<title>browser - Hilo API Document</title>
+<style>
+    iframe{
+        border:1px solid #333;
+    }
+</style>
+<link href="../../bootstrap3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../../css/prettify.min.css" rel="stylesheet">
+<link href="../../css/api.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>Hilo</span><span></span>
+      </a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://hiloteam.github.io/index.html">首页</a></li>
+        <li><a href="https://github.com/hiloteam/Hilo" target="_blank">源码下载</a></li>
+        <li class="active"><a href="../index.html">API文档</a></li>
+        <li><a href="http://hiloteam.github.io/tutorial/index.html">教程文档</a></li>
+        <li><a href="http://hiloteam.github.io/examples/index.html">作品演示</a></li>
+      </u>
+    </div>
+
+  </div>
+</div>
+<div class="container main">
+    <div class="col-md-3">
+        
+
+<div class="bs-sidebar well">
+  <!-- <div class="hilo-header">类列表</div> -->
+  <ul class="nav bs-sidenav">
+    
+    
+    <li class="nav-pkg">core<span></span></li>
+    <li class="nav-class"><a href="../symbols/Class.html">Class</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Hilo.html">Hilo</a></li>
+    
+    
+    <li class="nav-pkg">event<span></span></li>
+    <li class="nav-class"><a href="../symbols/EventMixin.html">EventMixin</a></li>
+    
+    
+    <li class="nav-pkg">game<span></span></li>
+    <li class="nav-class"><a href="../symbols/Camera.html">Camera</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Camera3d.html">Camera3d</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/ParticleSystem.html">ParticleSystem</a></li>
+    
+    
+    <li class="nav-pkg">geom<span></span></li>
+    <li class="nav-class"><a href="../symbols/Matrix.html">Matrix</a></li>
+    
+    
+    <li class="nav-pkg">loader<span></span></li>
+    <li class="nav-class"><a href="../symbols/LoadQueue.html">LoadQueue</a></li>
+    
+    
+    <li class="nav-pkg">media<span></span></li>
+    <li class="nav-class"><a href="../symbols/HTMLAudio.html">HTMLAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebAudio.html">WebAudio</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebSound.html">WebSound</a></li>
+    
+    
+    <li class="nav-pkg">renderer<span></span></li>
+    <li class="nav-class"><a href="../symbols/CanvasRenderer.html">CanvasRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMRenderer.html">DOMRenderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Renderer.html">Renderer</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/WebGLRenderer.html">WebGLRenderer</a></li>
+    
+    
+    <li class="nav-pkg">tween<span></span></li>
+    <li class="nav-class"><a href="../symbols/Ease.html">Ease</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Tween.html">Tween</a></li>
+    
+    
+    <li class="nav-pkg">util<span></span></li>
+    <li class="nav-class"><a href="../symbols/TextureAtlas.html">TextureAtlas</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Ticker.html">Ticker</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/browser.html">browser</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/util.html">util</a></li>
+    
+    
+    <li class="nav-pkg">view<span></span></li>
+    <li class="nav-class"><a href="../symbols/Bitmap.html">Bitmap</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/BitmapText.html">BitmapText</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Button.html">Button</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/CacheMixin.html">CacheMixin</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Container.html">Container</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/DOMElement.html">DOMElement</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Drawable.html">Drawable</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Graphics.html">Graphics</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Sprite.html">Sprite</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Stage.html">Stage</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/Text.html">Text</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/View.html">View</a></li>
+    
+  </ul>
+</div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- ============================== class title ============================ -->
+        <h1 style="margin-top:0;">
+        
+    browser
+        </h1><hr style="margin-top:10px;" />
+
+        <!-- ============================== class summary ========================== -->
+    <p class="description">
+        
+
+        
+        
+
+        
+        
+            <span style="display:block;margin:0 0 2px 0;">
+                <b style="margin-right:10px;">Module</b> hilo/util/browser
+            </span>
+        
+
+        
+
+        <span style="display:block;margin:0 0 2px 0;">
+            <b style="margin-right:10px;">Source</b>
+            <a href="../symbols/src/docs_api-en_code_util_browser.js.html">browser.js</a>
+        </span>
+
+        <br>
+        Browser feature set
+        
+
+    </p>
+
+    <!-- ============================== properties summary ===================== -->
+    
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">Properties</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Property	</th>
+                    <th scope="col">Defined</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/browser.html#-cssVendor">cssVendor</a></b>
+                        </div>
+                        <div class="description">
+                            
+                            浏览器厂商CSS前缀的css值。比如：-webkit-。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/browser.html#-jsVendor">jsVendor</a></b>
+                        </div>
+                        <div class="description">
+                            
+                            浏览器厂商CSS前缀的js值。比如：webkit。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/browser.html#-supportTransform">supportTransform</a></b>
+                        </div>
+                        <div class="description">
+                            
+                            是否支持CSS Transform变换。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!--  -->
+                            <b><a href="../symbols/browser.html#-supportTransform3D">supportTransform3D</a></b>
+                        </div>
+                        <div class="description">
+                            
+                            是否支持CSS Transform 3D变换。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.ios">ios</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是ios
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.supportDeviceMotion">supportDeviceMotion</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否支持检测加速度devicemotion。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.firefox">firefox</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是firefox
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.ie">ie</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是ie
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.ipad">ipad</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是ipad
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.android">android</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是android
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.opera">opera</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是opera
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.safari">safari</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是safari
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.supportTouch">supportTouch</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否支持触碰事件。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.webkit">webkit</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是webkit
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.supportCanvas">supportCanvas</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否支持canvas元素。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.supportStorage">supportStorage</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否支持本地存储localStorage。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.iphone">iphone</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是iphone
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.ipod">ipod</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是ipod
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.chrome">chrome</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否是chrome
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                browser.
+                             -->
+                            <b><a href="../symbols/browser.html#.supportOrientation">supportOrientation</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否支持检测设备方向orientation。
+                        </div>
+                    </td>
+                    <td>
+                        browser
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('Hide Inherited Properties');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('Show Inherited Properties');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
+
+    <!-- ============================== methods summary ======================== -->
+    
+
+    <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">Property Detail</h3>
+    </div>
+    
+        <a class="anchor" name=".android"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>android</b>
+
+        </div>
+        <div class="description">
+            是否是android
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".chrome"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>chrome</b>
+
+        </div>
+        <div class="description">
+            是否是chrome
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="-cssVendor"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>cssVendor</b>
+
+        </div>
+        <div class="description">
+            浏览器厂商CSS前缀的css值。比如：-webkit-。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".firefox"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>firefox</b>
+
+        </div>
+        <div class="description">
+            是否是firefox
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".ie"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>ie</b>
+
+        </div>
+        <div class="description">
+            是否是ie
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".ios"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>ios</b>
+
+        </div>
+        <div class="description">
+            是否是ios
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".ipad"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>ipad</b>
+
+        </div>
+        <div class="description">
+            是否是ipad
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".iphone"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>iphone</b>
+
+        </div>
+        <div class="description">
+            是否是iphone
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".ipod"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>ipod</b>
+
+        </div>
+        <div class="description">
+            是否是ipod
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="-jsVendor"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>jsVendor</b>
+
+        </div>
+        <div class="description">
+            浏览器厂商CSS前缀的js值。比如：webkit。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".opera"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>opera</b>
+
+        </div>
+        <div class="description">
+            是否是opera
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".safari"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>safari</b>
+
+        </div>
+        <div class="description">
+            是否是safari
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".supportCanvas"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>supportCanvas</b>
+
+        </div>
+        <div class="description">
+            是否支持canvas元素。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".supportDeviceMotion"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>supportDeviceMotion</b>
+
+        </div>
+        <div class="description">
+            是否支持检测加速度devicemotion。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".supportOrientation"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>supportOrientation</b>
+
+        </div>
+        <div class="description">
+            是否支持检测设备方向orientation。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".supportStorage"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>supportStorage</b>
+
+        </div>
+        <div class="description">
+            是否支持本地存储localStorage。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".supportTouch"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>supportTouch</b>
+
+        </div>
+        <div class="description">
+            是否支持触碰事件。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="-supportTransform"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>supportTransform</b>
+
+        </div>
+        <div class="description">
+            是否支持CSS Transform变换。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name="-supportTransform3D"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>supportTransform3D</b>
+
+        </div>
+        <div class="description">
+            是否支持CSS Transform 3D变换。
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+        <a class="anchor" name=".webkit"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>webkit</b>
+
+        </div>
+        <div class="description">
+            是否是webkit
+        </div>
+
+        
+
+        
+        
+        
+        
+
+        </div>
+    
+    
+
+    <!-- ============================== constructor details ==================== -->
+    
+
+    <!-- ============================== method details ========================= -->
+    
+
+    </div>
+
+</div>
+
+<footer class="col-md-12">
+  <hr>
+  <p>&copy; Hilo 2016</p>
+</footer>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../bootstrap3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/prettify.min.js"></script>
+<script type="text/javascript">
+//make code pretty
+$('pre').addClass('prettyprint linenums fixedFont');
+window.prettyPrint && prettyPrint();
+</script>
+
+</body>
+</html>

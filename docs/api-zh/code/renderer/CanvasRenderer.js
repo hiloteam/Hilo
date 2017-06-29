@@ -33,6 +33,9 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
             if(target === this.stage){
                 this.context.clearRect(0, 0, target.width, target.height);
             }
+            if(target.blendMode !== this.blendMode){
+                this.context.globalCompositeOperation = this.blendMode = target.blendMode;
+            }
             this.context.save();
             return true;
         }

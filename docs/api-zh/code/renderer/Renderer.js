@@ -8,8 +8,8 @@
  * @class 渲染器抽象基类。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/renderer/Renderer
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} canvas 渲染器对应的画布。它可能是一个普通的DOM元素，比如div，也可以是一个canvas画布元素。只读属性。
  * @property {Object} stage 渲染器对应的舞台。只读属性。
  * @property {String} renderType 渲染方式。只读属性。
@@ -17,12 +17,13 @@
 var Renderer = Class.create(/** @lends Renderer.prototype */{
     constructor: function(properties){
         properties = properties || {};
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
     },
 
     renderType:null,
     canvas: null,
     stage: null,
+    blendMode:'source-over',
 
     /**
      * 为开始绘制可视对象做准备。需要子类来实现。

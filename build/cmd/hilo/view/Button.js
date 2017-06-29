@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for cmd
+ * Hilo 1.1.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -9,6 +9,7 @@ var Hilo = require('hilo/core/Hilo');
 var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 var Drawable = require('hilo/view/Drawable');
+var util = require('hilo/util/util');
 
 
 
@@ -37,6 +38,7 @@ var Drawable = require('hilo/view/Drawable');
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Object} upState The property of button 'up' state or collections of its drawable properties.
  * @property {Object} overState The property of button 'over' state or collections of its drawable properties.
  * @property {Object} downState The property of button 'down' state or collections of its drawable properties.
@@ -111,7 +113,7 @@ var Drawable = require('hilo/view/Drawable');
 
             if(stateObj){
                 this.drawable.init(stateObj);
-                Hilo.copy(this, stateObj, true);
+                util.copy(this, stateObj, true);
             }
         }
 

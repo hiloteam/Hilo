@@ -8,8 +8,8 @@
  * @class Camera.
  * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/game/Camera
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Number} width The width of the camera.
  * @property {Number} height The height of the camera.
  * @property {Object} scroll The scrolling value of the camera {x:0, y:0}.
@@ -31,7 +31,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
             y:0
         };
 
-        Hilo.copy(this, properties);
+        util.copy(this, properties);
     },
     /**
      * update.

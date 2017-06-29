@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for commonjs
+ * Hilo 1.1.0 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7,6 +7,7 @@ var Hilo = require('../core/Hilo');
 var Class = require('../core/Class');
 var EventMixin = require('../event/EventMixin');
 var Matrix = require('../geom/Matrix');
+var util = require('../util/util');
 
 
 
@@ -23,6 +24,7 @@ var Matrix = require('../geom/Matrix');
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/geom/Matrix
+ * @requires hilo/util/util
  * @property {String} id The identifier for the view.
  * @property {Number} x The position of the view on the x axis relative to the local coordinates of the parent, default value is 0.
  * @property {Number} y The position of the view on the y axis relative to the local coordinates of the parent, default value is 0.
@@ -52,7 +54,7 @@ return Class.create(/** @lends View.prototype */{
     constructor: function(properties){
         properties = properties || {};
         this.id = this.id || properties.id || Hilo.getUid("View");
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
     },
 
     tint:0xffffff,
@@ -76,6 +78,7 @@ return Class.create(/** @lends View.prototype */{
     boundsArea: null,
     parent: null,
     depth: -1,
+    blendMode:'source-over',
 
     /**
      * @language=en
@@ -266,7 +269,7 @@ return Class.create(/** @lends View.prototype */{
         if(e.type == "mousemove"){
             if(!this.__mouseOver){
                 this.__mouseOver = true;
-                var overEvent = Hilo.copy({}, e);
+                var overEvent = util.copy({}, e);
                 overEvent.type = "mouseover";
                 this.fire(overEvent);
             }

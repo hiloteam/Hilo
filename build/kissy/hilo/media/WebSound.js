@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.5 for kissy
+ * Hilo 1.1.0 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/media/WebSound', function(S, Hilo, HTMLAudio, WebAudio){
+KISSY.add('hilo/media/WebSound', function(S, HTMLAudio, WebAudio, util){
 
 
 
@@ -26,9 +26,9 @@ KISSY.add('hilo/media/WebSound', function(S, Hilo, HTMLAudio, WebAudio){
  * @class Audio playing manager.
  * @static
  * @module hilo/media/WebSound
- * @requires hilo/core/Hilo
  * @requires hilo/media/HTMLAudio
  * @requires hilo/media/WebAudio
+ * @requires hilo/util/util
  */
 var WebSound = {
     _audios: {},
@@ -92,7 +92,7 @@ var WebSound = {
     _normalizeSource: function(source){
         var result = {};
         if(typeof source === 'string') result = {src:source};
-        else Hilo.copy(result, source);
+        else util.copy(result, source);
         return result;
     }
 
@@ -101,5 +101,5 @@ var WebSound = {
 return WebSound;
 
 }, {
-    requires: ['hilo/core/Hilo', 'hilo/media/HTMLAudio', 'hilo/media/WebAudio']
+    requires: ['hilo/media/HTMLAudio', 'hilo/media/WebAudio', 'hilo/util/util']
 });

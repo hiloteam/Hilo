@@ -131,7 +131,15 @@
     
     
     
+    <li class="nav-class"><a href="../symbols/browser.html">browser</a></li>
+    
+    
+    
     <li class="nav-class"><a href="../symbols/drag.html">drag</a></li>
+    
+    
+    
+    <li class="nav-class"><a href="../symbols/util.html">util</a></li>
     
     
     <li class="nav-pkg">view<span></span></li>
@@ -219,14 +227,14 @@
         </span>
 
         <br>
-        drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.copy(view, drag)来为view增加拖拽功能。
+        drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.util.copy(view, drag)来为view增加拖拽功能。
         
             <br><br><iframe src='../../../examples/drag.html?noHeader' width = '550' height = '250' scrolling='no'></iframe>
 <br/>
 使用示例:
 <pre>
 var bmp = new Bitmap({image:img});
-Hilo.copy(bmp, Hilo.drag);
+Hilo.util.copy(bmp, Hilo.drag);
 bmp.startDrag([0, 0, 550, 400]);
 </pre>
         

@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7,6 +7,7 @@
 var Hilo = window.Hilo;
 var HTMLAudio = Hilo.HTMLAudio;
 var WebAudio = Hilo.WebAudio;
+var util = Hilo.util;
 
 
 /**
@@ -28,9 +29,9 @@ var WebAudio = Hilo.WebAudio;
  * @class Audio playing manager.
  * @static
  * @module hilo/media/WebSound
- * @requires hilo/core/Hilo
  * @requires hilo/media/HTMLAudio
  * @requires hilo/media/WebAudio
+ * @requires hilo/util/util
  */
 var WebSound = {
     _audios: {},
@@ -94,7 +95,7 @@ var WebSound = {
     _normalizeSource: function(source){
         var result = {};
         if(typeof source === 'string') result = {src:source};
-        else Hilo.copy(result, source);
+        else util.copy(result, source);
         return result;
     }
 

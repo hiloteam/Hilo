@@ -16,8 +16,8 @@
 <span class='line'>  9</span>  * 使用限制：iOS平台需用户事件触发才能播放，很多Android浏览器仅能同时播放一个音频。
 <span class='line'> 10</span>  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
 <span class='line'> 11</span>  * @module hilo/media/HTMLAudio
-<span class='line'> 12</span>  * @requires hilo/core/Hilo
-<span class='line'> 13</span>  * @requires hilo/core/Class
+<span class='line'> 12</span>  * @requires hilo/core/Class
+<span class='line'> 13</span>  * @requires hilo/util/util
 <span class='line'> 14</span>  * @requires hilo/event/EventMixin
 <span class='line'> 15</span>  * @property {String} src 播放的音频的资源地址。
 <span class='line'> 16</span>  * @property {Boolean} loop 是否循环播放。默认为false。
@@ -31,7 +31,7 @@
 <span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">HTMLAudio</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Class.create</span><span class="PUNC">(</span><span class="COMM">/** @lends HTMLAudio.prototype */</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 25</span> </span><span class="WHIT">    </span><span class="NAME">Mixes</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">EventMixin</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 26</span> </span><span class="WHIT">    </span><span class="NAME">constructor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 27</span> </span><span class="WHIT">        </span><span class="NAME">Hilo.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">        </span><span class="NAME">util.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 28</span> 
 <span class='line'> 29</span> </span><span class="WHIT">        </span><span class="NAME">this._onAudioEvent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._onAudioEvent.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 30</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">

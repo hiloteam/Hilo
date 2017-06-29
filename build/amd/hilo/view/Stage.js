@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.5 for amd
+ * Hilo 1.1.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-define('hilo/view/Stage', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Container', 'hilo/renderer/CanvasRenderer', 'hilo/renderer/DOMRenderer', 'hilo/renderer/WebGLRenderer'], function(Hilo, Class, Container, CanvasRenderer, DOMRenderer, WebGLRenderer){
+define('hilo/view/Stage', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Container', 'hilo/renderer/CanvasRenderer', 'hilo/renderer/DOMRenderer', 'hilo/renderer/WebGLRenderer', 'hilo/util/browser', 'hilo/util/util'], function(Hilo, Class, Container, CanvasRenderer, DOMRenderer, WebGLRenderer, browser, util){
 
 
 
@@ -36,6 +36,8 @@ define('hilo/view/Stage', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Conta
  * @requires hilo/renderer/CanvasRenderer
  * @requires hilo/renderer/DOMRenderer
  * @requires hilo/renderer/WebGLRenderer
+ * @requires hilo/util/browser
+ * @requires hilo/util/util
  * @property {HTMLCanvasElement|HTMLElement} canvas The canvas the Stage is related to. It can be a canvas or a div element, readonly!
  * @property {Renderer} renderer Stage renderer, readonly!
  * @property {Boolean} paused Paused Stage rendering.
@@ -201,7 +203,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
             var out = (type === 'touchmove') ? 'touchout' :
                       (type === 'mousemove' || leave || !obj) ? 'mouseout' : null;
             if(out) {
-                var outEvent = Hilo.copy({}, event);
+                var outEvent = util.copy({}, event);
                 outEvent.type = out;
                 outEvent.eventTarget = target;
                 target._fireMouseEvent(outEvent);
@@ -223,7 +225,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
         }
 
         //fix android: `touchmove` fires only once
-        if(Hilo.browser.android && type === 'touchmove'){
+        if(browser.android && type === 'touchmove'){
             e.preventDefault();
         }
     },

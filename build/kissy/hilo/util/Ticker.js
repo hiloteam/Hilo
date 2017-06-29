@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.5 for kissy
+ * Hilo 1.1.0 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/util/Ticker', function(S, Class, Hilo){
+KISSY.add('hilo/util/Ticker', function(S, Class, browser){
 
 
 
@@ -13,7 +13,7 @@ KISSY.add('hilo/util/Ticker', function(S, Class, Hilo){
  * @param {Number} fps The fps of ticker.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
- * @requires hilo/core/Hilo
+ * @requires hilo/util/browser
  */
 var Ticker = Class.create(/** @lends Ticker.prototype */{
     constructor: function(fps){
@@ -43,7 +43,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
         var self = this, interval = this._interval,
             raf = window.requestAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
+                  window[browser.jsVendor + 'RequestAnimationFrame'];
 
         var runLoop;
         if(useRAF && raf && interval < 17){
@@ -70,7 +70,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     stop: function(){
         if(this._useRAF){
             var cancelRAF = window.cancelAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'CancelAnimationFrame'];
+                  window[browser.jsVendor + 'CancelAnimationFrame'];
             cancelRAF(this._intervalId);
         }
         else{
@@ -223,5 +223,5 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 return Ticker;
 
 }, {
-    requires: ['hilo/core/Class', 'hilo/core/Hilo']
+    requires: ['hilo/core/Class', 'hilo/util/browser']
 });

@@ -9,8 +9,8 @@
  * 使用限制：iOS平台需用户事件触发才能播放，很多Android浏览器仅能同时播放一个音频。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/media/HTMLAudio
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @requires hilo/event/EventMixin
  * @property {String} src 播放的音频的资源地址。
  * @property {Boolean} loop 是否循环播放。默认为false。
@@ -24,7 +24,7 @@
 var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     Mixes: EventMixin,
     constructor: function(properties){
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
 
         this._onAudioEvent = this._onAudioEvent.bind(this);
     },

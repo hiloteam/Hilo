@@ -1,12 +1,12 @@
 /**
- * Hilo 1.0.5 for cmd
+ * Hilo 1.1.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
-var Hilo = require('hilo/core/Hilo');
 var Drawable = require('hilo/view/Drawable');
+var browser = require('hilo/util/browser');
 
 
 
@@ -17,8 +17,8 @@ var _cacheCanvas, _cacheContext;
  * @static
  * @mixin
  * @module hilo/view/CacheMixin
- * @requires hilo/core/Hilo
  * @requires hilo/view/Drawable
+ * @requires hilo/util/browser
  */
 var CacheMixin = /** @lends CacheMixin# */ {
     _cacheDirty:true,
@@ -37,7 +37,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * Update the cache.
      */
     updateCache:function(){
-        if(Hilo.browser.supportCanvas){
+        if(browser.supportCanvas){
             if(!_cacheCanvas){
                 _cacheCanvas = document.createElement('canvas');
                 _cacheContext = _cacheCanvas.getContext('2d');

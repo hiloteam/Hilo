@@ -1,12 +1,12 @@
 /**
- * Hilo 1.0.5 for cmd
+ * Hilo 1.1.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
-var Hilo = require('hilo/core/Hilo');
+var browser = require('hilo/util/browser');
 
 
 
@@ -16,7 +16,7 @@ var Hilo = require('hilo/core/Hilo');
  * @param {Number} fps The fps of ticker.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
- * @requires hilo/core/Hilo
+ * @requires hilo/util/browser
  */
 var Ticker = Class.create(/** @lends Ticker.prototype */{
     constructor: function(fps){
@@ -46,7 +46,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
         var self = this, interval = this._interval,
             raf = window.requestAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
+                  window[browser.jsVendor + 'RequestAnimationFrame'];
 
         var runLoop;
         if(useRAF && raf && interval < 17){
@@ -73,7 +73,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     stop: function(){
         if(this._useRAF){
             var cancelRAF = window.cancelAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'CancelAnimationFrame'];
+                  window[browser.jsVendor + 'CancelAnimationFrame'];
             cancelRAF(this._intervalId);
         }
         else{

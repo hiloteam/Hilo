@@ -17,8 +17,8 @@
 <span class='line'> 10</span>  * @static
 <span class='line'> 11</span>  * @mixin
 <span class='line'> 12</span>  * @module hilo/view/CacheMixin
-<span class='line'> 13</span>  * @requires hilo/core/Hilo
-<span class='line'> 14</span>  * @requires hilo/view/Drawable
+<span class='line'> 13</span>  * @requires hilo/view/Drawable
+<span class='line'> 14</span>  * @requires hilo/util/browser
 <span class='line'> 15</span>  */</span><span class="WHIT">
 <span class='line'> 16</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">CacheMixin</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="COMM">/** @lends CacheMixin# */</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 17</span> </span><span class="WHIT">    </span><span class="NAME">_cacheDirty</span><span class="PUNC">:</span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
@@ -35,7 +35,7 @@
 <span class='line'> 28</span>      * 更新缓存
 <span class='line'> 29</span>      */</span><span class="WHIT">
 <span class='line'> 30</span> </span><span class="WHIT">    </span><span class="NAME">updateCache</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 31</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">Hilo.browser.supportCanvas</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">browser.supportCanvas</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 32</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">_cacheCanvas</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 33</span> </span><span class="WHIT">                </span><span class="NAME">_cacheCanvas</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createElement</span><span class="PUNC">(</span><span class="STRN">'canvas'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 34</span> </span><span class="WHIT">                </span><span class="NAME">_cacheContext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_cacheCanvas.getContext</span><span class="PUNC">(</span><span class="STRN">'2d'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">

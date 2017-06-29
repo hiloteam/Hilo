@@ -14,8 +14,8 @@
 <span class='line'>  7</span> </span><span class="COMM">/**
 <span class='line'>  8</span>  * @class Camera3d is a pseudo-3d camera.
 <span class='line'>  9</span>  * @module hilo/game/Camera3d
-<span class='line'> 10</span>  * @requires hilo/core/Hilo
-<span class='line'> 11</span>  * @requires hilo/core/Class
+<span class='line'> 10</span>  * @requires hilo/core/Class
+<span class='line'> 11</span>  * @requires hilo/util/util
 <span class='line'> 12</span>  * @property {Number} fv The distance of the fov(The distance between eyes and the Z plane，it determines the scale ratio of the 3d object).
 <span class='line'> 13</span>  * @property {Number} fx The x position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the x axis).
 <span class='line'> 14</span>  * @property {Number} fy The y position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the y axis).
@@ -64,7 +64,7 @@
 <span class='line'> 57</span> </span><span class="WHIT">			</span><span class="NAME">properties.rotationY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">properties.rotationY</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 58</span> </span><span class="WHIT">			</span><span class="NAME">properties.rotationZ</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">properties.rotationZ</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 59</span> 
-<span class='line'> 60</span> </span><span class="WHIT">        	</span><span class="NAME">Hilo.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">        	</span><span class="NAME">util.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 61</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 62</span> 
 <span class='line'> 63</span> </span><span class="WHIT">	    </span><span class="COMM">/**

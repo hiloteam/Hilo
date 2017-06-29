@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for cmd
+ * Hilo 1.1.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -10,6 +10,7 @@ var Class = require('hilo/core/Class');
 var View = require('hilo/view/View');
 var Container = require('hilo/view/Container');
 var Drawable = require('hilo/view/Drawable');
+var util = require('hilo/util/util');
 
 
 
@@ -25,6 +26,7 @@ var Drawable = require('hilo/view/Drawable');
  * @requires hilo/view/View
  * @requires hilo/view/Container
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Number} [emitTime=0.2] Emit time interval(in second).
  * @property {Number} [emitTimeVar=0] Emit time interval variances.
  * @property {Number} [emitNum=10] Emit number.
@@ -112,7 +114,7 @@ var ParticleSystem = (function(){
          * @param {Object} cfg
         */
         reset: function(cfg) {
-            Hilo.copy(this, cfg);
+            util.copy(this, cfg);
             this.particle.system = this;
             if(this.totalTime <= 0){
                 this.totalTime = Infinity;

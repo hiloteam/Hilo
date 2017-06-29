@@ -1,10 +1,10 @@
 /**
- * Hilo 1.0.5 for commonjs
+ * Hilo 1.1.0 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Hilo = require('../core/Hilo');
 var Class = require('../core/Class');
+var util = require('../util/util');
 var EventMixin = require('../event/EventMixin');
 
 
@@ -15,8 +15,8 @@ var EventMixin = require('../event/EventMixin');
  * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
  * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/WebAudio
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @requires hilo/event/EventMixin
  * @property {String} src The source of the playing audio.
  * @property {Boolean} loop Is loop playback, default value is false.
@@ -35,7 +35,7 @@ var context = AudioContext ? new AudioContext() : null;
 return Class.create(/** @lends WebAudio.prototype */{
     Mixes: EventMixin,
     constructor: function(properties){
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
 
         this._init();
     },

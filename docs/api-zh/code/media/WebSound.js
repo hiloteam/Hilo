@@ -22,9 +22,9 @@
  * @class 声音播放管理器。
  * @static
  * @module hilo/media/WebSound
- * @requires hilo/core/Hilo
  * @requires hilo/media/HTMLAudio
  * @requires hilo/media/WebAudio
+ * @requires hilo/util/util
  */
 var WebSound = {
     _audios: {},
@@ -84,7 +84,7 @@ var WebSound = {
     _normalizeSource: function(source){
         var result = {};
         if(typeof source === 'string') result = {src:source};
-        else Hilo.copy(result, source);
+        else util.copy(result, source);
         return result;
     }
 

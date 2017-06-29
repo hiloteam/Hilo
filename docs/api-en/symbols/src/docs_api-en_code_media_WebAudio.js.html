@@ -16,8 +16,8 @@
 <span class='line'>  9</span>  * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
 <span class='line'> 10</span>  * @param {Object} properties create object properties, include all writable properties of this class.
 <span class='line'> 11</span>  * @module hilo/media/WebAudio
-<span class='line'> 12</span>  * @requires hilo/core/Hilo
-<span class='line'> 13</span>  * @requires hilo/core/Class
+<span class='line'> 12</span>  * @requires hilo/core/Class
+<span class='line'> 13</span>  * @requires hilo/util/util
 <span class='line'> 14</span>  * @requires hilo/event/EventMixin
 <span class='line'> 15</span>  * @property {String} src The source of the playing audio.
 <span class='line'> 16</span>  * @property {Boolean} loop Is loop playback, default value is false.
@@ -36,7 +36,7 @@
 <span class='line'> 29</span> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Class.create</span><span class="PUNC">(</span><span class="COMM">/** @lends WebAudio.prototype */</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 30</span> </span><span class="WHIT">    </span><span class="NAME">Mixes</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">EventMixin</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 31</span> </span><span class="WHIT">    </span><span class="NAME">constructor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 32</span> </span><span class="WHIT">        </span><span class="NAME">Hilo.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">        </span><span class="NAME">util.copy</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 33</span> 
 <span class='line'> 34</span> </span><span class="WHIT">        </span><span class="NAME">this._init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 35</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">

@@ -28,6 +28,7 @@
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Object} upState 按钮弹起状态的属性或其drawable的属性的集合。
  * @property {Object} overState 按钮经过状态的属性或其drawable的属性的集合。
  * @property {Object} downState 按钮按下状态的属性或其drawable的属性的集合。
@@ -100,7 +101,7 @@
 
             if(stateObj){
                 this.drawable.init(stateObj);
-                Hilo.copy(this, stateObj, true);
+                util.copy(this, stateObj, true);
             }
         }
 

@@ -15,6 +15,7 @@ var Hilo = (function(){
 var win = window, doc = document, docElem = doc.documentElement,
     uid = 0;
 
+var hasWarnedDict = {};
 return {
     /**
      * Hilo version
@@ -52,6 +53,7 @@ return {
 
     /**
      * Simple shallow copy objects.
+     * @deprecated use Hilo.util.copy instead
      * @param {Object} target Target object to copy to.
      * @param {Object} source Source object to copy.
      * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
@@ -62,6 +64,10 @@ return {
             if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
                 target[key] = source[key];
             }
+        }
+        if(!hasWarnedDict.copy){
+            hasWarnedDict.copy = true;
+            console.warn('Hilo.copy has been Deprecated! Use Hilo.util.copy instead.');
         }
         return target;
     },

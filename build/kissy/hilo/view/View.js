@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.5 for kissy
+ * Hilo 1.1.0 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/view/View', function(S, Hilo, Class, EventMixin, Matrix){
+KISSY.add('hilo/view/View', function(S, Hilo, Class, EventMixin, Matrix, util){
 
 
 
@@ -20,6 +20,7 @@ KISSY.add('hilo/view/View', function(S, Hilo, Class, EventMixin, Matrix){
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/geom/Matrix
+ * @requires hilo/util/util
  * @property {String} id The identifier for the view.
  * @property {Number} x The position of the view on the x axis relative to the local coordinates of the parent, default value is 0.
  * @property {Number} y The position of the view on the y axis relative to the local coordinates of the parent, default value is 0.
@@ -49,7 +50,7 @@ return Class.create(/** @lends View.prototype */{
     constructor: function(properties){
         properties = properties || {};
         this.id = this.id || properties.id || Hilo.getUid("View");
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
     },
 
     tint:0xffffff,
@@ -73,6 +74,7 @@ return Class.create(/** @lends View.prototype */{
     boundsArea: null,
     parent: null,
     depth: -1,
+    blendMode:'source-over',
 
     /**
      * @language=en
@@ -263,7 +265,7 @@ return Class.create(/** @lends View.prototype */{
         if(e.type == "mousemove"){
             if(!this.__mouseOver){
                 this.__mouseOver = true;
-                var overEvent = Hilo.copy({}, e);
+                var overEvent = util.copy({}, e);
                 overEvent.type = "mouseover";
                 this.fire(overEvent);
             }
@@ -423,5 +425,5 @@ function doSATCheck(poly1, poly2, result){
 return View;
 
 }, {
-    requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/event/EventMixin', 'hilo/geom/Matrix']
+    requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/event/EventMixin', 'hilo/geom/Matrix', 'hilo/util/util']
 });

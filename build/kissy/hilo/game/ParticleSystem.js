@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.5 for kissy
+ * Hilo 1.1.0 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/game/ParticleSystem', function(S, Hilo, Class, View, Container, Drawable){
+KISSY.add('hilo/game/ParticleSystem', function(S, Hilo, Class, View, Container, Drawable, util){
 
 
 
@@ -19,6 +19,7 @@ KISSY.add('hilo/game/ParticleSystem', function(S, Hilo, Class, View, Container, 
  * @requires hilo/view/View
  * @requires hilo/view/Container
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Number} [emitTime=0.2] Emit time interval(in second).
  * @property {Number} [emitTimeVar=0] Emit time interval variances.
  * @property {Number} [emitNum=10] Emit number.
@@ -106,7 +107,7 @@ var ParticleSystem = (function(){
          * @param {Object} cfg
         */
         reset: function(cfg) {
-            Hilo.copy(this, cfg);
+            util.copy(this, cfg);
             this.particle.system = this;
             if(this.totalTime <= 0){
                 this.totalTime = Infinity;
@@ -312,5 +313,5 @@ var ParticleSystem = (function(){
 return ParticleSystem;
 
 }, {
-    requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Container', 'hilo/view/Drawable']
+    requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Container', 'hilo/view/Drawable', 'hilo/util/util']
 });

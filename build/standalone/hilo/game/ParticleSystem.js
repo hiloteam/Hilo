@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -9,6 +9,7 @@ var Class = Hilo.Class;
 var View = Hilo.View;
 var Container = Hilo.Container;
 var Drawable = Hilo.Drawable;
+var util = Hilo.util;
 
 
 /**
@@ -23,6 +24,7 @@ var Drawable = Hilo.Drawable;
  * @requires hilo/view/View
  * @requires hilo/view/Container
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Number} [emitTime=0.2] Emit time interval(in second).
  * @property {Number} [emitTimeVar=0] Emit time interval variances.
  * @property {Number} [emitNum=10] Emit number.
@@ -110,7 +112,7 @@ var ParticleSystem = (function(){
          * @param {Object} cfg
         */
         reset: function(cfg) {
-            Hilo.copy(this, cfg);
+            util.copy(this, cfg);
             this.particle.system = this;
             if(this.totalTime <= 0){
                 this.totalTime = Infinity;

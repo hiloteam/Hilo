@@ -1,9 +1,9 @@
 /**
- * Hilo 1.0.5 for amd
+ * Hilo 1.1.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-define('hilo/media/WebAudio', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/event/EventMixin'], function(Hilo, Class, EventMixin){
+define('hilo/media/WebAudio', ['hilo/core/Class', 'hilo/util/util', 'hilo/event/EventMixin'], function(Class, util, EventMixin){
 
 
 
@@ -13,8 +13,8 @@ define('hilo/media/WebAudio', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/event/
  * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
  * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/WebAudio
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @requires hilo/event/EventMixin
  * @property {String} src The source of the playing audio.
  * @property {Boolean} loop Is loop playback, default value is false.
@@ -33,7 +33,7 @@ var context = AudioContext ? new AudioContext() : null;
 return Class.create(/** @lends WebAudio.prototype */{
     Mixes: EventMixin,
     constructor: function(properties){
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
 
         this._init();
     },

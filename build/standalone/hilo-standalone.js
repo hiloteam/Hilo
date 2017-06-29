@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -18,12 +18,13 @@ var Hilo = (function(){
 var win = window, doc = document, docElem = doc.documentElement,
     uid = 0;
 
+var hasWarnedDict = {};
 return {
     /**
      * Hilo version
      * @type String
      */
-    version:'1.0.5',
+    version:'1.1.0',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -58,6 +59,7 @@ return {
     /**
      * @language=en
      * Simple shallow copy objects.
+     * @deprecated use Hilo.util.copy instead
      * @param {Object} target Target object to copy to.
      * @param {Object} source Source object to copy.
      * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
@@ -68,6 +70,10 @@ return {
             if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
                 target[key] = source[key];
             }
+        }
+        if(!hasWarnedDict.copy){
+            hasWarnedDict.copy = true;
+            console.warn('Hilo.copy has been Deprecated! Use Hilo.util.copy instead.');
         }
         return target;
     },
@@ -373,7 +379,7 @@ return {
 window.Hilo = Hilo;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -554,7 +560,209 @@ return {create:create, mix:mix};
 Hilo.Class = Class;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
+ * Copyright 2016 alibaba.com
+ * Licensed under the MIT License
+ */
+(function(window){
+var Hilo = window.Hilo;
+
+
+/**
+ * @language=en
+ * @class util method set
+ * @static
+ * @module hilo/util/util
+ */
+var util = {
+    /**
+     * @language=en
+     * Simple shallow copy objects.
+     * @param {Object} target Target object to copy to.
+     * @param {Object} source Source object to copy.
+     * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
+     * @returns {Object} Object after copying.
+     */
+    copy: function(target, source, strict){
+        for(var key in source){
+            if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
+                target[key] = source[key];
+            }
+        }
+        return target;
+    }
+};
+Hilo.util = util;
+})(window);
+/**
+ * Hilo 1.1.0 for standalone
+ * Copyright 2016 alibaba.com
+ * Licensed under the MIT License
+ */
+(function(window){
+var Hilo = window.Hilo;
+
+
+/**
+ * @language=en
+ * @class Browser feature set
+ * @static
+ * @module hilo/util/browser
+ */
+var browser = (function(){
+    var ua = navigator.userAgent;
+    var doc = document;
+    var win = window;
+    var docElem = doc.documentElement;
+
+    var data = /** @lends browser */ {
+        /**
+         * 是否是iphone
+         * @type {Boolean}
+         */
+        iphone: /iphone/i.test(ua),
+
+        /**
+         * 是否是ipad
+         * @type {Boolean}
+         */
+        ipad: /ipad/i.test(ua),
+
+        /**
+         * 是否是ipod
+         * @type {Boolean}
+         */
+        ipod: /ipod/i.test(ua),
+
+        /**
+         * 是否是ios
+         * @type {Boolean}
+         */
+        ios: /iphone|ipad|ipod/i.test(ua),
+
+        /**
+         * 是否是android
+         * @type {Boolean}
+         */
+        android: /android/i.test(ua),
+
+        /**
+         * 是否是webkit
+         * @type {Boolean}
+         */
+        webkit: /webkit/i.test(ua),
+
+        /**
+         * 是否是chrome
+         * @type {Boolean}
+         */
+        chrome: /chrome/i.test(ua),
+
+        /**
+         * 是否是safari
+         * @type {Boolean}
+         */
+        safari: /safari/i.test(ua),
+
+        /**
+         * 是否是firefox
+         * @type {Boolean}
+         */
+        firefox: /firefox/i.test(ua),
+
+        /**
+         * 是否是ie
+         * @type {Boolean}
+         */
+        ie: /msie/i.test(ua),
+
+        /**
+         * 是否是opera
+         * @type {Boolean}
+         */
+        opera: /opera/i.test(ua),
+        /**
+         * 是否支持触碰事件。
+         * @type {String}
+         */
+        supportTouch: 'ontouchstart' in win,
+
+        /**
+         * 是否支持canvas元素。
+         * @type {Boolean}
+         */
+        supportCanvas: doc.createElement('canvas').getContext != null,
+        /**
+         * 是否支持本地存储localStorage。
+         * @type {Boolean}
+         */
+        supportStorage: false,
+
+        /**
+         * 是否支持检测设备方向orientation。
+         * @type {Boolean}
+         */
+        supportOrientation: 'orientation' in win,
+
+        /**
+         * 是否支持检测加速度devicemotion。
+         * @type {Boolean}
+         */
+        supportDeviceMotion: 'ondevicemotion' in win
+    };
+
+    //`localStorage` is null or `localStorage.setItem` throws error in some cases (e.g. localStorage is disabled)
+    try{
+        var value = 'hilo';
+        localStorage.setItem(value, value);
+        localStorage.removeItem(value);
+        data.supportStorage = true;
+    }catch(e){}
+
+    /**
+     * 浏览器厂商CSS前缀的js值。比如：webkit。
+     * @type {String}
+     */
+    var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'webkit' : data.opera ? 'o' : data.ie ? 'ms' : '';
+    /**
+     * 浏览器厂商CSS前缀的css值。比如：-webkit-。
+     * @type {String}
+     */
+    var cssVendor = data.cssVendor = '-' + jsVendor + '-';
+
+    //css transform/3d feature dectection
+    var testElem = doc.createElement('div'), style = testElem.style;
+    /**
+     * 是否支持CSS Transform变换。
+     * @type {Boolean}
+     */
+    var supportTransform = style[jsVendor + 'Transform'] != undefined;
+
+    /**
+     * 是否支持CSS Transform 3D变换。
+     * @type {Boolean}
+     */
+    var supportTransform3D = style[jsVendor + 'Perspective'] != undefined;
+    if(supportTransform3D){
+        testElem.id = 'test3d';
+        style = doc.createElement('style');
+        style.textContent = '@media ('+ cssVendor +'transform-3d){#test3d{height:3px}}';
+        doc.head.appendChild(style);
+
+        docElem.appendChild(testElem);
+        supportTransform3D = testElem.offsetHeight == 3;
+        doc.head.removeChild(style);
+        docElem.removeChild(testElem);
+    }
+    data.supportTransform = supportTransform;
+    data.supportTransform3D = supportTransform3D;
+
+    return data;
+})();
+Hilo.browser = browser;
+})(window);
+/**
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -733,7 +941,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
 Hilo.Matrix = Matrix;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -885,13 +1093,14 @@ if(RawEvent){
 Hilo.EventMixin = EventMixin;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var util = Hilo.util;
 
 
 /**
@@ -899,8 +1108,8 @@ var Class = Hilo.Class;
  * @class Drawable is a wrapper of drawable images.
  * @param {Object} properties create Objects properties, contains all writable properties.
  * @module hilo/view/Drawable
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} image Image to be drawed, can used by CanvasRenderingContext2D.drawImage，like HTMLImageElement、HTMLCanvasElement、HTMLVideoElement。
  * @property {array} rect The retangle area that image will be drawed.
  */
@@ -922,7 +1131,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
         if(Drawable.isDrawable(properties)){
             me.image = properties;
         }else{
-            Hilo.copy(me, properties, true);
+            util.copy(me, properties, true);
         }
 
         var image = me.image;
@@ -965,13 +1174,14 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
 Hilo.Drawable = Drawable;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var util = Hilo.util;
 
 
 /**
@@ -979,8 +1189,8 @@ var Class = Hilo.Class;
  * @class Renderer Renderer is the base class of renderer.
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/Renderer
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} canvas The canvas of renderer. It can be a dom element, such as a div element, or a canvas element. readonly.
  * @property {Object} stage The stage of renderer, readonly.
  * @property {String} renderType The render type of renderer, readonly.
@@ -988,12 +1198,13 @@ var Class = Hilo.Class;
 var Renderer = Class.create(/** @lends Renderer.prototype */{
     constructor: function(properties){
         properties = properties || {};
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
     },
 
     renderType:null,
     canvas: null,
     stage: null,
+    blendMode:'source-over',
 
     /**
      * @language=en
@@ -1057,7 +1268,7 @@ var Renderer = Class.create(/** @lends Renderer.prototype */{
 Hilo.Renderer = Renderer;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1096,6 +1307,9 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
         if(target.visible && target.alpha > 0){
             if(target === this.stage){
                 this.context.clearRect(0, 0, target.width, target.height);
+            }
+            if(target.blendMode !== this.blendMode){
+                this.context.globalCompositeOperation = this.blendMode = target.blendMode;
             }
             this.context.save();
             return true;
@@ -1296,7 +1510,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
 Hilo.CanvasRenderer = CanvasRenderer;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1479,7 +1693,7 @@ function createDOMDrawable(view, imageObj){
 Hilo.DOMRenderer = DOMRenderer;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2048,7 +2262,7 @@ Shader.prototype = {
 Hilo.WebGLRenderer = WebGLRenderer;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2057,6 +2271,7 @@ var Hilo = window.Hilo;
 var Class = Hilo.Class;
 var EventMixin = Hilo.EventMixin;
 var Matrix = Hilo.Matrix;
+var util = Hilo.util;
 
 
 /**
@@ -2072,6 +2287,7 @@ var Matrix = Hilo.Matrix;
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/geom/Matrix
+ * @requires hilo/util/util
  * @property {String} id The identifier for the view.
  * @property {Number} x The position of the view on the x axis relative to the local coordinates of the parent, default value is 0.
  * @property {Number} y The position of the view on the y axis relative to the local coordinates of the parent, default value is 0.
@@ -2101,7 +2317,7 @@ return Class.create(/** @lends View.prototype */{
     constructor: function(properties){
         properties = properties || {};
         this.id = this.id || properties.id || Hilo.getUid("View");
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
     },
 
     tint:0xffffff,
@@ -2125,6 +2341,7 @@ return Class.create(/** @lends View.prototype */{
     boundsArea: null,
     parent: null,
     depth: -1,
+    blendMode:'source-over',
 
     /**
      * @language=en
@@ -2315,7 +2532,7 @@ return Class.create(/** @lends View.prototype */{
         if(e.type == "mousemove"){
             if(!this.__mouseOver){
                 this.__mouseOver = true;
-                var overEvent = Hilo.copy({}, e);
+                var overEvent = util.copy({}, e);
                 overEvent.type = "mouseover";
                 this.fire(overEvent);
             }
@@ -2474,13 +2691,14 @@ function doSATCheck(poly1, poly2, result){
 Hilo.View = View;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Drawable = Hilo.Drawable;
+var browser = Hilo.browser;
 
 
 var _cacheCanvas, _cacheContext;
@@ -2490,8 +2708,8 @@ var _cacheCanvas, _cacheContext;
  * @static
  * @mixin
  * @module hilo/view/CacheMixin
- * @requires hilo/core/Hilo
  * @requires hilo/view/Drawable
+ * @requires hilo/util/browser
  */
 var CacheMixin = /** @lends CacheMixin# */ {
     _cacheDirty:true,
@@ -2510,7 +2728,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * Update the cache.
      */
     updateCache:function(){
-        if(Hilo.browser.supportCanvas){
+        if(browser.supportCanvas){
             if(!_cacheCanvas){
                 _cacheCanvas = document.createElement('canvas');
                 _cacheContext = _cacheCanvas.getContext('2d');
@@ -2539,7 +2757,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
 Hilo.CacheMixin = CacheMixin;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2913,7 +3131,7 @@ var Container = Class.create(/** @lends Container.prototype */{
 Hilo.Container = Container;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2924,6 +3142,8 @@ var Container = Hilo.Container;
 var CanvasRenderer = Hilo.CanvasRenderer;
 var DOMRenderer = Hilo.DOMRenderer;
 var WebGLRenderer = Hilo.WebGLRenderer;
+var browser = Hilo.browser;
+var util = Hilo.util;
 
 
 /**
@@ -2955,6 +3175,8 @@ var WebGLRenderer = Hilo.WebGLRenderer;
  * @requires hilo/renderer/CanvasRenderer
  * @requires hilo/renderer/DOMRenderer
  * @requires hilo/renderer/WebGLRenderer
+ * @requires hilo/util/browser
+ * @requires hilo/util/util
  * @property {HTMLCanvasElement|HTMLElement} canvas The canvas the Stage is related to. It can be a canvas or a div element, readonly!
  * @property {Renderer} renderer Stage renderer, readonly!
  * @property {Boolean} paused Paused Stage rendering.
@@ -3120,7 +3342,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
             var out = (type === 'touchmove') ? 'touchout' :
                       (type === 'mousemove' || leave || !obj) ? 'mouseout' : null;
             if(out) {
-                var outEvent = Hilo.copy({}, event);
+                var outEvent = util.copy({}, event);
                 outEvent.type = out;
                 outEvent.eventTarget = target;
                 target._fireMouseEvent(outEvent);
@@ -3142,7 +3364,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
         }
 
         //fix android: `touchmove` fires only once
-        if(Hilo.browser.android && type === 'touchmove'){
+        if(browser.android && type === 'touchmove'){
             e.preventDefault();
         }
     },
@@ -3181,7 +3403,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
 Hilo.Stage = Stage;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3260,7 +3482,7 @@ var Drawable = Hilo.Drawable;
 Hilo.Bitmap = Bitmap;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3532,7 +3754,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
 Hilo.Sprite = Sprite;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3634,7 +3856,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
 Hilo.DOMElement = DOMElement;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4188,7 +4410,7 @@ return Class.create(/** @lends Graphics.prototype */{
 Hilo.Graphics = Graphics;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4442,7 +4664,7 @@ var Text = Class.create(/** @lends Text.prototype */{
 Hilo.Text = Text;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4627,7 +4849,7 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
 Hilo.BitmapText = BitmapText;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4636,6 +4858,7 @@ var Hilo = window.Hilo;
 var Class = Hilo.Class;
 var View = Hilo.View;
 var Drawable = Hilo.Drawable;
+var util = Hilo.util;
 
 
 /**
@@ -4663,6 +4886,7 @@ var Drawable = Hilo.Drawable;
  * @requires hilo/core/Class
  * @requires hilo/view/View
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Object} upState The property of button 'up' state or collections of its drawable properties.
  * @property {Object} overState The property of button 'over' state or collections of its drawable properties.
  * @property {Object} downState The property of button 'down' state or collections of its drawable properties.
@@ -4737,7 +4961,7 @@ var Drawable = Hilo.Drawable;
 
             if(stateObj){
                 this.drawable.init(stateObj);
-                Hilo.copy(this, stateObj, true);
+                util.copy(this, stateObj, true);
             }
         }
 
@@ -4806,7 +5030,7 @@ var Drawable = Hilo.Drawable;
 Hilo.Button = Button;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5042,13 +5266,14 @@ function isNumber(value){
 Hilo.TextureAtlas = TextureAtlas;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var browser = Hilo.browser;
 
 
 /**
@@ -5057,7 +5282,7 @@ var Class = Hilo.Class;
  * @param {Number} fps The fps of ticker.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
- * @requires hilo/core/Hilo
+ * @requires hilo/util/browser
  */
 var Ticker = Class.create(/** @lends Ticker.prototype */{
     constructor: function(fps){
@@ -5087,7 +5312,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
         var self = this, interval = this._interval,
             raf = window.requestAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
+                  window[browser.jsVendor + 'RequestAnimationFrame'];
 
         var runLoop;
         if(useRAF && raf && interval < 17){
@@ -5114,7 +5339,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     stop: function(){
         if(this._useRAF){
             var cancelRAF = window.cancelAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'CancelAnimationFrame'];
+                  window[browser.jsVendor + 'CancelAnimationFrame'];
             cancelRAF(this._intervalId);
         }
         else{
@@ -5266,7 +5491,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 Hilo.Ticker = Ticker;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5314,7 +5539,7 @@ if (!fnProto.bind) {
 Hilo.undefined = undefined;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5329,10 +5554,10 @@ var Hilo = window.Hilo;
  * example:
  * <pre>
  * var bmp = new Bitmap({image:img});
- * Hilo.copy(bmp, Hilo.drag);
+ * Hilo.util.copy(bmp, Hilo.drag);
  * bmp.startDrag([0, 0, 550, 400]);
  * </pre>
- * @class drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.copy(target, drag).
+ * @class drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.util.copy(target, drag).
  * @mixin
  * @static
  * @module hilo/util/drag
@@ -5430,7 +5655,7 @@ var drag = {
 Hilo.drag = drag;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5871,7 +6096,7 @@ return Class.create(/** @lends Tween.prototype */{
 Hilo.Tween = Tween;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6141,7 +6366,7 @@ return {
 Hilo.Ease = Ease;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6188,7 +6413,7 @@ var ImageLoader = Class.create({
 Hilo.ImageLoader = ImageLoader;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6254,7 +6479,7 @@ var ScriptLoader = Class.create({
 Hilo.ScriptLoader = ScriptLoader;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6505,13 +6730,14 @@ function getExtension(src){
 Hilo.LoadQueue = LoadQueue;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var util = Hilo.util;
 var EventMixin = Hilo.EventMixin;
 
 
@@ -6521,8 +6747,8 @@ var EventMixin = Hilo.EventMixin;
  * Limits: iOS platform requires user action events to start playing, and many Android browser can only play one audio at a time.
  * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/HTMLAudio
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @requires hilo/event/EventMixin
  * @property {String} src The source of the playing audio.
  * @property {Boolean} loop Is loop playback, default value is false.
@@ -6536,7 +6762,7 @@ var EventMixin = Hilo.EventMixin;
 var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     Mixes: EventMixin,
     constructor: function(properties){
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
 
         this._onAudioEvent = this._onAudioEvent.bind(this);
     },
@@ -6708,13 +6934,14 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
 Hilo.HTMLAudio = HTMLAudio;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var util = Hilo.util;
 var EventMixin = Hilo.EventMixin;
 
 
@@ -6724,8 +6951,8 @@ var EventMixin = Hilo.EventMixin;
  * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
  * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/WebAudio
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @requires hilo/event/EventMixin
  * @property {String} src The source of the playing audio.
  * @property {Boolean} loop Is loop playback, default value is false.
@@ -6744,7 +6971,7 @@ var context = AudioContext ? new AudioContext() : null;
 return Class.create(/** @lends WebAudio.prototype */{
     Mixes: EventMixin,
     constructor: function(properties){
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
 
         this._init();
     },
@@ -7025,7 +7252,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 Hilo.WebAudio = WebAudio;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7033,6 +7260,7 @@ Hilo.WebAudio = WebAudio;
 var Hilo = window.Hilo;
 var HTMLAudio = Hilo.HTMLAudio;
 var WebAudio = Hilo.WebAudio;
+var util = Hilo.util;
 
 
 /**
@@ -7054,9 +7282,9 @@ var WebAudio = Hilo.WebAudio;
  * @class Audio playing manager.
  * @static
  * @module hilo/media/WebSound
- * @requires hilo/core/Hilo
  * @requires hilo/media/HTMLAudio
  * @requires hilo/media/WebAudio
+ * @requires hilo/util/util
  */
 var WebSound = {
     _audios: {},
@@ -7120,7 +7348,7 @@ var WebSound = {
     _normalizeSource: function(source){
         var result = {};
         if(typeof source === 'string') result = {src:source};
-        else Hilo.copy(result, source);
+        else util.copy(result, source);
         return result;
     }
 
@@ -7128,13 +7356,14 @@ var WebSound = {
 Hilo.WebSound = WebSound;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var util = Hilo.util;
 
 
 /**
@@ -7142,8 +7371,8 @@ var Class = Hilo.Class;
  * @class Camera.
  * @param {Object} properties The properties to create a view object, contains all writeable props of this class
  * @module hilo/game/Camera
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Number} width The width of the camera.
  * @property {Number} height The height of the camera.
  * @property {Object} scroll The scrolling value of the camera {x:0, y:0}.
@@ -7165,7 +7394,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
             y:0
         };
 
-        Hilo.copy(this, properties);
+        util.copy(this, properties);
     },
     /**
      * @language=en
@@ -7220,21 +7449,22 @@ var Camera = Class.create(/** @lends Camera.prototype */{
 Hilo.Camera = Camera;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var util = Hilo.util;
 
 
 /**
  * @language=en
  * @class Camera3d is a pseudo-3d camera.
  * @module hilo/game/Camera3d
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Number} fv The distance of the fov(The distance between eyes and the Z plane，it determines the scale ratio of the 3d object).
  * @property {Number} fx The x position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the x axis).
  * @property {Number} fy The y position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the y axis).
@@ -7283,7 +7513,7 @@ var Camera3d = (function(){
 			properties.rotationY = properties.rotationY || 0;
 			properties.rotationZ = properties.rotationZ || 0;
 
-        	Hilo.copy(this, properties);
+        	util.copy(this, properties);
 		},
 
 	    /**
@@ -7406,7 +7636,7 @@ var Camera3d = (function(){
 Hilo.Camera3d = Camera3d;
 })(window);
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7416,6 +7646,7 @@ var Class = Hilo.Class;
 var View = Hilo.View;
 var Container = Hilo.Container;
 var Drawable = Hilo.Drawable;
+var util = Hilo.util;
 
 
 /**
@@ -7430,6 +7661,7 @@ var Drawable = Hilo.Drawable;
  * @requires hilo/view/View
  * @requires hilo/view/Container
  * @requires hilo/view/Drawable
+ * @requires hilo/util/util
  * @property {Number} [emitTime=0.2] Emit time interval(in second).
  * @property {Number} [emitTimeVar=0] Emit time interval variances.
  * @property {Number} [emitNum=10] Emit number.
@@ -7517,7 +7749,7 @@ var ParticleSystem = (function(){
          * @param {Object} cfg
         */
         reset: function(cfg) {
-            Hilo.copy(this, cfg);
+            util.copy(this, cfg);
             this.particle.system = this;
             if(this.totalTime <= 0){
                 this.totalTime = Infinity;

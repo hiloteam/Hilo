@@ -1,10 +1,10 @@
 /**
- * Hilo 1.0.5 for commonjs
+ * Hilo 1.1.0 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-var Hilo = require('../core/Hilo');
 var Drawable = require('./Drawable');
+var browser = require('../util/browser');
 
 
 
@@ -15,8 +15,8 @@ var _cacheCanvas, _cacheContext;
  * @static
  * @mixin
  * @module hilo/view/CacheMixin
- * @requires hilo/core/Hilo
  * @requires hilo/view/Drawable
+ * @requires hilo/util/browser
  */
 var CacheMixin = /** @lends CacheMixin# */ {
     _cacheDirty:true,
@@ -35,7 +35,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * Update the cache.
      */
     updateCache:function(){
-        if(Hilo.browser.supportCanvas){
+        if(browser.supportCanvas){
             if(!_cacheCanvas){
                 _cacheCanvas = document.createElement('canvas');
                 _cacheContext = _cacheCanvas.getContext('2d');

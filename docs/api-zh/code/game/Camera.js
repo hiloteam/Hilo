@@ -8,8 +8,8 @@
  * @class Camera类表示摄像机。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/game/Camera
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Number} width 镜头宽
  * @property {Number} height 镜头高
  * @property {Object} scroll 滚动值 {x:0, y:0}
@@ -31,7 +31,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
             y:0
         };
 
-        Hilo.copy(this, properties);
+        util.copy(this, properties);
     },
     /**
      * 更新

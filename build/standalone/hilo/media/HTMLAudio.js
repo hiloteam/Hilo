@@ -1,11 +1,12 @@
 /**
- * Hilo 1.0.5 for standalone
+ * Hilo 1.1.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
 var Hilo = window.Hilo;
 var Class = Hilo.Class;
+var util = Hilo.util;
 var EventMixin = Hilo.EventMixin;
 
 
@@ -15,8 +16,8 @@ var EventMixin = Hilo.EventMixin;
  * Limits: iOS platform requires user action events to start playing, and many Android browser can only play one audio at a time.
  * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/HTMLAudio
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @requires hilo/event/EventMixin
  * @property {String} src The source of the playing audio.
  * @property {Boolean} loop Is loop playback, default value is false.
@@ -30,7 +31,7 @@ var EventMixin = Hilo.EventMixin;
 var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
     Mixes: EventMixin,
     constructor: function(properties){
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
 
         this._onAudioEvent = this._onAudioEvent.bind(this);
     },

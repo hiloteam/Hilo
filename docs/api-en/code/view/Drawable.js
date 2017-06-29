@@ -8,8 +8,8 @@
  * @class Drawable is a wrapper of drawable images.
  * @param {Object} properties create Objects properties, contains all writable properties.
  * @module hilo/view/Drawable
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} image Image to be drawed, can used by CanvasRenderingContext2D.drawImage，like HTMLImageElement、HTMLCanvasElement、HTMLVideoElement。
  * @property {array} rect The retangle area that image will be drawed.
  */
@@ -30,7 +30,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
         if(Drawable.isDrawable(properties)){
             me.image = properties;
         }else{
-            Hilo.copy(me, properties, true);
+            util.copy(me, properties, true);
         }
 
         var image = me.image;

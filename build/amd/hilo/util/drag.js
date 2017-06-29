@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for amd
+ * Hilo 1.1.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -14,10 +14,10 @@ define('hilo/util/drag', ['hilo/core/Hilo'], function(Hilo){
  * example:
  * <pre>
  * var bmp = new Bitmap({image:img});
- * Hilo.copy(bmp, Hilo.drag);
+ * Hilo.util.copy(bmp, Hilo.drag);
  * bmp.startDrag([0, 0, 550, 400]);
  * </pre>
- * @class drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.copy(target, drag).
+ * @class drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.util.copy(target, drag).
  * @mixin
  * @static
  * @module hilo/util/drag

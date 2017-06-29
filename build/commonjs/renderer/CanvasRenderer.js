@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.5 for commonjs
+ * Hilo 1.1.0 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -38,6 +38,9 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
         if(target.visible && target.alpha > 0){
             if(target === this.stage){
                 this.context.clearRect(0, 0, target.width, target.height);
+            }
+            if(target.blendMode !== this.blendMode){
+                this.context.globalCompositeOperation = this.blendMode = target.blendMode;
             }
             this.context.save();
             return true;
