@@ -11,8 +11,8 @@ var _cacheCanvas, _cacheContext;
  * @static
  * @mixin
  * @module hilo/view/CacheMixin
- * @requires hilo/core/Hilo
  * @requires hilo/view/Drawable
+ * @requires hilo/util/browser
  */
 /**
  * @language=zh
@@ -20,8 +20,8 @@ var _cacheCanvas, _cacheContext;
  * @static
  * @mixin
  * @module hilo/view/CacheMixin
- * @requires hilo/core/Hilo
  * @requires hilo/view/Drawable
+ * @requires hilo/util/browser
  */
 var CacheMixin = /** @lends CacheMixin# */ {
     _cacheDirty:true,
@@ -49,7 +49,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
      * 更新缓存
      */
     updateCache:function(){
-        if(Hilo.browser.supportCanvas){
+        if(browser.supportCanvas){
             if(!_cacheCanvas){
                 _cacheCanvas = document.createElement('canvas');
                 _cacheContext = _cacheCanvas.getContext('2d');

@@ -33,6 +33,7 @@
  * @requires hilo/renderer/CanvasRenderer
  * @requires hilo/renderer/DOMRenderer
  * @requires hilo/renderer/WebGLRenderer
+ * @requires hilo/util/browser
  * @property {HTMLCanvasElement|HTMLElement} canvas The canvas the Stage is related to. It can be a canvas or a div element, readonly!
  * @property {Renderer} renderer Stage renderer, readonly!
  * @property {Boolean} paused Paused Stage rendering.
@@ -67,6 +68,7 @@
  * @requires hilo/renderer/CanvasRenderer
  * @requires hilo/renderer/DOMRenderer
  * @requires hilo/renderer/WebGLRenderer
+ * @requires hilo/util/browser
  * @property {HTMLCanvasElement|HTMLElement} canvas 舞台所对应的画布。它可以是一个canvas或一个普通的div。只读属性。
  * @property {Renderer} renderer 舞台渲染器。只读属性。
  * @property {Boolean} paused 指示舞台是否暂停刷新渲染。
@@ -281,7 +283,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
         }
 
         //fix android: `touchmove` fires only once
-        if(Hilo.browser.android && type === 'touchmove'){
+        if(browser.android && type === 'touchmove'){
             e.preventDefault();
         }
     },

@@ -10,7 +10,7 @@
  * @param {Number} fps The fps of ticker.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
- * @requires hilo/core/Hilo
+ * @requires hilo/util/browser
  */
 /**
  * @language=zh
@@ -18,7 +18,7 @@
  * @param {Number} fps 指定定时器的运行帧率。
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
- * @requires hilo/core/Hilo
+ * @requires hilo/util/browser
  */
 var Ticker = Class.create(/** @lends Ticker.prototype */{
     constructor: function(fps){
@@ -53,7 +53,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
         var self = this, interval = this._interval,
             raf = window.requestAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'RequestAnimationFrame'];
+                  window[browser.jsVendor + 'RequestAnimationFrame'];
 
         var runLoop;
         if(useRAF && raf && interval < 17){
@@ -84,7 +84,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     stop: function(){
         if(this._useRAF){
             var cancelRAF = window.cancelAnimationFrame ||
-                  window[Hilo.browser.jsVendor + 'CancelAnimationFrame'];
+                  window[browser.jsVendor + 'CancelAnimationFrame'];
             cancelRAF(this._intervalId);
         }
         else{
