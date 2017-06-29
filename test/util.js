@@ -106,4 +106,11 @@ describe('util', function(){
             Hilo.browser.cssVendor.should.be.String();
         });
     });
+
+    describe('util', function(){
+        it('copy', function(){
+            Hilo.util.copy({a:'a', c:'c'}, {a:'new a', b:'b'}).should.eql({a:'new a', b:'b', c:'c'});
+            Hilo.util.copy({a:'a', c:'c'}, {a:'new a', b:'b'}, true).should.eql({a:'new a', c:'c'});
+        });
+    });
 });

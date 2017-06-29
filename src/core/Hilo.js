@@ -22,6 +22,7 @@ var Hilo = (function(){
 var win = window, doc = document, docElem = doc.documentElement,
     uid = 0;
 
+var hasWarnedDict = {};
 return {
     /**
      * Hilo version
@@ -74,6 +75,7 @@ return {
     /**
      * @language=en
      * Simple shallow copy objects.
+     * @deprecated use Hilo.util.copy instead
      * @param {Object} target Target object to copy to.
      * @param {Object} source Source object to copy.
      * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
@@ -82,6 +84,7 @@ return {
     /**
      * @language=zh
      * 简单的浅复制对象。
+     * @deprecated 使用 Hilo.util.copy
      * @param {Object} target 要复制的目标对象。
      * @param {Object} source 要复制的源对象。
      * @param {Boolean} strict 指示是否复制未定义的属性，默认为false，即不复制未定义的属性。
@@ -92,6 +95,10 @@ return {
             if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
                 target[key] = source[key];
             }
+        }
+        if(!hasWarnedDict.copy){
+            hasWarnedDict.copy = true;
+            console.warn('Hilo.copy has been Deprecated! Use Hilo.util.copy instead.');
         }
         return target;
     },

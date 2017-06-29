@@ -11,10 +11,10 @@
  * example:
  * <pre>
  * var bmp = new Bitmap({image:img});
- * Hilo.copy(bmp, Hilo.drag);
+ * Hilo.util.copy(bmp, Hilo.drag);
  * bmp.startDrag([0, 0, 550, 400]);
  * </pre>
- * @class drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.copy(target, drag).
+ * @class drag A mixin that contains drag method.You can mix drag method to the visual target by use Class.mix(target, drag) or Hilo.util.copy(target, drag).
  * @mixin
  * @static
  * @module hilo/util/drag
@@ -27,10 +27,10 @@
  * 使用示例:
  * <pre>
  * var bmp = new Bitmap({image:img});
- * Hilo.copy(bmp, Hilo.drag);
+ * Hilo.util.copy(bmp, Hilo.drag);
  * bmp.startDrag([0, 0, 550, 400]);
  * </pre>
- * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.copy(view, drag)来为view增加拖拽功能。
+ * @class drag是一个包含拖拽功能的mixin。可以通过 Class.mix(view, drag)或Hilo.util.copy(view, drag)来为view增加拖拽功能。
  * @mixin
  * @static
  * @module hilo/util/drag

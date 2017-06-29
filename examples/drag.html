@@ -49,7 +49,7 @@
             }).addTo(stage);
 
             //mix drag
-            Hilo.copy(bmp, Hilo.drag);
+            Hilo.util.copy(bmp, Hilo.drag);
             bmp.startDrag([container.x, container.y, container.width - bmp.width, container.height - bmp.height]);
 
             bmp.on("dragStart", function(e){

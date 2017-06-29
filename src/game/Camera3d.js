@@ -8,8 +8,8 @@
  * @language=en
  * @class Camera3d is a pseudo-3d camera.
  * @module hilo/game/Camera3d
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Number} fv The distance of the fov(The distance between eyes and the Z plane，it determines the scale ratio of the 3d object).
  * @property {Number} fx The x position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the x axis).
  * @property {Number} fy The y position of the screen viewpoint(The distance between the screen viewpoint and the screen left top corner on the y axis).
@@ -25,8 +25,8 @@
  * @language=zh
  * @class Camera3d 伪3D虚拟摄像机。
  * @module hilo/game/Camera3d
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Number} fv 镜头视点距离（屏幕视点相对眼睛距离，绝对了坐标缩放比例）。
  * @property {Number} fx 镜头视点X（屏幕视点相对屏幕左上角X距离）。
  * @property {Number} fy 镜头视点Y（屏幕视点相对屏幕左上角Y距离）。
@@ -75,7 +75,7 @@ var Camera3d = (function(){
 			properties.rotationY = properties.rotationY || 0;
 			properties.rotationZ = properties.rotationZ || 0;
 
-        	Hilo.copy(this, properties);
+        	util.copy(this, properties);
 		},
 
 	    /**

@@ -9,8 +9,8 @@
  * @class Renderer Renderer is the base class of renderer.
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/Renderer
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} canvas The canvas of renderer. It can be a dom element, such as a div element, or a canvas element. readonly.
  * @property {Object} stage The stage of renderer, readonly.
  * @property {String} renderType The render type of renderer, readonly.
@@ -20,8 +20,8 @@
  * @class 渲染器抽象基类。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/renderer/Renderer
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} canvas 渲染器对应的画布。它可能是一个普通的DOM元素，比如div，也可以是一个canvas画布元素。只读属性。
  * @property {Object} stage 渲染器对应的舞台。只读属性。
  * @property {String} renderType 渲染方式。只读属性。
@@ -29,7 +29,7 @@
 var Renderer = Class.create(/** @lends Renderer.prototype */{
     constructor: function(properties){
         properties = properties || {};
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
     },
 
     renderType:null,

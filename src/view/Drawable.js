@@ -9,8 +9,8 @@
  * @class Drawable is a wrapper of drawable images.
  * @param {Object} properties create Objects properties, contains all writable properties.
  * @module hilo/view/Drawable
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} image Image to be drawed, can used by CanvasRenderingContext2D.drawImage，like HTMLImageElement、HTMLCanvasElement、HTMLVideoElement。
  * @property {array} rect The retangle area that image will be drawed.
  */
@@ -19,8 +19,8 @@
  * @class Drawable是可绘制图像的包装。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/view/Drawable
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @property {Object} image 要绘制的图像。即可被CanvasRenderingContext2D.drawImage使用的对象类型，可以是HTMLImageElement、HTMLCanvasElement、HTMLVideoElement等对象。
  * @property {array} rect 要绘制的图像的矩形区域。
  */
@@ -47,7 +47,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
         if(Drawable.isDrawable(properties)){
             me.image = properties;
         }else{
-            Hilo.copy(me, properties, true);
+            util.copy(me, properties, true);
         }
 
         var image = me.image;

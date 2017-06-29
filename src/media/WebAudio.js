@@ -10,8 +10,8 @@
  * Compatibility：iOS6+、Chrome33+、Firefox28+ supported，but all Android browsers do not support.
  * @param {Object} properties create object properties, include all writable properties of this class.
  * @module hilo/media/WebAudio
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @requires hilo/event/EventMixin
  * @property {String} src The source of the playing audio.
  * @property {Boolean} loop Is loop playback, default value is false.
@@ -28,8 +28,8 @@
  * 兼容情况：iOS6+、Chrome33+、Firefox28+支持，但Android浏览器均不支持。
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/media/WebAudio
- * @requires hilo/core/Hilo
  * @requires hilo/core/Class
+ * @requires hilo/util/util
  * @requires hilo/event/EventMixin
  * @property {String} src 播放的音频的资源地址。
  * @property {Boolean} loop 是否循环播放。默认为false。
@@ -48,7 +48,7 @@ var context = AudioContext ? new AudioContext() : null;
 return Class.create(/** @lends WebAudio.prototype */{
     Mixes: EventMixin,
     constructor: function(properties){
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
 
         this._init();
     },

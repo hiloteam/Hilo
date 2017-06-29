@@ -17,6 +17,7 @@
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/geom/Matrix
+ * @requires hilo/util/util
  * @property {String} id The identifier for the view.
  * @property {Number} x The position of the view on the x axis relative to the local coordinates of the parent, default value is 0.
  * @property {Number} y The position of the view on the y axis relative to the local coordinates of the parent, default value is 0.
@@ -52,6 +53,7 @@
  * @requires hilo/core/Class
  * @requires hilo/event/EventMixin
  * @requires hilo/geom/Matrix
+ * @requires hilo/util/util
  * @property {String} id 可视对象的唯一标识符。
  * @property {Number} x 可视对象的x轴坐标。默认值为0。
  * @property {Number} y 可视对象的y轴坐标。默认值为0。
@@ -81,7 +83,7 @@ return Class.create(/** @lends View.prototype */{
     constructor: function(properties){
         properties = properties || {};
         this.id = this.id || properties.id || Hilo.getUid("View");
-        Hilo.copy(this, properties, true);
+        util.copy(this, properties, true);
     },
 
     tint:0xffffff,
@@ -365,7 +367,7 @@ return Class.create(/** @lends View.prototype */{
         if(e.type == "mousemove"){
             if(!this.__mouseOver){
                 this.__mouseOver = true;
-                var overEvent = Hilo.copy({}, e);
+                var overEvent = util.copy({}, e);
                 overEvent.type = "mouseover";
                 this.fire(overEvent);
             }
