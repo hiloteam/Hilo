@@ -101,10 +101,13 @@ transformModule.add('standalone', function(metadata){
         if(requireModule !== 'Hilo'){
             head += 'var ' + requireModule + ' = window.Hilo.' + requireModule + ';\n';
         }
+        else{
+            head += 'var Hilo = window.Hilo;'
+        }
     });
 
     if(module === 'Hilo'){
-        tail = '\nfor(var i in Hilo){window.Hilo[i] = Hilo[i]};' + tail;
+        tail = '\nfor(var i in Hilo){window.Hilo[i] = Hilo[i];}' + tail;
     }
     else{
         tail =  '\nwindow.Hilo.' + module + ' = ' + module + ';' + tail;
