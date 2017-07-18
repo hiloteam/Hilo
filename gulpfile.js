@@ -91,24 +91,23 @@ var createBuildFormatTask = function(type){
 
 var moduleTypes = ['standalone', 'amd', 'commonjs', 'kissy', 'cmd'];
 transformModule.add('standalone', function(metadata){
-    var head = '(function(window){\n';
+    var head = '(function(window){\nif(!window.Hilo) window.Hilo = {};\n';
     var tail = '\n})(window);';
 
     var module = metadata.moduleName;
     var requireModules = metadata.requireClasses;
 
+    requireModules.forEach(function(requireModule){
+        if(requireModule !== 'Hilo'){
+            head += 'var ' + requireModule + ' = window.Hilo.' + requireModule + ';\n';
+        }
+    });
+
     if(module === 'Hilo'){
-        tail = '\nwindow.Hilo = Hilo;' + tail;
+        tail = '\nfor(var i in Hilo){window.Hilo[i] = Hilo[i]};' + tail;
     }
     else{
-        tail =  '\nHilo.' + module + ' = ' + module + ';' + tail;
-
-        head += 'var Hilo = window.Hilo;\n';
-        requireModules.forEach(function(requireModule){
-            if(requireModule !== 'Hilo'){
-                head += 'var ' + requireModule + ' = Hilo.' + requireModule + ';\n';
-            }
-        });
+        tail =  '\nwindow.Hilo.' + module + ' = ' + module + ';' + tail;
     }
 
     return {

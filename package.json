@@ -38,10 +38,10 @@
   "sources": {
     "dir": "src",
     "files": [
+      "util/browser.js",
+      "util/util.js",
       "core/Hilo.js",
       "core/Class.js",
-      "util/util.js",
-      "util/browser.js",
       "geom/Matrix.js",
       "event/EventMixin.js",
       "view/Drawable.js",
