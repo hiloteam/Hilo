@@ -57,7 +57,6 @@ var drag = {
             updateMouse(e);
             that.off(Hilo.event.POINTER_START, onStart);
 
-            that.fire("dragStart", mouse);
 
             that.__dragX = that.x - mouse.x;
             that.__dragY = that.y - mouse.y;
@@ -67,26 +66,27 @@ var drag = {
             }
             stage.on(Hilo.event.POINTER_MOVE, onMove);
             document.addEventListener(Hilo.event.POINTER_END, onStop);
+            that.fire("dragStart", mouse);
         }
 
         function onStop(e){
             document.removeEventListener(Hilo.event.POINTER_END, onStop);
             stage && stage.off(Hilo.event.POINTER_MOVE, onMove);
 
-            that.fire("dragEnd", mouse);
             that.on(Hilo.event.POINTER_START, onStart);
+            that.fire("dragEnd", mouse);
         }
 
         function onMove(e){
             updateMouse(e);
-
-            that.fire("dragMove", mouse);
 
             var x = mouse.x + that.__dragX;
             var y = mouse.y + that.__dragY;
 
             that.x = Math.max(minX, Math.min(maxX, x));
             that.y = Math.max(minY, Math.min(maxY, y));
+            
+            that.fire("dragMove", mouse);
         }
 
         function updateMouse(e){
