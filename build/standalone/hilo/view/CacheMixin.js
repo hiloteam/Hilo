@@ -1,12 +1,12 @@
 /**
- * Hilo 1.1.0 for standalone
+ * Hilo 1.1.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
-var Hilo = window.Hilo;
-var Drawable = Hilo.Drawable;
-var browser = Hilo.browser;
+if(!window.Hilo) window.Hilo = {};
+var Drawable = window.Hilo.Drawable;
+var browser = window.Hilo.browser;
 
 
 var _cacheCanvas, _cacheContext;
@@ -62,5 +62,5 @@ var CacheMixin = /** @lends CacheMixin# */ {
         this._cacheDirty = dirty;
     }
 };
-Hilo.CacheMixin = CacheMixin;
+window.Hilo.CacheMixin = CacheMixin;
 })(window);

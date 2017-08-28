@@ -1,13 +1,13 @@
 /**
- * Hilo 1.1.0 for standalone
+ * Hilo 1.1.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
-var Hilo = window.Hilo;
-var Class = Hilo.Class;
-var Renderer = Hilo.Renderer;
-var Matrix = Hilo.Matrix;
+if(!window.Hilo) window.Hilo = {};
+var Class = window.Hilo.Class;
+var Hilo = window.Hilo;var Renderer = window.Hilo.Renderer;
+var Matrix = window.Hilo.Matrix;
 
 
 /**
@@ -23,6 +23,7 @@ var DEG2RAD = Math.PI / 180;
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/WebGLRenderer
  * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
  * @requires hilo/renderer/Renderer
  * @requires  hilo/geom/Matrix
  * @property {WebGLRenderingContext} gl The WebGL context of the renderer, readonly.
@@ -565,5 +566,5 @@ Shader.prototype = {
         return shader;
     }
 };
-Hilo.WebGLRenderer = WebGLRenderer;
+window.Hilo.WebGLRenderer = WebGLRenderer;
 })(window);

@@ -1,11 +1,12 @@
 /**
- * Hilo 1.1.0 for cmd
+ * Hilo 1.1.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
 var Class = require('hilo/core/Class');
+var Hilo = require('hilo/core/Hilo');
 var Renderer = require('hilo/renderer/Renderer');
 var Matrix = require('hilo/geom/Matrix');
 
@@ -24,6 +25,7 @@ var DEG2RAD = Math.PI / 180;
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/WebGLRenderer
  * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
  * @requires hilo/renderer/Renderer
  * @requires  hilo/geom/Matrix
  * @property {WebGLRenderingContext} gl The WebGL context of the renderer, readonly.

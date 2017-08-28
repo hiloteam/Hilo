@@ -1,31 +1,34 @@
 /**
- * Hilo 1.1.0 for cmd
+ * Hilo 1.1.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 define(function(require, exports, module){
 
+var browser = require('hilo/util/browser');
+var util = require('hilo/util/util');
 
 
+
+var win = window, doc = document, docElem = doc.documentElement,
+    uid = 0;
+
+var hasWarnedDict = {};
 
 /**
  * @language=en
  * @namespace Hilo The underlying core set of methods.
  * @static
  * @module hilo/core/Hilo
+ * @requires hilo/util/browser
+ * @requires hilo/util/util
  */
-var Hilo = (function(){
-
-var win = window, doc = document, docElem = doc.documentElement,
-    uid = 0;
-
-var hasWarnedDict = {};
-return {
+var Hilo = {
     /**
      * Hilo version
      * @type String
      */
-    version:'1.1.0',
+    version:'1.1.2',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -67,11 +70,7 @@ return {
      * @returns {Object} Object after copying.
      */
     copy: function(target, source, strict){
-        for(var key in source){
-            if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
-                target[key] = source[key];
-            }
-        }
+        util.copy(target, source, strict);
         if(!hasWarnedDict.copy){
             hasWarnedDict.copy = true;
             console.warn('Hilo.copy has been Deprecated! Use Hilo.util.copy instead.');
@@ -82,69 +81,9 @@ return {
     /**
      * @language=en
      * Browser feature set includes:
-     * <ul>
-     * <li><b>jsVendor</b> - Browser vendors js value CSS prefix. For example: webkit.</li>
-     * <li><b>cssVendor</b> - Browser vendors css value CSS prefix.</li>
-     * <li><b>supportTransform</b> - Whether to support CSS Transform transformation.</li>
-     * <li><b>supportTransform3D</b> - Whether to support CSS Transform 3D transformation.</li>
-     * <li><b>supportStorage</b> - Whether to support local stores like localStorage.</li>
-     * <li><b>supportTouch</b> - Whether to support the touch event.</li>
-     * <li><b>supportCanvas</b> - Whether to support the canvas element.</li>
-     * </ul>
+     * @see browser
      */
-    browser: (function(){
-        var ua = navigator.userAgent;
-        var data = {
-            iphone: /iphone/i.test(ua),
-            ipad: /ipad/i.test(ua),
-            ipod: /ipod/i.test(ua),
-            ios: /iphone|ipad|ipod/i.test(ua),
-            android: /android/i.test(ua),
-            webkit: /webkit/i.test(ua),
-            chrome: /chrome/i.test(ua),
-            safari: /safari/i.test(ua),
-            firefox: /firefox/i.test(ua),
-            ie: /msie/i.test(ua),
-            opera: /opera/i.test(ua),
-            supportTouch: 'ontouchstart' in win,
-            supportCanvas: doc.createElement('canvas').getContext != null,
-            supportStorage: false,
-            supportOrientation: 'orientation' in win,
-            supportDeviceMotion: 'ondevicemotion' in win
-        };
-
-        //`localStorage` is null or `localStorage.setItem` throws error in some cases (e.g. localStorage is disabled)
-        try{
-            var value = 'hilo';
-            localStorage.setItem(value, value);
-            localStorage.removeItem(value);
-            data.supportStorage = true;
-        }catch(e){}
-
-        //vendor prefix
-        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'webkit' : data.opera ? 'o' : data.ie ? 'ms' : '';
-        var cssVendor = data.cssVendor = '-' + jsVendor + '-';
-
-        //css transform/3d feature dectection
-        var testElem = doc.createElement('div'), style = testElem.style;
-        var supportTransform = style[jsVendor + 'Transform'] != undefined;
-        var supportTransform3D = style[jsVendor + 'Perspective'] != undefined;
-        if(supportTransform3D){
-            testElem.id = 'test3d';
-            style = doc.createElement('style');
-            style.textContent = '@media ('+ cssVendor +'transform-3d){#test3d{height:3px}}';
-            doc.head.appendChild(style);
-
-            docElem.appendChild(testElem);
-            supportTransform3D = testElem.offsetHeight == 3;
-            doc.head.removeChild(style);
-            docElem.removeChild(testElem);
-        }
-        data.supportTransform = supportTransform;
-        data.supportTransform3D = supportTransform3D;
-
-        return data;
-    })(),
+    browser: browser,
 
     /**
      * @language=en
@@ -374,9 +313,6 @@ return {
              + 'scale' + str3d + '(' + obj.scaleX + ', ' + obj.scaleY + (use3d ? ', 1)' : ')');
     }
 };
-
-})();
-
 
 return Hilo;
 

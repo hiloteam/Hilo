@@ -1,14 +1,14 @@
 /**
- * Hilo 1.1.0 for standalone
+ * Hilo 1.1.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
-var Hilo = window.Hilo;
-var Class = Hilo.Class;
-var EventMixin = Hilo.EventMixin;
-var ImageLoader = Hilo.ImageLoader;
-var ScriptLoader = Hilo.ScriptLoader;
+if(!window.Hilo) window.Hilo = {};
+var Class = window.Hilo.Class;
+var EventMixin = window.Hilo.EventMixin;
+var ImageLoader = window.Hilo.ImageLoader;
+var ScriptLoader = window.Hilo.ScriptLoader;
 
 
 //TODO: 超时timeout，失败重连次数maxTries，更多的下载器Loader，队列暂停恢复等。
@@ -247,5 +247,5 @@ function getExtension(src){
     }
     return extension || null;
 }
-Hilo.LoadQueue = LoadQueue;
+window.Hilo.LoadQueue = LoadQueue;
 })(window);

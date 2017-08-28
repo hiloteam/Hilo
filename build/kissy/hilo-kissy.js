@@ -1,31 +1,237 @@
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/core/Hilo', function(S){
+KISSY.add('hilo/util/browser', function(S){
 
 
 
+/**
+ * @language=en
+ * @class Browser feature set
+ * @static
+ * @module hilo/util/browser
+ */
+var browser = (function(){
+    var ua = navigator.userAgent;
+    var doc = document;
+    var win = window;
+    var docElem = doc.documentElement;
+
+    var data = /** @lends browser */ {
+        /**
+         * 是否是iphone
+         * @type {Boolean}
+         */
+        iphone: /iphone/i.test(ua),
+
+        /**
+         * 是否是ipad
+         * @type {Boolean}
+         */
+        ipad: /ipad/i.test(ua),
+
+        /**
+         * 是否是ipod
+         * @type {Boolean}
+         */
+        ipod: /ipod/i.test(ua),
+
+        /**
+         * 是否是ios
+         * @type {Boolean}
+         */
+        ios: /iphone|ipad|ipod/i.test(ua),
+
+        /**
+         * 是否是android
+         * @type {Boolean}
+         */
+        android: /android/i.test(ua),
+
+        /**
+         * 是否是webkit
+         * @type {Boolean}
+         */
+        webkit: /webkit/i.test(ua),
+
+        /**
+         * 是否是chrome
+         * @type {Boolean}
+         */
+        chrome: /chrome/i.test(ua),
+
+        /**
+         * 是否是safari
+         * @type {Boolean}
+         */
+        safari: /safari/i.test(ua),
+
+        /**
+         * 是否是firefox
+         * @type {Boolean}
+         */
+        firefox: /firefox/i.test(ua),
+
+        /**
+         * 是否是ie
+         * @type {Boolean}
+         */
+        ie: /msie/i.test(ua),
+
+        /**
+         * 是否是opera
+         * @type {Boolean}
+         */
+        opera: /opera/i.test(ua),
+        /**
+         * 是否支持触碰事件。
+         * @type {String}
+         */
+        supportTouch: 'ontouchstart' in win,
+
+        /**
+         * 是否支持canvas元素。
+         * @type {Boolean}
+         */
+        supportCanvas: doc.createElement('canvas').getContext != null,
+        /**
+         * 是否支持本地存储localStorage。
+         * @type {Boolean}
+         */
+        supportStorage: false,
+
+        /**
+         * 是否支持检测设备方向orientation。
+         * @type {Boolean}
+         */
+        supportOrientation: 'orientation' in win || 'orientation' in win.screen,
+
+        /**
+         * 是否支持检测加速度devicemotion。
+         * @type {Boolean}
+         */
+        supportDeviceMotion: 'ondevicemotion' in win
+    };
+
+    //`localStorage` is null or `localStorage.setItem` throws error in some cases (e.g. localStorage is disabled)
+    try{
+        var value = 'hilo';
+        localStorage.setItem(value, value);
+        localStorage.removeItem(value);
+        data.supportStorage = true;
+    }catch(e){}
+
+    /**
+     * 浏览器厂商CSS前缀的js值。比如：webkit。
+     * @type {String}
+     */
+    var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'webkit' : data.opera ? 'o' : data.ie ? 'ms' : '';
+    /**
+     * 浏览器厂商CSS前缀的css值。比如：-webkit-。
+     * @type {String}
+     */
+    var cssVendor = data.cssVendor = '-' + jsVendor + '-';
+
+    //css transform/3d feature dectection
+    var testElem = doc.createElement('div'), style = testElem.style;
+    /**
+     * 是否支持CSS Transform变换。
+     * @type {Boolean}
+     */
+    var supportTransform = style[jsVendor + 'Transform'] != undefined;
+
+    /**
+     * 是否支持CSS Transform 3D变换。
+     * @type {Boolean}
+     */
+    var supportTransform3D = style[jsVendor + 'Perspective'] != undefined;
+    if(supportTransform3D){
+        testElem.id = 'test3d';
+        style = doc.createElement('style');
+        style.textContent = '@media ('+ cssVendor +'transform-3d){#test3d{height:3px}}';
+        doc.head.appendChild(style);
+
+        docElem.appendChild(testElem);
+        supportTransform3D = testElem.offsetHeight == 3;
+        doc.head.removeChild(style);
+        docElem.removeChild(testElem);
+    }
+    data.supportTransform = supportTransform;
+    data.supportTransform3D = supportTransform3D;
+
+    return data;
+})();
+
+return browser;
+
+});
+/**
+ * Hilo 1.1.2 for kissy
+ * Copyright 2016 alibaba.com
+ * Licensed under the MIT License
+ */
+KISSY.add('hilo/util/util', function(S){
+
+
+
+/**
+ * @language=en
+ * @class util method set
+ * @static
+ * @module hilo/util/util
+ */
+var util = {
+    /**
+     * @language=en
+     * Simple shallow copy objects.
+     * @param {Object} target Target object to copy to.
+     * @param {Object} source Source object to copy.
+     * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
+     * @returns {Object} Object after copying.
+     */
+    copy: function(target, source, strict){
+        for(var key in source){
+            if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
+                target[key] = source[key];
+            }
+        }
+        return target;
+    }
+};
+
+return util;
+
+});
+/**
+ * Hilo 1.1.2 for kissy
+ * Copyright 2016 alibaba.com
+ * Licensed under the MIT License
+ */
+KISSY.add('hilo/core/Hilo', function(S, browser, util){
+
+
+
+var win = window, doc = document, docElem = doc.documentElement,
+    uid = 0;
+
+var hasWarnedDict = {};
 
 /**
  * @language=en
  * @namespace Hilo The underlying core set of methods.
  * @static
  * @module hilo/core/Hilo
+ * @requires hilo/util/browser
+ * @requires hilo/util/util
  */
-var Hilo = (function(){
-
-var win = window, doc = document, docElem = doc.documentElement,
-    uid = 0;
-
-var hasWarnedDict = {};
-return {
+var Hilo = {
     /**
      * Hilo version
      * @type String
      */
-    version:'1.1.0',
+    version:'1.1.2',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -67,11 +273,7 @@ return {
      * @returns {Object} Object after copying.
      */
     copy: function(target, source, strict){
-        for(var key in source){
-            if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
-                target[key] = source[key];
-            }
-        }
+        util.copy(target, source, strict);
         if(!hasWarnedDict.copy){
             hasWarnedDict.copy = true;
             console.warn('Hilo.copy has been Deprecated! Use Hilo.util.copy instead.');
@@ -82,69 +284,9 @@ return {
     /**
      * @language=en
      * Browser feature set includes:
-     * <ul>
-     * <li><b>jsVendor</b> - Browser vendors js value CSS prefix. For example: webkit.</li>
-     * <li><b>cssVendor</b> - Browser vendors css value CSS prefix.</li>
-     * <li><b>supportTransform</b> - Whether to support CSS Transform transformation.</li>
-     * <li><b>supportTransform3D</b> - Whether to support CSS Transform 3D transformation.</li>
-     * <li><b>supportStorage</b> - Whether to support local stores like localStorage.</li>
-     * <li><b>supportTouch</b> - Whether to support the touch event.</li>
-     * <li><b>supportCanvas</b> - Whether to support the canvas element.</li>
-     * </ul>
+     * @see browser
      */
-    browser: (function(){
-        var ua = navigator.userAgent;
-        var data = {
-            iphone: /iphone/i.test(ua),
-            ipad: /ipad/i.test(ua),
-            ipod: /ipod/i.test(ua),
-            ios: /iphone|ipad|ipod/i.test(ua),
-            android: /android/i.test(ua),
-            webkit: /webkit/i.test(ua),
-            chrome: /chrome/i.test(ua),
-            safari: /safari/i.test(ua),
-            firefox: /firefox/i.test(ua),
-            ie: /msie/i.test(ua),
-            opera: /opera/i.test(ua),
-            supportTouch: 'ontouchstart' in win,
-            supportCanvas: doc.createElement('canvas').getContext != null,
-            supportStorage: false,
-            supportOrientation: 'orientation' in win,
-            supportDeviceMotion: 'ondevicemotion' in win
-        };
-
-        //`localStorage` is null or `localStorage.setItem` throws error in some cases (e.g. localStorage is disabled)
-        try{
-            var value = 'hilo';
-            localStorage.setItem(value, value);
-            localStorage.removeItem(value);
-            data.supportStorage = true;
-        }catch(e){}
-
-        //vendor prefix
-        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'webkit' : data.opera ? 'o' : data.ie ? 'ms' : '';
-        var cssVendor = data.cssVendor = '-' + jsVendor + '-';
-
-        //css transform/3d feature dectection
-        var testElem = doc.createElement('div'), style = testElem.style;
-        var supportTransform = style[jsVendor + 'Transform'] != undefined;
-        var supportTransform3D = style[jsVendor + 'Perspective'] != undefined;
-        if(supportTransform3D){
-            testElem.id = 'test3d';
-            style = doc.createElement('style');
-            style.textContent = '@media ('+ cssVendor +'transform-3d){#test3d{height:3px}}';
-            doc.head.appendChild(style);
-
-            docElem.appendChild(testElem);
-            supportTransform3D = testElem.offsetHeight == 3;
-            doc.head.removeChild(style);
-            docElem.removeChild(testElem);
-        }
-        data.supportTransform = supportTransform;
-        data.supportTransform3D = supportTransform3D;
-
-        return data;
-    })(),
+    browser: browser,
 
     /**
      * @language=en
@@ -375,14 +517,13 @@ return {
     }
 };
 
-})();
-
-
 return Hilo;
 
+}, {
+    requires: ['hilo/util/browser', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -565,213 +706,7 @@ return Class;
 
 });
 /**
- * Hilo 1.1.0 for kissy
- * Copyright 2016 alibaba.com
- * Licensed under the MIT License
- */
-KISSY.add('hilo/util/util', function(S){
-
-
-
-/**
- * @language=en
- * @class util method set
- * @static
- * @module hilo/util/util
- */
-var util = {
-    /**
-     * @language=en
-     * Simple shallow copy objects.
-     * @param {Object} target Target object to copy to.
-     * @param {Object} source Source object to copy.
-     * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
-     * @returns {Object} Object after copying.
-     */
-    copy: function(target, source, strict){
-        for(var key in source){
-            if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
-                target[key] = source[key];
-            }
-        }
-        return target;
-    }
-};
-
-return util;
-
-});
-/**
- * Hilo 1.1.0 for kissy
- * Copyright 2016 alibaba.com
- * Licensed under the MIT License
- */
-KISSY.add('hilo/util/browser', function(S){
-
-
-
-/**
- * @language=en
- * @class Browser feature set
- * @static
- * @module hilo/util/browser
- */
-var browser = (function(){
-    var ua = navigator.userAgent;
-    var doc = document;
-    var win = window;
-    var docElem = doc.documentElement;
-
-    var data = /** @lends browser */ {
-        /**
-         * 是否是iphone
-         * @type {Boolean}
-         */
-        iphone: /iphone/i.test(ua),
-
-        /**
-         * 是否是ipad
-         * @type {Boolean}
-         */
-        ipad: /ipad/i.test(ua),
-
-        /**
-         * 是否是ipod
-         * @type {Boolean}
-         */
-        ipod: /ipod/i.test(ua),
-
-        /**
-         * 是否是ios
-         * @type {Boolean}
-         */
-        ios: /iphone|ipad|ipod/i.test(ua),
-
-        /**
-         * 是否是android
-         * @type {Boolean}
-         */
-        android: /android/i.test(ua),
-
-        /**
-         * 是否是webkit
-         * @type {Boolean}
-         */
-        webkit: /webkit/i.test(ua),
-
-        /**
-         * 是否是chrome
-         * @type {Boolean}
-         */
-        chrome: /chrome/i.test(ua),
-
-        /**
-         * 是否是safari
-         * @type {Boolean}
-         */
-        safari: /safari/i.test(ua),
-
-        /**
-         * 是否是firefox
-         * @type {Boolean}
-         */
-        firefox: /firefox/i.test(ua),
-
-        /**
-         * 是否是ie
-         * @type {Boolean}
-         */
-        ie: /msie/i.test(ua),
-
-        /**
-         * 是否是opera
-         * @type {Boolean}
-         */
-        opera: /opera/i.test(ua),
-        /**
-         * 是否支持触碰事件。
-         * @type {String}
-         */
-        supportTouch: 'ontouchstart' in win,
-
-        /**
-         * 是否支持canvas元素。
-         * @type {Boolean}
-         */
-        supportCanvas: doc.createElement('canvas').getContext != null,
-        /**
-         * 是否支持本地存储localStorage。
-         * @type {Boolean}
-         */
-        supportStorage: false,
-
-        /**
-         * 是否支持检测设备方向orientation。
-         * @type {Boolean}
-         */
-        supportOrientation: 'orientation' in win,
-
-        /**
-         * 是否支持检测加速度devicemotion。
-         * @type {Boolean}
-         */
-        supportDeviceMotion: 'ondevicemotion' in win
-    };
-
-    //`localStorage` is null or `localStorage.setItem` throws error in some cases (e.g. localStorage is disabled)
-    try{
-        var value = 'hilo';
-        localStorage.setItem(value, value);
-        localStorage.removeItem(value);
-        data.supportStorage = true;
-    }catch(e){}
-
-    /**
-     * 浏览器厂商CSS前缀的js值。比如：webkit。
-     * @type {String}
-     */
-    var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'webkit' : data.opera ? 'o' : data.ie ? 'ms' : '';
-    /**
-     * 浏览器厂商CSS前缀的css值。比如：-webkit-。
-     * @type {String}
-     */
-    var cssVendor = data.cssVendor = '-' + jsVendor + '-';
-
-    //css transform/3d feature dectection
-    var testElem = doc.createElement('div'), style = testElem.style;
-    /**
-     * 是否支持CSS Transform变换。
-     * @type {Boolean}
-     */
-    var supportTransform = style[jsVendor + 'Transform'] != undefined;
-
-    /**
-     * 是否支持CSS Transform 3D变换。
-     * @type {Boolean}
-     */
-    var supportTransform3D = style[jsVendor + 'Perspective'] != undefined;
-    if(supportTransform3D){
-        testElem.id = 'test3d';
-        style = doc.createElement('style');
-        style.textContent = '@media ('+ cssVendor +'transform-3d){#test3d{height:3px}}';
-        doc.head.appendChild(style);
-
-        docElem.appendChild(testElem);
-        supportTransform3D = testElem.offsetHeight == 3;
-        doc.head.removeChild(style);
-        docElem.removeChild(testElem);
-    }
-    data.supportTransform = supportTransform;
-    data.supportTransform3D = supportTransform3D;
-
-    return data;
-})();
-
-return browser;
-
-});
-/**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -953,7 +888,7 @@ return Matrix;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1108,7 +1043,7 @@ return EventMixin;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1191,7 +1126,7 @@ return Drawable;
     requires: ['hilo/core/Class', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1287,7 +1222,7 @@ return Renderer;
     requires: ['hilo/core/Class', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1531,7 +1466,7 @@ return CanvasRenderer;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/renderer/Renderer']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1715,11 +1650,11 @@ return DOMRenderer;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/renderer/Renderer', 'hilo/view/Drawable']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/renderer/WebGLRenderer', function(S, Class, Renderer, Matrix){
+KISSY.add('hilo/renderer/WebGLRenderer', function(S, Class, Hilo, Renderer, Matrix){
 
 
 
@@ -1736,6 +1671,7 @@ var DEG2RAD = Math.PI / 180;
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/WebGLRenderer
  * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
  * @requires hilo/renderer/Renderer
  * @requires  hilo/geom/Matrix
  * @property {WebGLRenderingContext} gl The WebGL context of the renderer, readonly.
@@ -2282,10 +2218,10 @@ Shader.prototype = {
 return WebGLRenderer;
 
 }, {
-    requires: ['hilo/core/Class', 'hilo/renderer/Renderer', 'hilo/geom/Matrix']
+    requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/renderer/Renderer', 'hilo/geom/Matrix']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2714,7 +2650,7 @@ return View;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/event/EventMixin', 'hilo/geom/Matrix', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2782,7 +2718,7 @@ return CacheMixin;
     requires: ['hilo/view/Drawable', 'hilo/util/browser']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3158,7 +3094,7 @@ return Container;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3427,7 +3363,7 @@ return Stage;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Container', 'hilo/renderer/CanvasRenderer', 'hilo/renderer/DOMRenderer', 'hilo/renderer/WebGLRenderer', 'hilo/util/browser', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3507,7 +3443,7 @@ return Bitmap;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3780,7 +3716,7 @@ return Sprite;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3883,7 +3819,7 @@ return DOMElement;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4438,7 +4374,7 @@ return Graphics;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/CacheMixin']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4693,7 +4629,7 @@ return Text;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/view/View', 'hilo/view/CacheMixin']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4879,7 +4815,7 @@ return BitmapText;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/view/Container', 'hilo/view/Bitmap']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5060,7 +4996,7 @@ return Button;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5299,7 +5235,7 @@ return TextureAtlas;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5427,7 +5363,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
      * Get the fps.
      */
     getMeasuredFPS: function(){
-        return this._measuredFPS;
+        return Math.min(this._measuredFPS, this._targetFPS);
     },
 
     /**
@@ -5526,7 +5462,7 @@ return Ticker;
     requires: ['hilo/core/Class', 'hilo/util/browser']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5574,7 +5510,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5694,7 +5630,7 @@ return drag;
     requires: ['hilo/core/Hilo']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6138,7 +6074,7 @@ return Tween;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6410,7 +6346,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6460,7 +6396,7 @@ return ImageLoader;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6529,7 +6465,7 @@ return ScriptLoader;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6780,7 +6716,7 @@ return LoadQueue;
     requires: ['hilo/core/Class', 'hilo/event/EventMixin', 'hilo/loader/ImageLoader', 'hilo/loader/ScriptLoader']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6985,7 +6921,7 @@ return HTMLAudio;
     requires: ['hilo/core/Class', 'hilo/util/util', 'hilo/event/EventMixin']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7304,7 +7240,7 @@ return WebAudio;
     requires: ['hilo/core/Class', 'hilo/util/util', 'hilo/event/EventMixin']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7409,7 +7345,7 @@ return WebSound;
     requires: ['hilo/media/HTMLAudio', 'hilo/media/WebAudio', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7504,7 +7440,7 @@ return Camera;
     requires: ['hilo/core/Class', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7693,7 +7629,7 @@ return Camera3d;
     requires: ['hilo/core/Class', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

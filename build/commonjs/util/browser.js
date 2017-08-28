@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.0 for commonjs
+ * Hilo 1.1.2 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -104,7 +104,7 @@ var browser = (function(){
          * 是否支持检测设备方向orientation。
          * @type {Boolean}
          */
-        supportOrientation: 'orientation' in win,
+        supportOrientation: 'orientation' in win || 'orientation' in win.screen,
 
         /**
          * 是否支持检测加速度devicemotion。

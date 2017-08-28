@@ -1,12 +1,12 @@
 /**
- * Hilo 1.1.0 for standalone
+ * Hilo 1.1.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(window){
-var Hilo = window.Hilo;
-var Class = Hilo.Class;
-var browser = Hilo.browser;
+if(!window.Hilo) window.Hilo = {};
+var Class = window.Hilo.Class;
+var browser = window.Hilo.browser;
 
 
 /**
@@ -129,7 +129,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
      * Get the fps.
      */
     getMeasuredFPS: function(){
-        return this._measuredFPS;
+        return Math.min(this._measuredFPS, this._targetFPS);
     },
 
     /**
@@ -221,5 +221,5 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
         return tickObj;
     }
 });
-Hilo.Ticker = Ticker;
+window.Hilo.Ticker = Ticker;
 })(window);

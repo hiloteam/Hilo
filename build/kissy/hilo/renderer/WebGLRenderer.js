@@ -1,9 +1,9 @@
 /**
- * Hilo 1.1.0 for kissy
+ * Hilo 1.1.2 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
-KISSY.add('hilo/renderer/WebGLRenderer', function(S, Class, Renderer, Matrix){
+KISSY.add('hilo/renderer/WebGLRenderer', function(S, Class, Hilo, Renderer, Matrix){
 
 
 
@@ -20,6 +20,7 @@ var DEG2RAD = Math.PI / 180;
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/WebGLRenderer
  * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
  * @requires hilo/renderer/Renderer
  * @requires  hilo/geom/Matrix
  * @property {WebGLRenderingContext} gl The WebGL context of the renderer, readonly.
@@ -566,5 +567,5 @@ Shader.prototype = {
 return WebGLRenderer;
 
 }, {
-    requires: ['hilo/core/Class', 'hilo/renderer/Renderer', 'hilo/geom/Matrix']
+    requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/renderer/Renderer', 'hilo/geom/Matrix']
 });
