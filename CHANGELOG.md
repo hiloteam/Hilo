@@ -1,5 +1,24 @@
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/hiloteam/hilo/compare/v1.1.1...v1.1.2) (2017-08-28)
+
+
+### Bug Fixes
+
+* fix ticker.getMeasuredFPS should not be greater than target fps ([5db97ab](https://github.com/hiloteam/hilo/commit/5db97ab))
+
+
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/hiloteam/hilo/compare/v1.1.0...v1.1.1) (2017-07-20)
+
+
+### Bug Fixes
+
+* dragMove event should be sent at the end, fix [#92](https://github.com/hiloteam/hilo/issues/92) ([7b3341e](https://github.com/hiloteam/hilo/commit/7b3341e))
+* fix detect orientation bug, close [#91](https://github.com/hiloteam/hilo/issues/91) ([93537c7](https://github.com/hiloteam/hilo/commit/93537c7))
+
+
 <a name="1.1.0"></a>
-# [1.1.0](https://github.com/hiloteam/hilo/compare/v1.0.5...v1.1.0) (2017-06-29)
+## [1.1.0](https://github.com/hiloteam/hilo/compare/v1.0.5...v1.1.0) (2017-06-29)
 
 
 ### Features
