@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.3 for kissy
+ * Hilo 1.1.4 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
