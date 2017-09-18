@@ -3,7 +3,8 @@
  * Copyright 2017 Alibaba Group Holding Limited
  */
 
-
+export = Hilo;
+export as namespace Hilo;
 
 /**
  * Hilo的基础核心方法集合。
@@ -143,12 +144,6 @@ declare namespace Hilo {
      * POINTER_END - 鼠标或触碰结束事件。对应touchend或mouseup。
      */
     let event: object;
-
-}
-
-
-declare namespace Hilo {
-
 
     /**
      * Class是提供类的创建的辅助工具。 
