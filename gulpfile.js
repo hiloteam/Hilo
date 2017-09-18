@@ -242,7 +242,7 @@ gulp.task('npm', ['commonjs-format', 'standalone-format'], function(){
         `))
         .pipe(gulp.dest('build/commonjs'));
 
-    var packageStream = gulp.src(['package.json', '.npmignore', 'LICENSE', 'README.md'])
+    var packageStream = gulp.src(['package.json', '.npmignore', 'LICENSE', 'README.md', 'd.ts/hilo.d.ts'])
         .pipe(replace('"name": "Hilo"', '"name": "hilojs"'))
         .pipe(gulp.dest('build/commonjs'));
 

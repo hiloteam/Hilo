@@ -5,6 +5,7 @@
   "author": "Hilo Dev Team",
   "license": "MIT",
   "main": "hilo-standalone.js",
+  "typings": "hilo.d.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:hiloteam/hilo.git"
