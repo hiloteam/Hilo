@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.2 for kissy
+ * Hilo 1.1.3 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -25,7 +25,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version:'1.1.2',
+    version:'1.1.3',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
