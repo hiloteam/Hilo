@@ -61,7 +61,7 @@ declare namespace Hilo {
      * @param strict 指示是否复制未定义的属性，默认为false，即不复制未定义的属性。
      * @returns 复制后的对象。
      */
-    function copy(target: object, source: object, strict: boolean): object;
+    function copy(target: object, source: object, strict?: boolean): object;
 
     /**
      * 生成可视对象的CSS变换样式。
@@ -191,7 +191,7 @@ declare namespace Hilo {
          * @param listener 要删除监听的回调函数。
          * @returns 对象本身。链式调用支持。
          */
-        static off(type: string, listener: Function): object;
+        static off(type: string, listener?: Function): object;
 
         /**
          * 增加一个事件监听。
@@ -199,7 +199,7 @@ declare namespace Hilo {
          * @param listener 事件监听回调函数。
          * @param once 是否是一次性监听，即回调函数响应一次后即删除，不再响应。
          */
-        static on(type: string, listener: Function, once: boolean): object;
+        static on(type: string, listener: Function, once?: boolean): object;
 
     }
 
@@ -213,7 +213,7 @@ declare namespace Hilo {
          * 
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 跟随目标
@@ -279,7 +279,7 @@ declare namespace Hilo {
          * 仿射矩阵位移变换，不同于直接修改Camera3d.x/y/z.
          * 是在Camera3d依次做坐标位移 - 旋转变换 后，再加上一个位移变换。主要功能可以做Zoomin/out 功能
          */
-        public translate(x: number, y: number, z: number): void;
+        public translate(x: number, y: number, z?: number): void;
 
         /**
          * 镜头视点距离（屏幕视点相对眼睛距离，绝对了坐标缩放比例）。
@@ -353,7 +353,7 @@ declare namespace Hilo {
          * properties.particle.scale:Number Optional, Default: 1 — 缩放
          * properties.particle.scaleV:Number Optional, Default: 0 — 缩放变化速度
          */
-        constructor(properties:object);
+        constructor(properties?:object);
 
         /**
          * 更新
@@ -510,7 +510,7 @@ declare namespace Hilo {
         /**
          * @param source 要下载的资源。可以是单个资源对象或多个资源的数组。
          */
-        constructor(source: ILoadSource);
+        constructor(source?: ILoadSource);
 
         /**
          * 增加要下载的资源。可以是单个资源对象或多个资源的数组。
@@ -549,7 +549,7 @@ declare namespace Hilo {
          * @param loaded 指示是已下载的资源还是全部资源。默认为全部。
          * @returns 指定资源的字节大小。
          */
-        public getSize(loaded: boolean): number;
+        public getSize(loaded?: boolean): number;
 
         /**
          * 获取所有资源的数量。
@@ -563,7 +563,7 @@ declare namespace Hilo {
          * @param listener 要删除监听的回调函数。
          * @returns 对象本身。链式调用支持
          */
-        public off(type: string, listener: Function): object;
+        public off(type: string, listener?: Function): object;
 
         /**
          * 增加一个事件监听。
@@ -572,7 +572,7 @@ declare namespace Hilo {
          * @param once 是否是一次性监听，即回调函数响应一次后即删除，不再响应。
          * @returns 对象本身。链式调用支持
          */
-        public on(type: string, listener: Function, once: boolean): object;
+        public on(type: string, listener: Function, once?: boolean): object;
 
         /**
          * 开始下载队列。
@@ -594,7 +594,7 @@ declare namespace Hilo {
          * 创建对象的属性参数。可包含此类所有可写属性。
          * @param properties 
          */
-        constructor(properties:Object);
+        constructor(properties?:Object);
 
         /**
          * 加载音频文件。
@@ -688,7 +688,7 @@ declare namespace Hilo {
          * 创建对象的属性参数。可包含此类所有可写属性。
          * @param properties 
          */
-        constructor(properties:Object);
+        constructor(properties?:Object);
 
         /**
          * 加载音频文件。注意：我们使用XMLHttpRequest进行加载，因此需要注意跨域问题。
@@ -822,7 +822,7 @@ declare namespace Hilo {
         /**
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * canvas画布的上下文。只读属性。
@@ -839,7 +839,7 @@ declare namespace Hilo {
         /**
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
     }
 
@@ -852,7 +852,7 @@ declare namespace Hilo {
         /**
          * 创建对象的属性参数。可包含此类所有可写属性。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 清除画布指定区域。需要子类来实现。
@@ -929,7 +929,7 @@ declare namespace Hilo {
         /**
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 是否支持WebGL。只读属性。
@@ -1192,7 +1192,7 @@ declare namespace Hilo {
          * 
          * @param atlasData 
          */
-        constructor(atlasData:Object);
+        constructor(atlasData?:Object);
 
         /**
          * 获取指定索引位置index的帧数据。
@@ -1228,7 +1228,7 @@ declare namespace Hilo {
         /**
          * @param fps 指定定时器的运行帧率。
          */
-        constructor(fps: number);
+        constructor(fps?: number);
 
         /**
          * 添加定时器对象。定时器对象必须实现 tick 方法。
@@ -1270,7 +1270,7 @@ declare namespace Hilo {
         /**
          * 启动定时器。
          */
-        public start(userRAF: boolean): void;
+        public start(userRAF?: boolean): void;
 
         /**
          * 停止定时器。
@@ -1318,7 +1318,7 @@ declare namespace Hilo {
      */
     class Bitmap extends View {
 
-        constructor(properties: IBitmapProperties);
+        constructor(properties?: IBitmapProperties);
 
         /**
          * 
@@ -1338,7 +1338,7 @@ declare namespace Hilo {
         /**
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 返回能否使用当前指定的字体显示提供的字符串。
@@ -1382,7 +1382,7 @@ declare namespace Hilo {
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
          * image - 按钮图片所在的image对象。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 设置按钮是否可用。
@@ -1484,7 +1484,7 @@ declare namespace Hilo {
      */
     class Container extends View{
 
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 在最上面添加子元素。
@@ -1592,7 +1592,7 @@ declare namespace Hilo {
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。特殊属性有：
          * element - 要包装的dom元素。必需。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
     }
 
     
@@ -1605,7 +1605,7 @@ declare namespace Hilo {
          * 
          * 构造函数
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 初始化可绘制对象。
@@ -1638,7 +1638,7 @@ declare namespace Hilo {
         /**
          * 创建对象的属性参数。可包含此类所有可写属性。
          */
-        constructor(properties:Object);
+        constructor(properties?:Object);
 
         /**
          * 开始一个位图填充样式。
@@ -1648,7 +1648,7 @@ declare namespace Hilo {
         /**
          * 指定绘制图形的填充样式和透明度。
          */
-        public beginFill(fill: string, alpha: number): Graphics;
+        public beginFill(fill: string, alpha?: number): Graphics;
 
         /**
          * 指定绘制图形的线性渐变填充样式。
@@ -1726,7 +1726,7 @@ declare namespace Hilo {
         /**
          * 指定绘制图形的线条样式。
          */
-        public lineStyle(thickness: number, lineColor: string, lineAlpha: number, lineCap: string, lineJoin: string, miterLimit: number): Graphics;
+        public lineStyle(thickness: number, lineColor?: string, lineAlpha?: number, lineCap?: string, lineJoin?: string, miterLimit?: number): Graphics;
 
         /**
          * 绘制从当前位置开始到点(x, y)结束的直线。
@@ -1803,7 +1803,7 @@ declare namespace Hilo {
         /**
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：精灵动画的帧数据对象。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 往精灵动画序列中增加帧。
@@ -1811,7 +1811,7 @@ declare namespace Hilo {
          * @param startIndex 开始增加帧的索引位置。若不设置，默认为在末尾添加。
          * @returns Sprite对象本身。
          */
-        public addFrame(frame: object, startIndex: number): Sprite;
+        public addFrame(frame: object, startIndex?: number): Sprite;
 
         /**
          * 获取精灵动画序列中指定的帧。
@@ -1838,7 +1838,7 @@ declare namespace Hilo {
          * @param pause 指示跳转后是否暂停播放。
          * @returns Sprite对象本身。
          */
-        public goto(indexOrName: object, pause: boolean): Sprite;
+        public goto(indexOrName: object, pause?: boolean): Sprite;
 
         /**
          * 播放精灵动画。
@@ -1934,7 +1934,7 @@ declare namespace Hilo {
     /**
      * 舞台是可视对象树的根，可视对象只有添加到舞台或其子对象后才会被渲染出来。创建一个hilo应用一般都是从创建一个stage开始的。 
      */
-    class Stage {
+    class Stage extends Container {
 
         /**
          * 
@@ -1945,17 +1945,17 @@ declare namespace Hilo {
         /**
          * 添加舞台画布到DOM容器中。注意：此方法覆盖了View.addTo方法。
          */
-        public addTo(domElement: HTMLElement): Stage;
+        // public addTo(domElement: {}, index?: number): Stage;
 
         /**
          * 开启/关闭舞台的DOM事件响应。要让舞台上的可视对象响应用户交互，必须先使用此方法开启舞台的相应事件的响应。
          */
-        public enableDOMEvent(type: string | Array<object>, enabled: boolean): Stage;
+        public enableDOMEvent(type: string | Array<object>, enabled?: boolean): Stage;
 
         /**
          * 改变舞台的大小。
          */
-        public resize(width: number, height: number, forceResize: boolean):void;
+        public resize(width: number, height: number, forceResize?: boolean):void;
 
         /**
          * 调用tick会触发舞台的更新和渲染。开发者一般无需使用此方法。
@@ -2000,7 +2000,7 @@ declare namespace Hilo {
         /**
          * @param properties 创建对象的属性参数。可包含此类所有可写属性。
          */
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 缓存到图片里。可用来提高渲染效率。
@@ -2089,12 +2089,12 @@ declare namespace Hilo {
      */
     class View {
 
-        constructor(properties: object);
+        constructor(properties?: object);
 
         /**
          * 添加此对象到父容器。
          */
-        public addTo(container: Container, index: number): View;
+        public addTo(container: Container | HTMLElement, index?: number): View;
 
         /**
          * 发送事件。当第一个参数类型为Object时，则把它作为一个整体事件对象。
@@ -2124,22 +2124,22 @@ declare namespace Hilo {
         /**
          * 检测object参数指定的对象是否与其相交。
          */
-        public hitTestObject(object: View, usePolyCollision: boolean): void;
+        public hitTestObject(object: View, usePolyCollision?: boolean): void;
 
         /**
          * 检测由x和y参数指定的点是否在其外接矩形之内。
          */
-        public hitTestPoint(x: number, y: number, usePolyCollision: boolean): boolean;
+        public hitTestPoint(x: number, y: number, usePolyCollision?: boolean): boolean;
 
         /**
          * 删除一个事件监听。如果不传入任何参数，则删除所有的事件监听；如果不传入第二个参数，则删除指定类型的所有事件监听。
          */
-        public off(type: string, listener: Function): object;
+        public off(type: string, listener?: Function): object;
         
         /**
          * 增加一个事件监听。
          */
-        public on(type: string, listener: Function, once: boolean): object;
+        public on(type: string, listener: Function, once?: boolean): object;
 
         /**
          * 从父容器里删除此对象。
