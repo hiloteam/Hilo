@@ -1,5 +1,5 @@
 /**
- * Hilo 1.0.2 for dragonbones
+ * Hilo 1.1.4 for dragonbones
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -66,7 +66,7 @@ if (!window.egret) {
                 thisObject: thisObject,
                 useCapture: useCapture,
                 priority: priority,
-                once: dispatchOnce
+                dispatchOnce: dispatchOnce
             });
         },
         once: function(type, listener, thisObject, useCapture, priority) {

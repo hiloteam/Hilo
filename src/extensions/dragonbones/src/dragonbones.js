@@ -61,7 +61,7 @@ if (!window.egret) {
                 thisObject: thisObject,
                 useCapture: useCapture,
                 priority: priority,
-                once: dispatchOnce
+                dispatchOnce: dispatchOnce
             });
         },
         once: function(type, listener, thisObject, useCapture, priority) {
