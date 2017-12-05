@@ -61,7 +61,7 @@
             arb.b.body.view.background = separateColor;
         }
     });
-  ```
+    ```
 
 1. 添加关节 [详细api](./api.md#Physics#addConstraint)
 
