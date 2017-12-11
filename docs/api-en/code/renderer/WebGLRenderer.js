@@ -16,6 +16,7 @@ var DEG2RAD = Math.PI / 180;
  * @param {Object} properties The properties to create a renderer, contains all writeable props of this class.
  * @module hilo/renderer/WebGLRenderer
  * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
  * @requires hilo/renderer/Renderer
  * @requires  hilo/geom/Matrix
  * @property {WebGLRenderingContext} gl The WebGL context of the renderer, readonly.

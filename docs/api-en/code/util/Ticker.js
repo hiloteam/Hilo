@@ -118,7 +118,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
      * Get the fps.
      */
     getMeasuredFPS: function(){
-        return this._measuredFPS;
+        return Math.min(this._measuredFPS, this._targetFPS);
     },
 
     /**

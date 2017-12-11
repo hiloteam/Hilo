@@ -66,7 +66,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
          * @param {String} frames 帧数据 eg:"0-5"代表第0到第5帧
          * @param {Number} w 每帧的宽
          * @param {Number} h 每帧的高
-         * @param {Bollean} loop 是否循环
+         * @param {Boolean} loop 是否循环
          * @param {Number} duration 每帧间隔 默认单位帧, 如果sprite的timeBased为true则单位是毫秒，默认一帧
          * @example
          *  //方式一 单个动画

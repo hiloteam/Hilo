@@ -4,19 +4,19 @@
  * Licensed under the MIT License
  */
 
+var win = window, doc = document, docElem = doc.documentElement,
+    uid = 0;
+
+var hasWarnedDict = {};
 
 /**
  * @namespace Hilo的基础核心方法集合。
  * @static
  * @module hilo/core/Hilo
+ * @requires hilo/util/browser
+ * @requires hilo/util/util
  */
-var Hilo = (function(){
-
-var win = window, doc = document, docElem = doc.documentElement,
-    uid = 0;
-
-var hasWarnedDict = {};
-return {
+var Hilo = {
     /**
      * Hilo version
      * @type String
@@ -60,11 +60,7 @@ return {
      * @returns {Object} 复制后的对象。
      */
     copy: function(target, source, strict){
-        for(var key in source){
-            if(!strict || target.hasOwnProperty(key) || target[key] !== undefined){
-                target[key] = source[key];
-            }
-        }
+        util.copy(target, source, strict);
         if(!hasWarnedDict.copy){
             hasWarnedDict.copy = true;
             console.warn('Hilo.copy has been Deprecated! Use Hilo.util.copy instead.');
@@ -73,70 +69,10 @@ return {
     },
 
     /**
-     * 浏览器特性集合。包括：
-     * <ul>
-     * <li><b>jsVendor</b> - 浏览器厂商CSS前缀的js值。比如：webkit。</li>
-     * <li><b>cssVendor</b> - 浏览器厂商CSS前缀的css值。比如：-webkit-。</li>
-     * <li><b>supportTransform</b> - 是否支持CSS Transform变换。</li>
-     * <li><b>supportTransform3D</b> - 是否支持CSS Transform 3D变换。</li>
-     * <li><b>supportStorage</b> - 是否支持本地存储localStorage。</li>
-     * <li><b>supportTouch</b> - 是否支持触碰事件。</li>
-     * <li><b>supportCanvas</b> - 是否支持canvas元素。</li>
-     * </ul>
+     * 浏览器特性集合。
+     * @see browser
      */
-    browser: (function(){
-        var ua = navigator.userAgent;
-        var data = {
-            iphone: /iphone/i.test(ua),
-            ipad: /ipad/i.test(ua),
-            ipod: /ipod/i.test(ua),
-            ios: /iphone|ipad|ipod/i.test(ua),
-            android: /android/i.test(ua),
-            webkit: /webkit/i.test(ua),
-            chrome: /chrome/i.test(ua),
-            safari: /safari/i.test(ua),
-            firefox: /firefox/i.test(ua),
-            ie: /msie/i.test(ua),
-            opera: /opera/i.test(ua),
-            supportTouch: 'ontouchstart' in win,
-            supportCanvas: doc.createElement('canvas').getContext != null,
-            supportStorage: false,
-            supportOrientation: 'orientation' in win,
-            supportDeviceMotion: 'ondevicemotion' in win
-        };
-
-        //`localStorage` is null or `localStorage.setItem` throws error in some cases (e.g. localStorage is disabled)
-        try{
-            var value = 'hilo';
-            localStorage.setItem(value, value);
-            localStorage.removeItem(value);
-            data.supportStorage = true;
-        }catch(e){}
-
-        //vendor prefix
-        var jsVendor = data.jsVendor = data.webkit ? 'webkit' : data.firefox ? 'webkit' : data.opera ? 'o' : data.ie ? 'ms' : '';
-        var cssVendor = data.cssVendor = '-' + jsVendor + '-';
-
-        //css transform/3d feature dectection
-        var testElem = doc.createElement('div'), style = testElem.style;
-        var supportTransform = style[jsVendor + 'Transform'] != undefined;
-        var supportTransform3D = style[jsVendor + 'Perspective'] != undefined;
-        if(supportTransform3D){
-            testElem.id = 'test3d';
-            style = doc.createElement('style');
-            style.textContent = '@media ('+ cssVendor +'transform-3d){#test3d{height:3px}}';
-            doc.head.appendChild(style);
-
-            docElem.appendChild(testElem);
-            supportTransform3D = testElem.offsetHeight == 3;
-            doc.head.removeChild(style);
-            docElem.removeChild(testElem);
-        }
-        data.supportTransform = supportTransform;
-        data.supportTransform3D = supportTransform3D;
-
-        return data;
-    })(),
+    browser: browser,
 
     /**
      * 事件类型枚举对象。包括：
@@ -359,5 +295,3 @@ return {
              + 'scale' + str3d + '(' + obj.scaleX + ', ' + obj.scaleY + (use3d ? ', 1)' : ')');
     }
 };
-
-})();

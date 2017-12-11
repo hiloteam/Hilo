@@ -118,7 +118,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
      * 获得测定的运行时帧率。
      */
     getMeasuredFPS: function(){
-        return this._measuredFPS;
+        return Math.min(this._measuredFPS, this._targetFPS);
     },
 
     /**

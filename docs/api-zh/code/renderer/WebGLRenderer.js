@@ -16,6 +16,7 @@ var DEG2RAD = Math.PI / 180;
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。
  * @module hilo/renderer/WebGLRenderer
  * @requires hilo/core/Class
+ * @requires hilo/core/Hilo
  * @requires hilo/renderer/Renderer
  * @requires  hilo/geom/Matrix
  * @property {WebGLRenderingContext} gl webgl上下文。只读属性。
