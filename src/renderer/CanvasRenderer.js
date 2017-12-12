@@ -145,53 +145,9 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
             //alignment
             var align = target.align;
             if(align){
-                if(typeof align === 'function'){
-                    target.align();
-                }else{
-                    var parent = target.parent;
-                    if(parent){
-                        var w = target.width, h = target.height,
-                            pw = parent.width, ph = parent.height;
-                        switch(align){
-                            case 'TL':
-                                x = 0;
-                                y = 0;
-                                break;
-                            case 'T':
-                                x = pw - w >> 1;
-                                y = 0;
-                                break;
-                            case 'TR':
-                                x = pw - w;
-                                y = 0;
-                                break;
-                            case 'L':
-                                x = 0;
-                                y = ph - h >> 1;
-                                break;
-                            case 'C':
-                                x = pw - w >> 1;
-                                y = ph - h >> 1;
-                                break;
-                            case 'R':
-                                x = pw - w;
-                                y = ph - h >> 1;
-                                break;
-                            case 'BL':
-                                x = 0;
-                                y = ph - h;
-                                break;
-                            case 'B':
-                                x = pw - w >> 1;
-                                y = ph - h;
-                                break;
-                            case 'BR':
-                                x = pw - w;
-                                y = ph - h;
-                                break;
-                        }
-                    }
-                }
+                var pos = target.getAlignPosition();
+                x = pos.x;
+                y = pos.y;
             }
 
             if(x != 0 || y != 0) ctx.translate(x, y);

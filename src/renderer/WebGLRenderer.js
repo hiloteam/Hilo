@@ -455,12 +455,13 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             sin = Math.sin(r);
         }
 
+        var pos = view.getAlignPosition();
         mtx.a = cos*scaleX;
         mtx.b = sin*scaleX;
         mtx.c = -sin*scaleY;
         mtx.d = cos*scaleY;
-        mtx.tx =  view.x - mtx.a * pivotX - mtx.c * pivotY;
-        mtx.ty =  view.y - mtx.b * pivotX - mtx.d * pivotY;
+        mtx.tx =  pos.x - mtx.a * pivotX - mtx.c * pivotY;
+        mtx.ty =  pos.y - mtx.b * pivotX - mtx.d * pivotY;
 
         mtx.concat(ancestor.__webglWorldMatrix);
     },
