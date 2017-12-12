@@ -1,3 +1,12 @@
+<a name="1.1.5"></a>
+## [1.1.5](https://github.com/hiloteam/hilo/compare/v1.1.4...v1.1.5) (2017-12-12)
+
+
+### Bug Fixes
+
+* dragonbones dispatchOnce event bug ([8d978e9](https://github.com/hiloteam/hilo/commit/8d978e9))
+* view.getBounds bug, when view has align property, see [#108](https://github.com/hiloteam/hilo/issues/108) ([0f5b1ec](https://github.com/hiloteam/hilo/commit/0f5b1ec))
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/hiloteam/hilo/compare/v1.1.1...v1.1.2) (2017-08-28)
 
