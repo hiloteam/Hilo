@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -200,9 +200,70 @@ return Class.create(/** @lends View.prototype */{
 
             if(pivotX != 0) mtx.tx -= pivotX;
             if(pivotY != 0) mtx.ty -= pivotY;
-            mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, o.x, o.y);
+
+            var pos = o.getAlignPosition();
+            mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
         }
         return mtx;
+    },
+
+    getAlignPosition: function(){
+        var parent = this.parent;
+        var align = this.align;
+        var x = this.x;
+        var y = this.y;
+
+        if(parent && this.align){
+            if(typeof align === 'function'){
+                return this.align();
+            }
+
+            var w = this.width, h = this.height,
+                pw = parent.width, ph = parent.height;
+            switch(align){
+                case 'TL':
+                    x = 0;
+                    y = 0;
+                    break;
+                case 'T':
+                    x = pw - w >> 1;
+                    y = 0;
+                    break;
+                case 'TR':
+                    x = pw - w;
+                    y = 0;
+                    break;
+                case 'L':
+                    x = 0;
+                    y = ph - h >> 1;
+                    break;
+                case 'C':
+                    x = pw - w >> 1;
+                    y = ph - h >> 1;
+                    break;
+                case 'R':
+                    x = pw - w;
+                    y = ph - h >> 1;
+                    break;
+                case 'BL':
+                    x = 0;
+                    y = ph - h;
+                    break;
+                case 'B':
+                    x = pw - w >> 1;
+                    y = ph - h;
+                    break;
+                case 'BR':
+                    x = pw - w;
+                    y = ph - h;
+                    break;
+            }
+        }
+
+        return {
+            x:x,
+            y:y
+        };
     },
 
     /**

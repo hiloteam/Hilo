@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

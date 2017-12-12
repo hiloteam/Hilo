@@ -30,17 +30,33 @@
             ticker.addTick(stage);
             ticker.start();
 
+            stage.enableDOMEvent([Hilo.event.POINTER_START]);
+
+            var container = new Hilo.Container({
+                width:500,
+                height:300,
+                background:'#f96',
+                rotation:30,
+                x:200,
+                y:10
+            }).addTo(stage);
+
             //draw align constants
             var aligns = Hilo.align;
             for(var p in aligns){
                 var text = new Hilo.Text({
                     width: 50,
+                    height:30,
                     textAlign: 'center',
                     background: '#ccc',
                     font: '24px Arial',
                     align: aligns[p],
                     text: aligns[p]
-                }).addTo(stage);
+                }).addTo(container);
+
+                text.on(Hilo.event.POINTER_START, function(){
+                    console.log(this.text);
+                });
             }
         }
     </script>

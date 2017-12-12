@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -166,7 +166,7 @@ var browser = (function(){
 window.Hilo.browser = browser;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -201,7 +201,7 @@ var util = {
 window.Hilo.util = util;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -229,7 +229,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version:'1.1.4',
+    version:'1.1.5',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -517,7 +517,7 @@ var Hilo = {
 for(var i in Hilo){window.Hilo[i] = Hilo[i];}
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -698,7 +698,7 @@ return {create:create, mix:mix};
 window.Hilo.Class = Class;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -877,7 +877,7 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
 window.Hilo.Matrix = Matrix;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1029,7 +1029,7 @@ if(RawEvent){
 window.Hilo.EventMixin = EventMixin;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1110,7 +1110,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
 window.Hilo.Drawable = Drawable;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1204,7 +1204,7 @@ var Renderer = Class.create(/** @lends Renderer.prototype */{
 window.Hilo.Renderer = Renderer;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1344,53 +1344,9 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
             //alignment
             var align = target.align;
             if(align){
-                if(typeof align === 'function'){
-                    target.align();
-                }else{
-                    var parent = target.parent;
-                    if(parent){
-                        var w = target.width, h = target.height,
-                            pw = parent.width, ph = parent.height;
-                        switch(align){
-                            case 'TL':
-                                x = 0;
-                                y = 0;
-                                break;
-                            case 'T':
-                                x = pw - w >> 1;
-                                y = 0;
-                                break;
-                            case 'TR':
-                                x = pw - w;
-                                y = 0;
-                                break;
-                            case 'L':
-                                x = 0;
-                                y = ph - h >> 1;
-                                break;
-                            case 'C':
-                                x = pw - w >> 1;
-                                y = ph - h >> 1;
-                                break;
-                            case 'R':
-                                x = pw - w;
-                                y = ph - h >> 1;
-                                break;
-                            case 'BL':
-                                x = 0;
-                                y = ph - h;
-                                break;
-                            case 'B':
-                                x = pw - w >> 1;
-                                y = ph - h;
-                                break;
-                            case 'BR':
-                                x = pw - w;
-                                y = ph - h;
-                                break;
-                        }
-                    }
-                }
+                var pos = target.getAlignPosition();
+                x = pos.x;
+                y = pos.y;
             }
 
             if(x != 0 || y != 0) ctx.translate(x, y);
@@ -1446,7 +1402,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
 window.Hilo.CanvasRenderer = CanvasRenderer;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1629,7 +1585,7 @@ function createDOMDrawable(view, imageObj){
 window.Hilo.DOMRenderer = DOMRenderer;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2064,12 +2020,13 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
             sin = Math.sin(r);
         }
 
+        var pos = view.getAlignPosition();
         mtx.a = cos*scaleX;
         mtx.b = sin*scaleX;
         mtx.c = -sin*scaleY;
         mtx.d = cos*scaleY;
-        mtx.tx =  view.x - mtx.a * pivotX - mtx.c * pivotY;
-        mtx.ty =  view.y - mtx.b * pivotX - mtx.d * pivotY;
+        mtx.tx =  pos.x - mtx.a * pivotX - mtx.c * pivotY;
+        mtx.ty =  pos.y - mtx.b * pivotX - mtx.d * pivotY;
 
         mtx.concat(ancestor.__webglWorldMatrix);
     },
@@ -2199,7 +2156,7 @@ Shader.prototype = {
 window.Hilo.WebGLRenderer = WebGLRenderer;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2400,9 +2357,70 @@ return Class.create(/** @lends View.prototype */{
 
             if(pivotX != 0) mtx.tx -= pivotX;
             if(pivotY != 0) mtx.ty -= pivotY;
-            mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, o.x, o.y);
+
+            var pos = o.getAlignPosition();
+            mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
         }
         return mtx;
+    },
+
+    getAlignPosition: function(){
+        var parent = this.parent;
+        var align = this.align;
+        var x = this.x;
+        var y = this.y;
+
+        if(parent && this.align){
+            if(typeof align === 'function'){
+                return this.align();
+            }
+
+            var w = this.width, h = this.height,
+                pw = parent.width, ph = parent.height;
+            switch(align){
+                case 'TL':
+                    x = 0;
+                    y = 0;
+                    break;
+                case 'T':
+                    x = pw - w >> 1;
+                    y = 0;
+                    break;
+                case 'TR':
+                    x = pw - w;
+                    y = 0;
+                    break;
+                case 'L':
+                    x = 0;
+                    y = ph - h >> 1;
+                    break;
+                case 'C':
+                    x = pw - w >> 1;
+                    y = ph - h >> 1;
+                    break;
+                case 'R':
+                    x = pw - w;
+                    y = ph - h >> 1;
+                    break;
+                case 'BL':
+                    x = 0;
+                    y = ph - h;
+                    break;
+                case 'B':
+                    x = pw - w >> 1;
+                    y = ph - h;
+                    break;
+                case 'BR':
+                    x = pw - w;
+                    y = ph - h;
+                    break;
+            }
+        }
+
+        return {
+            x:x,
+            y:y
+        };
     },
 
     /**
@@ -2628,7 +2646,7 @@ function doSATCheck(poly1, poly2, result){
 window.Hilo.View = View;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2694,7 +2712,7 @@ var CacheMixin = /** @lends CacheMixin# */ {
 window.Hilo.CacheMixin = CacheMixin;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3068,7 +3086,7 @@ var Container = Class.create(/** @lends Container.prototype */{
 window.Hilo.Container = Container;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3340,7 +3358,7 @@ var Stage = Class.create(/** @lends Stage.prototype */{
 window.Hilo.Stage = Stage;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3419,7 +3437,7 @@ var Drawable = window.Hilo.Drawable;
 window.Hilo.Bitmap = Bitmap;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3691,7 +3709,7 @@ var Sprite = Class.create(/** @lends Sprite.prototype */{
 window.Hilo.Sprite = Sprite;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3793,7 +3811,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
 window.Hilo.DOMElement = DOMElement;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4347,7 +4365,7 @@ return Class.create(/** @lends Graphics.prototype */{
 window.Hilo.Graphics = Graphics;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4601,7 +4619,7 @@ var Text = Class.create(/** @lends Text.prototype */{
 window.Hilo.Text = Text;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4786,7 +4804,7 @@ var BitmapText = Class.create(/** @lends BitmapText.prototype */{
 window.Hilo.BitmapText = BitmapText;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4967,7 +4985,7 @@ var util = window.Hilo.util;
 window.Hilo.Button = Button;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5042,7 +5060,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
          * @param {String} frames Frames message, eg:"0-5" means frame 0 to frame 5.
          * @param {Number} w The width of each frame.
          * @param {Number} h The height of each frame.
-         * @param {Bollean} loop Is play in loop.
+         * @param {Boolean} loop Is play in loop.
          * @param {Number} duration The time between each frame. default value is 1 (Frame), but if timeBased is true, default value will be duration(milli-second).
          * @example
          *  //demo1 make one animation
@@ -5203,7 +5221,7 @@ function isNumber(value){
 window.Hilo.TextureAtlas = TextureAtlas;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5428,7 +5446,7 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 window.Hilo.Ticker = Ticker;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5476,7 +5494,7 @@ if (!fnProto.bind) {
 window.Hilo.undefined = undefined;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5592,7 +5610,7 @@ var drag = {
 window.Hilo.drag = drag;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6033,7 +6051,7 @@ return Class.create(/** @lends Tween.prototype */{
 window.Hilo.Tween = Tween;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6303,7 +6321,7 @@ return {
 window.Hilo.Ease = Ease;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6350,7 +6368,7 @@ var ImageLoader = Class.create({
 window.Hilo.ImageLoader = ImageLoader;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6416,7 +6434,7 @@ var ScriptLoader = Class.create({
 window.Hilo.ScriptLoader = ScriptLoader;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6667,7 +6685,7 @@ function getExtension(src){
 window.Hilo.LoadQueue = LoadQueue;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6871,7 +6889,7 @@ var HTMLAudio = Class.create(/** @lends HTMLAudio.prototype */{
 window.Hilo.HTMLAudio = HTMLAudio;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7189,7 +7207,7 @@ return Class.create(/** @lends WebAudio.prototype */{
 window.Hilo.WebAudio = WebAudio;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7293,7 +7311,7 @@ var WebSound = {
 window.Hilo.WebSound = WebSound;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7386,7 +7404,7 @@ var Camera = Class.create(/** @lends Camera.prototype */{
 window.Hilo.Camera = Camera;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7573,7 +7591,7 @@ var Camera3d = (function(){
 window.Hilo.Camera3d = Camera3d;
 })(window);
 /**
- * Hilo 1.1.4 for standalone
+ * Hilo 1.1.5 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

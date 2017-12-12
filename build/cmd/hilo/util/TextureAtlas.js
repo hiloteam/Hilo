@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.4 for cmd
+ * Hilo 1.1.5 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -75,7 +75,7 @@ return Class.create(/** @lends TextureAtlas.prototype */{
          * @param {String} frames Frames message, eg:"0-5" means frame 0 to frame 5.
          * @param {Number} w The width of each frame.
          * @param {Number} h The height of each frame.
-         * @param {Bollean} loop Is play in loop.
+         * @param {Boolean} loop Is play in loop.
          * @param {Number} duration The time between each frame. default value is 1 (Frame), but if timeBased is true, default value will be duration(milli-second).
          * @example
          *  //demo1 make one animation

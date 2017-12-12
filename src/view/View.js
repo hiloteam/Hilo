@@ -280,11 +280,12 @@ return Class.create(/** @lends View.prototype */{
         return mtx;
     },
 
-    getAlignPosition(){
+    getAlignPosition: function(){
         var parent = this.parent;
         var align = this.align;
         var x = this.x;
         var y = this.y;
+
         if(parent && this.align){
             if(typeof align === 'function'){
                 return this.align();
@@ -335,7 +336,7 @@ return Class.create(/** @lends View.prototype */{
         return {
             x:x,
             y:y
-        }
+        };
     },
 
     /**
