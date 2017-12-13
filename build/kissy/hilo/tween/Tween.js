@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.5 for kissy
+ * Hilo 1.1.6 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -76,7 +76,8 @@ return Class.create(/** @lends Tween.prototype */{
         }
 
         for(var p in params) me[p] = params[p];
-        me.setProps(fromProps, toProps);
+        me._fromProps = fromProps;
+        me._toProps = toProps;
 
         //for old version compatiblity
         if(!params.duration && params.time){
@@ -96,6 +97,7 @@ return Class.create(/** @lends Tween.prototype */{
     ease: null,
     time: 0, //ready only
 
+    isStart:false,
     onStart: null,
     onUpdate: null,
     onComplete: null,
@@ -194,7 +196,7 @@ return Class.create(/** @lends Tween.prototype */{
      * @language=en
      * Link next Tween. The beginning time of next Tween depends on the delay value. If delay is a string that begins with '+' or '-', next Tween will begin at (delay) ms after or before the current tween is ended. If delay is out of previous situation, next Tween will begin at (delay) ms after the beginning point of current Tween.
      * @param {Tween} tween Tween to link.
-     * @returns {Tween} Current Tween, for chain calls.
+     * @returns {Tween} next Tween, for chain calls.
      */
     link: function(tween){
         var me = this, delay = tween.delay, startTime = me._startTime;
@@ -210,7 +212,7 @@ return Class.create(/** @lends Tween.prototype */{
 
         me._next = tween;
         Tween.remove(tween);
-        return me;
+        return tween;
     },
 
     /**
@@ -261,7 +263,13 @@ return Class.create(/** @lends Tween.prototype */{
         }
 
         //start callback
-        if(me.time == 0 && (callback = me.onStart)) callback.call(me, me);
+        if(!me.isStart) {
+            me.setProps(me._fromProps, me._toProps);
+            me.isStart = true;
+            if(me.onStart){
+                me.onStart.call(me, me);
+            }
+        };
         me.time = elapsed;
 
         //render & update callback

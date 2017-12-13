@@ -72,7 +72,8 @@ return Class.create(/** @lends Tween.prototype */{
         }
 
         for(var p in params) me[p] = params[p];
-        me.setProps(fromProps, toProps);
+        me._fromProps = fromProps;
+        me._toProps = toProps;
 
         //for old version compatiblity
         if(!params.duration && params.time){
@@ -92,6 +93,7 @@ return Class.create(/** @lends Tween.prototype */{
     ease: null,
     time: 0, //ready only
 
+    isStart:false,
     onStart: null,
     onUpdate: null,
     onComplete: null,
@@ -183,7 +185,7 @@ return Class.create(/** @lends Tween.prototype */{
     /**
      * 连接下一个Tween变换。其开始时间根据delay值不同而不同。当delay值为字符串且以'+'或'-'开始时，Tween的开始时间从当前变换结束点计算，否则以当前变换起始点计算。
      * @param {Tween} tween 要连接的Tween变换。
-     * @returns {Tween} Tween变换本身。可用于链式调用。
+     * @returns {Tween} 下一个Tween。可用于链式调用。
      */
     link: function(tween){
         var me = this, delay = tween.delay, startTime = me._startTime;
@@ -199,7 +201,7 @@ return Class.create(/** @lends Tween.prototype */{
 
         me._next = tween;
         Tween.remove(tween);
-        return me;
+        return tween;
     },
 
     /**
@@ -248,7 +250,13 @@ return Class.create(/** @lends Tween.prototype */{
         }
 
         //start callback
-        if(me.time == 0 && (callback = me.onStart)) callback.call(me, me);
+        if(!me.isStart) {
+            me.setProps(me._fromProps, me._toProps);
+            me.isStart = true;
+            if(me.onStart){
+                me.onStart.call(me, me);
+            }
+        };
         me.time = elapsed;
 
         //render & update callback
