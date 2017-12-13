@@ -359,7 +359,7 @@ return Class.create(/** @lends Tween.prototype */{
             if(me.onStart){
                 me.onStart.call(me, me);
             }
-        };
+        }
         me.time = elapsed;
 
         //render & update callback

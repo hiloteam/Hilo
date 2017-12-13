@@ -21,6 +21,7 @@ describe('tween', function(){
                 onStart:function(){
                     try{
                         (Date.now() - startTime).should.be.within(180, 250);
+                        obj.should.eql({x:50, y:50});
                     }
                     catch(e){
                         done(e);
@@ -37,7 +38,6 @@ describe('tween', function(){
                     }
                 }
             });
-            obj.should.eql({x:50, y:50});
         });
 
         it('add & remove', function(){
