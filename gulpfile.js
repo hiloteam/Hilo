@@ -14,6 +14,7 @@ var uitest = require('gulp-uitest');
 var transformModule = require('gulp-transform-module');
 var jshint = require('gulp-jshint');
 var pkg = require('./package.json');
+var child_process = require('child_process');
 
 var isWatch = false;
 var licenseCommentReg = /\/\*\*[\d\D]+?alibaba.com[\d\D]+?Licensed under the MIT License[\s]+?\*\//g;
@@ -233,20 +234,31 @@ gulp.task('watch', ['setIsWatch', 'standalone', 'flash', 'extensions'], function
     gulp.watch('src/extensions/**/*.js', ['extensions']);
 });
 
-gulp.task('npm', ['commonjs-format', 'standalone-format'], function(){
+
+gulp.task('npm:clean', function(done){
+    del('build/npm', done);
+});
+gulp.task('npm:build', ['npm:clean'], function(){
     var standaloneStream = gulp.src('build/standalone/hilo-standalone.js')
         .pipe(footer(`
             if(typeof module !== 'undefined' && module.exports){
                 module.exports = window.Hilo;
             }
         `))
-        .pipe(gulp.dest('build/commonjs'));
+        .pipe(gulp.dest('build/npm'));
 
-    var packageStream = gulp.src(['package.json', '.npmignore', 'LICENSE', 'README.md', 'd.ts/hilo.d.ts'])
+    var packageStream = gulp.src(['package.json', '.npmignore', 'LICENSE', 'README.md', 'd.ts/hilo.d.ts', 'build/commonjs/**/*'])
         .pipe(replace('"name": "Hilo"', '"name": "hilojs"'))
-        .pipe(gulp.dest('build/commonjs'));
+        .pipe(gulp.dest('build/npm'));
 
     return merge(standaloneStream, packageStream);
+});
+
+gulp.task('npm', ['npm:build'], function(done){
+    child_process.exec('npm publish build/npm', (error, stdout, stderr) => {
+        console.log(error, stdout, stderr);
+        done();
+    });
 });
 
 gulp.task('jshint', ['setIsWatch', 'standalone'], function(){
