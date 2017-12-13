@@ -46,37 +46,41 @@
             box = document.createElement('div');
             box.id = 'box';
             box.className = 'box';
-            box.x = 50;
-            box.y = 50;
+            box.x = 0;
+            box.y = 0;
             gameContainer.appendChild(box);
 
-            setTimeout(runLink, 100);
+            Tween.to(box, {x:50, y:50}, {
+                duration: 500,
+                onUpdate: onUpdateTransform,
+                onComplete: runLink
+            });
         }
 
         function runLink(){
             Tween.to(box, {x:50, y:150}, {
                 duration: 500,
-                onUpdate: onUpdate
+                onUpdate: onUpdateTransform
             })
-            .link(Tween.to(box, {x:150, y:150}, {
+            .link(Tween.to(box, {x:150}, {
                 duration: 500,
-                onUpdate: onUpdate,
+                onUpdate: onUpdateTransform,
                 delay:'+0'
             }))
-            .link(Tween.to(box, {x:150, y:50}, {
+            .link(Tween.to(box, {y:50}, {
                 duration: 500,
-                onUpdate: onUpdate,
+                onUpdate: onUpdateTransform,
                 delay:'+0'
             }))
-            .link(Tween.to(box, {x:50, y:50}, {
+            .link(Tween.to(box, {x:50}, {
                 duration: 500,
-                onUpdate: onUpdate,
+                onUpdate: onUpdateTransform,
                 delay:'+0',
                 onComplete:runLink
             }))
         }
 
-        function onUpdate(ratio, tween){
+        function onUpdateTransform(ratio, tween){
             tween.target.style.webkitTransform = 'translate(' + tween.target.x + 'px,' + tween.target.y + 'px)';
         }
     </script>
