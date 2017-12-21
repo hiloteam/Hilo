@@ -1,4 +1,4 @@
-var needTestRenderTypes = window._IS_TRAVIS?['canvas']:['canvas', 'webgl'];
+var needTestRenderTypes = window._IS_TRAVIS?['canvas', 'webgl']:['canvas', 'webgl'];
 needTestRenderTypes.forEach(function(stageRenderType){
 
 describe('view:' + stageRenderType, function() {
