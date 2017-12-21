@@ -29,15 +29,16 @@ var utils = {
             if(screenshotImg){
                 utils.loadImage('../expectScreenshot/' + name + '.png', function(specImg){
                     if(specImg){
-                        var isSame = utils.diffImage(screenshotImg, specImg, tolerantCfg);
-                        if(isSame){
+                        var diff = utils.diffImage(screenshotImg, specImg);
+                        if(diff < 10){
                             done();
                         }
                         else{
-                            done(new Error('diff image error:' + name));
+                            done(new Error('diff image error:' + name + ', diff:' + diff));
                         }
                     }
                     else{
+                        console.log('no spec image:' + name);
                         done();
                     }
                 });
@@ -95,9 +96,9 @@ var utils = {
         else{
             var imgData0 = this.getImageData(img0);
             var imgData1 = this.getImageData(img1);
-            var diff = pixelmatch(imgData0, imgData1, null, img0.width, img0.height, {threshold: 0.1});
+            var diff = pixelmatch(imgData0, imgData1, null, img0.width, img0.height, {threshold: 0.1, includeAA:false});
             console.log('      (imageDiff:' + diff + ')');
-            return diff < 10;
+            return diff;
         }
     },
     /**

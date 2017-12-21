@@ -37,6 +37,8 @@
     window._IS_TRAVIS = false;
     if(typeof process === 'object'){
         window._IS_WEB = false;
+        Hilo.browser.jsVendor = 'webkit';
+        Hilo.browser.cssVendor = '-webkit-';
         if(process.env.TEST_FLAG === 'TRAVIS'){
             window._IS_TRAVIS = true;
         }

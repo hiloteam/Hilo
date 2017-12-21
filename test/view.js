@@ -1,4 +1,4 @@
-var needTestRenderTypes = window._IS_TRAVIS?['canvas', 'webgl']:['canvas', 'webgl'];
+var needTestRenderTypes = window._IS_TRAVIS?['canvas']:['canvas', 'dom', 'webgl'];
 needTestRenderTypes.forEach(function(stageRenderType){
 
 describe('view:' + stageRenderType, function() {
@@ -287,12 +287,14 @@ describe('view:' + stageRenderType, function() {
                 width: 100,
                 height: 100,
                 x: 80,
-                y: 100
+                y: 100,
+                rotation:30,
+                scaleX:0.5
             }).addTo(stage);
 
-            utils.diffWithScreenshot('DOMElement-new', function(){
+            utils.diffWithScreenshot('DOMElement-new', function(error){
                 yellowRect.removeFromParent();
-                done();
+                done(error);
             });
         });
     });
@@ -550,8 +552,8 @@ describe('view:' + stageRenderType, function() {
         });
     });
 
-    describe('Text', function() {
-        it('new', function(){
+    describe.skip('Text', function() {
+        it('new', function(done){
             var text = new Hilo.Text({
                 font: '14px arial',
                 text: 'hello world!',
@@ -561,7 +563,7 @@ describe('view:' + stageRenderType, function() {
                 x: 40,
                 y: 50
             }).addTo(stage);
-            // utils.diffWithScreenshot('Text-new', done);
+            utils.diffWithScreenshot('Text-new', done);
         });
     });
 
