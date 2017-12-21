@@ -95,36 +95,10 @@ var utils = {
         else{
             var imgData0 = this.getImageData(img0);
             var imgData1 = this.getImageData(img1);
-            return this.diffImageData(imgData0, imgData1, tolerantCfg);
+            var diff = pixelmatch(imgData0, imgData1, null, img0.width, img0.height, {threshold: 0.1});
+            console.log('      (imageDiff:' + diff + ')');
+            return diff < 10;
         }
-    },
-    /**
-     * 对比图像数据是否相同
-     * @param  {Array} imgData0
-     * @param  {Array} imgData1
-     * @param  {Object} tolerantCfg 容错配置
-     * @param  {Number} tolerantCfg.value 允许颜色最大的差值 默认为5
-     * @param  {Number} tolerantCfg.num 允许错误像素点数量 默认为10
-     * @return {Boolean} 是否相同
-     */
-    diffImageData:function(imgData0, imgData1, tolerantCfg){
-        tolerantCfg = tolerantCfg||{};
-        var tolerantValue = tolerantCfg.value || 20;
-        var tolerantNum = tolerantCfg.num || 20;
-
-        var num = 0;
-        for(var i = 0, l = imgData0.length;i < l;i += 4){
-            for(var j = 0;j < 4;j ++){
-                if(Math.abs(imgData0[i + j] - imgData1[i + j]) > tolerantValue){
-                    num ++;
-                    if(num > tolerantNum){
-                        return false;
-                    }
-                    break;
-                }
-            }
-        }
-        return true;
     },
     /**
      * 获取图片数据
