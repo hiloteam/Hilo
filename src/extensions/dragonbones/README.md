@@ -2,8 +2,8 @@
 * This a Hilo version of [DragonBones](http://www.egret.com/products/dragonbones.html).
 
 ## DEMO
-* [demos](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/index.html)
-* [dragon](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/dragon.html)
+* [demos](https://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/index.html)
+* [dragon](https://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/dragon.html)
 
 ## Usage
 ```
@@ -43,5 +43,5 @@ ticker.addTick(stage);
 stage.addChild(armature.getDisplay());
 ```
 
-* Check out [dragon demo](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/dragon.html) for a complete example.
+* Check out [dragon demo](https://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/dragon.html) for a complete example.
 * Check [official tutorial](http://edn.egret.com/cn/docs/page/392) for more info.

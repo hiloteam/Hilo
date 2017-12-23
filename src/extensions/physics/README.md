@@ -2,9 +2,9 @@
 对chipmunk二次封装，简化使用方法
 
 ## example
-* [demo](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
-* [joints](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/joints.html)
-* [collision](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/collision.html)
+* [demo](https://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
+* [joints](https://hiloteam.github.io/Hilo/src/extensions/physics/demo/joints.html)
+* [collision](https://hiloteam.github.io/Hilo/src/extensions/physics/demo/collision.html)
 
 ## 使用说明
 
