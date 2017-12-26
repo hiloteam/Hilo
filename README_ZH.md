@@ -34,32 +34,32 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
 
 ### API 文档
 
-参见 [docs/api-zh/index.html](http://hiloteam.github.io/Hilo/docs/api-zh/index.html)
+参见 [docs/api-zh/index.html](https://hiloteam.github.io/Hilo/docs/api-zh/index.html)
 
 ### API 样例
 
- * [Index.html](http://hiloteam.github.io/Hilo/examples/index.html)
+ * [Index.html](https://hiloteam.github.io/Hilo/examples/index.html)
  * 可视对象 (View)
-    * [Bitmap](http://hiloteam.github.io/Hilo/examples/Bitmap.html)
-    * [Sprite](http://hiloteam.github.io/Hilo/examples/Sprite.html)
-    * [Graphics](http://hiloteam.github.io/Hilo/examples/Graphics.html)
-    * [DOM element](http://hiloteam.github.io/Hilo/examples/DOMElement.html)
-    * [Button](http://hiloteam.github.io/Hilo/examples/Button.html)
-    * [Background](http://hiloteam.github.io/Hilo/examples/Background.html)
-    * [Canvas Text](http://hiloteam.github.io/Hilo/examples/Text.html)
+    * [Bitmap](https://hiloteam.github.io/Hilo/examples/Bitmap.html)
+    * [Sprite](https://hiloteam.github.io/Hilo/examples/Sprite.html)
+    * [Graphics](https://hiloteam.github.io/Hilo/examples/Graphics.html)
+    * [DOM element](https://hiloteam.github.io/Hilo/examples/DOMElement.html)
+    * [Button](https://hiloteam.github.io/Hilo/examples/Button.html)
+    * [Background](https://hiloteam.github.io/Hilo/examples/Background.html)
+    * [Canvas Text](https://hiloteam.github.io/Hilo/examples/Text.html)
 
  * 其他
-    * [Load queue](http://hiloteam.github.io/Hilo/examples/LoadQueue.html)
-    * [Web sound](http://hiloteam.github.io/Hilo/examples/WebSound.html)
-    * [Mouse Event](http://hiloteam.github.io/Hilo/examples/MouseEvent.html)
-    * [Drag](http://hiloteam.github.io/Hilo/examples/drag.html)
+    * [Load queue](https://hiloteam.github.io/Hilo/examples/LoadQueue.html)
+    * [Web sound](https://hiloteam.github.io/Hilo/examples/WebSound.html)
+    * [Mouse Event](https://hiloteam.github.io/Hilo/examples/MouseEvent.html)
+    * [Drag](https://hiloteam.github.io/Hilo/examples/drag.html)
 
  * Hilo扩展 样例
-    * [Camera](http://hiloteam.github.io/Hilo/examples/Camera.html)
-    * [Camera3d](http://hiloteam.github.io/Hilo/examples/Camera3d.html)
-    * [Skeleton Animation - Dragonbones](http://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/index.html)
-    * [Particle System](http://hiloteam.github.io/Hilo/examples/ParticleSystem.html)
-    * [Physics](http://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
+    * [Camera](https://hiloteam.github.io/Hilo/examples/Camera.html)
+    * [Camera3d](https://hiloteam.github.io/Hilo/examples/Camera3d.html)
+    * [Skeleton Animation - Dragonbones](https://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/index.html)
+    * [Particle System](https://hiloteam.github.io/Hilo/examples/ParticleSystem.html)
+    * [Physics](https://hiloteam.github.io/Hilo/src/extensions/physics/demo/index.html)
 
 ### Demos
 
@@ -98,4 +98,4 @@ Hilo 是阿里巴巴集团开发的一款HTML5跨终端游戏解决方案，ta�
 [size-url]: https://cdn.rawgit.com/hiloteam/Hilo/master/build/standalone/hilo-standalone.min.js
 
 [example-image]: https://img.alicdn.com/tps/TB1vDlBLVXXXXcDXVXXXXXXXXXX-850-806.png
-[example-url]: http://hiloteam.github.io/examples/index.html
+[example-url]: https://hiloteam.github.io/examples/index.html
