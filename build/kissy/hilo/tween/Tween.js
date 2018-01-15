@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.6 for kissy
+ * Hilo 1.1.7 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -269,7 +269,7 @@ return Class.create(/** @lends Tween.prototype */{
             if(me.onStart){
                 me.onStart.call(me, me);
             }
-        };
+        }
         me.time = elapsed;
 
         //render & update callback
