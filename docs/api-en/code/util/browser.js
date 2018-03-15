@@ -157,5 +157,29 @@ var browser = (function(){
     data.supportTransform = supportTransform;
     data.supportTransform3D = supportTransform3D;
 
+    var supportTouch = data.supportTouch;
+    
+    /**
+     * 鼠标或触碰开始事件。对应touchstart或mousedown。
+     * @type {String}
+     */
+    var POINTER_START = supportTouch ? 'touchstart' : 'mousedown';
+
+    /**
+     * 鼠标或触碰移动事件。对应touchmove或mousemove。
+     * @type {String}
+     */
+    var POINTER_MOVE = supportTouch ? 'touchmove' : 'mousemove';
+
+    /**
+     * 鼠标或触碰结束事件。对应touchend或mouseup。
+     * @type {String}
+     */
+    var POINTER_END = supportTouch ? 'touchend' : 'mouseup';
+
+    data.POINTER_START = POINTER_START;
+    data.POINTER_MOVE = POINTER_MOVE;
+    data.POINTER_END = POINTER_END;
+    
     return data;
 })();

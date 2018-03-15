@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -161,6 +161,30 @@ var browser = (function(){
     data.supportTransform = supportTransform;
     data.supportTransform3D = supportTransform3D;
 
+    var supportTouch = data.supportTouch;
+    
+    /**
+     * 鼠标或触碰开始事件。对应touchstart或mousedown。
+     * @type {String}
+     */
+    var POINTER_START = supportTouch ? 'touchstart' : 'mousedown';
+
+    /**
+     * 鼠标或触碰移动事件。对应touchmove或mousemove。
+     * @type {String}
+     */
+    var POINTER_MOVE = supportTouch ? 'touchmove' : 'mousemove';
+
+    /**
+     * 鼠标或触碰结束事件。对应touchend或mouseup。
+     * @type {String}
+     */
+    var POINTER_END = supportTouch ? 'touchend' : 'mouseup';
+
+    data.POINTER_START = POINTER_START;
+    data.POINTER_MOVE = POINTER_MOVE;
+    data.POINTER_END = POINTER_END;
+    
     return data;
 })();
 
@@ -168,7 +192,7 @@ return browser;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -205,7 +229,7 @@ return util;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -216,7 +240,9 @@ var util = require('hilo/util/util');
 
 
 
-var win = window, doc = document, docElem = doc.documentElement,
+var win = window,
+    doc = document,
+    docElem = doc.documentElement,
     uid = 0;
 
 var hasWarnedDict = {};
@@ -234,16 +260,16 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version:'1.1.7',
+    version: '1.1.8',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
      * @param {String} prefix Generated id's prefix.
      * @returns {String} Globally unique id.
      */
-    getUid: function(prefix){
+    getUid: function(prefix) {
         var id = ++uid;
-        if(prefix){
+        if (prefix) {
             var charCode = prefix.charCodeAt(prefix.length - 1);
             if (charCode >= 48 && charCode <= 57) prefix += "_"; //0至9之间添加下划线
             return prefix + id;
@@ -257,9 +283,9 @@ var Hilo = {
      * @param {View} view Specified visual object.
      * @returns {String} String representation of the visual object.
      */
-    viewToString: function(view){
+    viewToString: function(view) {
         var result, obj = view;
-        while(obj){
+        while (obj) {
             result = result ? (obj.id + '.' + result) : obj.id;
             obj = obj.parent;
         }
@@ -275,9 +301,9 @@ var Hilo = {
      * @param {Boolean} strict Indicates whether replication is undefined property, default is false, i.e., undefined attributes are not copied.
      * @returns {Object} Object after copying.
      */
-    copy: function(target, source, strict){
+    copy: function(target, source, strict) {
         util.copy(target, source, strict);
-        if(!hasWarnedDict.copy){
+        if (!hasWarnedDict.copy) {
             hasWarnedDict.copy = true;
             console.warn('Hilo.copy has been Deprecated! Use Hilo.util.copy instead.');
         }
@@ -300,14 +326,11 @@ var Hilo = {
      * <li><b>POINTER_END</b> - Mouse or touch end event. Corresponds to touchend or mouseup.</li>
      * </ul>
      */
-    event: (function(){
-        var supportTouch = 'ontouchstart' in win;
-        return {
-            POINTER_START: supportTouch ? 'touchstart' : 'mousedown',
-            POINTER_MOVE: supportTouch ? 'touchmove' : 'mousemove',
-            POINTER_END: supportTouch ? 'touchend' : 'mouseup'
-        };
-    })(),
+    event: {
+        POINTER_START: browser.POINTER_START,
+        POINTER_MOVE: browser.POINTER_MOVE,
+        POINTER_END: browser.POINTER_END
+    },
 
     /**
      * @language=en
@@ -342,13 +365,18 @@ var Hilo = {
      * @param {HTMLElement} elem DOM elements.
      * @returns {Object} Viewable area DOM elements. Format is: {left:0, top:0, width:100, height:100}.
      */
-    getElementRect: function(elem){
+    getElementRect: function(elem) {
         var bounds;
-        try{
+        try {
             //this fails if it's a disconnected DOM node
             bounds = elem.getBoundingClientRect();
-        }catch(e){
-            bounds = {top:elem.offsetTop, left:elem.offsetLeft, right:elem.offsetLeft + elem.offsetWidth, bottom:elem.offsetTop + elem.offsetHeight};
+        } catch (e) {
+            bounds = {
+                top: elem.offsetTop,
+                left: elem.offsetLeft,
+                right: elem.offsetLeft + elem.offsetWidth,
+                bottom: elem.offsetTop + elem.offsetHeight
+            };
         }
 
         var offsetX = ((win.pageXOffset || docElem.scrollLeft) - (docElem.clientLeft || 0)) || 0;
@@ -381,13 +409,14 @@ var Hilo = {
      * @param {Object} properties Properties and styles for DOM element.
      * @returns {HTMLElement} A DOM element.
      */
-    createElement: function(type, properties){
-        var elem = doc.createElement(type), p, val, s;
-        for(p in properties){
+    createElement: function(type, properties) {
+        var elem = doc.createElement(type),
+            p, val, s;
+        for (p in properties) {
             val = properties[p];
-            if(p === 'style'){
-                for(s in val) elem.style[s] = val[s];
-            }else{
+            if (p === 'style') {
+                for (s in val) elem.style[s] = val[s];
+            } else {
                 elem[p] = val;
             }
         }
@@ -400,7 +429,7 @@ var Hilo = {
      * @param {String} id id of the DOM element you want to get.
      * @returns {HTMLElement} A DOM element.
      */
-    getElement: function(id){
+    getElement: function(id) {
         return doc.getElementById(id);
     },
 
@@ -410,59 +439,62 @@ var Hilo = {
      * @param {View} obj Specifies the CSS style to set the visual object.
      * @private
      */
-    setElementStyleByView: function(obj){
+    setElementStyleByView: function(obj) {
         var drawable = obj.drawable,
             style = drawable.domElement.style,
             stateCache = obj._stateCache || (obj._stateCache = {}),
-            prefix = Hilo.browser.jsVendor, px = 'px', flag = false;
+            prefix = Hilo.browser.jsVendor,
+            px = 'px',
+            flag = false;
 
-        if(this.cacheStateIfChanged(obj, ['visible'], stateCache)){
+        if (this.cacheStateIfChanged(obj, ['visible'], stateCache)) {
             style.display = !obj.visible ? 'none' : '';
         }
-        if(this.cacheStateIfChanged(obj, ['alpha'], stateCache)){
+        if (this.cacheStateIfChanged(obj, ['alpha'], stateCache)) {
             style.opacity = obj.alpha;
         }
-        if(!obj.visible || obj.alpha <= 0) return;
+        if (!obj.visible || obj.alpha <= 0) return;
 
-        if(this.cacheStateIfChanged(obj, ['width'], stateCache)){
+        if (this.cacheStateIfChanged(obj, ['width'], stateCache)) {
             style.width = obj.width + px;
         }
-        if(this.cacheStateIfChanged(obj, ['height'], stateCache)){
+        if (this.cacheStateIfChanged(obj, ['height'], stateCache)) {
             style.height = obj.height + px;
         }
-        if(this.cacheStateIfChanged(obj, ['depth'], stateCache)){
+        if (this.cacheStateIfChanged(obj, ['depth'], stateCache)) {
             style.zIndex = obj.depth + 1;
         }
-        if(flag = this.cacheStateIfChanged(obj, ['pivotX', 'pivotY'], stateCache)){
+        if (flag = this.cacheStateIfChanged(obj, ['pivotX', 'pivotY'], stateCache)) {
             style[prefix + 'TransformOrigin'] = obj.pivotX + px + ' ' + obj.pivotY + px;
         }
-        if(this.cacheStateIfChanged(obj, ['x', 'y', 'rotation', 'scaleX', 'scaleY'], stateCache) || flag){
+        if (this.cacheStateIfChanged(obj, ['x', 'y', 'rotation', 'scaleX', 'scaleY'], stateCache) || flag) {
             style[prefix + 'Transform'] = this.getTransformCSS(obj);
         }
-        if(this.cacheStateIfChanged(obj, ['background'], stateCache)){
+        if (this.cacheStateIfChanged(obj, ['background'], stateCache)) {
             style.backgroundColor = obj.background;
         }
-        if(!style.pointerEvents){
+        if (!style.pointerEvents) {
             style.pointerEvents = 'none';
         }
 
         //render image as background
         var image = drawable.image;
-        if(image){
+        if (image) {
             var src = image.src;
-            if(src !== stateCache.image){
+            if (src !== stateCache.image) {
                 stateCache.image = src;
                 style.backgroundImage = 'url(' + src + ')';
             }
 
             var rect = drawable.rect;
-            if(rect){
-                var sx = rect[0], sy = rect[1];
-                if(sx !== stateCache.sx){
+            if (rect) {
+                var sx = rect[0],
+                    sy = rect[1];
+                if (sx !== stateCache.sx) {
                     stateCache.sx = sx;
                     style.backgroundPositionX = -sx + px;
                 }
-                if(sy !== stateCache.sy){
+                if (sy !== stateCache.sy) {
                     stateCache.sy = sy;
                     style.backgroundPositionY = -sy + px;
                 }
@@ -471,16 +503,17 @@ var Hilo = {
 
         //render mask
         var mask = obj.mask;
-        if(mask){
+        if (mask) {
             var maskImage = mask.drawable.domElement.style.backgroundImage;
-            if(maskImage !== stateCache.maskImage){
+            if (maskImage !== stateCache.maskImage) {
                 stateCache.maskImage = maskImage;
                 style[prefix + 'MaskImage'] = maskImage;
                 style[prefix + 'MaskRepeat'] = 'no-repeat';
             }
 
-            var maskX = mask.x, maskY = mask.y;
-            if(maskX !== stateCache.maskX || maskY !== stateCache.maskY){
+            var maskX = mask.x,
+                maskY = mask.y;
+            if (maskX !== stateCache.maskX || maskY !== stateCache.maskY) {
                 stateCache.maskX = maskX;
                 stateCache.maskY = maskY;
                 style[prefix + 'MaskPosition'] = maskX + px + ' ' + maskY + px;
@@ -491,12 +524,12 @@ var Hilo = {
     /**
      * @private
      */
-    cacheStateIfChanged: function(obj, propNames, stateCache){
+    cacheStateIfChanged: function(obj, propNames, stateCache) {
         var i, len, name, value, changed = false;
-        for(i = 0, len = propNames.length; i < len; i++){
+        for (i = 0, len = propNames.length; i < len; i++) {
             name = propNames[i];
             value = obj[name];
-            if(value != stateCache[name]){
+            if (value != stateCache[name]) {
                 stateCache[name] = value;
                 changed = true;
             }
@@ -510,13 +543,13 @@ var Hilo = {
      * @param {View} obj Specifies visual object whose CSS style must be got.
      * @returns {String} String representation of the CSS style.
      */
-    getTransformCSS: function(obj){
+    getTransformCSS: function(obj) {
         var use3d = this.browser.supportTransform3D,
             str3d = use3d ? '3d' : '';
 
-        return 'translate' + str3d + '(' + (obj.x - obj.pivotX) + 'px, ' + (obj.y - obj.pivotY) + (use3d ? 'px, 0px)' : 'px)')
-             + 'rotate' + str3d + (use3d ? '(0, 0, 1, ' : '(') + obj.rotation + 'deg)'
-             + 'scale' + str3d + '(' + obj.scaleX + ', ' + obj.scaleY + (use3d ? ', 1)' : ')');
+        return 'translate' + str3d + '(' + (obj.x - obj.pivotX) + 'px, ' + (obj.y - obj.pivotY) + (use3d ? 'px, 0px)' : 'px)') +
+            'rotate' + str3d + (use3d ? '(0, 0, 1, ' : '(') + obj.rotation + 'deg)' +
+            'scale' + str3d + '(' + obj.scaleX + ', ' + obj.scaleY + (use3d ? ', 1)' : ')');
     }
 };
 
@@ -524,7 +557,7 @@ return Hilo;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -707,7 +740,7 @@ return Class;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -889,7 +922,7 @@ return Matrix;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1044,7 +1077,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1128,7 +1161,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1225,7 +1258,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1427,7 +1460,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1614,7 +1647,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2189,7 +2222,7 @@ return WebGLRenderer;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2683,7 +2716,7 @@ return View;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2752,7 +2785,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3130,7 +3163,7 @@ return Container;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3406,7 +3439,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3489,7 +3522,7 @@ return Bitmap;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3765,7 +3798,7 @@ return Sprite;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3871,7 +3904,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4429,7 +4462,7 @@ return Graphics;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4687,7 +4720,7 @@ return Text;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4876,7 +4909,7 @@ return BitmapText;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5061,7 +5094,7 @@ return Button;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5300,7 +5333,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5528,7 +5561,7 @@ return Ticker;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5576,7 +5609,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5696,7 +5729,7 @@ return drag;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6148,7 +6181,7 @@ return Tween;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6420,7 +6453,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6470,7 +6503,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6539,7 +6572,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6793,7 +6826,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7000,7 +7033,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7321,7 +7354,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7428,7 +7461,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7524,7 +7557,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7714,7 +7747,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.1.7 for cmd
+ * Hilo 1.1.8 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
