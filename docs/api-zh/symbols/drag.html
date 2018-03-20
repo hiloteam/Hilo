@@ -243,6 +243,65 @@ bmp.startDrag([0, 0, 550, 400]);
 
     <!-- ============================== properties summary ===================== -->
     
+        
+        
+        <div style="margin:30px 0 5px 0;">
+            <h3 style="display:inline;margin-right:10px;">属性概览</h3>
+            
+        </div>
+        <table class="table table-striped table-bordered table-condensed table-symbol" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">属性</th>
+                    <th scope="col">定义于</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                
+                <tr >
+                    <td>
+                        
+                    </td>
+                    <td class="fixedFont">
+                        <div>
+                            <!-- 
+                                drag.
+                             -->
+                            <b><a href="../symbols/drag.html#.dragNeedTransform">dragNeedTransform</a></b>
+                        </div>
+                        <div class="description">
+                            <span class="label">static</span> 
+                            是否需要 transform，父元素有 transform 时需要设置为true
+                        </div>
+                    </td>
+                    <td>
+                        drag
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+        <script type="text/javascript">
+        function toggleProperties(){
+            var alink = $('#propToggleIcon');
+            if(alink.hasClass('glyphicon-circle-arrow-right')){
+                alink.removeClass('glyphicon-circle-arrow-right');
+                alink.addClass('glyphicon-circle-arrow-down');
+                $('#propToggleTip').html('隐藏继承属性');
+                $('.inheritProp').show();
+            }else{
+                alink.removeClass('glyphicon-circle-arrow-down');
+                alink.addClass('glyphicon-circle-arrow-right');
+                $('#propToggleTip').html('显示继承属性');
+                $('.inheritProp').hide();
+            }
+        }
+        </script>
+    
 
     <!-- ============================== methods summary ======================== -->
     
@@ -323,6 +382,38 @@ bmp.startDrag([0, 0, 550, 400]);
     
 
     <!-- ============================== field details ========================== -->
+    
+    <br/>
+    <div class="">
+        <h3 style="margin-bottom:15px;">属性详情</h3>
+    </div>
+    
+        <a class="anchor" name=".dragNeedTransform"> </a>
+        <div class="member-box">
+        <div class="member-header">[Static] 
+        <b>dragNeedTransform</b>
+
+        </div>
+        <div class="description">
+            是否需要 transform，父元素有 transform 时需要设置为true
+        </div>
+
+        
+
+        
+        
+        
+        
+            <dl class="detailList">
+                <dd>
+                    <b>默认值:</b>
+                    <span>false</span>
+                </dd>
+            </dl>
+        
+
+        </div>
+    
     
 
     <!-- ============================== constructor details ==================== -->

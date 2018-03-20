@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.8 for commonjs
+ * Hilo 1.1.9 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

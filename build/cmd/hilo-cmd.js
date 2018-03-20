@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -192,7 +192,7 @@ return browser;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -229,7 +229,7 @@ return util;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -260,7 +260,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.1.8',
+    version: '1.1.9',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -557,7 +557,7 @@ return Hilo;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -740,7 +740,7 @@ return Class;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -922,7 +922,7 @@ return Matrix;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1077,7 +1077,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1161,7 +1161,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1258,7 +1258,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1460,7 +1460,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1647,7 +1647,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2222,7 +2222,7 @@ return WebGLRenderer;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2716,7 +2716,7 @@ return View;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2785,7 +2785,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3163,7 +3163,7 @@ return Container;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3439,7 +3439,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3522,7 +3522,7 @@ return Bitmap;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3798,7 +3798,7 @@ return Sprite;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3904,7 +3904,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4462,7 +4462,7 @@ return Graphics;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4720,7 +4720,7 @@ return Text;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4909,7 +4909,7 @@ return BitmapText;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5094,7 +5094,7 @@ return Button;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5333,7 +5333,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5561,7 +5561,7 @@ return Ticker;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5609,7 +5609,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5638,17 +5638,24 @@ var Hilo = require('hilo/core/Hilo');
 var drag = {
     _isDragStart:false,
     /**
+     * 是否需要 transform，父元素有 transform 时需要设置为true
+     * @default false
+     * @type {Boolean}
+     */
+    dragNeedTransform:false,
+    /**
      * @language=en
      * start drag.
       * @param {Array} bounds The bounds area that the view can move, relative to the coordinates of the view's parent, [x, y, width, height]， default is no limit.
     */
     startDrag:function(bounds){
-        if(this._isDragStart){
-            this.stopDrag();
-        }
-        this._isDragStart = true;
-
         var that = this;
+        
+        if(that._isDragStart){
+            that.stopDrag();
+        }
+        that._isDragStart = true;
+
         var stage;
         bounds = bounds||[-Infinity, -Infinity, Infinity, Infinity];
         var mouse = {
@@ -5662,17 +5669,28 @@ var drag = {
         var maxX = bounds[2] == Infinity?Infinity:minX + bounds[2];
         var maxY = bounds[3] == Infinity?Infinity:minY + bounds[3];
 
+        var worldPoint = {
+            x:0, 
+            y:0
+        };
+
         function onStart(e){
             e.stopPropagation();
             updateMouse(e);
             that.off(Hilo.event.POINTER_START, onStart);
 
+            worldPoint.x = that.x;
+            worldPoint.y = that.y;
+            
+            if(that.dragNeedTransform && that.parent){
+                that.parent.getConcatenatedMatrix().transformPoint(worldPoint);
+            }
 
-            that.__dragX = that.x - mouse.x;
-            that.__dragY = that.y - mouse.y;
+            that.__dragX = worldPoint.x - mouse.x;
+            that.__dragY = worldPoint.y - mouse.y;
 
             if(!stage){
-                stage = this.getStage();
+                stage = that.getStage();
             }
             stage.on(Hilo.event.POINTER_MOVE, onMove);
             document.addEventListener(Hilo.event.POINTER_END, onStop);
@@ -5690,12 +5708,15 @@ var drag = {
         function onMove(e){
             updateMouse(e);
 
-            var x = mouse.x + that.__dragX;
-            var y = mouse.y + that.__dragY;
+            worldPoint.x = mouse.x + that.__dragX;
+            worldPoint.y = mouse.y + that.__dragY;
 
-            that.x = Math.max(minX, Math.min(maxX, x));
-            that.y = Math.max(minY, Math.min(maxY, y));
-            
+            if(that.dragNeedTransform && that.parent){
+                that.parent.getConcatenatedMatrix().invert().transformPoint(worldPoint);
+            }
+
+            that.x = Math.max(minX, Math.min(maxX, worldPoint.x));
+            that.y = Math.max(minY, Math.min(maxY, worldPoint.y));
             that.fire("dragMove", mouse);
         }
 
@@ -5707,7 +5728,7 @@ var drag = {
         }
 
         function stopDrag(){
-            this._isDragStart = false;
+            that._isDragStart = false;
             document.removeEventListener(Hilo.event.POINTER_END, onStop);
             stage && stage.off(Hilo.event.POINTER_MOVE, onMove);
             that.off(Hilo.event.POINTER_START, onStart);
@@ -5729,7 +5750,7 @@ return drag;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6181,7 +6202,7 @@ return Tween;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6453,7 +6474,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6503,7 +6524,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6572,7 +6593,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6826,7 +6847,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7033,7 +7054,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7354,7 +7375,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7461,7 +7482,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7557,7 +7578,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7747,7 +7768,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.1.8 for cmd
+ * Hilo 1.1.9 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
