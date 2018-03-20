@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>rotate scene - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <style>
+        #header{
+            display: none !important;
+        }
+    </style>
+</head>
+<body onload="init();">
+    <div id="header"></div>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            stage.enableDOMEvent([Hilo.event.POINTER_START, Hilo.event.POINTER_MOVE, Hilo.event.POINTER_END]);
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(20);
+            ticker.addTick(stage);
+            ticker.start();
+
+            var rotateContainer = new Hilo.Container({
+                width:stage.height,
+                height:stage.width,
+                rotation:90,
+                x:stage.width,
+                background:'#69f'
+            }).addTo(stage);
+
+            var title = new Hilo.Text({
+                text:'旋转场景',
+                width:rotateContainer.width,
+                height:30,
+                textAlign:'center',
+                color:'#fff',
+                y:10,
+                font:'24px arial'
+            }).addTo(rotateContainer);
+
+            var dragBackground = new Hilo.Container({
+                x:rotateContainer.width * .1,
+                y:50,
+                width:rotateContainer.width * .8,
+                height:200,
+                background:"#f00"
+            }).addTo(rotateContainer);
+
+            //create a bitmap
+            var bmp = new Hilo.Bitmap({
+                image: 'images/fish.png',
+                rect: [0, 0, 174, 126],
+                x: dragBackground.x,
+                y: dragBackground.y
+            }).addTo(rotateContainer);
+
+            //mix drag
+            Hilo.util.copy(bmp, Hilo.drag);
+            bmp.dragNeedTransform = true;
+            bmp.startDrag([dragBackground.x, dragBackground.y, dragBackground.width - bmp.width, dragBackground.height - bmp.height]);
+
+            document.ontouchstart = function(e){
+                e.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>
