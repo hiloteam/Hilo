@@ -1,21 +1,21 @@
 /**
- * Hilo 1.1.4 for physics
+ * Hilo 1.1.9 for physics
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
 (function(){
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,7 +30,7 @@ Object.create = Object.create || function(o) {
     F.prototype = o;
     return new F();
 };
-
+ 
 //var VERSION = CP_VERSION_MAJOR + "." + CP_VERSION_MINOR + "." + CP_VERSION_RELEASE;
 
 var cp;
@@ -46,7 +46,6 @@ if(typeof exports === 'undefined'){
 
 var assert = function(value, message)
 {
-    return
     if (!value) {
         throw new Error('Assertion failed: ' + message);
     }
@@ -54,7 +53,6 @@ var assert = function(value, message)
 
 var assertSoft = function(value, message)
 {
-    return
     if(!value && console && console.warn) {
         console.warn("ASSERTION FAILED: " + message);
         if(console.trace) {
@@ -107,7 +105,7 @@ var deleteObjFromList = function(arr, obj)
         if(arr[i] === obj){
             arr[i] = arr[arr.length - 1];
             arr.length--;
-
+            
             return;
         }
     }
@@ -162,11 +160,11 @@ cp.momentForPoly = function(m, verts, offset)
 
         var a = vcross2(v2x, v2y, v1x, v1y);
         var b = vdot2(v1x, v1y, v1x, v1y) + vdot2(v1x, v1y, v2x, v2y) + vdot2(v2x, v2y, v2x, v2y);
-
+        
         sum1 += a*b;
         sum2 += a;
     }
-
+    
     return (m*sum1)/(6*sum2);
 };
 
@@ -176,7 +174,7 @@ cp.areaForPoly = function(verts)
     for(var i=0, len=verts.length; i<len; i+=2){
         area += vcross(new Vect(verts[i], verts[i+1]), new Vect(verts[(i+2)%len], verts[(i+3)%len]));
     }
-
+    
     return -area/2;
 };
 
@@ -184,23 +182,23 @@ cp.centroidForPoly = function(verts)
 {
     var sum = 0;
     var vsum = new Vect(0,0);
-
+    
     for(var i=0, len=verts.length; i<len; i+=2){
         var v1 = new Vect(verts[i], verts[i+1]);
         var v2 = new Vect(verts[(i+2)%len], verts[(i+3)%len]);
         var cross = vcross(v1, v2);
-
+        
         sum += cross;
         vsum = vadd(vsum, vmult(vadd(v1, v2), cross));
     }
-
+    
     return vmult(vsum, 1/(3*sum));
 };
 
 cp.recenterPoly = function(verts)
 {
     var centroid = cp.centroidForPoly(verts);
-
+    
     for(var i=0; i<verts.length; i+=2){
         verts[i] -= centroid.x;
         verts[i+1] -= centroid.y;
@@ -217,8 +215,8 @@ cp.momentForBox2 = function(m, box)
     var width = box.r - box.l;
     var height = box.t - box.b;
     var offset = vmult([box.l + box.r, box.b + box.t], 0.5);
-
-    // TODO NaN when offset is 0 and m is INFINITY
+    
+    // TODO NaN when offset is 0 and m is INFINITY  
     return cp.momentForBox(m, width, height) + m*vlengthsq(offset);
 };
 
@@ -230,12 +228,12 @@ var loopIndexes = cp.loopIndexes = function(verts)
     var minx, miny, maxx, maxy;
     minx = maxx = verts[0];
     miny = maxy = verts[1];
-
+    
     var count = verts.length >> 1;
   for(var i=1; i<count; i++){
         var x = verts[i*2];
         var y = verts[i*2 + 1];
-
+        
     if(x < minx || (x == minx && y < miny)){
             minx = x;
             miny = y;
@@ -263,13 +261,13 @@ var SWAP = function(arr, idx1, idx2)
 var QHullPartition = function(verts, offs, count, a, b, tol)
 {
     if(count === 0) return 0;
-
+    
     var max = 0;
     var pivot = offs;
-
+    
     var delta = vsub(b, a);
     var valueTol = tol * vlength(delta);
-
+    
     var head = offs;
     for(var tail = offs+count-1; head <= tail;){
         var v = new Vect(verts[head * 2], verts[head * 2 + 1]);
@@ -279,14 +277,14 @@ var QHullPartition = function(verts, offs, count, a, b, tol)
                 max = value;
                 pivot = head;
             }
-
+            
             head++;
         } else {
             SWAP(verts, head, tail);
             tail--;
         }
     }
-
+    
     // move the new pivot to the front if it's not already there.
     if(pivot != offs) SWAP(verts, offs, pivot);
     return head - offs;
@@ -304,11 +302,11 @@ var QHullReduce = function(tol, verts, offs, count, a, pivot, b, resultPos)
         var left_count = QHullPartition(verts, offs, count, a, pivot, tol);
         var left = new Vect(verts[offs*2], verts[offs*2+1]);
         var index = QHullReduce(tol, verts, offs + 1, left_count - 1, a, left, pivot, resultPos);
-
+        
         var pivotPos = resultPos + index++;
         verts[pivotPos*2] = pivot.x;
         verts[pivotPos*2+1] = pivot.y;
-
+        
         var right_count = QHullPartition(verts, offs + left_count, count - left_count, pivot, b, tol);
         var right = new Vect(verts[(offs+left_count)*2], verts[(offs+left_count)*2+1]);
         return index + QHullReduce(tol, verts, offs + left_count + 1, right_count - 1, pivot, right, b, resultPos + index);
@@ -336,7 +334,7 @@ cp.convexHull = function(verts, result, tolerance)
         // If a result array was not specified, reduce the input instead.
         result = verts;
     }
-
+    
     // Degenerate case, all points are the same.
     var indexes = loopIndexes(verts);
     var start = indexes[0], end = indexes[1];
@@ -345,13 +343,13 @@ cp.convexHull = function(verts, result, tolerance)
         result.length = 2;
         return result;
     }
-
+    
     SWAP(result, 0, start);
     SWAP(result, 1, end == 0 ? start : end);
-
+    
     var a = new Vect(result[0], result[1]);
     var b = new Vect(result[2], result[3]);
-
+    
     var count = verts.length >> 1;
     //if(first) (*first) = start;
     var resultCount = QHullReduce(tolerance, result, 2, count - 2, a, b, a, 1) + 1;
@@ -388,17 +386,17 @@ var lerpconst = function(f1, f2, d)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -630,7 +628,7 @@ var vnear = cp.v.near = function(v1, v2, dist)
 var vslerp = cp.v.slerp = function(v1, v2, t)
 {
     var omega = Math.acos(vdot(v1, v2));
-
+    
     if(omega) {
         var denom = 1/Math.sin(omega);
         return vadd(vmult(v1, Math.sin((1 - t)*omega)*denom), vmult(v2, Math.sin(t*omega)*denom));
@@ -665,17 +663,17 @@ var vstr = cp.v.str = function(v)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -796,25 +794,25 @@ var bbWrapVect = function(bb, v)
     var ix = Math.abs(bb.r - bb.l);
     var modx = (v.x - bb.l) % ix;
     var x = (modx > 0) ? modx : modx + ix;
-
+    
     var iy = Math.abs(bb.t - bb.b);
     var mody = (v.y - bb.b) % iy;
     var y = (mody > 0) ? mody : mody + iy;
-
+    
     return new Vect(x + bb.l, y + bb.b);
 };
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -823,7 +821,7 @@ var bbWrapVect = function(bb, v)
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+ 
 /// Segment query info struct.
 /* These are created using literals where needed.
 typedef struct cpSegmentQueryInfo {
@@ -862,21 +860,21 @@ var Shape = cp.Shape = function(body) {
     /// Sensor flag.
     /// Sensor shapes call collision callbacks but don't produce collisions.
     this.sensor = false;
-
+    
     /// Coefficient of restitution. (elasticity)
     this.e = 0;
     /// Coefficient of friction.
     this.u = 0;
     /// Surface velocity used when solving for friction.
     this.surface_v = vzero;
-
+    
     /// Collision type of this shape used when picking collision handlers.
     this.collision_type = 0;
     /// Group of this shape. Shapes in the same group don't collide.
     this.group = 0;
     // Layer bitmask for this shape. Shapes only collide if the bitwise and of their layers is non-zero.
     this.layers = CP_ALL_LAYERS;
-
+    
     this.space = null;
 
     // Copy the collision code from the prototype into the actual object. This makes collision
@@ -990,7 +988,7 @@ var CircleShape = cp.CircleShape = function(body, radius, offset)
 {
     this.c = this.tc = offset;
     this.r = radius;
-
+    
     this.type = 'circle';
 
     Shape.call(this, body);
@@ -1016,10 +1014,10 @@ CircleShape.prototype.cacheData = function(p, rot)
     var delta = vsub(p, this.tc);
     var distsq = vlengthsq(delta);
     var r = this.r;
-
+    
     if(distsq < r*r){
         var info = new PointQueryExtendedInfo(this);
-
+        
         var dist = Math.sqrt(distsq);
         info.d = r - dist;
         info.n = vmult(delta, 1/dist);
@@ -1033,7 +1031,7 @@ CircleShape.prototype.nearestPointQuery = function(p)
     var deltay = p.y - this.tc.y;
     var d = vlength2(deltax, deltay);
     var r = this.r;
-
+    
     var nearestp = new Vect(this.tc.x + deltax * r/d, this.tc.y + deltay * r/d);
     return new NearestPointQueryInfo(this, nearestp, d - r);
 };
@@ -1043,13 +1041,13 @@ var circleSegmentQuery = function(shape, center, r, a, b, info)
     // offset the line to be relative to the circle
     a = vsub(a, center);
     b = vsub(b, center);
-
+    
     var qa = vdot(a, a) - 2*vdot(a, b) + vdot(b, b);
     var qb = -2*vdot(a, a) + 2*vdot(a, b);
     var qc = vdot(a, a) - r*r;
-
+    
     var det = qb*qb - 4*qa*qc;
-
+    
     if(det >= 0)
     {
         var t = (-qb - Math.sqrt(det))/(2*qa);
@@ -1086,12 +1084,12 @@ var SegmentShape = cp.SegmentShape = function(body, a, b, r)
     this.n = vperp(vnormalize(vsub(b, a)));
 
     this.ta = this.tb = this.tn = null;
-
+    
     this.r = r;
-
+    
     this.a_tangent = vzero;
     this.b_tangent = vzero;
-
+    
     this.type = 'segment';
     Shape.call(this, body);
 };
@@ -1103,9 +1101,9 @@ SegmentShape.prototype.cacheData = function(p, rot)
     this.ta = vadd(p, vrotate(this.a, rot));
     this.tb = vadd(p, vrotate(this.b, rot));
     this.tn = vrotate(this.n, rot);
-
+    
     var l,r,b,t;
-
+    
     if(this.ta.x < this.tb.x){
         l = this.ta.x;
         r = this.tb.x;
@@ -1113,7 +1111,7 @@ SegmentShape.prototype.cacheData = function(p, rot)
         l = this.tb.x;
         r = this.ta.x;
     }
-
+    
     if(this.ta.y < this.tb.y){
         b = this.ta.y;
         t = this.tb.y;
@@ -1121,7 +1119,7 @@ SegmentShape.prototype.cacheData = function(p, rot)
         b = this.tb.y;
         t = this.ta.y;
     }
-
+    
     var rad = this.r;
 
     this.bb_l = l - rad;
@@ -1133,12 +1131,12 @@ SegmentShape.prototype.cacheData = function(p, rot)
 SegmentShape.prototype.nearestPointQuery = function(p)
 {
     var closest = closestPointOnSegment(p, this.ta, this.tb);
-
+        
     var deltax = p.x - closest.x;
     var deltay = p.y - closest.y;
     var d = vlength2(deltax, deltay);
     var r = this.r;
-
+    
     var nearestp = (d ? vadd(closest, vmult(new Vect(deltax, deltay), r/d)) : closest);
     return new NearestPointQueryInfo(this, nearestp, d - r);
 };
@@ -1148,26 +1146,26 @@ SegmentShape.prototype.segmentQuery = function(a, b)
     var n = this.tn;
     var d = vdot(vsub(this.ta, a), n);
     var r = this.r;
-
+    
     var flipped_n = (d > 0 ? vneg(n) : n);
     var n_offset = vsub(vmult(flipped_n, r), a);
-
+    
     var seg_a = vadd(this.ta, n_offset);
     var seg_b = vadd(this.tb, n_offset);
     var delta = vsub(b, a);
-
+    
     if(vcross(delta, seg_a)*vcross(delta, seg_b) <= 0){
         var d_offset = d + (d > 0 ? -r : r);
         var ad = -d_offset;
         var bd = vdot(delta, n) - d_offset;
-
+        
         if(ad*bd < 0){
             return new SegmentQueryInfo(this, ad/(ad - bd), flipped_n);
         }
     } else if(r !== 0){
         var info1 = circleSegmentQuery(this, this.ta, this.r, a, b);
         var info2 = circleSegmentQuery(this, this.tb, this.r, a, b);
-
+        
         if (info1){
             return info2 && info2.t < info1.t ? info2 : info1;
         } else {
@@ -1203,17 +1201,17 @@ CP_DeclareShapeGetter(cpSegmentShape, cpFloat, Radius);
 */
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -1222,7 +1220,7 @@ CP_DeclareShapeGetter(cpSegmentShape, cpFloat, Radius);
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+ 
 /// Check that a set of vertexes is convex and has a clockwise winding.
 var polyValidate = function(verts)
 {
@@ -1234,13 +1232,13 @@ var polyValidate = function(verts)
         var by = verts[(i+3)%len];
         var cx = verts[(i+4)%len];
         var cy = verts[(i+5)%len];
-
+        
         //if(vcross(vsub(b, a), vsub(c, b)) > 0){
         if(vcross2(bx - ax, by - ay, cx - bx, cy - by) > 0){
             return false;
         }
     }
-
+    
     return true;
 };
 
@@ -1274,7 +1272,7 @@ PolyShape.prototype.setVerts = function(verts, offset)
 
     // Fail if the user attempts to pass a concave poly, or a bad winding.
     assert(polyValidate(verts), "Polygon is concave or has a reversed winding. Consider using cpConvexHull()");
-
+    
     var len = verts.length;
     var numVerts = len >> 1;
 
@@ -1284,7 +1282,7 @@ PolyShape.prototype.setVerts = function(verts, offset)
     this.tVerts = new Array(len);
     this.planes = new Array(numVerts);
     this.tPlanes = new Array(numVerts);
-
+    
     for(var i=0; i<len; i+=2){
         //var a = vadd(offset, verts[i]);
         //var b = vadd(offset, verts[(i+1)%numVerts]);
@@ -1308,7 +1306,7 @@ var BoxShape = cp.BoxShape = function(body, width, height)
 {
     var hw = width/2;
     var hh = height/2;
-
+    
     return BoxShape2(body, new BB(-hw, -hh, hw, hh));
 };
 
@@ -1321,7 +1319,7 @@ var BoxShape2 = cp.BoxShape2 = function(body, box)
         box.r, box.t,
         box.r, box.b,
     ];
-
+    
     return new PolyShape(body, verts, vzero);
 };
 
@@ -1329,10 +1327,10 @@ PolyShape.prototype.transformVerts = function(p, rot)
 {
     var src = this.verts;
     var dst = this.tVerts;
-
+    
     var l = Infinity, r = -Infinity;
     var b = Infinity, t = -Infinity;
-
+    
     for(var i=0; i<src.length; i+=2){
         //var v = vadd(p, vrotate(src[i], rot));
         var x = src[i];
@@ -1342,7 +1340,7 @@ PolyShape.prototype.transformVerts = function(p, rot)
         var vy = p.y + x*rot.y + y*rot.x;
 
         //console.log('(' + x + ',' + y + ') -> (' + vx + ',' + vy + ')');
-
+        
         dst[i] = vx;
         dst[i+1] = vy;
 
@@ -1362,7 +1360,7 @@ PolyShape.prototype.transformAxes = function(p, rot)
 {
     var src = this.planes;
     var dst = this.tPlanes;
-
+    
     for(var i=0; i<src.length; i++){
         var n = vrotate(src[i].n, rot);
         dst[i].n = n;
@@ -1380,30 +1378,30 @@ PolyShape.prototype.nearestPointQuery = function(p)
 {
     var planes = this.tPlanes;
     var verts = this.tVerts;
-
+    
     var v0x = verts[verts.length - 2];
     var v0y = verts[verts.length - 1];
     var minDist = Infinity;
     var closestPoint = vzero;
     var outside = false;
-
+    
     for(var i=0; i<planes.length; i++){
         if(planes[i].compare(p) > 0) outside = true;
-
+        
         var v1x = verts[i*2];
         var v1y = verts[i*2 + 1];
         var closest = closestPointOnSegment2(p.x, p.y, v0x, v0y, v1x, v1y);
-
+        
         var dist = vdist(p, closest);
         if(dist < minDist){
             minDist = dist;
             closestPoint = closest;
         }
-
+        
         v0x = v1x;
         v0y = v1y;
     }
-
+    
     return new NearestPointQueryInfo(this, closestPoint, (outside ? minDist : -minDist));
 };
 
@@ -1413,16 +1411,16 @@ PolyShape.prototype.segmentQuery = function(a, b)
     var verts = this.tVerts;
     var numVerts = axes.length;
     var len = numVerts * 2;
-
+    
     for(var i=0; i<numVerts; i++){
         var n = axes[i].n;
         var an = vdot(a, n);
         if(axes[i].d > an) continue;
-
+        
         var bn = vdot(b, n);
         var t = (axes[i].d - an)/(bn - an);
         if(t < 0 || 1 < t) continue;
-
+        
         var point = vlerp(a, b, t);
         var dt = -vcross(n, point);
         var dtMin = -vcross2(n.x, n.y, verts[i*2], verts[i*2+1]);
@@ -1441,38 +1439,38 @@ PolyShape.prototype.valueOnAxis = function(n, d)
 {
     var verts = this.tVerts;
     var m = vdot2(n.x, n.y, verts[0], verts[1]);
-
+    
     for(var i=2; i<verts.length; i+=2){
         m = min(m, vdot2(n.x, n.y, verts[i], verts[i+1]));
     }
-
+    
     return m - d;
 };
 
 PolyShape.prototype.containsVert = function(vx, vy)
 {
     var planes = this.tPlanes;
-
+    
     for(var i=0; i<planes.length; i++){
         var n = planes[i].n;
         var dist = vdot2(n.x, n.y, vx, vy) - planes[i].d;
         if(dist > 0) return false;
     }
-
+    
     return true;
 };
 
 PolyShape.prototype.containsVertPartial = function(vx, vy, n)
 {
     var planes = this.tPlanes;
-
+    
     for(var i=0; i<planes.length; i++){
         var n2 = planes[i].n;
         if(vdot(n2, n) < 0) continue;
         var dist = vdot2(n2.x, n2.y, vx, vy) - planes[i].d;
         if(dist > 0) return false;
     }
-
+    
     return true;
 };
 
@@ -1945,31 +1943,31 @@ var SpatialIndex = cp.SpatialIndex = function(staticIndex)
     }
 };
 
-// Collide the objects in an index against the objects in a staticIndex using the query callback function.
+// Collide the objects in a dynamic index against the objects in a static index using the query callback function.
 SpatialIndex.prototype.collideStatic = function(staticIndex, func)
 {
     if(staticIndex.count > 0){
-        var query = staticIndex.query;
-
-        this.each(function(obj) {
-            query(obj, new BB(obj.bb_l, obj.bb_b, obj.bb_r, obj.bb_t), func);
+        this.each(function(obj1) {
+            staticIndex.query(new BB(obj1.bb_l, obj1.bb_b, obj1.bb_r, obj1.bb_t), function (obj2) {
+                func(obj1, obj2);
+            });
         });
     }
 };
 
 
 /* Copyright (c) 2009 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -1984,7 +1982,7 @@ SpatialIndex.prototype.collideStatic = function(staticIndex, func)
 var BBTree = cp.BBTree = function(staticIndex)
 {
     SpatialIndex.call(this, staticIndex);
-
+    
     this.velocityFunc = null;
 
     // This is a hash from object ID -> object for the objects stored in the BBTree.
@@ -1993,11 +1991,11 @@ var BBTree = cp.BBTree = function(staticIndex)
     this.count = 0;
 
     this.root = null;
-
+    
     // A linked list containing an object pool of tree nodes and pairs.
     this.pooledNodes = null;
     this.pooledPairs = null;
-
+    
     this.stamp = 0;
 };
 
@@ -2013,7 +2011,7 @@ var Node = function(tree, a, b)
     this.bb_r = max(a.bb_r, b.bb_r);
     this.bb_t = max(a.bb_t, b.bb_t);
     this.parent = null;
-
+    
     this.setA(a);
     this.setB(b);
 };
@@ -2053,7 +2051,7 @@ BBTree.prototype.getBB = function(obj, dest)
         var coef = 0.1;
         var x = (obj.bb_r - obj.bb_l)*coef;
         var y = (obj.bb_t - obj.bb_b)*coef;
-
+        
         var v = vmult(velocityFunc(obj), 0.1);
 
         dest.bb_l = obj.bb_l + min(-x, v.x);
@@ -2133,7 +2131,7 @@ var unlinkThread = function(prev, leaf, next)
     if(next){
         if(next.leafA === leaf) next.prevA = prev; else next.prevB = prev;
     }
-
+    
     if(prev){
         if(prev.leafA === leaf) prev.nextA = next; else prev.nextB = next;
     } else {
@@ -2147,7 +2145,7 @@ Leaf.prototype.clearPairs = function(tree)
         next;
 
     this.pairs = null;
-
+    
     while(pair){
         if(pair.leafA === this){
             next = pair.nextA;
@@ -2170,7 +2168,7 @@ var pairInsert = function(a, b, tree)
     if(nextA){
         if(nextA.leafA === a) nextA.prevA = pair; else nextA.prevB = pair;
     }
-
+    
     if(nextB){
         if(nextB.leafA === b) nextB.prevA = pair; else nextB.prevB = pair;
     }
@@ -2212,7 +2210,7 @@ Node.prototype.otherChild = function(child)
 Node.prototype.replaceChild = function(child, value, tree)
 {
     assertSoft(child == this.A || child == this.B, "Node is not a child of parent.");
-
+    
     if(this.A == child){
         this.A.recycle(tree);
         this.setA(value);
@@ -2220,7 +2218,7 @@ Node.prototype.replaceChild = function(child, value, tree)
         this.B.recycle(tree);
         this.setB(value);
     }
-
+    
     for(var node=this; node; node = node.parent){
         //node.bb = bbMerge(node.A.bb, node.B.bb);
         var a = node.A;
@@ -2263,18 +2261,18 @@ var subtreeInsert = function(subtree, leaf, tree)
     } else {
         var cost_a = subtree.B.bbArea() + bbTreeMergedArea(subtree.A, leaf);
         var cost_b = subtree.A.bbArea() + bbTreeMergedArea(subtree.B, leaf);
-
+        
         if(cost_a === cost_b){
             cost_a = bbProximity(subtree.A, leaf);
             cost_b = bbProximity(subtree.B, leaf);
-        }
+        }   
 
         if(cost_b < cost_a){
             subtree.setB(subtreeInsert(subtree.B, leaf, tree));
         } else {
             subtree.setA(subtreeInsert(subtree.A, leaf, tree));
         }
-
+        
 //      subtree.bb = bbMerge(subtree.bb, leaf.bb);
         subtree.bb_l = min(subtree.bb_l, leaf.bb_l);
         subtree.bb_b = min(subtree.bb_b, leaf.bb_b);
@@ -2311,20 +2309,20 @@ var nodeSegmentQuery = function(node, a, b)
     var tx2 = (node.bb_r == a.x ?  Infinity : (node.bb_r - a.x)*idx);
     var txmin = min(tx1, tx2);
     var txmax = max(tx1, tx2);
-
+    
     var idy = 1/(b.y - a.y);
     var ty1 = (node.bb_b == a.y ? -Infinity : (node.bb_b - a.y)*idy);
     var ty2 = (node.bb_t == a.y ?  Infinity : (node.bb_t - a.y)*idy);
     var tymin = min(ty1, ty2);
     var tymax = max(ty1, ty2);
-
+    
     if(tymin <= txmax && txmin <= tymax){
         var min_ = max(txmin, tymin);
         var max_ = min(txmax, tymax);
-
+        
         if(0.0 <= max_ && min_ <= 1.0) return max(min_, 0.0);
     }
-
+    
     return Infinity;
 };
 
@@ -2335,7 +2333,7 @@ var subtreeSegmentQuery = function(subtree, a, b, t_exit, func)
     } else {
         var t_a = nodeSegmentQuery(subtree.A, a, b);
         var t_b = nodeSegmentQuery(subtree.B, a, b);
-
+        
         if(t_a < t_b){
             if(t_a < t_exit) t_exit = min(t_exit, subtreeSegmentQuery(subtree.A, a, b, t_exit, func));
             if(t_b < t_exit) t_exit = min(t_exit, subtreeSegmentQuery(subtree.B, a, b, t_exit, func));
@@ -2343,7 +2341,7 @@ var subtreeSegmentQuery = function(subtree, a, b, t_exit, func)
             if(t_b < t_exit) t_exit = min(t_exit, subtreeSegmentQuery(subtree.B, a, b, t_exit, func));
             if(t_a < t_exit) t_exit = min(t_exit, subtreeSegmentQuery(subtree.A, a, b, t_exit, func));
         }
-
+        
         return t_exit;
     }
 };
@@ -2414,7 +2412,7 @@ Leaf.prototype.markSubtree = function(tree, staticRoot, func)
 {
     if(this.stamp == tree.getStamp()){
         if(staticRoot) staticRoot.markLeafQuery(this, false, tree, func);
-
+        
         for(var node = this; node.parent; node = node.parent){
             if(node == node.parent.A){
                 node.parent.B.markLeafQuery(this, true, tree, func);
@@ -2456,16 +2454,16 @@ Leaf.prototype.update = function(tree)
     //if(!bbContainsBB(this.bb, bb)){
     if(!this.containsObj(obj)){
         tree.getBB(this.obj, this);
-
+        
         root = subtreeRemove(root, this, tree);
         tree.root = subtreeInsert(root, this, tree);
-
+        
         this.clearPairs(tree);
         this.stamp = tree.getStamp();
-
+        
         return true;
     }
-
+    
     return false;
 };
 
@@ -2492,7 +2490,7 @@ BBTree.prototype.insert = function(obj, hashid)
     this.leaves[hashid] = leaf;
     this.root = subtreeInsert(this.root, leaf, this);
     this.count++;
-
+    
     leaf.stamp = this.getStamp();
     leaf.addPairs(this);
     this.incrementStamp();
@@ -2521,7 +2519,7 @@ var voidQueryFunc = function(obj1, obj2){};
 BBTree.prototype.reindexQuery = function(func)
 {
     if(!this.root) return;
-
+    
     // LeafUpdate() may modify this.root. Don't cache it.
     var hashid,
         leaves = this.leaves;
@@ -2529,13 +2527,13 @@ BBTree.prototype.reindexQuery = function(func)
     {
         leaves[hashid].update(this);
     }
-
+    
     var staticIndex = this.staticIndex;
     var staticRoot = staticIndex && staticIndex.root;
-
+    
     this.root.markSubtree(this, staticRoot, func);
     if(staticIndex && !staticRoot) this.collideStatic(this, staticIndex, func);
-
+    
     this.incrementStamp();
 };
 
@@ -2602,7 +2600,7 @@ var partitionNodes = function(tree, nodes, offset, count)
     } else if(count == 2) {
         return tree.makeNode(nodes[offset], nodes[offset + 1]);
     }
-
+    
     // Find the AABB for these nodes
     //var bb = nodes[offset].bb;
     var node = nodes[offset];
@@ -2620,10 +2618,10 @@ var partitionNodes = function(tree, nodes, offset, count)
         bb_r = max(bb_r, node.bb_r);
         bb_t = max(bb_t, node.bb_t);
     }
-
+    
     // Split it on it's longest axis
     var splitWidth = (bb_r - bb_l > bb_t - bb_b);
-
+    
     // Sort the bounds and use the median as the splitting point
     var bounds = new Array(count*2);
     if(splitWidth){
@@ -2637,7 +2635,7 @@ var partitionNodes = function(tree, nodes, offset, count)
             bounds[2*i + 1] = nodes[i].bb_t;
         }
     }
-
+    
     bounds.sort(function(a, b) {
         // This might run faster if the function was moved out into the global scope.
         return a - b;
@@ -2650,7 +2648,7 @@ var partitionNodes = function(tree, nodes, offset, count)
     var b_l = bb_l, b_b = bb_b, b_r = bb_r, b_t = bb_t;
 
     if(splitWidth) a_r = b_l = split; else a_t = b_b = split;
-
+    
     // Partition the nodes
     var right = end;
     for(var left=offset; left < right;){
@@ -2664,13 +2662,13 @@ var partitionNodes = function(tree, nodes, offset, count)
             left++;
         }
     }
-
+    
     if(right == count){
         var node = null;
         for(var i=offset; i<end; i++) node = subtreeInsert(node, nodes[i], tree);
         return node;
     }
-
+    
     // Recurse and build the node!
     return NodeNew(tree,
         partitionNodes(tree, nodes, offset, right - offset),
@@ -2686,12 +2684,12 @@ var partitionNodes = function(tree, nodes, offset, count)
 //      Node *node = root;
 //      int bit = 0;
 //      unsigned int path = tree.opath;
-//
+//      
 //      while(!NodeIsLeaf(node)){
 //          node = (path&(1<<bit) ? node.a : node.b);
 //          bit = (bit + 1)&(sizeof(unsigned int)*8 - 1);
 //      }
-//
+//      
 //      root = subtreeRemove(root, node, tree);
 //      tree.root = subtreeInsert(root, node, tree);
 //  }
@@ -2706,7 +2704,7 @@ BBTree.prototype.optimize = function()
     {
         nodes[i++] = this.nodes[hashid];
     }
-
+    
     tree.subtreeRecycle(root);
     this.root = partitionNodes(tree, nodes, nodes.length);
 };
@@ -2719,7 +2717,7 @@ var nodeRender = function(node, depth)
         nodeRender(node.A, depth + 1);
         nodeRender(node.B, depth + 1);
     }
-
+    
     var str = '';
     for(var i = 0; i < depth; i++) {
         str += ' ';
@@ -2740,22 +2738,22 @@ NodeRender(Node *node, int depth)
         NodeRender(node.a, depth + 1);
         NodeRender(node.b, depth + 1);
     }
-
+    
     bb bb = node.bb;
-
-//  GLfloat v = depth/2.0f;
+    
+//  GLfloat v = depth/2.0f; 
 //  glColor3f(1.0f - v, v, 0.0f);
     glLineWidth(max(5.0f - depth, 1.0f));
     glBegin(GL_LINES); {
         glVertex2f(bb.l, bb.b);
         glVertex2f(bb.l, bb.t);
-
+        
         glVertex2f(bb.l, bb.t);
         glVertex2f(bb.r, bb.t);
-
+        
         glVertex2f(bb.r, bb.t);
         glVertex2f(bb.r, bb.b);
-
+        
         glVertex2f(bb.r, bb.b);
         glVertex2f(bb.l, bb.b);
     }; glEnd();
@@ -2767,23 +2765,23 @@ bbTreeRenderDebug(cpSpatialIndex *index){
         cpAssertWarn(false, "Ignoring bbTreeRenderDebug() call to non-tree spatial index.");
         return;
     }
-
+    
     bbTree *tree = (bbTree *)index;
     if(tree.root) NodeRender(tree.root, 0);
 }
 */
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -2849,15 +2847,15 @@ var Arbiter = function(a, b) {
     /// Calculated value to use for applying surface velocities.
     /// Override in a pre-solve collision handler for custom behavior.
     this.surface_vr = vzero;
-
+    
     this.a = a; this.body_a = a.body;
     this.b = b; this.body_b = b.body;
-
+    
     this.thread_a_next = this.thread_a_prev = null;
     this.thread_b_next = this.thread_b_prev = null;
-
+    
     this.contacts = null;
-
+    
     this.stamp = 0;
     this.handler = null;
     this.swappedColl = false;
@@ -2879,12 +2877,12 @@ Arbiter.prototype.totalImpulse = function()
 {
     var contacts = this.contacts;
     var sum = new Vect(0,0);
-
+    
     for(var i=0, count=contacts.length; i<count; i++){
         var con = contacts[i];
         sum.add(vmult(con.n, con.jnAcc));
     }
-
+    
     return this.swappedColl ? sum : sum.neg();
 };
 
@@ -2894,7 +2892,7 @@ Arbiter.prototype.totalImpulseWithFriction = function()
 {
     var contacts = this.contacts;
     var sum = new Vect(0,0);
-
+    
     for(var i=0, count=contacts.length; i<count; i++){
         var con = contacts[i];
         sum.add(new Vect(con.jnAcc, con.jtAcc).rotate(con.n));
@@ -2909,16 +2907,16 @@ Arbiter.prototype.totalKE = function()
 {
     var eCoef = (1 - this.e)/(1 + this.e);
     var sum = 0;
-
+    
     var contacts = this.contacts;
     for(var i=0, count=contacts.length; i<count; i++){
         var con = contacts[i];
         var jnAcc = con.jnAcc;
         var jtAcc = con.jtAcc;
-
+        
         sum += eCoef*jnAcc*jnAcc/con.nMass + jtAcc*jtAcc/con.tMass;
     }
-
+    
     return sum;
 };
 
@@ -2961,12 +2959,12 @@ var ContactPoint = function(point, normal, dist)
 Arbiter.prototype.getContactPointSet = function()
 {
     var set = new Array(this.contacts.length);
-
+    
     var i;
     for(i=0; i<set.length; i++){
         set[i] = new ContactPoint(this.contacts[i].p, this.contacts[i].n, this.contacts[i].dist);
     }
-
+    
     return set;
 };
 
@@ -3005,10 +3003,10 @@ var unthreadHelper = function(arb, body, prev, next)
         } else {
             prev.thread_b_next = next;
         }
-    } else {
+    } else if(body.arbiterList === arb){
         body.arbiterList = next;
     }
-
+    
     if(next){
         // cpArbiterThreadForBody(next, body)->prev = prev;
         if(next.body_a === body){
@@ -3032,15 +3030,15 @@ Arbiter.prototype.unthread = function()
 //{
 //  cpFloat fsum = 0;
 //  cpVect vsum = vzero;
-//
+//  
 //  for(int i=0; i<numContacts; i++){
 //      cpContact *con = &contacts[i];
 //      cpVect j = vrotate(con.n, v(con.jnAcc, con.jtAcc));
-//
+//      
 //      fsum += vlength(j);
 //      vsum = vadd(vsum, j);
 //  }
-//
+//  
 //  cpFloat vmag = vlength(vsum);
 //  return (1 - vmag/fsum);
 //}
@@ -3052,10 +3050,10 @@ Arbiter.prototype.update = function(contacts, handler, a, b)
         // Iterate over the possible pairs to look for hash value matches.
         for(var i=0; i<this.contacts.length; i++){
             var old = this.contacts[i];
-
+            
             for(var j=0; j<contacts.length; j++){
                 var new_contact = contacts[j];
-
+                
                 // This could trigger false positives, but is fairly unlikely nor serious if it does.
                 if(new_contact.hash === old.hash){
                     // Copy the persistant contact information.
@@ -3065,20 +3063,20 @@ Arbiter.prototype.update = function(contacts, handler, a, b)
             }
         }
     }
-
+    
     this.contacts = contacts;
-
+    
     this.handler = handler;
     this.swappedColl = (a.collision_type !== handler.a);
-
+    
     this.e = a.e * b.e;
     this.u = a.u * b.u;
     this.surface_vr = vsub(a.surface_v, b.surface_v);
-
+    
     // For collisions between two similar primitive types, the order could have been swapped.
     this.a = a; this.body_a = a.body;
     this.b = b; this.body_b = b.body;
-
+    
     // mark it as new if it's been cached
     if(this.state == 'cached') this.state = 'first coll';
 };
@@ -3087,22 +3085,22 @@ Arbiter.prototype.preStep = function(dt, slop, bias)
 {
     var a = this.body_a;
     var b = this.body_b;
-
+    
     for(var i=0; i<this.contacts.length; i++){
         var con = this.contacts[i];
-
+        
         // Calculate the offsets.
         con.r1 = vsub(con.p, a.p);
         con.r2 = vsub(con.p, b.p);
-
+        
         // Calculate the mass normal and mass tangent.
         con.nMass = 1/k_scalar(a, b, con.r1, con.r2, con.n);
         con.tMass = 1/k_scalar(a, b, con.r1, con.r2, vperp(con.n));
-
+    
         // Calculate the target bias velocity.
         con.bias = -bias*min(0, con.dist + slop)/dt;
         con.jBias = 0;
-
+        
         // Calculate the target bounce velocity.
         con.bounce = normal_relative_velocity(a, b, con.r1, con.r2, con.n)*this.e;
     }
@@ -3111,10 +3109,10 @@ Arbiter.prototype.preStep = function(dt, slop, bias)
 Arbiter.prototype.applyCachedImpulse = function(dt_coef)
 {
     if(this.isFirstContact()) return;
-
+    
     var a = this.body_a;
     var b = this.body_b;
-
+    
     for(var i=0; i<this.contacts.length; i++){
         var con = this.contacts[i];
         //var j = vrotate(con.n, new Vect(con.jnAcc, con.jtAcc));
@@ -3148,11 +3146,11 @@ Arbiter.prototype.applyImpulse = function()
         var n = con.n;
         var r1 = con.r1;
         var r2 = con.r2;
-
+        
         //var vr = relative_velocity(a, b, r1, r2);
         var vrx = b.vx - r2.y * b.w - (a.vx - r1.y * a.w);
         var vry = b.vy + r2.x * b.w - (a.vy + r1.x * a.w);
-
+        
         //var vb1 = vadd(vmult(vperp(r1), a.w_bias), a.v_bias);
         //var vb2 = vadd(vmult(vperp(r2), b.w_bias), b.v_bias);
         //var vbn = vdot(vsub(vb2, vb1), n);
@@ -3163,20 +3161,20 @@ Arbiter.prototype.applyImpulse = function()
         var vrn = vdot2(vrx, vry, n.x, n.y);
         //var vrt = vdot(vadd(vr, surface_vr), vperp(n));
         var vrt = vdot2(vrx + surface_vr.x, vry + surface_vr.y, -n.y, n.x);
-
+        
         var jbn = (con.bias - vbn)*nMass;
         var jbnOld = con.jBias;
         con.jBias = max(jbnOld + jbn, 0);
-
+        
         var jn = -(con.bounce + vrn)*nMass;
         var jnOld = con.jnAcc;
         con.jnAcc = max(jnOld + jn, 0);
-
+        
         var jtMax = friction*con.jnAcc;
         var jt = -vrt*con.tMass;
         var jtOld = con.jtAcc;
         con.jtAcc = clamp(jtOld + jt, -jtMax, jtMax);
-
+        
         //apply_bias_impulses(a, b, r1, r2, vmult(n, con.jBias - jbnOld));
         var bias_x = n.x * (con.jBias - jbnOld);
         var bias_y = n.y * (con.jBias - jbnOld);
@@ -3205,17 +3203,17 @@ Arbiter.prototype.next = function(body)
     return (this.body_a == body ? this.thread_a_next : this.thread_b_next);
 };
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -3232,12 +3230,12 @@ var Contact = function(p, n, dist, hash)
     this.p = p;
     this.n = n;
     this.dist = dist;
-
+    
     this.r1 = this.r2 = vzero;
     this.nMass = this.tMass = this.bounce = this.bias = 0;
 
     this.jnAcc = this.jtAcc = this.jBias = 0;
-
+    
     this.hash = hash;
     numContacts++;
 };
@@ -3252,7 +3250,7 @@ var circle2circleQuery = function(p1, p2, r1, r2)
     var delta = vsub(p2, p1);
     var distsq = vlengthsq(delta);
     if(distsq >= mindist*mindist) return;
-
+    
     var dist = Math.sqrt(distsq);
 
     // Allocate and initialize the contact.
@@ -3276,15 +3274,15 @@ var circle2segment = function(circleShape, segmentShape)
     var seg_a = segmentShape.ta;
     var seg_b = segmentShape.tb;
     var center = circleShape.tc;
-
+    
     var seg_delta = vsub(seg_b, seg_a);
     var closest_t = clamp01(vdot(seg_delta, vsub(center, seg_a))/vlengthsq(seg_delta));
     var closest = vadd(seg_a, vmult(seg_delta, closest_t));
-
+    
     var contact = circle2circleQuery(center, closest, circleShape.r, segmentShape.r);
     if(contact){
         var n = contact.n;
-
+        
         // Reject endcap collisions if tangents are provided.
         return (
             (closest_t === 0 && vdot(n, segmentShape.a_tangent) < 0) ||
@@ -3308,7 +3306,7 @@ var findMSA = function(poly, planes)
     var min_index = 0;
     var min = poly.valueOnAxis(planes[0].n, planes[0].d);
     if(min > 0) return -1;
-
+    
     for(var i=1; i<planes.length; i++){
         var dist = poly.valueOnAxis(planes[i].n, planes[i].d);
         if(dist > 0) {
@@ -3318,7 +3316,7 @@ var findMSA = function(poly, planes)
             min_index = i;
         }
     }
-
+    
     last_MSA_min = min;
     return min_index;
 };
@@ -3338,7 +3336,7 @@ var findVertsFallback = function(poly1, poly2, n, dist)
             arr.push(new Contact(new Vect(vx, vy), n, dist, hashPair(poly1.hashid, i)));
         }
     }
-
+    
     var verts2 = poly2.tVerts;
     for(var i=0; i<verts2.length; i+=2){
         var vx = verts2[i];
@@ -3347,7 +3345,7 @@ var findVertsFallback = function(poly1, poly2, n, dist)
             arr.push(new Contact(new Vect(vx, vy), n, dist, hashPair(poly2.hashid, i)));
         }
     }
-
+    
     return arr;
 };
 
@@ -3364,7 +3362,7 @@ var findVerts = function(poly1, poly2, n, dist)
             arr.push(new Contact(new Vect(vx, vy), n, dist, hashPair(poly1.hashid, i>>1)));
         }
     }
-
+    
     var verts2 = poly2.tVerts;
     for(var i=0; i<verts2.length; i+=2){
         var vx = verts2[i];
@@ -3373,7 +3371,7 @@ var findVerts = function(poly1, poly2, n, dist)
             arr.push(new Contact(new Vect(vx, vy), n, dist, hashPair(poly2.hashid, i>>1)));
         }
     }
-
+    
     return (arr.length ? arr : findVertsFallback(poly1, poly2, n, dist));
 };
 
@@ -3383,11 +3381,11 @@ var poly2poly = function(poly1, poly2)
     var mini1 = findMSA(poly2, poly1.tPlanes);
     if(mini1 == -1) return NONE;
     var min1 = last_MSA_min;
-
+    
     var mini2 = findMSA(poly1, poly2.tPlanes);
     if(mini2 == -1) return NONE;
     var min2 = last_MSA_min;
-
+    
     // There is overlap, find the penetrating verts
     if(min1 > min2)
         return findVerts(poly1, poly2, poly1.tPlanes[mini1].n, min1);
@@ -3404,12 +3402,12 @@ var segValueOnAxis = function(seg, n, d)
 };
 
 // Identify vertexes that have penetrated the segment.
-var findPointsBehindSeg = function(arr, seg, poly, pDist, coef)
+var findPointsBehindSeg = function(arr, seg, poly, pDist, coef) 
 {
     var dta = vcross(seg.tn, seg.ta);
     var dtb = vcross(seg.tn, seg.tb);
     var n = vmult(seg.tn, coef);
-
+    
     var verts = poly.tVerts;
     for(var i=0; i<verts.length; i+=2){
         var vx = verts[i];
@@ -3431,12 +3429,12 @@ var seg2poly = function(seg, poly)
 
     var planes = poly.tPlanes;
     var numVerts = planes.length;
-
+    
     var segD = vdot(seg.tn, seg.ta);
     var minNorm = poly.valueOnAxis(seg.tn, segD) - seg.r;
     var minNeg = poly.valueOnAxis(vneg(seg.tn), -segD) - seg.r;
     if(minNeg > 0 || minNorm > 0) return NONE;
-
+    
     var mini = 0;
     var poly_min = segValueOnAxis(seg, planes[0].n, planes[0].d);
     if(poly_min > 0) return NONE;
@@ -3449,34 +3447,34 @@ var seg2poly = function(seg, poly)
             mini = i;
         }
     }
-
+    
     var poly_n = vneg(planes[mini].n);
-
+    
     var va = vadd(seg.ta, vmult(poly_n, seg.r));
     var vb = vadd(seg.tb, vmult(poly_n, seg.r));
     if(poly.containsVert(va.x, va.y))
         arr.push(new Contact(va, poly_n, poly_min, hashPair(seg.hashid, 0)));
     if(poly.containsVert(vb.x, vb.y))
         arr.push(new Contact(vb, poly_n, poly_min, hashPair(seg.hashid, 1)));
-
+    
     // Floating point precision problems here.
     // This will have to do for now.
 //  poly_min -= cp_collision_slop; // TODO is this needed anymore?
-
+    
     if(minNorm >= poly_min || minNeg >= poly_min) {
         if(minNorm > minNeg)
             findPointsBehindSeg(arr, seg, poly, minNorm, 1);
         else
             findPointsBehindSeg(arr, seg, poly, minNeg, -1);
     }
-
+    
     // If no other collision points are found, try colliding endpoints.
     if(arr.length === 0){
         var mini2 = mini * 2;
         var verts = poly.tVerts;
 
         var poly_a = new Vect(verts[mini2], verts[mini2+1]);
-
+        
         var con;
         if((con = circle2circleQuery(seg.ta, poly_a, seg.r, 0, arr))) return [con];
         if((con = circle2circleQuery(seg.tb, poly_a, seg.r, 0, arr))) return [con];
@@ -3497,7 +3495,7 @@ var seg2poly = function(seg, poly)
 var circle2poly = function(circ, poly)
 {
     var planes = poly.tPlanes;
-
+    
     var mini = 0;
     var min = vdot(planes[0].n, circ.tc) - planes[0].d - circ.r;
     for(var i=0; i<planes.length; i++){
@@ -3509,7 +3507,7 @@ var circle2poly = function(circ, poly)
             mini = i;
         }
     }
-
+    
     var n = planes[mini].n;
 
     var verts = poly.tVerts;
@@ -3526,7 +3524,7 @@ var circle2poly = function(circ, poly)
     var dta = vcross2(n.x, n.y, ax, ay);
     var dtb = vcross2(n.x, n.y, bx, by);
     var dt = vcross(n, circ.tc);
-
+        
     if(dt < dtb){
         var con = circle2circleQuery(circ.tc, new Vect(bx, by), circ.r, 0, con);
         return con ? [con] : NONE;
@@ -3544,7 +3542,7 @@ var circle2poly = function(circ, poly)
 };
 
 // The javascripty way to do this would be either nested object or methods on the prototypes.
-//
+// 
 // However, the *fastest* way is the method below.
 // See: http://jsperf.com/dispatch
 
@@ -3578,17 +3576,17 @@ var collideShapes = cp.collideShapes = function(a, b)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -3608,64 +3606,64 @@ var Space = cp.Space = function() {
     this.bodies = [];
     this.rousedBodies = [];
     this.sleepingComponents = [];
-
+    
     this.staticShapes = new BBTree(null);
     this.activeShapes = new BBTree(this.staticShapes);
-
+    
     this.arbiters = [];
     this.contactBuffersHead = null;
     this.cachedArbiters = {};
     //this.pooledArbiters = [];
-
+    
     this.constraints = [];
-
+    
     this.locked = 0;
-
+    
     this.collisionHandlers = {};
     this.defaultHandler = defaultCollisionHandler;
 
     this.postStepCallbacks = [];
-
+    
     /// Number of iterations to use in the impulse solver to solve contacts.
     this.iterations = 10;
-
+    
     /// Gravity to pass to rigid bodies when integrating velocity.
     this.gravity = vzero;
-
+    
     /// Damping rate expressed as the fraction of velocity bodies retain each second.
     /// A value of 0.9 would mean that each body's velocity will drop 10% per second.
     /// The default value is 1.0, meaning no damping is applied.
     /// @note This damping value is different than those of cpDampedSpring and cpDampedRotarySpring.
     this.damping = 1;
-
+    
     /// Speed threshold for a body to be considered idle.
     /// The default value of 0 means to let the space guess a good threshold based on gravity.
     this.idleSpeedThreshold = 0;
-
+    
     /// Time a group of bodies must remain idle in order to fall asleep.
     /// Enabling sleeping also implicitly enables the the contact graph.
     /// The default value of Infinity disables the sleeping algorithm.
     this.sleepTimeThreshold = Infinity;
-
+    
     /// Amount of encouraged penetration between colliding shapes..
     /// Used to reduce oscillating contacts and keep the collision cache warm.
     /// Defaults to 0.1. If you have poor simulation quality,
     /// increase this number as much as possible without allowing visible amounts of overlap.
     this.collisionSlop = 0.1;
-
+    
     /// Determines how fast overlapping shapes are pushed apart.
     /// Expressed as a fraction of the error remaining after each second.
     /// Defaults to pow(1.0 - 0.1, 60.0) meaning that Chipmunk fixes 10% of overlap each frame at 60Hz.
     this.collisionBias = Math.pow(1 - 0.1, 60);
-
+    
     /// Number of frames that contact information should persist.
     /// Defaults to 3. There is probably never a reason to change this value.
     this.collisionPersistence = 3;
-
+    
     /// Rebuild the contact graph during each step. Must be enabled to use the cpBodyEachArbiter() function.
     /// Disabled by default for a small performance boost. Enabled implicitly when the sleeping feature is enabled.
     this.enableContactGraph = false;
-
+    
     /// The designated static body for this space.
     /// You can modify this body, or replace it with your own static body.
     /// By default it points to a statically allocated cpBody in the cpSpace struct.
@@ -3699,10 +3697,10 @@ var assertSpaceUnlocked = function(space)
 Space.prototype.addCollisionHandler = function(a, b, begin, preSolve, postSolve, separate)
 {
     assertSpaceUnlocked(this);
-
+        
     // Remove any old function so the new one will get added.
     this.removeCollisionHandler(a, b);
-
+    
     var handler = new CollisionHandler();
     handler.a = a;
     handler.b = b;
@@ -3718,7 +3716,7 @@ Space.prototype.addCollisionHandler = function(a, b, begin, preSolve, postSolve,
 Space.prototype.removeCollisionHandler = function(a, b)
 {
     assertSpaceUnlocked(this);
-
+    
     delete this.collisionHandlers[hashPair(a, b)];
 };
 
@@ -3752,17 +3750,17 @@ Space.prototype.addShape = function(shape)
 {
     var body = shape.body;
     if(body.isStatic()) return this.addStaticShape(shape);
-
+    
     assert(!shape.space, "This shape is already added to a space and cannot be added to another.");
     assertSpaceUnlocked(this);
-
+    
     body.activate();
     body.addShape(shape);
-
+    
     shape.update(body.p, body.rot);
     this.activeShapes.insert(shape, shape.hashid);
     shape.space = this;
-
+        
     return shape;
 };
 
@@ -3771,14 +3769,14 @@ Space.prototype.addStaticShape = function(shape)
 {
     assert(!shape.space, "This shape is already added to a space and cannot be added to another.");
     assertSpaceUnlocked(this);
-
+    
     var body = shape.body;
     body.addShape(shape);
 
     shape.update(body.p, body.rot);
     this.staticShapes.insert(shape, shape.hashid);
     shape.space = this;
-
+    
     return shape;
 };
 
@@ -3788,10 +3786,10 @@ Space.prototype.addBody = function(body)
     assert(!body.isStatic(), "Static bodies cannot be added to a space as they are not meant to be simulated.");
     assert(!body.space, "This body is already added to a space and cannot be added to another.");
     assertSpaceUnlocked(this);
-
+    
     this.bodies.push(body);
     body.space = this;
-
+    
     return body;
 };
 
@@ -3800,18 +3798,18 @@ Space.prototype.addConstraint = function(constraint)
 {
     assert(!constraint.space, "This shape is already added to a space and cannot be added to another.");
     assertSpaceUnlocked(this);
-
+    
     var a = constraint.a, b = constraint.b;
 
     a.activate();
     b.activate();
     this.constraints.push(constraint);
-
+    
     // Push onto the heads of the bodies' constraint lists
     constraint.next_a = a.constraintList; a.constraintList = constraint;
     constraint.next_b = b.constraintList; b.constraintList = constraint;
     constraint.space = this;
-
+    
     return constraint;
 };
 
@@ -3828,12 +3826,12 @@ Space.prototype.filterArbiters = function(body, filter)
         ){
             // Call separate when removing shapes.
             if(filter && arb.state !== 'cached') arb.callSeparate(this);
-
+            
             arb.unthread();
 
             deleteObjFromList(this.arbiters, arb);
             //this.pooledArbiters.push(arb);
-
+            
             delete this.cachedArbiters[hash];
         }
     }
@@ -3849,7 +3847,7 @@ Space.prototype.removeShape = function(shape)
         assert(this.containsShape(shape),
             "Cannot remove a shape that was not added to the space. (Removed twice maybe?)");
         assertSpaceUnlocked(this);
-
+        
         body.activate();
         body.removeShape(shape);
         this.filterArbiters(body, shape);
@@ -3864,7 +3862,7 @@ Space.prototype.removeStaticShape = function(shape)
     assert(this.containsShape(shape),
         "Cannot remove a static or sleeping shape that was not added to the space. (Removed twice maybe?)");
     assertSpaceUnlocked(this);
-
+    
     var body = shape.body;
     if(body.isStatic()) body.activateStatic(shape);
     body.removeShape(shape);
@@ -3879,7 +3877,7 @@ Space.prototype.removeBody = function(body)
     assert(this.containsBody(body),
         "Cannot remove a body that was not added to the space. (Removed twice maybe?)");
     assertSpaceUnlocked(this);
-
+    
     body.activate();
 //  this.filterArbiters(body, null);
     deleteObjFromList(this.bodies, body);
@@ -3892,11 +3890,11 @@ Space.prototype.removeConstraint = function(constraint)
     assert(this.containsConstraint(constraint),
         "Cannot remove a constraint that was not added to the space. (Removed twice maybe?)");
     assertSpaceUnlocked(this);
-
+    
     constraint.a.activate();
     constraint.b.activate();
     deleteObjFromList(this.constraints, constraint);
-
+    
     constraint.a.removeConstraint(constraint);
     constraint.b.removeConstraint(constraint);
     constraint.space = null;
@@ -3934,15 +3932,15 @@ Space.prototype.eachBody = function(func)
 {
     this.lock(); {
         var bodies = this.bodies;
-
+        
         for(var i=0; i<bodies.length; i++){
             func(bodies[i]);
         }
-
+        
         var components = this.sleepingComponents;
         for(var i=0; i<components.length; i++){
             var root = components[i];
-
+            
             var body = root;
             while(body){
                 var next = body.nodeNext;
@@ -3967,7 +3965,7 @@ Space.prototype.eachConstraint = function(func)
 {
     this.lock(); {
         var constraints = this.constraints;
-
+        
         for(var i=0; i<constraints.length; i++){
             func(constraints[i]);
         }
@@ -3980,7 +3978,7 @@ Space.prototype.eachConstraint = function(func)
 Space.prototype.reindexStatic = function()
 {
     assert(!this.locked, "You cannot manually reindex objects while the space is locked. Wait until the current query or step is complete.");
-
+    
     this.staticShapes.each(function(shape){
         var body = shape.body;
         shape.update(body.p, body.rot);
@@ -3992,10 +3990,10 @@ Space.prototype.reindexStatic = function()
 Space.prototype.reindexShape = function(shape)
 {
     assert(!this.locked, "You cannot manually reindex objects while the space is locked. Wait until the current query or step is complete.");
-
+    
     var body = shape.body;
     shape.update(body.p, body.rot);
-
+    
     // attempt to rehash the shape in both hashes
     this.activeShapes.reindexObject(shape, shape.hashid);
     this.staticShapes.reindexObject(shape, shape.hashid);
@@ -4013,33 +4011,33 @@ Space.prototype.reindexShapesForBody = function(body)
 Space.prototype.useSpatialHash = function(dim, count)
 {
     throw new Error('Spatial Hash not implemented.');
-
+    
     var staticShapes = new SpaceHash(dim, count, null);
     var activeShapes = new SpaceHash(dim, count, staticShapes);
-
+    
     this.staticShapes.each(function(shape){
         staticShapes.insert(shape, shape.hashid);
     });
     this.activeShapes.each(function(shape){
         activeShapes.insert(shape, shape.hashid);
     });
-
+        
     this.staticShapes = staticShapes;
     this.activeShapes = activeShapes;
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -4048,13 +4046,13 @@ Space.prototype.useSpatialHash = function(dim, count)
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+ 
 /// **** Sleeping Functions
 
 Space.prototype.activateBody = function(body)
 {
     assert(!body.isRogue(), "Internal error: Attempting to activate a rogue body.");
-
+    
     if(this.locked){
         // cpSpaceActivateBody() is called again once the space is unlocked
         if(this.rousedBodies.indexOf(body) === -1) this.rousedBodies.push(body);
@@ -4066,28 +4064,28 @@ Space.prototype.activateBody = function(body)
             this.staticShapes.remove(shape, shape.hashid);
             this.activeShapes.insert(shape, shape.hashid);
         }
-
+        
         for(var arb = body.arbiterList; arb; arb = arb.next(body)){
             var bodyA = arb.body_a;
             if(body === bodyA || bodyA.isStatic()){
                 //var contacts = arb.contacts;
-
+                
                 // Restore contact values back to the space's contact buffer memory
                 //arb.contacts = cpContactBufferGetArray(this);
                 //memcpy(arb.contacts, contacts, numContacts*sizeof(cpContact));
                 //cpSpacePushContacts(this, numContacts);
-
+                
                 // Reinsert the arbiter into the arbiter cache
                 var a = arb.a, b = arb.b;
                 this.cachedArbiters[hashPair(a.hashid, b.hashid)] = arb;
-
+                
                 // Update the arbiter's state
                 arb.stamp = this.stamp;
                 arb.handler = this.lookupHandler(a.collision_type, b.collision_type);
                 this.arbiters.push(arb);
             }
         }
-
+        
         for(var constraint = body.constraintList; constraint; constraint = constraint.nodeNext){
             var bodyA = constraint.a;
             if(body === bodyA || bodyA.isStatic()) this.constraints.push(constraint);
@@ -4098,20 +4096,20 @@ Space.prototype.activateBody = function(body)
 Space.prototype.deactivateBody = function(body)
 {
     assert(!body.isRogue(), "Internal error: Attempting to deactivate a rogue body.");
-
+    
     deleteObjFromList(this.bodies, body);
-
+    
     for(var i = 0; i < body.shapeList.length; i++){
         var shape = body.shapeList[i];
         this.activeShapes.remove(shape, shape.hashid);
         this.staticShapes.insert(shape, shape.hashid);
     }
-
+    
     for(var arb = body.arbiterList; arb; arb = arb.next(body)){
         var bodyA = arb.body_a;
         if(body === bodyA || bodyA.isStatic()){
             this.uncacheArbiter(arb);
-
+            
             // Save contact values to a new block of memory so they won't time out
             //size_t bytes = arb.numContacts*sizeof(cpContact);
             //cpContact *contacts = (cpContact *)cpcalloc(1, bytes);
@@ -4119,7 +4117,7 @@ Space.prototype.deactivateBody = function(body)
             //arb.contacts = contacts;
         }
     }
-
+        
     for(var constraint = body.constraintList; constraint; constraint = constraint.nodeNext){
         var bodyA = constraint.a;
         if(body === bodyA || bodyA.isStatic()) deleteObjFromList(this.constraints, constraint);
@@ -4135,20 +4133,20 @@ var componentActivate = function(root)
 {
     if(!root || !root.isSleeping(root)) return;
     assert(!root.isRogue(), "Internal Error: componentActivate() called on a rogue body.");
-
+    
     var space = root.space;
     var body = root;
     while(body){
         var next = body.nodeNext;
-
+        
         body.nodeIdleTime = 0;
         body.nodeRoot = null;
         body.nodeNext = null;
         space.activateBody(body);
-
+        
         body = next;
     }
-
+    
     deleteObjFromList(space.sleepingComponents, root);
 };
 
@@ -4163,13 +4161,13 @@ Body.prototype.activate = function()
 Body.prototype.activateStatic = function(filter)
 {
     assert(this.isStatic(), "Body.activateStatic() called on a non-static body.");
-
+    
     for(var arb = this.arbiterList; arb; arb = arb.next(this)){
         if(!filter || filter == arb.a || filter == arb.b){
             (arb.body_a == this ? arb.body_b : arb.body_a).activate();
         }
     }
-
+    
     // TODO should also activate joints!
 };
 
@@ -4179,7 +4177,7 @@ Body.prototype.pushArbiter = function(arb)
         "Internal Error: Dangling contact graph pointers detected. (A)");
     assertSoft((arb.body_a === this ? arb.thread_a_prev : arb.thread_b_prev) === null,
         "Internal Error: Dangling contact graph pointers detected. (B)");
-
+    
     var next = this.arbiterList;
     assertSoft(next === null || (next.body_a === this ? next.thread_a_prev : next.thread_b_prev) === null,
         "Internal Error: Dangling contact graph pointers detected. (C)");
@@ -4234,7 +4232,7 @@ var componentActive = function(root, threshold)
     for(var body = root; body; body = body.nodeNext){
         if(body.nodeIdleTime < threshold) return true;
     }
-
+    
     return false;
 };
 
@@ -4246,7 +4244,7 @@ Space.prototype.processComponents = function(dt)
     // These checks can be removed at some stage (if DEBUG == undefined)
     for(var i=0; i<bodies.length; i++){
         var body = bodies[i];
-
+        
         assertSoft(body.nodeNext === null, "Internal Error: Dangling next pointer detected in contact graph.");
         assertSoft(body.nodeRoot === null, "Internal Error: Dangling root pointer detected in contact graph.");
     }
@@ -4255,7 +4253,7 @@ Space.prototype.processComponents = function(dt)
     if(sleep){
         var dv = this.idleSpeedThreshold;
         var dvsq = (dv ? dv*dv : vlengthsq(this.gravity)*dt*dt);
-
+    
         for(var i=0; i<bodies.length; i++){
             var body = bodies[i];
 
@@ -4270,51 +4268,51 @@ Space.prototype.processComponents = function(dt)
     for(var i=0, count=arbiters.length; i<count; i++){
         var arb = arbiters[i];
         var a = arb.body_a, b = arb.body_b;
-
-        if(sleep){
+    
+        if(sleep){  
             if((b.isRogue() && !b.isStatic()) || a.isSleeping()) a.activate();
             if((a.isRogue() && !a.isStatic()) || b.isSleeping()) b.activate();
         }
-
+        
         a.pushArbiter(arb);
         b.pushArbiter(arb);
     }
-
+    
     if(sleep){
         // Bodies should be held active if connected by a joint to a non-static rouge body.
         var constraints = this.constraints;
         for(var i=0; i<constraints.length; i++){
             var constraint = constraints[i];
             var a = constraint.a, b = constraint.b;
-
+            
             if(b.isRogue() && !b.isStatic()) a.activate();
             if(a.isRogue() && !a.isStatic()) b.activate();
         }
-
+        
         // Generate components and deactivate sleeping ones
         for(var i=0; i<bodies.length;){
             var body = bodies[i];
-
+            
             if(componentRoot(body) === null){
-                // Body not in a component yet. Perform a DFS to flood fill mark
+                // Body not in a component yet. Perform a DFS to flood fill mark 
                 // the component in the contact graph using this body as the root.
                 floodFillComponent(body, body);
-
+                
                 // Check if the component should be put to sleep.
                 if(!componentActive(body, this.sleepTimeThreshold)){
                     this.sleepingComponents.push(body);
                     for(var other = body; other; other = other.nodeNext){
                         this.deactivateBody(other);
                     }
-
+                    
                     // deactivateBody() removed the current body from the list.
                     // Skip incrementing the index counter.
                     continue;
                 }
             }
-
+            
             i++;
-
+            
             // Only sleeping bodies retain their component node pointers.
             body.nodeRoot = null;
             body.nodeNext = null;
@@ -4329,38 +4327,38 @@ Body.prototype.sleep = function()
 
 Body.prototype.sleepWithGroup = function(group){
     assert(!this.isStatic() && !this.isRogue(), "Rogue and static bodies cannot be put to sleep.");
-
+    
     var space = this.space;
     assert(space, "Cannot put a rogue body to sleep.");
     assert(!space.locked, "Bodies cannot be put to sleep during a query or a call to cpSpaceStep(). Put these calls into a post-step callback.");
     assert(group === null || group.isSleeping(), "Cannot use a non-sleeping body as a group identifier.");
-
+    
     if(this.isSleeping()){
         assert(componentRoot(this) === componentRoot(group), "The body is already sleeping and it's group cannot be reassigned.");
         return;
     }
-
+    
     for(var i = 0; i < this.shapeList.length; i++){
         this.shapeList[i].update(this.p, this.rot);
     }
     space.deactivateBody(this);
-
+    
     if(group){
         var root = componentRoot(group);
-
+        
         this.nodeRoot = root;
         this.nodeNext = root.nodeNext;
         this.nodeIdleTime = 0;
-
+        
         root.nodeNext = this;
     } else {
         this.nodeRoot = this;
         this.nodeNext = null;
         this.nodeIdleTime = 0;
-
+        
         space.sleepingComponents.push(this);
     }
-
+    
     deleteObjFromList(space.bodies, this);
 };
 
@@ -4373,17 +4371,17 @@ Space.prototype.activateShapesTouchingShape = function(shape){
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -4421,7 +4419,7 @@ Space.prototype.pointQueryFirst = function(point, layers, group)
     this.pointQuery(point, layers, group, function(shape) {
         if(!shape.sensor) outShape = shape;
     });
-
+    
     return outShape;
 };
 
@@ -4471,14 +4469,14 @@ Space.prototype.segmentQuery = function(start, end, layers, group, func)
 {
     var helper = function(shape){
         var info;
-
+        
         if(
             !(shape.group && group === shape.group) && (layers & shape.layers) &&
             (info = shape.segmentQuery(start, end))
         ){
             func(shape, info.t, info.n);
         }
-
+        
         return 1;
     };
 
@@ -4496,7 +4494,7 @@ Space.prototype.segmentQueryFirst = function(start, end, layers, group)
 
     var helper = function(shape){
         var info;
-
+        
         if(
             !(shape.group && group === shape.group) && (layers & shape.layers) &&
             !shape.sensor &&
@@ -4505,13 +4503,13 @@ Space.prototype.segmentQueryFirst = function(start, end, layers, group)
         ){
             out = info;
         }
-
+        
         return out ? out.t : 1;
     };
 
     this.staticShapes.segmentQuery(start, end, 1, helper);
     this.activeShapes.segmentQuery(start, end, out ? out.t : 1, helper);
-
+    
     return out;
 };
 
@@ -4527,7 +4525,7 @@ Space.prototype.bbQuery = function(bb, layers, group, func)
             func(shape);
         }
     };
-
+    
     this.lock(); {
         this.activeShapes.query(bb, helper);
         this.staticShapes.query(bb, helper);
@@ -4547,7 +4545,7 @@ Space.prototype.shapeQuery = function(shape, func)
 
     //shapeQueryContext context = {func, data, false};
     var anyCollision = false;
-
+    
     var helper = function(b){
         var a = shape;
         // Reject any of the simple cases
@@ -4556,9 +4554,9 @@ Space.prototype.shapeQuery = function(shape, func)
             !(a.layers & b.layers) ||
             a === b
         ) return;
-
+        
         var contacts;
-
+        
         // Shape 'a' should have the lower shape type. (required by collideShapes() )
         if(a.collisionCode <= b.collisionCode){
             contacts = collideShapes(a, b);
@@ -4566,16 +4564,16 @@ Space.prototype.shapeQuery = function(shape, func)
             contacts = collideShapes(b, a);
             for(var i=0; i<contacts.length; i++) contacts[i].n = vneg(contacts[i].n);
         }
-
+        
         if(contacts.length){
             anyCollision = !(a.sensor || b.sensor);
-
+            
             if(func){
                 var set = new Array(contacts.length);
                 for(var i=0; i<contacts.length; i++){
                     set[i] = new ContactPoint(contacts[i].p, contacts[i].n, contacts[i].dist);
                 }
-
+                
                 func(b, set);
             }
         }
@@ -4585,7 +4583,7 @@ Space.prototype.shapeQuery = function(shape, func)
         this.activeShapes.query(bb, helper);
         this.staticShapes.query(bb, helper);
     } this.unlock(true);
-
+    
     return anyCollision;
 };
 
@@ -4975,17 +4973,17 @@ Space.prototype.step = function(dt)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5010,7 +5008,7 @@ var relative_velocity = function(a, b, r1, r2){
     //var v2_sum = vadd(b.v, vmult(vperp(r2), b.w));
     var v2_sumx = b.vx + (-r2.y) * b.w;
     var v2_sumy = b.vy + ( r2.x) * b.w;
-
+    
 //  return vsub(v2_sum, v1_sum);
     return new Vect(v2_sumx - v1_sumx, v2_sumy - v1_sumy);
 };
@@ -5077,7 +5075,7 @@ var k_scalar = function(a, b, r1, r2, n)
 {
     var value = k_scalar_body(a, r1, n) + k_scalar_body(b, r2, n);
     assertSoft(value !== 0, "Unsolvable collision or constraint.");
-
+    
     return value;
 };
 
@@ -5088,11 +5086,11 @@ var k_tensor = function(a, b, r1, r2, k1, k2)
     // If I wasn't lazy and wrote a proper matrix class, this wouldn't be so gross...
     var k11, k12, k21, k22;
     var m_sum = a.m_inv + b.m_inv;
-
+    
     // start with I*m_sum
     k11 = m_sum; k12 = 0;
     k21 = 0;     k22 = m_sum;
-
+    
     // add the influence from r1
     var a_i_inv = a.i_inv;
     var r1xsq =  r1.x * r1.x * a_i_inv;
@@ -5100,7 +5098,7 @@ var k_tensor = function(a, b, r1, r2, k1, k2)
     var r1nxy = -r1.x * r1.y * a_i_inv;
     k11 += r1ysq; k12 += r1nxy;
     k21 += r1nxy; k22 += r1xsq;
-
+    
     // add the influnce from r2
     var b_i_inv = b.i_inv;
     var r2xsq =  r2.x * r2.x * b_i_inv;
@@ -5108,11 +5106,11 @@ var k_tensor = function(a, b, r1, r2, k1, k2)
     var r2nxy = -r2.x * r2.y * b_i_inv;
     k11 += r2ysq; k12 += r2nxy;
     k21 += r2nxy; k22 += r2xsq;
-
+    
     // invert
     var determinant = k11*k22 - k12*k21;
     assertSoft(determinant !== 0, "Unsolvable constraint.");
-
+    
     var det_inv = 1/determinant;
 
     k1.x =  k22*det_inv; k1.y = -k12*det_inv;
@@ -5130,17 +5128,17 @@ var bias_coef = function(errorBias, dt)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5159,12 +5157,12 @@ var Constraint = cp.Constraint = function(a, b)
     this.a = a;
     /// The second body connected to this constraint.
     this.b = b;
-
+    
     this.space = null;
 
     this.next_a = null;
     this.next_b = null;
-
+    
     /// The maximum force that this constraint is allowed to use.
     this.maxForce = Infinity;
     /// The rate at which joint error is corrected.
@@ -5203,17 +5201,17 @@ Constraint.prototype.next = function(body)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5226,15 +5224,15 @@ Constraint.prototype.next = function(body)
 var PinJoint = cp.PinJoint = function(a, b, anchr1, anchr2)
 {
     Constraint.call(this, a, b);
-
+    
     this.anchr1 = anchr1;
     this.anchr2 = anchr2;
-
+    
     // STATIC_BODY_CHECK
     var p1 = (a ? vadd(a.p, vrotate(anchr1, a.rot)) : anchr1);
     var p2 = (b ? vadd(b.p, vrotate(anchr2, b.rot)) : anchr2);
     this.dist = vlength(vsub(p2, p1));
-
+    
     assertSoft(this.dist > 0, "You created a 0 length pin joint. A pivot joint will be much more stable.");
 
     this.r1 = this.r2 = null;
@@ -5251,21 +5249,21 @@ PinJoint.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     this.r1 = vrotate(this.anchr1, a.rot);
     this.r2 = vrotate(this.anchr2, b.rot);
-
+    
     var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
     var dist = vlength(delta);
     this.n = vmult(delta, 1/(dist ? dist : Infinity));
-
+    
     // calculate mass normal
     this.nMass = 1/k_scalar(a, b, this.r1, this.r2, this.n);
-
+    
     // calculate bias velocity
     var maxBias = this.maxBias;
     this.bias = clamp(-bias_coef(this.errorBias, dt)*(dist - this.dist)/dt, -maxBias, maxBias);
-
+    
     // compute max impulse
     this.jnMax = this.maxForce * dt;
 };
@@ -5284,13 +5282,13 @@ PinJoint.prototype.applyImpulse = function()
 
     // compute relative velocity
     var vrn = normal_relative_velocity(a, b, this.r1, this.r2, n);
-
+    
     // compute normal impulse
     var jn = (this.bias - vrn)*this.nMass;
     var jnOld = this.jnAcc;
     this.jnAcc = clamp(jnOld + jn, -this.jnMax, this.jnMax);
     jn = this.jnAcc - jnOld;
-
+    
     // apply impulse
     apply_impulses(a, b, this.r1, this.r2, n.x*jn, n.y*jn);
 };
@@ -5301,17 +5299,17 @@ PinJoint.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5324,7 +5322,7 @@ PinJoint.prototype.getImpulse = function()
 var SlideJoint = cp.SlideJoint = function(a, b, anchr1, anchr2, min, max)
 {
     Constraint.call(this, a, b);
-
+    
     this.anchr1 = anchr1;
     this.anchr2 = anchr2;
     this.min = min;
@@ -5332,7 +5330,7 @@ var SlideJoint = cp.SlideJoint = function(a, b, anchr1, anchr2, min, max)
 
     this.r1 = this.r2 = this.n = null;
     this.nMass = 0;
-
+    
     this.jnAcc = this.jnMax = 0;
     this.bias = 0;
 };
@@ -5343,10 +5341,10 @@ SlideJoint.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     this.r1 = vrotate(this.anchr1, a.rot);
     this.r2 = vrotate(this.anchr2, b.rot);
-
+    
     var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
     var dist = vlength(delta);
     var pdist = 0;
@@ -5360,14 +5358,14 @@ SlideJoint.prototype.preStep = function(dt)
         this.n = vzero;
         this.jnAcc = 0;
     }
-
+    
     // calculate mass normal
     this.nMass = 1/k_scalar(a, b, this.r1, this.r2, this.n);
-
+    
     // calculate bias velocity
     var maxBias = this.maxBias;
     this.bias = clamp(-bias_coef(this.errorBias, dt)*pdist/dt, -maxBias, maxBias);
-
+    
     // compute max impulse
     this.jnMax = this.maxForce * dt;
 };
@@ -5384,21 +5382,21 @@ SlideJoint.prototype.applyImpulse = function()
 
     var a = this.a;
     var b = this.b;
-
+    
     var n = this.n;
     var r1 = this.r1;
     var r2 = this.r2;
-
+        
     // compute relative velocity
     var vr = relative_velocity(a, b, r1, r2);
     var vrn = vdot(vr, n);
-
+    
     // compute normal impulse
     var jn = (this.bias - vrn)*this.nMass;
     var jnOld = this.jnAcc;
     this.jnAcc = clamp(jnOld + jn, -this.jnMax, 0);
     jn = this.jnAcc - jnOld;
-
+    
     // apply impulse
     apply_impulses(a, b, this.r1, this.r2, n.x * jn, n.y * jn);
 };
@@ -5409,17 +5407,17 @@ SlideJoint.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5433,7 +5431,7 @@ SlideJoint.prototype.getImpulse = function()
 var PivotJoint = cp.PivotJoint = function(a, b, anchr1, anchr2)
 {
     Constraint.call(this, a, b);
-
+    
     if(typeof anchr2 === 'undefined') {
         var pivot = anchr1;
 
@@ -5445,7 +5443,7 @@ var PivotJoint = cp.PivotJoint = function(a, b, anchr1, anchr2)
     this.anchr2 = anchr2;
 
     this.r1 = this.r2 = vzero;
-
+    
     this.k1 = new Vect(0,0); this.k2 = new Vect(0,0);
 
     this.jAcc = vzero;
@@ -5460,16 +5458,16 @@ PivotJoint.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     this.r1 = vrotate(this.anchr1, a.rot);
     this.r2 = vrotate(this.anchr2, b.rot);
-
+    
     // Calculate mass tensor. Result is stored into this.k1 & this.k2.
     k_tensor(a, b, this.r1, this.r2, this.k1, this.k2);
-
+    
     // compute max impulse
     this.jMaxLen = this.maxForce * dt;
-
+    
     // calculate bias velocity
     var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
     this.bias = vclamp(vmult(delta, -bias_coef(this.errorBias, dt)/dt), this.maxBias);
@@ -5484,18 +5482,18 @@ PivotJoint.prototype.applyImpulse = function()
 {
     var a = this.a;
     var b = this.b;
-
+    
     var r1 = this.r1;
     var r2 = this.r2;
-
+        
     // compute relative velocity
     var vr = relative_velocity(a, b, r1, r2);
-
+    
     // compute normal impulse
     var j = mult_k(vsub(this.bias, vr), this.k1, this.k2);
     var jOld = this.jAcc;
     this.jAcc = vclamp(vadd(this.jAcc, j), this.jMaxLen);
-
+    
     // apply impulse
     apply_impulses(a, b, this.r1, this.r2, this.jAcc.x - jOld.x, this.jAcc.y - jOld.y);
 };
@@ -5506,17 +5504,17 @@ PivotJoint.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5529,12 +5527,12 @@ PivotJoint.prototype.getImpulse = function()
 var GrooveJoint = cp.GrooveJoint = function(a, b, groove_a, groove_b, anchr2)
 {
     Constraint.call(this, a, b);
-
+    
     this.grv_a = groove_a;
     this.grv_b = groove_b;
     this.grv_n = vperp(vnormalize(vsub(groove_b, groove_a)));
     this.anchr2 = anchr2;
-
+    
     this.grv_tn = null;
     this.clamp = 0;
     this.r1 = this.r2 = null;
@@ -5553,7 +5551,7 @@ GrooveJoint.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     // calculate endpoints in worldspace
     var ta = a.local2World(this.grv_a);
     var tb = a.local2World(this.grv_b);
@@ -5561,10 +5559,10 @@ GrooveJoint.prototype.preStep = function(dt)
     // calculate axis
     var n = vrotate(this.grv_n, a.rot);
     var d = vdot(ta, n);
-
+    
     this.grv_tn = n;
     this.r2 = vrotate(this.anchr2, b.rot);
-
+    
     // calculate tangential distance along the axis of r2
     var td = vcross(vadd(b.p, this.r2), n);
     // calculate clamping factor and r2
@@ -5578,13 +5576,13 @@ GrooveJoint.prototype.preStep = function(dt)
         this.clamp = 0;
         this.r1 = vsub(vadd(vmult(vperp(n), -td), vmult(n, d)), a.p);
     }
-
+    
     // Calculate mass tensor
-    k_tensor(a, b, this.r1, this.r2, this.k1, this.k2);
-
+    k_tensor(a, b, this.r1, this.r2, this.k1, this.k2); 
+    
     // compute max impulse
     this.jMaxLen = this.maxForce * dt;
-
+    
     // calculate bias velocity
     var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
     this.bias = vclamp(vmult(delta, -bias_coef(this.errorBias, dt)/dt), this.maxBias);
@@ -5605,17 +5603,17 @@ GrooveJoint.prototype.applyImpulse = function()
 {
     var a = this.a;
     var b = this.b;
-
+    
     var r1 = this.r1;
     var r2 = this.r2;
-
+    
     // compute impulse
     var vr = relative_velocity(a, b, r1, r2);
 
     var j = mult_k(vsub(this.bias, vr), this.k1, this.k2);
     var jOld = this.jAcc;
     this.jAcc = this.grooveConstrain(vadd(jOld, j));
-
+    
     // apply impulse
     apply_impulses(a, b, this.r1, this.r2, this.jAcc.x - jOld.x, this.jAcc.y - jOld.y);
 };
@@ -5629,7 +5627,7 @@ GrooveJoint.prototype.setGrooveA = function(value)
 {
     this.grv_a = value;
     this.grv_n = vperp(vnormalize(vsub(this.grv_b, value)));
-
+    
     this.activateBodies();
 };
 
@@ -5637,22 +5635,22 @@ GrooveJoint.prototype.setGrooveB = function(value)
 {
     this.grv_b = value;
     this.grv_n = vperp(vnormalize(vsub(value, this.grv_a)));
-
+    
     this.activateBodies();
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5669,10 +5667,10 @@ var defaultSpringForce = function(spring, dist){
 var DampedSpring = cp.DampedSpring = function(a, b, anchr1, anchr2, restLength, stiffness, damping)
 {
     Constraint.call(this, a, b);
-
+    
     this.anchr1 = anchr1;
     this.anchr2 = anchr2;
-
+    
     this.restLength = restLength;
     this.stiffness = stiffness;
     this.damping = damping;
@@ -5691,18 +5689,18 @@ DampedSpring.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     this.r1 = vrotate(this.anchr1, a.rot);
     this.r2 = vrotate(this.anchr2, b.rot);
-
+    
     var delta = vsub(vadd(b.p, this.r2), vadd(a.p, this.r1));
     var dist = vlength(delta);
     this.n = vmult(delta, 1/(dist ? dist : Infinity));
-
+    
     var k = k_scalar(a, b, this.r1, this.r2, this.n);
     assertSoft(k !== 0, "Unsolvable this.");
     this.nMass = 1/k;
-
+    
     this.target_vrn = 0;
     this.v_coef = 1 - Math.exp(-this.damping*dt*k);
 
@@ -5717,18 +5715,18 @@ DampedSpring.prototype.applyImpulse = function()
 {
     var a = this.a;
     var b = this.b;
-
+    
     var n = this.n;
     var r1 = this.r1;
     var r2 = this.r2;
 
     // compute relative velocity
     var vrn = normal_relative_velocity(a, b, r1, r2, n);
-
+    
     // compute velocity loss from drag
     var v_damp = (this.target_vrn - vrn)*this.v_coef;
     this.target_vrn = vrn + v_damp;
-
+    
     v_damp *= this.nMass;
     apply_impulses(a, b, this.r1, this.r2, this.n.x * v_damp, this.n.y * v_damp);
 };
@@ -5739,17 +5737,17 @@ DampedSpring.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5766,7 +5764,7 @@ var defaultSpringTorque = function(spring, relativeAngle){
 var DampedRotarySpring = cp.DampedRotarySpring = function(a, b, restAngle, stiffness, damping)
 {
     Constraint.call(this, a, b);
-
+    
     this.restAngle = restAngle;
     this.stiffness = stiffness;
     this.damping = damping;
@@ -5783,7 +5781,7 @@ DampedRotarySpring.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     var moment = a.i_inv + b.i_inv;
     assertSoft(moment !== 0, "Unsolvable spring.");
     this.iSum = 1/moment;
@@ -5803,15 +5801,15 @@ DampedRotarySpring.prototype.applyImpulse = function()
 {
     var a = this.a;
     var b = this.b;
-
+    
     // compute relative velocity
     var wrn = a.w - b.w;//normal_relative_velocity(a, b, r1, r2, n) - this.target_vrn;
-
+    
     // compute velocity loss from drag
     // not 100% certain spring is derived correctly, though it makes sense
     var w_damp = (this.target_wrn - wrn)*this.w_coef;
     this.target_wrn = wrn + w_damp;
-
+    
     //apply_impulses(a, b, this.r1, this.r2, vmult(this.n, v_damp*this.nMass));
     var j_damp = w_damp*this.iSum;
     a.w += j_damp*a.i_inv;
@@ -5821,17 +5819,17 @@ DampedRotarySpring.prototype.applyImpulse = function()
 // DampedRotarySpring.prototype.getImpulse = function(){ return 0; };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5844,7 +5842,7 @@ DampedRotarySpring.prototype.applyImpulse = function()
 var RotaryLimitJoint = cp.RotaryLimitJoint = function(a, b, min, max)
 {
     Constraint.call(this, a, b);
-
+    
     this.min = min;
     this.max = max;
 
@@ -5859,7 +5857,7 @@ RotaryLimitJoint.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     var dist = b.a - a.a;
     var pdist = 0;
     if(dist > this.max) {
@@ -5867,14 +5865,14 @@ RotaryLimitJoint.prototype.preStep = function(dt)
     } else if(dist < this.min) {
         pdist = this.min - dist;
     }
-
+    
     // calculate moment of inertia coefficient.
     this.iSum = 1/(1/a.i + 1/b.i);
-
+    
     // calculate bias velocity
     var maxBias = this.maxBias;
     this.bias = clamp(-bias_coef(this.errorBias, dt)*pdist/dt, -maxBias, maxBias);
-
+    
     // compute max impulse
     this.jMax = this.maxForce * dt;
 
@@ -5886,7 +5884,7 @@ RotaryLimitJoint.prototype.applyCachedImpulse = function(dt_coef)
 {
     var a = this.a;
     var b = this.b;
-
+    
     var j = this.jAcc*dt_coef;
     a.w -= j*a.i_inv;
     b.w += j*b.i_inv;
@@ -5898,11 +5896,11 @@ RotaryLimitJoint.prototype.applyImpulse = function()
 
     var a = this.a;
     var b = this.b;
-
+    
     // compute relative rotational velocity
     var wr = b.w - a.w;
-
-    // compute normal impulse
+    
+    // compute normal impulse   
     var j = -(this.bias + wr)*this.iSum;
     var jOld = this.jAcc;
     if(this.bias < 0){
@@ -5911,7 +5909,7 @@ RotaryLimitJoint.prototype.applyImpulse = function()
         this.jAcc = clamp(jOld + j, -this.jMax, 0);
     }
     j = this.jAcc - jOld;
-
+    
     // apply impulse
     a.w -= j*a.i_inv;
     b.w += j*b.i_inv;
@@ -5923,17 +5921,17 @@ RotaryLimitJoint.prototype.getImpulse = function()
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -5950,10 +5948,10 @@ var RatchetJoint = cp.RatchetJoint = function(a, b, phase, ratchet)
     this.angle = 0;
     this.phase = phase;
     this.ratchet = ratchet;
-
+    
     // STATIC_BODY_CHECK
     this.angle = (b ? b.a : 0) - (a ? a.a : 0);
-
+    
     this.iSum = this.bias = this.jAcc = this.jMax = 0;
 };
 
@@ -5963,28 +5961,28 @@ RatchetJoint.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     var angle = this.angle;
     var phase = this.phase;
     var ratchet = this.ratchet;
-
+    
     var delta = b.a - a.a;
     var diff = angle - delta;
     var pdist = 0;
-
+    
     if(diff*ratchet > 0){
         pdist = diff;
     } else {
         this.angle = Math.floor((delta - phase)/ratchet)*ratchet + phase;
     }
-
+    
     // calculate moment of inertia coefficient.
     this.iSum = 1/(a.i_inv + b.i_inv);
-
+    
     // calculate bias velocity
     var maxBias = this.maxBias;
     this.bias = clamp(-bias_coef(this.errorBias, dt)*pdist/dt, -maxBias, maxBias);
-
+    
     // compute max impulse
     this.jMax = this.maxForce * dt;
 
@@ -5996,7 +5994,7 @@ RatchetJoint.prototype.applyCachedImpulse = function(dt_coef)
 {
     var a = this.a;
     var b = this.b;
-
+    
     var j = this.jAcc*dt_coef;
     a.w -= j*a.i_inv;
     b.w += j*b.i_inv;
@@ -6008,17 +6006,17 @@ RatchetJoint.prototype.applyImpulse = function()
 
     var a = this.a;
     var b = this.b;
-
+    
     // compute relative rotational velocity
     var wr = b.w - a.w;
     var ratchet = this.ratchet;
-
-    // compute normal impulse
+    
+    // compute normal impulse   
     var j = -(this.bias + wr)*this.iSum;
     var jOld = this.jAcc;
     this.jAcc = clamp((jOld + j)*ratchet, 0, this.jMax*Math.abs(ratchet))/ratchet;
     j = this.jAcc - jOld;
-
+    
     // apply impulse
     a.w -= j*a.i_inv;
     b.w += j*b.i_inv;
@@ -6030,17 +6028,17 @@ RatchetJoint.prototype.getImpulse = function(joint)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -6053,11 +6051,11 @@ RatchetJoint.prototype.getImpulse = function(joint)
 var GearJoint = cp.GearJoint = function(a, b, phase, ratio)
 {
     Constraint.call(this, a, b);
-
+    
     this.phase = phase;
     this.ratio = ratio;
     this.ratio_inv = 1/ratio;
-
+    
     this.jAcc = 0;
 
     this.iSum = this.bias = this.jMax = 0;
@@ -6069,14 +6067,14 @@ GearJoint.prototype.preStep = function(dt)
 {
     var a = this.a;
     var b = this.b;
-
+    
     // calculate moment of inertia coefficient.
     this.iSum = 1/(a.i_inv*this.ratio_inv + this.ratio*b.i_inv);
-
+    
     // calculate bias velocity
     var maxBias = this.maxBias;
     this.bias = clamp(-bias_coef(this.errorBias, dt)*(b.a*this.ratio - a.a - this.phase)/dt, -maxBias, maxBias);
-
+    
     // compute max impulse
     this.jMax = this.maxForce * dt;
 };
@@ -6085,7 +6083,7 @@ GearJoint.prototype.applyCachedImpulse = function(dt_coef)
 {
     var a = this.a;
     var b = this.b;
-
+    
     var j = this.jAcc*dt_coef;
     a.w -= j*a.i_inv*this.ratio_inv;
     b.w += j*b.i_inv;
@@ -6095,22 +6093,22 @@ GearJoint.prototype.applyImpulse = function()
 {
     var a = this.a;
     var b = this.b;
-
+    
     // compute relative rotational velocity
     var wr = b.w*this.ratio - a.w;
-
-    // compute normal impulse
+    
+    // compute normal impulse   
     var j = (this.bias - wr)*this.iSum;
     var jOld = this.jAcc;
     this.jAcc = clamp(jOld + j, -this.jMax, this.jMax);
     j = this.jAcc - jOld;
-
+    
     // apply impulse
     a.w -= j*a.i_inv*this.ratio_inv;
     b.w += j*b.i_inv;
 };
 
-GearJoint.prototype.getImpulse = function()
+GearJoint.prototype.getImpulse = function()
 {
     return Math.abs(this.jAcc);
 };
@@ -6123,17 +6121,17 @@ GearJoint.prototype.setRatio = function(value)
 };
 
 /* Copyright (c) 2007 Scott Lembcke
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -6146,9 +6144,9 @@ GearJoint.prototype.setRatio = function(value)
 var SimpleMotor = cp.SimpleMotor = function(a, b, rate)
 {
     Constraint.call(this, a, b);
-
+    
     this.rate = rate;
-
+    
     this.jAcc = 0;
 
     this.iSum = this.jMax = 0;
@@ -6160,7 +6158,7 @@ SimpleMotor.prototype.preStep = function(dt)
 {
     // calculate moment of inertia coefficient.
     this.iSum = 1/(this.a.i_inv + this.b.i_inv);
-
+    
     // compute max impulse
     this.jMax = this.maxForce * dt;
 };
@@ -6169,7 +6167,7 @@ SimpleMotor.prototype.applyCachedImpulse = function(dt_coef)
 {
     var a = this.a;
     var b = this.b;
-
+    
     var j = this.jAcc*dt_coef;
     a.w -= j*a.i_inv;
     b.w += j*b.i_inv;
@@ -6179,16 +6177,16 @@ SimpleMotor.prototype.applyImpulse = function()
 {
     var a = this.a;
     var b = this.b;
-
+    
     // compute relative rotational velocity
     var wr = b.w - a.w + this.rate;
-
-    // compute normal impulse
+    
+    // compute normal impulse   
     var j = -wr*this.iSum;
     var jOld = this.jAcc;
     this.jAcc = clamp(jOld + j, -this.jMax, this.jMax);
     j = this.jAcc - jOld;
-
+    
     // apply impulse
     a.w -= j*a.i_inv;
     b.w += j*b.i_inv;
