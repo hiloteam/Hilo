@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -192,7 +192,7 @@ return browser;
 
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -229,7 +229,7 @@ return util;
 
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -257,7 +257,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.1.9',
+    version: '1.1.10',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -556,7 +556,7 @@ return Hilo;
     requires: ['hilo/util/browser', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -739,7 +739,7 @@ return Class;
 
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -921,7 +921,7 @@ return Matrix;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1076,7 +1076,7 @@ return EventMixin;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1159,7 +1159,7 @@ return Drawable;
     requires: ['hilo/core/Class', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1255,7 +1255,7 @@ return Renderer;
     requires: ['hilo/core/Class', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1455,7 +1455,7 @@ return CanvasRenderer;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/renderer/Renderer']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1639,7 +1639,7 @@ return DOMRenderer;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/renderer/Renderer', 'hilo/view/Drawable']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2211,7 +2211,7 @@ return WebGLRenderer;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/renderer/Renderer', 'hilo/geom/Matrix']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2701,7 +2701,7 @@ return View;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/event/EventMixin', 'hilo/geom/Matrix', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2769,7 +2769,7 @@ return CacheMixin;
     requires: ['hilo/view/Drawable', 'hilo/util/browser']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3145,7 +3145,7 @@ return Container;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3414,7 +3414,7 @@ return Stage;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Container', 'hilo/renderer/CanvasRenderer', 'hilo/renderer/DOMRenderer', 'hilo/renderer/WebGLRenderer', 'hilo/util/browser', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3494,7 +3494,7 @@ return Bitmap;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3767,7 +3767,7 @@ return Sprite;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3870,7 +3870,7 @@ return DOMElement;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4425,7 +4425,7 @@ return Graphics;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/CacheMixin']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4680,7 +4680,7 @@ return Text;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/view/View', 'hilo/view/CacheMixin']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4866,7 +4866,7 @@ return BitmapText;
     requires: ['hilo/core/Class', 'hilo/core/Hilo', 'hilo/view/Container', 'hilo/view/Bitmap']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5047,7 +5047,7 @@ return Button;
     requires: ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View', 'hilo/view/Drawable', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5286,7 +5286,7 @@ return TextureAtlas;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5297,14 +5297,14 @@ KISSY.add('hilo/util/Ticker', function(S, Class, browser){
 /**
  * @language=en
  * @class Ticker is a Timer. It can run the code at specified framerate.
- * @param {Number} fps The fps of ticker.
+ * @param {Number} fps The fps of ticker.Default is 60.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
  * @requires hilo/util/browser
  */
 var Ticker = Class.create(/** @lends Ticker.prototype */{
     constructor: function(fps){
-        this._targetFPS = fps || 30;
+        this._targetFPS = fps || 60;
         this._interval = 1000 / this._targetFPS;
         this._tickers = [];
     },
@@ -5322,9 +5322,13 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     /**
      * @language=en
      * Start the ticker.
-     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is not.
+     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is true.
      */
     start: function(useRAF){
+        if(useRAF === undefined){
+            useRAF = true;
+        }
+        
         if(this._intervalId) return;
         this._lastTime = +new Date();
 
@@ -5513,7 +5517,7 @@ return Ticker;
     requires: ['hilo/core/Class', 'hilo/util/browser']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5561,7 +5565,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5702,7 +5706,7 @@ return drag;
     requires: ['hilo/core/Hilo']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6154,7 +6158,7 @@ return Tween;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6426,7 +6430,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6476,7 +6480,7 @@ return ImageLoader;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6545,7 +6549,7 @@ return ScriptLoader;
     requires: ['hilo/core/Class']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6796,7 +6800,7 @@ return LoadQueue;
     requires: ['hilo/core/Class', 'hilo/event/EventMixin', 'hilo/loader/ImageLoader', 'hilo/loader/ScriptLoader']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7001,7 +7005,7 @@ return HTMLAudio;
     requires: ['hilo/core/Class', 'hilo/util/util', 'hilo/event/EventMixin']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7320,7 +7324,7 @@ return WebAudio;
     requires: ['hilo/core/Class', 'hilo/util/util', 'hilo/event/EventMixin']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7425,7 +7429,7 @@ return WebSound;
     requires: ['hilo/media/HTMLAudio', 'hilo/media/WebAudio', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7520,7 +7524,7 @@ return Camera;
     requires: ['hilo/core/Class', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7709,7 +7713,7 @@ return Camera3d;
     requires: ['hilo/core/Class', 'hilo/util/util']
 });
 /**
- * Hilo 1.1.9 for kissy
+ * Hilo 1.1.10 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

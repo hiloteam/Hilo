@@ -6,14 +6,14 @@
 
 /**
  * @class Ticker is a Timer. It can run the code at specified framerate.
- * @param {Number} fps The fps of ticker.
+ * @param {Number} fps The fps of ticker.Default is 60.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
  * @requires hilo/util/browser
  */
 var Ticker = Class.create(/** @lends Ticker.prototype */{
     constructor: function(fps){
-        this._targetFPS = fps || 30;
+        this._targetFPS = fps || 60;
         this._interval = 1000 / this._targetFPS;
         this._tickers = [];
     },
@@ -30,9 +30,13 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
 
     /**
      * Start the ticker.
-     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is not.
+     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is true.
      */
     start: function(useRAF){
+        if(useRAF === undefined){
+            useRAF = true;
+        }
+        
         if(this._intervalId) return;
         this._lastTime = +new Date();
 
