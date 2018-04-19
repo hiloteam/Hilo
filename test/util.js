@@ -50,7 +50,7 @@ describe('util', function(){
                     }
                 }
             });
-            ticker.start();
+            ticker.start(false);
         });
     });
 
