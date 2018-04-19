@@ -1,3 +1,37 @@
+<a name="1.1.10"></a>
+## [1.1.10](https://github.com/hiloteam/hilo/compare/v1.1.9...v1.1.10) (2018-04-19)
+
+
+### Features
+
+* Ticker.start use RAF default ([86754de](https://github.com/hiloteam/hilo/commit/86754de))
+* update chipmunk to 6.1.2 ([9f06571](https://github.com/hiloteam/hilo/commit/9f06571))
+
+
+<a name="1.1.9"></a>
+## [1.1.9](https://github.com/hiloteam/hilo/compare/v1.1.8...v1.1.9) (2018-03-20)
+
+
+### Bug Fixes
+
+* drag need transform when parent has transform ([b7b9d96](https://github.com/hiloteam/hilo/commit/b7b9d96))
+
+
+<a name="1.1.7"></a>
+## [1.1.7](https://github.com/hiloteam/hilo/compare/v1.1.6...v1.1.7) (2018-01-15)
+
+### Features
+
+* update typescript definitions [#114](https://github.com/hiloteam/hilo/issues/114) ([44b17cf](https://github.com/hiloteam/hilo/commit/44b17cf))
+
+<a name="1.1.6"></a>
+## [1.1.6](https://github.com/hiloteam/hilo/compare/v1.1.5...v1.1.6) (2017-12-13)
+
+
+### Bug Fixes
+
+* fix tween link bug, see [#109](https://github.com/hiloteam/hilo/issues/109) ([d34615b](https://github.com/hiloteam/hilo/commit/d34615b))
+
 <a name="1.1.5"></a>
 ## [1.1.5](https://github.com/hiloteam/hilo/compare/v1.1.4...v1.1.5) (2017-12-12)
 
