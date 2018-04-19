@@ -7,7 +7,7 @@
 /**
  * @language=en
  * @class Ticker is a Timer. It can run the code at specified framerate.
- * @param {Number} fps The fps of ticker.
+ * @param {Number} fps The fps of ticker.Default is 60.
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
  * @requires hilo/util/browser
@@ -15,14 +15,14 @@
 /**
  * @language=zh
  * @class Ticker是一个定时器类。它可以按指定帧率重复运行，从而按计划执行代码。
- * @param {Number} fps 指定定时器的运行帧率。
+ * @param {Number} fps 指定定时器的运行帧率。默认60。
  * @module hilo/util/Ticker
  * @requires hilo/core/Class
  * @requires hilo/util/browser
  */
 var Ticker = Class.create(/** @lends Ticker.prototype */{
     constructor: function(fps){
-        this._targetFPS = fps || 30;
+        this._targetFPS = fps || 60;
         this._interval = 1000 / this._targetFPS;
         this._tickers = [];
     },
@@ -40,14 +40,18 @@ var Ticker = Class.create(/** @lends Ticker.prototype */{
     /**
      * @language=en
      * Start the ticker.
-     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is not.
+     * @param {Boolean} userRAF Whether or not use requestAnimationFrame, default is true.
      */
     /**
      * @language=zh
      * 启动定时器。
-     * @param {Boolean} userRAF 是否使用requestAnimationFrame，默认为false。
+     * @param {Boolean} userRAF 是否使用requestAnimationFrame，默认为true。
      */
     start: function(useRAF){
+        if(useRAF === undefined){
+            useRAF = true;
+        }
+        
         if(this._intervalId) return;
         this._lastTime = +new Date();
 
