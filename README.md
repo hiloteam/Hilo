@@ -81,6 +81,18 @@ Get started by reading [docs/api-en/index.html](https://hiloteam.github.io/Hilo/
   * [![gitter.im][gitter-image]][gitter-url]
   * QQ Group:372765886
 
+<!-- GITCONTRIBUTOR_START -->
+
+## Contributors
+
+|[<img src="https://avatars1.githubusercontent.com/u/800043?v=4" width="100px;"/><br/><sub><b>06wj</b></sub>](https://github.com/06wj)<br/>|[<img src="https://avatars2.githubusercontent.com/u/8518239?v=4" width="100px;"/><br/><sub><b>gitter-badger</b></sub>](https://github.com/gitter-badger)<br/>|[<img src="https://avatars1.githubusercontent.com/u/1174471?v=4" width="100px;"/><br/><sub><b>steel1990</b></sub>](https://github.com/steel1990)<br/>|[<img src="https://avatars1.githubusercontent.com/u/5621469?v=4" width="100px;"/><br/><sub><b>dsouzadyn</b></sub>](https://github.com/dsouzadyn)<br/>|[<img src="https://avatars0.githubusercontent.com/u/972067?v=4" width="100px;"/><br/><sub><b>vidyuthd</b></sub>](https://github.com/vidyuthd)<br/>|[<img src="https://avatars2.githubusercontent.com/u/8075271?v=4" width="100px;"/><br/><sub><b>ldllidonglin</b></sub>](https://github.com/ldllidonglin)<br/>
+| :---: | :---: | :---: | :---: | :---: | :---: |
+|[<img src="https://avatars1.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>|[<img src="https://avatars2.githubusercontent.com/u/6478856?v=4" width="100px;"/><br/><sub><b>wzc602003869</b></sub>](https://github.com/wzc602003869)<br/>|[<img src="https://avatars1.githubusercontent.com/u/6802825?v=4" width="100px;"/><br/><sub><b>jljsj33</b></sub>](https://github.com/jljsj33)<br/>|[<img src="https://avatars2.githubusercontent.com/u/15242708?v=4" width="100px;"/><br/><sub><b>mosaic101</b></sub>](https://github.com/mosaic101)<br/>
+
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto upated at `Sat Apr 21 2018 00:01:36 GMT+0800`.
+
+<!-- GITCONTRIBUTOR_END -->
+
 ### License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
