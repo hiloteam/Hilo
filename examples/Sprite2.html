@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+    <title>Sprite - Hilo Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../build/standalone/hilo-standalone.min.js"></script>
+    <script type="text/javascript" src="../build/flash/hilo-flash.min.js" data-auto="true"></script>
+    <img src="images/fish.png" alt="" id="fish" style="display:none">
+</head>
+<body onload="init();">
+    <div id="header">
+        <h1>Sprite</h1>
+        <p>Sprite是动画精灵类。它可以基于时间或帧。本示例提供了自定义frame的示例</p>
+    </div>
+    <div id="game-container"></div>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        function init(){
+            //init stage
+            var stage = new Hilo.Stage({
+                renderType:renderType,
+                container: gameContainer,
+                width: stageWidth,
+                height: stageHeight
+            });
+
+            //start stage ticker
+            var ticker = new Hilo.Ticker(60);
+            ticker.addTick(stage);
+            ticker.start();
+
+            var queue = new Hilo.LoadQueue([
+                {id:'stand0', src:'./images/billd/stand0.png'},
+                {id:'stand1', src:'./images/billd/stand1.png'}
+            ]);
+
+            queue.start().on('complete', function(){
+                var imgStand0 = queue.getContent('stand0');
+                var imgStand1 = queue.getContent('stand1');
+                
+                var sprite0 = new Hilo.Sprite({
+                    x:100,
+                    y:10,
+                    frames:[
+                        {image:imgStand0,rect:[22 * 0, 0, 22, 22], duration:5, name:'stand0'},
+                        {image:imgStand0,rect:[22 * 1, 0, 22, 22], duration:5},
+                        {image:imgStand0,rect:[22 * 2, 0, 22, 22], duration:5},
+                        {image:imgStand0,rect:[22 * 3, 0, 22, 22], duration:5},
+                        {image:imgStand0,rect:[22 * 4, 0, 22, 22], duration:5},
+                        {image:imgStand0,rect:[22 * 5, 0, 22, 22], duration:5, next:'stand0'},
+                        {image:imgStand1,rect:[22 * 0, 0, 22, 22], duration:5, name:'stand1'},
+                        {image:imgStand1,rect:[22 * 1, 0, 22, 22], duration:5},
+                        {image:imgStand1,rect:[22 * 2, 0, 22, 22], duration:5},
+                        {image:imgStand1,rect:[22 * 3, 0, 22, 22], duration:5},
+                        {image:imgStand1,rect:[22 * 4, 0, 22, 22], duration:5},
+                        {image:imgStand1,rect:[22 * 6, 0, 22, 22], duration:5},
+                        {image:imgStand1,rect:[22 * 7, 0, 22, 22], duration:5, next:'stand1'}
+                    ],
+                    onUpdate:function(){
+                        if(Math.random() < 0.01){
+                            this.goto('stand' + Math.floor(Math.random()*2))
+                        }
+                    }
+                }).addTo(stage);
+
+                var sprite1 = new Hilo.Sprite({
+                    x:200,
+                    y:10,
+                    frames:Hilo.TextureAtlas.createSpriteFrames([
+                        // name,   frames, img,   w, h, loop, duration
+                        ["stand0", "0-5", imgStand0, 22, 22, true, 5],
+                        ["stand1", "0-7", imgStand1, 22, 22, true, 5]
+                    ]),
+                    onUpdate:function(){
+                        if(Math.random() < 0.01){
+                            this.goto('stand' + Math.floor(Math.random()*2))
+                        }
+                    }
+                }).addTo(stage);
+
+            });
+    }
+    </script>
+</body>
+</html>
