@@ -132,8 +132,8 @@
                 var subTextureFrame = textureAtlas.getFrame(fullName);
                 if(subTextureFrame != null)
                 {
-                    pivotX = subTextureFrame.width/2;
-                    pivotY = subTextureFrame.height/2;
+                    pivotX = (subTextureFrame.width/2) + subTextureFrame.x;
+                    pivotY = (subTextureFrame.height/2) + subTextureFrame.y;
                 }
                 else
                 {
