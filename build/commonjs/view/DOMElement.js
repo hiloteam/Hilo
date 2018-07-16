@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.10 for commonjs
+ * Hilo 1.1.11 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -30,7 +30,7 @@ var Drawable = require('./Drawable');
  * }).addTo(stage);
  * </pre>
  * @name DOMElement
- * @class DOMElement is a wrapper of dom element.
+ * @class DOMElement is a wrapper of dom element.（The DOMElement's parent must be stage）
  * @augments View
  * @param {Object} properties create Objects properties. Contains all writable properties in this class. Special properties include:
  * <ul>
@@ -53,7 +53,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
         var elem = this.drawable.domElement = properties.element || Hilo.createElement('div');
         elem.id = this.id;
 
-        if(this.pointerEnabled){
+        if(this.pointerEnabled && !elem.style.pointerEvents){
             elem.style.pointerEvents = 'visible';
         }
     },
@@ -80,8 +80,21 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
     render: function(renderer, delta){
         if(renderer.renderType !== 'dom'){
             var canvas = renderer.canvas;
+            var stage = this.parent;
+            var domElementContainer = renderer._domElementContainer;
+            if(!renderer._domElementContainer){
+                domElementContainer = renderer._domElementContainer = Hilo.createElement('div', {
+                    style:{
+                        'position':'absolute',
+                        'transform':'scale3d(' + stage.scaleX + ',' + stage.scaleY + ', 1)',
+                        'transformOrigin':'0 0'
+                    }
+                });
+                canvas.parentNode.insertBefore(renderer._domElementContainer, canvas.nextSibling);
+            }
+
             var elem = this.drawable.domElement, depth = this.depth,
-                nextElement = canvas.nextSibling, nextDepth;
+                nextElement = domElementContainer.childNodes[0], nextDepth;
             if(elem.parentNode) return;
 
             //draw dom element just after stage canvas
@@ -92,7 +105,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
                 }
                 nextElement = nextElement.nextSibling;
             }
-            canvas.parentNode.insertBefore(this.drawable.domElement, nextElement);
+            domElementContainer.insertBefore(this.drawable.domElement, nextElement);
         }else{
             renderer.draw(this);
         }

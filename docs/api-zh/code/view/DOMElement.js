@@ -23,7 +23,7 @@
  * }).addTo(stage);
  * </pre>
  * @name DOMElement
- * @class DOMElement是dom元素的包装。
+ * @class DOMElement是dom元素的包装。（ 注意：DOMElement 的父容器必须是 stage ）
  * @augments View
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。特殊属性有：
  * <ul>
@@ -46,7 +46,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
         var elem = this.drawable.domElement = properties.element || Hilo.createElement('div');
         elem.id = this.id;
 
-        if(this.pointerEnabled){
+        if(this.pointerEnabled && !elem.style.pointerEvents){
             elem.style.pointerEvents = 'visible';
         }
     },
@@ -71,8 +71,21 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
     render: function(renderer, delta){
         if(renderer.renderType !== 'dom'){
             var canvas = renderer.canvas;
+            var stage = this.parent;
+            var domElementContainer = renderer._domElementContainer;
+            if(!renderer._domElementContainer){
+                domElementContainer = renderer._domElementContainer = Hilo.createElement('div', {
+                    style:{
+                        'position':'absolute',
+                        'transform':'scale3d(' + stage.scaleX + ',' + stage.scaleY + ', 1)',
+                        'transformOrigin':'0 0'
+                    }
+                });
+                canvas.parentNode.insertBefore(renderer._domElementContainer, canvas.nextSibling);
+            }
+
             var elem = this.drawable.domElement, depth = this.depth,
-                nextElement = canvas.nextSibling, nextDepth;
+                nextElement = domElementContainer.childNodes[0], nextDepth;
             if(elem.parentNode) return;
 
             //draw dom element just after stage canvas
@@ -83,7 +96,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
                 }
                 nextElement = nextElement.nextSibling;
             }
-            canvas.parentNode.insertBefore(this.drawable.domElement, nextElement);
+            domElementContainer.insertBefore(this.drawable.domElement, nextElement);
         }else{
             renderer.draw(this);
         }
