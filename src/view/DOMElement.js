@@ -79,7 +79,7 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
         var elem = this.drawable.domElement = properties.element || Hilo.createElement('div');
         elem.id = this.id;
 
-        if(this.pointerEnabled){
+        if(this.pointerEnabled && !elem.style.pointerEvents){
             elem.style.pointerEvents = 'visible';
         }
     },
