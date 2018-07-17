@@ -238,7 +238,7 @@ gulp.task('watch', ['setIsWatch', 'standalone', 'flash', 'extensions'], function
 gulp.task('npm:clean', function(done){
     del('build/npm', done);
 });
-gulp.task('npm:build', ['npm:clean'], function(){
+gulp.task('npm:build', ['npm:clean', 'standalone', 'commonjs'], function(){
     var standaloneStream = gulp.src('build/standalone/hilo-standalone.js')
         .pipe(footer(`
             if(typeof module !== 'undefined' && module.exports){
