@@ -123,7 +123,8 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
                     style:{
                         'position':'absolute',
                         'transform':'scale3d(' + stage.scaleX + ',' + stage.scaleY + ', 1)',
-                        'transformOrigin':'0 0'
+                        'transformOrigin':'0 0',
+                        'zIndex':'1'
                     }
                 });
                 canvas.parentNode.insertBefore(renderer._domElementContainer, canvas.nextSibling);
