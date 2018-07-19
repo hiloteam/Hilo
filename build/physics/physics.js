@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.10 for physics
+ * Hilo 1.1.13 for physics
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6348,6 +6348,7 @@ SimpleMotor.prototype.getImpulse = function()
                 }
                 space.removeBody(body);
             }
+            this._deleteBodies.length = 0;
         },
         /**
          * 绑定物理刚体
