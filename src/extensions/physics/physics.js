@@ -148,6 +148,7 @@
                 }
                 space.removeBody(body);
             }
+            this._deleteBodies.length = 0;
         },
         /**
          * 绑定物理刚体
