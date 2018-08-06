@@ -61,6 +61,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
      * <li><b>loader</b> - specified resource loader. If you specify this,we abandon choosing loader inside</li>
      * <li><b>noCache</b> - a tag that set on or off to prevent cache,implemented by adding timestamp inside</li>
      * <li><b>size</b> - predicted resource size, help calculating loading progress</li>
+     * <li><b>crossOrigin</b> - Whether cross-domain is needed. eg:crossOrigin='anonymous'</li>
      * </ul>
      * @returns {LoadQueue} 下载队列实例本身。
      */
@@ -75,6 +76,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
      * <li><b>loader</b> - 指定资源的加载器。默认会根据资源类型来自动选择加载器，若指定loader，则会使用指定的loader来加载资源。</li>
      * <li><b>noCache</b> - 指示加载资源时是否增加时间标签以防止缓存。</li>
      * <li><b>size</b> - 资源对象的预计大小。可用于预估下载进度。</li>
+     * <li><b>crossOrigin</b> - 是否需要跨域，例如：crossOrigin='anonymous'</li>
      * </ul>
      * @returns {LoadQueue} 下载队列实例本身。
      */
