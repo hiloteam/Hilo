@@ -30,6 +30,7 @@
  * @property {Number} pivotY Position of the center point on the y axis of the view, default value is 0.
  * @property {Number} scaleX The x axis scale factor of the view, default value is 1.
  * @property {Number} scaleY The y axis scale factor of the view, default value is 1.
+ * @property {Matrix} transform The transform of the view.If set the transform, x, y, scaleX, scaleY, rotation, pivotX, pivotY will be ignored.default is null.
  * @property {Boolean} pointerEnabled Is the view can receive DOM events, default value is true.
  * @property {Object} background The background style to fill the view, can be css color, gradient or pattern of canvas
  * @property {Graphics} mask Sets a mask for the view. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. A regular mask must be a Hilo.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping. To remove a mask, set this property to null.
@@ -66,6 +67,7 @@
  * @property {Number} pivotY 可视对象的中心点的y轴坐标。默认值为0。
  * @property {Number} scaleX 可视对象在x轴上的缩放比例。默认为不缩放，即1。
  * @property {Number} scaleY 可视对象在y轴上的缩放比例。默认为不缩放，即1。
+ * @property {Matrix} transform 可视对象的transform属性，如果设置将忽略x, y, scaleX, scaleY, rotation. pivotX, pivotY 属性。默认null。
  * @property {Boolean} pointerEnabled 可视对象是否接受交互事件。默认为接受交互事件，即true。
  * @property {Object} background 可视对象的背景样式。可以是CSS颜色值、canvas的gradient或pattern填充。
  * @property {Graphics} mask 可视对象的遮罩图形。
@@ -107,6 +109,7 @@ return Class.create(/** @lends View.prototype */{
     boundsArea: null,
     parent: null,
     depth: -1,
+    transform: null,
     blendMode:'source-over',
 
     /**
@@ -263,19 +266,26 @@ return Class.create(/** @lends View.prototype */{
             var cos = 1, sin = 0,
                 rotation = o.rotation % 360,
                 pivotX = o.pivotX, pivotY = o.pivotY,
-                scaleX = o.scaleX, scaleY = o.scaleY;
+                scaleX = o.scaleX, scaleY = o.scaleY,
+                transform = o.transform;
 
-            if(rotation){
-                var r = rotation * Math.PI / 180;
-                cos = Math.cos(r);
-                sin = Math.sin(r);
+            if(transform) {
+                mtx.concat(transform);
             }
+            else{
+                if(rotation){
+                    var r = rotation * Math.PI / 180;
+                    cos = Math.cos(r);
+                    sin = Math.sin(r);
+                }
 
-            if(pivotX != 0) mtx.tx -= pivotX;
-            if(pivotY != 0) mtx.ty -= pivotY;
+                if(pivotX != 0) mtx.tx -= pivotX;
+                if(pivotY != 0) mtx.ty -= pivotY;
 
-            var pos = o.getAlignPosition();
-            mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
+                var pos = o.getAlignPosition();
+                mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
+            }
+            
         }
         return mtx;
     },

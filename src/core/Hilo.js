@@ -311,12 +311,23 @@ var Hilo = {
         if (this.cacheStateIfChanged(obj, ['depth'], stateCache)) {
             style.zIndex = obj.depth + 1;
         }
-        if (flag = this.cacheStateIfChanged(obj, ['pivotX', 'pivotY'], stateCache)) {
-            style[prefix + 'TransformOrigin'] = obj.pivotX + px + ' ' + obj.pivotY + px;
+        if (obj.transform){
+            var transform = obj.transform;
+            if (flag = this.cacheStateIfChanged(obj, ['pivotX', 'pivotY'], stateCache)) {
+                style[prefix + 'TransformOrigin'] = '0 0';
+            }
+            style[prefix + 'Transform'] = 'matrix3d(' + transform.a + ', '+ transform.b + ', 0, 0, '+ transform.c + ', '+ transform.d + ', 0, 0, 0, 0, 1, 0, '+ transform.tx + ', '+ transform.ty + ', 0, 1)';
         }
-        if (this.cacheStateIfChanged(obj, ['x', 'y', 'rotation', 'scaleX', 'scaleY'], stateCache) || flag) {
-            style[prefix + 'Transform'] = this.getTransformCSS(obj);
+        else{
+            if (flag = this.cacheStateIfChanged(obj, ['pivotX', 'pivotY'], stateCache)) {
+                style[prefix + 'TransformOrigin'] = obj.pivotX + px + ' ' + obj.pivotY + px;
+            }
+
+            if (this.cacheStateIfChanged(obj, ['x', 'y', 'rotation', 'scaleX', 'scaleY'], stateCache) || flag) {
+                style[prefix + 'Transform'] = this.getTransformCSS(obj);
+            }
         }
+        
         if (this.cacheStateIfChanged(obj, ['background'], stateCache)) {
             style.backgroundColor = obj.background;
         }
