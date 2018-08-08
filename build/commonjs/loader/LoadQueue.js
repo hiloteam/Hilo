@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.11 for commonjs
+ * Hilo 1.2.0 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -52,6 +52,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
      * <li><b>loader</b> - specified resource loader. If you specify this,we abandon choosing loader inside</li>
      * <li><b>noCache</b> - a tag that set on or off to prevent cache,implemented by adding timestamp inside</li>
      * <li><b>size</b> - predicted resource size, help calculating loading progress</li>
+     * <li><b>crossOrigin</b> - Whether cross-domain is needed. eg:crossOrigin='anonymous'</li>
      * </ul>
      * @returns {LoadQueue} 下载队列实例本身。
      */

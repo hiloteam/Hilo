@@ -26,6 +26,50 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
+     * set
+     * @param {Number} a 
+     * @param {Number} b 
+     * @param {Number} c 
+     * @param {Number} d 
+     * @param {Number} tx
+     * @param {Number} ty
+     */
+    set: function(a, b, c, d, tx, ty){
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.tx = tx;
+        this.ty = ty;
+	
+	return this;
+    },
+
+    /**
+     * copy
+     * @param  {Matrix} mat
+     * @return {Matrix}  this
+     */
+    copy: function(mat){
+        this.a = mat.a;
+        this.b = mat.b;
+        this.c = mat.c;
+        this.d = mat.d;
+        this.tx = mat.tx;
+        this.ty = mat.ty;
+
+        return this;
+    },
+
+    /**
+     * clone
+     * @return {Matrix}
+     */
+    clone: function(){
+        return new Matrix().copy(this);
+    },
+
+    /**
      * Link a Matrix to current Matrix, in order to make geometry effects on these two composed more effective.
      * @param {Matrix} mtx Matrix that link to the source matrix.
      * @returns {Matrix} A Matrix Object.

@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.11 for standalone
+ * Hilo 1.2.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -87,7 +87,8 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
                     style:{
                         'position':'absolute',
                         'transform':'scale3d(' + stage.scaleX + ',' + stage.scaleY + ', 1)',
-                        'transformOrigin':'0 0'
+                        'transformOrigin':'0 0',
+                        'zIndex':'1'
                     }
                 });
                 canvas.parentNode.insertBefore(renderer._domElementContainer, canvas.nextSibling);

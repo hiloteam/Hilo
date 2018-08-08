@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.11 for standalone
+ * Hilo 1.2.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -28,6 +28,50 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
         this.d = d;
         this.tx = tx;
         this.ty = ty;
+    },
+
+    /**
+     * set
+     * @param {Number} a 
+     * @param {Number} b 
+     * @param {Number} c 
+     * @param {Number} d 
+     * @param {Number} tx
+     * @param {Number} ty
+     */
+    set: function(a, b, c, d, tx, ty){
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.tx = tx;
+        this.ty = ty;
+	
+	return this;
+    },
+
+    /**
+     * copy
+     * @param  {Matrix} mat
+     * @return {Matrix}  this
+     */
+    copy: function(mat){
+        this.a = mat.a;
+        this.b = mat.b;
+        this.c = mat.c;
+        this.d = mat.d;
+        this.tx = mat.tx;
+        this.ty = mat.ty;
+
+        return this;
+    },
+
+    /**
+     * clone
+     * @return {Matrix}
+     */
+    clone: function(){
+        return new Matrix().copy(this);
     },
 
     /**

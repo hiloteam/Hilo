@@ -29,6 +29,7 @@
  * @property {Number} pivotY 可视对象的中心点的y轴坐标。默认值为0。
  * @property {Number} scaleX 可视对象在x轴上的缩放比例。默认为不缩放，即1。
  * @property {Number} scaleY 可视对象在y轴上的缩放比例。默认为不缩放，即1。
+ * @property {Matrix} transform 可视对象的transform属性，如果设置将忽略x, y, scaleX, scaleY, rotation. pivotX, pivotY 属性。默认null。
  * @property {Boolean} pointerEnabled 可视对象是否接受交互事件。默认为接受交互事件，即true。
  * @property {Object} background 可视对象的背景样式。可以是CSS颜色值、canvas的gradient或pattern填充。
  * @property {Graphics} mask 可视对象的遮罩图形。
@@ -70,6 +71,7 @@ return Class.create(/** @lends View.prototype */{
     boundsArea: null,
     parent: null,
     depth: -1,
+    transform: null,
     blendMode:'source-over',
 
     /**
@@ -175,19 +177,26 @@ return Class.create(/** @lends View.prototype */{
             var cos = 1, sin = 0,
                 rotation = o.rotation % 360,
                 pivotX = o.pivotX, pivotY = o.pivotY,
-                scaleX = o.scaleX, scaleY = o.scaleY;
+                scaleX = o.scaleX, scaleY = o.scaleY,
+                transform = o.transform;
 
-            if(rotation){
-                var r = rotation * Math.PI / 180;
-                cos = Math.cos(r);
-                sin = Math.sin(r);
+            if(transform) {
+                mtx.concat(transform);
             }
+            else{
+                if(rotation){
+                    var r = rotation * Math.PI / 180;
+                    cos = Math.cos(r);
+                    sin = Math.sin(r);
+                }
 
-            if(pivotX != 0) mtx.tx -= pivotX;
-            if(pivotY != 0) mtx.ty -= pivotY;
+                if(pivotX != 0) mtx.tx -= pivotX;
+                if(pivotY != 0) mtx.ty -= pivotY;
 
-            var pos = o.getAlignPosition();
-            mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
+                var pos = o.getAlignPosition();
+                mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
+            }
+            
         }
         return mtx;
     },

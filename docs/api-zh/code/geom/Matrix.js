@@ -26,6 +26,50 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
     },
 
     /**
+     * set
+     * @param {Number} a 
+     * @param {Number} b 
+     * @param {Number} c 
+     * @param {Number} d 
+     * @param {Number} tx
+     * @param {Number} ty
+     */
+    set: function(a, b, c, d, tx, ty){
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.tx = tx;
+        this.ty = ty;
+	
+	return this;
+    },
+
+    /**
+     * copy
+     * @param  {Matrix} mat
+     * @return {Matrix}  this
+     */
+    copy: function(mat){
+        this.a = mat.a;
+        this.b = mat.b;
+        this.c = mat.c;
+        this.d = mat.d;
+        this.tx = mat.tx;
+        this.ty = mat.ty;
+
+        return this;
+    },
+
+    /**
+     * clone
+     * @return {Matrix}
+     */
+    clone: function(){
+        return new Matrix().copy(this);
+    },
+
+    /**
      * 将某个矩阵与当前矩阵连接，从而将这两个矩阵的几何效果有效地结合在一起。
      * @param {Matrix} mtx 要连接到源矩阵的矩阵。
      * @returns {Matrix} 一个Matrix对象。

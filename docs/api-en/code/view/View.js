@@ -29,6 +29,7 @@
  * @property {Number} pivotY Position of the center point on the y axis of the view, default value is 0.
  * @property {Number} scaleX The x axis scale factor of the view, default value is 1.
  * @property {Number} scaleY The y axis scale factor of the view, default value is 1.
+ * @property {Matrix} transform The transform of the view.If set the transform, x, y, scaleX, scaleY, rotation, pivotX, pivotY will be ignored.default is null.
  * @property {Boolean} pointerEnabled Is the view can receive DOM events, default value is true.
  * @property {Object} background The background style to fill the view, can be css color, gradient or pattern of canvas
  * @property {Graphics} mask Sets a mask for the view. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. A regular mask must be a Hilo.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping. To remove a mask, set this property to null.
@@ -70,6 +71,7 @@ return Class.create(/** @lends View.prototype */{
     boundsArea: null,
     parent: null,
     depth: -1,
+    transform: null,
     blendMode:'source-over',
 
     /**
@@ -175,19 +177,26 @@ return Class.create(/** @lends View.prototype */{
             var cos = 1, sin = 0,
                 rotation = o.rotation % 360,
                 pivotX = o.pivotX, pivotY = o.pivotY,
-                scaleX = o.scaleX, scaleY = o.scaleY;
+                scaleX = o.scaleX, scaleY = o.scaleY,
+                transform = o.transform;
 
-            if(rotation){
-                var r = rotation * Math.PI / 180;
-                cos = Math.cos(r);
-                sin = Math.sin(r);
+            if(transform) {
+                mtx.concat(transform);
             }
+            else{
+                if(rotation){
+                    var r = rotation * Math.PI / 180;
+                    cos = Math.cos(r);
+                    sin = Math.sin(r);
+                }
 
-            if(pivotX != 0) mtx.tx -= pivotX;
-            if(pivotY != 0) mtx.ty -= pivotY;
+                if(pivotX != 0) mtx.tx -= pivotX;
+                if(pivotY != 0) mtx.ty -= pivotY;
 
-            var pos = o.getAlignPosition();
-            mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
+                var pos = o.getAlignPosition();
+                mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
+            }
+            
         }
         return mtx;
     },

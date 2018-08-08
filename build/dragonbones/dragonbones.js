@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.10 for dragonbones
+ * Hilo 1.2.0 for dragonbones
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -8143,7 +8143,7 @@ var dragonBones;
  * HiloSlot
  */
 (function(superClass) {
-    var RAD2DEG = 180/Math.PI;
+    var RAD2DEG = 180 / Math.PI;
     var TextureAtlas = dragonBones.TextureAtlas;
     var HiloSlot = function() {
         superClass.call(this, this);
@@ -8176,10 +8176,9 @@ var dragonBones;
         },
         _addDisplayToContainer: function(container, index) {
             if (this._display && container) {
-                if(index){
+                if (index) {
                     container.addChildAt(this._display, index);
-                }
-                else{
+                } else {
                     container.addChild(this._display);
                 }
             }
@@ -8191,11 +8190,12 @@ var dragonBones;
         },
         _updateTransform: function() {
             if (this._display) {
-                this._display.x = this._global.x;
-                this._display.y = this._global.y;
-                this._display.scaleX = this._global.scaleX;
-                this._display.scaleY = this._global.scaleY;
-                this._display.rotation = this._global.skewX * RAD2DEG;
+                var pivotX = this._display.pivotX;
+                var pivotY = this._display.pivotY;
+                var mat = this._display.transform;
+                mat.copy(this._globalTransformMatrix);
+                mat.tx = mat.tx - mat.a * pivotX - mat.c * pivotY;
+                mat.ty = mat.ty - mat.b * pivotX - mat.d * pivotY;
             }
         },
         _updateDisplayVisible: function(value) {
@@ -8238,46 +8238,43 @@ var dragonBones;
 /**
  * HiloFactory
  */
-(function(superClass){
+(function(superClass) {
     var Armature = dragonBones.Armature;
     var HiloSlot = dragonBones.HiloSlot;
 
-    var HiloFactory = function(){
+    var HiloFactory = function() {
         superClass.call(this, this);
     };
     __extends(HiloFactory, superClass, {
-        _generateArmature:function(){
+        _generateArmature: function() {
             var armature = new Armature(new Hilo.Container);
             return armature;
         },
-        _generateSlot:function(){
+        _generateSlot: function() {
             var slot = new HiloSlot();
             return slot;
         },
-        _generateDisplay:function(textureAtlas, fullName, pivotX, pivotY){
+        _generateDisplay: function(textureAtlas, fullName, pivotX, pivotY) {
             var texture = textureAtlas.getTexture(fullName);
             var region = texture.region;
             var bitmap = new Hilo.Bitmap({
-                image:textureAtlas.texture,
-                rect:[region.x, region.y, region.width, region.height]
+                image: textureAtlas.texture,
+                rect: [region.x, region.y, region.width, region.height]
             });
 
-            if(isNaN(pivotX)||isNaN(pivotY))
-            {
+            if (isNaN(pivotX) || isNaN(pivotY)) {
                 var subTextureFrame = textureAtlas.getFrame(fullName);
-                if(subTextureFrame != null)
-                {
-                    pivotX = (subTextureFrame.width/2) + subTextureFrame.x;
-                    pivotY = (subTextureFrame.height/2) + subTextureFrame.y;
-                }
-                else
-                {
-                    pivotX = texture.region.width/2;
-                    pivotY = texture.region.height/2;
+                if (subTextureFrame != null) {
+                    pivotX = (subTextureFrame.width / 2) + subTextureFrame.x;
+                    pivotY = (subTextureFrame.height / 2) + subTextureFrame.y;
+                } else {
+                    pivotX = texture.region.width / 2;
+                    pivotY = texture.region.height / 2;
                 }
             }
             bitmap.pivotX = pivotX;
             bitmap.pivotY = pivotY;
+            bitmap.transform = new Hilo.Matrix().identity();
             return bitmap;
         }
     });
@@ -8285,6 +8282,6 @@ var dragonBones;
     dragonBones.HiloFactory = HiloFactory;
 }(dragonBones.BaseFactory));
 
-dragonBones.tick = function(dt){
+dragonBones.tick = function(dt) {
     dragonBones.WorldClock.clock.advanceTime(dt * 0.001);
 };

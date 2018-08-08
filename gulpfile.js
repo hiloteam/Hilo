@@ -282,4 +282,4 @@ gulp.task('test', ['jshint'], function () {
       }));
 });
 
-gulp.task('default', ['format', 'flash']);
+gulp.task('default', ['format', 'flash', 'extensions']);

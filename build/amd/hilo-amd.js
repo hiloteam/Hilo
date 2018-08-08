@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -192,7 +192,7 @@ return browser;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -229,7 +229,7 @@ return util;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -257,7 +257,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.1.11',
+    version: '1.2.0',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -461,12 +461,23 @@ var Hilo = {
         if (this.cacheStateIfChanged(obj, ['depth'], stateCache)) {
             style.zIndex = obj.depth + 1;
         }
-        if (flag = this.cacheStateIfChanged(obj, ['pivotX', 'pivotY'], stateCache)) {
-            style[prefix + 'TransformOrigin'] = obj.pivotX + px + ' ' + obj.pivotY + px;
+        if (obj.transform){
+            var transform = obj.transform;
+            if (flag = this.cacheStateIfChanged(obj, ['pivotX', 'pivotY'], stateCache)) {
+                style[prefix + 'TransformOrigin'] = '0 0';
+            }
+            style[prefix + 'Transform'] = 'matrix3d(' + transform.a + ', '+ transform.b + ', 0, 0, '+ transform.c + ', '+ transform.d + ', 0, 0, 0, 0, 1, 0, '+ transform.tx + ', '+ transform.ty + ', 0, 1)';
         }
-        if (this.cacheStateIfChanged(obj, ['x', 'y', 'rotation', 'scaleX', 'scaleY'], stateCache) || flag) {
-            style[prefix + 'Transform'] = this.getTransformCSS(obj);
+        else{
+            if (flag = this.cacheStateIfChanged(obj, ['pivotX', 'pivotY'], stateCache)) {
+                style[prefix + 'TransformOrigin'] = obj.pivotX + px + ' ' + obj.pivotY + px;
+            }
+
+            if (this.cacheStateIfChanged(obj, ['x', 'y', 'rotation', 'scaleX', 'scaleY'], stateCache) || flag) {
+                style[prefix + 'Transform'] = this.getTransformCSS(obj);
+            }
         }
+        
         if (this.cacheStateIfChanged(obj, ['background'], stateCache)) {
             style.backgroundColor = obj.background;
         }
@@ -554,7 +565,7 @@ return Hilo;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -737,7 +748,7 @@ return Class;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -765,6 +776,50 @@ var Matrix = Class.create(/** @lends Matrix.prototype */{
         this.d = d;
         this.tx = tx;
         this.ty = ty;
+    },
+
+    /**
+     * set
+     * @param {Number} a 
+     * @param {Number} b 
+     * @param {Number} c 
+     * @param {Number} d 
+     * @param {Number} tx
+     * @param {Number} ty
+     */
+    set: function(a, b, c, d, tx, ty){
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.tx = tx;
+        this.ty = ty;
+	
+	return this;
+    },
+
+    /**
+     * copy
+     * @param  {Matrix} mat
+     * @return {Matrix}  this
+     */
+    copy: function(mat){
+        this.a = mat.a;
+        this.b = mat.b;
+        this.c = mat.c;
+        this.d = mat.d;
+        this.tx = mat.tx;
+        this.ty = mat.ty;
+
+        return this;
+    },
+
+    /**
+     * clone
+     * @return {Matrix}
+     */
+    clone: function(){
+        return new Matrix().copy(this);
     },
 
     /**
@@ -917,7 +972,7 @@ return Matrix;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1070,7 +1125,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1151,7 +1206,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1245,7 +1300,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1264,26 +1319,26 @@ define('hilo/renderer/CanvasRenderer', ['hilo/core/Class', 'hilo/core/Hilo', 'hi
  * @requires hilo/renderer/Renderer
  * @property {CanvasRenderingContext2D} context The context of the canvas element, readonly.
  */
-var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
+var CanvasRenderer = Class.create( /** @lends CanvasRenderer.prototype */ {
     Extends: Renderer,
-    constructor: function(properties){
+    constructor: function(properties) {
         CanvasRenderer.superclass.constructor.call(this, properties);
 
         this.context = this.canvas.getContext("2d");
     },
-    renderType:'canvas',
+    renderType: 'canvas',
     context: null,
 
     /**
      * @private
      * @see Renderer#startDraw
      */
-    startDraw: function(target){
-        if(target.visible && target.alpha > 0){
-            if(target === this.stage){
+    startDraw: function(target) {
+        if (target.visible && target.alpha > 0) {
+            if (target === this.stage) {
                 this.context.clearRect(0, 0, target.width, target.height);
             }
-            if(target.blendMode !== this.blendMode){
+            if (target.blendMode !== this.blendMode) {
                 this.context.globalCompositeOperation = this.blendMode = target.blendMode;
             }
             this.context.save();
@@ -1296,31 +1351,38 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
      * @private
      * @see Renderer#draw
      */
-    draw: function(target){
-        var ctx = this.context, w = target.width, h = target.height;
+    draw: function(target) {
+        var ctx = this.context,
+            w = target.width,
+            h = target.height;
 
         //draw background
         var bg = target.background;
-        if(bg){
+        if (bg) {
             ctx.fillStyle = bg;
             ctx.fillRect(0, 0, w, h);
         }
 
         //draw image
-        var drawable = target.drawable, image = drawable && drawable.image;
-        if(image){
-            var rect = drawable.rect, sw = rect[2], sh = rect[3], offsetX = rect[4], offsetY = rect[5];
+        var drawable = target.drawable,
+            image = drawable && drawable.image;
+        if (image) {
+            var rect = drawable.rect,
+                sw = rect[2],
+                sh = rect[3],
+                offsetX = rect[4],
+                offsetY = rect[5];
             //ie9+浏览器宽高为0时会报错 fixed ie9 bug.
-            if(!sw || !sh){
+            if (!sw || !sh) {
                 return;
             }
-            if(!w && !h){
+            if (!w && !h) {
                 //fix width/height TODO: how to get rid of this?
                 w = target.width = sw;
                 h = target.height = sh;
             }
             //the pivot is the center of frame if has offset, otherwise is (0, 0)
-            if(offsetX || offsetY) ctx.translate(offsetX - sw * 0.5, offsetY - sh * 0.5);
+            if (offsetX || offsetY) ctx.translate(offsetX - sw * 0.5, offsetY - sh * 0.5);
             ctx.drawImage(image, rect[0], rect[1], sw, sh, 0, 0, w, h);
         }
     },
@@ -1329,7 +1391,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
      * @private
      * @see Renderer#endDraw
      */
-    endDraw: function(target){
+    endDraw: function(target) {
         this.context.restore();
     },
 
@@ -1337,9 +1399,9 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
      * @private
      * @see Renderer#transform
      */
-    transform: function(target){
+    transform: function(target) {
         var drawable = target.drawable;
-        if(drawable && drawable.domElement){
+        if (drawable && drawable.domElement) {
             Hilo.setElementStyleByView(target);
             return;
         }
@@ -1348,66 +1410,72 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
             scaleX = target.scaleX,
             scaleY = target.scaleY;
 
-        if(target === this.stage){
+        if (target === this.stage) {
             var style = this.canvas.style,
                 oldScaleX = target._scaleX,
                 oldScaleY = target._scaleY,
                 isStyleChange = false;
 
-            if((!oldScaleX && scaleX != 1) || (oldScaleX && oldScaleX != scaleX)){
+            if ((!oldScaleX && scaleX != 1) || (oldScaleX && oldScaleX != scaleX)) {
                 target._scaleX = scaleX;
                 style.width = scaleX * target.width + "px";
                 isStyleChange = true;
             }
-            if((!oldScaleY && scaleY != 1) || (oldScaleY && oldScaleY != scaleY)){
+            if ((!oldScaleY && scaleY != 1) || (oldScaleY && oldScaleY != scaleY)) {
                 target._scaleY = scaleY;
                 style.height = scaleY * target.height + "px";
                 isStyleChange = true;
             }
-            if(isStyleChange){
+            if (isStyleChange) {
                 target.updateViewport();
             }
-        }else{
+        } else {
             var x = target.x,
                 y = target.y,
                 pivotX = target.pivotX,
                 pivotY = target.pivotY,
                 rotation = target.rotation % 360,
+                transform = target.transform,
                 mask = target.mask;
 
-            if(mask){
+            if (mask) {
                 mask._render(this);
                 ctx.clip();
             }
 
             //alignment
             var align = target.align;
-            if(align){
+            if (align) {
                 var pos = target.getAlignPosition();
                 x = pos.x;
                 y = pos.y;
             }
+            
+            if (transform) {
+                ctx.transform(transform.a, transform.b, transform.c, transform.d, transform.tx, transform.ty);
+            } else {
+                if (x != 0 || y != 0) ctx.translate(x, y);
+                if (rotation != 0) ctx.rotate(rotation * Math.PI / 180);
+                if (scaleX != 1 || scaleY != 1) ctx.scale(scaleX, scaleY);
+                if (pivotX != 0 || pivotY != 0) ctx.translate(-pivotX, -pivotY);
+            }
 
-            if(x != 0 || y != 0) ctx.translate(x, y);
-            if(rotation != 0) ctx.rotate(rotation * Math.PI / 180);
-            if(scaleX != 1 || scaleY != 1) ctx.scale(scaleX, scaleY);
-            if(pivotX != 0 || pivotY != 0) ctx.translate(-pivotX, -pivotY);
         }
 
-        if(target.alpha > 0) ctx.globalAlpha *= target.alpha;
+        if (target.alpha > 0) ctx.globalAlpha *= target.alpha;
     },
 
     /**
      * @private
      * @see Renderer#remove
      */
-    remove: function(target){
+    remove: function(target) {
         var drawable = target.drawable;
         var elem = drawable && drawable.domElement;
 
-        if(elem){
+        if (elem) {
             var parentElem = elem.parentNode;
-            if(parentElem){
+            if (parentElem) {
                 parentElem.removeChild(elem);
             }
         }
@@ -1417,7 +1485,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
      * @private
      * @see Renderer#clear
      */
-    clear: function(x, y, width, height){
+    clear: function(x, y, width, height) {
         this.context.clearRect(x, y, width, height);
     },
 
@@ -1425,7 +1493,7 @@ var CanvasRenderer = Class.create(/** @lends CanvasRenderer.prototype */{
      * @private
      * @see Renderer#resize
      */
-    resize: function(width, height){
+    resize: function(width, height) {
         var canvas = this.canvas;
         var stage = this.stage;
         var style = canvas.style;
@@ -1443,7 +1511,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1625,7 +1693,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2049,21 +2117,28 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         var cos = 1, sin = 0,
             rotation = view.rotation % 360,
             pivotX = view.pivotX, pivotY = view.pivotY,
-            scaleX = view.scaleX, scaleY = view.scaleY;
+            scaleX = view.scaleX, scaleY = view.scaleY,
+            transform = view.transform;
 
-        if(rotation){
-            var r = rotation * DEG2RAD;
-            cos = Math.cos(r);
-            sin = Math.sin(r);
+        if (transform) {
+            mtx.copy(transform);
         }
+        else {
+            if(rotation){
+                var r = rotation * DEG2RAD;
+                cos = Math.cos(r);
+                sin = Math.sin(r);
+            }
 
-        var pos = view.getAlignPosition();
-        mtx.a = cos*scaleX;
-        mtx.b = sin*scaleX;
-        mtx.c = -sin*scaleY;
-        mtx.d = cos*scaleY;
-        mtx.tx =  pos.x - mtx.a * pivotX - mtx.c * pivotY;
-        mtx.ty =  pos.y - mtx.b * pivotX - mtx.d * pivotY;
+            var pos = view.getAlignPosition();
+
+            mtx.a = cos*scaleX;
+            mtx.b = sin*scaleX;
+            mtx.c = -sin*scaleY;
+            mtx.d = cos*scaleY;
+            mtx.tx =  pos.x - mtx.a * pivotX - mtx.c * pivotY;
+            mtx.ty =  pos.y - mtx.b * pivotX - mtx.d * pivotY;
+        }
 
         mtx.concat(ancestor.__webglWorldMatrix);
     },
@@ -2195,7 +2270,7 @@ return WebGLRenderer;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2229,6 +2304,7 @@ define('hilo/view/View', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/event/Event
  * @property {Number} pivotY Position of the center point on the y axis of the view, default value is 0.
  * @property {Number} scaleX The x axis scale factor of the view, default value is 1.
  * @property {Number} scaleY The y axis scale factor of the view, default value is 1.
+ * @property {Matrix} transform The transform of the view.If set the transform, x, y, scaleX, scaleY, rotation, pivotX, pivotY will be ignored.default is null.
  * @property {Boolean} pointerEnabled Is the view can receive DOM events, default value is true.
  * @property {Object} background The background style to fill the view, can be css color, gradient or pattern of canvas
  * @property {Graphics} mask Sets a mask for the view. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. A regular mask must be a Hilo.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping. To remove a mask, set this property to null.
@@ -2270,6 +2346,7 @@ return Class.create(/** @lends View.prototype */{
     boundsArea: null,
     parent: null,
     depth: -1,
+    transform: null,
     blendMode:'source-over',
 
     /**
@@ -2382,19 +2459,26 @@ return Class.create(/** @lends View.prototype */{
             var cos = 1, sin = 0,
                 rotation = o.rotation % 360,
                 pivotX = o.pivotX, pivotY = o.pivotY,
-                scaleX = o.scaleX, scaleY = o.scaleY;
+                scaleX = o.scaleX, scaleY = o.scaleY,
+                transform = o.transform;
 
-            if(rotation){
-                var r = rotation * Math.PI / 180;
-                cos = Math.cos(r);
-                sin = Math.sin(r);
+            if(transform) {
+                mtx.concat(transform);
             }
+            else{
+                if(rotation){
+                    var r = rotation * Math.PI / 180;
+                    cos = Math.cos(r);
+                    sin = Math.sin(r);
+                }
 
-            if(pivotX != 0) mtx.tx -= pivotX;
-            if(pivotY != 0) mtx.ty -= pivotY;
+                if(pivotX != 0) mtx.tx -= pivotX;
+                if(pivotY != 0) mtx.ty -= pivotY;
 
-            var pos = o.getAlignPosition();
-            mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
+                var pos = o.getAlignPosition();
+                mtx.concat(cos*scaleX, sin*scaleX, -sin*scaleY, cos*scaleY, pos.x, pos.y);
+            }
+            
         }
         return mtx;
     },
@@ -2683,7 +2767,7 @@ return View;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2749,7 +2833,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3123,7 +3207,7 @@ return Container;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3390,7 +3474,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3468,7 +3552,7 @@ return Bitmap;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3739,7 +3823,7 @@ return Sprite;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3824,7 +3908,8 @@ var DOMElement = Class.create(/** @lends DOMElement.prototype */{
                     style:{
                         'position':'absolute',
                         'transform':'scale3d(' + stage.scaleX + ',' + stage.scaleY + ', 1)',
-                        'transformOrigin':'0 0'
+                        'transformOrigin':'0 0',
+                        'zIndex':'1'
                     }
                 });
                 canvas.parentNode.insertBefore(renderer._domElementContainer, canvas.nextSibling);
@@ -3853,7 +3938,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4406,7 +4491,7 @@ return Graphics;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4659,7 +4744,7 @@ return Text;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4843,7 +4928,7 @@ return BitmapText;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5022,7 +5107,7 @@ return Button;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5259,7 +5344,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5488,7 +5573,7 @@ return Ticker;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5536,7 +5621,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5675,7 +5760,7 @@ return drag;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6125,7 +6210,7 @@ return Tween;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6397,7 +6482,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6445,7 +6530,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6512,7 +6597,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6562,6 +6647,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
      * <li><b>loader</b> - specified resource loader. If you specify this,we abandon choosing loader inside</li>
      * <li><b>noCache</b> - a tag that set on or off to prevent cache,implemented by adding timestamp inside</li>
      * <li><b>size</b> - predicted resource size, help calculating loading progress</li>
+     * <li><b>crossOrigin</b> - Whether cross-domain is needed. eg:crossOrigin='anonymous'</li>
      * </ul>
      * @returns {LoadQueue} 下载队列实例本身。
      */
@@ -6761,7 +6847,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6964,7 +7050,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7281,7 +7367,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7384,7 +7470,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7477,7 +7563,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7664,7 +7750,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.1.11 for amd
+ * Hilo 1.2.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

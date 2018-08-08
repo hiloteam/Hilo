@@ -1,5 +1,5 @@
 /**
- * Hilo 1.1.11 for kissy
+ * Hilo 1.2.0 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -423,21 +423,28 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
         var cos = 1, sin = 0,
             rotation = view.rotation % 360,
             pivotX = view.pivotX, pivotY = view.pivotY,
-            scaleX = view.scaleX, scaleY = view.scaleY;
+            scaleX = view.scaleX, scaleY = view.scaleY,
+            transform = view.transform;
 
-        if(rotation){
-            var r = rotation * DEG2RAD;
-            cos = Math.cos(r);
-            sin = Math.sin(r);
+        if (transform) {
+            mtx.copy(transform);
         }
+        else {
+            if(rotation){
+                var r = rotation * DEG2RAD;
+                cos = Math.cos(r);
+                sin = Math.sin(r);
+            }
 
-        var pos = view.getAlignPosition();
-        mtx.a = cos*scaleX;
-        mtx.b = sin*scaleX;
-        mtx.c = -sin*scaleY;
-        mtx.d = cos*scaleY;
-        mtx.tx =  pos.x - mtx.a * pivotX - mtx.c * pivotY;
-        mtx.ty =  pos.y - mtx.b * pivotX - mtx.d * pivotY;
+            var pos = view.getAlignPosition();
+
+            mtx.a = cos*scaleX;
+            mtx.b = sin*scaleX;
+            mtx.c = -sin*scaleY;
+            mtx.d = cos*scaleY;
+            mtx.tx =  pos.x - mtx.a * pivotX - mtx.c * pivotY;
+            mtx.ty =  pos.y - mtx.b * pivotX - mtx.d * pivotY;
+        }
 
         mtx.concat(ancestor.__webglWorldMatrix);
     },
