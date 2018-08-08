@@ -1,3 +1,32 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/hiloteam/hilo/compare/v1.1.11...v1.2.0) (2018-08-08)
+
+
+### Bug Fixes
+
+* add domElement container index ([72e5451](https://github.com/hiloteam/hilo/commit/72e5451))
+* dragonbones skew bug ([9a98581](https://github.com/hiloteam/hilo/commit/9a98581))
+* physicss unbindView bug ([e4c1631](https://github.com/hiloteam/hilo/commit/e4c1631))
+
+
+### Features
+
+* add Matrix.copy & clone & set ([304dac2](https://github.com/hiloteam/hilo/commit/304dac2))
+* add view.transform support ([43e35d5](https://github.com/hiloteam/hilo/commit/43e35d5))
+
+
+
+<a name="1.1.11"></a>
+## [1.1.11](https://github.com/hiloteam/hilo/compare/v1.1.10...v1.1.11) (2018-07-16)
+
+
+### Bug Fixes
+
+* DOMElement display wrong when parent have scale ([b778071](https://github.com/hiloteam/hilo/commit/b778071))
+* domElement pointerEvents setting is overwrite bug ([d4e6689](https://github.com/hiloteam/hilo/commit/d4e6689))
+* offset fix for dragonbones TextureAtlases created with whitespace removal enabled ([5c5fbb9](https://github.com/hiloteam/hilo/commit/5c5fbb9))
+
+
 <a name="1.1.10"></a>
 ## [1.1.10](https://github.com/hiloteam/hilo/compare/v1.1.9...v1.1.10) (2018-04-19)
 
