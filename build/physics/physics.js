@@ -6322,7 +6322,11 @@ SimpleMotor.prototype.getImpulse = function()
             this.space = space;
             this.staticBody = space.staticBody;
 
+            // 动态 body
             this._deleteBodies = [];
+
+            // 静态 shape
+            this._deleteShapes = [];
         },
         /**
          * tick方法，供Hilo.Ticker调用
@@ -6348,7 +6352,14 @@ SimpleMotor.prototype.getImpulse = function()
                 }
                 space.removeBody(body);
             }
+
+            for(var i = this._deleteShapes.length - 1;i >= 0;i --){
+                var shape = this._deleteShapes[i];
+                space.removeShape(shape);
+            }
+
             this._deleteBodies.length = 0;
+            this._deleteShapes.length = 0;
         },
         /**
          * 绑定物理刚体
@@ -6469,13 +6480,21 @@ SimpleMotor.prototype.getImpulse = function()
         unbindView:function(view, isDelView){
             var body = view.body;
             if(body){
-                view.body = null;
-                body.view = null;
-
                 //延迟删除
-                if(this._deleteBodies.indexOf(body) < 0){
+                if (body.isStaticBody){
+                    var shape = view.shape;
+                    if(shape && this._deleteShapes.indexOf(shape) < 0){
+                        this._deleteShapes.push(shape);
+                    }
+                }
+                else if(this._deleteBodies.indexOf(body) < 0){
                     this._deleteBodies.push(body);
                 }
+
+                view.body = null;
+                view.shape = null;
+                view.space = null;
+                body.view = null;
             }
 
             for(var prop in PhysicsViewMixin){
