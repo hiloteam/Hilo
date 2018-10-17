@@ -1,5 +1,5 @@
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -192,7 +192,7 @@ return browser;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -229,7 +229,7 @@ return util;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -257,7 +257,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.2.0',
+    version: '1.3.0',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -565,7 +565,7 @@ return Hilo;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -748,7 +748,7 @@ return Class;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -972,7 +972,7 @@ return Matrix;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1125,7 +1125,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1206,7 +1206,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1300,7 +1300,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1511,7 +1511,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1693,7 +1693,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2270,7 +2270,7 @@ return WebGLRenderer;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2767,7 +2767,7 @@ return View;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2833,7 +2833,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3207,7 +3207,7 @@ return Container;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3474,7 +3474,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3552,7 +3552,7 @@ return Bitmap;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3823,7 +3823,7 @@ return Sprite;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3938,7 +3938,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4020,6 +4020,15 @@ return Class.create(/** @lends Graphics.prototype */{
         if(miterLimit != undefined) addAction.call(me, ['miterLimit', (me.miterLimit = miterLimit)]);
         me.hasStroke = true;
         return me;
+    },
+
+    /**
+     * 设置虚线样式
+     * @param {Number[]} segments 一组描述交替绘制线段和间距（坐标空间单位）长度的数字
+     * @see https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash
+     */
+    setLineDash: function(segments){
+        return this._addAction(['setLineDash', segments]);
     },
 
     /**
@@ -4491,7 +4500,7 @@ return Graphics;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4744,7 +4753,7 @@ return Text;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4928,7 +4937,7 @@ return BitmapText;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5107,7 +5116,7 @@ return Button;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5344,7 +5353,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5573,7 +5582,7 @@ return Ticker;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5621,7 +5630,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5760,7 +5769,7 @@ return drag;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6210,7 +6219,7 @@ return Tween;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6482,7 +6491,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6530,7 +6539,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6597,7 +6606,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6847,7 +6856,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7050,7 +7059,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7367,7 +7376,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7470,7 +7479,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7563,7 +7572,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7750,7 +7759,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.2.0 for amd
+ * Hilo 1.3.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

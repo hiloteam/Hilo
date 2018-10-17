@@ -1,5 +1,5 @@
 /**
- * Hilo 1.2.0 for standalone
+ * Hilo 1.3.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -84,6 +84,15 @@ return Class.create(/** @lends Graphics.prototype */{
         if(miterLimit != undefined) addAction.call(me, ['miterLimit', (me.miterLimit = miterLimit)]);
         me.hasStroke = true;
         return me;
+    },
+
+    /**
+     * 设置虚线样式
+     * @param {Number[]} segments 一组描述交替绘制线段和间距（坐标空间单位）长度的数字
+     * @see https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash
+     */
+    setLineDash: function(segments){
+        return this._addAction(['setLineDash', segments]);
     },
 
     /**
