@@ -6,7 +6,7 @@
 
 /**
  * @language=en
- * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+ * <iframe src='../../../examples/Graphics.html?noHeader' width = '430' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class Graphics class contains a group of functions for creating vector graphics.
  * @augments View
@@ -31,7 +31,7 @@
  */
 /**
  * @language=zh
- * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+ * <iframe src='../../../examples/Graphics.html?noHeader' width = '430' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class Graphics类包含一组创建矢量图形的方法。
  * @augments View

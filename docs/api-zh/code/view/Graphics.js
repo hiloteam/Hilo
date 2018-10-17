@@ -5,7 +5,7 @@
  */
 
 /**
- * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+ * <iframe src='../../../examples/Graphics.html?noHeader' width = '430' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class Graphics类包含一组创建矢量图形的方法。
  * @augments View
@@ -76,6 +76,15 @@ return Class.create(/** @lends Graphics.prototype */{
         if(miterLimit != undefined) addAction.call(me, ['miterLimit', (me.miterLimit = miterLimit)]);
         me.hasStroke = true;
         return me;
+    },
+
+    /**
+     * 设置虚线样式
+     * @param {Number[]} segments 一组描述交替绘制线段和间距（坐标空间单位）长度的数字
+     * @see https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash
+     */
+    setLineDash: function(segments){
+        return this._addAction(['setLineDash', segments]);
     },
 
     /**
