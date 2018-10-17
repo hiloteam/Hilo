@@ -54,6 +54,11 @@
             var svgPath = "M53 84 C53 84 51 84 51 84 C51 89 53 94 56 94 C64 94 71 89 71 84 C71 72 64 64 56 64 C42 64 31 72 31 84 C31 100 42 114 56 114 C75 114 91 100 91 84 C91 61 75 44 56 44 C31 44 11 61 11 84 C11 111 31 134 56 134 C86 134 111 111 111 84 C111 50 86 24 56 24";
             var g6 = new Hilo.Graphics({width:120, height:150, x:170, y:250});
             g6.lineStyle(4, "#02d1d1").drawSVGPath(svgPath).closePath().endFill().addTo(stage);
+
+            //rect with linear gradient
+            var g7 = new Hilo.Graphics({width:90, height:90, x:320, y:20});
+            g7.setLineDash([5, 4]).lineStyle(2, "#009898").drawRect(4, 4, 80, 80).endFill().beginPath().setLineDash([]).lineStyle(2, "#f96").drawRect(14, 14, 60, 60).endFill().addTo(stage);
+
         }
     </script>
 </body>

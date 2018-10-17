@@ -117,6 +117,15 @@ return Class.create(/** @lends Graphics.prototype */{
     },
 
     /**
+     * 设置虚线样式
+     * @param {Number[]} segments 一组描述交替绘制线段和间距（坐标空间单位）长度的数字
+     * @see https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash
+     */
+    setLineDash: function(segments){
+        return this._addAction(['setLineDash', segments]);
+    },
+
+    /**
      * @language=en
      * Set how to fill shapes and the transparency.
      * @param {String} fill Filling style. this can be color, gradient or pattern.
