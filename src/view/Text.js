@@ -71,7 +71,7 @@ var Text = Class.create(/** @lends Text.prototype */{
         this._fontHeight = Text.measureFontHeight(this.font);
     },
 
-    text: null,
+    text: '',
     color: '#000',
     textAlign: null,
     textVAlign: null,
