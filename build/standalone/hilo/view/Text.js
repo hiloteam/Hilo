@@ -1,5 +1,5 @@
 /**
- * Hilo 1.3.0 for standalone
+ * Hilo 1.4.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -50,7 +50,7 @@ var Text = Class.create(/** @lends Text.prototype */{
         this._fontHeight = Text.measureFontHeight(this.font);
     },
 
-    text: null,
+    text: '',
     color: '#000',
     textAlign: null,
     textVAlign: null,

@@ -49,7 +49,13 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
                 }
             }
             return this._isSupported;
-        }
+        },
+        /**
+         * WebGL context Options
+         * @see  https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getContextAttributes
+         * @type {Object}
+         */
+        contextOptions: null
     },
     renderType:'webgl',
     gl:null,
@@ -58,7 +64,8 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     constructor: function(properties){
         WebGLRenderer.superclass.constructor.call(this, properties);
         var that = this;
-        this.gl = this.canvas.getContext("webgl")||this.canvas.getContext('experimental-webgl');
+        var contextOptions = WebGLRenderer.contextOptions || {};
+        this.gl = this.canvas.getContext("webgl", contextOptions)||this.canvas.getContext('experimental-webgl', contextOptions);
 
         this.maxBatchNum = WebGLRenderer.MAX_BATCH_NUM;
         this.positionStride = WebGLRenderer.ATTRIBUTE_NUM * 4;

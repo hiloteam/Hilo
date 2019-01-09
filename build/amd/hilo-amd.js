@@ -1,5 +1,5 @@
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -192,7 +192,7 @@ return browser;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -229,7 +229,7 @@ return util;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -257,7 +257,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.3.0',
+    version: '1.4.0',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -565,7 +565,7 @@ return Hilo;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -748,7 +748,7 @@ return Class;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -972,7 +972,7 @@ return Matrix;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1125,7 +1125,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1206,7 +1206,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1300,7 +1300,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1511,7 +1511,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1693,7 +1693,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1750,7 +1750,13 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
                 }
             }
             return this._isSupported;
-        }
+        },
+        /**
+         * WebGL context Options
+         * @see  https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getContextAttributes
+         * @type {Object}
+         */
+        contextOptions: null
     },
     renderType:'webgl',
     gl:null,
@@ -1759,7 +1765,8 @@ var WebGLRenderer = Class.create(/** @lends WebGLRenderer.prototype */{
     constructor: function(properties){
         WebGLRenderer.superclass.constructor.call(this, properties);
         var that = this;
-        this.gl = this.canvas.getContext("webgl")||this.canvas.getContext('experimental-webgl');
+        var contextOptions = WebGLRenderer.contextOptions || {};
+        this.gl = this.canvas.getContext("webgl", contextOptions)||this.canvas.getContext('experimental-webgl', contextOptions);
 
         this.maxBatchNum = WebGLRenderer.MAX_BATCH_NUM;
         this.positionStride = WebGLRenderer.ATTRIBUTE_NUM * 4;
@@ -2270,7 +2277,7 @@ return WebGLRenderer;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2767,7 +2774,7 @@ return View;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2833,7 +2840,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3207,7 +3214,7 @@ return Container;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3474,7 +3481,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3552,7 +3559,7 @@ return Bitmap;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3823,7 +3830,7 @@ return Sprite;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3938,7 +3945,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3948,7 +3955,7 @@ define('hilo/view/Graphics', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/Vi
 
 /**
  * @language=en
- * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+ * <iframe src='../../../examples/Graphics.html?noHeader' width = '430' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class Graphics class contains a group of functions for creating vector graphics.
  * @augments View
@@ -4500,7 +4507,7 @@ return Graphics;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4548,7 +4555,7 @@ var Text = Class.create(/** @lends Text.prototype */{
         this._fontHeight = Text.measureFontHeight(this.font);
     },
 
-    text: null,
+    text: '',
     color: '#000',
     textAlign: null,
     textVAlign: null,
@@ -4753,7 +4760,7 @@ return Text;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4937,7 +4944,7 @@ return BitmapText;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5116,7 +5123,7 @@ return Button;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5353,7 +5360,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5582,7 +5589,7 @@ return Ticker;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5630,7 +5637,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5769,7 +5776,7 @@ return drag;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6219,7 +6226,7 @@ return Tween;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6491,7 +6498,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6539,7 +6546,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6606,7 +6613,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6856,7 +6863,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7059,7 +7066,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7376,7 +7383,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7479,7 +7486,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7572,7 +7579,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7759,7 +7766,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.3.0 for amd
+ * Hilo 1.4.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

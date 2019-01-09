@@ -1,5 +1,5 @@
 /**
- * Hilo 1.3.0 for dragonbones
+ * Hilo 1.4.0 for dragonbones
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

@@ -1,5 +1,5 @@
 /**
- * Hilo 1.3.0 for cmd
+ * Hilo 1.4.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -14,7 +14,7 @@ var CacheMixin = require('hilo/view/CacheMixin');
 
 /**
  * @language=en
- * <iframe src='../../../examples/Graphics.html?noHeader' width = '320' height = '400' scrolling='no'></iframe>
+ * <iframe src='../../../examples/Graphics.html?noHeader' width = '430' height = '400' scrolling='no'></iframe>
  * <br/>
  * @class Graphics class contains a group of functions for creating vector graphics.
  * @augments View
