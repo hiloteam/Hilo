@@ -1,3 +1,33 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/hiloteam/hilo/compare/1.3.0...1.4.0) (2019-01-09)
+
+
+### Bug Fixes
+
+* Fix bug when Text.text has no default value ([83d87d6](https://github.com/hiloteam/hilo/commit/83d87d6))
+
+
+### Features
+
+* add WebGLRenderer.contextOptions ([8d6f428](https://github.com/hiloteam/hilo/commit/8d6f428))
+
+
+
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/hiloteam/hilo/compare/v1.2.0...1.3.0) (2018-10-17)
+
+
+### Bug Fixes
+
+* physic remove static body bug, fixed [#128](https://github.com/hiloteam/hilo/issues/128) ([4258f7c](https://github.com/hiloteam/hilo/commit/4258f7c))
+
+
+### Features
+
+* Add Graphics.setLineDash, Fixed [#129](https://github.com/hiloteam/hilo/issues/129) ([4fa1446](https://github.com/hiloteam/hilo/commit/4fa1446))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/hiloteam/hilo/compare/v1.1.11...v1.2.0) (2018-08-08)
 
