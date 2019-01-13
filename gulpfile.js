@@ -282,4 +282,10 @@ gulp.task('test', ['jshint'], function () {
       }));
 });
 
+gulp.task('test:reporter', ['test'], function () {
+  const render = require('macaca-reporter/lib/render');
+  const data = require('./reports/json-final');
+  render(data);
+});
+
 gulp.task('default', ['format', 'flash', 'extensions']);

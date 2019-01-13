@@ -42,6 +42,10 @@ describe('view:' + stageRenderType, function() {
             });
         });
 
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
+        });
+
         it('new', function(done){
             utils.diffWithScreenshot('Bitmap-new', done);
         });
@@ -100,6 +104,10 @@ describe('view:' + stageRenderType, function() {
             });
         });
 
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
+        });
+
         it('setText', function(done){
             text.setText('1234567');
             utils.diffWithScreenshot('BitmapText-new', done);
@@ -135,6 +143,10 @@ describe('view:' + stageRenderType, function() {
             }).addTo(stage);
         });
 
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
+        });
+
         it('upState', function(done){
             button.fire('mouseout');
             button.state.should.equal(Hilo.Button.UP);
@@ -165,6 +177,10 @@ describe('view:' + stageRenderType, function() {
         var container;
         beforeEach('init container', function(){
             container = new Hilo.Container();
+        });
+
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
         });
 
         it('getNumChildren', function(){
@@ -275,6 +291,11 @@ describe('view:' + stageRenderType, function() {
     });
 
     describe('DOMElement', function() {
+
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
+        });
+
         it('new', function(done){
             var yellowRect = new Hilo.DOMElement({
                 id: 'yellowRect',
@@ -300,6 +321,11 @@ describe('view:' + stageRenderType, function() {
     });
 
     describe('Drawable', function() {
+
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
+        });
+
         it('isDrawable', function(){
             Hilo.Drawable.isDrawable(new Image).should.be.true();
             Hilo.Drawable.isDrawable(document.createElement('canvas')).should.be.true();
@@ -349,6 +375,10 @@ describe('view:' + stageRenderType, function() {
                 height:stage.height
             });
             stage.addChild(graphics);
+        });
+
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
         });
 
         it('drawRect', function(done){
@@ -430,6 +460,10 @@ describe('view:' + stageRenderType, function() {
             });
         });
 
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
+        });
+
         it('goto frame 1 should work', function(done){
             sprite.goto(1, true);
             utils.diffWithScreenshot('Sprite-goto-frame1', done);
@@ -442,6 +476,10 @@ describe('view:' + stageRenderType, function() {
     });
 
     describe('Stage', function() {
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
+        });
+
         it('enableDOMEvent', function(done){
             stage.enableDOMEvent('click');
 
@@ -553,6 +591,10 @@ describe('view:' + stageRenderType, function() {
     });
 
     describe.skip('Text', function() {
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
+        });
+
         it('new', function(done){
             var text = new Hilo.Text({
                 font: '14px arial',
@@ -576,6 +618,10 @@ describe('view:' + stageRenderType, function() {
                 scaleX:0.5,
                 scaleY:0.2
             });
+        });
+
+        afterEach(function(done) {
+          utils.takeScreenshot(new Date().getTime(), done, this);
         });
 
         it('getStage', function() {
