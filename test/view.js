@@ -43,7 +43,7 @@ describe('view:' + stageRenderType, function() {
         });
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('new', function(done){
@@ -105,7 +105,7 @@ describe('view:' + stageRenderType, function() {
         });
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('setText', function(done){
@@ -144,7 +144,7 @@ describe('view:' + stageRenderType, function() {
         });
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('upState', function(done){
@@ -180,7 +180,7 @@ describe('view:' + stageRenderType, function() {
         });
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('getNumChildren', function(){
@@ -293,7 +293,7 @@ describe('view:' + stageRenderType, function() {
     describe('DOMElement', function() {
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('new', function(done){
@@ -323,7 +323,7 @@ describe('view:' + stageRenderType, function() {
     describe('Drawable', function() {
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('isDrawable', function(){
@@ -378,7 +378,7 @@ describe('view:' + stageRenderType, function() {
         });
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('drawRect', function(done){
@@ -461,7 +461,7 @@ describe('view:' + stageRenderType, function() {
         });
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('goto frame 1 should work', function(done){
@@ -477,7 +477,7 @@ describe('view:' + stageRenderType, function() {
 
     describe('Stage', function() {
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('enableDOMEvent', function(done){
@@ -592,7 +592,7 @@ describe('view:' + stageRenderType, function() {
 
     describe.skip('Text', function() {
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('new', function(done){
@@ -621,7 +621,7 @@ describe('view:' + stageRenderType, function() {
         });
 
         afterEach(function(done) {
-          utils.takeScreenshot(new Date().getTime(), done, this);
+          utils.screenshot(done, this);
         });
 
         it('getStage', function() {

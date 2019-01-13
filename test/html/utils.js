@@ -50,6 +50,15 @@ var utils = {
             }
         });
     },
+
+    /**
+     * 用例结束后截屏
+     */
+    screenshot:function(callback, context) {
+      var name = new Date().getTime();
+      this.takeScreenshot(name, callback, context);
+    },
+
     /**
      * 截屏
      * @param  {String} name 图片名
