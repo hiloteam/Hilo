@@ -33,7 +33,7 @@
     "gulp-uitest": "^0.1.1",
     "gulp-zip": "^3.0.2",
     "jshint": "^2.9.4",
-    "macaca-reporter": "^1.2.16",
+    "macaca-reporter": "^1.2.17",
     "merge-stream": "^0.1.8",
     "mocha": "=3.0.2",
     "pixelmatch": "^4.0.2",
