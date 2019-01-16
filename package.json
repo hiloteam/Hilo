@@ -11,8 +11,7 @@
     "url": "git@github.com:hiloteam/hilo.git"
   },
   "scripts": {
-    "test": "rm -rf reports/screenshots && gulp test",
-    "test:reporter": "rm -rf reports/screenshots && gulp test:reporter",
+    "test": "rm -rf reports/screenshots && gulp test:reporter",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
     "contributor": "git-contributor"
   },
