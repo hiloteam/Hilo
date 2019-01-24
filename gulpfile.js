@@ -293,7 +293,7 @@ gulp.task('test:reporter', ['test'], function () {
     render(data);
   } catch (e) {
     console.log('error')
-    console.log(e)
+    console.log(e.stack)
   }
   console.log('render completed')
 });
