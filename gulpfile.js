@@ -289,7 +289,6 @@ gulp.task('test:reporter', ['test'], function () {
     console.log(1)
     const data = require('./reports/json-final');
     console.log('========data=======', data)
-    console.log(2)
     render(data);
   } catch (e) {
     console.log('error')
