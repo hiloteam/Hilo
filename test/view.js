@@ -29,7 +29,7 @@ describe('view:' + stageRenderType, function() {
         ticker = null;
     });
 
-    describe('Bitmap', function() {
+    describe.only('Bitmap', function() {
         var bmp, btnImage;
         beforeEach('init bitmap', function(done){
             utils.loadImage('images/btn.png', function(img){
