@@ -46,7 +46,7 @@ describe('view:' + stageRenderType, function() {
           utils.screenshot(done, this);
         });
 
-        it.only('new', function(done){
+        it('new', function(done){
             utils.diffWithScreenshot('Bitmap-new', done);
         });
 

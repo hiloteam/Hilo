@@ -285,15 +285,8 @@ gulp.task('test', ['jshint'], function () {
 });
 
 gulp.task('test:reporter', ['test'], function () {
-  try {
-    console.log(1)
-    const data = require('./reports/json-final');
-    console.log('========data=======', data)
-    render(data);
-  } catch (e) {
-    console.log('error')
-    console.log(e.stack)
-  }
+  const data = require('./reports/json-final');
+  render(data);
   console.log('render completed')
 });
 
