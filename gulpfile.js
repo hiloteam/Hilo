@@ -283,10 +283,15 @@ gulp.task('test', ['jshint'], function () {
 });
 
 gulp.task('test:reporter', ['test'], function () {
-  const render = require('macaca-reporter/lib/render');
-  const data = require('./reports/json-final');
-  console.log('========data=======', data)
-  render(data);
+  try {
+    const render = require('macaca-reporter/lib/render');
+    const data = require('./reports/json-final');
+    console.log('========data=======', data)
+    render(data);
+  } catch (e) {
+    console.log('error')
+    console.log(e)
+  }
   console.log('render completed')
 });
 
