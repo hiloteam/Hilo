@@ -1,3 +1,4 @@
+var fs = require('fs');
 var gulp = require('gulp');
 var del = require('del');
 var merge = require('merge-stream');
@@ -285,6 +286,8 @@ gulp.task('test', ['jshint'], function () {
 gulp.task('test:reporter', ['test'], function () {
   try {
     const render = require('macaca-reporter/lib/render');
+    const content = fs.readFileSync('./reports/json-final').toString()
+    console.log('====content======', content)
     const data = require('./reports/json-final');
     console.log('========data=======', data)
     render(data);
