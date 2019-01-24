@@ -285,9 +285,13 @@ gulp.task('test', ['jshint'], function () {
 
 gulp.task('test:reporter', ['test'], function () {
   try {
+    console.log(1)
     const render = require('macaca-reporter/lib/render');
-    const content = fs.readFileSync('./reports/json-final').toString()
+    console.log(2)
+    const content = fs.readFileSync('./reports/json-final')
+    console.log(3)
     console.log('====content======', content)
+    console.log('====content.toString======', content.toString())
     const data = require('./reports/json-final');
     console.log('========data=======', data)
     render(data);
