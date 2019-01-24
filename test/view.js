@@ -29,7 +29,7 @@ describe('view:' + stageRenderType, function() {
         ticker = null;
     });
 
-    describe.only('Bitmap', function() {
+    describe('Bitmap', function() {
         var bmp, btnImage;
         beforeEach('init bitmap', function(done){
             utils.loadImage('images/btn.png', function(img){
@@ -46,7 +46,7 @@ describe('view:' + stageRenderType, function() {
           utils.screenshot(done, this);
         });
 
-        it('new', function(done){
+        it.only('new', function(done){
             utils.diffWithScreenshot('Bitmap-new', done);
         });
 
