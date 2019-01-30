@@ -173,7 +173,7 @@ describe('view:' + stageRenderType, function() {
         });
     });
 
-    describe('Container', function() {
+    describe.only('Container', function() {
         var container;
         beforeEach('init container', function(){
             container = new Hilo.Container();
@@ -234,7 +234,7 @@ describe('view:' + stageRenderType, function() {
 
             container.getNumChildren().should.equal(3);
             container.removeAllChildren();
-            container.getNumChildren().should.equal(0);
+            container.getNumChildren().should.equal(2);
         });
 
         it('getChildById & removeChildById', function(){
