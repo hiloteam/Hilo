@@ -1,3 +1,4 @@
+var fs = require('fs');
 var gulp = require('gulp');
 var del = require('del');
 var merge = require('merge-stream');
@@ -15,6 +16,7 @@ var transformModule = require('gulp-transform-module');
 var jshint = require('gulp-jshint');
 var pkg = require('./package.json');
 var child_process = require('child_process');
+const render = require('macaca-reporter/lib/render');
 
 var isWatch = false;
 var licenseCommentReg = /\/\*\*[\d\D]+?alibaba.com[\d\D]+?Licensed under the MIT License[\s]+?\*\//g;
@@ -280,6 +282,12 @@ gulp.task('test', ['jshint'], function () {
         useContentSize: true,
         show: false
       }));
+});
+
+gulp.task('test:reporter', ['test'], function () {
+  const data = require('./reports/json-final');
+  render(data);
+  console.log('render completed')
 });
 
 gulp.task('default', ['format', 'flash', 'extensions']);

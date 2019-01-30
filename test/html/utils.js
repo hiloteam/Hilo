@@ -50,17 +50,29 @@ var utils = {
             }
         });
     },
+
+    /**
+     * 用例结束后截屏
+     */
+    screenshot:function(callback, context) {
+      var name = new Date().getTime();
+      this.takeScreenshot(name, callback, context);
+    },
+
     /**
      * 截屏
      * @param  {String} name 图片名
      * @param  {Function} callback 回调
      */
-    takeScreenshot:function(name, callback) {
+    takeScreenshot:function(name, callback, context) {
         var that = this;
         setTimeout(function(){
             _macaca_uitest.screenshot(name + '.png', function() {
               if (callback) {
-                that.loadImage('../screenshot/' + name + '.png', callback);
+                if (context) {
+                _macaca_uitest.appendToContext(context, '../reports/screenshots/' + name + '.png');
+                }
+                that.loadImage('../reports/screenshots/' + name + '.png', callback, context);
               }
             });
         }, window._IS_TRAVIS?1000:100);
@@ -70,13 +82,17 @@ var utils = {
      * @param  {String} src 图片地址
      * @param  {Function} callback 加载回调，成功会传image参数，失败传null
      */
-    loadImage:function(src, callback){
+    loadImage:function(src, callback, context){
         var img = new Image();
         img.onerror = function(){
             callback && callback(null);
         };
         img.onload = function(){
+          if (context) {
+            callback && callback();
+          } else {
             callback && callback(img);
+          }
         };
         img.src = src;
     },

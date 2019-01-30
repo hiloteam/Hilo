@@ -47,6 +47,8 @@ describe('util', function(){
                         catch(e){
                             done(e);
                         }
+
+                        ticker.stop();
                     }
                 }
             });
