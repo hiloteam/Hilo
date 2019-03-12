@@ -1,5 +1,5 @@
 /**
- * Hilo 1.4.0 for physics
+ * Hilo 1.4.1 for physics
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

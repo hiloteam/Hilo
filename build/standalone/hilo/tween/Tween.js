@@ -1,5 +1,5 @@
 /**
- * Hilo 1.4.0 for standalone
+ * Hilo 1.4.1 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -244,7 +244,7 @@ return Class.create(/** @lends Tween.prototype */{
         ratio = ratio <= 0 ? 0 : ratio >= 1 ? 1 : ratio;
         var easeRatio = me.ease ? me.ease(ratio) : ratio;
 
-        if(me.reverse){
+        if(me.reverse && me.isStart){
             //backward
             if(me._reverseFlag < 0) {
                 ratio = 1 - ratio;

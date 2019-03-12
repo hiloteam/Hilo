@@ -1,5 +1,5 @@
 /**
- * Hilo 1.4.0 for flashAdaptor
+ * Hilo 1.4.1 for flashAdaptor
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
