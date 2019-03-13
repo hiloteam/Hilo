@@ -7148,8 +7148,15 @@ KISSY.add('hilo/media/WebAudio', function(S, Class, util, EventMixin){
  */
 var WebAudio = (function(){
 
-var AudioContext = window.AudioContext || window.webkitAudioContext;
-var context = AudioContext ? new AudioContext() : null;
+var context = null;
+try {
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
+        context = new AudioContext();
+    }
+} catch(e) {
+    context = null;
+}
 
 return Class.create(/** @lends WebAudio.prototype */{
     Mixes: EventMixin,
@@ -7386,7 +7393,7 @@ return Class.create(/** @lends WebAudio.prototype */{
          * @language=en
          * Does the browser support WebAudio.
          */
-        isSupported: AudioContext != null,
+        isSupported: context !== null,
 
         /**
          * @language=en
