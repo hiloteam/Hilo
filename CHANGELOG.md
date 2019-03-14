@@ -1,3 +1,24 @@
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/hiloteam/hilo/compare/1.4.1...1.4.2) (2019-03-14)
+
+
+### Bug Fixes
+
+* Add tween.isComplete to fix tween.onComplete throw error bug ([79f96ed](https://github.com/hiloteam/hilo/commit/79f96ed))
+* WebAudio create context should try catch ([b422d08](https://github.com/hiloteam/hilo/commit/b422d08))
+
+
+
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/hiloteam/hilo/compare/1.4.0...1.4.1) (2019-03-12)
+
+
+### Bug Fixes
+
+* Tween reverse may error when first update ([23ea978](https://github.com/hiloteam/hilo/commit/23ea978))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/hiloteam/hilo/compare/1.3.0...1.4.0) (2019-01-09)
 
