@@ -1,5 +1,5 @@
 /**
- * Hilo 1.4.1 for cmd
+ * Hilo 1.4.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -30,7 +30,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.4.1',
+    version: '1.4.2',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.

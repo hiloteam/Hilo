@@ -1,5 +1,5 @@
 /**
- * Hilo 1.4.1 for standalone
+ * Hilo 1.4.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -99,6 +99,7 @@ return Class.create(/** @lends Tween.prototype */{
     time: 0, //ready only
 
     isStart:false,
+    isComplete:false,
     onStart: null,
     onUpdate: null,
     onComplete: null,
@@ -135,7 +136,11 @@ return Class.create(/** @lends Tween.prototype */{
         me._startTime = now() + me.delay;
         me._seekTime = 0;
         me._pausedTime = 0;
+        me._reverseFlag = 1;
+        me._repeatCount = 0;
         me.paused = false;
+        me.isStart = false;
+        me.isComplete = false;
         Tween.add(me);
         return me;
     },
@@ -234,6 +239,7 @@ return Class.create(/** @lends Tween.prototype */{
     _update: function(time, forceUpdate){
         var me = this;
         if(me.paused && !forceUpdate) return;
+        if(me.isComplete) return true;
 
         //elapsed time
         var elapsed = time - me._startTime - me._pausedTime + me._seekTime;
@@ -287,7 +293,7 @@ return Class.create(/** @lends Tween.prototype */{
                 me._startTime = now() + me.repeatDelay;
                 me._pausedTime = 0;
             }else{
-                complete = true;
+                me.isComplete = true;
             }
         }
 
@@ -300,14 +306,14 @@ return Class.create(/** @lends Tween.prototype */{
                 next._render(ratio);
                 next.time = elapsed;
                 Tween.add(next);
-            }else if(complete && (nextStartTime < 0 || nextStartTime > time)){
+            }else if(me.isComplete && (nextStartTime < 0 || nextStartTime > time)){
                 //next tween
                 next.start();
             }
         }
 
         //complete
-        if(complete){
+        if(me.isComplete){
             (callback = me.onComplete) && callback.call(me, me);
             return true;
         }
