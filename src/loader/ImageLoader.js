@@ -24,7 +24,7 @@ var ImageLoader = Class.create({
 
         var image = new Image();
         if(data.crossOrigin){
-            image.crossOrigin = data.crossOrigin;
+            image.crossOrigin = "Anonymous";
         }
 
         image.onload = function(){
