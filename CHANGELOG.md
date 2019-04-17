@@ -1,3 +1,12 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/hiloteam/hilo/compare/1.4.2...1.5.0) (2019-04-17)
+
+
+### Features
+
+* Bitmap.setImage add crossOrigin setting ([9bf272b](https://github.com/hiloteam/hilo/commit/9bf272b))
+* DragonBones HiloFactory add textureCrossOrigin setting ([f6e4c46](https://github.com/hiloteam/hilo/commit/f6e4c46))
+
 <a name="1.4.2"></a>
 ## [1.4.2](https://github.com/hiloteam/hilo/compare/1.4.1...1.4.2) (2019-03-14)
 
