@@ -74,7 +74,7 @@
      * set the image。
      * @param {Image|String} Image Object or URL.
      * @param {Array} rect the range of bitmap in the image, option.
-     * @param {Boolean} Whether cross-domain is needed, default is false.
+     * @param {Boolean} crossOrigin Whether cross-domain is needed, default is false.
      * @returns {Bitmap} self。
      */
     /**
@@ -82,7 +82,7 @@
      * 设置位图的图片。
      * @param {Image|String} image 图片对象或地址。
      * @param {Array} rect 指定位图在图片image的矩形区域。可选。
-     * @param {Boolean} 是否设置 crossOrigin，默认否。
+     * @param {Boolean} crossOrigin 是否设置 crossOrigin，默认否。
      * @returns {Bitmap} 位图本身。
      */
     setImage: function(image, rect, crossOrigin){

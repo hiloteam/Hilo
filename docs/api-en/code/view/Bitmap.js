@@ -49,7 +49,7 @@
      * set the image。
      * @param {Image|String} Image Object or URL.
      * @param {Array} rect the range of bitmap in the image, option.
-     * @param {Boolean} Whether cross-domain is needed, default is false.
+     * @param {Boolean} crossOrigin Whether cross-domain is needed, default is false.
      * @returns {Bitmap} self。
      */
     setImage: function(image, rect, crossOrigin){
