@@ -12,7 +12,7 @@ var dragonbonesFactory = new dragonBones.HiloFactory();
 
 /**
  * add texture data and skeleton data
- * textureImg is a load completed Image
+ * textureImg is a load completed Image or image url
  * textureData is texture json data
  * skeletonData is skeleton json data
  */
@@ -45,3 +45,9 @@ stage.addChild(armature.getDisplay());
 
 * Check out [dragon demo](https://hiloteam.github.io/Hilo/src/extensions/dragonbones/demo/dragon.html) for a complete example.
 * Check [official tutorial](http://edn.egret.com/cn/docs/page/392) for more info.
+
+### note
+* If stage's renderType is webgl and texture url is crossOrigin, you can set the factory textureCrossOrigin option.
+    ```
+    dragonbonesHiloFactory.textureCrossOrigin = true;
+    ```

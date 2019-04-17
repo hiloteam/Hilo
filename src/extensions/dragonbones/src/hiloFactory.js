@@ -124,7 +124,8 @@
             var region = texture.region;
             var bitmap = new Hilo.Bitmap({
                 image: textureAtlas.texture,
-                rect: [region.x, region.y, region.width, region.height]
+                rect: [region.x, region.y, region.width, region.height],
+                crossOrigin: this.textureCrossOrigin
             });
 
             if (isNaN(pivotX) || isNaN(pivotY)) {
