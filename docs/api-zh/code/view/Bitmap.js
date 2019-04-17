@@ -17,7 +17,8 @@
  * @param {Object} properties 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
  * <ul>
  * <li><b>image</b> - 位图所在的图像image。必需。</li>
- * <li><b>rect</b> - 位图在图像image中矩形区域。</li>
+ * <li><b>rect</b> - 位图在图像image中矩形区域。可选。</li>
+ * <li><b>crossOrigin</b> - 是否设置crossOrigin。默认否。</li>
  * </ul>
  * @module hilo/view/Bitmap
  * @requires hilo/core/Hilo
@@ -47,11 +48,12 @@
     /**
      * 设置位图的图片。
      * @param {Image|String} image 图片对象或地址。
-     * @param {Array} rect 指定位图在图片image的矩形区域。
+     * @param {Array} rect 指定位图在图片image的矩形区域。可选。
+     * @param {Boolean} 是否设置 crossOrigin，默认否。
      * @returns {Bitmap} 位图本身。
      */
-    setImage: function(image, rect){
-        this.drawable.init({image:image, rect:rect});
+    setImage: function(image, rect, crossOrigin){
+        this.drawable.init({image:image, rect:rect, crossOrigin:crossOrigin});
         if(rect){
             this.width = rect[2];
             this.height = rect[3];

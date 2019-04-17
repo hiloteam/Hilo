@@ -1,5 +1,5 @@
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -192,7 +192,7 @@ return browser;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -229,7 +229,7 @@ return util;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -257,7 +257,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.4.2',
+    version: '1.5.0',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -565,7 +565,7 @@ return Hilo;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -748,7 +748,7 @@ return Class;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -972,7 +972,7 @@ return Matrix;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1125,7 +1125,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1173,7 +1173,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
                 //load image dynamically
                 var img = new Image();
                 if(properties.crossOrigin){
-                    img.crossOrigin = properties.crossOrigin;
+                    img.crossOrigin = "Anonymous";
                 }
                 img.onload = function(){
                     img.onload = null;
@@ -1206,7 +1206,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1300,7 +1300,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1511,7 +1511,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1693,7 +1693,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2277,7 +2277,7 @@ return WebGLRenderer;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2774,7 +2774,7 @@ return View;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2840,7 +2840,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3214,7 +3214,7 @@ return Container;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3481,7 +3481,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3502,8 +3502,9 @@ define('hilo/view/Bitmap', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View
  * @augments View
  * @param {Object} properties the options of create Instance.It can contains all writable property and Moreover：
  * <ul>
- * <li><b>image</b> - the image of bitmap which contained。required。</li>
- * <li><b>rect</b> - the range of bitmap in the image。option</li>
+ * <li><b>image</b> - the image of bitmap which contained, required.</li>
+ * <li><b>rect</b> - the range of bitmap in the image, option</li>
+ * <li><b>crossOrigin</b> - Whether cross-domain is needed, default is false</li>
  * </ul>
  * @module hilo/view/Bitmap
  * @requires hilo/core/Hilo
@@ -3533,12 +3534,13 @@ define('hilo/view/Bitmap', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View
     /**
      * @language=en
      * set the image。
-     * @param {Image|String} Image Object or URL。
-     * @param {Array} rect the range of bitmap in the image。
+     * @param {Image|String} Image Object or URL.
+     * @param {Array} rect the range of bitmap in the image, option.
+     * @param {Boolean} Whether cross-domain is needed, default is false.
      * @returns {Bitmap} self。
      */
-    setImage: function(image, rect){
-        this.drawable.init({image:image, rect:rect});
+    setImage: function(image, rect, crossOrigin){
+        this.drawable.init({image:image, rect:rect, crossOrigin:crossOrigin});
         if(rect){
             this.width = rect[2];
             this.height = rect[3];
@@ -3559,7 +3561,7 @@ return Bitmap;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3830,7 +3832,7 @@ return Sprite;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3945,7 +3947,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4507,7 +4509,7 @@ return Graphics;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4760,7 +4762,7 @@ return Text;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4944,7 +4946,7 @@ return BitmapText;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5123,7 +5125,7 @@ return Button;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5360,7 +5362,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5589,7 +5591,7 @@ return Ticker;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5637,7 +5639,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5776,7 +5778,7 @@ return drag;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6232,7 +6234,7 @@ return Tween;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6504,7 +6506,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6525,7 +6527,7 @@ var ImageLoader = Class.create({
 
         var image = new Image();
         if(data.crossOrigin){
-            image.crossOrigin = data.crossOrigin;
+            image.crossOrigin = "Anonymous";
         }
 
         image.onload = function(){
@@ -6552,7 +6554,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6619,7 +6621,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6669,7 +6671,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
      * <li><b>loader</b> - specified resource loader. If you specify this,we abandon choosing loader inside</li>
      * <li><b>noCache</b> - a tag that set on or off to prevent cache,implemented by adding timestamp inside</li>
      * <li><b>size</b> - predicted resource size, help calculating loading progress</li>
-     * <li><b>crossOrigin</b> - Whether cross-domain is needed. eg:crossOrigin='anonymous'</li>
+     * <li><b>crossOrigin</b> - Whether cross-domain is needed, default is false</li>
      * </ul>
      * @returns {LoadQueue} 下载队列实例本身。
      */
@@ -6869,7 +6871,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7072,7 +7074,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7396,7 +7398,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7499,7 +7501,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7592,7 +7594,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7779,7 +7781,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.4.2 for amd
+ * Hilo 1.5.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

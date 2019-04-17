@@ -787,7 +787,7 @@ stage.addChild(bmp);
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/Bitmap.html#setImage">setImage</a></b>(image:Image|String, rect:Array):Bitmap
+                        <div><b><a href="../symbols/Bitmap.html#setImage">setImage</a></b>(image:Image|String, rect:Array, 是否设置:Boolean):Bitmap
                         </div>
                         <div class="description">
                             
@@ -1080,7 +1080,8 @@ stage.addChild(bmp);
                      — 创建对象的属性参数。可包含此类所有可写属性。此外还包括：
 <ul>
 <li><b>image</b> - 位图所在的图像image。必需。</li>
-<li><b>rect</b> - 位图在图像image中矩形区域。</li>
+<li><b>rect</b> - 位图在图像image中矩形区域。可选。</li>
+<li><b>crossOrigin</b> - 是否设置crossOrigin。默认否。</li>
 </ul>
                 </dt>
             
@@ -1099,7 +1100,7 @@ stage.addChild(bmp);
         <div class="member-box">
         <div class="member-header">
         
-        <b>setImage</b>(image:Image|String, rect:Array):<span class="light"><a href="../symbols/Bitmap.html">Bitmap</a></span>
+        <b>setImage</b>(image:Image|String, rect:Array, 是否设置:Boolean):<span class="light"><a href="../symbols/Bitmap.html">Bitmap</a></span>
         </div>
         <div class="description">设置位图的图片。</div>
 
@@ -1116,7 +1117,12 @@ stage.addChild(bmp);
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>rect</b>:<span>Array</span> 
-                     — 指定位图在图片image的矩形区域。
+                     — 指定位图在图片image的矩形区域。可选。
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>是否设置</b>:<span>Boolean</span> 
+                     — crossOrigin，默认否。
                 </dt>
             
             </dl>

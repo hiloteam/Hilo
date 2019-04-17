@@ -786,7 +786,7 @@ stage.addChild(bmp);
                         
                     </td>
                     <td class="fixedFont">
-                        <div><b><a href="../symbols/Bitmap.html#setImage">setImage</a></b>(Image:Image|String, rect:Array):Bitmap
+                        <div><b><a href="../symbols/Bitmap.html#setImage">setImage</a></b>(Image:Image|String, rect:Array, Whether:Boolean):Bitmap
                         </div>
                         <div class="description">
                             
@@ -1078,8 +1078,9 @@ stage.addChild(bmp);
                     <b>properties</b>:<span>Object</span> 
                      — the options of create Instance.It can contains all writable property and Moreover：
 <ul>
-<li><b>image</b> - the image of bitmap which contained。required。</li>
-<li><b>rect</b> - the range of bitmap in the image。option</li>
+<li><b>image</b> - the image of bitmap which contained, required.</li>
+<li><b>rect</b> - the range of bitmap in the image, option</li>
+<li><b>crossOrigin</b> - Whether cross-domain is needed, default is false</li>
 </ul>
                 </dt>
             
@@ -1098,7 +1099,7 @@ stage.addChild(bmp);
         <div class="member-box">
         <div class="member-header">
         
-        <b>setImage</b>(Image:Image|String, rect:Array):<span class="light"><a href="../symbols/Bitmap.html">Bitmap</a></span>
+        <b>setImage</b>(Image:Image|String, rect:Array, Whether:Boolean):<span class="light"><a href="../symbols/Bitmap.html">Bitmap</a></span>
         </div>
         <div class="description">set the image。</div>
 
@@ -1110,12 +1111,17 @@ stage.addChild(bmp);
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>Image</b>:<span>Image|String</span> 
-                     — Object or URL。
+                     — Object or URL.
                 </dt>
             
                 <dt style="margin-left:20px;font-weight:normal;">
                     <b>rect</b>:<span>Array</span> 
-                     — the range of bitmap in the image。
+                     — the range of bitmap in the image, option.
+                </dt>
+            
+                <dt style="margin-left:20px;font-weight:normal;">
+                    <b>Whether</b>:<span>Boolean</span> 
+                     — cross-domain is needed, default is false.
                 </dt>
             
             </dl>

@@ -1,5 +1,5 @@
 /**
- * Hilo 1.4.2 for dragonbones
+ * Hilo 1.5.0 for dragonbones
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -8259,7 +8259,8 @@ var dragonBones;
             var region = texture.region;
             var bitmap = new Hilo.Bitmap({
                 image: textureAtlas.texture,
-                rect: [region.x, region.y, region.width, region.height]
+                rect: [region.x, region.y, region.width, region.height],
+                crossOrigin: this.textureCrossOrigin
             });
 
             if (isNaN(pivotX) || isNaN(pivotY)) {

@@ -42,7 +42,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
                 //load image dynamically
                 var img = new Image();
                 if(properties.crossOrigin){
-                    img.crossOrigin = properties.crossOrigin;
+                    img.crossOrigin = "Anonymous";
                 }
                 img.onload = function(){
                     img.onload = null;

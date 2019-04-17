@@ -1,5 +1,5 @@
 /**
- * Hilo 1.4.2 for kissy
+ * Hilo 1.5.0 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -47,7 +47,7 @@ var Drawable = Class.create(/** @lends Drawable.prototype */{
                 //load image dynamically
                 var img = new Image();
                 if(properties.crossOrigin){
-                    img.crossOrigin = properties.crossOrigin;
+                    img.crossOrigin = "Anonymous";
                 }
                 img.onload = function(){
                     img.onload = null;

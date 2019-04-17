@@ -16,8 +16,9 @@
  * @augments View
  * @param {Object} properties the options of create Instance.It can contains all writable property and Moreover：
  * <ul>
- * <li><b>image</b> - the image of bitmap which contained。required。</li>
- * <li><b>rect</b> - the range of bitmap in the image。option</li>
+ * <li><b>image</b> - the image of bitmap which contained, required.</li>
+ * <li><b>rect</b> - the range of bitmap in the image, option</li>
+ * <li><b>crossOrigin</b> - Whether cross-domain is needed, default is false</li>
  * </ul>
  * @module hilo/view/Bitmap
  * @requires hilo/core/Hilo
@@ -46,12 +47,13 @@
 
     /**
      * set the image。
-     * @param {Image|String} Image Object or URL。
-     * @param {Array} rect the range of bitmap in the image。
+     * @param {Image|String} Image Object or URL.
+     * @param {Array} rect the range of bitmap in the image, option.
+     * @param {Boolean} Whether cross-domain is needed, default is false.
      * @returns {Bitmap} self。
      */
-    setImage: function(image, rect){
-        this.drawable.init({image:image, rect:rect});
+    setImage: function(image, rect, crossOrigin){
+        this.drawable.init({image:image, rect:rect, crossOrigin:crossOrigin});
         if(rect){
             this.width = rect[2];
             this.height = rect[3];

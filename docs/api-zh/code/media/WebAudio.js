@@ -23,8 +23,15 @@
  */
 var WebAudio = (function(){
 
-var AudioContext = window.AudioContext || window.webkitAudioContext;
-var context = AudioContext ? new AudioContext() : null;
+var context = null;
+try {
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
+        context = new AudioContext();
+    }
+} catch(e) {
+    context = null;
+}
 
 return Class.create(/** @lends WebAudio.prototype */{
     Mixes: EventMixin,
@@ -252,7 +259,7 @@ return Class.create(/** @lends WebAudio.prototype */{
         /**
          * 浏览器是否支持WebAudio。
          */
-        isSupported: AudioContext != null,
+        isSupported: context !== null,
 
         /**
          * 浏览器是否已激活WebAudio。
