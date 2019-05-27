@@ -97,6 +97,8 @@ describe('loader', function(){
                     queue.getContent('btn').should.instanceOf(Image);
                     queue.getContent('btn').width.should.equal(256);
                     queue.getContent('btn').height.should.equal(128);
+                    queue.removeContent('btn');
+                    (queue.getContent('btn') == null).should.be.true();
                     done();
                 }
                 catch(e){
