@@ -1,3 +1,13 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/hiloteam/hilo/compare/1.5.0...1.6.0) (2019-05-27)
+
+
+### Features
+
+* add loaderQueue.removeContent ([be0ac75](https://github.com/hiloteam/hilo/commit/be0ac75))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/hiloteam/hilo/compare/1.4.2...1.5.0) (2019-04-17)
 
