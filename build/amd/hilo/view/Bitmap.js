@@ -1,5 +1,5 @@
 /**
- * Hilo 1.5.0 for amd
+ * Hilo 1.6.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -54,7 +54,7 @@ define('hilo/view/Bitmap', ['hilo/core/Hilo', 'hilo/core/Class', 'hilo/view/View
      * set the image。
      * @param {Image|String} Image Object or URL.
      * @param {Array} rect the range of bitmap in the image, option.
-     * @param {Boolean} Whether cross-domain is needed, default is false.
+     * @param {Boolean} crossOrigin Whether cross-domain is needed, default is false.
      * @returns {Bitmap} self。
      */
     setImage: function(image, rect, crossOrigin){

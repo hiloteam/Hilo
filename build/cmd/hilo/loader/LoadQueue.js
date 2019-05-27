@@ -1,5 +1,5 @@
 /**
- * Hilo 1.5.0 for cmd
+ * Hilo 1.6.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -95,6 +95,23 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
     getContent: function(id){
         var item = this.get(id);
         return item && item.content;
+    },
+    /**
+     * @language=en
+     * remove resource object content  by id or src
+     * @param {String} specified id or src
+     */
+    removeContent: function(id){
+        if(id){
+            var source = this._source;
+            for(var i = 0; i < source.length; i++){
+                var item = source[i];
+                if(item.id === id || item.src === id){
+                    source.splice(i, 1);
+                    return;
+                }
+            }
+        }
     },
 
     /**
