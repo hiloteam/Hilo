@@ -370,7 +370,7 @@ return Class.create(/** @lends Tween.prototype */{
 
         //render & update callback
         me._render(easeRatio);
-        (callback = me.onUpdate) && callback.call(me, ratio, me);
+        (callback = me.onUpdate) && callback.call(me, easeRatio, me);
 
         //check if complete
         if(ratio >= 1){
