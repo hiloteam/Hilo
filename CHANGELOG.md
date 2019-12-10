@@ -1,3 +1,13 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/hiloteam/hilo/compare/1.6.0...2.0.0) (2019-12-10)
+
+
+### BREAKING CHANGES
+
+* Tween.onUpdate use easeRatio ([38e93ad](https://github.com/hiloteam/hilo/commit/38e93ad))
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/hiloteam/hilo/compare/1.5.0...1.6.0) (2019-05-27)
 
