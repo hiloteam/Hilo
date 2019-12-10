@@ -1,5 +1,5 @@
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -192,7 +192,7 @@ return browser;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -229,7 +229,7 @@ return util;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -260,7 +260,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.6.0',
+    version: '2.0.0',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.
@@ -568,7 +568,7 @@ return Hilo;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -751,7 +751,7 @@ return Class;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -977,7 +977,7 @@ return Matrix;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1132,7 +1132,7 @@ return EventMixin;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1216,7 +1216,7 @@ return Drawable;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1313,7 +1313,7 @@ return Renderer;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1528,7 +1528,7 @@ return CanvasRenderer;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -1715,7 +1715,7 @@ return DOMRenderer;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2304,7 +2304,7 @@ return WebGLRenderer;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2807,7 +2807,7 @@ return View;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -2876,7 +2876,7 @@ return CacheMixin;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3254,7 +3254,7 @@ return Container;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3530,7 +3530,7 @@ return Stage;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3615,7 +3615,7 @@ return Bitmap;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -3891,7 +3891,7 @@ return Sprite;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4011,7 +4011,7 @@ return DOMElement;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4578,7 +4578,7 @@ return Graphics;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -4836,7 +4836,7 @@ return Text;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5025,7 +5025,7 @@ return BitmapText;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5210,7 +5210,7 @@ return Button;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5449,7 +5449,7 @@ return TextureAtlas;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5681,7 +5681,7 @@ return Ticker;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5729,7 +5729,7 @@ if (!fnProto.bind) {
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -5870,7 +5870,7 @@ return drag;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6153,7 +6153,7 @@ return Class.create(/** @lends Tween.prototype */{
 
         //render & update callback
         me._render(easeRatio);
-        (callback = me.onUpdate) && callback.call(me, ratio, me);
+        (callback = me.onUpdate) && callback.call(me, easeRatio, me);
 
         //check if complete
         if(ratio >= 1){
@@ -6328,7 +6328,7 @@ return Tween;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6600,7 +6600,7 @@ return Ease;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6650,7 +6650,7 @@ return ImageLoader;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6719,7 +6719,7 @@ return ScriptLoader;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -6991,7 +6991,7 @@ return LoadQueue;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7198,7 +7198,7 @@ return HTMLAudio;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7526,7 +7526,7 @@ return WebAudio;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7633,7 +7633,7 @@ return WebSound;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7729,7 +7729,7 @@ return Camera;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -7919,7 +7919,7 @@ return Camera3d;
 
 });
 /**
- * Hilo 1.6.0 for cmd
+ * hilojs 2.0.0 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

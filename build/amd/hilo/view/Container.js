@@ -1,5 +1,5 @@
 /**
- * Hilo 1.6.0 for amd
+ * hilojs 2.0.0 for amd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

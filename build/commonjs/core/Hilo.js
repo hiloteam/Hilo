@@ -1,5 +1,5 @@
 /**
- * Hilo 1.6.0 for commonjs
+ * hilojs 2.0.0 for commonjs
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -28,7 +28,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '1.6.0',
+    version: '2.0.0',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.

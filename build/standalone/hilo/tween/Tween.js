@@ -1,5 +1,5 @@
 /**
- * Hilo 1.6.0 for standalone
+ * hilojs 2.0.0 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -281,7 +281,7 @@ return Class.create(/** @lends Tween.prototype */{
 
         //render & update callback
         me._render(easeRatio);
-        (callback = me.onUpdate) && callback.call(me, ratio, me);
+        (callback = me.onUpdate) && callback.call(me, easeRatio, me);
 
         //check if complete
         if(ratio >= 1){
