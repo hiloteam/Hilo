@@ -1,3 +1,11 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/hiloteam/hilo/compare/2.0.0...2.0.1) (2020-07-03)
+
+
+### Bug Fixes
+
+* Tween reverse onComplete not work, fix [#165](https://github.com/hiloteam/hilo/issues/165) ([2522897](https://github.com/hiloteam/hilo/commit/2522897))
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/hiloteam/hilo/compare/1.6.0...2.0.0) (2019-12-10)
 

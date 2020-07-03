@@ -1,5 +1,5 @@
 /**
- * hilojs 2.0.0 for standalone
+ * hilojs 2.0.1 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

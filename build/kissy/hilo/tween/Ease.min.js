@@ -1,5 +1,5 @@
 /**
- * hilojs 2.0.0 for kissy
+ * hilojs 2.0.1 for kissy
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

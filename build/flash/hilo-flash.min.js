@@ -1,5 +1,5 @@
 /**
- * hilojs 2.0.0 for flashAdaptor
+ * hilojs 2.0.1 for flashAdaptor
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

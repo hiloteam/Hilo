@@ -1,5 +1,5 @@
 /**
- * hilojs 2.0.0 for cmd
+ * hilojs 2.0.1 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -247,7 +247,7 @@ return Class.create(/** @lends Tween.prototype */{
         if(elapsed < 0) return;
 
         //elapsed ratio
-        var ratio = elapsed / me.duration, complete = false, callback;
+        var ratio = elapsed / me.duration, callback;
         ratio = ratio <= 0 ? 0 : ratio >= 1 ? 1 : ratio;
         var easeRatio = me.ease ? me.ease(ratio) : ratio;
 
@@ -261,7 +261,7 @@ return Class.create(/** @lends Tween.prototype */{
             if(ratio < 1e-7){
                 //repeat complete or not loop
                 if((me.repeat > 0 && me._repeatCount++ >= me.repeat) || (me.repeat == 0 && !me.loop)){
-                    complete = true;
+                    me.isComplete = true;
                 }else{
                     me._startTime = now();
                     me._pausedTime = 0;
