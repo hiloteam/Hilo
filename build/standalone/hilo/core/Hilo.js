@@ -1,5 +1,5 @@
 /**
- * hilojs 2.0.1 for standalone
+ * hilojs 2.0.2 for standalone
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -29,7 +29,7 @@ var Hilo = {
      * Hilo version
      * @type String
      */
-    version: '2.0.1',
+    version: '2.0.2',
     /**
      * @language=en
      * Gets a globally unique id. Such as Stage1, Bitmap2 etc.

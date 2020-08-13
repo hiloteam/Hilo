@@ -1,5 +1,5 @@
 /**
- * hilojs 2.0.1 for cmd
+ * hilojs 2.0.2 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */

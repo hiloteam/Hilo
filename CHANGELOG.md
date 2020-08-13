@@ -1,3 +1,12 @@
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/hiloteam/hilo/compare/2.0.1...2.0.2) (2020-08-13)
+
+
+### Bug Fixes
+
+* fix camera3d sortZ mistake in Chrome ([#169](https://github.com/hiloteam/hilo/issues/169)), close [#168](https://github.com/hiloteam/hilo/issues/168) ([a7fd963](https://github.com/hiloteam/hilo/commit/a7fd963))
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/hiloteam/hilo/compare/2.0.0...2.0.1) (2020-07-03)
 
