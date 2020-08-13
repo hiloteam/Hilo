@@ -210,9 +210,9 @@ var Camera3d = (function(){
          * Z深度排序。
 	     */
 		sortZ : function(){
-			this.stage.sortChildren(function(view_a, view_b){
-				return view_a.z - view_b.z;
-			})
+            this.stage.sortChildren(function(view_a, view_b){
+                return view_a.z - view_b.z;
+            })
 		},
 
 	    /**
