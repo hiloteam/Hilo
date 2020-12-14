@@ -340,7 +340,7 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
  * @private
  */
 function getExtension(src){
-    var extRegExp = /\/?[^/]+\.(\w+)(\?\S+)?$/i, match, extension;
+    var extRegExp = /\/?[^/]+?\.(\w+)\??(\?\S+)?$/i, match, extension;
     if(match = src.match(extRegExp)){
         extension = match[1].toLowerCase();
     }
