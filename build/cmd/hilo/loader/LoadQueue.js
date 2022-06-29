@@ -1,5 +1,5 @@
 /**
- * hilojs 2.0.2 for cmd
+ * hilojs 2.0.3 for cmd
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
@@ -260,12 +260,13 @@ var LoadQueue = Class.create(/** @lends LoadQueue.prototype */{
  * @private
  */
 function getExtension(src){
-    var extRegExp = /\/?[^/]+\.(\w+)(\?\S+)?$/i, match, extension;
+    var extRegExp = /\/?[^/]+?\.(\w+)\??(\?\S+)?$/i, match, extension;
     if(match = src.match(extRegExp)){
         extension = match[1].toLowerCase();
     }
     return extension || null;
 }
+
 
 return LoadQueue;
 

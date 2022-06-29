@@ -1,3 +1,12 @@
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/hiloteam/hilo/compare/2.0.2...2.0.3) (2022-06-29)
+
+
+### Bug Fixes
+
+* fix get extension regexp pattern ([#174](https://github.com/hiloteam/hilo/issues/174)) ([7690a92](https://github.com/hiloteam/hilo/commit/7690a92))
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/hiloteam/hilo/compare/2.0.1...2.0.2) (2020-08-13)
 

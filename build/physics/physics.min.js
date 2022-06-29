@@ -1,5 +1,5 @@
 /**
- * hilojs 2.0.2 for physics
+ * hilojs 2.0.3 for physics
  * Copyright 2016 alibaba.com
  * Licensed under the MIT License
  */
