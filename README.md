@@ -1,6 +1,6 @@
 # Hilo - HTML5 Game Framework 
 
-[![npm][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![size][size-image]][size-url] [![gitter.im][gitter-image]][gitter-url]
+[![npm][npm-image]][npm-url][![size][size-image]][size-url] [![gitter.im][gitter-image]][gitter-url]
 
 [中文版](./README_ZH.md)
 
